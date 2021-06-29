@@ -1,0 +1,2845 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Iovance Biotherapeutics, Inc." />
+<meta name="robots" content="follow, noindex" />
+<link rel="canonical" href="https://ir.iovance.com/investor-calendar/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.iovance.com/investor-calendar" />
+<meta property="og:title" content="Events &amp; Presentations | Iovance Biotherapeutics, Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about Iovance Biotherapeutics, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb34726/files/favicon.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://ir.iovance.com/investor-calendar" />
+<link rel="revision" href="https://ir.iovance.com/investor-calendar" />
+
+    <title>Events &amp; Presentations | Iovance Biotherapeutics, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb34726/files/css/css_SQBKl25X50_ss2d0gozsTTn-Wxa9dWu131cAz6rP_-E.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb34726/files/css/css_tO7BWCyNNxC_Mr9LstYaD582tivH-mdh7YdSLpIyeQ4.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans:Yantramanav:400,500,700" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb34726/files/css/css_dIsU6jVEXDTKW3zomq2bOTrBykr988JmPOIVITtVoS4.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb34726/files/css/css_nL8Q0gtqSxolfUCQx311Gqq7Noi6JLFgE1ASwJVSTAU.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb34726/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-100804129-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- END GADWP Universal Analytics -->
+  
+                    <script>var w=window;if(w.performance||w.mozPerformance||w.msPerformance||w.webkitPerformance){var d=document;AKSB=w.AKSB||{},AKSB.q=AKSB.q||[],AKSB.mark=AKSB.mark||function(e,_){AKSB.q.push(["mark",e,_||(new Date).getTime()])},AKSB.measure=AKSB.measure||function(e,_,t){AKSB.q.push(["measure",e,_,t||(new Date).getTime()])},AKSB.done=AKSB.done||function(e){AKSB.q.push(["done",e])},AKSB.mark("firstbyte",(new Date).getTime()),AKSB.prof={custid:"543865",ustr:"",originlat:"0",clientrtt:"10",ghostip:"23.50.233.137",ipv6:true,pct:"10",clientip:"2600:1700:43b0:e740:5406:52d2:c5e7:3570",requestid:"1de0237b",region:"34182",protocol:"",blver:14,akM:"",akN:"ae",akTT:"O",akTX:"1",akTI:"1de0237b",ai:"588404",ra:"false",pmgn:"",pmgi:"",pmp:"",qc:""},function(e){var _=d.createElement("script");_.async="async",_.src=e;var t=d.getElementsByTagName("script"),t=t[t.length-1];t.parentNode.insertBefore(_,t)}(("https:"===d.location.protocol?"https:":"http:")+"//ds-aksb-a.akamaihd.net/aksb.min.js")}</script>
+                    </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5826 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div id="container">
+    <header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+	<div id="inner-header" class="wrap cf">
+		<div id="logo-wrap" itemscope itemtype="http://schema.org/Organization">
+			<a id="logo-link" href="https://urldefense.com/v3/__https://iovance.com__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yEDpuF5s$" rel="nofollow">
+				<img id="logo" src="https://iovance.com/wp-content/themes/lbio-bones/library/images/iovance-color-logo.svg" alt="Iovance Biotherapeutics" title="Iovance Biotherapeutics" />
+			</a>
+		</div>
+		
+		<button class="hamburger">&#9776;</button>
+		
+		<nav id="primary-nav"  role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+			
+			<ul id="menu-header" class="nav top-nav cf menux">
+				<li id="menu-item-510" class="top-lvl-header-nav-item menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-510">
+					<a href="https://urldefense.com/v3/__https://iovance.com/about/about-iovance-biotherapeutics/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yPjr6kf0$">About</a>
+					<ul class="sub-menu">
+						<li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32"><a href="https://urldefense.com/v3/__https://iovance.com/about/about-iovance-biotherapeutics/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yPjr6kf0$">About Iovance Biotherapeutics</a></li>
+						<li id="menu-item-51" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51"><a href="https://urldefense.com/v3/__https://iovance.com/about/management/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yGLCf23g$">Management</a></li>
+						<li id="menu-item-163" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-163"><a href="https://urldefense.com/v3/__https://iovance.com/about/board-of-directors/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yLs6uLdY$">Board of Directors</a></li>
+						<li id="menu-item-164" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-164"><a href="https://urldefense.com/v3/__https://iovance.com/about/research-partners/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6ynInek3E$">Research Partners</a></li>
+					</ul>
+				</li>
+				<li id="menu-item-511" class="top-lvl-header-nav-item menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-511">
+					<a href="https://urldefense.com/v3/__https://iovance.com/our-science/til-platform/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6ya5cJDds$">Our Technology</a>
+					<ul class="sub-menu">
+						<li id="menu-item-50" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-50"><a href="https://urldefense.com/v3/__https://iovance.com/our-science/til-platform/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6ya5cJDds$">About TIL</a></li>
+						<li id="menu-item-337" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-337"><a href="https://urldefense.com/v3/__https://iovance.com/our-science/publications/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yqJhqLl0$">Publication and Scientific Presentations</a></li>
+					</ul>
+				</li>
+				<li id="menu-item-512" class="top-lvl-header-nav-item menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-512">
+					<a href="https://urldefense.com/v3/__https://iovance.com/clinical/our-clinical-program/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yx9L464A$">Clinical</a>
+					<ul class="sub-menu">
+						<li id="menu-item-342" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-342">
+							<a href="https://urldefense.com/v3/__https://iovance.com/clinical/our-clinical-program/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yx9L464A$">Clinical Program</a>
+							<ul class="sub-menu">
+								<li id="menu-item-2006" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2006"><a href="https://urldefense.com/v3/__https://iovance.com/clinical/c-144-01-metastatic-melanoma/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6y7T8DEzI$">Metastatic Melanoma</a></li>
+								<li id="menu-item-2007" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2007"><a href="https://urldefense.com/v3/__https://iovance.com/clinical/c-145-04-cervical-carcinoma/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6ylHF_E-Y$">Cervical Carcinoma</a></li>
+								<li id="menu-item-15575" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15575"><a href="https://urldefense.com/v3/__https://iovance.com/clinical/iov-lun-202-non-small-cell-lung-cancer/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yKoOo5_g$">Non-Small Cell Lung Cancer</a></li>
+								<li id="menu-item-2567" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2567"><a href="https://urldefense.com/v3/__https://iovance.com/clinical/immunotherapy-for-solid-tumors/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yUTWyxOc$">Solid Tumors</a></li>
+								<li id="menu-item-15310" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15310"><a href="https://urldefense.com/v3/__https://iovance.com/clinical/immunotherapy-for-blood-cancers/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6y1pkS1xQ$">Blood Cancers</a></li>
+							</ul>
+						</li>
+						<li id="menu-item-336" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-336"><a href="https://urldefense.com/v3/__https://iovance.com/clinical/pipeline/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yt5FrZ1g$">Clinical Pipeline</a></li>
+						<li id="menu-item-343" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-343"><a href="https://urldefense.com/v3/__https://iovance.com/clinical/unmet-medical-need/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yuxUpCT8$">Unmet Medical Need</a></li>
+						<li id="menu-item-2193" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2193"><a href="https://urldefense.com/v3/__https://iovance.com/expanded-access-policy/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6ykhaH_lk$">Expanded Access Policy</a></li>
+					</ul>
+				</li>
+				<li id="menu-item-17" class="top-lvl-header-nav-item menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-17">
+					<a href="#">Investors</a>
+					<ul class="sub-menu">
+						<li id="menu-item-877" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-877"><a href="https://urldefense.com/v3/__http://ir.iovance.com/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yr9XCy08$">Investor Overview</a></li>
+						<li id="menu-item-294" class="second-dropper menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-294">
+							<a href="#">Stock Information</a>
+							<ul class="sub-menu">
+								<li id="menu-item-880" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-880"><a href="https://urldefense.com/v3/__http://ir.iovance.com/stock-quote-and-chart__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yeonHsgM$">Stock Quote &#038; Chart</a></li>
+								<li id="menu-item-881" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-881"><a href="https://urldefense.com/v3/__http://ir.iovance.com/historical-price-lookup__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6ymGi0aX0$">Historical Price Lookup</a></li>
+								<li id="menu-item-882" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-882"><a href="https://urldefense.com/v3/__http://ir.iovance.com/ownership-summary__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yYd9zauw$">Ownership Summary</a></li>
+								<li id="menu-item-883" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-883"><a href="https://urldefense.com/v3/__http://ir.iovance.com/analyst-coverage__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6ySowieho$">Analyst Coverage</a></li>
+							</ul>
+						</li>
+						<li id="menu-item-295" class="second-dropper menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-295">
+							<a href="#">News &#038; Events</a>
+							<ul class="sub-menu">
+								<li id="menu-item-884" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-884"><a href="https://urldefense.com/v3/__http://ir.iovance.com/press-releases__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6y8EUXSRc$">Press Releases</a></li>
+								<li id="menu-item-364" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-364"><a href="https://urldefense.com/v3/__http://ir.iovance.com/investor-calendar__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6y9qL9g8c$">Events &#038; Presentations</a></li>
+							</ul>
+						</li>
+						<li id="menu-item-888" class="second-dropper menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-888">
+							<a href="#">Financial Information</a>
+							<ul class="sub-menu">
+								<li id="menu-item-889" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-889"><a href="https://urldefense.com/v3/__http://ir.iovance.com/sec-filings__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yv3TR7wI$">SEC Filings</a></li>
+								<li id="menu-item-890" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-890"><a href="https://urldefense.com/v3/__http://ir.iovance.com/financial-reports__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yodOGRVk$">Financial Reports</a></li>
+								<li id="menu-item-891" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-891"><a href="https://urldefense.com/v3/__http://ir.iovance.com/quarterly-results__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6y3jrCJ_U$">Quarterly Results</a></li>
+								<li id="menu-item-892" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-892"><a href="https://urldefense.com/v3/__http://ir.iovance.com/earnings-estimates__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yctfuz1Q$">Earnings Estimates</a></li>
+							</ul>
+						</li>
+						<li id="menu-item-298" class="second-dropper menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-298">
+							<a href="#">Fundamentals</a>
+							<ul class="sub-menu">
+								<li id="menu-item-893" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-893"><a href="https://urldefense.com/v3/__http://ir.iovance.com/fundamentals-snapshot__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yjEZysmk$">Snapshot</a></li>
+								<li id="menu-item-894" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-894"><a href="https://urldefense.com/v3/__http://ir.iovance.com/fundamentals-trading-statistics__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yAEBPF9w$">Trading Statistics</a></li>
+								<li id="menu-item-895" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-895"><a href="https://urldefense.com/v3/__http://ir.iovance.com/fundamentals-balance-sheet__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yObsIXz0$">Balance Sheet</a></li>
+								<li id="menu-item-896" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-896"><a href="https://urldefense.com/v3/__http://ir.iovance.com/fundamentals-income-statement__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yqZuaPtg$">Income Statement</a></li>
+								<li id="menu-item-897" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-897"><a href="https://urldefense.com/v3/__http://ir.iovance.com/fundamentals-cash-flow__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yXGblmUY$">Cash Flow</a></li>
+								<li id="menu-item-898" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-898"><a href="https://urldefense.com/v3/__http://ir.iovance.com/fundamentals-ratios__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6y4RfwGrk$">Ratios</a></li>
+							</ul>
+						</li>
+						<li id="menu-item-299" class="second-dropper menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-299">
+							<a href="#">Corporate Governance</a>
+							<ul class="sub-menu">
+								<li id="menu-item-392" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-392"><a href="https://urldefense.com/v3/__http://ir.iovance.com/governance-highlights__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6y4TJVtYs$">Governance Highlights</a></li>
+								<li id="menu-item-394" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-394"><a href="https://urldefense.com/v3/__http://ir.iovance.com/committee-composition__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6y0yANtZc$">Committee Composition</a></li>
+							</ul>
+						</li>
+						<li id="menu-item-300" class="second-dropper menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-300">
+							<a href="#">Investor Resources</a>
+							<ul class="sub-menu">
+								<li id="menu-item-899" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-899"><a href="https://urldefense.com/v3/__http://ir.iovance.com/information-request__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6y7VrdyYY$">Information Request</a></li>
+								<li id="menu-item-900" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-900"><a href="https://urldefense.com/v3/__http://ir.iovance.com/e-mail-alerts__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yB_5ngaQ$">E-mail Alerts</a></li>
+								<li id="menu-item-901" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-901"><a href="https://urldefense.com/v3/__http://ir.iovance.com/ir-contacts__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6ymquAn34$">IR Contacts</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li id="menu-item-513" class="top-lvl-header-nav-item menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-513">
+					<a href="https://urldefense.com/v3/__https://iovance.com/careers/why-iovance-biotherapeutics/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6y1VLMOWY$">Careers</a>
+					<ul class="sub-menu">
+						<li id="menu-item-345" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-345"><a href="https://urldefense.com/v3/__https://iovance.com/careers/why-iovance-biotherapeutics/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6y1VLMOWY$">Why Iovance?</a></li>
+						<li id="menu-item-344" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-344"><a href="https://urldefense.com/v3/__https://iovance.com/careers/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yjx0AhPM$">Current Job Openings</a></li>
+					</ul>
+				</li>
+			</ul>
+			
+			<ul class="small-header-menu">
+				<li><a href="https://urldefense.com/v3/__https://iovance.com/clinical/our-clinical-program/__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yx9L464A$">Patients</a></li>
+				<li class="small-menu-lines"><a href="https://urldefense.com/v3/__http://phx.corporate-ir.net/phoenix.zhtml?c=254507&amp;&amp;p=irol-news&amp;nyo=0__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yCk8h-js$">News</a></li>
+				<li><a href="https://urldefense.com/v3/__https://iovance.com/contact__;!!L4T48vo5TZ1tBsrb8gVPOA!Baf9rLXrFFjRzZo3OxAMKM1gYSont7YNMsbB7Yv2IzlBuCS5e_zqJqShqY6yfoa6pmI$">Contact</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+    <div class="greenbar">
+        <div id="inner-content" class="wrap cf"></div>
+    </div>
+    <div class="page-hero background overlay"
+         style="background-image:url(/sites/g/files/knoqqb34726/themes/site/nir_pid2959/client/images/Iovance8.1.17.png);">
+        <div class="wrap">
+            <div class="vertical-align">
+                <div style="display:none;" class="wrapper">
+                    <h2>About Lion Biotech</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="breadcrumbs" class="breadcrumbs" typeof="BreadcrumbList">
+        <div class="wrap">
+                                
+  
+    
+                    <span class="breadcrumb-wrap home-crumb" property="itemListElement" typeof="ListItem">
+                    <a property="item" typeof="WebPage" title="Go to About." href="http://www.lbio.com/"
+               class="post post-page breadcrumb-link"><span class="breadcrumb-title"
+                                                            property="name">Home</span></a>
+                </span>
+            <span class="breadcrumb-wrap " property="itemListElement" typeof="ListItem">
+                    <a property="item" typeof="WebPage" title="Go to About." href="/"
+               class="post post-page breadcrumb-link"><span class="breadcrumb-title"
+                                                            property="name">Investors</span></a>
+                </span>
+            <span class="breadcrumb-wrap " property="itemListElement" typeof="ListItem">
+                    <a property="item" typeof="WebPage" title="Go to About." href="/investor-calendar"
+               class="post post-page breadcrumb-link"><span class="breadcrumb-title"
+                                                            property="name">Events &amp; Presentations</span></a>
+                </span>
+    
+  
+
+
+                    </div>
+    </div>
+    <div id="content">
+        <div id="inner-content" class="wrap cf">
+            <main id="main" class="m-all t-4of5 d-4of5 cf" role="main" itemprop="mainContentOfPage">
+                <article id="post-29" class="cf post-29 page type-page status-publish hentry" role="article">
+                    <header class="article-header">
+                        <h1 class="page-title"
+                            itemprop="headline"> Events &amp; Presentations
+                            </h1>
+                    </header>
+                    <section class="entry-content cf" itemprop="articleBody">
+                        <div class="ccbnContent">
+                              <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid2959-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--8dbfa2d4-ebce-43c3-ae96-527ca59c8fe6 block--8dbfa2d4-ebce-43c3-ae96-527ca59c8fe6--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block-content--nir-lp-block block-content--nir-lp-block--11771 block--block-content1be90a64-bed6-46b9-87f4-f45077e2e3d6 block--block-content1be90a64-bed6-46b9-87f4-f45077e2e3d6--5826 block--contentmain--block-content--1be90a64-bed6-46b9-87f4-f45077e2e3d6 block--contentmain--block-content--1be90a64-bed6-46b9-87f4-f45077e2e3d6--5826 block--917a652a-a178-477e-a194-66cbbebc037c block--917a652a-a178-477e-a194-66cbbebc037c--5826 block block-block-content block-block-content1be90a64-bed6-46b9-87f4-f45077e2e3d6">
+  
+    
+      
+            <div class="field field--name-field-nir-lp-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-lp-block-body field--type-text-long field--label-hidden field__item"><p style="font-size: 36px; color: #71B300; font-family: Times New Roman">Presentations</p></div>
+      
+</div>
+      
+  </div>
+<div class="views-element-container block--views-blockwidget-assets-widget-assets-table block--views-blockwidget-assets-widget-assets-table--5826 block--contentmain--views-block--widget-assets-widget-assets-table block--contentmain--views-block--widget-assets-widget-assets-table--5826 block--c2576dd8-3b86-4472-93ac-dea5e64993e0 block--c2576dd8-3b86-4472-93ac-dea5e64993e0--5826 block block-views block-views-blockwidget-assets-widget-assets-table">
+  
+    
+      <div data-block-uuid="c2576dd8-3b86-4472-93ac-dea5e64993e0"><div class="view view-widget-assets view-id-widget_assets view-display-id-widget_assets_table js-view-dom-id-e188cea9a2322d5d2da7c0a042c5845985c914b12a69e5d7abfefff64d992047">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-assets-widget-assets-table" action="/investor-calendar" method="get" id="views-exposed-form-widget-assets-widget-assets-table" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-reset" type="submit" id="edit-reset" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 striped-odd collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date" scope="col">Date</th>
+                                                  <th id="view-field-nir-document-table-column" class="views-field views-field-field-nir-document" scope="col">Documents</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2021-04-12T12:00:00Z" timezone="America/New_York" class="datetime">April 12, 2021</time>          </td>
+                                                                                                                  <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document views-field-field-nir-ext-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.iovance.com/static-files/25bc17ec-8255-423a-90b0-ecede95393e1" type="application/pdf; length=5073791" title="April_2021_Corp_Deck_2_for_website.pdf">Corporate Presentation</a></span><span class="filesize"> 5 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+<div class="block-content--nir-lp-block block-content--nir-lp-block--11781 block--block-contentb2dc8b11-c582-4dd9-a7cb-f818defc8d0b block--block-contentb2dc8b11-c582-4dd9-a7cb-f818defc8d0b--5826 block--contentmain--block-content--b2dc8b11-c582-4dd9-a7cb-f818defc8d0b block--contentmain--block-content--b2dc8b11-c582-4dd9-a7cb-f818defc8d0b--5826 block--604a6a3f-01c3-4af8-bb3e-77930f48175b block--604a6a3f-01c3-4af8-bb3e-77930f48175b--5826 block block-block-content block-block-contentb2dc8b11-c582-4dd9-a7cb-f818defc8d0b">
+  
+    
+      
+            <div class="field field--name-field-nir-lp-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-lp-block-body field--type-text-long field--label-hidden field__item"><p> </p>
+
+<p> </p></div>
+      
+</div>
+      
+  </div>
+<div class="block-content--nir-lp-block block-content--nir-lp-block--11776 block--block-content9387aa4b-15a3-4ee9-b9da-47e016dded55 block--block-content9387aa4b-15a3-4ee9-b9da-47e016dded55--5826 block--contentmain--block-content--9387aa4b-15a3-4ee9-b9da-47e016dded55 block--contentmain--block-content--9387aa4b-15a3-4ee9-b9da-47e016dded55--5826 block--27750e8e-8568-447e-8d2f-b87172a039b8 block--27750e8e-8568-447e-8d2f-b87172a039b8--5826 block block-block-content block-block-content9387aa4b-15a3-4ee9-b9da-47e016dded55">
+  
+    
+      
+            <div class="field field--name-field-nir-lp-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-lp-block-body field--type-text-long field--label-hidden field__item"><p style="font-size: 36px; color: #71B300; font-family: Times New Roman;">Investor Calendar</p>
+
+<p> </p></div>
+      
+</div>
+      
+  </div>
+<div class="block--upcoming-events block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--615b2e69-ff21-4a61-bfdd-4b5f1a616b6e block--615b2e69-ff21-4a61-bfdd-4b5f1a616b6e--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+            <div class="nir-widget--label">
+            Upcoming Events
+        </div>
+        <div class="nir-widget--content">
+                <div class="nir-widget--list">
+                            There are currently no events scheduled.
+                    </div>
+        <div class="nir-widget--pager">
+            
+        </div>
+        <div class="nir-widget--total-results">
+            
+        </div>
+    </div>
+</div>
+  </div>
+<div class="block--past-events block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--d8c582d0-bed8-4cae-a055-db010f9b8753 block--d8c582d0-bed8-4cae-a055-db010f9b8753--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+            <div class="nir-widget--label">
+            Past Events
+        </div>
+        <div class="nir-widget--content">
+                <div class="nir-widget--list">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                    <tbody>
+                    <tr class="ccbnOutline">
+                        <td>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="3" class="ccbnResponsiveTable">
+                                <tbody>
+                                <tr class="ccbnBgTblTtl">
+                                    <td nowrap="nowrap" width="20%"><span class="ccbnTblTtl">Date</span></td>
+                                    <td><span class="ccbnTblTtl">Title</span></td>
+                                </tr>
+                                
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            May 06, 2021  4:30 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-first-quarter-2021-earnings-conference-call" hreflang="en">Iovance Biotherapeutics First Quarter 2021 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            May 05, 2021  12:10 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/truist-securities-life-sciences-summit" hreflang="en">Truist Securities Life Sciences Summit</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 17, 2021  1:10 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/oppenheimer-31st-annual-healthcare-conference" hreflang="en">Oppenheimer 31st Annual Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 11, 2021  1:50 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/barclays-global-healthcare-conference" hreflang="en">Barclays Global Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 09, 2021  1:00 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/hc-wainwright-global-life-sciences-conference-panel-dr-scott-gottlieb" hreflang="en">H.C. Wainwright Global Life Sciences Conference – Panel with Dr. Scott Gottlieb</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 09, 2021  7:00 AM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/hc-wainwright-global-life-sciences-conference" hreflang="en">H.C. Wainwright Global Life Sciences Conference – Corporate Presentation</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            February 25, 2021  4:30 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-fourth-quarter-2020-earnings-conference-call" hreflang="en">Iovance Biotherapeutics Fourth Quarter 2020 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            February 11, 2021  12:00 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/guggenheim-healthcare-talks-oncology-days" hreflang="en">Guggenheim Healthcare Talks Oncology Days</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            January 20, 2021  1:00 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/b-riley-oncology-investor-conference" hreflang="en">B. Riley Oncology Investor Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            January 14, 2021  10:50 AM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/39th-annual-jp-morgan-healthcare-conference" hreflang="en">39th Annual J.P. Morgan Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            January 13, 2021  12:00 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/hc-wainwright-bioconnect-2021-conference" hreflang="en">H.C. Wainwright Bioconnect 2021 Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 20, 2020  3:26 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/piper-sandler-32nd-annual-virtual-healthcare-conference" hreflang="en">Piper Sandler 32nd Annual Virtual Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 19, 2020  12:35 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/jefferies-virtual-london-healthcare-conference" hreflang="en">Jefferies Virtual London Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 18, 2020  8:00 AM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/stifel-2020-virtual-healthcare-conference" hreflang="en">Stifel 2020 Virtual Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+              November 09, 2020  - November 14, 2020 
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/sitc-annual-meeting" hreflang="en">SITC Annual Meeting </a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Virtual Poster Hall</div>
+    </div>
+
+                            
+                            </span></td>
+                </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Description: </span></td>
+                    <td align="left" class="ccbnField-Description" valign="top"><span
+                                class="ccbnTblTxt">
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Poster Presentation (Abstract #353): Safety and efficacy of tumor infiltrating lymphocytes (TIL; LN-145) in combination with pembrolizumab for advanced, recurrent or metastatic HNSCC<br />
+Authors: A Jimeno, <em>et al</em>.<br />
+Dates/Times: Wednesday, Nov. 11, from 5:15-5:45 p.m. EST and Friday, Nov. 13, from 4:40-5:10 p.m. EST</div>
+          </div>
+</span></td>
+                </tr>
+                        </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 09, 2020  1:15 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/credit-suisse-29th-annual-virtual-healthcare-conference" hreflang="en">Credit Suisse 29th Annual Virtual Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 05, 2020  4:30 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-third-quarter-2020-earnings-conference-call" hreflang="en">Iovance Biotherapeutics Third Quarter 2020 Earnings Conference Call	</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 02, 2020  5:20 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/next-generation-car-and-t-cell-therapies-conference-virtual" hreflang="en">Next Generation CAR and T Cell Therapies Conference (Virtual)</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            October 06, 2020  3:00 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/jefferies-cell-therapy-summit-virtual" hreflang="en">Jefferies Cell Therapy Summit (VIRTUAL) </a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            October 05, 2020  4:30 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-corporate-update" hreflang="en">Iovance Biotherapeutics Corporate Update</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            August 11, 2020  2:30 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/btig-biotechnology-conference-2020" hreflang="en">BTIG Biotechnology Conference 2020</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            August 06, 2020  4:30 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-second-quarter-2020-earnings-conference-call" hreflang="en">Iovance Biotherapeutics Second Quarter 2020 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            July 08, 2020 
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/onco-cell-therapy-summit-octs-virtual-summit" hreflang="en">Onco Cell Therapy Summit (OCTS) – Virtual Summit</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            June 18, 2020  2:20 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/jmp-securities-hematology-and-oncology-forum" hreflang="en">JMP Securities Hematology and Oncology Forum </a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            June 11, 2020  3:00 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/goldman-sachs-41st-annual-global-healthcare-conference" hreflang="en">Goldman Sachs 41st Annual Global Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            June 08, 2020  11:00 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-2020-annual-meeting" hreflang="en">Iovance Biotherapeutics 2020 Annual Meeting</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            June 03, 2020  1:00 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/jefferies-virtual-healthcare-conference" hreflang="en">Jefferies Virtual Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            May 05, 2020  4:30 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-first-quarter-2020-earnings-conference-call" hreflang="en">Iovance Biotherapeutics First Quarter 2020 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+              March 17, 2020  9:45 AM EDT to March 18, 2020 
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/oppenheimer-30th-annual-healthcare-conference" hreflang="en">Oppenheimer 30th Annual Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 04, 2020  8:40 AM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/cowen-40th-annual-health-care-conference" hreflang="en">Cowen 40th Annual Health Care Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            February 27, 2020  12:00 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/6th-annual-immuno-oncology-360deg-conference" hreflang="en">6th Annual Immuno-Oncology 360° Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            February 26, 2020  3:00 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/svb-leerink-9th-annual-global-healthcare-conference" hreflang="en">SVB Leerink 9th Annual Global Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            February 25, 2020  4:30 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-fourth-quarter-and-year-end-2019-earnings-conference" hreflang="en">Iovance Biotherapeutics Fourth Quarter and Year End 2019 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            February 13, 2020  2:00 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/guggenheim-healthcare-talks-oncology-day" hreflang="en">Guggenheim Healthcare Talks | Oncology Day</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            December 04, 2019  1:35 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/evercore-isi-2nd-annual-healthconx-conference" hreflang="en">Evercore ISI 2nd Annual HealthCONx Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            December 03, 2019  11:30 AM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/piper-jaffray-31st-annual-healthcare-conference" hreflang="en">Piper Jaffray 31st Annual Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 21, 2019  9:20 AM GMT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/jefferies-2019-london-healthcare-conferencein-london-nov-20-21-2019" hreflang="en">Jefferies 2019 London Healthcare Conferencein London, Nov. 20-21, 2019</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 19, 2019  4:45 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/stifel-2019-healthcare-conference-new-york-nov-19-21-2019" hreflang="en">Stifel 2019 Healthcare Conference in New York, Nov. 19-21, 2019</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Lotte New York Palace Hotel</div>
+    </div>
+
+                            
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 12, 2019  4:45 PM MST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/credit-suisse-28th-annual-healthcare-conference-scottsdale-ariz-nov-11-13-2019" hreflang="en">Credit Suisse 28th Annual Healthcare Conference in Scottsdale, Ariz., Nov. 11-13, 2019</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">The Phoenician, Scottsdale</div>
+    </div>
+
+                            
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 08, 2019  9:30 AM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/cowens-3rd-annual-io-next-summit-maryland-nov-8-2019" hreflang="en">Cowen&#039;s 3rd Annual IO Next Summit in Maryland, Nov. 8, 2019</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Gaylord National Resort and Convention Center</div>
+    </div>
+
+                            
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 04, 2019  4:30 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-third-quarter-2019-earnings-conference-call" hreflang="en">Iovance Biotherapeutics Third Quarter 2019 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            October 03, 2019  5:30 PM PDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/cell-gene-meeting-mesa" hreflang="en">Cell &amp; Gene Meeting on the Mesa</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Park Hyatt Aviara Resort</div>
+    </div>
+
+                            
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            October 03, 2019  3:35 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/2019-cantor-global-healthcare-conference" hreflang="en">2019 Cantor Global Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">InterContinental New York Barclay</div>
+    </div>
+
+                            
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            September 28, 2019  11:10 AM PDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/eppicon-2019-annual-conference" hreflang="en">EPPICon 2019 Annual Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Santa Clara Convention Center</div>
+    </div>
+
+                            
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            September 09, 2019  8:45 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/hc-wainwright-21st-annual-global-investment-conference" hreflang="en">H.C. Wainwright 21st Annual Global Investment Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Lotte New York Palace</div>
+    </div>
+
+                            
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            September 05, 2019  8:35 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/wells-fargo-securities-2019-healthcare-conference" hreflang="en">Wells Fargo Securities 2019 Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">The Westin Copley Place</div>
+    </div>
+
+                            
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            September 04, 2019  3:45 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/rw-baird-2019-global-healthcare-conference" hreflang="en">RW Baird 2019 Global Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">InterContinental New York Barclay</div>
+    </div>
+
+                            
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            August 01, 2019  4:30 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-second-quarter-2019-earnings-conference-call" hreflang="en">Iovance Biotherapeutics Second Quarter 2019 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+              June 04, 2019   through June 07, 2019 
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/jefferies-2019-healthcare-conference" hreflang="en">Jefferies 2019 Healthcare Conference </a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Grand Hyatt</div>
+    </div>
+
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">New York</span>, <span class="administrative-area">NY</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Description: </span></td>
+                    <td align="left" class="ccbnField-Description" valign="top"><span
+                                class="ccbnTblTxt">
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>Iovance Biotherapeutics, Inc. (NASDAQ:IOVA), a biotechnology company developing novel cancer immunotherapies based on tumor-infiltrating lymphocyte (TIL) technology, will present at the Jefferies Healthcare conference on June 5th.</p></div>
+          </div>
+</span></td>
+                </tr>
+                        </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            May 17, 2019  5:17 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/chardan-leadership-call-iovance-iova-featuring-ceocfo" hreflang="en">Chardan Leadership Call: Iovance (IOVA) featuring the CEO/CFO</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            May 16, 2019  8:00 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-announces-updates-tumor-infiltrating-lymphocyte-til" hreflang="en">Iovance Biotherapeutics Announces Updates to Tumor Infiltrating Lymphocyte (TIL) Therapy Clinical Programs</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            May 07, 2019  4:30 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-first-quarter-2019-financial-results" hreflang="en">Iovance Biotherapeutics First Quarter 2019 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+              April 07, 2019   through April 09, 2019 
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-hc-wainwright-global-life-sciences-conference" hreflang="en">Iovance Biotherapeutics, Inc. at H.C. Wainwright Global Life Sciences Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 19, 2019  8:00 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/oppenheimer-29th-annual-healthcare-conference" hreflang="en">Oppenheimer 29th Annual Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">New York</span>, <span class="postal-code">New York</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 13, 2019  8:00 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/cowen-and-company-39th-annual-health-care-conference" hreflang="en">Cowen and Company 39th Annual Health Care Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            February 27, 2019  4:30 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-fourth-quarter-and-year-end-2018-earnings-conference" hreflang="en">Iovance Biotherapeutics Fourth Quarter and Year End 2018 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            February 14, 2019  3:00 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/guggenheim-healthcare-talks-idea-forum-oncology-day-new-york-feb-14-2019" hreflang="en">•	Guggenheim Healthcare Talks Idea Forum Oncology Day in New York on Feb. 14, 2019</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">The St. Regis New York Hotel</div>
+    </div>
+
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            January 10, 2019  10:30 AM PST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-37th-annual-jp-morgan-healthcare-conference-0" hreflang="en">Iovance Biotherapeutics at the 37th Annual J.P. Morgan Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            January 07, 2019  12:00 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-cell-gene-therapies-state-industry-briefing" hreflang="en">Iovance Biotherapeutics, Inc. at Cell &amp; Gene Therapies State of the Industry Briefing</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Parc 55 Hilton, 55 Cyril Magnin Stree</div>
+    </div>
+
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">San Francisco</span>, <span class="administrative-area">CA</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+              December 11, 2018   through December 13, 2018 
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-tumor-targeted-lymphocyte-summit-2018" hreflang="en">Iovance Biotherapeutics, Inc. at Tumor Targeted Lymphocyte Summit 2018 </a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">Boston</span>,<br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Description: </span></td>
+                    <td align="left" class="ccbnField-Description" valign="top"><span
+                                class="ccbnTblTxt">
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>Panel: <em>Strategies to Optimize  and Improve Manufacturing Processes in TIL, CTL and Neoantigen Therapies</em> <br />
+  Presenter: Joseph Wypych, Vice  President of Manufacturing<br />
+  Date: Wednesday, Dec. 12, 2018<br />
+  Time: 10 a.m. EST</p>
+<p>Presentation: <em>Developing Tumor  Infiltrating Lymphocytes for the Treatment of Cancer</em><br />
+  Presenter: Maria Fardis, Ph.D.,  MBA, President and Chief Executive Officer<br />
+  Date: Thursday, Dec. 13, 2018<br />
+  Time: 9:10 a.m. EST</p>
+<p>The Tumor Targeted Lymphocyte  Summit is the first, dedicated meeting that unites the expert community working  in TIL and CTL therapies to network, learn and determine strategies to enhance  the efficacy of adoptive cell therapy in solid tumors. For additional  information, please see <a href="http://tumor-targeted-lymphocytes.com">http://tumor-targeted-lymphocytes.com</a>.  </p></div>
+          </div>
+</span></td>
+                </tr>
+                        </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 29, 2018  9:05 AM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-evercore-isi-healthconx-conference" hreflang="en">Iovance Biotherapeutics, Inc. at Evercore ISI HealthCONx Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">Boston</span>, <span class="administrative-area">MA</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 09, 2018  6:30 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-melanoma-program-update-sitc-2018" hreflang="en">Iovance Biotherapeutics, Inc. at the Melanoma Program Update at SITC 2018</a></div>
+  </div></span></td>
+            </tr>
+                        <tr class="ccbnEventDetailsTr nir-widget--event--group nir-widget--event--group--speakers">
+                                        <td valign="top" align="left"><span class="ccbnTblTxt">
+                            <label>Speakers:</label>
+                        </span></td>
+                                        <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                    
+
+                    
+<div class="field field--name-field-nir-event-ext-speaker field--type-field-collection field--label-hidden">
+      <div class='field__items'>
+        <div class="speaker-group">
+      <div class="field field--name-field-nir-event-speaker-name field--type-string field--label-above">
+        <div class="field__item">Brendan D. Curti, MD,</div>
+      </div>
+      <div class="field field--name-field-nir-event-speaker-title field--type-string field--label-above">
+        <div class="field__item"></div>
+      </div>
+      <div class="field field--name-field-nir-event-speaker-co field--type-string field--label-above">
+        <div class="field__item">Providence Cancer Center</div>
+      </div>
+    </div>
+      <div class="speaker-group">
+      <div class="field field--name-field-nir-event-speaker-name field--type-string field--label-above">
+        <div class="field__item">Diwakar Davar, MBBS, M.Sc,</div>
+      </div>
+      <div class="field field--name-field-nir-event-speaker-title field--type-string field--label-above">
+        <div class="field__item"></div>
+      </div>
+      <div class="field field--name-field-nir-event-speaker-co field--type-string field--label-above">
+        <div class="field__item">University of Pittsburg</div>
+      </div>
+    </div>
+        </div>
+  </div>
+
+
+                        </span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+              November 09, 2018   through November 11, 2018 
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-sitc-annual-meeting" hreflang="en">Iovance Biotherapeutics, Inc. at SITC Annual Meeting</a></div>
+  </div></span></td>
+            </tr>
+                                                    <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Description: </span></td>
+                    <td align="left" class="ccbnField-Description" valign="top"><span
+                                class="ccbnTblTxt">
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">The Melanoma Poster (<strong>#P022, even</strong>) is to be displayed on Friday, 09 and Saturday, 10 November:
+<ul><li>Poster Hall Location: Hall E</li>
+<li>Poster Hall Hours: Friday, Nov. 9 from 8 a.m. – 8 p.m. and Saturday, Nov. 10 from 8 a.m. – 8:30 p.m.</li>
+<li>Dr. Sarnaik will be at the poster for 2 intervals on Saturday, Nov. 10 from <strong>12:20 – 1:50 pm and 7:00 – 8:30 pm.</strong></li></ul>
+The Oral Presentation will be on <u>Sunday, 11 November</u> in the following session:
+<ul><li><u>Session Information:</u> <strong>Session 302 </strong></li>
+<p><strong>Session:</strong> Clinical Trials<br /><strong>Session Dates and Times*:</strong> <u>Sunday, Nov. 11 from 8:05 – 10:15 a.m.</u> Dr. Sarnaik is first speaker of session starting at 8:10 am “Safety and efficacy of cryopreserved autologous tumor infiltrating lymphocyte therapy (LN-144, lifileucel) in advanced metastatic melanoma patients following progression on checkpoint inhibitors”<br /><strong>Format:</strong> 10 minute long presentation with 5 minutes of Q&amp;A for a total of 15 minutes</p>
+</ul></div>
+          </div>
+</span></td>
+                </tr>
+                        </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 06, 2018  4:30 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-third-quarter-2018-earnings-conference-call" hreflang="en">Iovance Biotherapeutics Third Quarter 2018 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            October 04, 2018  2:15 PM PDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-arm-cell-gene-meeting-mesa" hreflang="en">Iovance Biotherapeutics, Inc. at ARM Cell &amp; Gene Meeting on the Mesa</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Estancia La Jolla Hotel &amp;#38; Spa</div>
+    </div>
+
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Description: </span></td>
+                    <td align="left" class="ccbnField-Description" valign="top"><span
+                                class="ccbnTblTxt">
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Time: 2:15 PM PT (Company Presentation); 3:15-4:15 PM PT (Panel Discussion)</div>
+          </div>
+</span></td>
+                </tr>
+                        </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            October 02, 2018  2:15 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-cantor-global-healthcare-conference" hreflang="en">Iovance Biotherapeutics, Inc. at Cantor Global Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            October 02, 2018  8:30 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-fiercebiotech-drug-development-forum" hreflang="en">Iovance Biotherapeutics, Inc. at FierceBiotech Drug Development Forum</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Hilton Boston Logan Airport Hotel</div>
+    </div>
+
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            September 14, 2018  12:20 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-rational-combinations-360" hreflang="en">Iovance Biotherapeutics, Inc. at Rational Combinations 360</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Wyndham Philadelphia Historic District</div>
+    </div>
+
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            September 06, 2018  1:55 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-wells-fargo-healthcare-conference" hreflang="en">Iovance Biotherapeutics, Inc. at Wells Fargo Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+              September 04, 2018   through September 06, 2018 
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/hc-wainwright-20th-annual-global-investment-conference" hreflang="en">H.C. Wainwright 20th Annual Global Investment Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            August 06, 2018  4:30 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-second-quarter-2018-earnings-conference-call" hreflang="en">Iovance Biotherapeutics Second Quarter 2018 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            June 20, 2018  1:00 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-jmp-securities-life-sciences-conference" hreflang="en">Iovance Biotherapeutics, Inc. at JMP Securities Life Sciences Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            June 07, 2018  9:00 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-inc-jefferies-2018-global-healthcare-conference" hreflang="en">Iovance Biotherapeutics, Inc. at Jefferies 2018 Global Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">New York</span>, <span class="administrative-area">NY</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            May 21, 2018  2:30 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/ubs-global-healthcare-conference" hreflang="en">UBS Global Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">New York</span>, <span class="administrative-area">NY</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            May 10, 2018  4:30 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-first-quarter-2018-earnings-conference-call" hreflang="en">Iovance Biotherapeutics First Quarter 2018 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            May 08, 2018  2:50 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-incat-deutsche-banks-43rd-annual-health-care" hreflang="en">Iovance Biotherapeutics, Inc.at Deutsche Bank’s 43rd Annual Health Care Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">Boston</span>, <span class="administrative-area">MA</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 21, 2018  11:30 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/oppenheimers-28th-annual-healthcare-conference" hreflang="en">Oppenheimer’s 28th Annual Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">New York</span>, <span class="administrative-area">NY</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 14, 2018  10:40 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/cowen-38th-annual-health-care-conference" hreflang="en">Cowen 38th Annual Health Care Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">Boston</span>, <span class="administrative-area">MA</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 12, 2018  4:30 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-fourth-quarter-2017-earnings-conference-call" hreflang="en">Iovance Biotherapeutics Fourth Quarter 2017 Earnings Conference Call </a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            February 22, 2018  2:35 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/rbc-capital-markets-2018-global-healthcare-conference" hreflang="en">RBC Capital Markets 2018 Global Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">New York</span>, <span class="administrative-area">NY</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            January 10, 2018  10:30 AM PST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-37th-annual-jp-morgan-healthcare-conference" hreflang="en">Iovance Biotherapeutics at the 37th Annual J.P. Morgan Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            December 13, 2017  9:00 AM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/analyst-and-investor-day" hreflang="en">Analyst and Investor Day</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 29, 2017  11:00 AM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/evercore-isi-2017-biopharma-catalystdeep-dive-conference" hreflang="en">Evercore ISI 2017 Biopharma Catalyst/Deep Dive Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">Boston</span>, <span class="administrative-area">MA</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 16, 2017  10:00 AM UTC
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/jefferies-2017-london-healthcare" hreflang="en">Jefferies 2017 London Healthcare</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt"><div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">London</div>
+    </div>
+
+                            
+                            <div class="field field--name-field-nir-event-loc-desc field--type-text-long field--label-above">
+        <div class="field__item">United Kingdom</div>
+    </div>
+</span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            October 31, 2017  4:30 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-third-quarter-2017-earnings-conference-call" hreflang="en">Iovance Biotherapeutics Third Quarter 2017 Earnings Conference Call </a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            September 25, 2017  8:00 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/2017-cantor-fitzgerald-global-healthcare-conference" hreflang="en">2017 Cantor Fitzgerald Global Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            September 11, 2017  11:40 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/rodman-renshaw-19th-annual-global-investment-conference" hreflang="en">Rodman &amp; Renshaw 19th Annual Global Investment Conference </a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">New York</span>, <span class="administrative-area">NY</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            August 01, 2017  5:00 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iovance-biotherapeutics-second-quarter-2017-earnings-conference-call" hreflang="en">Iovance Biotherapeutics Second Quarter 2017 Earnings Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            June 06, 2017  8:30 AM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/jefferies-2017-healthcare-conference" hreflang="en">Jefferies 2017 Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">New York</span>, <span class="administrative-area">NY</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            May 01, 2017  5:00 PM EDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/first-quarter-2017-financial-results-conference-call" hreflang="en">First Quarter 2017 Financial Results Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                    <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Description: </span></td>
+                    <td align="left" class="ccbnField-Description" valign="top"><span
+                                class="ccbnTblTxt">
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">A replay is available until 4:30 p.m. ET on May 31, 2017. To access the replay, please dial 1-855-859-2056 (domestic) or 1-404-537-3406 (international) and reference the access code 8895265.</div>
+          </div>
+</span></td>
+                </tr>
+                        </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 13, 2017  9:30 AM PDT
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/29th-annual-roth-conference" hreflang="en">29th Annual ROTH Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">Orange County</span>, <span class="administrative-area">CA</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 07, 2017  4:30 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/fourth-quarter-2016-financial-results-conference-call" hreflang="en">Fourth Quarter 2016 Financial Results Conference Call</a></div>
+  </div></span></td>
+            </tr>
+                                                    <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Description: </span></td>
+                    <td align="left" class="ccbnField-Description" valign="top"><span
+                                class="ccbnTblTxt">
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">A replay of the call is available until 4:30 p.m. ET on March 17, 2017. To access the replay, please dial 1-855-859-2056 (domestic) or 1-404-537-3406 (international) and reference the access code 75631507.</div>
+          </div>
+</span></td>
+                </tr>
+                        </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            March 06, 2017  4:40 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/cowen-and-company-37th-annual-health-care-conference" hreflang="en">Cowen and Company 37th Annual Health Care Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">Boston</span>, <span class="administrative-area">MA</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+<tr class="ccbnBgTblOdd">
+    <td valign="top" class="ccbnField-Date"><span class="ccbnTblOdd">
+      
+      
+            November 30, 2016  2:30 PM EST
+      </span></td>
+    <td valign="top">
+        <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+            <tbody>
+            <tr class="ccbnBgTblOdd">
+                <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/28th-annual-piper-jaffray-healthcare-conference" hreflang="en">28th Annual Piper Jaffray Healthcare Conference</a></div>
+  </div></span></td>
+            </tr>
+                                        <tr class="ccbnEventDetailsTr">
+                    <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+                    <td valign="top" align="left" class="ccbnField-Location"><span
+                                class="ccbnTblTxt">
+                            <div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">New York</span>, <span class="administrative-area">NY</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+                            </span></td>
+                </tr>
+                                    </tbody>
+        </table>
+    </td>
+</tr>
+
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                    </div>
+        <div class="nir-widget--pager">
+            
+        </div>
+        <div class="nir-widget--total-results">
+            
+        </div>
+    </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+                        </div>
+                    </section>
+                </article>
+            </main>
+            <div class="ccbnTool ccbnToolVertical">
+                <ul>
+                    <li><span class="ToolkiTitle">Investor Toolkit</span></li>
+                    <li><a href="javascript:window.print();"><i class="fa fa-print"
+                                                                aria-hidden="true"></i></a>
+                        <a href="javascript:window.print();">Print Page</a></li>
+
+                    <li>
+                        <A HREF="/rss" NAME=""><i class="fa fa-rss"
+                                                  aria-hidden="true"></i></A>
+                        <A HREF="/rss" NAME="">RSS</A>
+                    </li>
+                    <li>
+                        <A HREF="/e-mail-alerts" NAME=""><i class="fa fa-bullhorn"
+                                                            aria-hidden="true"></i></A>
+                        <A HREF="/e-mail-alerts" NAME="">E-mail Alerts</A>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="footer" role="contentinfo">
+        <div id="inner-footer" class="wrap cf">
+            <nav role="navigation">
+                <div class="footer-main-menu cf">
+                    <ul id="menu-footer-main-menu" class="nav footer-nav cf">
+                        <li id="menu-item-265"
+                            class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-has-children menu-item-265">
+                            <a href="http://www.iovance.com">Home</a>
+                            <ul class="sub-menu">
+                                <li id="menu-item-266"
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-266"><a
+                                            href="#">hidden</a></li>
+                            </ul>
+                        </li>
+                        <li id="menu-item-506"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-506"><a
+                                    href="http://www.iovance.com/about/about-iovance-biotherapeutics/">About</a></li>
+                        <li id="menu-item-508"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-508"><a
+                                    href="http://www.iovance.com/our-science/til-platform/">Our Technology</a></li>
+                        <li id="menu-item-507"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-507"><a
+                                    href="http://www.iovance.com/clinical/our-clinical-program/">Clinical</a></li>
+                        <li id="menu-item-258"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-258"><a href="/">Investors</a>
+                        </li>
+                        <li id="menu-item-1013"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1013"><a
+                                    href="http://www.iovance.com/careers/why-iovance-biotherapeutics/">Careers</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <p class="copyright">©
+                2021 <a href="http://iovance.com/">Iovance Biotherapeutics, Inc </a> All Rights Reserved.
+            </p>
+            <nav role="navigation">
+                <div class="footer-links cf">
+                    <ul id="menu-footer" class="nav footer-nav cf">
+                        <li id="menu-item-67"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-67"><a
+                                    href="http://www.iovance.com/privacy-policy/">Privacy Policy</a></li>
+                        <li id="menu-item-68"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68"><a
+                                    href=" ">Disclaimer</a></li>
+                        <li id="menu-item-69"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69"><a
+                                    href="http://www.iovance.com/sitemap/">Sitemap</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </footer>
+</div>
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb2852";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid2959\/override,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid2959","theme_token":null},"ajaxTrustedUrl":{"\/investor-calendar":true},"user":{"uid":0,"permissionsHash":"506e2765218c30ef46333534439b4abf6d6b2d246694326d1d14e31e16bced2a"}}</script>
+<script src="/sites/g/files/knoqqb34726/files/js/js_f3Hmqv6-ZvrkywU-1m5Yq9tv0XwGkpzBw46h2lWWv3I.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":1684,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

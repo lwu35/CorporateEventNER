@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"37278538"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="UPS" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://www.investors.ups.com/news-and-events/investor-calendar" />
+<meta property="og:title" content="Investor Calendar | UPS" />
+<meta property="og:description" content="The Investor Relations website contains information about UPS&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb52286/themes/site/nir_pid1441/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="http://www.investors.ups.com/news-and-events/investor-calendar" />
+<link rel="canonical" href="http://www.investors.ups.com/news-and-events/investor-calendar" />
+<link rel="shortlink" href="http://www.investors.ups.com/node/5821" />
+<link rel="revision" href="http://www.investors.ups.com/news-and-events/investor-calendar" />
+
+    <title>Investor Calendar | UPS</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb52286/files/css/css_SQBKl25X50_ss2d0gozsTTn-Wxa9dWu131cAz6rP_-E.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb52286/files/css/css_mtWsthlc77hNIiazsvRwy0PdEGI8-_wIfgpm9ZpeMQQ.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb52286/files/css/css_-kvJzcStoMzS1vMRVrRcJh_VG42xlCYAh135Co-QLSA.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb52286/files/css/css__Z6l866TkrCQGahCf0an46LayksJrFmhF-wkTyL-iZg.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb52286/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    <script type="text/javascript">var utag_data = {"page_country_code": "US","page_language":"en","page_id":"about.page","site_indicator":"Country","style_sheet":"","completion_event":"","browser_hour":"","page_type":"","page_name":"about","link_name":"","link_page_name":"","link_type":"","content_target":"","event_id":"0","article_title":"","tag_name":"","tab_name":"","page_section":"","content_title":"","article_author":"","video_id":"","video_timeplayed":"","list_title":"","journey":"","step":"","list_sort":"","page_description":"","content_group_name":"","content_sub_group_name":"","on_site_searchterm":"","on_site_search_results":"","on_site_search_noresults":"","page_load_time":"","error_code":"","user_classification":"","user_account":"","user_account_status":"","business_user_title":"","consumer_user_age":"","consumer_user_gender":"","product_id":"","product_name":"","product_description":"","segment_id":"","segment_name":"","segment_description":"","content_block_id":"","content_block_name":"","content_block_description":"","content_id":"","content_name":"","content_author":"","content_description":"","content_creation_date":"","content_expiration_date":"","content_url":"","property_id":"","property_name":"","property_description":"","campaign_id":"","campaign_name":"","campaign_type":"","campaign_description":"","asset_id":"","asset_name":"","asset_description":"","partner_id":"","partner_name":"","offer_name"  : "","offer_description" : "","channel" : "","source_id":"","source_name":"","source_description":"","placement_id":"","placement_name":"","placement_type":"","placement_wxh":"","destination_url":"","test_id":"","test_name":"","test_desc":"","test_group_name":"","creative_variant":"","creative_version":"","ad_server_name" : "","image_block_id":"","image_block_name":"","image_block_description":"","ad_wxh":"","navigation_class":"","on_site_search_type":"","on_site_search_type_super_category":"","account_no":"","product_category":"","user_log_frequency": "","referring_url": "","ad_block_location":"","ad_description":"","onsite_ad_display":"","onsite_ad_click":"","onsite_ad_position":"","ad_name":"","campaign_scenario_name":"","campaign_site_id":"","campaign_site_name":"","placement_description":"","initiative_id":"","platform_name":"","platform_description":"","bill_type":"","content_type":"","content_producer":"","fb_id":"","event_type":"","event_value":"","myups_id":"","test_value":"","affiliate_id":"","banner_type":"","channel_source_category":"","video_event":"","viewport":"","mvt_test_date":"","mvt_test_description":"","mvt_test_id":"","site_area":"","site_sub_area":"","net_revenue":"","gross_revenue":"","currency":"","journey_step_number":"","choice_revenue":"","brdcrmb":"","campusship_state":"","preferred_shipper_status":"","business_type":"","state":"","city":"","myups_login_state":"","encrypted_login_id":"","user_type":"","product_affiliation_mychoice":"","product_affiliation_quantumview":"","product_affiliation_campusship":"","business_user_industry":"Financial Services","business_user_sic":"6211","business_user_naics":"425120","business_user_company_size":"4325.0","business_user_revenue":"3.705E9","preferred_customer":"","product_affiliation_worldship":"","wem_tdx_campaign_id":"","wem_tdx_existing_account":"","wem_tdx_national":"","product_affiliation_mychoice_basic":"","product_affiliation_mychoice_premium":"","product_affiliation_fgv":"","product_affiliation_campusship_admin":"","product_affiliation_billing_center":"","business_b2b":"true","business_b2c":"false","business_user_sub_industry":"Investment Services"};</script>
+<script type="text/javascript" src="//tags.tiqcdn.com/utag/ups/ups-investors/prod/utag.sync.js"></script>
+<script type="text/javascript">(function(a,b,c,d){a='//tags.tiqcdn.com/utag/ups/ups-investors/prod/utag.js'; b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;a=b.getElementsByTagName(c)[0];
+a.parentNode.insertBefore(d,a);})();</script>
+<!--ls:end[head-injection]--><!--ls:begin[tracker-injection]--><!--ls:end[tracker-injection]--><!--ls:begin[script]--><!--ls:end[script]--><!--ls:begin[script]--><!--ls:end[script]-->
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5821 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+<div class="ups-wems">
+
+  <div class="iw_viewport-wrapper">
+    <div class="container-fluid iw_section" id="sectioniov5pt0s">
+      <div class="row iw_row iw_stretch" id="rowiov5pt0t">
+        <div class="iw_columns col-lg-12" id="coliov5pt0u">
+          <div class="iw_component" id="iw_comp1464681783339">
+            <div id="ups-navContainer" class="hpps-dynamic ups-analytics-render" data-content-block-id="M1" data-content-id="templatedata/navigation/header-config/data/en_US/header-full-us.dcr" data-home="">
+
+              <a id="ups-skipNav" href="#" tabindex="0" class="ups-analytics" data-content-block-id="M1" data-event-id="21">Skip To Main Content</a>
+
+              <header id="ups-headerWrap" class="ups-wrap">
+                <div id="ups-header" class="ups-wrap_inner" data-islogged="false">
+
+                                    <a id="ups-header_logo" href="https://www.ups.com/us/en/Home.page?" title="UPS" class="ups-analytics" data-content-block-id="M1" data-event-id="21">UPS</a>
+
+                                    <div id="ups-headerTools" role="tablist">
+                    <a href="/" aria-controls="ups-quickStartPanel" role="tab" id="ups-quickStartMenu" aria-selected="false" aria-expanded="false" class="ups-analytics ups-toolsToggle">
+                      <span class="ups-readerTxt" data-lang-show="expand UPS Investors" data-lang-hide="Collapse UPS Investors">expand UPS Investors</span>
+                      UPS Investors
+                                          </a>
+                  </div>
+
+                  <div id="ups-touchNav" class=" ups-med_show">
+                    <button class="ups-menuToggle ups-analytics" data-content-block-id="M1" data-event-id="22">
+                      <span class="ups-iconAlone ups-icon-menu" aria-hidden="true"></span>
+                      <span class="ups-readerTxt">Menu</span>
+                    </button>
+                    <a href="#" id="ups-mobSearch_btn" class="ups-searchBtn ups-analytics" data-content-block-id="M1" data-event-id="21">
+                      <span class="ups-readerTxt">Search</span>
+                      <span class="ups-iconAlone ups-icon-search" aria-hidden="true"></span>
+                    </a>
+                  </div>
+
+                  <nav id="ups-navItems" class="ups-container">
+                    <button class="ups-menuClose ups-med_show">
+                      <span class="icon ups-iconAlone ups-icon-x" aria-hidden="true"></span>
+                      <span class="ups-readerTxt">Close</span>
+                    </button>
+                    <button class="ups-menuBack ups-med_show">
+                      <span class="ups-icon-chevronleft" aria-hidden="true"></span>
+                      Back
+                    </button>
+
+                                                              <div class="ups-navItems_primary" role="tablist">
+                          
+
+
+        
+                
+
+  
+                  
+
+      
+                          <div class="ups-navMenu ups-menu">
+                <a role="tab" href="#" class="ups-analytics ups-menu_toggle " aria-expanded="false" aria-selected="false" id="ups-menuLinks0" aria-controls="ups-menuPanel0">
+                  UPS Profile
+                  <span class="ups-readerTxt" data-lang-show="expand UPS Profile" data-lang-hide="Collapse UPS Profile">expand UPS Profile</span>
+                  <span class="ups-mobnav-arrow" aria-hidden="true"></span>
+                </a>
+                <div class="ups-menu_list ups-cols-2" aria-hidden="true" role="tabpanel" id="ups-menuPanel0" aria-labelledby="ups-menuLinks0">
+                  <h2 class="ups-med_show">UPS Profile</h2>
+            
+                                      
+
+  
+              <div class="ups-menu_listCols">
+            <ul class="ups-menu_links">
+    
+
+      
+                            <li>
+                  <a href="/ups-profile/corporate-profile" class="ups-analytics"> Corporate Profile<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="https://stories.ups.com/upsstories/us/en/about-us/leadership.html" class="ups-analytics"> Executive Leadership Team &amp; Board of Directors<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="https://stories.ups.com/upsstories/us/en/about-us/our-history.html" class="ups-analytics"> Company History<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="https://stories.ups.com/upsstories/us/en/about-us/global-presence/corporate-facts.html" class="ups-analytics"> Fact Sheet<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="https://stories.ups.com/upsstories/us/en/about-us/awards-and-recognition.html" class="ups-analytics"> Awards<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+
+              </ul>
+        </div>
+    
+
+  
+                  
+                              </div>
+                </div>
+            
+      
+                          <div class="ups-navMenu ups-menu">
+                <a role="tab" href="#" class="ups-analytics ups-menu_toggle " aria-expanded="false" aria-selected="false" id="ups-menuLinks0" aria-controls="ups-menuPanel0">
+                  Financials
+                  <span class="ups-readerTxt" data-lang-show="expand Financials" data-lang-hide="Collapse Financials">expand Financials</span>
+                  <span class="ups-mobnav-arrow" aria-hidden="true"></span>
+                </a>
+                <div class="ups-menu_list ups-cols-2" aria-hidden="true" role="tabpanel" id="ups-menuPanel0" aria-labelledby="ups-menuLinks0">
+                  <h2 class="ups-med_show">Financials</h2>
+            
+                                      
+
+  
+              <div class="ups-menu_listCols">
+            <ul class="ups-menu_links">
+    
+
+      
+                            <li>
+                  <a href="/financials/sec-filings" class="ups-analytics"> SEC Filings<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="/financials/dividend-history" class="ups-analytics"> Dividend History<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="/financials/analyst-coverage" class="ups-analytics"> Analyst Coverage<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="/financials/annual-reports" class="ups-analytics"> Annual Reports &amp; Proxy<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="/financials/operating-days" class="ups-analytics"> Operating Days<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="/financials/quarterly-earnings" class="ups-analytics"> Quarterly Earnings<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="/financials/investor-packet" class="ups-analytics"> Investor Packet<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+
+              </ul>
+        </div>
+    
+
+  
+                  
+                              </div>
+                </div>
+            
+      
+                          <div class="ups-navMenu ups-menu">
+                <a role="tab" href="#" class="ups-analytics ups-menu_toggle " aria-expanded="false" aria-selected="false" id="ups-menuLinks0" aria-controls="ups-menuPanel0">
+                  News &amp; Events
+                  <span class="ups-readerTxt" data-lang-show="expand News &amp; Events" data-lang-hide="Collapse News &amp; Events">expand News &amp; Events</span>
+                  <span class="ups-mobnav-arrow" aria-hidden="true"></span>
+                </a>
+                <div class="ups-menu_list ups-cols-2" aria-hidden="true" role="tabpanel" id="ups-menuPanel0" aria-labelledby="ups-menuLinks0">
+                  <h2 class="ups-med_show">News &amp; Events</h2>
+            
+                                      
+
+  
+              <div class="ups-menu_listCols">
+            <ul class="ups-menu_links">
+    
+
+      
+                            <li>
+                  <a href="/news-and-events/news-releases" class="ups-analytics"> Financial News<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="https://stories.ups.com/upsstories/us/en/newsroom.html" class="ups-analytics"> General News<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="/news-and-events/investor-calendar" class="ups-analytics"> Investor Calendar<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="/news-and-events/investor-presentations" class="ups-analytics"> Investor Presentations<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+
+              </ul>
+        </div>
+    
+
+  
+                  
+                              </div>
+                </div>
+            
+      
+                          <div class="ups-navMenu ups-menu">
+                <a role="tab" href="/environmental-social-and-governance" class="ups-analytics ups-menu_toggle disablepreventlink" aria-expanded="false" aria-selected="false" id="ups-menuLinks0" aria-controls="ups-menuPanel0">
+                  ESG
+                  <span class="ups-readerTxt" data-lang-show="expand ESG" data-lang-hide="Collapse ESG">expand ESG</span>
+                  <span class="ups-mobnav-arrow" aria-hidden="true"></span>
+                </a>
+                <div class="ups-menu_list ups-cols-2" aria-hidden="true" role="tabpanel" id="ups-menuPanel0" aria-labelledby="ups-menuLinks0">
+                  <h2 class="ups-med_show">ESG</h2>
+            
+                  
+                              </div>
+                </div>
+            
+      
+                          <div class="ups-navMenu ups-menu">
+                <a role="tab" href="#" class="ups-analytics ups-menu_toggle " aria-expanded="false" aria-selected="false" id="ups-menuLinks0" aria-controls="ups-menuPanel0">
+                  Shareowner Services
+                  <span class="ups-readerTxt" data-lang-show="expand Shareowner Services" data-lang-hide="Collapse Shareowner Services">expand Shareowner Services</span>
+                  <span class="ups-mobnav-arrow" aria-hidden="true"></span>
+                </a>
+                <div class="ups-menu_list ups-cols-2" aria-hidden="true" role="tabpanel" id="ups-menuPanel0" aria-labelledby="ups-menuLinks0">
+                  <h2 class="ups-med_show">Shareowner Services</h2>
+            
+                                      
+
+  
+              <div class="ups-menu_listCols">
+            <ul class="ups-menu_links">
+    
+
+      
+                            <li>
+                  <a href="/shareowner-services/overview" class="ups-analytics"> Shareowner Services<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+                            <li>
+                  <a href="/shareowner-services/investor-faqs" class="ups-analytics"> Investor FAQs<span class="icon" aria-hidden="true"></span></a>
+                </li>
+            
+                  
+            
+      
+
+              </ul>
+        </div>
+    
+
+  
+                  
+                              </div>
+                </div>
+            
+      
+
+                
+
+  
+
+
+    
+
+
+                      </div>
+                                                                </nav>
+                                      </div>
+              </header>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+        
+        <div class="container-fluid iw_section" id="sectioniov5pt18">
+          <div class="row iw_row iw_stretch" id="rowiov5pt19">
+            <div class="iw_columns col-lg-12" id="coliov5pt1a">
+              <div class="iw_component" id="iw_comp1464681783343">
+
+              </div>
+
+                              <div class="iw_component" id="iw_comp1464681783347">
+                  <nav class="ups-breadcrumb ups-wrap hpps-basic">
+                          <div class="region region-breadcrumbs">
+    <div id="block-nir-pid1441-breadcrumbs" class="block--system-breadcrumb-block block--system-breadcrumb-block--5821 block--breadcrumbs--system-breadcrumb-block block--breadcrumbs--system-breadcrumb-block--5821 block--e5920163-8b95-49a9-a392-8a8a7d666053 block--e5920163-8b95-49a9-a392-8a8a7d666053--5821 block block-system block-system-breadcrumb-block">
+  
+    
+      
+
+
+  <ol class="ups-wrap_inner">
+      <li class="breadcrumb">
+        <a class="ups-link" href="https://www.ups.com/">Home</a><span aria-hidden="true"> &gt; </span></li>
+              <li class="breadcrumb">
+          <a class="ups-link" href="/">Investors</a><span aria-hidden="true"> &gt; </span>
+        </li>
+      
+
+
+      
+                          
+      
+        
+          
+
+          <li class="breadcrumb">
+                          Investor Calendar
+                      </li>
+        
+      
+  </ol>
+
+  </div>
+
+  </div>
+
+                  </nav>
+                </div>
+              
+              <div class="iw_component" id="iw_comp1464681783351">
+                <div class="ups-page-title ups-wrap hpps-basic ups-analytics-render" data-content-block-id="M7" data-content-id="">
+                  <div class="ups-wrap_inner">
+                    <div class="page-title_table">
+                      <div class="page-title_cell">
+                                                  <h1>Investor Calendar</h1>
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+                              <div class="iw_component">
+                  <div class="ups-carousel hpps-dynamic ups-analytics-render">                     <div class="ups-carousel_list slick-initialized slick-slider" data-prevtxt="Previous" data-nexttxt="Next">
+                      <div aria-live="polite" class="slick-list draggable">
+                        <div class="slick-track" role="listbox">
+                          <div class="ups-carousel_item slick-slide slick-current slick-active" tabindex="-1" data-slick-index="0" aria-hidden="false" role="option" aria-describedby="slick-slide10">
+                              <div class="region region-hero-img">
+    <div id="block-gbirheaderimginvestorcalendarimage" class="block-content--nir-global-block block-content--nir-global-block--27421 block--block-content06b9f398-abfb-4597-9b3d-4fb9f8dfcba3 block--block-content06b9f398-abfb-4597-9b3d-4fb9f8dfcba3--5821 block--hero-img--block-content--06b9f398-abfb-4597-9b3d-4fb9f8dfcba3 block--hero-img--block-content--06b9f398-abfb-4597-9b3d-4fb9f8dfcba3--5821 block--9498ed4a-b049-4048-864e-832c87783cc0 block--9498ed4a-b049-4048-864e-832c87783cc0--5821 block block-block-content block-block-content06b9f398-abfb-4597-9b3d-4fb9f8dfcba3">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="ups-paraFrame"><picture class="ups-imgFrame static" data-lg="/static-files/8f023a62-864e-4b16-b7b7-1d54bd10b544" data-md="/static-files/8f023a62-864e-4b16-b7b7-1d54bd10b544" data-sm="/static-files/8f023a62-864e-4b16-b7b7-1d54bd10b544" style="background-image: url(&quot;/static-files/8f023a62-864e-4b16-b7b7-1d54bd10b544&quot;); background-repeat: no-repeat; background-size: cover; background-position: 10% 28%; top: -16.25px;"><source media="(min-width: 992px)" srcset="/static-files/8f023a62-864e-4b16-b7b7-1d54bd10b544"></source><source media="(min-width: 768px)" srcset="/static-files/8f023a62-864e-4b16-b7b7-1d54bd10b544"></source><img alt="" src="/static-files/8f023a62-864e-4b16-b7b7-1d54bd10b544" srcset="/static-files/8f023a62-864e-4b16-b7b7-1d54bd10b544" style="display: none; width: 1600px; height: 475px; margin-top: -75px;" /></picture></div>
+</div>
+      
+</div>
+      
+  </div>
+
+  </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="container-fluid iw_section" id="sectioniov5pt1g">
+          <div class="row iw_row iw_stretch" id="rowiov5pt1h">
+            <div class="iw_columns col-lg-12" id="coliov5pt1i">
+
+
+                <div class="row iw_row" id="rowiov5pt1u">
+                    <div class="iw_columns col-lg-8" id="coliov5pt1v">
+                      <div class="iw_component" id="iw_comp1464681783363">
+                        <div class="ups-wrap ups-analytics-render">
+                          <div id="ndq-content" class="ndq-5821">
+
+                              <div class="region region-content">
+    <div id="block-nir-pid1441-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5821 block--content--website-notice-block block--content--website-notice-block--5821 block--43ed9d12-ef75-4d01-bff4-957136ebde4f block--43ed9d12-ef75-4d01-bff4-957136ebde4f--5821 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1441-content" class="block--system-main-block block--system-main-block--5821 block--content--system-main-block block--content--system-main-block--5821 block--fa4a5daf-b411-4108-8443-534e3ca99753 block--fa4a5daf-b411-4108-8443-534e3ca99753--5821 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Investor Calendar
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="views-element-container block--views-blockwidget-events-block-1 block--views-blockwidget-events-block-1--5821 block--contentmain--views-block--widget-events-block-1 block--contentmain--views-block--widget-events-block-1--5821 block--83870c3a-ad28-42f0-9388-3de4f7f4ef12 block--83870c3a-ad28-42f0-9388-3de4f7f4ef12--5821 block block-views block-views-blockwidget-events-block-1">
+  
+      <h2>Upcoming Events</h2>
+    
+      <div data-block-uuid="83870c3a-ad28-42f0-9388-3de4f7f4ef12"><div class="view view-widget-events view-id-widget_events view-display-id-block_1 js-view-dom-id-c631c2ed9c625f2181579bcb2b6ac4abdcf7db24868999e507695e1536ce1b92">
+  
+    
+      
+      <div class="view-content">
+      <div class="item-list">
+  
+  <ul>
+
+          <li>
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list node--promoted">
+
+  
+  
+    <div class="ndq-date">
+      
+      
+            May 13, 2021 at 8:00 AM EDT
+      </div>  
+
+      
+          <a href="/events/event-details/2021-annual-meeting-shareowners"><h3>Mark Your Calendars:  2021 Annual Meeting of Shareowners</h3></a>
+        
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      <div>
+        <div class="webcast-link"><a href="https://events.q4inc.com/vsm/UPS/2021" target="_blank">Click here for Webcast</a></div>
+    </div>
+
+      
+
+                        <div class="add-outlook">
+            <a href="/node/30041/ics">Add to Outlook</a>
+          </div>
+                          <div class="add-gcal">
+            <a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;text=UPS - Mark Your Calendars:  2021 Annual Meeting of Shareowners&amp;dates=20210513T120000Z/20210513T120000Z&amp;details=Event Details: http://www.investors.ups.com/events/event-details/2021-annual-meeting-shareowners%0A%0AWebcast: https://events.q4inc.com/vsm/UPS/2021&amp;location=&amp;trp=false&amp;sprop=&amp;sprop=name:" target="_blank" rel="nofollow">Add to Google Calendar</a>
+          </div>
+                  </div>
+
+  </article>
+</li>
+          <li>
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list node--promoted">
+
+  
+  
+    <div class="ndq-date">
+      
+      
+            July 27, 2021 at 8:30 AM EDT
+      </div>  
+
+      
+          <a href="/events/event-details/q2-2021-united-parcel-service-inc-earnings-release"><h3>Q2 2021 United Parcel Service, Inc. Earnings Conference Call</h3></a>
+        
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                        <div class="add-outlook">
+            <a href="/node/29736/ics">Add to Outlook</a>
+          </div>
+                          <div class="add-gcal">
+            <a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;text=UPS - Q2 2021 United Parcel Service, Inc. Earnings Conference Call&amp;dates=20210727T123000Z/20210727T123000Z&amp;details=Event Details: http://www.investors.ups.com/events/event-details/q2-2021-united-parcel-service-inc-earnings-release&amp;location=&amp;trp=false&amp;sprop=&amp;sprop=name:" target="_blank" rel="nofollow">Add to Google Calendar</a>
+          </div>
+                  </div>
+
+  </article>
+</li>
+    
+  </ul>
+
+</div>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-events-block-1 block--views-blockwidget-events-block-1--5821 block--contentmain--views-block--widget-events-block-1 block--contentmain--views-block--widget-events-block-1--5821 block--078283ba-6308-443a-930a-2a6c9a5eb6a3 block--078283ba-6308-443a-930a-2a6c9a5eb6a3--5821 block block-views block-views-blockwidget-events-block-1">
+  
+      <h2>Past Events</h2>
+    
+      <div data-block-uuid="078283ba-6308-443a-930a-2a6c9a5eb6a3"><div class="view view-widget-events view-id-widget_events view-display-id-block_1 js-view-dom-id-55b70c6ea4d13ff8ebbe3e79f4e1a3627acf68922657304cc401acfe7d0dd5f2">
+  
+    
+      
+      <div class="view-content">
+      <div class="item-list">
+  
+  <ul>
+
+          <li>
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list node--promoted">
+
+  
+  
+    <div class="ndq-date">
+      
+      
+            April 27, 2021 at 8:30 AM EDT
+      </div>  
+
+      
+          <a href="/events/event-details/q1-2021-united-parcel-service-inc-earnings-release"><h3>Q1 2021 United Parcel Service, Inc. Earnings Conference Call</h3></a>
+        
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/onskqpvv" target="_blank">Click here for Webcast</a></div>
+    </div>
+
+                <h4>Supporting Materials</h4>
+  <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/ups-releases-1q-2021-earnings" hreflang="en">UPS Releases 1Q 2021 Earnings</a></div>
+    </div>
+
+  </div>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://www.investors.ups.com/static-files/740f0498-0688-4e36-8f8b-7a2d13ded1c9" type="application/pdf; length=2283499" title="UPS_1Q21_Earnings_Webcast_Deck_Final.pdf">1Q21 Earnings Presentation</a></span><span class="filesize"> 2.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-vnd-openxmlformats-officedocument-spreadsheetml-sheet file--x-office-spreadsheet"> <a href="http://www.investors.ups.com/static-files/583e3113-2446-47cf-a649-4ccb3e6394f9" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; length=323819" title="UPS_2021_Q1_Financial_Info.xlsx">Financials</a></span><span class="filesize"> 323.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-vnd-openxmlformats-officedocument-spreadsheetml-sheet file--x-office-spreadsheet"> <a href="http://www.investors.ups.com/static-files/fb631def-5825-4c54-a59f-303cf9eadd96" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; length=62417" title="UPS_2021_Q1_Historical_Financial_Statements.xlsx">Historical Financials</a></span><span class="filesize"> 62.4 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+
+                                </div>
+
+  </article>
+</li>
+          <li>
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+    <div class="ndq-date">
+      
+      
+            February 2, 2021 at 8:30 AM EST
+      </div>  
+
+      
+          <a href="/events/event-details/q4-2020-united-parcel-service-inc-earnings-conference-call"><h3>Q4 2020 United Parcel Service, Inc. Earnings Conference Call</h3></a>
+        
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/zd3kcarv" target="_blank">Click here for Webcast</a></div>
+    </div>
+
+              <h4>Supporting Materials</h4>
+  <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/ups-releases-4q-2020-earnings" hreflang="en">UPS Releases 4Q 2020 Earnings</a></div>
+    </div>
+
+  </div>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link node--promoted">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://www.investors.ups.com/static-files/26b3c526-113f-4eb0-ae99-92911a88ae66" type="application/pdf; length=2393204" title="4Q20_Earnings_Webcast_Deck_FINAL.PDF">4Q20 Earnings Presentation</a></span><span class="filesize"> 2.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link node--promoted">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://www.investors.ups.com/static-files/b892757b-df2b-4542-9b38-220834fb75d4" type="application/pdf; length=1224402" title="4Q_20_Pension_Mark_to_Market.pdf">4Q20 Pension Mark-to-Market Charge Overview</a></span><span class="filesize"> 1.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+
+                                </div>
+
+  </article>
+</li>
+          <li>
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+    <div class="ndq-date">
+      
+      
+            October 28, 2020 at 8:30 AM EDT
+      </div>  
+
+      
+          <a href="/events/event-details/q3-2020-united-parcel-service-inc-earnings-conference-call"><h3>Q3 2020 United Parcel Service, Inc. Earnings Conference Call</h3></a>
+        
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/o9qzm3mc" target="_blank">Click here for Webcast</a></div>
+    </div>
+
+                <h4>Supporting Materials</h4>
+  <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/ups-releases-3q-2020-earnings" hreflang="en">UPS Releases 3Q 2020 Earnings</a></div>
+    </div>
+
+  </div>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-vnd-openxmlformats-officedocument-spreadsheetml-sheet file--x-office-spreadsheet"> <a href="http://www.investors.ups.com/static-files/1d409d35-1aa1-41c3-a100-110a239b9de7" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; length=75994" title="UPS_2020_Q3_Financial_Info_for_Website.xlsx">Financials</a></span><span class="filesize"> 75.9 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-vnd-openxmlformats-officedocument-spreadsheetml-sheet file--x-office-spreadsheet"> <a href="http://www.investors.ups.com/static-files/c5a1e95b-d69e-4072-a68e-4e0770f44ffd" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; length=40182" title="UPS_2020_Q3_Historical_Financial_Statement.xlsx">Historical Financials </a></span><span class="filesize"> 40.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://www.investors.ups.com/static-files/e25166f5-46b3-4ba1-9d91-da5b1a26862d" type="application/pdf; length=2148476" title="UPS_3Q20_Earnings_Webcast_FINAL.pdf">3Q20 Earnings Presentation</a></span><span class="filesize"> 2.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+
+                                </div>
+
+  </article>
+</li>
+          <li>
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+    <div class="ndq-date">
+      
+      
+            July 30, 2020 at 8:30 AM EDT
+      </div>  
+
+      
+          <a href="/events/event-details/q2-2020-united-parcel-service-inc-earnings-conference-call"><h3>Q2 2020 United Parcel Service, Inc. Earnings Conference Call</h3></a>
+        
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/szcmyd5p" target="_blank">Click here for Webcast</a></div>
+    </div>
+
+                <h4>Supporting Materials</h4>
+  <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/ups-releases-2q-2020-earnings" hreflang="en">UPS Releases 2Q 2020 Earnings</a></div>
+    </div>
+
+  </div>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-vnd-openxmlformats-officedocument-spreadsheetml-sheet file--x-office-spreadsheet"> <a href="http://www.investors.ups.com/static-files/f6f6d85e-f1b4-4c7c-a264-1089763d5c6f" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; length=70529" title="UPS 2020 Q2 Financial Info.xlsx">Financials</a></span><span class="filesize"> 70.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-vnd-openxmlformats-officedocument-spreadsheetml-sheet file--x-office-spreadsheet"> <a href="http://www.investors.ups.com/static-files/e7475c36-3116-46db-b273-f0fdda889883" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; length=78557" title="UPS 2020 Q2 Historical Financial Statement.xlsx">Historical Financials</a></span><span class="filesize"> 78.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://www.investors.ups.com/static-files/dccf5706-d9e6-45f8-8873-47fb11b318cb" type="application/pdf; length=1692443" title="UPS_2Q20_Webcast_Deck_Final.pdf">2Q20 Earnings Presentation</a></span><span class="filesize"> 1.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+
+                                </div>
+
+  </article>
+</li>
+    
+  </ul>
+
+</div>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                                          <div class="iw_columns col-lg-4" id="coliov5pt1w">
+
+                          <div class="region region-sub-navs">
+    
+
+
+        
+                  
+              <div class="iw_component" id="iw_comp1464681783961">
+          <section class="ups-secondaryNav hpps-dynamic">
+            <div class="ups-wrap_inner">
+              <div class="ups-accordion_wrapper ups-accordion_sub ups-active">
+              <button class="ups-accordion_title">
+                In This Section
+                <i class="icon ups-icon-plus" aria-hidden="true"></i><span class="ups-readerTxt" data-lang-show="expand" data-lang-hide="Collapse">Collapse</span>
+              </button>
+              <ul class="ups-accordion_content">
+    
+
+                                                <li class="ups-accordion_item">
+                      <a class="ups-accordion_prev ups-analytics" href="/news-and-events/news-releases" data-preLinkName="SecNav:"><i class="icon ups-icon-chevronleft" aria-hidden="true"></i>News &amp; Events</a><span class="icon" aria-hidden="true"></span>
+                    </li>
+                    <li class="ups-accordion_item ups-active">
+                      <div class="ups-accordion_expand">
+
+                
+                                            
+      
+
+                                                                <a href="/news-and-events/news-releases" class="ups-analytics " data-preLinkName="SecNav: ">Financial News<span class="icon" aria-hidden="true"></span></a>
+                
+                    
+
+                
+                                                                <a href="https://stories.ups.com/upsstories/us/en/newsroom.html" class="ups-analytics " data-preLinkName="SecNav: ">General News<span class="icon" aria-hidden="true"></span></a>
+                
+                    
+
+                
+                                                                <a href="/news-and-events/investor-calendar" class="ups-analytics is-active" data-preLinkName="SecNav: ">Investor Calendar<span class="icon" aria-hidden="true"></span></a>
+                
+                    
+
+                
+                                                                <a href="/news-and-events/investor-presentations" class="ups-analytics " data-preLinkName="SecNav: ">Investor Presentations<span class="icon" aria-hidden="true"></span></a>
+                
+                    
+
+                
+            
+
+    
+  
+                    
+
+                                    </div>
+                  </li>
+                
+            
+
+    
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    
+  
+
+
+
+
+
+                          
+    
+
+
+
+        
+                  
+              <div id="tool-kit" class="iw_component" id="iw_comp1464681783961">
+          <section class="ups-secondaryNav hpps-dynamic">
+            <div class="ups-wrap_inner">
+              <div class="ups-accordion_wrapper ups-accordion_sub ups-active"><button class="ups-accordion_title">
+                Tool Kit
+                <i class="icon ups-icon-plus" aria-hidden="true"></i><span class="ups-readerTxt" data-lang-show="expand" data-lang-hide="Collapse">Collapse</span>
+              </button>
+              <ul class="ups-accordion_content">
+                <li class="ups-accordion_item ups-active">
+                  <div class="ups-accordion_expand">
+    
+
+
+                               <a href="/financials/investor-packet" class="ups-analytics"><span class="ndqicon-printed-materials-2" aria-hidden="true"></span> Investor Packet</a>
+
+                    
+                               <a href="/shareowner-services/information-request" class="ups-analytics"><span class="ndqicon-feedback-1" aria-hidden="true"></span> Contact IR</a>
+
+                    
+                               <a href="https://www.icsdelivery.com/ups/index.html" class="ups-analytics"><span class="ndqicon-printed-materials-1" aria-hidden="true"></span> E-proxy</a>
+
+                    
+                               <a href="/advisory-information-0" class="ups-analytics"><span class="ndqicon-empty-file" aria-hidden="true"></span> Advisory Information</a>
+
+                    
+            
+            <a href="javascript:window.print();" class="ups-analytics"><span class="ndqicon-print" aria-hidden="true"></span> Print</a>
+
+            <a href="mailto:" class="ups-analytics"><span class="ndqicon-mail" aria-hidden="true"></span> Email</a>
+
+
+                      </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    
+  
+
+
+
+
+
+                          
+    
+
+  </div>
+
+
+                        
+
+                      </div>
+                                    </div>
+
+            </div>
+          </div>
+        </div>
+    
+
+
+              <div class="container-fluid iw_section" id="sectioniov5pt26">
+        <div class="row iw_row iw_stretch" id="rowiov5pt27">
+          <div class="iw_columns col-lg-12" id="coliov5pt28">
+              <div class="region region-footer-top">
+    <div id="block-nir-pid1441-gbcontactirbottom" class="block-content--nir-global-block block-content--nir-global-block--23711 block--block-content6befff15-28b9-45a7-8595-35371a113f0e block--block-content6befff15-28b9-45a7-8595-35371a113f0e--5821 block--footer-top--block-content--6befff15-28b9-45a7-8595-35371a113f0e block--footer-top--block-content--6befff15-28b9-45a7-8595-35371a113f0e--5821 block--592f22da-a515-47b7-91d0-f7f78d1f19e8 block--592f22da-a515-47b7-91d0-f7f78d1f19e8--5821 block block-block-content block-block-content6befff15-28b9-45a7-8595-35371a113f0e">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="iw_component">
+<div class="ups-banner banner_black_s3 hpps-altcontent ups-analytics">
+<div class="ups-banner_container ups-wrap ups-analytics-render">
+<div class="ups-wrap_inner">
+<div class="ups-banner_main">
+<div class="text-container">
+<div class="ups-content">
+<h2>Contact Investor Relations</h2>
+</div>
+
+<div class="ups-cta-styling"><a class="ups-cta" onclick="window.location.href ='/shareowner-services/information-request';">Contact IR</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+      
+</div>
+      
+  </div>
+<div id="block-nir-pid1441-gbemailalertsbottom" class="block-content--nir-global-block block-content--nir-global-block--23716 block--block-content24010298-6221-418e-a012-25ef544cfc2d block--block-content24010298-6221-418e-a012-25ef544cfc2d--5821 block--footer-top--block-content--24010298-6221-418e-a012-25ef544cfc2d block--footer-top--block-content--24010298-6221-418e-a012-25ef544cfc2d--5821 block--388c067c-95eb-4231-b9ed-a5cf4e11c426 block--388c067c-95eb-4231-b9ed-a5cf4e11c426--5821 block block-block-content block-block-content24010298-6221-418e-a012-25ef544cfc2d">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="iw_component">
+<section class="ups-subscribe-email inactive"><div class="main ups-wrap">
+<form action="/email-alerts" class="news-letter-form" data-drupal-form-fields="" id="alerts-form">
+<div class="txt-container">
+<div class="txt-stuff">Sign up to receive e-mail alerts<br /><small>Whenever UPS, Inc. posts new information to the site</small></div>
+<button class="btn ups-cta cta_signup ups-analytics" name="submitButton" type="submit">Sign up</button></div>
+</form>
+</div>
+</section></div>
+</div>
+      
+</div>
+      
+  </div>
+
+  </div>
+
+          </div>
+        </div>
+      </div>
+    
+
+        <div class="container-fluid iw_section" id="sectioniov5pt2e">
+      <div class="row iw_row iw_stretch" id="rowiov5pt2f">
+        <div class="iw_columns col-lg-12" id="coliov5pt2g">
+          <div class="iw_component" id="iw_comp1464681783397">
+
+            <footer id="ups-footerWrap" class="ups-wrap hpps-basic" role="contentinfo">
+              <div id="ups-footer" class="ups-wrap_inner ups-analytics-render">
+
+                <div class="ups-footer_colsCont ups-container">
+                                      <div class="ups-footer_custserv col-md-3">
+                      <div class="ups-footer_links">
+                            <div class="region region-footer-col1">
+    
+
+
+        
+                  
+      
+    
+
+                                                <h2 class="ups-footer_toggle" id="ups-footer_custServe" aria-controls="ups-footer_custServe">
+                      <span class="icon" aria-hidden="true"></span>
+                      Customer Service
+                      <button class="ups-med_show">
+                        <span class="ups-icon-plus ups-iconAlone" aria-hidden="true"></span>
+                        <span class="ups-readerTxt" data-lang-show="expand Customer Service" data-lang-hide="Collapse Customer Service">expand Customer Service</span>
+                      </button>
+                    </h2>
+                
+                                    
+            <ul class="ups-footer_expand" aria-labelledby="ups-footer_custServe" id="ups-footer_custServeLinks">
+    
+
+                                                <li>
+                      <a href="https://www.ups.com/us/en/help-support-center.page" class="ups-analytics" target="">
+                        Help and Support Center
+                        <span class="" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.ups.com/us/en/help-center/get-started-with-ups.page" class="ups-analytics" target="">
+                        Get Started with UPS
+                        <span class="" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.ups.com/us/en/help-center/sri/tracking/change-delivery.page" class="ups-analytics" target="">
+                        Change Delivery
+                        <span class="" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://wwwapps.ups.com/webClaims/create?loc=en_US" class="ups-analytics" target="">
+                        Delivery Issues
+                        <span class="" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                
+                
+            
+
+          </ul>
+    
+  
+                
+            
+
+    
+    
+  
+
+
+    
+
+
+
+        
+                  
+            <ul class="ups-footer_contact ups-footer_expand" aria-labelledby="ups-footer_custServe" id="ups-footer_custServeConacts">
+    
+
+                            <li>
+                  <a href="https://www.ups.com/upsemail/input?loc=en_US" class="ups-analytics" target="_blank">
+                    Email Us
+                                          <span class="ups-icon-email icon ups-analytics" aria-hidden="true"></span>
+                                                              <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                      <span class="ups-readerTxt">Open the link in a new window</span>
+                                      </a>
+                </li>
+
+                
+                            <li>
+                  <a href="https://www.ups.com/us/en/help-center/contact.page" class="ups-analytics" target="_blank">
+                    Call Us
+                                          <span class="ups-icon-phone icon ups-analytics" aria-hidden="true"></span>
+                                                              <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                      <span class="ups-readerTxt">Open the link in a new window</span>
+                                      </a>
+                </li>
+
+                
+                            <li>
+                  <a href="https://www.ups.com/us/en/help-center/contact.page" class="ups-analytics" target="_blank">
+                    See All Contact Options
+                                          <span class="ups-icon-locator icon ups-analytics" aria-hidden="true"></span>
+                                                              <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                      <span class="ups-readerTxt">Open the link in a new window</span>
+                                      </a>
+                </li>
+
+                
+            
+
+          </ul>
+    
+  
+
+
+    
+
+  </div>
+
+                      </div>
+                    </div>
+                  
+                                      <div class="ups-footer_col col-md-3 ups-right-md">
+                      <div class="ups-footer_links">
+                          <div class="region region-footer-col4">
+    
+
+
+        
+                  
+      
+    
+
+                                                <h2 class="ups-footer_toggle" id="ups-footer_connect" aria-controls="ups-footer_connectLinks">
+                      Connect with Us
+                      <button class="ups-med_show">
+                        <span class="ups-icon-plus ups-iconAlone" aria-hidden="true"></span>
+                        <span class="ups-readerTxt" data-lang-show="expand Connect with Us" data-lang-hide="Collapse Connect with Us">expand Connect with Us</span>
+                      </button>
+                    </h2>
+                
+                                    
+            <ul class="ups-footer_expand" aria-labelledby="ups-footer_connect" id="ups-footer_connectLinks">
+    
+
+                                                <li>
+                      <a href="http://www.facebook.com/ups" class="ups-footer_social-facebook" target="_blank">
+                        Facebook
+                        <span class="" aria-hidden="true"></span>
+                                                  <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                          <span class="ups-readerTxt">Open the link in a new window</span>
+                                              </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://twitter.com/UPS" class="ups-footer_social-twitter" target="_blank">
+                        Twitter
+                        <span class="" aria-hidden="true"></span>
+                                                  <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                          <span class="ups-readerTxt">Open the link in a new window</span>
+                                              </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.linkedin.com/company/ups" class="ups-footer_social-linkedin" target="_blank">
+                        LinkedIn
+                        <span class="" aria-hidden="true"></span>
+                                                  <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                          <span class="ups-readerTxt">Open the link in a new window</span>
+                                              </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.youtube.com/ups" class="ups-footer_social-youtube" target="_blank">
+                        YouTube
+                        <span class="" aria-hidden="true"></span>
+                                                  <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                          <span class="ups-readerTxt">Open the link in a new window</span>
+                                              </a>
+                    </li>
+                
+                
+            
+
+          </ul>
+    
+  
+                
+            
+
+    
+    
+  
+
+
+    
+
+  </div>
+
+                      </div>
+                    </div>
+                  
+                                      <div class="ups-footer_col col-md-3 ups-right-md">
+                        <div class="region region-footer-col3">
+    
+
+
+        
+                  
+            <div class="ups-footer_info ups-footer_links">
+    
+
+                                              <h2 class="ups-footer_toggle" id="ups-footer_companyInfo" aria-controls="ups-footer_companyInfoLinks">
+                    <span class="icon" aria-hidden="true"></span>
+                    Company Info
+                    <button class="ups-med_show">
+                      <span class="ups-icon-plus ups-iconAlone" aria-hidden="true"></span>
+                      <span class="ups-readerTxt" data-lang-show="expand Company Info" data-lang-hide="Collapse Company Info">expand Company Info</span>
+                    </button>
+                  </h2>
+                
+                                    
+            <ul class="ups-footer_expand" aria-labelledby="ups-footer_companyInfo" id="ups-footer_companyInfoLinks">
+    
+
+                                                <li>
+                      <a href="https://www.ups.com/us/en/about.page" class="ups-analytics" target="">
+                        About UPS
+                        <span class="" aria-hidden="true"></span>
+                                                                      </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://stories.ups.com/upsstories/us/en/newsroom.html" class="ups-analytics" target="_blank">
+                        Media Relations
+                        <span class="" aria-hidden="true"></span>
+                                                                          <span class="" aria-hidden="true"></span>
+                          <span class="ups-readerTxt">Open the link in a new window</span>
+                                              </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="/investors" class="ups-analytics" target="">
+                        Investor Relations
+                        <span class="" aria-hidden="true"></span>
+                                                                      </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.jobs-ups.com/location" class="ups-analytics" target="_blank">
+                        Careers
+                        <span class="" aria-hidden="true"></span>
+                                                                          <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                          <span class="ups-readerTxt">Open the link in a new window</span>
+                                              </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://sustainability.ups.com" class="ups-analytics" target="_blank">
+                        Sustainability &amp; Community Involvement
+                        <span class="" aria-hidden="true"></span>
+                                                                          <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                          <span class="ups-readerTxt">Open the link in a new window</span>
+                                              </a>
+                    </li>
+                
+                
+            
+
+          </ul>
+    
+
+                
+            
+
+          </div>
+    
+
+
+
+    
+
+
+
+        
+                  
+            <div class="ups-footer_sites ups-footer_links">
+    
+
+                                                      <h2 class="ups-footer_toggle" id="ups-footer_otherSites" aria-controls="ups-footer_otherSitesLinks">
+                        <span class="icon" aria-hidden="true"></span>
+                        Other UPS Sites
+                        <button class="ups-med_show">
+                          <span class="ups-icon-plus ups-iconAlone" aria-hidden="true"></span>
+                          <span class="ups-readerTxt" data-lang-show="expand Other UPS Sites" data-lang-hide="Collapse Other UPS Sites">expand Other UPS Sites</span>
+                        </button>
+                      </h2>
+                  
+                                        
+            <ul class="ups-footer_expand" aria-labelledby="ups-footer_otherSites" id="ups-footer_otherSitesLinks">
+    
+
+                                                      <li>
+                        <a href="https://www.theupsstore.com?loc=en_US" class="ups-analytics " target="_blank">
+                          The UPS Store
+                          <span class="" aria-hidden="true"></span>
+                                                                                <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                            <span class="ups-readerTxt">Open the link in a new window</span>
+                                                  </a>
+                      </li>
+                  
+                  
+                                                      <li>
+                        <a href="https://upscapital.com" class="ups-analytics " target="_blank">
+                          UPS Capital
+                          <span class="" aria-hidden="true"></span>
+                                                                                <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                            <span class="ups-readerTxt">Open the link in a new window</span>
+                                                  </a>
+                      </li>
+                  
+                  
+                                                      <li>
+                        <a href="https://www.ups.com/us/en/about/sites.page" class="ups-analytics bold-item-link" target="_blank">
+                          See All
+                          <span class="" aria-hidden="true"></span>
+                                                      <span class="bold-link" aria-hidden="true"></span>
+                                                                                <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                            <span class="ups-readerTxt">Open the link in a new window</span>
+                                                  </a>
+                      </li>
+                  
+                  
+              
+
+              </ul>
+      
+      
+                  
+              
+
+              </div>
+      
+      
+
+
+    
+
+  </div>
+
+                    </div>
+                  
+                                      <div class="ups-footer_col col-md-3 ups-right-md">
+                      <div class="ups-footer_links">
+                          <div class="region region-footer-col2">
+    
+
+
+        
+                  
+      
+    
+
+                                                <h2 class="ups-footer_toggle" id="ups-footer_thisSite" aria-controls="ups-footer_thisSiteLinks">
+                      <span class="icon" aria-hidden="true"></span>
+                      This Site
+                      <button class="ups-med_show">
+                        <span class="ups-icon-plus ups-iconAlone" aria-hidden="true"></span>
+                        <span class="ups-readerTxt" data-lang-show="expand This Site" data-lang-hide="Collapse This Site">expand This Site</span>
+                      </button>
+                    </h2>
+                
+                                    
+            <ul class="ups-footer_expand" aria-labelledby="ups-footer_thisSite" id="ups-footer_thisSiteLinks">
+    
+
+                                                <li>
+                      <a href="https://www.ups.com/us/en/services/tracking.page" class="ups-analytics" target="">
+                        Tracking
+                        <span class="" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.ups.com/us/en/shipping.page" class="ups-analytics" target="">
+                        Shipping
+                        <span class="" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.ups.com/us/en/services.page" class="ups-analytics" target="">
+                        Services
+                        <span class="" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.ups.com/dropoff?loc=en_US" class="ups-analytics" target="">
+                        Locations
+                        <span class="" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://wwwapps.ups.com/ppc/ppc.html?loc=en_US#/profilePage" class="ups-analytics" target="">
+                        My Profile
+                        <span class="" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                
+                
+            
+
+          </ul>
+    
+  
+                
+            
+
+    
+    
+  
+
+
+    
+
+  </div>
+
+                      </div>
+                    </div>
+                                  </div>
+
+                <div class="ups-footer_legal">
+                  <div class="ups-footer_links">
+
+                                              <div class="region region-footer-nav">
+    
+
+
+        
+                  
+      
+    
+
+                                                <h2 class="ups-med_show ups-footer_toggle" id="ups-footer_legal" aria-controls="ups-footer_legalLinks">
+                      <span class="icon" aria-hidden="true"></span>
+                      Legal
+                      <button class="ups-med_show">
+                        <span class="ups-icon-plus ups-iconAlone" aria-hidden="true"></span>
+                        <span class="ups-readerTxt" data-lang-show="expand Legal" data-lang-hide="Collapse Legal">expand Legal</span>
+                      </button>
+                    </h2>
+                
+                                    
+            <ul class="ups-footer_expand" aria-labelledby="ups-footer_legal" id="ups-footer_legalLinks">
+    
+
+                                                <li>
+                      <a href="https://www.ups.com/us/en/global.page" class="ups-analytics" target="">
+                        Global Home
+                        <span class="" aria-hidden="true"></span>
+                                              </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.ups.com/us/en/help-center/legal-terms-conditions/fight-fraud.page" class="ups-analytics" target="">
+                        Protect Against Fraud
+                        <span class="" aria-hidden="true"></span>
+                                              </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.ups.com/us/en/help-center/legal-terms-conditions/service.page" class="ups-analytics" target="">
+                        Service Terms and Conditions
+                        <span class="" aria-hidden="true"></span>
+                                              </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.ups.com/us/en/help-center/legal-terms-conditions/website.page" class="ups-analytics" target="">
+                        Website Terms of Use
+                        <span class="" aria-hidden="true"></span>
+                                              </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.ups.com/us/en/help-center/legal-terms-conditions/california-privacy.page" class="ups-analytics" target="_blank">
+                        Your California Privacy Rights
+                        <span class="" aria-hidden="true"></span>
+                                                  <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                          <span class="ups-readerTxt">Open the link in a new window</span>
+                                              </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.ups.com/us/en/help-center/legal-terms-conditions/privacy-notice.page" class="ups-analytics" target="_blank">
+                        Privacy Notice
+                        <span class="" aria-hidden="true"></span>
+                                                  <span class="icon ups-link_newwindow" aria-hidden="true"></span>
+                          <span class="ups-readerTxt">Open the link in a new window</span>
+                                              </a>
+                    </li>
+                
+                
+                                                <li>
+                      <a href="https://www.ups.com/ppwa/doWork?loc=en_US" class="ups-analytics" target="">
+                        Do Not Sell My Info
+                        <span class="" aria-hidden="true"></span>
+                                              </a>
+                    </li>
+                
+                
+            
+
+          </ul>
+    
+  
+                
+            
+
+    
+    
+  
+
+
+    
+
+  </div>
+
+                    
+                    <br>
+                    <p class="ups-footer_disclaimer">
+                      Copyright ©1994- 2021&nbsp;United Parcel Service of America, Inc. All rights reserved.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+              <img alt="" border="0" src="/sites/g/files/knoqqb52286/themes/site/nir_pid1441/dist/images/icp.gif">
+            </footer>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb82";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5821","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1441\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid1441","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"88622cb675d3b75b6c1ead34b4fdd8fec48d78dc43b8cc7ee2b8cb312eb15992"}}</script>
+<script src="/sites/g/files/knoqqb52286/files/js/js_mF5RiIy1_49V3s79U86H4Jutq_tWYhwAgv3-vUrBeKI.js"></script>
+<script src="/sites/g/files/knoqqb52286/themes/site/nir_pid1441/dist/js/inline.js?qrbf3x"></script>
+<script src="/sites/g/files/knoqqb52286/themes/site/nir_pid1441/dist/js/ups.vendor.js?qrbf3x"></script>
+<script src="/sites/g/files/knoqqb52286/themes/site/nir_pid1441/dist/js/ups.script-v5.js?qrbf3x"></script>
+<script src="/sites/g/files/knoqqb52286/files/js/js_rmHr159FqOO1YDtjRA3HbW4_isk_2iY_JEjujwmeVvA.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"37278538,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":533,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

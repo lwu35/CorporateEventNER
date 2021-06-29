@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Northern Technologies International Corporation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.ntic.com/events-presentations" />
+<meta property="og:title" content="Events &amp; Presentations | Northern Technologies International Corporation" />
+<meta property="og:description" content="The Investor Relations website contains information about Northern Technologies International Corporation&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=0.4" />
+<link rel="alternate" hreflang="en" href="https://ir.ntic.com/events-presentations" />
+<link rel="canonical" href="https://ir.ntic.com/events-presentations" />
+<link rel="shortlink" href="https://ir.ntic.com/node/10661" />
+<link rel="revision" href="https://ir.ntic.com/events-presentations" />
+
+    <title>Events &amp; Presentations | Northern Technologies International Corporation</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb19456/files/css/css_SQBKl25X50_ss2d0gozsTTn-Wxa9dWu131cAz6rP_-E.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb19456/files/css/css_ikK9TFOtyBDjBoe5Ydh4RsqLa3jfx_hDkk1wwn4eYb0.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb19456/files/css/css_uR7CBnjEs5VZNOTbN5egaIVEsuJ_uLDLaCxQpDsgq_0.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb19456/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--10661 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div id="header_wrapper">
+	<div id="inner_header_wrapper">
+		<header id="header" role="banner">
+               <div class="top_left">
+                  <div id="logo"><a href="http://www.ntic.com/" title="Home"><img src="/sites/g/files/knoqqb19456/themes/site/nir_pid1779/client/images/logo.png"/></a></div>
+                  <h1 id="site-title">
+                     <a href="http://www.ntic.com" title="Home">Eco Friendly Product - NTIC </a>
+                     <div id="site-description"></div>
+                  </h1>
+               </div>
+               <div class="top_right">
+                  <div class="search_block">
+                     <div class="region region-search">
+                        <div id="block-search-form" class="block block-search">
+                           <div class="content">
+                               									    <div class="region region-header-serach">
+    <div id="block-nir-pid1779-search" class="block--search-form block--search-form--10661 block--header-serach--search-form block--header-serach--search-form--10661 block--6ba62c90-1287-47ae-8023-0a7304775521 block--6ba62c90-1287-47ae-8023-0a7304775521--10661 block block-nir-search block-search-form">
+  
+    
+      <form data-block-uuid="6ba62c90-1287-47ae-8023-0a7304775521" action="/search" method="get" accept-charset="UTF-8">
+  <div class="js-form-item form-item js-form-type-search form-item-query js-form-item-query form-no-label">
+        <input type="search" name="query" size="60" maxlength="128" placeholder="" class="form-search required" required="required" aria-required="true" />
+
+        </div>
+<input type="submit" name="op" value="Search" class="button button--primary js-form-submit form-submit" />
+
+</form>
+
+  </div>
+
+  </div>
+
+							                              </div>
+                        </div>
+                        <!-- /.block -->
+                        <div id="block-block-1" class="block block-block">
+                           <div class="content">
+                              <p>1-800-328-2433 <br />
+                                 <a href="mailto:info@ntic.com">info@ntic.com</a>
+                              </p>
+                           </div>
+                        </div>
+                        <!-- /.block --> 
+                     </div>
+                     <!-- /.region --> 
+                  </div>
+               </div>
+               <div class="clear"></div>
+            </header>
+			 <div class="menu_wrapper">
+               <nav id="main-menu"  role="navigation">
+                  <a class="nav-toggle" href="#">Navigation</a>
+                  <div class="menu-navigation-container">
+                     <ul class="menu">
+                        <li class="first leaf"><a href="http://www.ntic.com">Home</a></li>
+                        <li class="expanded">
+                           <a href="http://www.ntic.com/about-us">About Us</a>
+                           <ul class="menu" style="display: none;">
+                              <li class="first leaf"><a href="https://www.ntic.com/commitment-to-quality">Commitment To Quality</a></li>
+                              <li class="last leaf"><a href="http://www.ntic.com/reach">REACH</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="expanded"><a href="https://www.ntic.com/technology">What We Do</a>
+                        	<ul class="menu" style="display: none;">
+                              <li class="first leaf"><a href="http://www.zerust.com/" target="_blank">Zerust Corrosion Solutions</a></li>
+                              <li class="leaf"><a href="http://www.zerust-oilgas.com/" target="_blank">Zerust Oil &amp; Gas</a></li>
+                              <li class="last leaf"><a href="http://www.natur-tec.com/" target="_blank">Natur-Tec</a></li>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="leaf"><a href="http://www.ntic.com/partnership">Partnership</a></li>
+                        <li class="leaf"><a href="http://www.ntic.com/careers">Careers</a></li>
+                        <li class="leaf active-trail">
+                           <a href="https://ir.ntic.com/" class="active-trail active">Investor Relations</a>
+																	    <div class="region region-header-menu">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1779-investorrelations-menu" id="block-nir-pid1779-investorrelations" class="block--system-menu-blockir block--system-menu-blockir--10661 block--header-menu--system-menu-block--ir block--header-menu--system-menu-block--ir--10661 block--b97d1257-2b7d-4289-bfef-bb84f63a9ed0 block--b97d1257-2b7d-4289-bfef-bb84f63a9ed0--10661 block block-menu navigation block-system-menublock menu--ir">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1779-investorrelations-menu">Investor Relations</h2>
+    
+
+                              <ul data-block-uuid="b97d1257-2b7d-4289-bfef-bb84f63a9ed0" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/press-releases" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-presentations" target="" rel="" data-drupal-link-system-path="node/10661" class="is-active">Events &amp; Presentations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance" target="" rel="" data-drupal-link-system-path="node/5836">Corporate Governance</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/management" data-drupal-link-system-path="node/5846">Management</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/board-directors" data-drupal-link-system-path="node/5841">Board of Directors</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/committee-composition" data-drupal-link-system-path="node/5851">Committee Composition</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financials-filings" target="" rel="" data-drupal-link-system-path="node/5871">Financials &amp; Filings</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/financial-information/sec-filingss" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/annuals-and-proxies" target="" rel="" data-drupal-link-system-path="node/5881">Annuals and Proxies</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/quarterly-results" data-drupal-link-system-path="node/5986">Quarterly Results</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/key-ratios" data-drupal-link-system-path="node/5906">Key Ratios</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/5916">Stock Information</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/stock-information/historic-stock-lookup" data-drupal-link-system-path="node/5921">Historic Stock Lookup</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/investment-calculator" data-drupal-link-system-path="node/5926">Investment Calculator</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/dividends-splits" target="" rel="" data-drupal-link-system-path="node/5931">Dividend History &amp; Stock Split History</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/ownership-profile" data-drupal-link-system-path="node/5901">Ownership Profile</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/investor-faqs" data-drupal-link-system-path="node/5941">Investor FAQs</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/contact-us" data-drupal-link-system-path="node/5981">Contact Us</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+							                              
+                        </li>
+                        <li class="leaf"><a href="http://www.ntic.com/news">News</a></li>
+                        <li class="last leaf"><a href="https://www.ntic.com/content/contact-us">Contact Us</a></li>
+                     </ul>
+                  </div>
+                  <div class="clear"></div>
+               </nav>
+               <!-- end main-menu --> 
+            </div>
+    </div>
+</div>
+<div id="container">
+	 <div class="content-sidebar-wrap">
+		<div id="content">
+		 			<div id="breadcrumbs">  <div class="region region-breadcrumb">
+    <div id="block-nir-pid1779-breadcrumbs" class="block--system-breadcrumb-block block--system-breadcrumb-block--10661 block--breadcrumb--system-breadcrumb-block block--breadcrumb--system-breadcrumb-block--10661 block--94ed7d5a-61c6-4e10-8ac8-d7f94d67fed7 block--94ed7d5a-61c6-4e10-8ac8-d7f94d67fed7--10661 block block-system block-system-breadcrumb-block">
+  
+    
+       
+      <nav class="breadcrumb"><a href="http://www.ntic.com/">Home</a> » <a href="https://ir.ntic.com/">Investor Relations</a> »
+	 
+	   		  								
+		  						  Events &amp; Presentations
+					
+		  	   	</nav>
+  </div>
+
+  </div>
+</div>
+					<section id="post-content" role="main">
+			  <h1 class="page-title">Events &amp; Presentations</h1>
+				<div class="region region-content">
+					 <div id="block-system-main" class="block block-system">
+						<div class="content">
+						   <div id="ndq-content" class="ndq-index ">
+								<div id="content-header">  </div>
+								<div id="content-area">  <div class="region region-content">
+    <div id="block-nir-pid1779-websitenoticeblock" class="block--website-notice-block block--website-notice-block--10661 block--content--website-notice-block block--content--website-notice-block--10661 block--867e84c8-38e5-442a-8905-d96409d60526 block--867e84c8-38e5-442a-8905-d96409d60526--10661 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1779-content" class="block--system-main-block block--system-main-block--10661 block--content--system-main-block block--content--system-main-block--10661 block--d72259a1-ceab-4109-8c68-03aafb77d65a block--d72259a1-ceab-4109-8c68-03aafb77d65a--10661 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="views-element-container block--views-blockwidget-assets-widget-assets-table block--views-blockwidget-assets-widget-assets-table--10661 block--contentmain--views-block--widget-assets-widget-assets-table block--contentmain--views-block--widget-assets-widget-assets-table--10661 block--e0d9c1b9-c15f-4b33-9179-233ed720203d block--e0d9c1b9-c15f-4b33-9179-233ed720203d--10661 block block-views block-views-blockwidget-assets-widget-assets-table">
+  
+      <h2>Presentations</h2>
+    
+      <div data-block-uuid="e0d9c1b9-c15f-4b33-9179-233ed720203d"><div class="view view-widget-assets view-id-widget_assets view-display-id-widget_assets_table js-view-dom-id-3bd6fc2b312af838724b5c3251bd477fca72427df1534fbd177292920eeb1abb">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-assets-widget-assets-table" action="/events-presentations" method="get" id="views-exposed-form-widget-assets-widget-assets-table" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit-widget-assets" type="submit" id="edit-submit-widget-assets" value="Filter" class="button js-form-submit form-submit" />
+<input data-drupal-selector="edit-reset" type="submit" id="edit-reset" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-1 striped-odd collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-document-table-column" class="views-field views-field-field-nir-document" scope="col">Documents</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr>
+                                                                                                                  <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document views-field-field-nir-ext-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ntic.com/static-files/ea2b2be6-9f9d-4cf9-bc8a-b55d8b15d59a" type="application/pdf; length=1619728" title="NTIC - FY 2021 Second Quarter Investor Presentation vFINAL.pdf">Investor Presentation - April 2021</a></span><span class="filesize"> 1.6 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--10661 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--10661 block--48b7a3fc-856c-4e21-9f3e-73f405706c46 block--48b7a3fc-856c-4e21-9f3e-73f405706c46--10661 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Featured Events</h2>
+    
+      <div data-block-uuid="48b7a3fc-856c-4e21-9f3e-73f405706c46"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-603deba989766dead61a99e5110275aa4fc9b59715da17ceb2f1e6c495c90b87">
+  
+    
+      
+      <div class="view-empty">
+      There are currently no events to display.
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--10661 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--10661 block--89b524e7-ac72-4281-a07a-fa9d98424510 block--89b524e7-ac72-4281-a07a-fa9d98424510--10661 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Upcoming Events</h2>
+    
+      <div data-block-uuid="89b524e7-ac72-4281-a07a-fa9d98424510"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-3273cea671cc459d0859d39f79a9b383088b11d532ea52883b5075bf41cd7dd1">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-events-table" action="/events-presentations" method="get" id="views-exposed-form-widget-events-table" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions--3"><input data-drupal-selector="edit-submit-widget-events-2" type="submit" id="edit-submit-widget-events--2" value="Filter" class="button js-form-submit form-submit" />
+<input data-drupal-selector="edit-reset" type="submit" id="edit-reset--3" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-empty">
+      There are currently no events to display.
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--10661 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--10661 block--3f16ccca-5b4e-4069-99b5-f42ff9873c55 block--3f16ccca-5b4e-4069-99b5-f42ff9873c55--10661 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Archived Events</h2>
+    
+      <div data-block-uuid="3f16ccca-5b4e-4069-99b5-f42ff9873c55"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-8035a45ba796b56751cde36f95be74ff210a9428cb45f6be6990e5c397de8987">
+  
+    
+      
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" scope="col"><a href="?field_nir_event_start_date_value_1=-8%20hours&amp;sort_order=DESC&amp;order=field_nir_event_start_date&amp;sort=asc" title="sort by Date">Date</a></th>
+                                                  <th id="view-nothing-table-column" class="views-field views-field-nothing" scope="col">Event Details</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Apr 8, 2021 at 9:00 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="ndq-eventtitle">
+          Second Quarter 2021 Earnings Conference Call and Webcast
+      </div>
+  <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/htzkxbw2" target="_blank">Click here for webcast</a></div>
+    </div>
+
+    </div>
+          </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 7, 2021 at 9:00 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="ndq-eventtitle">
+          First Quarter 2021 Earnings Conference Call and Webcast
+      </div>
+  <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/ah8yryif" target="_blank">Click here for webcast</a></div>
+    </div>
+
+    </div>
+          </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 12, 2020 at 9:00 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="ndq-eventtitle">
+          Fourth Quarter 2020 Earnings Conference Call and Webcast
+      </div>
+  <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/vzjps5xp" target="_blank">Click here for webcast</a></div>
+    </div>
+
+    </div>
+          </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jul 8, 2020 at 9:00 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="ndq-eventtitle">
+          Third Quarter 2020 Earnings Conference Call and Webcast
+      </div>
+  <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/aveiowww" target="_blank">Click here for webcast</a></div>
+    </div>
+
+    </div>
+            <div class="nir-events-summary-event-details-supporting-materials">
+          <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ntic.com/static-files/b2713704-d9e6-42b8-8f83-304435ac7e8e" type="application/pdf; length=48937" title="Northern Technologies International Corporation Reports Financial Results for Third Quarter Fiscal 2020 .pdf">Press Release</a></span><span class="filesize"> 48.9 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+    </div>
+      </div>
+</div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		 </div>	
+	  </div>
+	  <div>
+					    <div class="region region-share-tool">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1779-shareholdertools-menu" id="block-nir-pid1779-shareholdertools" class="block--system-menu-blockshareholder-tools block--system-menu-blockshareholder-tools--10661 block--share-tool--system-menu-block--shareholder-tools block--share-tool--system-menu-block--shareholder-tools--10661 block--dd2ecd29-fbf0-46e6-970f-a72020942981 block--dd2ecd29-fbf0-46e6-970f-a72020942981--10661 block block-menu navigation block-system-menublock menu--shareholder-tools">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1779-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                        <ul data-block-uuid="dd2ecd29-fbf0-46e6-970f-a72020942981" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/email-alerts-subscription" target="" rel="" class="share-email-alerts" data-drupal-link-system-path="node/5946">Email Alerts</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/download-library" target="" rel="" class="share-downloads" data-drupal-link-system-path="node/6016">Downloads</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/rss-news-feeds" target="" rel="" class="share-rss" data-drupal-link-system-path="node/5951">RSS</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="" target="" rel="" class="share-print">Print</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="" target="" rel="" class="ndq-open-dialog">Share</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/search" target="" rel="" class="share-search" data-drupal-link-system-path="search">Search</a>
+                  </li>
+          </ul>
+  
+
+<div id="output"></div>
+<div id="ndq-tools">
+    <div class="ndq-dialog-overlay"></div>
+    <div class="ndq-dialog">
+        <a class="ndq-close-dialog ndqicon-close" title="Close"></a>
+        <br clear="all"/>
+        <ul id="ndq-share">
+            <li><a class="ndqicon-fb" href="http://www.facebook.com/share.php?u=https://ir.ntic.com/events-presentations&t= - " onclick="window.open('http://www.facebook.com/share.php?u=https://ir.ntic.com/events-presentations&t= - ','Facebook','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Facebook" title="Facebook"aria-label="Facebook"><span class="hide-txt">Facebook</span></a></li>
+            <li><a class="ndqicon-google" href="https://plus.google.com/share?url=https://ir.ntic.com/events-presentations?&amp;t= - " onclick="window.open('https://plus.google.com/share?url=https://ir.ntic.com/events-presentations?&amp;t= - ','GooglePlus','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Google" title="GooglePlus" aria-label="GooglePlus"><span class="hide-txt">Google</span></a></li>
+            <li><a class="ndqicon-linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https://ir.ntic.com/events-presentations&title= - " onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=https://ir.ntic.com/events-presentations&title= - ','LinkedIn','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="LinkedIn" title="LinkedIn"aria-label="LinkedIn"><span class="hide-txt">LinkedIn</span></a></li>
+            <li><a class="ndqicon-tw" href="http://twitter.com/home?status= - +https://ir.ntic.com/events-presentations" onclick="window.open('http://twitter.com/home?status= - +https://ir.ntic.com/events-presentations','Twitter','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Twitter" title="Twitter"aria-label="Twitter"><span class="hide-txt">Twitter</span></a></li>
+            <li><a class="ndqicon-rss" href="/rss-news-feeds" alt="RSS" title="RSS" aria-label="RSS"><span class="hide-txt">RSS</span></a></li>
+        </ul>
+    </div>
+</div>
+    </nav>
+
+  </div>
+
+			  </div>
+	  <div id="footer_wrapper" class="footer_block"> </div>
+</div>
+<div id="footer">
+	 <div id="footer_wrapper">
+		<div id="footer-area" class="clearfix">
+		   <div class="column">
+			  <div class="region region-footer-first">
+				 <div id="block-menu-menu-first-bottom-links" class="block block-menu">
+					<h2 >Links</h2>
+					<div class="content">
+					   <ul class="menu">
+						  <li class="first leaf"><a href="https://www.ntic.com/pdf/Northern_Technologies_ISO_9001_2015_FM_516997.pdf" target="_blank">ISO 9001:2015 Certification</a></li>
+						  <li class="leaf"><a href="https://ir.ntic.com/">Investor Relations</a></li>
+						  <li class="leaf"><a href="http://www.ntic.com/careers">Careers</a></li>
+						  <li class="last leaf"><a href="http://www.ntic.com/terms-of-use">Terms of Use</a></li>
+					   </ul>
+					</div>
+				 </div>
+				 <!-- /.block --> 
+			  </div>
+			  <!-- /.region --> 
+		   </div>
+		   <div class="column">
+			  <div class="region region-footer-second">
+				 <div id="block-block-8" class="block block-block">
+					<h2 >Corporate Headquarters</h2>
+					<div class="content">
+					   <p>4201 Woodland Road<br />
+						  P.O. Box 69<br />
+						  Circle Pines, MN 55014 USA
+					   </p>
+					   <p>Ship to:<br />
+						  22 Village Parkway<br />
+						  Circle Pines, MN 55014 USA
+					   </p>
+					</div>
+				 </div>
+				 <!-- /.block --> 
+			  </div>
+			  <!-- /.region --> 
+		   </div>
+		   <div class="column">
+			  <div class="region region-footer-third">
+				 <div id="block-block-9" class="block block-block">
+					<h2 >Branch Office</h2>
+					<div class="content">
+					   <p>23900 Mercantile Road<br />
+						  Beachwood, OH 44122 USA
+					   </p>
+					   <p>Phone: +1 (216) 450-5700<br />
+						  Fax: +1 (216) 450-5701
+					   </p>
+					</div>
+				 </div>
+				 <!-- /.block --> 
+			  </div>
+			  <!-- /.region --> 
+		   </div>
+		   <div class="column">
+			  <div class="region region-footer-forth">
+				 <div id="block-block-7" class="block block-block">
+					<h2 >Contact Us</h2>
+					<div class="content">
+					   <p>Toll-Free: +1(800) 328-2433<br />
+						  Phone: +1 (763) 225-6600<br />
+						  Fax: +1 (763) 225-6645
+					   </p>
+					   <p>Email: <a href="mailto:sales@zerust.com">sales@zerust.com</a></p>
+					</div>
+				 </div>
+				 <!-- /.block --> 
+			  </div>
+			  <!-- /.region --> 
+		   </div>
+		</div>
+	 </div>
+	 <div class="footer_credit">
+		<div class="footer_inner_credit">
+		   <div id="copyright">
+			  <p class="copyright">Copyright &copy; 2021, Eco Friendly Product - NTIC </p>
+			  <div class="clear"></div>
+		   </div>
+		</div>
+	 </div>
+</div>	
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgNorthernTechnologiesInternational";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/10661","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1779\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid1779","theme_token":null},"ajaxTrustedUrl":{"\/events-presentations":true},"user":{"uid":0,"permissionsHash":"dd3506258c7dde9a6237aeea3599bf187ef1aaa77232dbded09fecd22dbfce68"}}</script>
+<script src="/sites/g/files/knoqqb19456/files/js/js_92YU9fUT-RDchIVz-Ou7meIzWqEv5UbgiAVcon5TxHg.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":239,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

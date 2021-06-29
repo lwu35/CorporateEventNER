@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"39077635"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Diamond Offshore Drilling Inc." />
+<meta name="robots" content="index" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investor.diamondoffshore.com/events-and-presentations/upcoming-events" />
+<meta property="og:title" content="Calendar of Events | Diamond Offshore Drilling Inc." />
+<meta name="keywords" content="Diamond Offshore Drilling Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about Diamond Offshore Drilling Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb14696/files/favicon-32x32_2.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://investor.diamondoffshore.com/events-and-presentations/upcoming-events" />
+<link rel="canonical" href="https://investor.diamondoffshore.com/events-and-presentations/upcoming-events" />
+<link rel="shortlink" href="https://investor.diamondoffshore.com/node/5826" />
+<link rel="revision" href="https://investor.diamondoffshore.com/events-and-presentations/upcoming-events" />
+
+    <title>Calendar of Events | Diamond Offshore Drilling Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb14696/files/css/css_TG1V7ZoS1V5Mbexd5rawrUCy8Y-mf6vzGGIFzWlGMg0.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb14696/files/css/css_-Eg7HWM_5UeJI92NEFrduZ0J_4O-q1ArZllranjLY3E.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb14696/files/css/css_GUkDdupIecdcaECidy8lTypcmnuE5fOosmyOAbq16mc.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb14696/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-38458293-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-57MJT8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-57MJT8');
+        </script>
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5826 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div id="header">
+    <div class="navbar navbar-inverse navbar-static-top" xmlns="">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="pull-right visible-desktop">
+                    <form class="search" action="http://www.diamondoffshore.com/search-results" method="get">
+                        <div class="input-append"><input type="text" name="q" placeholder="Search" value="Search"><button type="submit" class="btn"><span>Go</span></button></div>
+                    </form>
+                    <p><a href="http://www.diamondoffshore.com/locations">Contact Us</a></p>
+                </div>
+                <a class="brand" href="http://www.diamondoffshore.com/"><img src="/sites/g/files/knoqqb14696/themes/site/nir_pid1357/client/images/diamond-logo.png" alt="Diamond Offshore"></a><a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".main-collapse">Main Links</a>
+                <div class="nav-collapse main-collapse collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="http://www.diamondoffshore.com/diamond-offshore-profile">About Us</a>
+                            <div class="drop-down">
+                                <div class="container-fluid">
+                                    <h3>About Us Links</h3>
+                                    <div class="row-fluid">
+                                        <div class="span4">
+                                            <ul class="sub-nav">
+                                                <li><a href="http://www.diamondoffshore.com/diamond-offshore-profile" rel="nofollow">Diamond Offshore Profile</a></li>
+                                                <li><a href="http://www.diamondoffshore.com/corporate-governance">Corporate Governance</a></li>
+                                                <li><a href="http://www.diamondoffshore.com/our-history">Our History</a></li>
+                                                <li><a href="http://www.diamondoffshore.com/locations">Locations</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="span4">
+                                            <img src="/sites/g/files/knoqqb14696/themes/site/nir_pid1357/client/images/do031_focus_graphic_0415.jpg" alt="" class="border">
+                                            <p>
+                                                With respect for the lives we touch and the impact we make, we believe we are responsibly unlocking energy.
+                                            </p>
+                                            <p><a href="http://www.diamondoffshore.com/diamond-offshore-profile/purpose-mission-vision" class="btn">PURPOSE, MISSION, VISION</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+						<li><a href="http://www.diamondoffshore.com/fleet-overview">Innovation</a>
+							<div class="drop-down">
+								<div class="container-fluid">
+									<h3>Innovation Links</h3>
+									<div class="row-fluid">
+										<div class="span4">
+											<ul class="sub-nav">
+												<li><a href="http://www.diamondoffshore.com/innovation-overview">Innovation Overview</a></li>
+												
+												<li><a href="http://www.diamondoffshore.com/sim-stack™-service">Sim-Stack™ Service</a></li>
+												<li><a href="http://www.diamondoffshore.com/pressure-control-by-the-hour®">Pressure Control By The Hour®</a></li>
+												<li><a href="http://www.diamondoffshore.com/helical-buoyancy™-riser-technology">Helical Buoyancy™ Riser Technology</a></li>
+											</ul>
+										</div>
+										<div class="span4"><img src="/sites/g/files/knoqqb14696/themes/site/nir_pid1357/client/images/PCbtH_opt3_210px.jpg" alt="PCbtH" class="border">
+											<p>
+												A first-of-its-kind service arrangement that transfers full accountability of BOP availability to the OEM.
+											</p>
+											<p><a href="http://www.diamondoffshore.com/pressure-control-by-the-hour®" class="btn">Pressure Control by the Hour®</a></p>
+										</div>										
+									</div>
+								</div>
+							</div>
+						</li>
+                        <li>
+                            <a href="http://www.diamondoffshore.com/fleet-overview">Our Fleet</a>
+                            <div class="drop-down">
+                                <div class="container-fluid">
+                                    <h3>Our Fleet Links</h3>
+                                    <div class="row-fluid">
+                                        <div class="span4">
+                                            <ul class="sub-nav">
+                                                <li><a href="http://www.diamondoffshore.com/fleet-overview" rel="nofollow">Fleet Overview</a></li>
+                                                <li><a href="http://www.diamondoffshore.com/marketing-contacts">Marketing Contacts</a></li>
+                                                <li></li>
+                                            </ul>
+                                        </div>
+                                        <div class="span4">
+                                            <img src="/sites/g/files/knoqqb14696/themes/site/nir_pid1357/client/images/video-ocean-great-white-tn.png" alt="" class="border">
+                                            <p>
+                                                The Ocean GreatWhite is one of the world’s largest ultra-deepwater harsh environment semisubmersible.
+                                            </p>
+                                            <p><a href="http://www.diamondoffshore.com/video-ocean-greatwhite" class="btn">View the Video</a></p>
+                                        </div>
+                                        <div class="span4">
+                                            <img src="/sites/g/files/knoqqb14696/themes/site/nir_pid1357/client/images/video_oceanblackhawk_tn.png" alt="" class="border">
+                                            <p>
+                                                The Ocean BlackHawk, an ultra-deepwater drillship, commenced operations in 2014.
+                                            </p>
+                                            <p><a href="http://www.diamondoffshore.com/video-360-degree-flyaround-of-ocean-blackhawk-drillship" class="btn">View the 360° Video</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="http://www.diamondoffshore.com/hsse-overview">HSE Excellence</a>
+                            <div class="drop-down">
+                                <div class="container-fluid">
+                                    <h3>HSE Excellence Links</h3>
+                                    <div class="row-fluid">
+                                        <div class="span4">
+                                            <ul class="sub-nav">
+                                                <li><a href="http://www.diamondoffshore.com/hsse-overview" rel="nofollow">HSE Overview</a></li>
+                                                <li><a href="http://www.diamondoffshore.com/zero-incident-operations-(zio)">Zero Incident Operations (ZIO)</a></li>
+                                                <li><a href="http://www.diamondoffshore.com/global-excellence-management-system-(gems)">Global Excellence Management System (GEMS)</a></li>
+                                                <li><a href="http://www.diamondoffshore.com/safety-strategies">Safety Strategies</a></li>
+                                                <li><a href="http://www.diamondoffshore.com/environmental">Environmental</a></li>
+                                                <li><a href="http://www.diamondoffshore.com/global-security">Global Security</a></li>
+                                            </ul>
+                                        </div>                                       
+										<div class="span4">
+										<img src="/sites/g/files/knoqqb14696/themes/site/nir_pid1357/client/images/SimStack_sidebar.jpg" alt="" class="border"><p>
+                                            The underlying Sim-Stack technology received a designation as a STAR initiative from BSEE, being one of the industry’s best available and safest technologies. 
+
+                                        </p><p><a href="http://www.diamondoffshore.com/sim-stack™-service" class="btn">Sim-Stack™ Service</a></p>
+										</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/">Investor Relations</a>
+                            <div class="drop-down">
+                                <div class="container-fluid">
+                                    <h3>Investor Relations Links</h3>
+                                    <div class="row-fluid">
+                                        <div class="span4">
+                                            <ul class="sub-nav">
+                                                <li><a href="/" rel="nofollow">Investor Overview</a></li>
+                                                <li><a href="http://www.diamondoffshore.com/Documents/Rig%20Report/DOFleetStatus.pdf">Rig Fleet Status Report</a></li>
+                                                <li><a href="/news-releases">Press Releases</a></li>
+                                                <li><a href="/financial-information/annual-reports">Financial Information</a></li>                                                
+                                                <li><a href="http://www.diamondoffshore.com/corporate-governance">Corporate Governance</a></li>                                                
+                                                <li><a href="/events-and-presentations/upcoming-events">Calendar of Events</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="span4">
+                                            <img src="/sites/g/files/knoqqb14696/themes/site/nir_pid1357/client/images/video-ocean-great-white-tn.png" alt="" class="border">
+                                            <p>
+                                                The Ocean GreatWhite is one of the world’s largest ultra-deepwater harsh environment semisubmersible.
+                                            </p>
+                                            <p><a href="http://www.diamondoffshore.com/video-ocean-greatwhite" class="btn">View the Video</a></p>
+                                        </div>
+                                        <div class="span4">
+                                            <div class="border">
+                                                <ul>
+                                                    <li><a href="/shareholder-services/email-alerts" rel="nofollow">E-Mail Alerts</a></li>
+                                                    <li><a href="/rss-feeds">RSS Feeds</a></li>
+                                                    <li><a href="/financial-information/annual-reports">Annual Report</a></li>
+                                                    <li><a href="/shareholder-services/contact-ir">View Contacts</a></li>
+                                                    <li><a href="/request-information">Request Information</a></li>
+                                                   
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="http://www.diamondoffshore.com/featured-news">Media</a>
+                            <div class="drop-down">
+                                <div class="container-fluid">
+                                    <h3>Media Links</h3>
+                                    <div class="row-fluid">
+                                        <div class="span4">
+                                            <ul class="sub-nav">                                                
+                                                <li><a href="/news-releases">Press Releases</a></li>
+                                                <li><a href="http://www.diamondoffshore.com/image-library">Image Library</a></li>
+                                                <li><a href="http://www.diamondoffshore.com/video-library">Video Library</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="span4">
+                                            <img src="/sites/g/files/knoqqb14696/themes/site/nir_pid1357/client/images/PCbtH_opt3_210px.jpg" alt="" class="border">
+                                            <p>
+                                                A first-of-its-kind service arrangement that transfers full accountability of BOP availability to the OEM.
+                                            </p>
+                                            <p><a href="http://www.diamondoffshore.com/pressure-control-by-the-hour" class="btn">PRESSURE CONTROL BY THE HOUR</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="http://www.diamondoffshore.com/restructuring">Restructuring</a>
+                            <div class="drop-down">
+                                <div class="container-fluid">
+                                    <h3>Restructuring Links</h3>
+                                    <div class="row-fluid">
+                                            <div class="span4">
+                                                <ul class="sub-nav">
+                                                    <li><a href="http://www.diamondoffshore.com/restructuring" rel="nofollow">Restructuring</a></li>
+                                                </ul>   
+                                            </div>
+                                            <div class="span4">
+                                                <img src="http://www.diamondoffshore.com/images/purpose_767x310.jpg" alt="" class="border">
+                                                <p>Look here for information regarding our restructuring.</p>
+                                                <p> <a href="http://www.diamondoffshore.com/restructuring" class="btn">Restructuring Information</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <a class="btn btn-navbar btn-subnav-bar collapsed" data-toggle="collapse" data-target=".subnav-collapse">Secondary Links</a>
+                <div class="nav-collapse subnav-collapse collapse">
+                    <ul class="nav">
+                        <li><a href="/" rel="nofollow">Investor Overview</a></li>
+                        <li><a href="http://www.diamondoffshore.com/Documents/Rig%20Report/DOFleetStatus.pdf">Rig Fleet Status Report</a></li>
+                        <li><a href="/news-releases">Press Releases</a></li>
+                        <li><a href="/financial-information/annual-reports">Financial Information</a></li>
+                        <li><a href="/stock-information/analyst-coverage">Analyst Coverage</a></li>
+                        <li><a href="http://www.diamondoffshore.com/corporate-governance">Corporate Governance</a></li>                        
+                        <li><a href="/events-and-presentations/upcoming-events">Calendar of Events</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="ajax">
+
+
+    
+    
+    
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="span3 sidebar">  <div class="region region-sidebar-first">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1357-investorrelations-menu" id="block-nir-pid1357-investorrelations" class="block--system-menu-blockir block--system-menu-blockir--5826 block--sidebar-first--system-menu-block--ir block--sidebar-first--system-menu-block--ir--5826 block--5731805d-3b31-4d2c-8463-3ed5dd3d0334 block--5731805d-3b31-4d2c-8463-3ed5dd3d0334--5826 block block-menu navigation block-system-menublock menu--ir">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1357-investorrelations-menu">Investor Relations</h2>
+    
+
+                              <ul data-block-uuid="5731805d-3b31-4d2c-8463-3ed5dd3d0334" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/" target="" rel="" title="Main Investor Relations Page" data-drupal-link-system-path="&lt;front&gt;">Investor Relations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="http://www.diamondoffshore.com/fleet-overview" target="" rel="">Rig Fleet Status Report</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/annual-reports" target="" rel="" data-drupal-link-system-path="node/5881">Financial Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="http://www.diamondoffshore.com/corporate-governance" target="" rel="">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-and-presentations/upcoming-events" target="" rel="" data-drupal-link-system-path="node/5826" class="is-active">Calendar of Events</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+
+<nav role="navigation" aria-labelledby="block-shareholdertools-menu" id="block-shareholdertools" class="block--system-menu-blocktools block--system-menu-blocktools--5831 block--sidebar-first--system-menu-block--tools block--sidebar-first--system-menu-block--tools--5831 block--76734a76-4c52-43a2-a405-22af8a3c0051 block--76734a76-4c52-43a2-a405-22af8a3c0051--5831 block block-menu navigation block-system-menublock menu--tools">
+            
+    <h2 id="block-shareholdertools-menu">Investor Toolkit</h2>
+    
+
+                              <ul data-block-uuid="76734a76-4c52-43a2-a405-22af8a3c0051" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="" target="" rel="">Print Page</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">E-mail Alerts</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/rss-feeds" data-drupal-link-system-path="node/5951">RSS Feeds</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/annual-reports" target="" rel="" data-drupal-link-system-path="node/5881">Annual Report</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/contact-ir" target="" rel="" data-drupal-link-system-path="node/5981">Contact Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/request-information" target="" rel="" data-drupal-link-system-path="node/5966">Request Information</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+</div>
+                <div class="span9 wrapper">
+                                        <div class="bread"></div>
+                                                           <div class="ccbnContent">  <div class="region region-content">
+    <div id="block-nir-pid1357-breadcrumbs" class="block--system-breadcrumb-block block--system-breadcrumb-block--5826 block--content--system-breadcrumb-block block--content--system-breadcrumb-block--5826 block--8618e12f-4526-48a5-97d1-cbfa89b364bb block--8618e12f-4526-48a5-97d1-cbfa89b364bb--5826 block block-system block-system-breadcrumb-block">
+  
+    
+      
+    <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+        <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
+         <div class="breadcrumb">
+		 
+		 <span><a href="http://www.diamondoffshore.com/">Home</a>&nbsp;<span> ~ </span></span>
+
+		 
+                            <span>
+                 				                                  <a href="/">Investor Relations</a>&nbsp;<span> ~ </span>
+						 						
+                                    </span>
+                            <span>
+                                      Upcoming Events
+					
+                                    </span>
+                    </div>
+    </nav>
+
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1357-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--6660436b-f793-416a-9704-4bb0ec5d3f90 block--6660436b-f793-416a-9704-4bb0ec5d3f90--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Calendar of Events
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--upcoming-events block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--13370c9c-32cf-4bf2-b362-1fdbe553fc73 block--13370c9c-32cf-4bf2-b362-1fdbe553fc73--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Upcoming Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              There are currently no events scheduled.
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="footer">
+    <div class="navbar navbar-inverse navbar-static-top" xmlns="">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="span2 hidden-phone">
+                        <ul>
+                            <li><a href="http://www.diamondoffshore.com/legal">Legal</a></li>
+                            <li><a href="http://www.diamondoffshore.com/site-map">Site Map</a></li>
+                        </ul>
+                    </div>
+                    <div class="span8">
+                                                      <div class="region region-footer-profile">
+    <div id="block-gbfooterprofile" class="block-content--nir-global-block block-content--nir-global-block--6061 block--block-content7426079c-43ac-418d-a815-99f66367f3e4 block--block-content7426079c-43ac-418d-a815-99f66367f3e4--5826 block--footer-profile--block-content--7426079c-43ac-418d-a815-99f66367f3e4 block--footer-profile--block-content--7426079c-43ac-418d-a815-99f66367f3e4--5826 block--d758a436-f6dd-49cb-8571-41356bd87ec9 block--d758a436-f6dd-49cb-8571-41356bd87ec9--5826 block block-block-content block-block-content7426079c-43ac-418d-a815-99f66367f3e4">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><h3>Corporate Profile</h3>
+
+<p><strong>Diamond Offshore Drilling Inc. </strong> is a leader in offshore drilling, providing contract drilling services to the energy industry around the globe with a total fleet of 15 offshore drilling rigs, consisting of 11 semisubmersibles and four dynamically positioned drillships.</p>
+
+<p><a class="btn" href="http://www.diamondoffshore.com/diamond-offshore-profile">Learn More</a></p></div>
+      
+</div>
+      
+  </div>
+
+  </div>
+
+                                            </div>
+                    <div class="span2">
+                        <form class="search" action="http://www.diamondoffshore.com/search-results/" method="get">
+                            <div class="input-append"><input type="text" placeholder="Search" name="q" value="Search"><button class="btn" type="submit"><span>Go</span></button></div>
+                        </form>
+                    </div>
+                    <div class="span2 visible-phone">
+                        <ul>
+                            <li><a href="http://www.diamondoffshore.com/legal">Legal</a></li>
+                            <li><a href="http://www.diamondoffshore.com/site-map">Site Map</a></li>
+                        </ul>
+                    </div>
+                    <div class="span8 offset2">
+                        <p class="copyright">© 2021 Diamond Offshore, Inc. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "TRCGCLIENTWEB1164";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1357\/override,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid1357","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"9ffe129786b28eea212bfb18e9e8fd667213a4c331b213c53a54e7c672bd47a5"}}</script>
+<script src="/sites/g/files/knoqqb14696/files/js/js_VTWu3x4l-OMpoo3kOQT60tOwfBBfGfFMYy2UDYdIoa0.js"></script>
+<script src="//use.typekit.net/lck7lda.js"></script>
+<script src="/sites/g/files/knoqqb14696/files/js/js_8VXgADnA6Yk0pQDbmTlGBO9NUsV1f0GGWud2pD0Z7ec.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"39077635,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fYEcMTlxbVF1ITUBZQA==","queueTime":0,"applicationTime":109,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

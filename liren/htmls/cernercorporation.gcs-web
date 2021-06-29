@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"56127085"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Cerner Corporation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cernercorporation.gcs-web.com/events-and-presentations" />
+<meta property="og:title" content="Events &amp; Presentations | Cerner Corporation" />
+<meta name="referrer" content="no-referrer" />
+<meta property="og:description" content="The Investor Relations website contains information about Cerner Corporation&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb48471/files/favicons_0.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://cernercorporation.gcs-web.com/events-and-presentations" />
+<link rel="canonical" href="https://cernercorporation.gcs-web.com/events-and-presentations" />
+<link rel="shortlink" href="https://cernercorporation.gcs-web.com/node/5821" />
+<link rel="revision" href="https://cernercorporation.gcs-web.com/events-and-presentations" />
+
+    <title>Events &amp; Presentations | Investor Relations | Cerner Corporation</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb48471/files/css/css_rfjm6CJ_0NMC2yDcg2-ndYMEx1qfufTwwHO3KArx5Oc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb48471/files/css/css_f3CtNqfFOLOn2s8aLZ6mSFojiwv7Gk5vZiBXfRw7YuU.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb48471/files/css/css_kdSKhReSv4BZpT68otyy_rHoQNEfpmuxcIkgsT1R8J4.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb48471/files/css/css_VwzKqfGu5f9BvtVScgyRccvT3sWRwnNU6NTl8LCeJSw.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb48471/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5821 page-template-default page page-id-12 lang-en path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="banner" id="banner-inner-pages">         
+    <header>
+        <div class="top-bar row">  
+            <div class="top-bar-left">
+                <a href="https://www.cerner.com">
+                    <img src="/sites/g/files/knoqqb48471/themes/site/nir_pid658/dist/images/logo.png" alt="logo"/>
+                </a>
+            </div>
+            <div class="top-bar-right">
+                <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="large">
+                    <button class="menu-icon" type="button" aria-label="Open Search" data-toggle=""></button>
+                </div>
+                <div class="" id="main-menu">
+                                    
+
+
+                        
+    <h2 class="visually-hidden" id="block-nir-pid658-investorrelations-menu">Investor Relations</h2>
+    
+
+                              <ul class="menu vertical large-horizontal expanded large-text-center" data-responsive-menu="drilldown large-dropdown">
+    
+
+                      <li id="Overview" class="                ">
+
+              <a href="/investor-overview" target="" rel="" title="Main Investor Relations Page" data-drupal-link-system-path="node/5806">Overview</a>
+
+              
+            </li>
+                      <li id="News &amp; Events" class="has-submenu                active">
+
+              <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/16911">News &amp; Events</a>
+
+                                            <ul class="submenu menu vertical" data-submenu>
+    
+
+                      <li id="Press Releases" class="                ">
+
+              <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/16911">Press Releases</a>
+
+              
+            </li>
+                      <li id="Financial Releases" class="                ">
+
+              <a href="/financial-releases" target="" rel="" data-drupal-link-system-path="node/17261">Financial Releases</a>
+
+              
+            </li>
+                      <li id="Events and Presentations" class="                active">
+
+              <a href="/events-and-presentations" target="" rel="" data-drupal-link-system-path="node/5821" class="is-active">Events and Presentations</a>
+
+              
+            </li>
+              
+    </ul>
+  
+              
+            </li>
+                      <li id="Financials" class="has-submenu                ">
+
+              <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">Financials</a>
+
+                                            <ul class="submenu menu vertical" data-submenu>
+    
+
+                      <li id="SEC Filings" class="                ">
+
+              <a href="/financial-information/sec-filings" data-drupal-link-system-path="node/5876">SEC Filings</a>
+
+              
+            </li>
+                      <li id="Annual Reports" class="                ">
+
+              <a href="https://www.cerner.com/about/investor-relations/annual-reports" target="" rel="">Annual Reports</a>
+
+              
+            </li>
+                      <li id="Proxy Materials" class="                ">
+
+              <a href="/financial-information/proxy-materials" target="" rel="" data-drupal-link-system-path="node/23196">Proxy Materials</a>
+
+              
+            </li>
+                      <li id="Investor Materials" class="                ">
+
+              <a href="/financial-information/investor-materials" target="" rel="" data-drupal-link-system-path="node/23176">Investor Materials</a>
+
+              
+            </li>
+              
+    </ul>
+  
+              
+            </li>
+                      <li id="Stock Information" class="has-submenu                ">
+
+              <a href="/stock-information/stock-quote-chart" data-drupal-link-system-path="node/5911">Stock Information</a>
+
+                                            <ul class="submenu menu vertical" data-submenu>
+    
+
+                      <li id="Stock Quote &amp; Chart" class="                ">
+
+              <a href="/stock-information/stock-quote-chart" target="" rel="" data-drupal-link-system-path="node/5911">Stock Quote &amp; Chart</a>
+
+              
+            </li>
+                      <li id="Dividend History" class="                ">
+
+              <a href="/stock-information/dividend-history" data-drupal-link-system-path="node/5931">Dividend History</a>
+
+              
+            </li>
+                      <li id="Historical Price Lookup" class="                ">
+
+              <a href="/stock-information/historical-price-lookup" data-drupal-link-system-path="node/5921">Historical Price Lookup</a>
+
+              
+            </li>
+                      <li id="Investment Calculator" class="                ">
+
+              <a href="/stock-information/investment-calculator" data-drupal-link-system-path="node/5926">Investment Calculator</a>
+
+              
+            </li>
+                      <li id="Institutional Ownership" class="                ">
+
+              <a href="/stock-information/institutional-ownership" data-drupal-link-system-path="node/5901">Institutional Ownership</a>
+
+              
+            </li>
+                      <li id="Dividend FAQs" class="                ">
+
+              <a href="/stock-information/dividend-faqs" target="" rel="" data-drupal-link-system-path="node/23241">Dividend FAQs</a>
+
+              
+            </li>
+                      <li id="Transfer Agent FAQs" class="                ">
+
+              <a href="/transfer-agent-faq-0" target="" rel="" data-drupal-link-system-path="node/23261">Transfer Agent FAQs</a>
+
+              
+            </li>
+              
+    </ul>
+  
+              
+            </li>
+                      <li id="Governance" class="has-submenu                ">
+
+              <a href="https://www.cerner.com/about/leadership" target="" rel="">Governance</a>
+
+                                            <ul class="submenu menu vertical" data-submenu>
+    
+
+                      <li id="Governance Overview" class="                ">
+
+              <a href="https://www.cerner.com/about/corporate-governance" target="" rel="">Governance Overview</a>
+
+              
+            </li>
+                      <li id="Management" class="                ">
+
+              <a href="https://www.cerner.com/about/leadership/#exec">Management</a>
+
+              
+            </li>
+                      <li id="Board of Directors" class="                ">
+
+              <a href="https://www.cerner.com/about/leadership/#bod">Board of Directors</a>
+
+              
+            </li>
+                      <li id="Committee Composition" class="                ">
+
+              <a href="https://www.cerner.com/about/leadership/#committee">Committee Composition</a>
+
+              
+            </li>
+                      <li id="Corporate Responsibility" class="                ">
+
+              <a href="https://www.cerner.com/about/corporate-responsibility">Corporate Responsibility</a>
+
+              
+            </li>
+              
+    </ul>
+  
+              
+            </li>
+                      <li id="Resources" class="has-submenu                ">
+
+              <a href="/resources/investor-faqs" target="" rel="" data-drupal-link-system-path="node/5941">Resources</a>
+
+                                            <ul class="submenu menu vertical" data-submenu>
+    
+
+                      <li id="Investor FAQs" class="                ">
+
+              <a href="/resources/investor-faqs" data-drupal-link-system-path="node/5941">Investor FAQs</a>
+
+              
+            </li>
+                      <li id="Information Requests / Contact Us" class="                ">
+
+              <a href="/resources/contact-us" target="" rel="" data-drupal-link-system-path="node/5981">Information Requests / Contact Us</a>
+
+              
+            </li>
+                      <li id="Email Alerts" class="                ">
+
+              <a href="/shareholder-services/email-alerts" data-drupal-link-system-path="node/5946">Email Alerts</a>
+
+              
+            </li>
+              
+    </ul>
+  
+              
+            </li>
+              
+    </ul>
+  
+
+
+    
+
+                              </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="row" id="banner-content">
+
+         
+
+      <div class="large-8 small-12 column">
+                    <h1>Events & Presentations</h1>
+          
+
+              </div>
+
+      
+    </div>
+</div>
+<!-- End of Parallax Banner -->
+
+
+
+<div class="row">
+    <div class="large-12 columns">
+      <div id="ndq-content" class="ndq-5821">
+            <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid658-content" class="block--system-main-block block--system-main-block--5821 block--content--system-main-block block--content--system-main-block--5821 block--303966fb-b1a7-4968-9f01-8b5950d33486 block--303966fb-b1a7-4968-9f01-8b5950d33486--5821 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--8ed126d0-de22-4a6a-a8da-092f63342a76 block--8ed126d0-de22-4a6a-a8da-092f63342a76--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Upcoming Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Q1 2021 Cerner Corporation Earnings Conference Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            May 5, 2021 at 9:00 AM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/rmxqf5fh" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Cerner Corporation 2021 Annual Shareholders’ Meeting</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            May 19, 2021 at 10:00 AM CDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>Virtual meeting at <a href="https://www.virtualshareholdermeeting.com/CERN2021">www.virtualshareholdermeeting.com/CERN2021</a>.<br /><br /><strong>Please note:</strong> Due to COVID-19 precautions, Cerner will be hosting our annual meeting virtually at the link above. We will not be hosting an in-person meeting.</p>
+
+<p> </p></div>
+          </div>
+
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--b56255ba-c7c5-4526-9642-2d8b5ceb5185 block--b56255ba-c7c5-4526-9642-2d8b5ceb5185--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+       Past Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Q4 2020 Cerner Corporation Earnings Conference Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Feb 10, 2021 at 4:30 PM EST
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/8jejny9x" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/8a05c833-e85a-4f1a-9ec7-179e01d01cd4" type="application/pdf; length=240165" title="Q4 2020 Earnings Script.pdf">Q420 Speaker Script</a></span><span class="filesize"> 240.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/d92e1db0-5b0c-40f4-8c91-693411f0df71" type="application/pdf; length=194590" title="CERN-USQ_Transcript_2021-02-10.pdf">Q420 Transcript with Q&amp;A</a></span><span class="filesize"> 194.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">39th Annual J.P. Morgan Healthcare Conference</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jan 13, 2021 at 10:00 AM EST
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://jpmorgan.metameetings.net/events/healthcare21/sessions/35327-cerner-corp/webcast?gpu_only=true&amp;kiosk=true" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/39b2a245-363b-41e1-bc8d-bbac096597d0" type="application/pdf; length=1739696" title="2021 Cerner JP Morgan Presentation.pdf">Cerner 2021 J.P. Morgan Healthcare Conference Presentation</a></span><span class="filesize"> 1.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Q3 2020 Cerner Corporation Earnings Conference Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Oct 28, 2020 at 4:30 PM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/gyjaytxa" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/fc6d269c-8979-4269-a8c4-9a5968892bff" type="application/pdf; length=272192" title="Q3 2020 Earnings Script .pdf">Q320 Speaker Script</a></span><span class="filesize"> 272.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/523d4136-747a-49e2-9a02-33a8da8d5f84" type="application/pdf; length=193777" title="CERN-USQ_Transcript_2020-10-28.pdf">Q320 Transcript with Q&amp;A</a></span><span class="filesize"> 193.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Q2 2020 Cerner Corporation Earnings Conference Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jul 29, 2020 at 4:30 PM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/i4w8bruc" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/42f4b470-acd5-4c77-a5d6-d4cd43b52d04" type="application/pdf; length=259748" title="Q2 2020 Earnings Script.pdf">Q220 Speaker Script</a></span><span class="filesize"> 259.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/6ba45c8d-bde1-4737-baa6-944ffc7a51cf" type="application/pdf; length=247777" title="CERN-USQ_Transcript_2020-07-29.pdf">Q220 Transcript with Q&amp;A</a></span><span class="filesize"> 247.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Cerner Corporation 2020 Annual Shareholders’ Meeting</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            May 22, 2020 at 10:00 AM CDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><strong>Please note:</strong> Due to the COVID-19 pandemic, Cerner will be hosting our annual meeting virtually at the link below. We will not be hosting an in-person meeting.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://www.virtualshareholdermeeting.com/CERN2020" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/56688ab0-d12d-401f-be4e-fa79b7d0156f" type="application/pdf; length=2055177" title="2020 Cerner Annual Shareholder Meeting.pdf">2020 Annual Shareholders' Meeting Presentation</a></span><span class="filesize"> 2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Q1 2020 Cerner Corporation Earnings Conference Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Apr 28, 2020 at 4:30 PM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/inxjha65" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/356c577f-a033-411e-ae14-24f20285ea9a" type="application/pdf; length=278523" title="Q120 Speaker Script.pdf">Q120 Speaker Script</a></span><span class="filesize"> 278.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/93282372-8ae2-40ca-87ba-85029dc1fec5" type="application/pdf; length=211737" title="Q120 Earnings Call Transcript 4-28-2020.pdf">Q120 Transcript with Q&amp;A</a></span><span class="filesize"> 211.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">2020 Investment Community Meeting  </div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Mar 10, 2020 at 9:00 AM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/bjs2t9dg" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/633e748e-778b-464d-808c-1d215232e8f9" type="application/pdf; length=10070324" title="Cerner 2020 Investment Community Meeting.pdf">2020 Investment Community Meeting Presentation (10 MB)	</a></span><span class="filesize"> 10 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/2c8398e0-8c33-470f-8e6c-6a0d46159d16" type="application/pdf; length=311238" title="CERN 2020-Mar-10-137920684346-Transcript.pdf">2020 Investment Community Meeting Transcript</a></span><span class="filesize"> 311.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Q4 2019 Cerner Corporation Earnings Conference Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Feb 4, 2020 at 4:30 PM EST
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/mc74vm45" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/d3596993-9ebf-4ad3-aed6-82049417dc1c" type="application/pdf; length=249556" title="Q419 Speaker Script.pdf">Q419 Speaker Script</a></span><span class="filesize"> 249.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/b865e588-a32f-4653-a7e7-ea3e62017d70" type="application/pdf; length=202150" title="CERN-USQ_Transcript_2020-02-04.pdf">Q419 Transcript with Q&amp;A</a></span><span class="filesize"> 202.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">38th Annual J.P. Morgan Healthcare Conference</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jan 14, 2020 at 11:00 AM PST
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://jpmorgan.metameetings.net/events/hc20/sessions/29804-cerner-corp/webcast" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/8c23891b-11d7-49b5-a79e-35791ca31ee0" type="application/pdf; length=2262739" title="2020 Cerner JP Morgan Presentation.pdf">38th Annual J.P. Morgan Healthcare Conference</a></span><span class="filesize"> 2.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Q3 2019 Cerner Corporation Earnings Conference Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Oct 24, 2019 at 4:30 PM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/t6umfb3g" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/0b0d9072-0021-4399-b704-6e8f516ddf2a" type="application/pdf; length=172632" title="CERN Q3 2019 Earnings Script.pdf">Q319 Speaker Script</a></span><span class="filesize"> 172.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cernercorporation.gcs-web.com/static-files/0ce21ee3-73b9-4ce6-8734-f6de16d46f1d" type="application/pdf; length=205691" title="CERN-USQ_Transcript_2019-10-24.pdf">Q319 Transcript with Q&amp;A</a></span><span class="filesize"> 205.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+        <nav class="pager" role="navigation" aria-labelledby="pagination-heading">
+    <h4 id="pagination-heading" class="visually-hidden">Pagination</h4>
+    <ul class="pager__items js-pager__items">
+                                                        <li class="pager__item is-active">
+                                          <a href="?page=0%2C0" title="Current page">
+            <span class="visually-hidden">
+              Current page
+            </span>1</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C1" title="Go to page 2">
+            <span class="visually-hidden">
+              Page
+            </span>2</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C2" title="Go to page 3">
+            <span class="visually-hidden">
+              Page
+            </span>3</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C3" title="Go to page 4">
+            <span class="visually-hidden">
+              Page
+            </span>4</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C4" title="Go to page 5">
+            <span class="visually-hidden">
+              Page
+            </span>5</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C5" title="Go to page 6">
+            <span class="visually-hidden">
+              Page
+            </span>6</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C6" title="Go to page 7">
+            <span class="visually-hidden">
+              Page
+            </span>7</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C7" title="Go to page 8">
+            <span class="visually-hidden">
+              Page
+            </span>8</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C8" title="Go to page 9">
+            <span class="visually-hidden">
+              Page
+            </span>9</a>
+        </li>
+                          <li class="pager__item pager__item--ellipsis" role="presentation">&hellip;</li>
+                          <li class="pager__item pager__item--next">
+          <a href="?page=0%2C1" title="Go to next page" rel="next">
+            <span class="visually-hidden">Next page</span>
+            <span aria-hidden="true">next ›</span>
+          </a>
+        </li>
+                          <li class="pager__item pager__item--last">
+          <a href="?page=0%2C12" title="Go to last page">
+            <span class="visually-hidden">Last page</span>
+            <span aria-hidden="true">last »</span>
+          </a>
+        </li>
+          </ul>
+  </nav>
+
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Important Links -->
+<div class="column" id="ndq-important-links">
+            <div class="region region-important-links">
+    <div id="block-gbimportantlinks" class="block-content--nir-global-block block-content--nir-global-block--23171 block--block-contentbb1f202c-b5b1-46eb-ae84-e5ae7f810da7 block--block-contentbb1f202c-b5b1-46eb-ae84-e5ae7f810da7--5821 block--important-links--block-content--bb1f202c-b5b1-46eb-ae84-e5ae7f810da7 block--important-links--block-content--bb1f202c-b5b1-46eb-ae84-e5ae7f810da7--5821 block--c5a0e15d-4b6a-4002-ae4d-0d2f1bd78905 block--c5a0e15d-4b6a-4002-ae4d-0d2f1bd78905--5821 block block-block-content block-block-contentbb1f202c-b5b1-46eb-ae84-e5ae7f810da7">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><p style="&#10;    text-align: center;&#10;"><a href="//www.cerner.com/about/investor-relations/investors" target="_blank">Important Information: Investors/Potential Investors</a><span class="divider"> | </span><a href="//www.cerner.com/about/investor-relations/cautionary-language" target="_blank">Cautionary Language Regarding Forward-Looking Statements</a></p></div>
+      
+</div>
+      
+  </div>
+
+  </div>
+
+    </div>
+<!-- End of Important Links -->
+
+<!-- Toolkit -->
+<div class="column" id="ndq-toolkit-div">
+            <div class="region region-tools">
+    
+
+
+                        
+    <h2 class="visually-hidden" id="block-nir-pid658-tools-menu">Tools</h2>
+    
+
+                            
+     <div class="row small-up-3 medium-up-6 large-up-6">
+        <!--
+      <div class="column">
+        <div class="icoTools">
+          <a href="javascript:window.print();" rel="nofollow" title="Print" alt="Print">
+            <span class="icon ndqicon-print">
+            </span>            
+          </a>          
+        </div><p>Print</p>
+      </div>
+
+      <div class="column">
+        <div class="icoTools">
+          <a href="mailto:?body=https://cernercorporation.gcs-web.com/events-and-presentations" rel="nofollow" alt="Email Page">
+            <span class="icon ndqicon-mail">
+            </span>
+          </a>          
+        </div><p>Email Page</p>
+      </div> 
+      
+      <div class="column">
+        <div class="icoTools">
+          <a href="javascript:window.print();" rel="nofollow" title="Search" alt="Search">
+            <span class="icon ndqicon-search">
+            </span>
+          </a>          
+        </div><p>Search</p>
+    -->
+
+
+              
+        <div class="column">
+          <div class="icoTools">
+            <a href="/shareholder-services/email-alerts" title="E-mail Alerts" alt="E-mail Alerts" class="">
+              <span  class="icon ndqicon-alerts">
+              </span>
+            </a>            
+          </div><p>E-mail Alerts</p>
+        </div>
+
+
+                  
+              
+        <div class="column">
+          <div class="icoTools">
+            <a href="/resources/contact-us" title="Contact Us" alt="Contact Us" class="">
+              <span  class="icon ndqicon-chair">
+              </span>
+            </a>            
+          </div><p>Contact Us</p>
+        </div>
+
+
+                  
+              
+        <div class="column">
+          <div class="icoTools">
+            <a href="/events-and-presentations" title="Events &amp; Presentations" alt="Events &amp; Presentations" class="">
+              <span  class="icon ndqicon-calendar-1">
+              </span>
+            </a>            
+          </div><p>Events &amp; Presentations</p>
+        </div>
+
+
+                  
+              
+        <div class="column">
+          <div class="icoTools">
+            <a href="/resources/investor-faqs" title="Investor FAQs" alt="Investor FAQs" class="">
+              <span  class="icon ndqicon-faq">
+              </span>
+            </a>            
+          </div><p>Investor FAQs</p>
+        </div>
+
+
+                  
+              
+        <div class="column">
+          <div class="icoTools">
+            <a href="/financial-information/proxy-materials" title="Proxy Materials" alt="Proxy Materials" class="">
+              <span  class="icon ndqicon-printed-materials-1">
+              </span>
+            </a>            
+          </div><p>Proxy Materials</p>
+        </div>
+
+
+                  
+              
+        <div class="column">
+          <div class="icoTools">
+            <a href="/rss-feeds" title="RSS Feeds" alt="RSS Feeds" class="">
+              <span  class="icon ndqicon-rss">
+              </span>
+            </a>            
+          </div><p>RSS Feeds</p>
+        </div>
+
+
+                  
+      
+      
+      </div>
+
+    </div>
+
+  
+
+
+    
+
+  </div>
+
+    </div>
+<!-- End of toolkit-->
+
+<!-- Social Icons -->
+<div class="column text-center" id="ndq-social-div">
+    <div class="row column">
+        <div>
+                      <div id="block-gbsociallinks" class="block-content--nir-global-block block-content--nir-global-block--23101 block--block-content8939d0b3-e9f3-4ef1-b184-b2d03b73571c block--block-content8939d0b3-e9f3-4ef1-b184-b2d03b73571c--5821 block--social--block-content--8939d0b3-e9f3-4ef1-b184-b2d03b73571c block--social--block-content--8939d0b3-e9f3-4ef1-b184-b2d03b73571c--5821 block--cf52a15c-0114-42d3-a95b-eea61a9894cf block--cf52a15c-0114-42d3-a95b-eea61a9894cf--5821 block block-block-content block-block-content8939d0b3-e9f3-4ef1-b184-b2d03b73571c">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><h5>Connect with us on social media.</h5>
+<a href="https://www.linkedin.com/company/cerner-corporation" title=""><span class="icon ndqicon-linkedin"></span><span class="hide">Linkedin</span></a> <a href="https://www.facebook.com/cerner/" title=""><span class="icon ndqicon-fb"></span><span class="hide">Facebook</span></a> <a href="https://twitter.com/cerner/" title=""><span class="icon ndqicon-tw-1"></span><span class="hide">Twitter</span></a> <a href="https://youtube.com/cernercorporation" title=""><span class="icon ndqicon-youtube"></span><span class="hide">Youtube</span></a> <a href="https://www.instagram.com/CernerCorporation/" title=""><span class="icon ndqicon-instagram"></span><span class="hide">Instagram</span></a></div>
+      
+</div>
+      
+  </div>
+
+                  </div>
+    </div>
+</div>
+<!-- End of Social Icons -->
+
+<footer>
+    <div class="column footer-sitemap">
+        <div class="row">            
+            <div class="small-12 large-2 columns">
+                <div><img src="/sites/g/files/knoqqb48471/themes/site/nir_pid658/dist/images/logo.png" alt="ACCO Brands" /></div>
+            </div>
+            <div class="small-12 large-10 columns">   
+                              
+              <div class="small-12 medium-4 large-4 columns">
+                  <span class="footer-section-title"></span>
+                  <ul class="menu vertical">
+                      <li><a href="https://www.cerner.com/about">About Us</a></li>
+                      <li><a href="https://www.cerner.com/blog">Our Blog</a></li>
+                      <li><a href="https://www.cerner.com/podcast">Our Podcast</a></li>
+                      <li><a href="https://www.cerner.com/Contactus/">Contact Us</a></li>
+                      <li><a href="https://careers.cerner.com/">Careers</a></li>
+                  </ul>
+              </div>
+              <div class="small-12 medium-4 large-4 columns">
+                  <span class="footer-section-title"></span>
+                  <ul class="menu vertical">
+                      <li><a href="https://www.cvent.com/d/jtqmdy">Events</a></li>
+                      <li><a href="https://connect.ucern.com/">uCern</a></li>
+                      <li><a href="https://ulearn.cerner.com/">uLearn</a></li>
+                      <li><a href="https://www.cerner.com/support">Support</a></li>
+                      <li><a href="https://code.cerner.com/">CODE</a></li>
+                  </ul>
+              </div>
+              <div class="small-12 medium-4 large-4 columns">
+                  <span class="footer-section-title"></span>
+                  <ul class="menu vertical">
+                      <li><a href="https://www.cerner.com/privacy">Privacy</a></li>
+                      <li><a href="https://www.cerner.com/security">Security</a></li>
+                      <li><a href="https://www.cerner.com/cehrt-disclosure-information">CEHRT Disclosures</a></li>
+                      <li><a href="https://www.cerner.com/terms-of-use">Terms of Use</a></li>
+                      <li><a href="https://www.cerner.com/blog?c=News+Releases">News Releases</a></li>
+                  </ul>
+              </div>  
+           </div>
+        </div>
+    </div>
+    <div class="column primary footer-global">
+        <div class="row">
+            <div class="medium-6 columns">
+                <ul class="menu">
+                  <li class="">© Copyright 2021 Cerner Corporation. All rights reserved.</li>
+                </ul>
+            </div>
+            <div class="medium-6 columns large-push-3">
+                          </div>
+        </div>
+    </div>
+</footer>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb1062";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5821","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid658\/override,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid658","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"f43eb67bbf198921b798570688c4cb692adf8e288a22971ce2545bbc32bff6bf"}}</script>
+<script src="/sites/g/files/knoqqb48471/files/js/js_PUmw9tiV0ytpyw0lzhmUwSrjwY1CkXHt0jAdd9Uoqho.js"></script>
+<script src="/sites/g/files/knoqqb48471/themes/site/nir_pid658/dist/js/SmoothScroll.js?qq8y1b"></script>
+<script src="/sites/g/files/knoqqb48471/themes/site/nir_pid658/dist/js/ndq-functions.js?qq8y1b"></script>
+<script src="/sites/g/files/knoqqb48471/themes/site/nir_pid658/dist/js/foundation.min.js?qq8y1b"></script>
+<script src="/sites/g/files/knoqqb48471/files/js/js_H5GX_tcO_D0zT40b88M8_QXPOSF2nWVTDgrj0-iZVJc.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"56127085,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":911,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

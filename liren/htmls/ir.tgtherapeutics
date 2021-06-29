@@ -1,0 +1,4038 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="TG Therapeutics, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.tgtherapeutics.com/events" />
+<meta property="og:title" content="Events | TG Therapeutics, Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about TG Therapeutics, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="twitter:image" content="https://tgtherapeutics.gcs-web.com/static-files/d8db0df9-f081-4626-a4b6-79ba6e9a98e4" />
+<meta property="og:image" content="https://tgtherapeutics.gcs-web.com/static-files/270c0754-4996-472b-871c-8901542201cf" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb43906/files/favicons.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://ir.tgtherapeutics.com/events" />
+<link rel="canonical" href="https://ir.tgtherapeutics.com/events" />
+<link rel="shortlink" href="https://ir.tgtherapeutics.com/node/13916" />
+<link rel="revision" href="https://ir.tgtherapeutics.com/events" />
+
+    <title>Events | TG Therapeutics, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb43906/files/css/css_rfjm6CJ_0NMC2yDcg2-ndYMEx1qfufTwwHO3KArx5Oc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb43906/files/css/css_7uzNwoNYDn4HOP5L66qN5WR2fvT0cdzBps0jOjuxoFg.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb43906/files/css/css_jUBeVvdRaA0_WCA4RYRp0LMT-fXm-9XqecPCBezJ0N4.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb43906/files/css/css_VOdjQNKOI9F96yyQZPOtVx50obZLAoT6TUfwDr1mHik.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C600%2C700%2C800&amp;#038;ver=5.1.1" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Raleway%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&amp;#038;ver=5.1.1" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Droid+Serif%3A400%2C700&amp;#038;ver=5.1.1" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb43906/files/css/css_nJcjC2zobtaI9-Dp3CuakpA7TDt3hF71dlVy-jGND20.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Raleway%7CRoboto&amp;#038;ver=5.1.1" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb43906/files/css/css_cecLs4sMgB6h7Y2j1F3YeK2RVCVGVWxm_dTShM6ugtg.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Roboto+Slab:300,300italic,400,400italic,700,700italic,900,900italic|Montserrat:300,300italic,400,400italic,700,700italic,900,900italic|Lato:300,300italic,400,400italic,700,700italic,900,900italic&amp;#038;subset=latin,latin-ext" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb43906/files/css/css__IWo78ld9IlLsy1khownWub6YERjaUxWswsFhaEb88Q.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb43906/themes/site/nir_pid1627/vendor/font-awesome-4.7.0/font-awesome.min.css?qqxoe4" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb43906/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--13916 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+ <div class="body_wrap">
+	 <div class="page_wrap">
+		 <div class="top_panel_fixed_wrap"></div>
+
+						<header class="top_panel_wrap top_panel_style_3 scheme_original">
+				<div class="top_panel_wrap_inner top_panel_inner_style_3 top_panel_position_above">
+
+					
+											<div class="top_panel_middle">
+							<div class="content_wrap">
+								
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="contact_logo global-block-content">
+	<div class="logo">
+		<a href="http://www.tgtherapeutics.com/">
+			<img class="logo_main" data-entity-type="file" data-entity-uuid="bcb66d54-1711-4c14-bd32-bbc12af7322c" src="/system/files-encrypted/nasdaq_kms/inline-images/logo.png" alt="logo" width="377" height="100" /><img class="logo_fixed" data-entity-type="file" data-entity-uuid="bcb66d54-1711-4c14-bd32-bbc12af7322c" src="/system/files-encrypted/nasdaq_kms/inline-images/logo.png" alt="logo" width="377" height="100" /></a>
+	</div>
+</div></div>
+      
+
+      
+
+<div class="menu_main_wrap">
+  <nav class="menu_main_nav_area">
+
+                                                   <ul id="menu_main" class="menu_main_nav">
+                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelOneWithChildren">
+                  <a target="" href="https://www.tgtherapeutics.com/our-company/our-story/">About Us</a>
+                                                                 <ul class="sub-menu">
+                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-company/our-story/">Our Story</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-company/message-from-our-ceo/">Message From CEO</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-company/leadership-team/">Leadership Team</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-company/board-members/">Board Members</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-company/guiding-principles/">Guiding Principles</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/join-us/">Join Us</a>
+                  </li>
+                                            </ul>
+          
+                </li>
+                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelOneWithChildren">
+                  <a target="" href="https://www.tgtherapeutics.com/our-science/our-approach/">Our Science</a>
+                                                                 <ul class="sub-menu">
+                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-science/our-approach/">Our Approach</a>
+                  </li>
+                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelTwoWithChildren">
+                  <a target="" href="http://tgtherapeutics.com/our-science/our-focus/">Our Focus</a>
+                                                                 <ul class="sub-menu">
+                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="http://www.tgtherapeutics.com/our-science/our-focus/marginal-zone-lymphoma_follicular-lymphoma/">MZL/FL  </a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="http://www.tgtherapeutics.com/our-science/our-focus/chronic-lymphocytic-leukemia/">CLL</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="http://tgtherapeutics.com/our-science/our-focus/multiple-sclerosis/">MS</a>
+                  </li>
+                                            </ul>
+          
+                </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-science/collaborate-with-us/">Collaborate with Us</a>
+                  </li>
+                                            </ul>
+          
+                </li>
+                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom levelOneNoChildren">
+                  <a target="" href="https://www.tgtherapeutics.com/our-products/">Our Products</a>
+                </li>
+                                                                                                                  <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelOneWithChildren">
+                  <a target="" href="https://tgtherapeutics.com/our-pipeline/overview/">Our Pipeline</a>
+                                                                 <ul class="sub-menu">
+                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-pipeline/overview/">Overview</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-pipeline/umbralisib/">Umbralisib</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-pipeline/ublituximab/">Ublituximab</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-pipeline/tg-1501/">TG-1501</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-pipeline/tg-1701/">TG-1701</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-pipeline/tg-1801/">TG-1801</a>
+                  </li>
+                                            </ul>
+          
+                </li>
+                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom levelOneNoChildren">
+                  <a target="" href="https://www.tgtherapeutics.com/publications/">Our Publications</a>
+                </li>
+                                                                                                                  <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelOneWithChildren">
+                  <a target="" href="https://tgtherapeutics.com/our-trials/overview/">Our Trials</a>
+                                                                 <ul class="sub-menu">
+                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="http://tgtherapeutics.com/our-trials/trial-information/">Trial Information   </a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-trials/expanded-access-policy/">Expanded Access Policy </a>
+                  </li>
+                                            </ul>
+          
+                </li>
+                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelOneWithChildren current-menu-item current-menu-ancestor current-menu-parent active-levelOneWithChildren">
+                  <a target="" href="/">Investors &amp; Media</a>
+                                                                 <ul class="sub-menu">
+                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="/press-releases">Press Releases</a>
+                  </li>
+                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelTwoWithChildren">
+                  <a target="" href="/stock-information">Stock Information</a>
+                                                                 <ul class="sub-menu">
+                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="/stock-information/historic-stock-lookup">Historic Stock Lookup</a>
+                  </li>
+                                            </ul>
+          
+                </li>
+                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelTwoWithChildren">
+                  <a target="" href="/sec-filings-financial-info">SEC Filings &amp; Financials</a>
+                                                                 <ul class="sub-menu">
+                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="/financial-information/quarterly-results">Quarterly Results</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="/financial-information/annual-reports">Annual Reports</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="/financial-information/sec-filings">SEC Filings</a>
+                  </li>
+                                            </ul>
+          
+                </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren current-menu-item current_page_item active-levelTwoNoChildren">
+                    <a target="" href="/events">Events</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="/contact-us">IR &amp; Media Contact</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="http://www.tgtherapeutics.com/about-us/management-team.cfm">Management Team</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="/corporate-governance">Corporate Governance</a>
+                  </li>
+                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                    <a target="" href="/investor-faqs">FAQs</a>
+                  </li>
+                                            </ul>
+          
+                </li>
+                                            </ul>
+          
+
+    
+  </nav>
+</div>
+
+																							</div>
+						</div>
+					
+				</div>
+			</header>
+
+
+						<div class="header_mobile">
+
+									<div class="top_panel_top">
+						<div class="content_wrap clearfix">
+							<div class="top_panel_top_user_area">
+								
+        <ul class="menu_user_nav inited sf-js-enabled sf-arrows" id="menu_user">
+      
+                            <li  class="menu-item menu-item-type-post_type menu-item-object-page levelOne">
+            <a target="" href="http://tgtherapeutics.com/careers.cfm">CAREERS</a>
+          </li>
+        
+      
+                            <li  class="menu-item menu-item-type-post_type menu-item-object-page levelOne">
+            <a target="" href="http://www.tgtherapeutics.com/contact-us/index.cfm">CONTACT US</a>
+          </li>
+        
+      
+                            <li  class="menu-item menu-item-type-post_type menu-item-object-page levelOne">
+            <a target="_blank" href="https://twitter.com/TGTherapeutics">
+              <i class="_mi dashicons dashicons-twitter" aria-hidden="true"></i>
+              <span class="visuallyhidden">Twitter</span>
+            </a>
+          </li>
+        
+          </ul>
+  
+
+
+
+															</div>
+						</div>
+					</div>
+				
+									
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="content_wrap global-block-content">
+	<div class="menu_button icon-menu"></div>
+	<div class="logo">
+		<a href="http://www.tgtherapeutics.com/">
+			<img alt="logo" data-entity-type="file" data-entity-uuid="bcb66d54-1711-4c14-bd32-bbc12af7322c" src="/system/files-encrypted/nasdaq_kms/inline-images/logo.png" class="logo_main" width="377" height="100" /></a>
+	</div>
+</div></div>
+      
+
+      
+
+<div class="side_wrap">
+  <div class="close">Close</div>
+  <div class="panel_top">
+    <nav class="menu_main_nav_area">
+
+                                                               <ul id="menu_main" class="menu_main_nav">
+                                                                                                              <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelOneWithChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-company/our-story/">About Us</a>
+                                                                             <ul class="sub-menu">
+                                                                                                                    <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-company/our-story/">Our Story</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-company/message-from-our-ceo/">Message From CEO</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-company/leadership-team/">Leadership Team</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-company/board-members/">Board Members</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-company/guiding-principles/">Guiding Principles</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/join-us/">Join Us</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelOneWithChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-science/our-approach/">Our Science</a>
+                                                                             <ul class="sub-menu">
+                                                                                                                    <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-science/our-approach/">Our Approach</a>
+                    </li>
+                                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelTwoWithChildren">
+                    <a target="" href="http://tgtherapeutics.com/our-science/our-focus/">Our Focus</a>
+                                                                             <ul class="sub-menu">
+                                                                                                                    <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="http://www.tgtherapeutics.com/our-science/our-focus/marginal-zone-lymphoma_follicular-lymphoma/">MZL/FL  </a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="http://www.tgtherapeutics.com/our-science/our-focus/chronic-lymphocytic-leukemia/">CLL</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="http://tgtherapeutics.com/our-science/our-focus/multiple-sclerosis/">MS</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-science/collaborate-with-us/">Collaborate with Us</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom levelOneNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/our-products/">Our Products</a>
+                  </li>
+                                                                                                                                  <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelOneWithChildren">
+                    <a target="" href="https://tgtherapeutics.com/our-pipeline/overview/">Our Pipeline</a>
+                                                                             <ul class="sub-menu">
+                                                                                                                    <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-pipeline/overview/">Overview</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-pipeline/umbralisib/">Umbralisib</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-pipeline/ublituximab/">Ublituximab</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-pipeline/tg-1501/">TG-1501</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-pipeline/tg-1701/">TG-1701</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-pipeline/tg-1801/">TG-1801</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom levelOneNoChildren">
+                    <a target="" href="https://www.tgtherapeutics.com/publications/">Our Publications</a>
+                  </li>
+                                                                                                                                  <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelOneWithChildren">
+                    <a target="" href="https://tgtherapeutics.com/our-trials/overview/">Our Trials</a>
+                                                                             <ul class="sub-menu">
+                                                                                                                    <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="http://tgtherapeutics.com/our-trials/trial-information/">Trial Information   </a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="https://www.tgtherapeutics.com/our-trials/expanded-access-policy/">Expanded Access Policy </a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelOneWithChildren current-menu-item current-menu-ancestor current-menu-parent active-levelOneWithChildren">
+                    <a target="" href="/">Investors &amp; Media</a>
+                                                                             <ul class="sub-menu">
+                                                                                                                    <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="/press-releases">Press Releases</a>
+                    </li>
+                                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelTwoWithChildren">
+                    <a target="" href="/stock-information">Stock Information</a>
+                                                                             <ul class="sub-menu">
+                                                                                                                    <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="/stock-information/historic-stock-lookup">Historic Stock Lookup</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                                                <li  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children levelTwoWithChildren">
+                    <a target="" href="/sec-filings-financial-info">SEC Filings &amp; Financials</a>
+                                                                             <ul class="sub-menu">
+                                                                                                                    <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="/financial-information/quarterly-results">Quarterly Results</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="/financial-information/annual-reports">Annual Reports</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="/financial-information/sec-filings">SEC Filings</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren current-menu-item current_page_item active-levelTwoNoChildren">
+                      <a target="" href="/events">Events</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="/contact-us">IR &amp; Media Contact</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="http://www.tgtherapeutics.com/about-us/management-team.cfm">Management Team</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="/corporate-governance">Corporate Governance</a>
+                    </li>
+                                                                                                                                      <li  class="menu-item menu-item-type-custom menu-item-object-custom levelTwoNoChildren">
+                      <a target="" href="/investor-faqs">FAQs</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                    </ul>
+              
+
+      
+    </nav>
+  </div>
+  <div class="panel_bottom">
+    <div class="contact_socials"></div>
+  </div>
+</div>
+
+															<div class="mask"></div>
+				
+			</div>
+
+
+			<div class="page_content_wrap page_paddings_yes">
+
+								<div class="tg_header_banner">
+					<div class="container">
+						<div class="tg_bg_banner">
+							<img src="/sites/g/files/knoqqb43906/themes/site/nir_pid1627/client/wp-content/uploads/2019/12/Interior_Header_1920x30.jpg" alt="Banner Image" class="bs_desk_show"/>
+							<img src="/sites/g/files/knoqqb43906/themes/site/nir_pid1627/client/wp-content/uploads/2019/12/interior_header_480_273.jpg" alt="Banner Image" class="bs_mobile_show"/>
+						</div>
+						<div class="tg_bg_overlay">
+							<h1 class="page_title">
+								Investors
+								<br/>								
+								&amp; Media
+							</h1>
+						</div>
+						<div class="tg_bg_ovlayimg">
+							<img src="/sites/g/files/knoqqb43906/themes/site/nir_pid1627/client/wp-content/uploads/2019/12/header_overlay.png"/>								
+						</div>
+					</div>
+				</div>
+
+				<div class="content_wrap">
+					<div class="content">
+						<article class="itemscope post_item post_item_single post_featured_center post_format_standard post-741 page type-page status-publish hentry" itemscope itemtype="http://schema.org/Article">
+							<section class="post_content" itemprop="articleBody">
+
+																																													
+								<div class="vc_row wpb_row vc_row-fluid vc_custom_1552527537298 vc_row-o-equal-height vc_row-o-content-middle vc_row-flex">
+									<div class="wpb_column vc_column_container vc_col-sm-12">
+										<div class="vc_column-inner">
+											<div class="wpb_wrapper">
+												<h2 style="color: #3d579c;text-align: left" class="vc_custom_heading" >
+																											Events
+																									</h2>
+												<div id="ndq-content" class="wpb_text_column wpb_content_element ndq-13916">
+													<div class="wpb_wrapper">
+
+														
+																																			<div id="block-nir-pid1627-websitenoticeblock" class="block--website-notice-block block--website-notice-block--13916 block--content--website-notice-block block--content--website-notice-block--13916 block--9af6a85b-f787-4f61-8c3f-03487304ebe3 block--9af6a85b-f787-4f61-8c3f-03487304ebe3--13916 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1627-content" class="block--system-main-block block--system-main-block--13916 block--content--system-main-block block--content--system-main-block--13916 block--59f2575f-1c58-4355-b9c9-8aed53bdd429 block--59f2575f-1c58-4355-b9c9-8aed53bdd429--13916 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events
+          </h1>
+    
+
+  <div>
+    
+	<div class="mb30">
+		<div class="block-region-contentmain"><div class="block--events-hdr-ttl block--nir-events__widget block--nir-events__widget--13916 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--13916 block--3208c4a0-2cef-4385-8978-e8307f84f4c5 block--3208c4a0-2cef-4385-8978-e8307f84f4c5--13916 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <h2 class="events-section-header">Upcoming Events</h2>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              <table class="nirtable collapse-table">
+                      <thead>
+              <tr>
+                <th scope="col" colspan="2">Upcoming Events</th>
+              </tr>
+            </thead>
+                    <tbody>
+            <tr><td>More events are coming soon.</td></tr>
+          </tbody>
+        </table>
+          </div>
+          </div>
+</div>
+  </div>
+<div class="block--events-hdr-ttl block--nir-events__widget block--nir-events__widget--13916 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--13916 block--9b0c6046-5909-4fc1-99a5-bc55029e8f17 block--9b0c6046-5909-4fc1-99a5-bc55029e8f17--13916 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <h2 class="events-section-header">Archived Events</h2>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              <table class="nirtable collapse-table">
+                      <thead>
+              <tr>
+                <th scope="col" colspan="2">Archived Events</th>
+              </tr>
+            </thead>
+                    <tbody>
+            <tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Apr 28, 2021 <span class='ndq-hide'>at 9:00 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">B. Riley Securities’ Virtual Neuroscience Conference Webcast</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://www.webcaster4.com/Webcast/Page/2433/41038" target="_blank">Listen to Webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Apr 16, 2021 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">ULTIMATE I &amp; II Phase 3 Data Preview Call</div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p><strong>Key Opinion Leader Participants:</strong> </p>
+
+<ul><li>Lawrence Steinman, MD, of Stanford University and the Global Study Chair for the ULTIMATE I &amp; II Phase 3 trials</li>
+	<li>Edward J. Fox, MD, PhD, of Central Texas Neurology Consultants and Chair for the ublituximab Phase 2 trial</li>
+	<li>Enrique Alvarez, MD, PhD, of University of Colorado Medicine</li>
+</ul></div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://player.vimeo.com/video/537839130" target="_blank">Watch Webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/c34533d2-f3e4-4c74-b2d9-f182407459ed" type="application/pdf; length=1078440" title="Final TG ULTIMATE I &amp; II Investor &amp; Analyst Webcast Slides.pdf">View Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 09, 2021 <span class='ndq-hide'>at 7:00 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">H.C. Wainwright Global Life Sciences Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://journey.ct.events/view/07ecc4cf-6035-4e97-9407-240b9325d905" target="_blank">Listen to Webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 02, 2021 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Fourth Quarter and Year End 2020 Update Call</div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Attendees may also join via phone by dialing 1-877-407-8029 (U.S.), 1-201-689-8029 (outside the U.S.), Conference Title: TG Therapeutics Fourth Quarter and Year End 2020 Update Call</div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://shared.outlook.inky.com/link?domain=78449.themediaframe.com&amp;t=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eJxVkNFrwjAQxv-XPEujtTItCDrdfGqLw1laAiU2p40mqaRXrY7970v3MvZwcNz9Pr7v7osgcC0FCYk0aLmoyaDvwBquSHjkqoEBAbcWF47PBZ6wk6b0ylo7sJf9n7TWqUiFeG1CRhl9mQbBzMMKNAjJj5Zr6ElGBUde1ubI6NXWoi2xbcA2jOKpY_QPZjQYT2cBo9II6JRXoVbOJvkkoWmVGhCsLHAsFNzAOQ9d-D4UTyfDUr9fDo-Z4mmn8jRohV9dxWa_FP7-KVaT88Ef3rLzdpL50TjZZKM8jWW-y1WcfuhkvXxE-u0RbzI_2b3qaH26Rbusi9fRyNU4WgV-vJ3P-4td7gI0l6rgQlhoGucPUgEY715JhMUdGvx9z_cPQoZ8Hw.MEUCIA7plh548VxwyBcMF4mp3c9S0RRgmNXoBLtEbEBL5hyDAiEAnD3Y9MWQyS0ZVxxDwCXD2RFIHrKKlp3kn9FOvniaisw" target="_blank">Listen to Webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Feb 08, 2021 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics UKONIQ (umbralisib) FDA Approval Call </div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>In order to participate in the conference call, please call 1-877-407-8029 (U.S.)</p>
+
+<p>1-201-689-8029 (outside the U.S.),</p>
+
+<p>Conference Title: TG Therapeutics</p></div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://78449.themediaframe.com/dataconf/productusers/tgx/mediaframe/43571/indexl.html" target="_blank">Listen to Webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/71fdcec9-c0b4-4c71-8182-11d0b96e2105" type="application/pdf; length=1372998" title="Final TGTX UKONIQ Now Approved Call 2.8.21.pdf">View Presentation</a></span><span class="filesize"> 1.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jan 20, 2021 <span class='ndq-hide'>at 10:00 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">B. Riley Securities Oncology Investor Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://www.webcaster4.com/Webcast/Page/2433/39560" target="_blank">Listen to Webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jan 12, 2021 <span class='ndq-hide'>at 2:00 PM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">39th Annual J.P. Morgan Healthcare Conference </div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://jpmorgan.metameetings.net/events/healthcare21/sessions/35525-tg-therapeutics-inc/webcast?gpu_only=true&amp;kiosk=true" target="_blank">Listen to Webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/7ff633ee-d0c5-4227-92a1-ca471abbc56f" type="application/pdf; length=1857088" title="Final TGTX JPM Investor Deck 1.12.21.pdf">View Presentation</a></span><span class="filesize"> 1.8 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Dec 10, 2020 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics ULTIMATE I &amp; II Call</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://78449.themediaframe.com/dataconf/productusers/tgx/mediaframe/42525/indexl.html" target="_blank">Listen to Webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Dec 01, 2020 <span class='ndq-hide'>at 10:05 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Evercore ISI 3rd Annual HealthCONx Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/evercore11/tgtx/2401899" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Nov 17, 2020 <span class='ndq-hide'>at 7:20 PM GMT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies Virtual London Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/jeff141/tgtx/1879575" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Nov 05, 2020 <span class='ndq-hide'>at 8:45 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics ASH Abstract Release Call</div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Attendees may also join via phone by dialing 1-877-407-8029 (U.S.), 1-201-689-8029 (outside the U.S.), Conference Title: TG Therapeutics ASH Abstract Review Call.</div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://bit.ly/2GxDmOK" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Sep 16, 2020 <span class='ndq-hide'>at 10:40 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Cantor Fitzgerald Global Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://www.webcaster4.com/Webcast/Page/2495/37238" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Sep 14, 2020 <span class='ndq-hide'>at 1:30 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">H.C. Wainwright 22nd Annual Global Investment Conference </div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/hcw7/tgtx/1636879" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Aug 10, 2020 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Second Quarter 2020 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://78449.themediaframe.com/dataconf/productusers/tgx/mediaframe/40168/indexl.html" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 18, 2020 <span class='ndq-hide'>at 3:40 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Raymond James 2020 Human Health Innovation Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://kvgo.com/raymondjames/TG-therapeutics-june-2020" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/5f669d08-4452-4142-9608-cbd029a412ec" type="application/pdf; length=1487100" title="Final TGTX Deck - Raymond James 6.18.20.pdf">View Presentation</a></span><span class="filesize"> 1.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 11, 2020 <span class='ndq-hide'>at 4:40 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Goldman Sachs 41st Annual Global Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://kvgo.com/GSHC/tg-therapeutics-june-2020" target="_blank">Listen to Webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 03, 2020 <span class='ndq-hide'>at 10:00 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies 2020 Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/jeff126/tgtx/" target="_blank">Click here to listen</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              May 05, 2020 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Update Conference Call &amp; Webcast</div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p><strong>CONFERENCE CALL INFORMATION: </strong><br />
+The Company will host a conference call today, Tuesday, May 5, 2020 at 8:30 AM ET to discuss the UNITY-CLL Phase 3 Trial. In order to participate in the conference call, please call 1-877-407-8029 (U.S.), 1-201-689-8029 (outside the U.S.), Conference Title: TG Therapeutics.</p></div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://78449.themediaframe.com/dataconf/productusers/tgx/mediaframe/37993/indexl.html" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 03, 2020 <span class='ndq-hide'>at 8:00 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Fourth Quarter 2019 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://78449.themediaframe.com/dataconf/productusers/tgx/mediaframe/36140/indexl.html" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jan 16, 2020 <span class='ndq-hide'>at 8:00 AM PST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">38th Annual J.P. Morgan Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://jpmorgan.metameetings.net/events/hc20/sessions/30381-tg-therapeutics-inc/webcast" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/f027f312-769f-4055-9838-0a1bf89e7e59" type="application/pdf; length=2099396" title="Final TGTX JPM 1.24.20.pdf">View Presentation</a></span><span class="filesize"> 2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Dec 09, 2019 <span class='ndq-hide'>at 7:30 PM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG THERAPEUTICS INVESTOR &amp; ANALYST EVENT </div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://78449.themediaframe.com/dataconf/productusers/tgx/mediaframe/33755/indexl.html" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/afd4ba3e-8ccf-44ab-a046-a980516ebc48" type="application/pdf; length=586597" title="TGTX ASH 2019 Investor Analyst Fireside Chat DIscussion Topics.pdf">View Presentation</a></span><span class="filesize"> 586.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Nov 20, 2019 <span class='ndq-hide'>at 11:20 AM GMT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies London Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/jeff123/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Nov 12, 2019 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Third Quarter 2019 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://78449.themediaframe.com/dataconf/productusers/tgx/mediaframe/33079/indexl.html" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Oct 28, 2019 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Update Call</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://78449.themediaframe.com/dataconf/productusers/tgx/mediaframe/33280/indexl.html" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Oct 02, 2019 <span class='ndq-hide'>at 4:10 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">2019 Cantor Global Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/cantor10/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/088c4374-05af-4bea-b1ab-b17a339b48a2" type="application/pdf; length=1612729" title="TGTX Corporate Deck October 2019.pdf">View Presentation</a></span><span class="filesize"> 1.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Sep 24, 2019 <span class='ndq-hide'>at 11:00 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Ladenburg Thalmann Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/ladenburg5/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Aug 09, 2019 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Second Quarter 2019 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://78449.themediaframe.com/dataconf/productusers/tgx/mediaframe/31927/indexl.html" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 19, 2019 <span class='ndq-hide'>at 9:10 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Raymond James Life Sciences and MedTech Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/rj115/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 05, 2019 <span class='ndq-hide'>at 9:00 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies 2019 Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/jeff118/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              May 20, 2019
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">May 2019 Corporate Presentation</div>
+  </div>
+    
+    
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/f0258313-0e57-4a34-99df-15b15a7ff4e6" type="application/pdf; length=1441231" title="TGTX Suntrust Presentation May 2019.pdf">View Presentation</a></span><span class="filesize"> 1.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              May 10, 2019 <span class='ndq-hide'>at 8:00 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">First Quarter 2019 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://78449.themediaframe.com/dataconf/productusers/tgx/mediaframe/30422/indexl.html" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Apr 09, 2019 <span class='ndq-hide'>at 4:50 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">18th Annual Needham Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/needham90/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Apr 01, 2019 <span class='ndq-hide'>at 12:00 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics AACR 2019 Data Review Call</div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">
+<p>Participant / Guest (Toll-Free): 877-407-8029<br />Participant / Guest (Toll): 201-689-8029</p>
+</div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://78449.themediaframe.com/dataconf/productusers/tgx/mediaframe/29523/indexl.html" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/64a3bec2-b867-4988-8efb-84318ff71e38" type="application/pdf; length=1318918" title="Final AACR UNITY-NHL MZL Data Review Conference Call 2019.pdf">View Presentation</a></span><span class="filesize"> 1.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 13, 2019 <span class='ndq-hide'>at 11:20 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Cowen 39th Annual Health Care Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/cowen52/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Feb 28, 2019 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Update Call </div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>Participant / Guest (Toll-Free): 877-407-8029<br />
+Participant / Guest (Toll): 201-689-8029</p>
+</div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://78449.themediaframe.com/dataconf/productusers/tgx/mediaframe/29079/indexl.html" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jan 10, 2019 <span class='ndq-hide'>at 1:00 PM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">37th Annual J.P. Morgan Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://jpmorgan.metameetings.net/events/healthcare19/sessions/25770-tg-therapeutics-inc/webcast" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Dec 02, 2018 <span class='ndq-hide'>at 8:00 PM PST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics December 2018 Investor &amp; Analyst Event</div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>The event will take place at the Marriott Gaslamp in San Diego California. This event will also be broadcast via conference call. To access the conference line, please call 1-877-407-8029 (U.S.), 1-201-689-8029 (outside the U.S.), and reference Conference Title: TG Therapeutics December 2018 Investor &amp; Analyst Event.</p></div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://www.investornetwork.com/event/presentation/41495" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/c1e2cf4b-22be-487b-bb61-ef7a7b59aee7" type="application/pdf; length=5708490" title="TGTX Investor &amp; Analyst Event 2018.pdf">View Presentation</a></span><span class="filesize"> 5.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Nov 09, 2018 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Third Quarter 2018 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/40923" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Oct 11, 2018 <span class='ndq-hide'>at 1:30 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics ECTRIMS Data Review Call</div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p><b>Teleconference Information:</b><br />Participant / Guest (Toll-Free): 877-407-8029<br />Participant / Guest (Toll): 201-689-8029<br /><b>Conference Title:</b> TG Therapeutics ECTRIMS Data Review Call</p>
+</div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/37937" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/060eb1fd-4d71-4bde-a92d-8a4b9deacc37" type="application/pdf; length=1783564" title="ECTRIMS Data Review Investor Call Deck 2018.pdf">View Presentation</a></span><span class="filesize"> 1.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Oct 02, 2018 <span class='ndq-hide'>at 1:00 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Ladenburg Thalmann 2018 Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/ladenburg4/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Oct 01, 2018 <span class='ndq-hide'>at 2:20 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Cantor Fitzgerald Global Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/cantor7/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Sep 25, 2018 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Update Call</div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p><b>Teleconference Information:</b><br />
+Participant / Guest (Toll-Free): 877-407-8029<br />
+Participant / Guest (Toll): 201-689-8029<br /><b>Conference Title:</b> TG Therapeutics Update Call</p>
+</div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/37647" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Aug 07, 2018 <span class='ndq-hide'>at 4:30 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Second Quarter 2018 Earnings Results</div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p><b>Teleconference Information:</b><br />Participant / Guest (Toll-Free): 877-407-8029<br />Participant / Guest (Toll): 201-689-8029<br /><b>Conference Title:</b> TGTX Q2 2018 Earnings Call</p>
+</div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/36911" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 07, 2018 <span class='ndq-hide'>at 10:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies 2018 Global Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/jeff113/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 03, 2018 <span class='ndq-hide'>at 8:15 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Analyst &amp; Investor Event</div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p><strong>Teleconference Information:</strong><br />Participant / Guest (Toll-Free): 877-407-8029<br />
+Participant / Guest (Toll): 201-689-8029</p>
+</div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/33497" target="_blank">Click Here for Webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/065950ff-71c2-4a1d-a67e-79402702e6db" type="application/pdf; length=5459032" title="Final TGTX ASCO Investor &amp; Analyst Presentation.pdf">View Presentation</a></span><span class="filesize"> 5.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              May 08, 2018 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">First Quarter 2018 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/29527" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 28, 2018 <span class='ndq-hide'>at 4:00 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Needham 17th Annual Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/needham86/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 12, 2018 <span class='ndq-hide'>at 1:30 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Cowen 38th Annual Health Care Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/cowen46/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 08, 2018 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Fourth Quarter 2017 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/26783" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 06, 2018 <span class='ndq-hide'>at 2:50 PM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Raymond James &amp; Associates&#039; 39th Annual Institutional Investors Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/rj108/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jan 11, 2018 <span class='ndq-hide'>at 7:30 AM PST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">36th Annual J.P. Morgan Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://jpmorgan.metameetings.net/events/healthcare18/general_signin" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/8e425f53-1b3f-4642-8178-7e9d67623d76" type="application/pdf; length=1456387" title="TGTX_JPM_Final_Corporate_Deck_1.11.18.pdf">View Presentation</a></span><span class="filesize"> 1.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Dec 10, 2017 <span class='ndq-hide'>at 8:15 PM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Investor &amp; Analyst Event</div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>
+	This event will also be broadcast via conference call.  To access the conference line, please call 1-877-407-8029 (U.S.), 1-201-689-8029 (outside the U.S.), and reference Conference Title: TG Therapeutics December 2017 Investor &amp; Analyst Event. </p></div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/22901" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/0e5dbbf8-4924-4758-a4fb-b459bd2928f9" type="application/pdf; length=7635312" title="ASH_2017_Investor_Deck_Final.pdf">View Presentation</a></span><span class="filesize"> 7.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Nov 08, 2017 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Third Quarter 2017 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/22495" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Nov 02, 2017 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Post ECTRIMS-ACTRIMS Conference Call </div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>
+	To participate in the conference call please dial 877-407-8029</p></div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://event.webcasts.com/starthere.jsp?ei=1169558&amp;tp_key=2a689b3acd" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/138460e3-b24f-4d51-b75a-6316e58fb572" type="application/pdf; length=2601722" title="TGTX_Post_ECTRIMS-ACTRIMS_Data_Review_2017.pdf">View Presentation</a></span><span class="filesize"> 2.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Sep 26, 2017 <span class='ndq-hide'>at 2:30 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Ladenburg Thalmann 2017 Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/ladenburg3/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Sep 25, 2017 <span class='ndq-hide'>at 1:50 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Cantor Fitzgerald Global Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/cantor6/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Aug 09, 2017 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Second Quarter 2017 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/19629" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 08, 2017 <span class='ndq-hide'>at 2:00 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies 2017 Global Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/jeff105/tgtx" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 05, 2017 <span class='ndq-hide'>at 7:00 PM CDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Analyst and Investor event June  2017 </div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/15858" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/69413c93-7b27-4d85-8997-bdfcfa79e1cd" type="application/pdf; length=3311142" title="FINAL_ASCO_2017_Investor_Analyst_Event_2017.pdf">View Presentation</a></span><span class="filesize"> 3.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              May 05, 2017 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">First Quarter 2017 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/15453" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 21, 2017 <span class='ndq-hide'>at 3:20 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">27th Annual Oppenheimer Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://www.veracast.com/webcasts/opco/healthcare2017/72112490048.cfm" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 14, 2017 <span class='ndq-hide'>at 3:00 PM PDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">29th Annual ROTH Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/roth31/tgtx" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 10, 2017 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Fourth Quarter 2016 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=175755" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 06, 2017 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Phase 3 GENUINE Positive Topline Data Call </div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>
+	You may need to disable a pop-up blocker to access the webcast replay.</p></div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/175694" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Feb 13, 2017 <span class='ndq-hide'>at 9:00 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Biotechnology Innovation Organization 2017 BIO CEO &amp; Investor Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.veracast.com/webcasts/bio/ceoinvestor2017/39105149699.cfm" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jan 12, 2017 <span class='ndq-hide'>at 10:30 AM PST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">35th Annual J.P. Morgan Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://jpmorgan.metameetings.com/confbook/healthcare17/directlink?p=23077" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/8a9c4244-530e-49a1-8fce-10b4e91cbe6b" type="application/pdf; length=3337303" title="Final_TG_Therapeutics_JPM_Presentation_2017.pdf">View Presentation</a></span><span class="filesize"> 3.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Dec 05, 2016 <span class='ndq-hide'>at 8:00 PM PST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics December Analyst &amp; Investor Event</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=175495" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/a5a59241-6d15-440e-8ee5-065819e7b354" type="application/pdf; length=4386072" title="ASH_Monday_Investor_Deck_FinalFinal.pdf">View Presentation</a></span><span class="filesize"> 4.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Nov 07, 2016 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Third Quarter 2016 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=175412" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Oct 13, 2016 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Update on the GENUINE Phase 3 Trial</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=175368" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Sep 27, 2016 <span class='ndq-hide'>at 11:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Ladenburg Thalmann 2016 Healthcare Conference </div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/ladenburg2/tgtx" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Aug 08, 2016 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Second Quarter 2016 Earnings Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=175245" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 10, 2016 <span class='ndq-hide'>at 10:00 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies 2016 Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/jeff97/tgtx" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 06, 2016 <span class='ndq-hide'>at 7:10 PM CDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics 2016 Investor &amp; Analyst Event</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=175059" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/7076e5fb-3252-47b4-a67e-8cf03d6d0f30" type="application/pdf; length=2769719" title="TGTX-_ASCO_Investor_Event_Final_Presentation_6.6.2016.pdf">View Presentation</a></span><span class="filesize"> 2.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              May 10, 2016 <span class='ndq-hide'>at 4:30 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics First Quarter 2016 Financial  Results and Business Update</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=175027" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 15, 2016 <span class='ndq-hide'>at 3:30 PM PDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">28th Annual ROTH Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/roth30/tgtx" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 09, 2016 <span class='ndq-hide'>at 9:20 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Cowen and Company 36th Annual Health Care Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/cowen30/tgtx" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 08, 2016 <span class='ndq-hide'>at 11:35 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Raymond James &amp; Associates&#039; 37th Annual Institutional Investors Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/rj99/tgtx" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 07, 2016 <span class='ndq-hide'>at 4:30 PM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Fourth Quarter 2015 Financial Results and Business Update</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=174780" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Feb 08, 2016 <span class='ndq-hide'>at 1:00 PM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">18th Annual BIO CEO &amp; Investor Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.veracast.com/webcasts/bio/ceoinvestor2016/67207229182.cfm" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jan 14, 2016 <span class='ndq-hide'>at 9:00 AM PST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">34th Annual J.P. Morgan Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://jpmorgan.metameetings.com/confbook/healthcare16/directlink?p=20157" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Dec 07, 2015 <span class='ndq-hide'>at 8:00 PM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics 2015 Investor &amp; Analyst Event</div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>
+	TG Therapeutics will also host a reception on Monday, December 7th, 2015 beginning at 7:45pm ET, with featured presentations beginning promptly at 8:00pm ET. The event will take place at the Hyatt Regency Orlando in the Bayhill 17/18 Room. This event will be webcast live and will be available on the Events page, located within the Investors &amp; Media section of the Company's website at www.tgtherapeutics.com,as well as archived for future review. This event will also be broadcast via conference call. In order to access the conference line, please call 1-877-407-8029 (U.S.), 1-201-689-8029 (outside the U.S.), and reference Conference Title: TG Therapeutics 2015 Investor &amp; Analyst Event.</p></div>
+          </div>
+
+      </div>
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=174563" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/6572a30c-5830-40d2-a622-33e10bdf092d" type="application/pdf; length=3635868" title="TGTX-_Investor_Event_Pre_Final_HM_SP_webpptx.pdf">View Presentation</a></span><span class="filesize"> 3.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Nov 09, 2015 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Third Quarter 2015 Financial</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/174512" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Sep 29, 2015 <span class='ndq-hide'>at 9:00 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Ladenburg Thalmann 2015 Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/ladenburg/tgtx" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Sep 09, 2015 <span class='ndq-hide'>at 3:00 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Rodman &amp; Renshaw Annual Global Investment Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/rrshq25/tgtx" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Aug 10, 2015 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Second Quarter 2015 Financial</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=174263" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 03, 2015 <span class='ndq-hide'>at 4:30 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies 2015 Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/jeff88/tgtx" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              May 31, 2015 <span class='ndq-hide'>at 6:15 PM CDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG THERAPEUTICS&#039; 2015 ANALYST &amp; INVESTOR EVENT </div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>SHERATON CHICAGO HOTEL &amp; TOWERS<br />
+Event Room: Mayfair<br />
+301 E North Water Street, Chicago IL<br />
+Conference Call dial-in: U.S. &amp; Canada:866.740.1260 Access Code: 4220276</p>
+</div>
+          </div>
+
+      </div>
+    
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/76239c6a-9f75-4a74-aec7-ea619fbb52f7" type="application/pdf; length=2521134" title="TG_Therapeutics_ASCO_Analyst_Investor_Final_Presentation.pdf">View Presentation</a></span><span class="filesize"> 2.5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              May 06, 2015 <span class='ndq-hide'>at 8:40 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Deutsche Bank 40th Annual Health Care Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://edge.media-server.com/m/p/pd6dwq9u" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              May 05, 2015 <span class='ndq-hide'>at 8:00 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics First Quarter 2015 Financial </div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/event/173992" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Apr 20, 2015
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">106th Annual Meeting of the American Association for Cancer Research (AACR)</div>
+  </div>
+    
+    
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/b30a961a-97d3-4cfa-b7b1-239fd11c9ab0" type="application/pdf; length=3601151" title="IRAK_AACR_Poster.pdf">IRAK4 inhibitors display synergistic activity when combined with BTK or PI3K inhibitors in B-cell lymphomas</a></span><span class="filesize"> 3.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 12, 2015 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Fourth Quarter 2014 Financial </div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=173721" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 09, 2015 <span class='ndq-hide'>at 3:00 PM PDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">27th Annual ROTH Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/roth29/tgtx" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 04, 2015 <span class='ndq-hide'>at 10:40 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Cowen and Company 35th Annual Health Care Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/cowen22/tgtx" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Feb 09, 2015 <span class='ndq-hide'>at 2:30 PM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">17th Annual BIO CEO &amp; Investor Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.veracast.com/webcasts/bio/ceoinvestor2015/53120475742.cfm" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jan 15, 2015 <span class='ndq-hide'>at 8:30 AM PST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">33rd Annual J.P. Morgan Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://jpmorgan.metameetings.com/confbook/healthcare15/directlink?p=17330" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/2c15f2e2-cae6-45b8-ab92-02a6aa653a5d" type="application/pdf; length=2648546" title="TG_Therapeutics_JPM_January_2015_Presentation.pdf">View Presentation</a></span><span class="filesize"> 2.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Dec 09, 2014 <span class='ndq-hide'>at 8:30 AM PST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Ublituximab, A Novel Glycoengineered Anti-CD20 Monoclonal Antibody (mAb), In Combination With TGR-1202, A Next Generation Once Daily PI3k delta Inhibitor, Demonstrates Activity In Heavily Pre-Treated And High-Risk CLL And B-Cell Lymphoma </div>
+  </div>
+    
+          <a class="nir-widget--accordion-toggle nir-widget--news--accordion-toggle">View Additional Information</a>
+      <div class="nir-widget--accordion-wrapper">
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>Oral Session: 801<br />
+Session: 624. Lymphoma: Therapy with Biologic Agents, excluding Pre-Clinical Models: Indolent B-cell NHL and T-cell NHL<br />
+Date and Time: Tuesday, December 9, 2014 at 8:00am, during 7:30 - 9:00 AM PT Session<br />
+Location: West Building, 2005-2007-2018-202</p>
+</div>
+          </div>
+
+      </div>
+    
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/9f1a4eed-ec53-4a1b-8e9a-61b0f4c90d3b" type="application/pdf; length=934058" title="TGTX_ASH_Oral_Presentation_UTX_TGR_FINAL.pdf">View Presentation</a></span><span class="filesize"> 934 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Dec 08, 2014 <span class='ndq-hide'>at 10:45 PM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics&#039; 2014 Analyst &amp; Investor Event </div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://edge.media-server.com/m/p/qkp9v8i6" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/b58877ce-d154-4d36-a78f-cefed07142ac" type="application/pdf; length=4116424" title="TG_Therapeutics_ASH_Analyst_Investor_Deck.pdf">TG Therapeutics ASH Analyst Investor Deck</a></span><span class="filesize"> 4.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Dec 01, 2014 <span class='ndq-hide'>at 2:50 PM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">2014 Deutsche Bank BioFEST</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.media-server.com/m/p/8hkdic9d" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Nov 11, 2014 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Third Quarter 2014 Financial </div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=173416" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Sep 09, 2014 <span class='ndq-hide'>at 1:15 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">16th Annual Rodman &amp; Renshaw Global Investment Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/rrshq24/tgtx/" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jul 22, 2014 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Second Quarter 2014 Financial Results</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=173027" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 24, 2014 <span class='ndq-hide'>at 4:30 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">JMP Securities Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/jmp24/TGTX" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jun 17, 2014 <span class='ndq-hide'>at 2:55 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">2014 Wells Fargo Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://cc.talkpoint.com/well001/061714a_ac/?entity=85_M6VODIB" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              May 13, 2014 <span class='ndq-hide'>at 8:30 AM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics First Quarter 2014 Financial </div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=172752" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              May 08, 2014 <span class='ndq-hide'>at 12:50 PM EDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">39th Annual Deutsche Bank Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.media-server.com/m/p/5wucwzts" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/c2c93c2d-c590-4ac9-9028-358a56c130f5" type="application/pdf; length=1435933" title="TG_Therapeutics_Corporate_Presentaton_May_2014_DB_Conference.pdf">View Presentation
+</a></span><span class="filesize"> 1.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 11, 2014 <span class='ndq-hide'>at 11:30 AM PDT</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">26th Annual ROTH Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/roth28/TGTX" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Mar 06, 2014 <span class='ndq-hide'>at 8:30 AM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">TG Therapeutics Fourth Quarter 2013 and Year-End 2013 Financial Results and Business Update</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.investorcalendar.com/IC/CEPage.asp?ID=172289" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Feb 10, 2014 <span class='ndq-hide'>at 3:00 PM EST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">16th Annual BIO CEO &amp; Investor Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.veracast.com/webcasts/bio/ceoinvestor2014/85138293747.cfm" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+    
+      </td>
+</tr><tr>
+  <td class="views-field-field-nir-date">
+          <div class="ndq-date">
+            
+    
+              Jan 16, 2014 <span class='ndq-hide'>at 1:00 PM PST</span>
+      </div>
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">32nd Annual J.P. Morgan Healthcare Conference</div>
+  </div>
+    
+    
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://jpmorgan.metameetings.com/confbook/healthcare14/directlink?ticker=TGTX" target="_blank">Listen to webcast</a></div>
+  </div>
+    
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tgtherapeutics.com/static-files/d3b0a014-fb7d-49ea-a474-853a694c1b79" type="application/pdf; length=1197414" title="TG_Therapeutics_Corporate_Presentaton_JPM_2014_jb.pdf">View Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    
+      </td>
+</tr>
+          </tbody>
+        </table>
+          </div>
+          </div>
+</div>
+  </div>
+</div>
+	</div>
+<!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+
+
+																	
+																	
+<div class="ndq-toolkit">
+
+          
+              
+        <div class="toolkit-item">
+          <a href="/email-alerts" title="Email Alerts">
+            <span  class="fa fa-at"></span>
+            <span class="t-label">Email Alerts</span>
+          </a>
+        </div>
+
+              
+        <div class="toolkit-item">
+          <a href="/rss-news-feeds" title="RSS News Feeds">
+            <span  class="fa fa-rss"></span>
+            <span class="t-label">RSS News Feeds</span>
+          </a>
+        </div>
+
+              
+      <div class="toolkit-item">
+        <a href="javascript:window.print();" title="Print Page">
+          <span class="fa fa-print"></span>
+          <span class="t-label">Print Page</span>
+        </a>
+      </div>
+      <div class="toolkit-item share-trigger">
+        <a class="share-trigger-anchor" href="#" title="Share">
+          <span class="fa fa-share"></span>
+          <span class="t-label">Share</span>
+        </a>
+        <span class="share-target-container">
+          <a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fir.tgtherapeutics.com%2Fevents" onclick="window.open('http://www.facebook.com/share.php?u=https%3A%2F%2Fir.tgtherapeutics.com%2Fevents','Facebook','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" title="Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i><span class="visuallyHidden">facebook</span></a>
+          <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fir.tgtherapeutics.com%2Fevents" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fir.tgtherapeutics.com%2Fevents','LinkedIn','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" title="LinkedIn" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i><span class="visuallyHidden">linkedin</span></a>
+          <a href="http://twitter.com/home?status=Currently%20reading%20https%3A%2F%2Fir.tgtherapeutics.com%2Fevents" onclick="window.open('http://twitter.com/home?status=Currently%20reading%20https%3A%2F%2Fir.tgtherapeutics.com%2Fevents | 'Twitter','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> <span class="visuallyHidden">twitter</span></a>
+        </span>
+      </div>
+          
+      <div class="toolkit-item search-trigger">
+        <a href="#" title="Search">
+          <span class="fa fa-search"></span>
+          <span class="t-label">Search</span>
+        </a>
+        <span class="search-target-container"></span>
+      </div>
+
+      
+
+  
+</div>
+<div id="block-search-2" class="block--search-form block--search-form--15866 block--toolkit--search-form block--toolkit--search-form--15866 block--8feb67ef-84b6-4701-9b51-aad1798fc9a5 block--8feb67ef-84b6-4701-9b51-aad1798fc9a5--15866 block block-nir-search block-search-form">
+  
+    
+      <form data-block-uuid="8feb67ef-84b6-4701-9b51-aad1798fc9a5" action="/search" method="get" accept-charset="UTF-8">
+  <div class="js-form-item form-item js-form-type-search form-item-query js-form-item-query form-no-label">
+        <input type="search" name="query" size="60" maxlength="128" placeholder="Search Investors" class="form-search required" required="required" aria-required="true" />
+
+        </div>
+<input type="submit" name="op" value="Search" class="button button--primary js-form-submit form-submit" />
+
+</form>
+
+  </div>
+
+													   
+																												
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+						</article>
+						<section class="related_wrap related_wrap_empty"></section>
+					</div>
+				</div>
+			</div>
+
+			<div class="tg_grey_bar">
+				<div class="container"></div>
+			</div>
+			
+			<section class="footer-section">
+				<div class="container">
+
+											<div class="footer-top">
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><a href="http://www.tgtherapeutics.com/" class="global-block-content">
+	<img data-entity-type="file" data-entity-uuid="4c01ea24-1fd9-445b-8a67-3fa19db7100d" src="/system/files-encrypted/nasdaq_kms/inline-images/Component-5-_-2.png" alt="Component-5--2" /></a></div>
+      
+
+      
+
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="fa_deil">
+<address>
+<br /></address>
+<a href="mailto:ir@tgtxinc.com">Email Us</a>
+<a href="tel:1-877-575-TGTX (8489)" class="tel">1-877-575-TGTX (8489)</a>
+</div></div>
+      
+
+      
+
+                <ul class="social">
+        
+          <li>
+            <a target="_blank" href="https://twitter.com/TGTherapeutics">
+              <img src="/sites/g/files/knoqqb43906/themes/site/nir_pid1627/client/wp-content/uploads/2019/12/icon-twitter.png"/>
+            </a>
+          </li>
+
+        
+          <li>
+            <a target="_blank" href="https://in.linkedin.com/company/tg-therapeutics">
+              <img src="/sites/g/files/knoqqb43906/themes/site/nir_pid1627/client/wp-content/uploads/2019/12/icon-linkedin.png"/>
+            </a>
+          </li>
+
+              </ul>
+      
+
+  
+
+</div>					
+											<div class="footer-bottom">
+							
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="fb_copy global-block-content">
+<p>TG Therapeutics © <script>
+<!--//--><![CDATA[// ><!--
+document.write((new Date()).getFullYear());
+//--><!]]>
+</script>. All rights reserved.</p>
+</div>
+</div>
+      
+
+      
+<div class="fb_menu">
+  <div class="menu-footer-menu-container">
+
+                        <ul id="menu-footer-menu" class="menu-list footer-menu">
+          
+                        <li  class="menu-item menu-item-type-custom menu-item-object-custom levelOne">
+              <a target="" href="https://www.tgtherapeutics.com/join-us/">Join us</a>
+            </li>
+
+          
+                        <li  class="menu-item menu-item-type-custom menu-item-object-custom levelOne">
+              <a target="" href="https://www.tgtherapeutics.com/contact-us/">Contact Us</a>
+            </li>
+
+          
+                        <li  class="menu-item menu-item-type-custom menu-item-object-custom levelOne">
+              <a target="" href="https://www.tgtherapeutics.com/privacy-policy/">Privacy Policy</a>
+            </li>
+
+          
+                        <li  class="menu-item menu-item-type-custom menu-item-object-custom levelOne">
+              <a target="" href="https://www.tgtherapeutics.com/terms-of-use/">Terms of Use</a>
+            </li>
+
+                  </ul>
+          
+
+    
+  </div>
+</div>
+
+
+																				</div>
+					
+				</div>
+			</section>
+	 </div>
+ </div>
+
+ <a href="#" class="scroll_to_top icon-up" title="Scroll to top"></a>
+ <div class="custom_html_section"></div>
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb2455";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/13916","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","themeUrl":"sites\/g\/files\/knoqqb43906\/themes\/site\/nir_pid1627"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1627\/client-footer,nir_pid1627\/client-header,nir_pid1627\/override,nir_pid1627\/vendor,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid1627","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"90cef7efb29a86d98565101e8a3a48bcbc3230b9342394cd7bb013b412df1e54"}}</script>
+<script src="/sites/g/files/knoqqb43906/files/js/js_9_ZY2e817KzI1MiHFrITww1GkbtPfDD8Q5Egqyccnyc.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":2630,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

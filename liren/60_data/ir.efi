@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="EFI" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.efi.com/events-presentations" />
+<meta property="og:title" content="Events &amp; Presentations | EFI" />
+<meta property="og:description" content="The Investor Relations website contains information about EFI&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb18081/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://ir.efi.com/events-presentations" />
+<link rel="canonical" href="https://ir.efi.com/events-presentations" />
+<link rel="shortlink" href="https://ir.efi.com/node/22546" />
+<link rel="revision" href="https://ir.efi.com/events-presentations" />
+
+    <title>Events &amp; Presentations | EFI</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb18081/files/css/css_SQBKl25X50_ss2d0gozsTTn-Wxa9dWu131cAz6rP_-E.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb18081/files/css/css_OrAzccquJQeHxKjVnhLi5-jD0Kznm9_Fjv2Zuh3uGMM.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb18081/files/css/css_cye2BNSwixiK4P8gcP2sF9gfbkKK3ixJUNqA1FEbDzg.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb18081/files/css/css_rinh-ANm4xX2rUDhRBeY0XOzfoV-qaI5wB891tXVv6M.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb18081/files/css/css_uR7CBnjEs5VZNOTbN5egaIVEsuJ_uLDLaCxQpDsgq_0.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb18081/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-both nir-node nir-node--type-nir-landing-page nir-node--22546 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div id="main_container">
+    <div id="header">
+        <a href="http://w3.efi.com/" target="_blank">
+            <div id="logo"></div>
+        </a>
+
+        <br clear="all">
+    </div>
+
+    <div id="content_container">
+        <table style="width:99%" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td valign="top" style="background:#F0F0F0;">
+                        <div id="left_nav">
+
+                            <h1 style="white-space: nowrap;">Investor Relations</h1>
+                            <div id="left_nav_links">
+                                     
+									  <div class="region region-sidebar-first">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1659-investorrelations-menu" id="block-nir-pid1659-investorrelations" class="block--system-menu-blockir block--system-menu-blockir--22546 block--sidebar-first--system-menu-block--ir block--sidebar-first--system-menu-block--ir--22546 block--8de623d2-5c1d-461c-9290-39b9937c74ae block--8de623d2-5c1d-461c-9290-39b9937c74ae--22546 block block-menu navigation block-system-menublock menu--ir">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1659-investorrelations-menu">Investor Relations</h2>
+    
+
+                              <ul data-block-uuid="8de623d2-5c1d-461c-9290-39b9937c74ae" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/fundamental-change-company-notices" target="" rel="" data-drupal-link-system-path="node/24976">Fundamental Change Company Notices</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/press-releases" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-presentations" target="" rel="" data-drupal-link-system-path="node/22546" class="is-active">Events &amp; Presentations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance" target="" rel="" data-drupal-link-system-path="node/22601">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/static-files/8f8830ae-78b0-43a2-b989-ebe93cda21b8" target="blank" rel="" data-drupal-link-system-path="static-files/8f8830ae-78b0-43a2-b989-ebe93cda21b8">Conflict Minerals Report</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information" target="" rel="" data-drupal-link-system-path="node/5871">Financial Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/5916">Stock Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/investor-faqs" data-drupal-link-system-path="node/5941">Investor FAQs</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/contact-us" target="" rel="" data-drupal-link-system-path="node/5981">Contact us</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+      
+								                            </div>
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <div id="center_area">
+							  <div class="region region-content">
+    <div id="block-nir-pid1659-websitenoticeblock" class="block--website-notice-block block--website-notice-block--22546 block--content--website-notice-block block--content--website-notice-block--22546 block--1b07e6d9-e442-45ed-91d9-ed32d775879f block--1b07e6d9-e442-45ed-91d9-ed32d775879f--22546 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1659-content" class="block--system-main-block block--system-main-block--22546 block--content--system-main-block block--content--system-main-block--22546 block--7c667dc6-87c3-486f-b61b-dd31db413a7a block--7c667dc6-87c3-486f-b61b-dd31db413a7a--22546 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="views-element-container block--views-blockwidget-assets-widget-assets-table block--views-blockwidget-assets-widget-assets-table--22546 block--contentmain--views-block--widget-assets-widget-assets-table block--contentmain--views-block--widget-assets-widget-assets-table--22546 block--6c909bcd-aaef-4f5a-a2cf-751c7fa60179 block--6c909bcd-aaef-4f5a-a2cf-751c7fa60179--22546 block block-views block-views-blockwidget-assets-widget-assets-table">
+  
+      <h2>Acquisition</h2>
+    
+      <div data-block-uuid="6c909bcd-aaef-4f5a-a2cf-751c7fa60179"><div class="view view-widget-assets view-id-widget_assets view-display-id-widget_assets_table js-view-dom-id-a44187b275ff59b1d1f64560022e065dc5f70c98a99f995d2ceb78bfc780d18f">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-assets-widget-assets-table" action="/events-presentations" method="get" id="views-exposed-form-widget-assets-widget-assets-table" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit-widget-assets" type="submit" id="edit-submit-widget-assets" value="Filter" class="button js-form-submit form-submit" />
+<input data-drupal-selector="edit-reset" type="submit" id="edit-reset" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-1 striped-odd collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-document-table-column" class="views-field views-field-field-nir-document" scope="col">Documents</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr>
+                                                                                                                  <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document views-field-field-nir-ext-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/8144f2ad-bfdd-4a46-b90e-bf30e56fa093" type="application/pdf; length=127496" title="Investor Presentation_041419_Final2.pdf">EFI Announces Definitive Agreement to be Acquired by an Affiliate of Siris Capital Group, LLC in all Cash Transaction Valued at Approximately $1.7 Billion</a></span><span class="filesize"> 127.4 KB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+      
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-assets-widget-assets-table block--views-blockwidget-assets-widget-assets-table--22546 block--contentmain--views-block--widget-assets-widget-assets-table block--contentmain--views-block--widget-assets-widget-assets-table--22546 block--9a2fa7bb-c3ac-4516-8390-06ec0dd89582 block--9a2fa7bb-c3ac-4516-8390-06ec0dd89582--22546 block block-views block-views-blockwidget-assets-widget-assets-table">
+  
+      <h2>Investor Presentation</h2>
+    
+      <div data-block-uuid="9a2fa7bb-c3ac-4516-8390-06ec0dd89582"><div class="view view-widget-assets view-id-widget_assets view-display-id-widget_assets_table js-view-dom-id-1c898e914572c9f225c6a0ce8b8409874736b57998ad6bbbd45cc3c8f54a1b1b">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-assets-widget-assets-table" action="/events-presentations" method="get" id="views-exposed-form-widget-assets-widget-assets-table" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions--2"><input data-drupal-selector="edit-submit-widget-assets-2" type="submit" id="edit-submit-widget-assets--2" value="Filter" class="button js-form-submit form-submit" />
+<input data-drupal-selector="edit-reset" type="submit" id="edit-reset--2" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-1 striped-odd collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-document-table-column--2" class="views-field views-field-field-nir-document" scope="col">Documents</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr>
+                                                                                                                  <td headers="view-field-nir-document-table-column--2" class="views-field views-field-field-nir-document views-field-field-nir-ext-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/f4646ba2-bbab-48f5-89c2-9fe5b8ebab35" type="application/pdf; length=5840849" title="Investor_Deck_Q418_marc v2.pdf">Fourth Quarter 2018 Investor Book</a></span><span class="filesize"> 5.8 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--22546 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--22546 block--fadb9e84-b2ae-4417-ba4e-726d2e85634f block--fadb9e84-b2ae-4417-ba4e-726d2e85634f--22546 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Featured Events</h2>
+    
+      <div data-block-uuid="fadb9e84-b2ae-4417-ba4e-726d2e85634f"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-5da3a39b755124ba0fccb3c834f3f37a8f9b2b2c677722e5f0cb31666c438521">
+  
+    
+      
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" scope="col"><a href="?promote=1&amp;sort_order=ASC&amp;order=field_nir_event_start_date&amp;sort=asc" title="sort by Date">Date</a></th>
+                                                  <th id="view-nothing-table-column" class="views-field views-field-nothing" scope="col">Event Details</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 22, 2019
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">2019 Connect Users Conference - Keynote Session: Bill Muir, EFI CEO</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-ext-document field--type-link field--label-hidden field__items">
+              <div class="field field--name-field-nir-ext-document field--type-link field--label-hidden field__item"><a href="https://www.youtube.com/watch?v=uXlcvoGKZPs&amp;feature=youtu.be" target="_self">Keynote Session: Bill Muir, EFI CEO</a></div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 25, 2019
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">2019 Connect Users Conference - State of the Products: Gaby Matsliach, EFI Senior Vice President, General Manager of Productivity Software and Marc Olin, EFI CFO</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-ext-document field--type-link field--label-hidden field__items">
+              <div class="field field--name-field-nir-ext-document field--type-link field--label-hidden field__item"><a href="https://www.youtube.com/watch?v=-wmau-jHpbc&amp;t=3s" target="_self">State of the Products: Gaby Matsliach, EFI Senior Vice President, General Manag…</a></div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--22546 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--22546 block--dff48539-ce19-41ac-a658-9dcbb20dbe95 block--dff48539-ce19-41ac-a658-9dcbb20dbe95--22546 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Upcoming Event</h2>
+    
+      <div data-block-uuid="dff48539-ce19-41ac-a658-9dcbb20dbe95"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-3c8cf73ae3cbb2415eee6a849c95aec823e66627e570f1de662af13078203de9">
+  
+    
+      
+      <div class="view-empty">
+      There are currently no events to display.
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--22546 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--22546 block--3e883bad-a833-4ea9-8d32-e1b4f9689167 block--3e883bad-a833-4ea9-8d32-e1b4f9689167--22546 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Archived Events</h2>
+    
+      <div data-block-uuid="3e883bad-a833-4ea9-8d32-e1b4f9689167"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-e4720b523e89bcb679546e339484b78b7e1d1457a696e453330f25065f4d36bd">
+  
+    
+      
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date" scope="col"><a href="?field_nir_event_start_date_value_1=-8%20hours&amp;sort_order=DESC&amp;order=field_nir_event_start_date&amp;sort=asc" title="sort by Date">Date</a></th>
+                                                  <th id="view-nothing-table-column--2" class="views-field views-field-nothing" scope="col">Event Details</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jun 9, 2019 at 9:00 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">EFI 2018 Annual Meeting of Stockholders</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 25, 2019 at 1:00 PM PST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Morgan Stanley 2019 Technology Media and Telecom Conference</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://event.webcasts.com/starthere.jsp?ei=1232406&amp;tp_key=43c0859470&amp;tp_special=8" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                            <div class="toggleView"><a href="#">Additional Information</a></div>
+            <div style="display: none;padding: 15px;" class="nir-event-summary-event-details-summary">
+                
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><span style="font-size:9.0pt"><span style="line-height:107%"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#4f4e53">Palace Hotel in San Francisco, CA. EFI is scheduled to present on <span style="font-size:9.0pt"><span style="line-height:107%"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#4f4e53">Monday, February 25<sup>th</sup> at 1:00pm PT.</span></span></span></span></span></span></span></span></div>
+          </div>
+
+            </div>
+                                    </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 14, 2019 at 10:10 AM PST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Goldman Sachs 2019 Technology Conference</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://event.webcasts.com/starthere.jsp?ei=1231983&amp;tp_key=ef9fca8939&amp;tp_special=8" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                            <div class="toggleView"><a href="#">Additional Information</a></div>
+            <div style="display: none;padding: 15px;" class="nir-event-summary-event-details-summary">
+                
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><span style="font-size:9.0pt"><span style="line-height:107%"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#4f4e53">Palace Hotel in San Francisco, CA.  EFI is scheduled to present on Thursday, February 14th, at 10:10am PT. </span></span></span></span></div>
+          </div>
+
+            </div>
+                                    </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 30, 2019 at 2:00 PM PST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q4 and Full Year 2018 Electronics for Imaging Earnings</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/qn9759xb" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/25885250-e3a1-449a-8982-60dd459329aa" type="application/pdf; length=5888343" title="Q418 Earnings Call Final v1.pdf">View Presentation</a></span><span class="filesize"> 5.8 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 15, 2019 at 2:00 PM PST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Preliminary Q4 2018 Electronics for Imaging Preliminary Results</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/jmw6c67d" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Dec 6, 2018 at 2:30 PM PST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Barclays Global Technology, Media and Telecommunications Conference  </div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://cc.talkpoint.com/barc002/120518a_as/?entity=77_OD73NP0" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Dec 5, 2018 at 2:20 PM PST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Wells Fargo Tech Summit</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://cc.talkpoint.com/well001/120418a_as/?entity=34_X3F5O35" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                    <div class="nir-event-summary-event-details-location">
+                <h4>Location:</h4>
+                <div class="location-info">
+                                            <div class="location-info-name">
+                            <div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Stein Eriksen Lodge in Park City Utah</div>
+    </div>
+
+                        </div>
+                                                                            </div>
+            </div>
+                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Dec 4, 2018
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">39th Annual Nasdaq Investor Conference</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/xoror9q9" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                            <div class="toggleView"><a href="#">Additional Information</a></div>
+            <div style="display: none;padding: 15px;" class="nir-event-summary-event-details-summary">
+                
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><span style="font-size:11.0pt"><span style="font-family:&quot;Calibri&quot;,sans-serif">EFI is scheduled to present on Tuesday December 4, at 5:30pm GMT</span></span></div>
+          </div>
+
+            </div>
+                                    </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Oct 29, 2018 at 5:00 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q3 2018 Electronics for Imaging Earnings</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/3cx458ax" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/a2bc47b2-dcd0-422f-9ee7-78c9d90d3d4e" type="application/pdf; length=5127619" title="Q318 Earnings Call Final (002).pdf">View Presentation</a></span><span class="filesize"> 5.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Sep 5, 2018 at 4:30 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">EFI to Present at the  Citi 2018 Global Technology Conference</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://www.veracast.com/webcasts/citigroup/technology2018/51112133619.cfm" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jul 30, 2018 at 5:00 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q2 2018 Electronics for Imaging Earnings</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/qmmh2uui" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/5e19565f-d522-4743-aeb2-e3500ad1b6c1" type="application/pdf; length=5979751" title="Q218 Earnings Call Final.pdf">View Presentation</a></span><span class="filesize"> 5.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jun 13, 2018 at 8:35 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Stifel 2018 Cross Sector Insight Conference </div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/stifel11/efii/" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            May 15, 2018 at 3:40 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Needham 2018 Emerging Technology Conference</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/needham85/efii/" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            May 8, 2018
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">EFI Display Graphics William Blair Event</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/d560a432-5fc0-4b9f-b32b-714ecd47fa37" type="application/pdf; length=2227164" title="EFI_IR IJS May 8 with innovation 7.0.pdf">View Presentation</a></span><span class="filesize"> 2.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Apr 30, 2018 at 5:00 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q1 2018 Electronics for Imaging Earnings</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/xcz5fhje" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/2079e232-c695-4bfb-8ef7-d9329f9660ea" type="application/pdf; length=4788809" title="Q118 Earnings Call Final rev3.pdf">View Presentation</a></span><span class="filesize"> 4.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 26, 2018 at 1:15 PM PST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Morgan Stanley Technology, Media and Telecom Conference </div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://cc.talkpoint.com/morg007/022618a_as/?entity=107_7R5LFSG" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 31, 2018 at 5:00 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q4 and Full Year 2017 Electronics for Imaging Earnings</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/cxtokrmj" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                            <div class="toggleView"><a href="#">Additional Information</a></div>
+            <div style="display: none;padding: 15px;" class="nir-event-summary-event-details-summary">
+                
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><a href="https://www.youtube.com/watch?v=Bbr45K01y4Q" target="_blank">Connect18 Fireside Chat</a></div>
+          </div>
+
+            </div>
+                                            <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/3ab6fff2-6176-4466-823a-1dedc6836973" type="application/pdf; length=6229885" title="Q417 Earnings Call draft- final v2.pdf">View Presentation</a></span><span class="filesize"> 6.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Dec 7, 2017 at 2:00 PM PST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Barclays Global Technology, Media &amp; Telecommunications Conference</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                                    <div class="nir-event-summary-event-details-location">
+                <h4>Location:</h4>
+                <div class="location-info">
+                                            <div class="location-info-name">
+                            <div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Palace Hotel in San Francisco, California</div>
+    </div>
+
+                        </div>
+                                                                            </div>
+            </div>
+                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Dec 6, 2017 at 9:15 AM UTC
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">37th NASDAQ Investor Conference </div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                                    <div class="nir-event-summary-event-details-location">
+                <h4>Location:</h4>
+                <div class="location-info">
+                                            <div class="location-info-name">
+                            <div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">The May Fair Hotel in London</div>
+    </div>
+
+                        </div>
+                                                                            </div>
+            </div>
+                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Dec 5, 2017 at 12:45 PM PST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Wells Fargo Technology Summit </div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                                    <div class="nir-event-summary-event-details-location">
+                <h4>Location:</h4>
+                <div class="location-info">
+                                            <div class="location-info-name">
+                            <div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">St. Regis Deer Valley in Park City Utah</div>
+    </div>
+
+                        </div>
+                                                                            </div>
+            </div>
+                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 14, 2017 at 8:30 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">12B-25 Filing Review Conference Call</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/pg9r7fdh" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Oct 26, 2017 at 5:00 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q3 2017 Electronics for Imaging Earnings</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/tbrarbav" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Sep 11, 2017 at 8:00 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q2 2017 Electronics for Imaging Earnings</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/uz2df3bq" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/383ff429-be94-4d43-afc1-54b4bc5308f6" type="application/pdf; length=6156143" title="Q217_Earnings_Call_Final_2_.pdf">View Presentation</a></span><span class="filesize"> 6.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Apr 20, 2017 at 5:00 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q1 2017 Electronics for Imaging Earnings</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/9685wjvr" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/4680460e-5f06-4462-b5ab-ae25c9466a93" type="application/pdf; length=6489200" title="Q117_Earnings_Call_final_rev1.pdf">View Presentation</a></span><span class="filesize"> 6.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 2, 2017
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Xerox and EFI Partner to Give Customers Best in Class Digital Front Ends</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/49e38b1a-df55-4fbe-9606-8eccf391e181" type="application/pdf; length=403599" title="EFI_Xerox_feb_2_announcement_F0201.pdf">View Presentation</a></span><span class="filesize"> 403.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 25, 2017 at 2:00 PM PST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q4 2016 Electronics for Imaging Earnings</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/73bifwxh" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/1767f8d8-c54d-461c-a780-5132d3d67b82" type="application/pdf; length=7359233" title="Q416_Earnings_Call_Final.pdf">View Presentation</a></span><span class="filesize"> 7.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Oct 24, 2016 at 2:00 PM PDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q3 2016 Electronics for Imaging Earnings</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/t4vf8v9d" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/10ba61ba-c075-4c58-af16-2577946922f4" type="application/pdf; length=7640295" title="EFII_Q316_Earnings_Call_Final.pdf">View Presentation</a></span><span class="filesize"> 7.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jul 25, 2016 at 5:00 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q2 2016 Electronics for Imaging Earnings</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/svos98ma" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/a715d250-e9e6-4c03-91c3-5ffc09f1e44f" type="application/pdf; length=1192411" title="Q216_Earnings_Call_Final_v1.pdf">View Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Apr 20, 2016 at 5:00 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q1 2016 Electronics for Imaging Earnings</div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/sxwzh59k" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/42a73932-2d6c-4115-9df3-28b789945eef" type="application/pdf; length=6438997" title="Q116_Earnings_Call_Final.pdf">View Presentation</a></span><span class="filesize"> 6.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 27, 2016 at 5:00 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q4 2015 Electronics for Imaging Earnings </div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/rdx9dq5r" target="_blank">Listen to webcast</a></div>
+    </div>
+
+            </div>
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/623f896c-ef99-4d36-9b8a-0702db93d993" type="application/pdf; length=6634307" title="Q415_Earnings_Call_Final_rev_1.pdf">View Presentation</a></span><span class="filesize"> 6.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Oct 20, 2015 at 5:00 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q3 2015 Electronics for Imaging Earnings Conference Call </div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/e45d1eea-d542-472b-9907-e418f0583acb" type="application/pdf; length=5409095" title="Q315_Earnings_Call.pdf">View Presentation</a></span><span class="filesize"> 5.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jul 20, 2015 at 5:00 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+    <div class="nir-events-widget-event-details-title">
+                    <div class="ndq-eventtitle">Q2 2015 Electronics for Imaging Earnings Conference Call </div>
+            </div>
+    <div class="nir-events-widget-event-details-expanded summary-hidden">
+                                                    <div class="nir-events-summary-event-details-supporting-materials">
+                    
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.efi.com/static-files/4c47aa76-d5bc-4071-9f05-3b0c8cae4298" type="application/pdf; length=4505669" title="Q215_Earnings_Call_FINAL.pdf">Q2 2015 Slide Presentation</a></span><span class="filesize"> 4.5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+            </div>
+            </div>
+</div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+                        </div>
+                    </td>
+
+                    <td valign="top" style="background:#F0F0F0">
+                        <div id="right_area">
+							      
+								  <div class="region region-sidebar-last">
+    <div id="block-charttab" class="block-content--nir-global-block block-content--nir-global-block--22756 block--block-content3a1614c4-0a99-4462-9086-0ccc1a154e4a block--block-content3a1614c4-0a99-4462-9086-0ccc1a154e4a--22546 block--sidebar-last--block-content--3a1614c4-0a99-4462-9086-0ccc1a154e4a block--sidebar-last--block-content--3a1614c4-0a99-4462-9086-0ccc1a154e4a--22546 block--54479ec9-78d1-4f5e-8c9d-d70084c08620 block--54479ec9-78d1-4f5e-8c9d-d70084c08620--22546 block block-block-content block-block-content3a1614c4-0a99-4462-9086-0ccc1a154e4a">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div id="right_area">
+<ul class="tabs"><li class="active tab-1"><a href="#stockQ"><span>Stock Quote</span></a></li>
+	<li class="IEtrick tab-2"><a href="#stockChart"><span>Stock Chart</span></a></li>
+</ul></div>
+</div>
+      
+</div>
+      
+  </div>
+<div id="block-nir-pid1659-stockquote" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--22601 block--sidebar-last--market-data-block__stock-quote block--sidebar-last--market-data-block__stock-quote--22601 block--d53c2fac-2425-4a44-ba47-7b1db0b979ce block--d53c2fac-2425-4a44-ba47-7b1db0b979ce--22601 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+    
+      <div class='quote-wrap user-toggle-off stock-quote__featured'>
+  <div class="quote-wrapper">
+                              
+	  <div id="stockQ" class="tab_content" style="display: block;">
+	
+		<div class="wsh_miniQuote_Head">: </div>
+	
+		<div class="wsh_miniQuote_Label">Price:</div>	
+		<div class="wsh_miniQuote_Data"></div>
+		<div class="wsh_clear"></div>
+		
+		<div class="wsh_miniQuote_Label">Change:</div>
+		<div class="wsh_miniQuote_Data "> </div>
+		<div class="wsh_clear"></div>
+	 
+		<div class="wsh_miniQuote_Label">Day High:</div>
+		<div class="wsh_miniQuote_Data"></div>
+		<div class="wsh_clear"></div>
+		
+		<div class="wsh_miniQuote_Label">Day Low:</div>
+		<div class="wsh_miniQuote_Data"></div>
+		<div class="wsh_clear"></div>
+		
+		<div class="wsh_miniQuote_Label">Volume:</div>
+		<div class="wsh_miniQuote_Data"></div>
+		<div class="wsh_clear"></div>
+		
+		<div class="wsh_miniQuote_Date"></div>
+	  
+		
+	</div>
+	  
+    </div>
+</div>
+
+  </div>
+<div id="block-nir-pid1659-stockinfoattributionthomsonreuters" class="block--attribution-block__stock-info-attribution__thomson-reuters block--attribution-block__stock-info-attribution__thomson-reuters--22601 block--sidebar-last--attribution-block__stock-info-attribution__thomson-reuters block--sidebar-last--attribution-block__stock-info-attribution__thomson-reuters--22601 block--970b8ffc-5802-4dbc-8b3f-fd9d266bb73a block--970b8ffc-5802-4dbc-8b3f-fd9d266bb73a--22601 block block-nir-attribution-block block-attribution-block__stock-info-attribution__thomson-reuters">
+  
+    
+      <p>
+  Data Provided by Refinitiv. Minimum 15 minutes delayed.</p>
+
+  </div>
+<div id="block-nir-pid1659-stockcharttab" class="block-content--nir-global-block block-content--nir-global-block--18616 block--block-content780e494b-fa7e-4a6b-b418-1ef64472cba3 block--block-content780e494b-fa7e-4a6b-b418-1ef64472cba3--22546 block--sidebar-last--block-content--780e494b-fa7e-4a6b-b418-1ef64472cba3 block--sidebar-last--block-content--780e494b-fa7e-4a6b-b418-1ef64472cba3--22546 block--0aa87b93-9bba-45fb-8413-322b35d1c5eb block--0aa87b93-9bba-45fb-8413-322b35d1c5eb--22546 block block-block-content block-block-content780e494b-fa7e-4a6b-b418-1ef64472cba3">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="tab_content" id="stockChart" style="display: block;">
+<div class="wsh_minichart"><a href="/stock-information"><img alt="Stock price graph" border="0" id="pricechart" src="https://api.nasdaqomx.wallst.com/api/chart?display=mountain&amp;symbol=EFII&amp;scale=linear&amp;duration=3mo&amp;frequency=1dy&amp;gridLine=b&amp;bgColor=ffffff&amp;lineColor=00529c&amp;fillcolor=0064be|0082f8&amp;width=200&amp;height=111" title="" /></a>
+<div class="wsh_pt5 noprint">
+<form action="/index.cfm"><input checked="checked" id="chart_months_3" name="chart_months" onclick="MM_swapImage('pricechart','','https://api.nasdaqomx.wallst.com/api/chart?display=mountain&amp;symbol=EFII&amp;scale=linear&amp;duration=3mo&amp;frequency=1dy&amp;gridLine=b&amp;bgColor=ffffff&amp;lineColor=00529c&amp;fillcolor=0064be|0082f8&amp;width=200&amp;height=111',1)" type="radio" value="3" /><label for="chart_months_3">3 Mo.</label>   <input id="chart_months_6" name="chart_months" onclick="MM_swapImage('pricechart','','https://api.nasdaqomx.wallst.com/api/chart?display=mountain&amp;symbol=EFII&amp;scale=linear&amp;duration=6mo&amp;frequency=1dy&amp;gridLine=b&amp;bgColor=ffffff&amp;lineColor=00529c&amp;fillcolor=0064be|0080f4&amp;width=200&amp;height=111',1)" type="radio" value="6" /><label for="chart_months_6">6 Mo.</label>   <input id="chart_months_12" name="chart_months" onclick="MM_swapImage('pricechart','','https://api.nasdaqomx.wallst.com/api/chart?display=mountain&amp;symbol=EFII&amp;scale=linear&amp;duration=1yr&amp;frequency=1dy&amp;gridLine=b&amp;bgColor=ffffff&amp;lineColor=00529c&amp;fillcolor=0064be|0080f4&amp;width=200&amp;height=111',1)" type="radio" value="12" /><label for="chart_months_12">1 Yr.</label></form>
+</div>
+</div>
+</div>
+</div>
+      
+</div>
+      
+  </div>
+
+
+<nav role="navigation" aria-labelledby="block-nir-pid1659-shareholdertools-menu" id="block-nir-pid1659-shareholdertools" class="block--system-menu-blockshareholder-tools block--system-menu-blockshareholder-tools--22601 block--sidebar-last--system-menu-block--shareholder-tools block--sidebar-last--system-menu-block--shareholder-tools--22601 block--c0d289c1-b764-4f94-810d-c9aaf926774f block--c0d289c1-b764-4f94-810d-c9aaf926774f--22601 block block-menu navigation block-system-menublock menu--shareholder-tools">
+            
+    <h2 id="block-nir-pid1659-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                              <ul data-block-uuid="c0d289c1-b764-4f94-810d-c9aaf926774f" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/printed-materials" data-drupal-link-system-path="node/5966">Printed Materials</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/email-alerts" data-drupal-link-system-path="node/5946">Email Alerts</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/download-library" data-drupal-link-system-path="node/6016">Download Library</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/rss-news-feeds" target="" rel="" data-drupal-link-system-path="node/22751">RSS Feeds </a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+<div id="block-nir-pid1659-search" class="block--search-form block--search-form--15361 block--sidebar-last--search-form block--sidebar-last--search-form--15361 block--34aba728-d3c2-4242-8973-95609f54b35b block--34aba728-d3c2-4242-8973-95609f54b35b--15361 block block-nir-search block-search-form">
+  
+    
+      <form data-block-uuid="34aba728-d3c2-4242-8973-95609f54b35b" action="/search" method="get" accept-charset="UTF-8">
+  <div class="js-form-item form-item js-form-type-search form-item-query js-form-item-query form-no-label">
+        <input type="search" name="query" size="60" maxlength="128" placeholder="keyword(s)" class="form-search required" required="required" aria-required="true" />
+
+        </div>
+<input type="submit" name="op" value="Search" class="button button--primary js-form-submit form-submit" />
+
+</form>
+
+  </div>
+
+  </div>
+
+      
+							                            
+                        </div>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+
+    <div id="footer">
+
+
+        <p>
+            <a href="http://w3.efi.com/" target="_blank">Copyright © 2017 Electronics for Imaging, Inc.</a>
+        </p>
+    </div>
+    <br clear="all">
+</div>
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb2523";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/22546","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid1659\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid1659","theme_token":null},"ajaxTrustedUrl":{"\/events-presentations":true},"user":{"uid":0,"permissionsHash":"add89b9858322b53c38978ebe8cf0a8195e64fc659f7015a8247a07386e17e7a"}}</script>
+<script src="/sites/g/files/knoqqb18081/files/js/js_Jqjt-0QopcnfxTxzEFsUd4Su3PMrb4fLGwmJKfVsF8c.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":695,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

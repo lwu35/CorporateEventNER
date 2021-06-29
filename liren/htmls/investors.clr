@@ -1,0 +1,1381 @@
+	<!DOCTYPE html>
+	<html lang="en-US">
+
+	<head>
+<!-- begin spin_special_output(head_start) -->
+<style type="text/css" wd_script_id="featureboxes_style">
+		.wd_featurebox_icon {
+			display: inline;
+		}
+		.wd_featurebox_icon img {
+			vertical-align: middle;
+		}
+		div.wd_featurebox_group div.wd_tabs_wrapper {
+			border: none;
+			border-bottom: 1px solid #E1E1E1;
+			padding: 0 0 5px 0;
+		}
+		div.wd_featurebox_group div.wd_featurebox {
+			border: none;
+			padding: 8px 0 0 0;
+		}
+		div.wd_featurebox_group li.wd_tab {
+			float: none;
+			color: #666666;
+		}
+		div.wd_featurebox_group li.wd_tab-active {
+			border: none;
+			background-color: transparent;
+			color: #000000;
+			font-weight: bold;
+		}
+		div.wd_featurebox_group li.wd_tab-inactive {
+			cursor: auto;
+		}
+	</style>
+<link href="thirdparty/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" wd_script_id="font-awesome.min.css">
+<style type="text/css" wd_script_id="template asset_icon_link:base:system style">
+ul.wd_asset_icon_link_list {
+	margin: 0 1em;
+}
+ul.wd_asset_icon_link_list li.wd_asset_icon_link {
+	margin: 0 0.2em;
+}
+li.wd_asset_icon_link {
+	display: inline;
+	white-space: nowrap;
+}
+li.wd_asset_icon_link .wd_icon {
+	color: #4f5051;
+}
+</style>
+<style type="text/css" wd_script_id="template_list_inline_style">
+						ul.wd_layout-inline {
+							display: inline-block;
+							list-style: none;
+							padding: 0;
+							margin: 0;
+						}
+						ul.wd_layout-inline li {
+							display: inline-block;
+							padding: 0;
+							margin: 0 0 0 1em;
+						}
+					</style>
+<style type="text/css" wd_script_id="template teaser_list:newsfeed_releases:system style">
+.wd_newsfeed_releases-teaser .wd_date {
+	font-weight: bold;
+}
+.wd_newsfeed_releases-teaser .wd_title {
+	font-weight: bold;
+}
+.wd_newsfeed_releases-teaser .subscribe_link {
+	margin-bottom: 1em;
+}
+.wd_newsfeed_releases-teaser span.wd_subscribe_email-icon {  
+	font-size: 1.2em; 
+}</style>
+<script type="text/javascript" src="js/jquery-webdriver.js" wd_script_id="jquery-webdriver.js"></script>
+<script type="text/javascript" src="js/webdriver.js" wd_script_id="webdriver.js"></script>
+<script type="text/javascript" wd_script_id="featurebox_financial_script">
+			var ir_featurebox = {
+				featureboxes: new Array,
+				ticker_data: new Array,
+
+				update: function(index, ticker, filer) {
+					var item_id = ticker || filer;
+					if (!this.featureboxes[index]) {
+						this.featureboxes[index] = {
+							ticker: ticker,
+							filer: filer,
+							chart: false,
+							size: false
+						};
+					}
+
+					if (!this.ticker_data[item_id])
+						this.ticker_data[item_id] = {};
+
+					if (ticker && webDriver.jQuery("#ir_featurebox_"+index+"-quote").length)
+						this.update_quote(index, ticker);
+
+					if (ticker && webDriver.jQuery("#ir_featurebox_"+index+"-chart").length)
+						this.update_chart(index, ticker);
+
+					if (ticker && webDriver.jQuery("#ir_featurebox_"+index+"-data").length)
+						this.update_data(index, ticker);
+
+					if (filer && webDriver.jQuery("#ir_featurebox_"+index+"-filings").length)
+						this.update_filings(index, filer);
+
+					if (webDriver.jQuery("#ir_featurebox_"+index+"-footer").length)
+						this.update_labels(index, ticker, filer);
+				},
+
+				update_labels: function(index, ticker, filer) {
+					var item_id = ticker || filer;
+					if (!this.ticker_data[item_id]["labels"]) {
+						webDriver.jQuery("#ir_featurebox_"+index+"-footer").html("");
+						webDriver.jQuery.getJSON(
+							"index.php",
+							{
+								ajax: "ir_featurebox",
+								ticker: ticker,
+								filer: filer,
+								data: "labels"
+							},
+							function(data) {
+								ir_featurebox.ticker_data[item_id]["labels"] = data;
+								ir_featurebox.update_labels(index, ticker, filer);
+							}
+						);
+					} else {
+						webDriver.jQuery("#ir_featurebox_"+index+"-footer").html(this.ticker_data[item_id]["labels"].footer);
+					}
+				}
+			};
+		</script>
+<style type="text/css" wd_script_id="ir_ticker_label_style">
+				div.wd_ticker_label {
+					text-align: right;
+					margin: 5px 0;
+				}
+				div.wd_ticker_label span.wd_exchange {
+					color: #999999;
+				}
+
+				div.wd_ticker_label span.wd_exchange:after {
+					content: ": ";
+				}
+			</style>
+<script type="text/javascript">webDriver.push_jQuery();</script>
+<script type="text/javascript" src="js/highstock/highstock.src.js" wd_script_id="highstock.src.js"></script>
+<link href="css/jquery-ui/jquery-ui.css" type="text/css" rel="stylesheet" wd_script_id="jquery-ui.css">
+<script type="text/javascript" wd_script_id="highcharts_locale_script">
+webDriver.jQuery(function($){
+	Highcharts.setOptions({
+		lang: {
+			loading: "Loading...",
+			months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+			shortMonths: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+			weekdays: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+		}
+	});
+});
+</script>
+<style type="text/css" wd_script_id="ir_featurebox_chart_style">
+				div.wd_chart-ranges {
+					width: 100%;
+					margin: 3px 0 0 0;
+					overflow: auto;
+				}
+
+				div.wd_chart-range {
+					background: #777777;
+					color: #ffffff;
+					cursor: pointer;
+					float: left;
+					width: 19%;
+					text-align: center;
+					border-left: 1px solid #ffffff;
+					border-bottom: 1px solid #777777;
+				}
+
+				div.wd_chart-range:first_child {
+					border-left: 0;
+				}
+
+				div.wd_chart-range-active {
+					background: #ffffff;
+					color: #000000;
+					border-left: 1px solid #777777;
+					border-right: 1px solid #777777;
+				}
+				</style>
+<link href="css/wd_wcag.css" type="text/css" rel="stylesheet" wd_script_id="wd_wcag.css">
+<script type="text/javascript" wd_script_id="ir_featurebox_chart_script">
+					ir_featurebox.update_chart = function(index, ticker) {
+						if (!this.featureboxes[index].chart) {
+							var groupingUnits = [[
+								"minute",
+								[5, 10, 15, 30]
+							], [
+								"hour",
+								[1, 2, 3, 4]
+							], [
+								"day",
+								[1]
+							], [
+								"week",
+								[1]
+							], [
+								"month",
+								[1, 2, 3, 4, 6]
+							]];
+							
+							var chart = new Highcharts.StockChart({
+								chart: {
+									renderTo: "ir_featurebox_"+index+"-chart",
+									spacingTop: 0,
+									spacingBottom: 5,
+									spacingLeft: 0,
+									spacingRight: 0,
+									backgroundColor: null,
+									borderColor: "#CCCCCC",
+									borderWidth: 0,
+									borderRadius: 5,
+									plotBackgroundColor: "#FFFFFF",
+									plotBorderColor: "#CCCCCC",
+									plotBorderWidth: 0,
+
+									events: {
+										load: function() {
+											ir_featurebox.featureboxes[index].chart = this;
+											ir_featurebox.update_chart(index, ticker);
+										}
+									}
+								},
+
+								rangeSelector: {enabled: false},
+								navigator: {enabled: false},
+								scrollbar: {enabled: false},
+								credits: {enabled: false},
+
+								xAxis: {
+									dayOffset: 57600000,
+									lineWidth: 2,
+									lineColor: "#CCCCCC",
+									gridLineWidth: 0,
+									gridLineColor: "#CCCCCC",
+									tickWidth: 1,
+									tickColor: "#CCCCCC",
+									dateTimeLabelFormats: {
+			millisecond: "%H:%M:%S.%L",
+			second: "%H:%M:%S",
+			minute: "%H:%M",
+			hour: "%H:%M",
+			day: "%b %e",
+			week: "%b %e",
+			month: "%b '%y",
+			year: "%Y"
+		},
+									labels: {
+										style: {
+											color: "#808080",
+											fontWeight: "normal"
+										}
+									}
+								},
+
+								yAxis: {
+									opposite: true,
+									lineWidth: 2,
+									lineColor: "#CCCCCC",
+									gridLineWidth: 1,
+									gridLineColor: "#CCCCCC",
+									tickWidth: 0,
+									tickColor: "#CCCCCC",
+									labels: {
+										align: "left",
+										x: 2,
+										formatter: function() {
+											return Highcharts.currencyFormat(this.value,["${V}","-${V}"],-2,".",",");
+										},
+										style: {
+											color: "#808080",
+											fontWeight: "normal"
+										}
+									}
+								},
+
+								tooltip: {
+									backgroundColor: "rgba(255,255,255,0.85)",
+									borderColor: null,
+									borderWidth: 2,
+									borderRadius: 3,
+									shadow: true,
+									crosshairs: [
+										{
+											color: "#CCCCCC",
+											width: 1
+										},
+										{
+											color: "#CCCCCC",
+											width: 0
+										}
+									],
+									useHTML: true,
+									style: {
+										color: null,
+										fontSize: "12px",
+										padding: "5px",
+										whiteSpace: "nowrap",
+										width: 300
+									}
+								},
+
+								series: [{
+									name: "Price",
+									id: "price",
+									color: "#a7752a",
+									lineColor: "#a7752a",
+									marker: {
+										states: {
+											hover: {
+												lineColor: "#FFFFFF"
+											}
+										}
+									},
+									fillColor: "#a7752a",
+									fillOpacity: "0.3",
+									type: "area",
+									threshold: null,
+									data: [],
+									tooltip: {
+										pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b><br/>',
+										valueFormatter: function(value) {return Highcharts.currencyFormat(value,["${V}","-${V}"],[2,4],".",",");}
+									},
+									dataGrouping: {
+										approximation: "close",
+										timeOffset: 1,
+										forced: true,
+										dateTimeLabelFormats: {
+				millisecond: ["", "%A, %b %e, %H:%M:%S.%L", ""],
+				second: ["", "%A, %b %e, %H:%M:%S", ""],
+				minute: ["", "%A, %b %e, %H:%M", ""],
+				hour: ["", "%A, %b %e, %H:%M", ""],
+				day: ["", "%A, %b %e, %Y", ""],
+				week: ["", "%A, %b %e, %Y", ""],
+				month: ["", "%B %Y", ""],
+				year: ["", "%Y", ""]
+			},
+										groupTime: "last",
+										tooltipAdjust: false,
+										units: groupingUnits
+									}
+								}]
+							});
+							return;
+						}
+						
+						if (!this.ticker_data[ticker]["chart"]) {
+							webDriver.jQuery("#wd_chart_"+index+"-ranges .wd_chart-range").hide();
+							this.featureboxes[index].chart.showLoading('<span class="wd_loading_rotate" ><span class="fa-spin fa-fw fa fa-circle-o-notch" style="font-size: 3em;"></span><span class="wd_sr-only">Loading...</span></span>');
+							webDriver.jQuery.getJSON(
+								"index.php",
+								{
+									ajax: "ir_featurebox",
+									ticker: ticker,
+									data: "chart"
+								},
+								function(data) {
+									data.quotes = new Array;
+									ir_featurebox.ticker_data[ticker]["chart"] = data;
+									
+									ir_featurebox.featureboxes[index].chart.hideLoading();
+									ir_featurebox.update_chart(index, ticker);
+								}
+							);
+						} else {
+							this.featureboxes[index].ticker = ticker;
+
+							webDriver.jQuery("#wd_chart_"+index+"-ranges .wd_chart-range").hide();
+							for (range in this.ticker_data[ticker].chart.ranges)
+								webDriver.jQuery("#wd_chart_"+index+"-range-"+range).show();
+
+							var range = webDriver.jQuery("#wd_chart_"+index+"-ranges").attr("wd_default_range") || "1mo";
+							this.chart_set_range(index, range, true);
+						}
+					}
+					
+					ir_featurebox.chart_set_range = function(index, range, ticker_changed) {
+						webDriver.jQuery("#wd_chart_"+index+"-ranges .wd_chart-range")
+							.removeClass("wd_chart-range-active")
+							.attr("aria-checked", "false")
+							.attr("tabindex", -1)
+						;
+						webDriver.jQuery("#wd_chart_"+index+"-range-"+range)
+							.addClass("wd_chart-range-active")
+							.attr("aria-checked", "true")
+							.attr("tabindex", 0)
+						;
+
+						var ticker = this.featureboxes[index].ticker;
+						var size = (range == "1dy") ? "minute" : "day";
+						
+						if (!this.ticker_data[ticker].chart.quotes[size]) {
+							this.featureboxes[index].chart.showLoading('<span class="wd_loading_rotate" ><span class="fa-spin fa-fw fa fa-circle-o-notch" style="font-size: 3em;"></span><span class="wd_sr-only">Loading...</span></span>');
+							webDriver.jQuery.getJSON(
+								"index.php",
+								{
+									ajax: "ir_quotes",
+									ticker: ticker,
+									data: "X",
+									size: size,
+									mult: (size == "day") ? 1 : 5,
+									min: this.ticker_data[ticker].chart.mins[size]
+								},
+								function(data) {
+									ir_featurebox.ticker_data[ticker].chart.quotes[size] = data;
+
+									ir_featurebox.featureboxes[index].chart.hideLoading();
+									ir_featurebox.chart_set_range(index, range, ticker_changed);
+								}
+							);
+						} else {
+							if (ticker_changed || size != this.featureboxes[index].size) {
+								this.featureboxes[index].chart.get("price").setData(this.ticker_data[ticker].chart.quotes[size], false);
+								this.featureboxes[index].size = size;
+							}
+							this.featureboxes[index].chart.xAxis[0].setExtremes(this.ticker_data[ticker].chart.ranges[range], this.ticker_data[ticker].chart.last);
+						}
+					}
+				</script>
+<script type="text/javascript" src="js/wd_wcag.js" wd_script_id="wd_wcag.js"></script>
+<style type="text/css" wd_script_id="featurebox_financial_style">
+			div.wd_chart-quote-footer {
+				margin: 5px 0 0 0;
+				font-size: .75em;
+				color: #999999;
+			}
+		</style>
+<script type="text/javascript">webDriver.pop_jQuery();</script>
+
+<!-- end spin_special_output(head_start) -->
+
+
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-MJPWSB4');</script>
+		<!-- End Google Tag Manager -->
+
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="https://use.typekit.net/mne3sbg.css">
+		<script type="text/javascript" src="index_files/clr-font.js"></script>
+		<title>CLR Investors - Investor Information</title>
+		
+ <meta name="keywords" content="" />
+ <meta name="description" content="" />
+ <meta name="twitter:card" content="summary" />
+ <meta property="og:site_name" content="CLR Investors" />
+ <meta property="og:url" content="https://investors.clr.com/investor-information" />
+		<link rel="alternate" href="https://investors.clr.com/press-releases?pagetemplate=rss" type="application/rss+xml" title="CLR Investors">
+		<link rel="stylesheet" id="style-css" href="index_files/style-new.css" type="text/css" media="all">
+		<script type="text/javascript" src="index_files/jquery.js"></script>
+		<script type="text/javascript" src="index_files/jquery-migrate.js"></script>
+		<link rel="icon" href="index_files/fav-32x32.jpg" sizes="32x32" />
+		<link rel="icon" href="index_files/fav-192x192.jpg" sizes="192x192" />
+		<link rel="apple-touch-icon-precomposed" href="index_files/fav-180x180.jpg" />
+		<meta name="msapplication-TileImage" content="index_files/fav-270x270.jpg" />
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/wdcontent.css">
+		<!--[if IE]>
+			<link rel="stylesheet" type="text/css" href="css/stock_ticker.css" />
+		<![endif]-->
+		<!-- <link rel="stylesheet" type="text/css" href="css/wd_nav_resp.css"> -->
+
+
+	
+<!-- begin spin_special_output(head_end) -->
+<link rel="canonical" href="https://investors.clr.com/" />
+<!-- end spin_special_output(head_end) -->
+</head>
+
+<body class="page-template-default page has-hero wd_pageid_45">
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJPWSB4"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<a class="skip-main to-content" href="#content-main" tabindex="0">Skip to content</a>
+	<a class="skip-main to-content" href="#content-footer" tabindex="0">Skip to footer</a>
+
+	<div class="site-container">
+		<div id="nav-container">
+			<!-- Desktop Wrapper -->
+			<div class="desktop header d-none d-md-block">
+				<div class="container-fluid">
+					<div class="row main-nav-section">
+						<div class="col-12">
+							<div class="row align-items-end">
+								<div class="col-12 logo-wrapper nav-wrapper" role="navigation">
+									<a class="branding" href="https://clr.com/" tabindex="0">
+										<img class="logo" src="images/logo-white@2x.png" title="Continental Resources Logo" alt="Continental Resources Logo">
+										<span class="sr-only">Continental Resources Logo</span>
+									</a>
+									<ul id="desktop-nav" class="nav">
+										<li id="menu-item-27" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children nav-item">
+											<a class="nav-link" href="https://clr.com/about-continental/" aria-haspopup="true" role="menuitem">About Continental</a>
+											<ul class="sub-menu">
+												<li id="menu-item-246" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clr.com/about-continental/board-of-directors/">Board of Directors</a> </li>
+												<li id="menu-item-247" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clr.com/about-continental/leadership/">Leadership</a> </li>
+												<!-- <li id="menu-item-257" class="menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class="nav-link" href="#awards">Awards</a> </li> -->
+												<!-- <li id="menu-item-264" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="http://www.clr.com/about-continental/our-reporting-approach/">Our Reporting Approach</a> </li> -->
+												<li id="menu-item-263" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="http://clr.com/about-continental/environmental-social-and-governance-esg/">Environmental, Social and Governance (ESG)</a> </li>
+												<li id="menu-item-251" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="http://clr.com/contact-us/">Contact Us</a> </li>
+											</ul>
+										</li>
+										<li id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children nav-item">
+											<a class="nav-link" href="https://clr.com/operations/" aria-haspopup="true" role="menuitem">Operations</a>
+											<ul class="sub-menu">
+												<!-- <li id="menu-item-248" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="http://www.clr.com/operations/operational-graphs-charts/">Operational Graphs &amp; Charts</a> </li> -->
+												<li id="menu-item-249" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clr.com/operations/horizontal-drilling/">Horizontal Drilling</a> </li>
+												<li id="menu-item-250" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clr.com/operations/well-stimulation/">Well Stimulation</a> </li>
+											</ul>
+										</li>
+
+									
+										<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="press-releases">News</a> </li>
+										
+										<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page nav-item current-menu-item current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children"><a class="nav-link" href="https://investors.clr.com/investor-information">Investors</a> <ul id="wd_investor-parent" class="sub-menu">
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-has-children"><a class="nav-link" target="_self" aria-haspopup="true" role="menu-item">Presentations & Events</a>
+<ul id="wd_investor-sub" class="">
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/presentations" target="_self" role="menu-item">Presentations</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/event-calendar" target="_self" role="menu-item">Event Calendar</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/quarterly-earnings-center" target="_self" role="menu-item">Quarterly Earnings Center</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-has-children"><a class="nav-link" target="_self" aria-haspopup="true" role="menu-item">News & SEC Information</a>
+<ul id="wd_investor-sub" class="">
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/press-releases" target="_self" role="menu-item">Press Releases</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/sec-filings" target="_self" role="menu-item">SEC Filings</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/annual-reports" target="_self" role="menu-item">Annual Reports</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-has-children"><a class="nav-link" target="_self" aria-haspopup="true" role="menu-item">Investor Center</a>
+<ul id="wd_investor-sub" class="">
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/investor-kit" target="_self" role="menu-item">Investor Kit</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="http://apps.indigotools.com/IR/IAC/?Ticker=clr&Exchange=nyse#" target="_self" role="menu-item">Interactive Analyst Center</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/guidance" target="_self" role="menu-item">Guidance</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-has-children"><a class="nav-link" target="_self" aria-haspopup="true" role="menu-item">ESG Philosophy</a>
+<ul id="wd_investor-sub" class="">
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clr.com/about-continental/environmental-social-and-governance-esg/" target="_self" role="menu-item">Environmental, Social and Governance (ESG)</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clr.com/about-continental/environmental-social-and-governance-esg/our-reporting-approach/" target="_self" role="menu-item">Our Reporting Approach</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-has-children"><a class="nav-link" target="_self" aria-haspopup="true" role="menu-item">Stock Information</a>
+<ul id="wd_investor-sub" class="">
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/quote-and-chart" target="_self" role="menu-item">Quote & Chart</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/historical-prices" target="_self" role="menu-item">Historical Prices</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/investment-calculator" target="_self" role="menu-item">Investment Calculator</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-has-children"><a class="nav-link" target="_self" aria-haspopup="true" role="menu-item">Corporate Governance </a>
+<ul id="wd_investor-sub" class="">
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/corporate-governance" target="_self" role="menu-item">Governance Documents</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/committee-composition" target="_self" role="menu-item">Committee Composition</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="http://www.clr.com/about-continental/leadership/" target="_self" role="menu-item">Executive Officers/SVP’s</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="http://www.clr.com/about-continental/board-of-directors/" target="_self" role="menu-item">Directors</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-has-children"><a class="nav-link" target="_self" aria-haspopup="true" role="menu-item">Resources</a>
+<ul id="wd_investor-sub" class="">
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/information-request" target="_self" role="menu-item">Information Request </a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/investor-contacts" target="_self" role="menu-item">Investor Contacts</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://investors.clr.com/investor-alerts" target="_self" role="menu-item">Investor Alerts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+										<li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clr.com/community/">Community</a> </li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid ">
+					<div class="row align-items-center justify-content-end utility-header">
+						<div class="utility-section">
+							<div class="row align-items-center">
+								<div class="col-6 nasdaq-ticker">
+									<div class="wd_widget" data-wd_widget-id="uaeTnrEc7PPb" data-wd_widget-host="https://investors.clr.com">Loading data...</div>
+									<script>
+										!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://investors.clr.com/js/wd_widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","prn_wjs");
+									</script>
+								</div>
+
+								<div class="col-6 utility-nav-wrapper" role="navigation">
+									<ul id="utility-nav" class="nav">
+										<li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31 nav-item"><a class="nav-link" href="https://clr.com/owners/">Owners</a></li>
+										<li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32 nav-item"><a class="nav-link" href="https://clr.com/careers/">Careers</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Desktop Wrapper -->
+
+			<!-- Mobile -->
+			<div class="mobile header d-md-none">
+				<div class="container-fluid utility-section">
+					<div class="row">
+						<div class="col-12 nasdaq-ticker">
+							<div class="wd_widget" data-wd_widget-id="uaeTnrEc7PPb" data-wd_widget-host="https://investors.clr.com">Loading data...</div>
+							<script>
+								!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://investors.clr.com/js/wd_widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","prn_wjs");
+							</script>
+						</div>
+					</div>
+				</div>
+
+				<div class="container mobile-header">
+					<div class="row mobile-header-wrapper">
+						<div class="col-12">
+							<div id="hamburger-menu">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+							<a class="logo" href="https://clr.com/"><img src="images/logo-white-mobile@2x.png" title="Continental Resources Logo" alt="Continental Resources Logo"></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="mobile-nav-wrapper d-md-none" role="navigation">
+					<ul id="mobile-nav" class="nav mobile-nav">
+					   <li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children nav-item">
+					      <a class="nav-link" href="https://clrstg.wpengine.com/about-continental/" tabindex="-100" aria-haspopup="true" role="menuitem">About Continental</a> <span class=""></span>
+					      <ul class="sub-menu" style="display: none;">
+					         <li id="menu-item-646" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clrstg.wpengine.com/about-continental/board-of-directors/" tabindex="-99" role="menuitem">Board of Directors</a> <span></span></li>
+					         <li id="menu-item-647" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clrstg.wpengine.com/about-continental/leadership/" tabindex="-98" role="menuitem">Leadership</a> <span></span></li>
+					         <li id="menu-item-648" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clrstg.wpengine.com/about-continental/environmental-social-and-governance-esg/" tabindex="-97" role="menuitem">Environmental, Social, and Governance (ESG)</a> <span></span></li>
+					         <li id="menu-item-649" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clrstg.wpengine.com/contact-us/" tabindex="-96" role="menuitem">Contact Us</a> <span></span></li>
+					      </ul>
+					   </li>
+					   <li id="menu-item-34" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children nav-item">
+					      <a class="nav-link" href="https://clrstg.wpengine.com/operations/" tabindex="-95" aria-haspopup="true" role="menuitem">Operations</a> <span class=""></span>
+					      <ul class="sub-menu" style="display: none;">
+					         <li id="menu-item-650" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clrstg.wpengine.com/operations/horizontal-drilling/" tabindex="-94" role="menuitem">Horizontal Drilling</a> <span></span></li>
+					         <li id="menu-item-651" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clrstg.wpengine.com/operations/well-stimulation/" tabindex="-93" role="menuitem">Well Stimulation</a> <span></span></li>
+					      </ul>
+					   </li>
+					   <li id="menu-item-626" class="menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class="nav-link" href="https://investors.clr.com/press-releases" tabindex="-92" role="menuitem">News</a> <span></span></li>
+					   <li id="menu-item-520" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item"><a class="nav-link" href="https://investors.clr.com/investor-information" tabindex="-91" aria-haspopup="true" role="menuitem">Investors</a> <span class=""></span>
+					      	<ul class="sub-menu">
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="presentations" target="_self">Presentations & Events</a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/presentations" target="_self">Presentations</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/event-calendar" target="_self">Event Calendar</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/quarterly-earnings-center" target="_self">Quarterly Earnings Center</a>	
+</li>
+</ul>
+</li>
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="https://investors.clr.com/index.php?s=62" target="_self">News & SEC Information</a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/press-releases" target="_self">Press Releases</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/sec-filings" target="_self">SEC Filings</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/annual-reports" target="_self">Annual Reports</a>	
+</li>
+</ul>
+</li>
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="https://investors.clr.com/index.php?s=172" target="_self">Investor Center</a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/investor-kit" target="_self">Investor Kit</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="http://apps.indigotools.com/IR/IAC/?Ticker=clr&Exchange=nyse#" target="_self">Interactive Analyst Center</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/guidance" target="_self">Guidance</a>	
+</li>
+</ul>
+</li>
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="https://clr.com/about-continental/environmental-social-and-governance-esg/" target="_self">ESG Philosophy</a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://clr.com/about-continental/environmental-social-and-governance-esg/" target="_self">Environmental, Social and Governance (ESG)</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://clr.com/about-continental/environmental-social-and-governance-esg/our-reporting-approach/" target="_self">Our Reporting Approach</a>	
+</li>
+</ul>
+</li>
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="quote-and-chart" target="_self">Stock Information</a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/quote-and-chart" target="_self">Quote & Chart</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/historical-prices" target="_self">Historical Prices</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/investment-calculator" target="_self">Investment Calculator</a>	
+</li>
+</ul>
+</li>
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="corporate-governance" target="_self">Corporate Governance </a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/corporate-governance" target="_self">Governance Documents</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/committee-composition" target="_self">Committee Composition</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="http://www.clr.com/about-continental/leadership/" target="_self">Executive Officers/SVP’s</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="http://www.clr.com/about-continental/board-of-directors/" target="_self">Directors</a>	
+</li>
+</ul>
+</li>
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="https://investors.clr.com/index.php?s=174" target="_self">Resources</a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/information-request" target="_self">Information Request </a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/investor-contacts" target="_self">Investor Contacts</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/investor-alerts" target="_self">Investor Alerts</a>	
+</li>
+</ul>
+</li>
+	</ul>
+					   </li>
+					   <li id="menu-item-36" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clrstg.wpengine.com/community/" tabindex="-61" role="menuitem">Community</a> <span></span></li>
+					   <li id="menu-item-38" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clrstg.wpengine.com/owners/" tabindex="-60" role="menuitem">Owners</a> <span></span></li>
+					   <li id="menu-item-37" class="menu-item menu-item-type-post_type menu-item-object-page nav-item"><a class="nav-link" href="https://clrstg.wpengine.com/careers/" tabindex="-59" role="menuitem">Careers</a> <span></span></li>
+					   <li id="menu-item-39" class="webmail menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class="nav-link" target="_blank" href="https://webmail.clr.com" tabindex="-58" role="menuitem">Employee Webmail</a> <span></span></li>
+					</ul>
+       			</div>
+			</div>
+			<!-- /Mobile -->
+		</div>
+
+<div class="main-content-wrapper">
+	<div id="wd_investor-mobile" class="container mobile-secondary-nav d-md-none">
+		<div class="dropdown ">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Navigation</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<ul class="sub-menu">
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="presentations" target="_self">Presentations & Events</a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/presentations" target="_self">Presentations</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/event-calendar" target="_self">Event Calendar</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/quarterly-earnings-center" target="_self">Quarterly Earnings Center</a>	
+</li>
+</ul>
+</li>
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="https://investors.clr.com/index.php?s=62" target="_self">News & SEC Information</a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/press-releases" target="_self">Press Releases</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/sec-filings" target="_self">SEC Filings</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/annual-reports" target="_self">Annual Reports</a>	
+</li>
+</ul>
+</li>
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="https://investors.clr.com/index.php?s=172" target="_self">Investor Center</a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/investor-kit" target="_self">Investor Kit</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="http://apps.indigotools.com/IR/IAC/?Ticker=clr&Exchange=nyse#" target="_self">Interactive Analyst Center</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/guidance" target="_self">Guidance</a>	
+</li>
+</ul>
+</li>
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="https://clr.com/about-continental/environmental-social-and-governance-esg/" target="_self">ESG Philosophy</a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://clr.com/about-continental/environmental-social-and-governance-esg/" target="_self">Environmental, Social and Governance (ESG)</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://clr.com/about-continental/environmental-social-and-governance-esg/our-reporting-approach/" target="_self">Our Reporting Approach</a>	
+</li>
+</ul>
+</li>
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="quote-and-chart" target="_self">Stock Information</a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/quote-and-chart" target="_self">Quote & Chart</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/historical-prices" target="_self">Historical Prices</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/investment-calculator" target="_self">Investment Calculator</a>	
+</li>
+</ul>
+</li>
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="corporate-governance" target="_self">Corporate Governance </a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/corporate-governance" target="_self">Governance Documents</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/committee-composition" target="_self">Committee Composition</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="http://www.clr.com/about-continental/leadership/" target="_self">Executive Officers/SVP’s</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="http://www.clr.com/about-continental/board-of-directors/" target="_self">Directors</a>	
+</li>
+</ul>
+</li>
+<li class="no-link menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item">
+<a class="nav-link" href="https://investors.clr.com/index.php?s=174" target="_self">Resources</a>
+<span></span><ul class="sub-menu">
+	
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/information-request" target="_self">Information Request </a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/investor-contacts" target="_self">Investor Contacts</a>	
+</li>
+<li class="<menu-item menu-item-type-custom menu-item-object-custom nav-item"><a class= "nav-link" href="https://investors.clr.com/investor-alerts" target="_self">Investor Alerts</a>	
+</li>
+</ul>
+</li>
+	</ul>
+			</div>
+		</div>
+	</div>
+
+	<main id="content" role="main">
+		<article id="post-62" class="post-62 page type-page status-publish hentry">
+			<!-- hero -->
+			<section class="hero container-fluid">
+
+				
+					<style>
+						.hero .full-column {
+						  background-image: url(/image/field-banner-image-600.jpg);
+						}
+			
+						@media (max-width: 767px) {
+						  .hero .full-column {
+							background-image: url(/image/field-banner-image-600.jpg);
+						  }
+						}
+					</style>
+
+					<div class="row">
+						<div class="col-12 full-column">
+							<div class="container">
+								<div class="row">
+									<div class="col-12 hero-wrapper">
+
+										<div class="content-wrapper">
+											<div class="content">
+												<h1>
+												<a class="wd_back-to-home" href="https://investors.clr.com/investor-information">
+													CLR Investor Relations</a>
+												</h1>
+
+													<div class="d-none d-md-block wd_additional-pad">
+													
+						                                <ul class="row wd_stocks">
+						                                  <li id="wd_widget_open">
+						                                  	<span class="title">Open</span>
+						                                  </li>
+						                                  <li class="wd_divider"></li>
+						                                  <li id="wd_widget_change">
+						                                  	<span class="title">Day's Change</span>
+						                                  </li>
+						                                  <li id="wd_widget_percent_change">
+						                                  	<span class="title">% Change</span>
+						                                  </li>
+						                                  <li id="wd_widget_volume">
+						                                  	<span class="title">Volume</span>
+						                                  </li>
+						                                  <li id="wd_widget_market_cap">
+						                                  	<span class="title">Market Cap</span>
+						                                  </li>
+						                              </ul>
+						                          
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- WD Navigation - Original Tab Menus for Desktop -->
+<!-- 					<section id="wd_desktop_menu" class="wd_nav_sec">
+						<div class="container">
+							<div class="row">
+								<nav class="wd_nav_wrap">
+																		<div class="wd_subnav_wrap">
+																			</div>
+								</nav>
+							</div>
+						</div>
+					</section> -->
+
+					<!-- Tagline for Home Page and Page Title for Everything Else -->
+					
+					<!-- WD Mobile - Original Mobile Menu -->
+
+<!-- 					<section class="wd_mob_menu_wrapper">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12">
+									<header class="wd_mob_toggle_wrap">
+										<h4>Overview</h4>
+										<button class="wd_mob_toggle">              
+											<div class="inner_arrow"></div>
+										</button>
+									</header>
+
+									<nav class="wd_mob_menu" id="wd_mob_main_meni">
+																			</nav>
+
+								</div>
+							</div>
+					</section> -->
+
+			</section>
+			<!-- /hero -->
+			<a id="content-main" class=""></a>
+			
+			<section class="standard_content wd_content clearfix container">
+				<div class="row">
+					<div class="col-12 wd_content">
+						<div id="wd_printable_content">
+<div class="wd_standard">
+
+</div>
+</div>					</div>
+				</div>
+			</section>
+
+		</article>
+
+
+				<section class="standard_content clearfix container wd_featurebox-wrap">
+			<div class="row">
+				<div class="col-12 col-md-1"></div>
+				<div class="col-12 col-md-5">
+					<div class="wd_featureboxes_left wd_featureboxes-vertical">
+<div id="wd_featurebox-teaser_7" class="wd_featurebox_container wd_featurebox-teaser"><div class="wd_featurebox_title">NEW - EVENT</div><div class="wd_featurebox"><table class="wd_imagetable" style="margin: 0px 0px 0px 0px;" role="presentation" width="134" cellspacing="0" cellpadding="0" border="0" align="left"><tbody><tr><td><img src="image/presentation-icon-gray.png" alt="" title="" border="0"></td></tr></tbody></table>
+<div class="wd_events-teaser">
+<div class="wd_events_list_past"><div class="item"><div class="item_name"><a href="https://investors.clr.com/event-calendar?item=16" class="itemlink">1Q 2021 Continental Resources, Inc. Earnings Conference Call</a></div>
+<div class="item_date">Thursday, April 29, 2021</div>
+<div class="item_time">11:00am - 12:00pm CDT</div>
+</div>
+</div>
+</div>
+<p class="more"><a href="https://investors.clr.com/event-calendar#past">View All</a></p>
+</div></div></div>
+				</div>
+				<div class="col-12 col-md-5">
+					<div class="wd_featureboxes_right wd_featureboxes-vertical">
+<div id="wd_featurebox-standard_6" class="wd_featurebox_container wd_featurebox-standard"><div class="wd_featurebox_title">Webcasts</div><div class="wd_featurebox"><table width="100" class="wd_imagetable" border="0" cellpadding="0" cellspacing="0" align="left" style="margin: 0px 0px 0px 0px;" role="presentation"><tr><td><img src="/image/webcast-icon-gray.png" border="0" alt="" title=""  /></td></tr></table>
+<p>3Q 2020 Continental Resources, Inc. Earnings Conference Call</p>
+
+<p class="more"><a href="https://www.webcaster4.com/Webcast/Page/2083/37669">Webcast</a></p>
+</div></div></div>
+				</div>
+				<div class="col-12 col-md-1"></div>
+			</div>
+		</section>
+		
+
+				<section class="standard_content clearfix container">
+			<div class="row">
+				<div class="col-12 col-md-6">
+					<div class="wd_fb_title">Press Releases</div>
+				</div>
+			</div>
+		</section>
+		
+				<section class="standard_content clearfix container">
+			<div class="row">
+				<div class="col-12 col-md-6">
+					<div class="wd_featureboxes_left_photo wd_featureboxes-vertical">
+<div id="wd_featurebox-standard_7" class="wd_featurebox_container wd_featurebox-standard"><div class="wd_featurebox_title"></div><div class="wd_featurebox"><table width="960" class="wd_imagetable" border="0" cellpadding="0" cellspacing="0" align="left" style="margin: 0px 0px 0px 0px;" role="presentation"><tr><td><img src="/image/oklahoma-employees.jpg" border="0" alt="" title=""  /></td></tr></table>
+</div></div></div>
+				</div>
+				<div class="col-12 col-md-6">
+					<div class="wd_featureboxes_right_photo wd_featureboxes-vertical">
+<div id="wd_featurebox-standard_8" class="wd_featurebox_container wd_featurebox-standard"><div class="wd_featurebox_title"></div><div class="wd_featurebox"><table width="1000" class="wd_imagetable" border="0" cellpadding="0" cellspacing="0" align="left" style="margin: 0px 0px 0px 0px;" role="presentation"><tr><td><img src="/image/Biz03-clr-022317-adobe.jpg" border="0" alt="" title=""  /></td></tr></table>
+</div></div></div>
+				</div>
+			</div>
+		</section>
+		
+										<section class="standard_content clearfix container">
+			<div class="row">
+				<div class="col-12 wd_no-padding">
+					<div class="wd_featureboxes_news wd_featureboxes-vertical">
+<div id="wd_featurebox-teaser_8" class="wd_featurebox_container wd_featurebox-teaser"><div class="wd_featurebox_title">Press Releases</div><div class="wd_featurebox">
+<div class="wd_newsfeed_releases-teaser">
+<div class="subscribe_link"><a href="https://investors.clr.com/investor-alerts"><span class="wd_subscribe_email-icon fa fa-envelope-o"></span></a> <a href="https://investors.clr.com/investor-alerts">Investor Alerts</a></div>
+
+	
+		<div class="item">
+			<div class="wd_thumbnail"><a href="https://investors.clr.com/2021-04-28-Continental-Resources-Delivers-Outstanding-1Q21-Financial-Results-Reinstates-Dividend-And-Accelerates-Shareholder-Returns"><img src="https://mma.prnewswire.com/media/95419/continental_resources_logo.jpg?p=thumbnail" border="0"/></a></div>
+			<div class="wd_date">Apr 28, 2021<ul class="wd_layout-inline wd_asset_icon_link_list"><li class="wd_asset_icon_link"><a href="https://investors.clr.com/2021-04-28-Continental-Resources-Delivers-Outstanding-1Q21-Financial-Results-Reinstates-Dividend-And-Accelerates-Shareholder-Returns#assets_43_322-3" target="_blank"><span class="wd_icon fa fa-photo" title="Photos (1)" style="font-size: 1.2em;"></span></a>
+</li></ul></div>
+			<div class="wd_title"><a href="https://investors.clr.com/2021-04-28-Continental-Resources-Delivers-Outstanding-1Q21-Financial-Results-Reinstates-Dividend-And-Accelerates-Shareholder-Returns">Continental Resources Delivers Outstanding 1Q21 Financial Results; Reinstates Dividend And Accelerates Shareholder Returns</a></div>
+			<div class="wd_summary"><p>• Quarterly Dividend Doubled to $0.11 per Share o Payable on May 24, 2021 to Stockholders of Record on May 10, 2021 • $260 Million Net Income & $0.72 Earnings per Share in 1Q21 • $3.1...</p></div>
+		</div>
+	
+		<div class="item">
+			<div class="wd_thumbnail"><a href="https://investors.clr.com/2021-04-13-Continental-Resources-Announces-Preliminary-First-Quarter-2021-Production-Update-And-Plans-To-Announce-First-Quarter-2021-Results-On-Wednesday-April-28-2021"><img src="https://mma.prnewswire.com/media/95419/continental_resources_logo.jpg?p=thumbnail" border="0"/></a></div>
+			<div class="wd_date">Apr 13, 2021<ul class="wd_layout-inline wd_asset_icon_link_list"><li class="wd_asset_icon_link"><a href="https://investors.clr.com/2021-04-13-Continental-Resources-Announces-Preliminary-First-Quarter-2021-Production-Update-And-Plans-To-Announce-First-Quarter-2021-Results-On-Wednesday-April-28-2021#assets_43_321-3" target="_blank"><span class="wd_icon fa fa-photo" title="Photos (1)" style="font-size: 1.2em;"></span></a>
+</li></ul></div>
+			<div class="wd_title"><a href="https://investors.clr.com/2021-04-13-Continental-Resources-Announces-Preliminary-First-Quarter-2021-Production-Update-And-Plans-To-Announce-First-Quarter-2021-Results-On-Wednesday-April-28-2021">Continental Resources Announces Preliminary First Quarter 2021 Production Update And Plans To Announce First Quarter 2021 Results On Wednesday, April 28, 2021</a></div>
+			<div class="wd_summary"><p>Continental Resources, Inc. (NYSE: CLR) (the "Company") today provided an update on its first quarter 2021 production results. Logo -...</p></div>
+		</div>
+	
+
+
+</div>
+<p class="more"><a href="https://investors.clr.com/press-releases">View All</a></p>
+</div></div></div>
+				</div>
+			</div>
+		</section>
+		
+												<section class="wd_dkgray-bg clearfix container-fluid wd_featurebox-wrap">
+			<div class="row">
+				<div class="col-12">
+					<div class="container">
+						<div class="row">
+							<div class="col-12 px-0">
+								<div class="wd_featureboxes_gray_banner wd_featureboxes-vertical">
+<div id="wd_featurebox-standard_9" class="wd_featurebox_container wd_featurebox-standard"><div class="wd_featurebox_title">Presentations</div><div class="wd_featurebox"><table width="400" class="wd_imagetable" border="0" cellpadding="0" cellspacing="0" align="left" style="margin: 0px 0px 0px 0px;" role="presentation"><tr><td><a href="image/110520+Investor+Update_November+2020.pdf" target="_self"><img src="/image/Feb+2021+presentation+cover.jpg" border="0" alt="" title=""  /></a></td></tr></table>
+<p><a href="image/CLR_2020_4Q+Presentation.pdf" target="_blank">CLR February 2021 Investor Update</a></p>
+
+<p><a href="image/110520+Investor+Update_November+2020.pdf" target="_blank">CLR November 2020 Investor Update</a></p>
+
+<p><a href="image/080320+Investor+Update_August+2020.pdf" target="_blank">CLR August 2020 Investor Update</a></p>
+
+<p><a href="image/051120+Investor+Update_May+2020.pdf" target="_blank">CLR May 2020 Investor Update</a></p>
+
+<p class="more"><a href="presentations">View All</a></p>
+</div></div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+														<section class="clearfix container-fluid wd_featurebox-wrap">
+			<div class="row wd_separated-row">
+				<div class="wd_yellow-bg col-12 col-md-6">
+					<div class="wd_featureboxes_yellow_left wd_featureboxes-vertical">
+<div id="wd_featurebox-standard_10" class="wd_featurebox_container wd_featurebox-standard"><div class="wd_featurebox_title">Investor Kit</div><div class="wd_featurebox"><p><a href="investor-kit">View More</a></p>
+</div></div></div>
+				</div>
+				<div class="wd_yellow-bg col-12 col-md-6">
+					<div class="wd_featureboxes_yellow_right wd_featureboxes-vertical">
+<div id="wd_featurebox-standard_11" class="wd_featurebox_container wd_featurebox-standard"><div class="wd_featurebox_title">Email Alerts</div><div class="wd_featurebox"><p><a href="investor-alerts">Subscribe</a></p>
+</div></div></div>
+				</div>
+			</div>
+		</section>
+		
+																<section class="standard_content clearfix container wd_featurebox-wrap">
+			<div class="row">
+				<div class="col-12">
+					<div class="wd_featureboxes_tiles_3 wd_featureboxes-vertical">
+<div id="wd_featurebox-standard_12" class="wd_featurebox_container wd_featurebox-standard"><div class="wd_featurebox_title">Quarterly Earnings</div><div class="wd_featurebox"><p class="more"><a href="quarterly-earnings-center">View All</a></p>
+</div></div><div id="wd_featurebox-standard_13" class="wd_featurebox_container wd_featurebox-standard"><div class="wd_featurebox_title">Annual Reports</div><div class="wd_featurebox"><p class="more"><a href="annual-reports">View All</a></p>
+</div></div><div id="wd_featurebox-standard_14" class="wd_featurebox_container wd_featurebox-standard"><div class="wd_featurebox_title">Interactive Analyst Center</div><div class="wd_featurebox"><p class="more"><a href="http://apps.indigotools.com/IR/IAC/?Ticker=clr&amp;Exchange=nyse# " target="_blank">See More</a></p>
+</div></div></div>
+				</div>
+			</div>
+		</section>
+		
+																		<section class="standard_content clearfix container">
+			<div class="row">
+				<div class="col-12">
+					<div class="wd_featureboxes_stock_chart wd_featureboxes-vertical">
+<div id="wd_featurebox-financial_7" class="wd_featurebox_container wd_featurebox-financial"><div class="wd_featurebox_title">Stock Chart</div><div class="wd_featurebox"><div class="wd_ticker_label"><span class="wd_exchange">NYSE</span><span class="wd_symbol">CLR</span></div>
+					<div style="position:relative;overflow:hidden;height:250px;width:100%;margin:0;padding:0;border:0;">
+					<div id="ir_featurebox_7-chart" style="height:100%; width:100%;position:absolute;margin:0;padding:0;border:0;"></div>
+					</div>
+				<div id="wd_chart_7-ranges" class="wd_chart-ranges" wd_default_range="6mo" role="radiogroup"><div id="wd_chart_7-range-1dy" class="wd_chart-range" style="display:none;" onclick="ir_featurebox.chart_set_range(7, '1dy');" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false" aria-label="1 Day" title="1 Day">1dy</div><div id="wd_chart_7-range-1mo" class="wd_chart-range" style="display:none;" onclick="ir_featurebox.chart_set_range(7, '1mo');" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false" aria-label="1 Month" title="1 Month">1mo</div><div id="wd_chart_7-range-6mo" class="wd_chart-range" style="display:none;" onclick="ir_featurebox.chart_set_range(7, '6mo');" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false" aria-label="6 Months" title="6 Months">6mo</div><div id="wd_chart_7-range-1yr" class="wd_chart-range" style="display:none;" onclick="ir_featurebox.chart_set_range(7, '1yr');" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false" aria-label="1 Year" title="1 Year">1yr</div><div id="wd_chart_7-range-5yr" class="wd_chart-range" style="display:none;" onclick="ir_featurebox.chart_set_range(7, '5yr');" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false" aria-label="5 Years" title="5 Years">5yr</div></div><div class="wd_chart-quote-footer" id="ir_featurebox_7-footer"></div><script type="text/javascript">webDriver.jQuery(function() {ir_featurebox.update(7, "CLR", false);});</script></div></div></div>
+				</div>
+			</div>
+		</section>
+		
+																				<section class="standard_content clearfix container wd_featurebox-wrap">
+			<div class="row">
+				<div class="col-12">
+					<div class="wd_featureboxes_bottom wd_featureboxes-vertical">
+<div id="wd_featurebox-standard_15" class="wd_featurebox_container wd_featurebox-standard"><div class="wd_featurebox_title">Contact</div><div class="wd_featurebox"><div class="wd_contact-info">Rory Sabino<br />
+VP of Investor Relations &amp; Research<br />
+<a href="Rory.Sabino@CLR.com">Rory.Sabino@CLR.com</a></div>
+
+<div class="wd_contact-info">Lucy Guttenberger<br />
+Investor Relations Analyst<br />
+<a href="Lucy.Guttenberger@CLR.com">Lucy.Guttenberger@CLR.com</a></div>
+
+<div class="wd_contact-info">
+<p class="more"><a href="investor-contacts">View All</a></p>
+</div>
+</div></div></div>
+				</div>
+			</div>
+		</section>
+		
+		</main>
+
+		<footer id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+
+						<div class="row">
+							<div class="col-md-12 col-lg-5 col-xl logo-wrapper">
+								<a class="navbar-brand" href="/" id="content-footer">
+									<img class="logo" src="images/logo-white@2x.png" title="Continental Resources Logo" alt="Continental Resources Logo">
+									<span class="sr-only">Continental Resources Logo</span>
+								</a>
+							</div>
+
+							<div class="col-md-12 col-lg-7 col-xl nav-wrapper">
+								<div class="row">
+									<div class="col-md-5 offset-md-2 offset-lg-0 col-lg-6 footer-nav" role="navigation">
+										<ul id="footer-col-1" class="nav flex-column footer-col-1">
+											<li id="menu-item-40" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40 nav-item"><a class="nav-link" href="https://clr.com/about-continental/">About Continental</a></li>
+											<li id="menu-item-41" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41 nav-item"><a class="nav-link" href="https://clr.com/operations/">Operations</a></li>
+											<li id="menu-item-42" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-10 current_page_item menu-item-42 nav-item"><a class="nav-link" href="https://investors.clr.com/investor-information">Investors</a></li>
+											<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43 nav-item"><a class="nav-link" href="https://clr.com/community/">Community</a></li>
+											<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44 nav-item"><a class="nav-link" href="https://investors.clr.com/press-releases">News Center</a></li>
+											<li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45 nav-item"><a class="nav-link" href="https://clr.com/careers/">Careers</a></li>
+										</ul>
+									</div>
+
+									<div class="col-md-5 col-lg-6 footer-nav" role="navigation">
+										<ul id="footer-col-2" class="nav flex-column footer-col-2">
+											<li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46 nav-item"><a class="nav-link" href="https://clr.com/owners/">Owners</a></li>
+											<li id="menu-item-47" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47 nav-item"><a class="nav-link" href="https://clr.com/open-invoice/">Open Invoice</a></li>
+											<li id="menu-item-48" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48 nav-item"><a class="nav-link" href="https://clr.com/portal/">Portal</a></li>
+											<li id="menu-item-49" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49 nav-item"><a class="nav-link" href="https://clr.com/contact-us/">Contact Us</a></li>
+											<li id="menu-item-50" class="webmail menu-item menu-item-type-custom menu-item-object-custom menu-item-50 nav-item"><a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://webmail.contres.com/">Employee Webmail</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row copyright-wrapper">
+							<div class="col-12">
+								<div class="footer-copyright">
+									<p>©
+										2021 Continental Resources, Inc. All Rights Reserved. | <a href="https://clr.com/legal">Legal</a></p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+	<!-- /main -->
+			</div>
+			<!-- /site-container -->
+
+		<script type="text/javascript" src="index_files/main.js"></script>
+		<script type="text/javascript" src="index_files/vendors_main.js"></script>
+
+		<!-- InvestorRoom Scripts -->
+		<div id="wd_hidden">
+			<div class="wd_widget" data-wd_widget-id="uaeTnrEc7PPb" data-wd_widget-host="//investors.clr.com">Loading data...</div>
+		</div>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//clr.investorroom.com/js/wd_widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","prn_wjs");</script>
+
+			<script>
+			function getWidgetData() {
+			  //Get Current Price
+			  var widgetOpen = jQuery('#wd_hidden .wd_widget .wd_price span').text();
+
+		      if(widgetOpen == '') {
+				    setTimeout(getWidgetData, 1000);
+			    } else {
+				//Get Change Value
+				var widgetChange = jQuery('#wd_hidden .wd_widget .wd_price .wd_value').text();
+				//Get Value Up or Down - Assign Conditional
+				var widgetChangeClass = jQuery('#wd_hidden .wd_widget .wd_price .wd_value').hasClass('wd_quote-value-up') ? 'ccbnPos' : 'ccbnNeg';
+				//Add Arrow Image Based on Up or Down Conditional
+				//var widgetChangeImg = (widgetChangeClass == 'wd_quote-value-up') ? 'upGreen':'downRed';
+				//Add Class Based on Up or Down Conditional
+				var widgetChangeText = (widgetChangeClass == 'wd_quote-value-up') ? 'up':'down';
+				//Get Change Percent
+				var widgetChangePercent = jQuery('#wd_hidden .wd_widget .wd_data2 .wd_value').text();
+				//Get Volume
+				var widgetVolume = jQuery('#wd_hidden .wd_widget .wd_data5 .wd_value').text();
+				//Get Market Cap
+				var widgetMarketCap = jQuery('#wd_hidden .wd_widget .wd_data6 .wd_value').text();
+		        widgetChangePercent = widgetChangePercent.split('(');
+		        widgetChangePercent = widgetChangePercent[1].substr(0,widgetChangePercent[1].length - 1);
+		        jQuery("#wd_widget_open").append(widgetOpen);
+		        jQuery("#wd_widget_change").append('<span class="'+ widgetChangeClass +'">'+widgetChange+'</span>');
+		        jQuery("#wd_widget_percent_change").append('<span class="'+ widgetChangeClass +'">'+ widgetChangePercent +'</span>');
+		        jQuery("#wd_widget_volume").append(widgetVolume);
+		        jQuery("#wd_widget_market_cap").append(widgetMarketCap);
+
+			    // update CLR top widget
+			    jQuery('#ccbnStockQuoteBlock .view-content').append('<span class="ccbnTxtWhite">' + widgetOpen +'</span>&nbsp&nbsp;<span class="'+ widgetChangeClass +'2">'+ widgetChange +'</span>');
+			  }
+			}
+			jQuery(document).ready(getWidgetData());
+			</script>
+
+			<script type="text/javascript">
+				jQuery(document).ready(function(){
+
+					//News Releases FB - Structure
+					jQuery('.wd_newsfeed_releases-teaser .item').each(function(){
+						jQuery(this).wrap('<div class="col-12 col-md-6"></div>');
+					});
+
+					//Events FB - Structure
+					jQuery('#wd_featurebox-teaser_7 .wd_imagetable').wrap('<div class="col-12 col-xl-4 wd_left"></div>');
+					//$('#wd_featurebox-teaser_7 p.more').insertAfter('.item');
+					jQuery('#wd_featurebox-teaser_7 .wd_events-teaser').find('.item').unwrap();
+					jQuery('#wd_featurebox-teaser_7 .wd_events-teaser').wrap('<div class="col-12 col-xl-8 wd_right"></div>');
+
+					//Webcasts FB - Structure
+					var webcastTitle = jQuery('#wd_featurebox-standard_6').find('.wd_featurebox_title').text();
+					jQuery('#wd_featurebox-standard_6 .wd_imagetable').wrap('<div class="col-12 col-xl-4 wd_left"></div>');
+					jQuery('#wd_featurebox-standard_6 .wd_left').after('<div class="wd_fb_title">'+webcastTitle+'</div>');
+					jQuery('#wd_featurebox-standard_6 .wd_featurebox').find('.wd_fb_title, p').wrapAll('<div class="col-12 col-xl-8 wd_right"></div>');
+
+					//Presentations FB - Structure
+					var presentationsTitle = jQuery('#wd_featurebox-standard_9').find('.wd_featurebox_title').text();
+					jQuery('#wd_featurebox-standard_9 .wd_imagetable').wrap('<div class="col-12 col-md-6 wd_left"></div>');
+					jQuery('#wd_featurebox-standard_9 .wd_left').after('<div class="wd_fb_title">'+presentationsTitle+'</div>');
+					jQuery('#wd_featurebox-standard_9 .wd_featurebox').find('.wd_fb_title, p, p.more').wrapAll('<div class="col-12 col-md-6 wd_right"></div>');
+
+					//Wrap Committee Compostion Table for Mobile Scrolling
+					
+					//Wrap Selects 
+					jQuery('#wd_printable_content select').wrap('<div class="wd_select-wrap"></div>');
+
+					//Move Labels into Input Fields
+					jQuery('form .wd_form_field').each(function() {
+						var labelText = jQuery(this).find('.wd_form_field_label label').text();
+						jQuery(this).find('.wd_form_field_input input').attr('placeholder', labelText);
+						jQuery(this).find('.wd_form_field_input textarea').attr('placeholder', labelText);
+					});
+
+					//Events Page
+					
+
+				    // Attachment Image Convert to FontAwesome
+				    jQuery('.wd_attachment_image, .wd_attachment_icon').each(function(){
+				        var fileTypeURLArray = jQuery(this).find('img').attr('src').split('/');
+				        var fileTypeFile = fileTypeURLArray[fileTypeURLArray.length - 1];
+				        switch(fileTypeFile) {
+				            case 'avi.gif':var fileTypeFontAwesome = 'fa-file-video-o';break;
+				            case 'm4v.gif':var fileTypeFontAwesome = 'fa-file-video-o';break;
+				            case 'mov.gif':var fileTypeFontAwesome = 'fa-file-video-o';break;
+				            case 'mp4.gif':var fileTypeFontAwesome = 'fa-file-video-o';break;
+				            case 'mpg.gif':var fileTypeFontAwesome = 'fa-file-video-o';break;
+				            case 'doc.gif':var fileTypeFontAwesome = 'fa-file-word-o';break;
+				            case 'docm.gif':var fileTypeFontAwesome = 'fa-file-word-o';break;
+				            case 'docx.gif':var fileTypeFontAwesome = 'fa-file-word-o';break;
+				            case 'dotm.gif':var fileTypeFontAwesome = 'fa-file-word-o';break;
+				            case 'dotx.gif':var fileTypeFontAwesome = 'fa-file-word-o';break;
+				            case 'gif.gif':var fileTypeFontAwesome = 'fa-file-image-o';break;
+				            case 'jpg.gif':var fileTypeFontAwesome = 'fa-file-image-o';break;
+				            case 'mp3.gif':var fileTypeFontAwesome = 'fa-file-audio-o';break;
+				            case 'wav.gif':var fileTypeFontAwesome = 'fa-file-audio-o';break;
+				            case 'pdf.gif':var fileTypeFontAwesome = 'fa-file-pdf-o';break;
+				            case 'potm.gif':var fileTypeFontAwesome = 'fa-file-powerpoint-o';break;
+				            case 'potx.gif':var fileTypeFontAwesome = 'fa-file-powerpoint-o';break;
+				            case 'ppam.gif':var fileTypeFontAwesome = 'fa-file-powerpoint-o';break;
+				            case 'ppsm.gif':var fileTypeFontAwesome = 'fa-file-powerpoint-o';break;
+				            case 'ppsx.gif':var fileTypeFontAwesome = 'fa-file-powerpoint-o';break;
+				            case 'ppt.gif':var fileTypeFontAwesome = 'fa-file-powerpoint-o';break;
+				            case 'pptm.gif':var fileTypeFontAwesome = 'fa-file-powerpoint-o';break;
+				            case 'pptx.gif':var fileTypeFontAwesome = 'fa-file-powerpoint-o';break;
+				            case 'sldm.gif':var fileTypeFontAwesome = 'fa-file-powerpoint-o';break;
+				            case 'sldx.gif':var fileTypeFontAwesome = 'fa-file-powerpoint-o';break;
+				            case 'thmx.gif':var fileTypeFontAwesome = 'fa-file-powerpoint-o';break;
+				            case 'txt.gif':var fileTypeFontAwesome = 'fa-file-text-o';break;
+				            case 'xlam.gif':var fileTypeFontAwesome = 'fa-file-excel-o';break;
+				            case 'xls.gif':var fileTypeFontAwesome = 'fa-file-excel-o';break;
+				            case 'xlsb.gif':var fileTypeFontAwesome = 'fa-file-excel-o';break;
+				            case 'xlsm.gif':var fileTypeFontAwesome = 'fa-file-excel-o';break;
+				            case 'xlsx.gif':var fileTypeFontAwesome = 'fa-file-excel-o';break;
+				            case 'xltm.gif':var fileTypeFontAwesome = 'fa-file-excel-o';break;
+				            case 'xltx.gif':var fileTypeFontAwesome = 'fa-file-excel-o';break;
+				            case 'zip.gif':var fileTypeFontAwesome = 'fa-file-archive-o';break;
+				            default:var fileTypeFontAwesome = 'fa-file-o';break;
+				        }
+				        jQuery(this).find('a').append('<i class="fa '+fileTypeFontAwesome+'"></i>');
+				    });
+
+				    //Hiding Mobile Subnav Elements and Showing Subnav on Click
+
+				    jQuery('.wd_investor-mobile-sub').hide();
+				    jQuery('.dropdown-menu li').click(function() {
+				    
+				    
+				    	console.log('clicked');
+				    }); 
+
+				   
+
+		
+				});
+			</script>
+			<script>
+				
+			</script>
+	
+<!-- begin spin_special_output(body_end) -->
+<script wd_script_id="piwik_tracking_code"></script>
+<!-- Piwik Tracking Code -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+
+  _paq.push(["setCustomVariable", 1, "Content Type", "Standard", "page"]);
+
+  _paq.push(["setCustomVariable", 3, "Navigation Page", "Investor Information", "page"]);
+
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+  (function() {
+    var u="//stats.drivetheweb.com/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", 5421]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0];
+    g.type="text/javascript"; g.async=true; g.defer=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript>
+	<img src="https://stats.drivetheweb.com/piwik.php?idsite=5421&rec=1" style="border:0" alt="" />
+</noscript>
+<!-- End Piwik Tracking Code -->
+		
+<!-- end spin_special_output(body_end) -->
+</body>
+
+	</html>

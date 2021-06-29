@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<link rel="shortlink" href="http://ir.libertybroadband.com/" />
+<meta property="og:site_name" content="Liberty Broadband Corporation" />
+<link rel="canonical" href="http://ir.libertybroadband.com/" />
+<meta property="og:type" content="website" />
+<meta name="description" content="The Investor Relations website contains information about Liberty Broadband Corporation&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta property="og:url" content="https://ir.libertybroadband.com/stock-information" />
+<meta property="og:title" content="STOCK INFORMATION | Liberty Broadband Corporation" />
+<meta property="og:description" content="The Investor Relations website contains information about Liberty Broadband Corporation&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb58826/files/liberty-broadband32x32.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://ir.libertybroadband.com/stock-information" />
+<link rel="revision" href="https://ir.libertybroadband.com/stock-information" />
+
+    <title>STOCK INFORMATION | Liberty Broadband Corporation</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb58826/files/css/css_rfjm6CJ_0NMC2yDcg2-ndYMEx1qfufTwwHO3KArx5Oc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb58826/files/css/css_yyvKUQrN1BBx9TW3cASjGDu6IGrkpqvwrI1VvDs1z74.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb58826/files/css/css_uR7CBnjEs5VZNOTbN5egaIVEsuJ_uLDLaCxQpDsgq_0.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb58826/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5916 path-frontpage page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="w-nav" data-animation="default" data-collapse="medium" data-contain="1" data-duration="400" data-easing="ease-in-out" data-easing2="ease-in-out">
+	<div class="w-container">
+		<a class="logo w-nav-brand" href="http://libertybroadband.com/">
+		<img class="logo" src="/sites/g/files/knoqqb58826/themes/site/nir_pid1764/client/images/Liberty-Broadband.png" hspace="0" vspace="0" border="0" alt="Liberty TripAdvisor Holdings, Inc." width="234">
+		</a>
+		
+		<div class="menubutton w-nav-button">
+			<div class="w-icon-nav-menu"></div>
+		</div>
+		<nav class="mobilemenu w-nav-menu" role="navigation">
+			
+			<div class="w-dropdown" data-delay="0" style="max-width: 940px;"><div class="navlink w-dropdown-toggle"><div> overview</div><div class="w-icon-dropdown-toggle"></div></div><nav class="w-dropdown-list"><a class="mobilelink w-dropdown-link" href="http://libertybroadband.com/overview/company-overview.html">Company Overview</a><a class="mobilelink w-dropdown-link" href="http://libertybroadband.com/overview/company-history.html">Company History</a><a class="mobilelink w-dropdown-link " href="/corporate-governance/management">Management Team</a><a href="http://libertybroadband.com/overview/asset-list.html" class="mobilelink w-dropdown-link" tabindex="0">Asset List</a></nav></div>
+			
+			<div class="w-dropdown" data-delay="0" style="max-width: 940px;">
+				<div class="navlink w-dropdown-toggle">
+					<div class="ndq-current">investor relations</div>
+					<div class="w-icon-dropdown-toggle"></div>
+				</div>
+				<nav class="w-dropdown-list">
+					  <div class="region region-header">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1764-investorrelations-menu" id="block-nir-pid1764-investorrelations" class="block--system-menu-blockir block--system-menu-blockir--5916 block--header--system-menu-block--ir block--header--system-menu-block--ir--5916 block--c6af801d-b861-4100-951f-80ea8d0cef0c block--c6af801d-b861-4100-951f-80ea8d0cef0c--5916 block block-menu navigation block-system-menublock menu--ir">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1764-investorrelations-menu">Investor Relations</h2>
+    
+
+                              <ul data-block-uuid="c6af801d-b861-4100-951f-80ea8d0cef0c" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/stock-information" data-drupal-link-system-path="node/5916" class="is-active">Stock Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/analyst-coverage" data-drupal-link-system-path="node/5896">Analyst Coverage</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-and-presentations/events" target="" rel="" data-drupal-link-system-path="node/5826">Events &amp; Presentations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information" data-drupal-link-system-path="node/5871">Financial Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/investor-faqs" data-drupal-link-system-path="node/5941">Investor FAQs</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/contact-us" data-drupal-link-system-path="node/5981">Contact Us</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/governance" target="" rel="" data-drupal-link-system-path="node/7926">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="http://libertybroadband.com/conflict-minerals-policy.html" target="" rel="">Conflict Minerals Policy</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+				</nav>
+			</div>
+			
+			<a class="navlink w-nav-link" href="http://libertybroadband.com/stock-cost-basis.html" style="max-width: 940px;">stock cost basis</a>
+			
+			<a class="navlink w-nav-link" href="/press-releases" style="max-width: 940px;">Press Releases</a>
+			
+		</nav>
+		
+	</div>
+	<div class="w-nav-overlay" data-wf-ignore=""></div>
+</div>
+
+<div class="pageheader" id="top"><div class="w-container">
+	
+		<h1 class="pagehead">
+	Stock Information
+	</h1>
+	</div></div>
+
+<div class="pagecontent">
+    <div id="ndq-content" class="ndq-stockquote ">   
+		
+		  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1764-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5916 block--content--website-notice-block block--content--website-notice-block--5916 block--9cb0a5a7-2442-455a-b24c-23ac78216a04 block--9cb0a5a7-2442-455a-b24c-23ac78216a04--5916 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div id="block-nir-pid1764-content" class="block--system-main-block block--system-main-block--5916 block--content--system-main-block block--content--system-main-block--5916 block--4112a3fb-5d7d-46be-8243-ed94771d2422 block--4112a3fb-5d7d-46be-8243-ed94771d2422--5916 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              STOCK INFORMATION
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain">
+
+<nav role="navigation" aria-labelledby="-menu" class="block--system-menu-blockstock block--system-menu-blockstock--5916 block--contentmain--system-menu-block--stock block--contentmain--system-menu-block--stock--5916 block--60c98a77-728a-4fc9-9fe8-d384029de3dc block--60c98a77-728a-4fc9-9fe8-d384029de3dc--5916 block block-menu navigation block-system-menublock menu--stock">
+                        
+    <h2 class="visually-hidden" id="-menu">Stock Information</h2>
+    
+
+                              <ul data-block-uuid="60c98a77-728a-4fc9-9fe8-d384029de3dc" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/5916" class="is-active">Stock Information </a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/historic-stock-lookup" target="" rel="" data-drupal-link-system-path="node/5921">Historic Stock Lookup</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+<div data-storage-id="node:5916:full:13701" data-uuid="c6b8b030-fc79-4484-9f58-ea23cc9910c2" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5916 block--contentmain--market-data-block__stock-quote block--contentmain--market-data-block__stock-quote--5916 block--c6b8b030-fc79-4484-9f58-ea23cc9910c2 block--c6b8b030-fc79-4484-9f58-ea23cc9910c2--5916 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+      <h2>LIBERTY BROADBAND CORPORATION (NASDAQ: LBRDA)</h2>
+    
+      
+<div class='quote-wrap user-toggle-off long-quote '>
+  <div class="quote-wrapper">
+                            <div class="stock-quote" data-exchange="">
+     <div class="w-row">
+    <div class="w-col w-col-6">
+        <div class="quote">            <span class="change "></span>
+
+        </div>
+
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Previous Close</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Open</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Volume</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Exchange</div>
+            <div class="quotelabel"></div>
+        </div>
+    </div>
+    <div class="w-col w-col-6" id="stockQuote">
+        <div class="quotetime"></div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Day High</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Day Low</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">52-Week High</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">52-Week Low</div>
+            <div class="quotelabel"></div>
+        </div>
+    </div>
+</div>
+                          <div class="stock-quote" data-exchange="">
+     <div class="w-row">
+    <div class="w-col w-col-6">
+        <div class="quote">            <span class="change "></span>
+
+        </div>
+
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Previous Close</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Open</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Volume</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Exchange</div>
+            <div class="quotelabel"></div>
+        </div>
+    </div>
+    <div class="w-col w-col-6" id="stockQuote">
+        <div class="quotetime"></div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Day High</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Day Low</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">52-Week High</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">52-Week Low</div>
+            <div class="quotelabel"></div>
+        </div>
+    </div>
+</div>
+      </div>
+</div>
+
+
+
+  </div>
+<div class="block--nir-stock-chart block--nir-stock-chart--5916 block--contentmain--nir-stock-chart block--contentmain--nir-stock-chart--5916 block--93143700-743b-4506-8ca6-754de00cae32 block--93143700-743b-4506-8ca6-754de00cae32--5916 block block-nir-stock-chart">
+  
+    
+      
+<iframe src="https://api.nasdaqomx.wallst.com/advancedchart?display=mountain&symbol=LBRDA.O&scale=linear&duration=1yr&frequency=1dy&gridLine=b&bgColor=ffffff&lineColor=078ac9&fillcolor=ffffff|ffffff&width=100%&height=392" width="100%" height="392" frameborder="0" scrolling="no" allowtransparency="true" class="nir-stock-chart"></iframe>
+
+  </div>
+<div class="block--attribution-block__stock-info-attribution__thomson-reuters block--attribution-block__stock-info-attribution__thomson-reuters--5916 block--contentmain--attribution-block__stock-info-attribution__thomson-reuters block--contentmain--attribution-block__stock-info-attribution__thomson-reuters--5916 block--c254c18f-b25f-4c8c-884a-864f0e0ed3e3 block--c254c18f-b25f-4c8c-884a-864f0e0ed3e3--5916 block block-nir-attribution-block block-attribution-block__stock-info-attribution__thomson-reuters">
+  
+    
+      <p>
+  Data Provided by Refinitiv. Minimum 15 minutes delayed.</p>
+
+  </div>
+<div data-storage-id="node:5916:full:13701" data-uuid="181acb58-2ea4-430b-89fc-fd0214849d48" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5916 block--contentmain--market-data-block__stock-quote block--contentmain--market-data-block__stock-quote--5916 block--181acb58-2ea4-430b-89fc-fd0214849d48 block--181acb58-2ea4-430b-89fc-fd0214849d48--5916 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+      <h2>LIBERTY BROADBAND CORPORATION (OT: LBRDB)</h2>
+    
+      
+<div class='quote-wrap user-toggle-off long-quote '>
+  <div class="quote-wrapper">
+                            <div class="stock-quote" data-exchange="">
+     <div class="w-row">
+    <div class="w-col w-col-6">
+        <div class="quote">            <span class="change "></span>
+
+        </div>
+
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Previous Close</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Open</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Volume</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Exchange</div>
+            <div class="quotelabel"></div>
+        </div>
+    </div>
+    <div class="w-col w-col-6" id="stockQuote">
+        <div class="quotetime"></div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Day High</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Day Low</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">52-Week High</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">52-Week Low</div>
+            <div class="quotelabel"></div>
+        </div>
+    </div>
+</div>
+                          <div class="stock-quote" data-exchange="">
+     <div class="w-row">
+    <div class="w-col w-col-6">
+        <div class="quote">            <span class="change "></span>
+
+        </div>
+
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Previous Close</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Open</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Volume</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Exchange</div>
+            <div class="quotelabel"></div>
+        </div>
+    </div>
+    <div class="w-col w-col-6" id="stockQuote">
+        <div class="quotetime"></div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Day High</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Day Low</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">52-Week High</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">52-Week Low</div>
+            <div class="quotelabel"></div>
+        </div>
+    </div>
+</div>
+      </div>
+</div>
+
+
+
+  </div>
+<div class="block--nir-stock-chart block--nir-stock-chart--5916 block--contentmain--nir-stock-chart block--contentmain--nir-stock-chart--5916 block--a60a2413-7edf-4ecd-aa6e-a243c2c8704a block--a60a2413-7edf-4ecd-aa6e-a243c2c8704a--5916 block block-nir-stock-chart">
+  
+    
+      
+<img src="https://api.nasdaqomx.wallst.com/api/chart?display=mountain&symbol=LBRDK.OQ&scale=linear&duration=1yr&frequency=1dy&gridLine=b&bgColor=ffffff&lineColor=078ac9&fillcolor=36a0d3|ffffff&width=525&height=250" width="525" height="250" ></img>
+
+  </div>
+<div class="block--attribution-block__stock-info-attribution__thomson-reuters block--attribution-block__stock-info-attribution__thomson-reuters--5916 block--contentmain--attribution-block__stock-info-attribution__thomson-reuters block--contentmain--attribution-block__stock-info-attribution__thomson-reuters--5916 block--ce45e775-ea09-4c99-a504-408a0456e920 block--ce45e775-ea09-4c99-a504-408a0456e920--5916 block block-nir-attribution-block block-attribution-block__stock-info-attribution__thomson-reuters">
+  
+    
+      <p>
+  Data Provided by Refinitiv. Minimum 15 minutes delayed.</p>
+
+  </div>
+<div data-storage-id="node:5916:full:13701" data-uuid="f27b04aa-b5bd-42fb-b081-979420ef6655" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5916 block--contentmain--market-data-block__stock-quote block--contentmain--market-data-block__stock-quote--5916 block--f27b04aa-b5bd-42fb-b081-979420ef6655 block--f27b04aa-b5bd-42fb-b081-979420ef6655--5916 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+      <h2>LIBERTY BROADBAND CORPORATION (NASDAQ: LBRDK)</h2>
+    
+      
+<div class='quote-wrap user-toggle-off long-quote '>
+  <div class="quote-wrapper">
+                            <div class="stock-quote" data-exchange="">
+     <div class="w-row">
+    <div class="w-col w-col-6">
+        <div class="quote">            <span class="change "></span>
+
+        </div>
+
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Previous Close</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Open</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Volume</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Exchange</div>
+            <div class="quotelabel"></div>
+        </div>
+    </div>
+    <div class="w-col w-col-6" id="stockQuote">
+        <div class="quotetime"></div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Day High</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Day Low</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">52-Week High</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">52-Week Low</div>
+            <div class="quotelabel"></div>
+        </div>
+    </div>
+</div>
+                          <div class="stock-quote" data-exchange="">
+     <div class="w-row">
+    <div class="w-col w-col-6">
+        <div class="quote">            <span class="change "></span>
+
+        </div>
+
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Previous Close</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Open</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Volume</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Exchange</div>
+            <div class="quotelabel"></div>
+        </div>
+    </div>
+    <div class="w-col w-col-6" id="stockQuote">
+        <div class="quotetime"></div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Day High</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">Day Low</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">52-Week High</div>
+            <div class="quotelabel"></div>
+        </div>
+        <div class="quoterow w-clearfix">
+            <div class="bold quotelabel">52-Week Low</div>
+            <div class="quotelabel"></div>
+        </div>
+    </div>
+</div>
+      </div>
+</div>
+
+
+
+  </div>
+<div class="block--nir-stock-chart block--nir-stock-chart--5916 block--contentmain--nir-stock-chart block--contentmain--nir-stock-chart--5916 block--2affde44-9ff2-4b76-9258-ba80116dd88b block--2affde44-9ff2-4b76-9258-ba80116dd88b--5916 block block-nir-stock-chart">
+  
+    
+      
+<iframe src="https://api.nasdaqomx.wallst.com/advancedchart?display=mountain&symbol=LBRDK.OQ&scale=linear&duration=1yr&frequency=1dy&gridLine=b&bgColor=ffffff&lineColor=078ac9&fillcolor=ffffff|ffffff&width=100%&height=392" width="100%" height="392" frameborder="0" scrolling="no" allowtransparency="true" class="nir-stock-chart"></iframe>
+
+  </div>
+<div class="block--attribution-block__stock-info-attribution__thomson-reuters block--attribution-block__stock-info-attribution__thomson-reuters--5916 block--contentmain--attribution-block__stock-info-attribution__thomson-reuters block--contentmain--attribution-block__stock-info-attribution__thomson-reuters--5916 block--94e37423-be58-4481-bc26-9ed8a76a67e7 block--94e37423-be58-4481-bc26-9ed8a76a67e7--5916 block block-nir-attribution-block block-attribution-block__stock-info-attribution__thomson-reuters">
+  
+    
+      <p>
+  Data Provided by Refinitiv. Minimum 15 minutes delayed.</p>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+
+<nav role="navigation" aria-labelledby="block-nir-pid1764-shareholdertools-menu" id="block-nir-pid1764-shareholdertools" class="block--system-menu-blockshareholder-tools block--system-menu-blockshareholder-tools--5816 block--content--system-menu-block--shareholder-tools block--content--system-menu-block--shareholder-tools--5816 block--0804bc9b-213e-4698-8294-4ef5e9eec789 block--0804bc9b-213e-4698-8294-4ef5e9eec789--5816 block block-menu navigation block-system-menublock menu--shareholder-tools">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1764-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                              <ul data-block-uuid="0804bc9b-213e-4698-8294-4ef5e9eec789" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/printed-materials" data-drupal-link-system-path="node/5966">Printed Materials</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">Email Alerts Subscription</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/download-library" data-drupal-link-system-path="node/6016">Download Library</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/rss-news-feeds" data-drupal-link-system-path="node/5951">RSS News Feeds</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="" target="" rel="" class="printcl">Print</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="" target="" rel="">Share</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+<div id="block-nir-pid1764-search" class="block--search-form block--search-form--5816 block--content--search-form block--content--search-form--5816 block--e27fa44a-2b2f-4149-928b-a6657740a5c9 block--e27fa44a-2b2f-4149-928b-a6657740a5c9--5816 block block-nir-search block-search-form">
+  
+    
+      <form data-block-uuid="e27fa44a-2b2f-4149-928b-a6657740a5c9" action="/search" method="get" accept-charset="UTF-8">
+  <div class="js-form-item form-item js-form-type-search form-item-query js-form-item-query form-no-label">
+        <input type="search" name="query" size="60" maxlength="128" placeholder="Search Investors" class="form-search required" required="required" aria-required="true" />
+
+        </div>
+<input type="submit" name="op" value="Search" class="button button--primary js-form-submit form-submit" />
+
+</form>
+
+  </div>
+
+  </div>
+
+		
+		<div id="ndq-tools">
+		<div id="output"></div>
+        <div class="ndq-dialog-overlay"></div>
+		<div class="ndq-dialog" style="display: none;">
+			<a class="ndq-close-dialog ndqicon-close" title="Close"></a>
+			<ul id="ndq-share">	
+				<li><a class="ndqicon-fb" href="https://www.facebook.com/share.php?u=https%3A%2F%2Fir.libertybroadband.com%2Fstock-information&t=Liberty Broadband Corporation - STOCK INFORMATION"
+					   onclick="window.open('https://www.facebook.com/share.php?u=https%3A%2F%2Fir.libertybroadband.com%2Fstock-information&t=Liberty Broadband Corporation - STOCK INFORMATION','Facebook','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Facebook" title="Facebook" aria-label="Facebook"><span class="hide-txt">Facebook</span></a></li>
+
+				<li><a class="ndqicon-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?&url=https%3A%2F%2Fir.libertybroadband.com%2Fstock-information&title=Liberty Broadband Corporation - STOCK INFORMATION" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fir.libertybroadband.com%2Fstock-information&title=Liberty Broadband Corporation - STOCK INFORMATION','LinkedIn','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="LinkedIn" title="LinkedIn" aria-label="LinkedIn"><span class="hide-txt">LinkedIn</span></a></li>
+			
+				<li><a class="ndqicon-tw" href="https://twitter.com/intent/tweet?text=Liberty Broadband Corporation - STOCK INFORMATION+https%3A%2F%2Fir.libertybroadband.com%2Fstock-information" onclick="window.open('https://twitter.com/intent/tweet?text=Liberty Broadband Corporation - STOCK INFORMATION+https%3A%2F%2Fir.libertybroadband.com%2Fstock-information','Twitter','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Twitter" title="Twitter" aria-label="Twitter"><span class="hide-txt">Twitter</span></a></li>
+				
+				<li><a class="ndqicon-rss" target="_blank" href="/rss-news-feeds"><span class="hide-txt">RSS</span></a></li>
+			</ul>
+		</div>
+		</div><!-- ndq--tool -->
+	</div>
+</div>
+
+<div alt="Liberty Media Corporation" class="footer">
+    <div class="w-row">		
+			<div class="center w-col w-col-3">
+				<div class="footertext">
+					<h3 class="footerhead">looking for</h3>
+				</div>
+				<a href="http://www.libertymedia.com/" target="_blank" class="footerlogos w-inline-block"><img src="/sites/g/files/knoqqb58826/themes/site/nir_pid1764/client/images/footer/Liberty-Media-Silver.png" width="109" alt="Liberty Media Corporation" class="footerlogo"></a>
+				<a href="http://www.libertyinteractive.com/" target="_blank" class="footerlogos w-inline-block"><img src="/sites/g/files/knoqqb58826/themes/site/nir_pid1764/client/images/footer/qurate.png" width="131" alt="Qurate Retail, Inc. " class="footerlogo"></a>
+				<a href="http://libertytripadvisorholdings.com/" target="_blank" class="footerlogos w-inline-block"><img src="/sites/g/files/knoqqb58826/themes/site/nir_pid1764/client/images/footer/Liberty-TripAdvisor.png" alt="Liberty TripAdvisor Holdings" width="163" class="footerlogo"></a>
+				<a href="https://www.lmacthespac.com/" target="_blank" class="footerlogos w-inline-block svg-footer-logo"><img src="/sites/g/files/knoqqb58826/themes/site/nir_pid1764/client/images/footer/Liberty-Media-Acquisition-Corporation-Logo.svg" alt="Liberty Media Acquisition Corporation" width="163" class="footerlogo"></a>
+			</div>
+            <div class="w-col w-col-3">
+			  <h3 class="footerhead">liberty broadband</h3>
+			  <ul class="footerlist">
+				<li><a class="footerlink" href="http://libertybroadband.com/overview/company-overview.html">Company Overview</a>
+				</li>
+				<li><a class="footerlink" href="http://libertybroadband.com/overview/company-history.html">Company History</a>
+				</li>
+				<li><a class="footerlink" href="/corporate-governance/management">Management Team</a>
+				</li>
+				<li><a class="footerlink" href="http://libertybroadband.com/stock-cost-basis.html">Stock Cost Basis</a>
+				</li>
+			  </ul>
+			</div>
+            <div class="w-col w-col-3">
+                <h3 class="footerhead">investor relations</h3>
+                <ul class="footerlist">
+                    <li><a class="footerlink" href="https://ir.libertybroadband.com/">Stock Information</a></li>
+                    <li><a class="footerlink" href="/stock-information/analyst-coverage">Analyst Coverage</a></li>
+                    <li><a class="footerlink" href="/events-and-presentations/events">Events &amp; Presentations</a></li>
+                    <li><a class="footerlink" href="/financial-information">Financial Information</a></li>
+                    <li><a class="footerlink" href="/investor-faqs">Investor FAQs</a></li>
+                    <li><a class="footerlink" href="/contact-us">Contact Us</a></li>
+                    <li><a class="footerlink" href="/governance">Corporate Governance</a></li>
+                    <li><a href="http://libertybroadband.com/conflict-minerals-policy.html" class="footerlink">Conflict Minerals Policy</a></li>
+                </ul>
+            </div>
+            <div class="legal w-col w-col-3">
+				<img alt="Liberty Broadband Corporation" class="footerlogo" src="/sites/g/files/knoqqb58826/themes/site/nir_pid1764/client/images/Liberty-Broadband.png" width="250">
+				  <ul class="footerlist">
+					<li><a class="footerlink" href="http://libertybroadband.com/privacy.html">Privacy</a>
+					</li>
+					<li><a class="footerlink" href="http://libertybroadband.com/term-conditions.html">Terms &amp; Conditions</a>
+					</li>
+					<li><a href="http://libertybroadband.com/careers.html" class="footerlink">Careers</a>
+					</li>
+				  </ul>
+			</div>
+        
+    </div>
+</div>
+
+<div class="footerbottom">
+    <div class="footerlegal">© 2021 Liberty Broadband Corporation</div>
+    <a class="gotop w-inline-block"><img class="gotopimage" src="/sites/g/files/knoqqb58826/themes/site/nir_pid1764/client/images/up-icon-gray.png" width="98"></a>
+</div>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcglibertybroadband";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5916","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid1764\/override,nir_stock_chart\/nir_stock_chart.stockChartStyling,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid1764","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"434bcb68713c8f5dc670293ea395c1a5853d30dd195ff99b38afe09778ff98da"}}</script>
+<script src="/sites/g/files/knoqqb58826/files/js/js_gf5X6Gy9DMtfHK4Y6OU5rvfiX1njxRTJLeaRDBEvD4Q.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fYEcMTlxbVF1ITUBZQA==","queueTime":0,"applicationTime":61,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

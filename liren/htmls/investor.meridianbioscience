@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"39077635"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Meridian Bioscience, Inc." />
+<link rel="canonical" href="https://investor.meridianbioscience.com/events-and-presentations/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investor.meridianbioscience.com/events-and-presentations" />
+<meta property="og:title" content="Events &amp; Presentations | Meridian Bioscience, Inc." />
+<meta name="referrer" content="no-referrer" />
+<meta property="og:description" content="The Investor Relations website contains information about Meridian Bioscience, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb42316/files/favicon.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://investor.meridianbioscience.com/events-and-presentations" />
+<link rel="revision" href="https://investor.meridianbioscience.com/events-and-presentations" />
+
+    <title>Events &amp; Presentations | Meridian Bioscience, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb42316/files/css/css_rfjm6CJ_0NMC2yDcg2-ndYMEx1qfufTwwHO3KArx5Oc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb42316/files/css/css_ne1d6uyNk0mIz9C_QzDLoBMxRoXm4L2TAal9-swQuWg.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb42316/files/css/css_w_Omf1z3UgfyKuFkJasOyWD5SEvZ1_mLSd8_XyuyoVU.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb42316/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    <script>
+			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-KQ3M2JG');
+		</script>
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5821 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+<header>
+    <a class="logo" href="https://www.meridianbioscience.com" target="_self">
+        <!--?xml version="1.0" encoding="utf-8"?-->
+        <!-- Generator: Adobe Illustrator 23.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+        <!--
+	<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 244.3 42.9" enable-background="new 0 0 244.3 42.9" xml:space="preserve">
+<g>
+    <path fill="#003057" d="M72.6,0c1.8,0,3.3,1.5,3.3,3.3s-1.5,3.3-3.3,3.3c-1.8,0-3.3-1.4-3.3-3.3S70.8,0,72.6,0z"></path>
+    <path fill="#003057" d="M105.1,0c1.8,0,3.3,1.5,3.3,3.3s-1.5,3.3-3.3,3.3c-1.8,0-3.3-1.4-3.3-3.3S103.2,0,105.1,0z"></path>
+    <path class="logo-mark" fill="#003057" d="M89.1,42.9c-10.7,0-17.9-6.3-18-6.4c-0.9-0.8-0.9-2.1-0.2-3c0.8-0.9,2.1-0.9,3-0.2l0,0
+		c0.6,0.5,13.7,11.9,30.9-0.2c0.9-0.7,2.3-0.4,2.9,0.5c0.7,0.9,0.4,2.3-0.5,2.9C100.6,41.3,94.4,42.9,89.1,42.9z"></path>
+    <g>
+        <path fill="#003057" d="M159.6,28.1v-9.3h3.1c1.7,0,2.7,1,2.7,2.4c0,0.8-0.4,1.6-1.2,1.8v0.1c0.1,0,1.6,0.5,1.6,2.3
+			c0,1.6-1.1,2.6-2.8,2.6H159.6z M162.7,19.9h-2.1v2.9h2.1c0.9,0,1.6-0.6,1.6-1.5C164.3,20.4,163.8,19.9,162.7,19.9z M160.7,23.8V27
+			h1c1.7,0,3,0,3-1.6c0-1.5-1.3-1.7-3-1.7H160.7z"></path>
+        <path fill="#003057" d="M169.2,18.8v9.3H168v-9.3H169.2z"></path>
+        <path fill="#" d="M176.1,18.6c2.7,0,4.8,2.2,4.8,4.9c0,2.7-2.1,4.8-4.8,4.8c-2.7,0-4.8-2.1-4.8-4.8
+			C171.3,20.8,173.4,18.6,176.1,18.6z M176.1,27.2c2.1,0,3.7-1.7,3.7-3.7c0-2.1-1.6-3.7-3.7-3.7c-2.1,0-3.7,1.7-3.7,3.7
+			C172.4,25.5,174,27.2,176.1,27.2z"></path>
+        <path fill="#003057" d="M183.7,21c0,0.6,0.1,1.1,1.9,1.8c1.6,0.6,2.9,1.2,2.9,2.9c0,1.4-1.1,2.7-2.9,2.7c-1.5,0-2.5-0.8-3.3-1.9
+			l0.9-0.7c0.4,0.6,1.2,1.5,2.4,1.5c0.9,0,1.7-0.7,1.7-1.5c0-1-0.9-1.4-2.4-2c-1.4-0.5-2.4-1.2-2.4-2.7c0-1.1,1-2.3,2.6-2.3
+			c1,0,2.1,0.2,3,1.3l-0.9,0.7c-0.6-0.7-1.2-0.9-2.1-0.9C184.2,19.7,183.7,20.3,183.7,21z"></path>
+        <path fill="#003057" d="M194.7,27.2c1.2,0,2.1-0.6,2.7-1.5l0.9,0.7c-0.8,1.2-2,1.9-3.6,1.9c-2.7,0-4.8-2.1-4.8-4.8
+			c0-2.7,2.1-4.9,4.8-4.9c1.5,0,2.7,0.7,3.5,1.8l-0.9,0.7c-0.6-0.8-1.4-1.3-2.6-1.3c-2.1,0-3.6,1.7-3.6,3.7
+			C191,25.5,192.6,27.2,194.7,27.2z"></path>
+        <path fill="#003057" d="M201.2,18.8v9.3h-1.1v-9.3H201.2z"></path>
+        <path fill="#003057" d="M209.9,19.9h-5v3.3h4.1v1.1H205V27h5.1v1.1h-6.2v-9.3h6.1V19.9z"></path>
+        <path fill="#003057" d="M211.9,28.1v-9.5l6.2,6.9v-6.7h1.1v9.5l-6.2-6.9v6.7H211.9z"></path>
+        <path fill="#003057" d="M226.1,27.2c1.2,0,2.1-0.6,2.7-1.5l0.9,0.7c-0.8,1.2-2,1.9-3.6,1.9c-2.7,0-4.8-2.1-4.8-4.8
+			c0-2.7,2.1-4.9,4.8-4.9c1.5,0,2.7,0.7,3.5,1.8l-0.9,0.7c-0.6-0.8-1.4-1.3-2.6-1.3c-2.1,0-3.6,1.7-3.6,3.7
+			C222.5,25.5,224.1,27.2,226.1,27.2z"></path>
+        <path fill="#003057" d="M237.6,19.9h-5v3.3h4.1v1.1h-4.1V27h5.1v1.1h-6.2v-9.3h6.1V19.9z"></path>
+    </g>
+    <g>
+        <path fill="#003057" d="M5.8,8L6,10.7c1.2-1.5,3.4-3.3,6.1-3.3s5.1,0.8,6.6,3.3c1.6-1.7,4.7-3.3,7.4-3.3c4.3,0,8,2,8,9.7v11h-6
+			v-9.8c0-3.7-0.7-5.3-3.3-5.3c-2.3,0-4,1.5-4.7,3c0,0.4,0,0.7,0,1.1v11h-6v-9.8c0-3.7-0.7-5.3-3.3-5.3c-2.3,0-4,1.5-4.7,3v12.1H0V8
+			H5.8z"></path>
+        <path fill="#003057" d="M54.7,18.1V20H40.5c0.6,2.2,2.6,3.4,4.7,3.4c2,0,3.3-0.4,4.5-1.7l4.1,3.1c-1.7,2-5.3,3.8-8.6,3.8
+			c-6.7,0-10-5.6-10-10.6c0-5.1,3.9-10.7,10-10.7C51.6,7.4,54.7,13.7,54.7,18.1z M40.7,15.4h8.5c-0.4-1.6-2.2-3.1-4.1-3.1
+			C43,12.3,41.2,13.8,40.7,15.4z"></path>
+        <path fill="#003057" d="M61.9,8l0.3,2.8c1.2-1.5,3.4-3.3,6.1-3.3v6c-2.8,0-5.2,1-6.1,3.3v11.4h-6V8H61.9z"></path>
+        <path fill="#003057" d="M75.6,8v20.2h-6V8H75.6z"></path>
+        <path fill="#003057" d="M93.4,28.1l-0.3-2.5c-1.2,1.7-3.3,3.1-6.4,3.1c-4.9,0-9.6-4.1-9.6-10.6c0-6.3,5.2-10.7,9.6-10.7
+			c3.1,0,5.3,1.4,6.4,3.1V0.4h6v27.8H93.4z M88.4,12.7c-2.9,0-5.2,2.5-5.2,5.4c0,2.9,2.3,5.3,5.2,5.3c2.9,0,5.1-2.4,5.1-5.3
+			C93.5,15.1,91.1,12.7,88.4,12.7z"></path>
+        <path fill="#003057" d="M108.1,8v20.2h-6V8H108.1z"></path>
+        <path fill="#003057" d="M125.9,28.1l-0.3-2.5c-1.2,1.7-3.3,3.1-6.4,3.1c-4.9,0-9.6-4.1-9.6-10.6c0-6.3,5.2-10.7,9.6-10.7
+			c3.1,0,5.3,1.4,6.4,3.1l0.3-2.5h5.8v20.2H125.9z M120.8,12.7c-2.9,0-5.2,2.5-5.2,5.4c0,2.9,2.3,5.3,5.2,5.3c2.9,0,5.1-2.4,5.1-5.3
+			C125.9,15.1,123.5,12.7,120.8,12.7z"></path>
+        <path fill="#003057" d="M140.1,8l0.3,2.8c1.2-1.5,3.4-3.3,6.1-3.3c4.3,0,8,2,8,9.7v11h-6v-9.8c0-3.7-0.8-5.3-3.4-5.3
+			c-2.3,0-4.1,1.5-4.7,3v12.1h-6V8H140.1z"></path>
+    </g>
+    <g>
+        <path fill="#003057" d="M241.5,18.8v0.4h-0.7v1.8h-0.4v-1.8h-0.7v-0.4H241.5z M243.9,20.9l-0.1-1.3c0-0.2,0-0.4,0-0.6h0
+			c-0.1,0.2-0.1,0.4-0.2,0.6l-0.4,1.2h-0.4l-0.4-1.2c0-0.2-0.1-0.4-0.2-0.6h0c0,0.2,0,0.4,0,0.6l-0.1,1.3h-0.4l0.2-2.2h0.6l0.4,1.1
+			c0,0.2,0.1,0.3,0.1,0.6h0c0.1-0.2,0.1-0.4,0.2-0.5l0.4-1.1h0.6l0.2,2.2H243.9z"></path>
+    </g>
+</g>
+</svg>
+-->
+	<img src="/sites/g/files/knoqqb42316/themes/site/nir_pid2751/client/images/2018_MER_LOGO_TM_BLU_60px.png" alt="Meridian Bioscience"/>
+    </a>
+
+    <!-- DESKTOP NAV AND SUBMEMNU -->
+      <div class="region region-header">
+    
+
+                                
+                              <ul data-block-uuid="6a2bcf9d-ab5f-4eb1-aab8-cb6e47c8682a" class="main-menu">
+                                                  
+        <li class="menu-item menu-item-has-children menu-item-dropdown" data-menu-id="12">
+          <a href="https://www.meridianbioscience.com/platforms/?country=GU" target="" rel="">Platforms</a>
+                  </li>
+                          
+        <li class="menu-item menu-item-has-children menu-item-dropdown" data-menu-id="16">
+          <a href="https://www.meridianbioscience.com/human-conditions/?country=GU" target="" rel="">Human Conditions</a>
+                  </li>
+                          
+        <li class="menu-item menu-item-has-children menu-item-dropdown" data-menu-id="17">
+          <a href="https://www.meridianbioscience.com/about/?country=GU" target="" rel="">About</a>
+                  </li>
+                          
+        <li class="menu-item menu-item-has-children menu-item-dropdown" data-menu-id="18">
+          <a href="https://www.meridianbioscience.com/customer-support/?country=GU" target="" rel="">Customer Support</a>
+                  </li>
+                          
+        <li class="menu-item menu-item-has-children menu-item-dropdown" data-menu-id="25">
+          <a href="https://www.meridianbioscience.com/careers/?country=GU" target="" rel="">Careers</a>
+                  </li>
+                          
+        <li class="menu-item " data-menu-id="19">
+          <a href="https://www.meridianbioscience.com/contact-us/?country=GU" target="" rel="">Contact Us</a>
+                  </li>
+                          
+        <li class="menu-item " data-menu-id="">
+          <a href="https://www.meridianbioscience.com/search/?country=GU" target="" rel="" class="btn-search">Search</a>
+                  </li>
+          </ul>
+  
+
+
+    
+  </div>
+
+    <div class="mobile-button">
+        <span class="mobile-button--text">Close</span>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
+
+</header>
+
+                        
+                        
+                      <div class="sub-menu-wrap" data-menu-id="12"><a class="sub-menu-wrap--close" href="/">Close</a>
+<div class="sub-menu-left conditions-nav-menu color-background-after" data-entity-type="file" data-entity-uuid="23bf23c7-828a-442c-a786-bb5341515005" style="background-image: url('/system/files-encrypted/nasdaq_kms/inline-images/submenu-bg.jpg')">
+<ul><li><a data-color-target="51" data-color-target-elem=".sub-menu-left" data-submenu-target="51" href="https://www.meridianbioscience.com/platform/molecular/">Molecular</a></li>
+	<li><a data-color-target="52" data-color-target-elem=".sub-menu-left" data-submenu-target="52" href="https://www.meridianbioscience.com/platform/immunoassay/">Immunoassay</a></li>
+</ul></div>
+
+<div class="sub-menu-right">
+<p class="sub-menu sub-menu-right--default active">Hover over a Platform to view available tests or <a href="https://www.meridianbioscience.com/platforms/">view all</a> Platforms.</p>
+
+<ul class="sub-menu" data-submenu="51"><li class="menu-item">
+	<div><a href="https://www.meridianbioscience.com/platform/molecular/alethia/">Alethia</a></div>
+	</li>
+</ul><ul class="sub-menu" data-submenu="52"><li class="menu-item">
+	<div><a href="https://www.meridianbioscience.com/platform/immunoassay/leadcare/">LeadCare</a></div>
+	</li>
+	<li class="menu-item">
+	<div><a href="https://www.meridianbioscience.com/platform/immunoassay/immunocard-stat/">ImmunoCard STAT</a></div>
+	</li>
+	<li class="menu-item">
+	<div><a href="https://www.meridianbioscience.com/platform/immunoassay/immunocard/">ImmunoCard</a></div>
+	</li>
+	<li class="menu-item">
+	<div><a href="https://www.meridianbioscience.com/platform/immunoassay/premier/">Premier</a></div>
+	</li>
+	<li class="menu-item">
+	<div><a href="https://www.meridianbioscience.com/platform/immunoassay/tru/">TRU</a></div>
+	</li>
+	<li class="menu-item">
+	<div><a href="https://www.meridianbioscience.com/platform/immunoassay/merifluor/">Merifluor</a></div>
+	</li>
+	<li class="menu-item">
+	<div><a href="https://www.meridianbioscience.com/platform/immunoassay/immunodiffusion/">Immunodiffusion</a></div>
+	</li>
+	<li class="menu-item">
+	<div><a href="https://www.meridianbioscience.com/platform/immunoassay/latex/">Latex Agglutination</a></div>
+	</li>
+	<li class="menu-item">
+	<div><a href="https://www.meridianbioscience.com/platform/immunoassay/dfa/">DFA</a></div>
+	</li>
+	<li class="menu-item">
+	<div><a href="https://www.meridianbioscience.com/platform/immunoassay/truquick/">TruQuick</a></div>
+	</li>
+</ul></div>
+</div>
+
+<div class="sub-menu-wrap" data-menu-id="16"><a class="sub-menu-wrap--close" href="/">Close</a>
+
+<div class="sub-menu-left conditions-nav-menu color-background-after" style="background-image: url('/system/files-encrypted/nasdaq_kms/inline-images/submenu-bg.jpg')">
+<ul><li><a data-color-target="28" data-color-target-elem=".sub-menu-left" data-submenu-target="28" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/">Gastrointestinal</a></li>
+	<li><a data-color-target="29" data-color-target-elem=".sub-menu-left" data-submenu-target="29" href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/">Pediatric &amp; Neonatal</a></li>
+	<li><a data-color-target="30" data-color-target-elem=".sub-menu-left" data-submenu-target="30" href="https://www.meridianbioscience.com/human-condition/respiratory/">Respiratory</a></li>
+	<li><a data-color-target="31" data-color-target-elem=".sub-menu-left" data-submenu-target="31" href="https://www.meridianbioscience.com/human-condition/other/">Other</a></li>
+</ul></div>
+
+<div class="sub-menu-right">
+<p class="sub-menu sub-menu-right--default active">Hover over a human condition to view available tests or <a href="https://www.meridianbioscience.com/human-conditions/">view all</a> human conditions.</p>
+
+<ul class="sub-menu" data-submenu="28"><li class="menu-item">
+	<h5 class="cat-title">Gastrointestinal</h5>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/calprotectin/">Calprotectin</a>
+
+	<ul class="menu-item-child-list"></ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/adenovirus/">Adenovirus</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/adenovirus/premier-adenoclone/">Premier <sup>®</sup> Adenoclone <sup>®</sup></a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/adenovirus/premier-adenoclone-40-41/">Premier <sup>®</sup> Adenoclone <sup>®</sup> 40/41 </a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/norovirus/">Norovirus</a>
+
+	<ul class="menu-item-child-list"></ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/e-coli/">E. coli</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/e-coli/premier-ehec/">Premier® EHEC</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/e-coli/immunocard-stat-e-coli-o157-plus/">Immunocard STAT! E. coli O157 Plus</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/e-coli/immunocard-stat-ehec/">Immunocard STAT!® EHEC</a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/h-pylori/">H. pylori</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/h-pylori/liaison_meridian_h-pylori/">LIAISON® Meridian H. pylori SA</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/h-pylori/premier-platinum-hpsa-plus/">Premier Platinum HpSA <sup>®</sup> PLUS </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/h-pylori/premier-h-pylori/">Premier <sup>®</sup><em>H. pylori</em> </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/h-pylori/immunocard-stat-hpsa/">Immunocard STAT! <sup>®</sup> HpSA <sup>®</sup></a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/h-pylori/immunocard-h-pylori/">Immunocard <sup>®</sup><em>H. pylori</em> </a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/campylobacter/">Campylobacter</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/campylobacter/premier-campy/">Premier <sup>®</sup> CAMPY </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/campylobacter/immunocard-stat-campy/">Immunocard STAT! CAMPY</a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/rotavirus/">Rotavirus</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/rotavirus/premier-rotaclone/">PREMIER® Rotaclone®</a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/rotavirus-adenovirus/">Rotavirus/Adenovirus</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/rotavirus-adenovirus/rapid_strip-rota_adeno/">Rapid Strip ROTA/ADENO</a></li>
+	</ul></div>
+	</li>
+	<li class="menu-item">
+	<h5 class="cat-title">Healthcare Acquired Infections</h5>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/c-difficile/">C. difficile</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/c-difficile/premier-toxins-ab/">Premier® Toxins A&amp;B</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/c-difficile/premier-c-difficile-gdh/">Premier C. difficile GDH</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/c-difficile/immunocard-toxins-ab/">Immunocard® Toxins A&amp;B</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/c-difficile/immunocard-c-difficile-gdh/">Immunocard® <em>C. difficile</em> GDH </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/c-difficile/alethia-c-difficle/">Alethia™ <em>C. difficile</em> </a></li>
+	</ul></div>
+	</li>
+	<li class="menu-item">
+	<h5 class="cat-title">Parasitology</h5>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/cryptosporidium-giardia/">Cryptosporidium/Giardia</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/cryptosporidium-giardia/merifluor-cryptosporidium-giardia/">Merifluor <sup>®</sup> Cryptosporidium/Giardia </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/cryptosporidium-giardia/merifluor-c-g-treated-microscope-slides/">MERIFLUOR® C/G Treated Microscope Slides</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/cryptosporidium-giardia/immunocard-stat-crypto-giardia/">Immunocard STAT!® Crypto/Giardia</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/cryptosporidium-giardia/immunocard-stat-crypto-giardia-controls/">Immunocard STAT!® Crypto/Giardia Controls</a></li>
+	</ul></div>
+
+	<div><a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/para-pak/">Para Pak</a></div>
+	</li>
+</ul><ul class="sub-menu" data-submenu="29"><li class="menu-item">
+	<h5 class="cat-title">Neonatal and Pediatrics</h5>
+
+	<div><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/dfa/">DFA</a></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/mononucleosis/">Mononucleosis</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/mononucleosis/monospot-latex/">MONOSPOT® Latex</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/mononucleosis/immunocard-stat-mono/">ImmunoCard STAT!® MONO</a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/leadcare/">Blood Lead Poisoning</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/leadcare/leadcare-plus-analyzer/">LeadCare Plus® Analyzer</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/leadcare/leadcare-plus-data-management-system/">LeadCare Plus Data Management System</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/leadcare/leadcare-test-kit/">LeadCare® Test kit</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/leadcare/leadcare-ii-test-kit/">LeadCare® II Test kit</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/leadcare/leadcare-ultra-analyzer-system/">LeadCare Ultra® Analyzer System</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/leadcare/leadcare-ii-analyzer/">LeadCare® II Analyzer</a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/cmv/">CMV</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/cmv/alethia-cmv/">Alethia™ CMV</a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/group-b-strep/">Group B Strep</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/group-b-strep/alethia-group-b-streptococcus/">Alethia Group B Streptococcus</a></li>
+	</ul></div>
+	</li>
+</ul><ul class="sub-menu" data-submenu="30"><li class="menu-item">
+	<h5 class="cat-title">Respiratory</h5>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/respiratory/flu/">FLU</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/respiratory/flu/immunocard-stat-flu-ab-nasopharyngeal-wash-aspirate-accessory-kit/">ImmunoCard STAT! <sup>®</sup> FLU A&amp;B Nasopharyngeal Wash/Aspirate Accessory Kit </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/respiratory/flu/immunocard-stat-flu-ab/">ImmunoCard STAT! <sup>®</sup> FLU A&amp;B </a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/respiratory/pneumocystis/">Pneumocystis</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/respiratory/pneumocystis/merifluor-pneumocystis/">MERIFLUOR <sup>®</sup> Pneumocystis </a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/respiratory/mycoplasma/">Mycoplasma</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/respiratory/mycoplasma/immunocard-mycoplasma/">ImmunoCard <sup>®</sup> Mycoplasma </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/respiratory/mycoplasma/alethia-mycoplasma-direct/">Alethia™ Mycoplasma Direct</a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/respiratory/pertussis/">Pertussis</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/respiratory/pertussis/alethia-pertussis/">Alethia™ Pertussis</a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/respiratory/rsv/">RSV</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/respiratory/rsv/tru-rsv/">TRU RSV <sup>®</sup></a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/respiratory/legionella/">Legionella</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/respiratory/legionella/tru-legionella/">TRU Legionella <sup>®</sup></a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/respiratory/group-a-streptococcus/">Group A Streptococcus</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/respiratory/group-a-streptococcus/immunocard-stat-strep-a/">ImmunoCard STAT! <sup>®</sup> Strep A </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/respiratory/group-a-streptococcus/alethia-group-a-streptococcus/">Alethia Group A Streptococcus</a></li>
+	</ul></div>
+	</li>
+</ul><ul class="sub-menu" data-submenu="31"><li class="menu-item">
+	<h5 class="cat-title">Sexual Health</h5>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/other/pregnancy-2/">Pregnancy</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/other/pregnancy-2/immunocard-stat-hcg/">ImmunoCard STAT! <sup>®</sup> hCG </a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/other/pbs/">Phosphate Buffered Saline</a>
+
+	<ul class="menu-item-child-list"></ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/other/viral-transport/">Viral Transport</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/other/viral-transport/meridian-viral-transport/">Meridian Viral Transport</a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/other/hcv/">HCV</a>
+
+	<ul class="menu-item-child-list"></ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/other/hiv/">HIV</a>
+
+	<ul class="menu-item-child-list"></ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/other/vzv/">VZV</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/other/vzv/merifluor-vzv/">MERIFLUOR® VZV</a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/other/chlamydia/">Chlamydia</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/other/chlamydia/merifluor-chlamydia/">Merifluor <sup>®</sup> Chlamydia </a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/other/hsv-12/">HSV 1&amp;2</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/other/hsv-12/alethia-hsv-12/">Alethia HSV 1&amp;2</a></li>
+	</ul></div>
+	</li>
+	<li class="menu-item">
+	<h5 class="cat-title">Other</h5>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/other/serology/">Serology</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/other/serology/merifluor-vzv/">Merifluor <sup>®</sup> VZV </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/serology/ana-screening-elisa/">ANA Screening ELISA</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/serology/merifluor-gullsorb-5-ml/">Merifluor <sup>®</sup> GullSORB 5 mL </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/serology/merifluor-ebv-vca-igg-ifa/">Merifluor <sup>®</sup> EBV VCA IgG IFA </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/serology/merifluor-ebv-vca-igm-ifa/">Merifluor <sup>®</sup> EBV VCA IgM IFA </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/serology/merifluor-ebv-ea-igg-ifa/">Merifluor <sup>®</sup> EBV-EA IgG IFA </a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/serology/merifluor-ebv-na/">Merifluor <sup>®</sup> EBV-NA </a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="https://www.meridianbioscience.com/human-condition/other/fungals/">Fungals</a>
+
+	<ul class="menu-item-child-list"><li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/fungal-immunodiffusion-plates-1-series/">Fungal Immunodiffusion Plates, 1 Series</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/fungal-immunodiffusion-plates-4-series/">Fungal Immunodiffusion Plates, 4 Series</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/histoplasma-antigen-for-fungal-immunodiffusion/">Histoplasma Antigen for Fungal Immunodiffusion</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/anti-coccidioides-tp-control-serum-goat-or-human-or-rabbing-for-fungal-immunodiffusion-401/">Coccidioides "F" Antigen for Fungal Immunodiffusion (1 ml)</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/coccidioides-f-antigen-for-fungal-immunodiffusion-405/">Coccidioides "F" Antigen for Fungal Immunodiffusion (5 ml)</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/coccidioides-tp-antigen-for-fungal-immunodiffusion/">Coccidioides "TP" Antigen for Fungal Immunodiffusion</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/anti-coccidioides-tp-control-serum-goat-or-human-or-rabbing-for-fungal-immunodiffusion/">Anti-Coccidioides "TP" Control Serum (Goat or Human or Rabbit) for Fungal Immunodiffusion</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/anti-coccidioides-f-control-serum-goat-or-human-or-rabbing-for-fungal-immunodiffusion/">Anti-Coccidioides "F" Control Serum (Goat or Human or Rabbit) for Fungal Immunodiffusion</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/anti-histoplasma-control-serum-goat-for-fungal-immunodiffusion/">Anti-Histoplasma Control Serum (Goat) for Fungal Immunodiffusion</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/premier-cryptococcal-antigen/">PREMIER® Cryptococcal Antigen</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/premier-coccidioides/">PREMIER© Coccidioides</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/cryptococcal-antigen-latex-agglutination-system/">Cryptococcal Antigen Latex Agglutination System (CALAS®)</a></li>
+		<li><a href="https://www.meridianbioscience.com/human-condition/other/fungals/calas-pronase/">CALAS® Pronase</a></li>
+	</ul></div>
+	</li>
+	<li class="menu-item">
+	<h5 class="cat-title">Tropical Diseases</h5>
+	</li>
+</ul></div>
+</div>
+
+<div class="sub-menu-wrap" data-menu-id="17"><a class="sub-menu-wrap--close" href="/">Close</a>
+
+<div class="sub-menu-left conditions-nav-menu color-background-after" style="background-image: url('/system/files-encrypted/nasdaq_kms/inline-images/submenu-bg.jpg')">
+<ul><li><a data-color-target="17" data-color-target-elem=".sub-menu-left" data-submenu-target="17" href="https://www.meridianbioscience.com/about/">About</a></li>
+	<li><a data-color-target="427" data-color-target-elem=".sub-menu-left" data-submenu-target="427" href="/">Investor Relations</a></li>
+	<li><a data-color-target="38" data-color-target-elem=".sub-menu-left" data-submenu-target="38" href="https://www.meridianbioscience.com/about/team/?country=GU">Team</a></li>
+	<li><a data-color-target="276" data-color-target-elem=".sub-menu-left" data-submenu-target="276" href="https://www.meridianbioscience.com/about/events-webinars/?country=GU">Events &amp; Webinars</a></li>
+	<li><a data-color-target="425" data-color-target-elem=".sub-menu-left" data-submenu-target="425" href="/news-releases">News</a></li>
+	<!-- <li><a data-color-target="41" data-color-target-elem=".sub-menu-left" data-submenu-target="41" href="https://www.meridianbioscience.com/about/proficiency-and-controls/">Proficiency and Controls</a></li> -->
+</ul></div>
+
+<div class="sub-menu-right">
+<p class="sub-menu sub-menu-right--default active">Click the page you wish to view.</p>
+
+<ul class="sub-menu" data-submenu="427"><li class="menu-item">
+	<h5 class="cat-title">Investor Relations</h5>
+
+	<div class="menu-item-has-children"><a href="/stock-information/stock-quote">Stock Information</a>
+
+	<ul class="menu-item-child-list"><li><a href="/stock-information/stock-quote">Stock Quote</a></li>
+		<li><a href="/stock-information/stock-chart">Stock Chart</a></li>
+		<li><a href="/stock-information/historic-price-lookup">Price Lookup</a></li>
+		<li><a href="/stock-information/investment-calculator">Calculator</a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="/corporate-governance/committee-composition">Governance</a>
+
+	<ul class="menu-item-child-list"><li><a href="/corporate-governance/committee-composition">Committee Composition</a></li>
+		<li><a href="/corporate-governance/governance-overview">Governance Documents</a></li>
+		<li><a href="https://www.meridianbioscience.com/about/team/?country=GU">Board of Directors &amp; Management</a></li>
+	</ul></div>
+
+	<div class="menu-item-has-children"><a href="/fundamentals/snapshot">Fundamentals</a>
+
+	<ul class="menu-item-child-list"><li><a href="/fundamentals/snapshot">Snapshot</a></li>
+		<li><a href="/fundamentals/trading-statistics">Trading Statistics</a></li>
+		<li><a href="/fundamentals/balance-sheet">Balance Sheet</a></li>
+		<li><a href="/fundamentals/income-statement">Income Statement</a></li>
+		<li><a href="/fundamentals/cash-flow">Cash Flow</a></li>
+		<li><a href="/fundamentals/ratios">Ratios</a></li>
+	</ul></div>
+
+	<div><a href="/news-releases">News Releases</a></div>
+
+	<div><a href="/analyst-coverage">Analyst Coverage</a></div>
+
+	<div><a href="/annual-reports">Annual Reports</a></div>
+
+	<div><a href="/annual-meeting">Annual Meeting</a></div>
+
+	<div><a href="/sec-filings">SEC Filings</a></div>
+
+	<div><a href="/investment-plan">Investment Plan</a></div>
+
+	<div><a href="/events-and-presentations">Events &amp; Presentations</a></div>
+	</li>
+</ul></div>
+</div>
+
+<div class="sub-menu-wrap" data-menu-id="18"><a class="sub-menu-wrap--close" href="/">Close</a>
+
+<div class="sub-menu-left conditions-nav-menu color-background-after" style="background-image: url('/system/files-encrypted/nasdaq_kms/inline-images/submenu-bg.jpg')">
+<ul><li><a data-color-target="18" data-color-target-elem=".sub-menu-left" data-submenu-target="18" href="https://www.meridianbioscience.com/customer-support/">Customer Support</a></li>
+	<li><a data-color-target="351" data-color-target-elem=".sub-menu-left" data-submenu-target="351" href="https://www.meridianbioscience.com/customer-support/technical-support/">Technical Support</a></li>
+	<li><a data-color-target="338" data-color-target-elem=".sub-menu-left" data-submenu-target="338" href="https://www.meridianbioscience.com/customer-support/distributors/">Distributors</a></li>
+	<li><a data-color-target="343" data-color-target-elem=".sub-menu-left" data-submenu-target="343" href="https://www.meridianbioscience.com/customer-support/tools-resources/">Tools &amp; Resources</a></li>
+</ul></div>
+
+<div class="sub-menu-right">
+<p class="sub-menu sub-menu-right--default active">Click the page you wish to view.</p>
+</div>
+</div>
+
+<div class="sub-menu-wrap" data-menu-id="25"><a class="sub-menu-wrap--close" href="/">Close</a>
+
+<div class="sub-menu-left conditions-nav-menu color-background-after" style="background-image: url('/system/files-encrypted/nasdaq_kms/inline-images/submenu-bg.jpg')">
+<ul><li><a data-color-target="25" data-color-target-elem=".sub-menu-left" data-submenu-target="25" href="https://www.meridianbioscience.com/careers/">Careers</a></li>
+	<li><a data-color-target="350" data-color-target-elem=".sub-menu-left" data-submenu-target="350" href="https://www.meridianbioscience.com/careers/culture/">Culture</a></li>
+	<li><a data-color-target="375" data-color-target-elem=".sub-menu-left" data-submenu-target="375" href="https://www.meridianbioscience.com/careers/benefits/">Benefits</a></li>
+	<li><a data-color-target="475" data-color-target-elem=".sub-menu-left" data-submenu-target="475" href="https://careers-meridianbioscience.icims.com/jobs/intro?hashed=-435711682&amp;mobile=false&amp;width=850&amp;height=500&amp;bga=true&amp;needsRedirect=false&amp;jan1offset=-300&amp;jun1offset=-240">Open Positions</a></li>
+</ul></div>
+
+<div class="sub-menu-right">
+<p class="sub-menu sub-menu-right--default active">Click the page you wish to view.</p>
+</div>
+</div>
+
+            
+
+            
+  
+  
+
+
+
+<!-- MOBILE NAV AND SUBMEMNU -->
+<div class="mobile-menu">
+    <form class="mobile-menu-search-wrapper search-form-small" action="https://www.meridianbioscience.com/search/" method="POST">
+        <input class="mobile-menu-search" name="search" placeholder="Search" />
+        <button type="submit" class="input-search-submit"><i class="fa fas fa-search"></i></button>
+    </form>
+    <ul class="main-menu">
+        <li class="menu-item menu-item-has-children ">
+            <a class="" href="https://www.meridianbioscience.com/platforms/?country=GU">Platforms</a>
+            <ul class="mobile-sub-menu ">
+                <li class="mobile-sub-menu-back">
+                    <a href="" target="_blank">Back</a>
+                </li>
+                <li class="menu-item mobile-dropdown-has-children">
+                    <a href="https://www.meridianbioscience.com/platform/molecular/?country=GU" data-submenu-target="51">
+                        Molecular                                       </a>
+
+                </li>
+                <ul class="mobile-sub-menu-dropdown color-background-after " data-submenu="51" data-color="51">
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/platform/molecular/alethia/?country=GU">Alethia</a>
+                </ul>
+                <li class="menu-item mobile-dropdown-has-children ">
+                    <a href="https://www.meridianbioscience.com/platform/immunoassay/?country=GU" data-submenu-target="52">
+                        Immunoassay                                     </a>
+
+                </li>
+                <ul class="mobile-sub-menu-dropdown color-background-after " data-submenu="52" data-color="52">
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/platform/immunoassay/leadcare/">LeadCare®</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/platform/immunoassay/immunocard-stat/?country=GU">ImmunoCard STAT</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/platform/immunoassay/immunocard/?country=GU">ImmunoCard</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/platform/immunoassay/premier/?country=GU">Premier</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/platform/immunoassay/tru/?country=GU">TRU</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/platform/immunoassay/merifluor/?country=GU">Merifluor</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/platform/immunoassay/immunodiffusion/?country=GU">Immunodiffusion</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/platform/immunoassay/dfa__trashed/latex/?country=GU">Latex Agglutination</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/platform/immunoassay/truquick/?country=GU">TruQuick</a>
+                </ul>
+                <li class="menu-item">
+                    <a href="https://www.meridianbioscience.com/about/proficiency-and-controls/?country=GU" data-submenu-target="41">
+                        Proficiency and Controls                                        </a>
+                </li>
+            </ul>
+
+        </li>
+        <li class="menu-item menu-item-has-children">
+            <a class="" href="https://www.meridianbioscience.com/human-conditions/?country=GU">Human Conditions</a>
+            <ul class="mobile-sub-menu">
+                <li class="mobile-sub-menu-back">
+                    <a href="" target="_blank">Back</a>
+                </li>
+                <li class="menu-item mobile-dropdown-has-children">
+                    <a href="https://www.meridianbioscience.com/human-condition/gastrointestinal/?country=GU" data-submenu-target="28">
+                        <svg
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                            <path fill-rule="nonzero" d="M24.504 5.707c-1.29-1.302-2.932-2.02-4.625-2.02-1.396 0-2.89.502-3.819 1.265-.478-1.085-.893-2.7-.423-4.582a.186.186 0 0 0-.182-.232h-3.827a.187.187 0 0 0-.185.157c-.633 3.849.802 6.665 1.341 7.725.083.162.148.29.172.355.442 1.227.365 3.695-.399 5.164-1.533 2.946-3.19 3.344-4.609 3.344-.58 0-1.174-.077-1.75-.15-.573-.074-1.165-.15-1.74-.15-1.34 0-2.321.417-3.184 1.352-1.853 2.007-.687 6.303.549 8.7a.187.187 0 0 0 .166.102h3.576a.188.188 0 0 0 .136-.316c-.45-.848-1.887-3.982-1.436-5.305.083-.242.222-.404.408-.492.08.017.283.276.462.505.951 1.212 2.931 3.735 8.68 3.869l.196.002c.949 0 4.277-.158 7.292-2.187 3.522-2.37 5.335-6.343 5.387-11.811.018-1.945-.779-3.874-2.186-5.295zM6.721 19.062c.13-.293.422-.414.584-.46.1-.028.258-.03.37-.03.118 0 .253.003.4.008.181.006.382.012.597.012 1.163 0 2.875-.186 4.316-1.795.733-.819 1.387-1.99 1.657-2.984h9.832c-.505 3.32-2.027 5.917-4.403 7.513-2.781 1.867-5.835 1.921-6.174 1.921-2.737 0-4.572-.924-5.356-1.32-.688-.346-1.323-.954-1.618-1.55-.276-.557-.345-1-.205-1.315z"></path>
+                        </svg>
+                        Gastrointestinal
+                    </a>
+
+                </li>
+                <ul class="mobile-sub-menu-dropdown color-background-after" data-submenu="28" data-color="28">
+                    <h5 class="cat-title">Gastrointestinal</h5>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/calprotectin/?country=GU">Calprotectin</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/adenovirus/?country=GU">Adenovirus</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/norovirus/?country=GU">Norovirus</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/e-coli/?country=GU">E. coli</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/h-pylori/?country=GU">H. pylori</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/campylobacter/?country=GU">Campylobacter</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/rotavirus-adenovirus-norovirus/?country=GU">Rotavirus/Adenovirus/Norovirus</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/rotavirus/?country=GU">Rotavirus</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/rotavirus-adenovirus/?country=GU">Rotavirus/Adenovirus</a>
+                    <h5 class="cat-title">Healthcare Acquired Infections</h5>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/c-difficile/?country=GU">C. difficile</a>
+                    <h5 class="cat-title">Parasitology</h5>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/cryptosporidium-giardia/?country=GU">Cryptosporidium/Giardia</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/gastrointestinal/para-pak/?country=GU">Para Pak</a>
+                </ul>
+                <li class="menu-item mobile-dropdown-has-children">
+                    <a href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/?country=GU" data-submenu-target="29">
+                        <svg
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 29">
+                            <g fill-rule="evenodd">
+                                <path d="M9.904 9.864c0 .606.49 1.094 1.096 1.094a1.094 1.094 0 1 0 0-2.19c-.606 0-1.096.489-1.096 1.096zM5.806 19.717c-1.817 0-3.29 1.963-3.29 4.382 0 2.422 1.473 4.385 3.29 4.385 1.816 0 3.289-1.963 3.289-4.385 0-2.419-1.473-4.382-3.29-4.382zM17.431 19.717c-1.814 0-3.287 1.963-3.287 4.382 0 2.422 1.473 4.385 3.287 4.385 1.817 0 3.288-1.963 3.288-4.385 0-2.419-1.471-4.382-3.288-4.382z"></path>
+                                <path fill-rule="nonzero" d="M18.67 12.851c-.576 0-1.118.149-1.59.41a1.989 1.989 0 0 0-.228-.012h-.583a7.667 7.667 0 0 0 2.323-6.674h.078a3.286 3.286 0 1 0 0-6.575 3.285 3.285 0 0 0-2.87 1.69A7.63 7.63 0 0 0 11 0a7.618 7.618 0 0 0-4.798 1.69A3.289 3.289 0 0 0 .04 3.29a3.286 3.286 0 0 0 3.287 3.285h.078a7.667 7.667 0 0 0 2.322 6.674h-.58a1.81 1.81 0 0 0-.714.143 3.232 3.232 0 0 0-1.106-.19 3.288 3.288 0 1 0-.405 6.549 4.48 4.48 0 0 1 .995-.768 3.778 3.778 0 0 1 3.777 0 4.67 4.67 0 0 1 1.428 1.274c.781 1.04 1.209 2.406 1.209 3.842 0 1.438-.428 2.802-1.21 3.846-.177.233-.37.45-.575.643h6.145a5.086 5.086 0 0 1-.574-.643c-.782-1.044-1.213-2.408-1.213-3.846 0-1.436.431-2.802 1.213-3.842.405-.54.883-.969 1.425-1.274a3.78 3.78 0 0 1 3.778 0c.143.078.283.17.415.267a3.286 3.286 0 0 0-1.066-6.399zM11 15.343a3.286 3.286 0 0 1-3.287-3.287A3.288 3.288 0 1 1 11 15.343z"></path>
+                            </g>
+                        </svg>
+                        Pediatric &amp; Neonatal
+                    </a>
+
+                </li>
+                <ul class="mobile-sub-menu-dropdown color-background-after" data-submenu="29" data-color="29">
+                    <h5 class="cat-title">Neonatal and Pediatrics</h5>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/dfa/?country=GU">DFA</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/mononucleosis/?country=GU">Mononucleosis</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/leadcare/?country=GU">Blood Lead Poisoning</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/cmv/?country=GU">CMV</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/pediatric_neonatal/group-b-strep/?country=GU">Group B Strep</a>
+                </ul>
+                <li class="menu-item mobile-dropdown-has-children">
+                    <a href="https://www.meridianbioscience.com/human-condition/respiratory/?country=GU" data-submenu-target="30">
+                        <svg
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
+                            <path fill-rule="evenodd" d="M27.997 19.915c-.442-5.903-2.752-11.017-6.864-15.198A2.428 2.428 0 0 0 19.41 4 2.41 2.41 0 0 0 17 6.408v8.178l-2-2V0h-2v12.586l-2 2V6.408A2.41 2.41 0 0 0 8.591 4c-.648 0-1.277.261-1.724.717C2.755 8.898.445 14.012 0 19.989v3.012c0 3.208 2.975 5.571 6.084 4.878A6.237 6.237 0 0 0 11 21.755v-4.341l3-3 3 3v4.341a6.237 6.237 0 0 0 4.916 6.124C25.03 28.574 28 26.203 28 23.001l-.003-3.086z"></path>
+                        </svg>
+                        Respiratory
+                    </a>
+
+                </li>
+                <ul class="mobile-sub-menu-dropdown color-background-after" data-submenu="30" data-color="30">
+                    <h5 class="cat-title">Respiratory</h5>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/respiratory/flu/?country=GU">FLU</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/respiratory/strep-pneumo/?country=GU">Strep Pneumo</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/respiratory/pneumocystis/?country=GU">Pneumocystis</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/respiratory/mycoplasma/?country=GU">Mycoplasma</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/respiratory/pertussis/?country=GU">Pertussis</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/respiratory/rsv/?country=GU">RSV</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/respiratory/legionella/?country=GU">Legionella</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/respiratory/group-a-streptococcus/?country=GU">Group A Streptococcus</a>
+                </ul>
+                <li class="menu-item mobile-dropdown-has-children">
+                    <a href="https://www.meridianbioscience.com/human-condition/other/?country=GU" data-submenu-target="31">
+                        <svg
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32">
+                            <g fill-rule="evenodd">
+                                <path d="M1.733 29.267H23.6V32H1.733zM9.467 23.867c-1.734.8-3.067 2.266-3.8 4.066h14.066c-.733-1.933-2.2-3.4-4.133-4.2 2.8-1.133 4.933-3.6 5.467-6.733.733-4.333-1.734-8.467-5.734-9.867L16.467 4c.2-.533-.067-1.067-.6-1.267l-.6-.2.333-.866c.133-.334-.067-.734-.4-.867L13.267.067c-.334-.134-.734.066-.867.4l-.333.866-.6-.2c-.534-.2-1.067.067-1.267.6l-2.933 8c-.2.534.066 1.067.6 1.267l.6.2-.334.933c-.133.334.067.734.4.867l1.934.733c.333.134.733-.066.866-.4l.334-.933.6.2c.533.2 1.066-.067 1.266-.6l.867-2.4c2.8 1 4.533 3.867 4 6.867-.867 4.933-6.933 6.933-10.533 3.266H11.8v-2.6H.333v2.6H4.6a8.993 8.993 0 0 0 4.867 4.134z"></path>
+                            </g>
+                        </svg>
+                        Other
+                    </a>
+
+                </li>
+                <ul class="mobile-sub-menu-dropdown color-background-after" data-submenu="31" data-color="31">
+                    <h5 class="cat-title">Sexual Health</h5>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/other/pregnancy-2/?country=GU">Pregnancy</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/other/pbs/?country=GU">Phosphate Buffered Saline</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/other/viral-transport/?country=GU">Viral Transport</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/other/hcv/?country=GU">HCV</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/other/hiv/?country=GU">HIV</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/other/vzv/?country=GU">VZV</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/other/chlamydia/?country=GU">Chlamydia</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/other/gonorrhea/?country=GU">Gonorrhea</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/other/hsv-12/?country=GU">HSV 1&amp;2</a>
+                    <h5 class="cat-title">Other</h5>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/other/serology/?country=GU">Serology</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/other/fungals/?country=GU">Fungals</a>
+                    <h5 class="cat-title">Tropical Diseases</h5>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/human-condition/other/malaria/?country=GU">Malaria</a>
+                </ul>
+            </ul>
+
+        </li>
+        <li class="menu-item menu-item-has-children">
+            <a class="" href="https://www.meridianbioscience.com/about/?country=GU">About</a>
+            <ul class="mobile-sub-menu">
+                <li class="mobile-sub-menu-back">
+                    <a href="" target="_blank">Back</a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://www.meridianbioscience.com/about/?country=GU" data-submenu-target="17">
+                        About                                       </a>
+                </li>
+                <li class="menu-item mobile-dropdown-has-children">
+                    <a href="/" data-submenu-target="427" target="_blank">
+                        Investor Relations                                      </a>
+                </li>
+                <ul class="mobile-sub-menu-dropdown color-background-after" data-submenu="427" data-color="427">
+                    <h5 class="cat-title">Investor Relations</h5>
+
+
+                    <h5 class="cat-title"><a href="/stock-information/stock-quote">Stock Information</a></h5>
+                    <a class="mobile-sub-menu-dropdown-item" href="/stock-information/stock-quote">Stock Quote</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="/stock-information/stock-chart">Stock Chart</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="/stock-information/historic-price-lookup">Price Lookup</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="/stock-information/investment-calculator">Calculator</a>
+
+
+                    <h5 class="cat-title"><a class="mobile-sub-menu-dropdown-item" href="/corporate-governance/committee-composition">Governance</a></h5>
+
+
+                    <a class="mobile-sub-menu-dropdown-item" href="/corporate-governance/committee-composition">Committee Composition</a>
+                    <!-- <a href="/stock-information/stock-quote">Committee Charters</a> -->
+                    <a class="mobile-sub-menu-dropdown-item" href="/corporate-governance/governance-overview">Governance Documents</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="https://www.meridianbioscience.com/about/team/?country=GU">Board of Directors & Management</a>
+
+                    <h5 class="cat-title"><a class="mobile-sub-menu-dropdown-item" href="/news-releases">News Releases</a></h5>
+
+
+                    <h5 class="cat-title"><a class="mobile-sub-menu-dropdown-item" href="/fundamentals/snapshot">Fundamentals</a></h5>
+
+                    <a class="mobile-sub-menu-dropdown-item" href="/fundamentals/snapshot">Snapshot</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="/fundamentals/trading-statistics">Trading Statistics</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="/fundamentals/balance-sheet">Balance Sheet</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="/fundamentals/income-statement">Income Statement</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="/fundamentals/cash-flow">Cash Flow</a>
+                    <a class="mobile-sub-menu-dropdown-item" href="/fundamentals/ratios">Ratios</a>
+
+
+
+                    <h5 class="cat-title"><a class="mobile-sub-menu-dropdown-item" href="/analyst-coverage">Analyst Coverage</a></h5>
+                    <h5 class="cat-title"><a class="mobile-sub-menu-dropdown-item" href="/annual-reports">Annual Reports</a></h5>
+                    <h5 class="cat-title"><a class="mobile-sub-menu-dropdown-item" href="/annual-meeting">Annual Meeting</a></h5>
+                    <h5 class="cat-title"><a class="mobile-sub-menu-dropdown-item" href="/sec-filings">SEC Filings</a></h5>
+                    <h5 class="cat-title"><a class="mobile-sub-menu-dropdown-item" href="/investment-plan">Investment Plan</a></h5>
+                    <h5 class="cat-title"><a class="mobile-sub-menu-dropdown-item" href="/events-and-presentations">Events & Presentations</a></h5>
+
+
+
+                </ul>
+                <li class="menu-item">
+                    <a href="https://www.meridianbioscience.com/about/team/?country=GU" data-submenu-target="38">
+                        Team                                        </a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://www.meridianbioscience.com/about/events-webinars/?country=GU" data-submenu-target="276">
+                        Events &amp; Webinars                                       </a>
+                </li>
+                <li class="menu-item">
+                    <a href="/news-releases" data-submenu-target="425" target="_blank">
+                        News                                        </a>
+                </li>
+
+
+            </ul>
+
+        </li>
+        <li class="menu-item menu-item-has-children">
+            <a class="" href="https://www.meridianbioscience.com/customer-support/?country=GU">Customer Support</a>
+            <ul class="mobile-sub-menu">
+                <li class="mobile-sub-menu-back">
+                    <a href="" target="_blank">Back</a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://www.meridianbioscience.com/customer-support/?country=GU" data-submenu-target="18">
+                        Customer Support                                        </a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://www.meridianbioscience.com/customer-support/technical-support/?country=GU" data-submenu-target="351">
+                        Product Support                                     </a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://www.meridianbioscience.com/customer-support/distributors/?country=GU" data-submenu-target="338">
+                        Distributors                                        </a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://www.meridianbioscience.com/customer-support/tools-resources/?country=GU" data-submenu-target="343">
+                        Tools &amp; Resources                                       </a>
+                </li>
+            </ul>
+
+        </li>
+        <li class="menu-item menu-item-has-children">
+            <a class="" href="https://www.meridianbioscience.com/careers/?country=GU">Careers</a>
+            <ul class="mobile-sub-menu">
+                <li class="mobile-sub-menu-back">
+                    <a href="" target="_blank">Back</a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://www.meridianbioscience.com/careers/?country=GU" data-submenu-target="25">
+                        Careers                                     </a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://www.meridianbioscience.com/careers/benefits/?country=GU" data-submenu-target="375">
+                        Benefits                                        </a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://careers-meridianbioscience.icims.com/jobs/intro?hashed=-435711682&amp;mobile=false&amp;width=850&amp;height=500&amp;bga=true&amp;needsRedirect=false&amp;jan1offset=-300&amp;jun1offset=-240" data-submenu-target="475" target="_blank">
+                        Open Positions                                      </a>
+                </li>
+            </ul>
+
+        </li>
+        <li class="menu-item ">
+            <a class="" href="https://www.meridianbioscience.com/contact-us/?country=GU">Contact Us</a>
+        </li>
+    </ul>
+</div>
+
+<main id="ndq-content">
+
+    
+       <section class="container">
+       <h1 class="region-title">            Events & Presentations
+               </h1>
+        
+          <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid2751-content" class="block--system-main-block block--system-main-block--5821 block--content--system-main-block block--content--system-main-block--5821 block--f0cb9034-e1be-4282-81e1-b82dc8102923 block--f0cb9034-e1be-4282-81e1-b82dc8102923--5821 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--df271641-19ec-4fa2-996e-2ac498e41a88 block--df271641-19ec-4fa2-996e-2ac498e41a88--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Upcoming Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+        <table class="nirtable tbl-presentations tbl-events">
+            <tbody>
+              
+
+<tr>
+  <td>
+              <div class="nir-widget--field nir-widget--event--date">
+            
+      
+      
+            May 7, 2021 at 10:00 AM EDT
+      
+        </div>
+        </td>
+  <td>
+              <div class="nir-widget--field nir-widgets--event--title">
+            
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q2-2021-financial-results-conference-call" hreflang="en">Q2 2021 Financial Results Conference Call</a></div>
+  </div>
+        </div>
+                          <div class="nir-widget--field nir-widget--event--support-materials">
+
+            
+            
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/meridian-bioscience-hold-second-quarter-fiscal-2021-financial" hreflang="en">Meridian Bioscience to Hold Second Quarter Fiscal 2021 Financial Results Conference Call on May 7, 2021</a></div>
+    </div>
+
+  </div>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+  </td>
+
+</tr>
+
+
+                  
+                  
+                  
+                  
+                  
+                                                    
+      
+                                      
+            
+    
+                            
+            
+        
+                                      
+      
+        
+    
+    
+                            
+    
+    
+    
+    
+                            
+                    
+    
+    
+                            
+                    
+    
+    
+                            
+    
+    
+                  
+
+                  </tbody>
+        </table>
+    </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--eddcd9d4-a2d3-4f1b-abfb-b7772dde84c2 block--eddcd9d4-a2d3-4f1b-abfb-b7772dde84c2--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Archived Presentations
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+        <table class="nirtable tbl-presentations tbl-events">
+            <tbody>
+              
+
+<tr>
+  <td>
+              <div class="nir-widget--field nir-widget--event--date">
+            
+      
+      
+            Mar 9, 2021
+      
+        </div>
+        </td>
+  <td>
+              <div class="nir-widget--field nir-widgets--event--title">
+            
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/hc-wainwright-global-life-sciences-2021-virtual-conference" hreflang="en">H.C. Wainwright Global Life Sciences 2021 Virtual Conference</a></div>
+  </div>
+        </div>
+                    <div class="nir-widget--field nir-widget--event--webcast">
+            
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://journey.ct.events/view/a49873e3-2456-4875-9236-e7f35671bae0" target="_blank">Click here for Webcast</a></div>
+  </div>
+        </div>
+                    <div class="nir-widget--field nir-widget--event--support-materials">
+
+                          <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+                <label>Supporting Materials</label>
+              </div>
+            
+            
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/meridian-bioscience-participate-hc-wainwright-global-life" hreflang="en">Meridian Bioscience to Participate in H.C. Wainwright Global Life Sciences 2021 Virtual Conference</a></div>
+    </div>
+
+  </div>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/a88e2e40-e7ac-47b6-8de3-bc3abe3b87e3" type="application/pdf; length=779485" title="HCWCo_Conference_VIVO_Presentation_20210304_vFinal.pdf">H.C. Wainwright Global Life Sciences Conference Presentation</a></span><span class="filesize"> 779.4 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+  </td>
+
+</tr>
+
+
+                  
+                  
+                  
+                  
+                  
+                                                    
+      
+                                      
+            
+    
+                            
+            
+        
+                                      
+      
+        
+    
+    
+                            
+    
+    
+    
+    
+                            
+                    
+    
+    
+                            
+                    
+    
+    
+                            
+    
+    
+                  
+
+
+<tr>
+  <td>
+              <div class="nir-widget--field nir-widget--event--date">
+            
+      
+      
+            Feb 5, 2021 at 10:00 AM EST
+      
+        </div>
+        </td>
+  <td>
+              <div class="nir-widget--field nir-widgets--event--title">
+            
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q1-2021-financial-results-conference-call" hreflang="en">Q1 2021 Financial Results Conference Call</a></div>
+  </div>
+        </div>
+                          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                          <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+                <label>Supporting Materials</label>
+              </div>
+            
+            
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/meridian-bioscience-reports-record-setting-first-quarter-fiscal" hreflang="en">Meridian Bioscience Reports Record Setting First Quarter Fiscal 2021 Operating Results and Raises Full Year Fiscal 2021 Guidance</a></div>
+    </div>
+
+  </div>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/a3f65764-8984-487b-ab8a-0b3577f85557" type="application/pdf; length=481046" title="Meridian_Q1_2021_Earnings_Presentation_vFinal.pdf">Q1 2021 Investor Presentation</a></span><span class="filesize"> 481 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/af75f478-ca37-4bb7-bea8-7dd174d0d8f7" type="application/pdf; length=258039" title="Meridian_FY21_Q1_Prepared_Remarks_vFinal.pdf">Q1 2021 Prepared Remarks</a></span><span class="filesize"> 258 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/8fb49fab-f962-4af2-bf1d-f62c87bd357a" type="application/pdf; length=143884" title="VIVO_USQ_Transcript_2021_02_05_R2.pdf">Q1 2021 Transcript</a></span><span class="filesize"> 143.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+  </td>
+
+</tr>
+
+
+                  
+                  
+                  
+                  
+                  
+                                                    
+      
+                                      
+            
+    
+                            
+            
+        
+                                      
+      
+        
+    
+    
+                            
+    
+    
+    
+    
+                            
+                    
+    
+    
+                            
+                    
+    
+    
+                            
+    
+    
+                  
+
+
+<tr>
+  <td>
+              <div class="nir-widget--field nir-widget--event--date">
+            
+      
+      
+            Jan 12, 2021 at 12:00 PM EST
+      
+        </div>
+        </td>
+  <td>
+              <div class="nir-widget--field nir-widgets--event--title">
+            
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/h-c-wainright-bioconnect-2021-virtual-conference" hreflang="en">H.C. Wainwright Bioconnect 2021 Virtual Conference </a></div>
+  </div>
+        </div>
+                          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                          <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+                <label>Supporting Materials</label>
+              </div>
+            
+            
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/meridian-bioscience-participate-h-c-wainright-bioconnect-2021" hreflang="en">Meridian Bioscience to Participate in H.C. Wainwright Bioconnect 2021 Virtual Conference</a></div>
+    </div>
+
+  </div>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+  </td>
+
+</tr>
+
+
+                  
+                  
+                  
+                  
+                  
+                                                    
+      
+                                      
+            
+    
+                            
+            
+        
+                                      
+      
+        
+    
+    
+                            
+    
+    
+    
+    
+                            
+                    
+    
+    
+                            
+                    
+    
+    
+                            
+    
+    
+                  
+
+
+<tr>
+  <td>
+              <div class="nir-widget--field nir-widget--event--date">
+            
+      
+      
+            Nov 23, 2020 at 9:30 AM EST
+      
+        </div>
+        </td>
+  <td>
+              <div class="nir-widget--field nir-widgets--event--title">
+            
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/piper-sandler-32nd-annual-virtual-healthcare-conference" hreflang="en">Piper Sandler 32nd Annual Virtual Healthcare Conference </a></div>
+  </div>
+        </div>
+                    <div class="nir-widget--field nir-widget--event--webcast">
+            
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://shared.outlook.inky.com/link?domain=pipersandler.zoom.us&amp;t=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eJx1kNtu4jAURf_Fz0ygQCVAGqmg9EKFU2VmaHCEFDnOoXF8C7ZDk1T990nmfd6OtHS29l5fyANVvEAbxLW3tDBoMl5gNZVoc6HSwQTBgBm1NPiwVPsHBZYXnOqcG8c4aAYBM2p4HGP-Cxs7BKLS-9ptztPztOY1WEd1IcEGvTEqaNx5aoENSNLuPI32Ju9W_ngTt2WbtQJnv-lOEC67H8bHmWkJKT1_vNtuXypcNWG-UuKkny7kY7Vc7PrYXMNr4vOTqU67Q3Z9DtY1SdrX29v2mjZV_P5rKPV2RBvdSDlBvrRAfSbhBkPP2WBhXEOT-xlTTyLv1p4mkSHJuzuo9I7Mozqf38v4pZBsETdkvvaHXgoc7meklzz6c1xgFfE0fC1TFYm0wl0a7mRa7ZfpM_489I9zHJIW96LHoWhwdfw5OnJgM1CUy4wWhQXnRqOclRRkcGkY40bDwyc4_0_q9183ZJx5.MEQCIAM4-tdR2HGkF2xg4Cm2aq1X5vUwW_4vR-hJW36XoKibAiAQT9w6if9L1N-fbZeBiZdi8lR-q1HWFBe1rXOhfJ6OOg" target="_blank">Click here for Webcast</a></div>
+  </div>
+        </div>
+                    <div class="nir-widget--field nir-widget--event--support-materials">
+
+                          <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+                <label>Supporting Materials</label>
+              </div>
+            
+            
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/meridian-bioscience-participates-piper-sandler-32nd-annual" hreflang="en">Meridian Bioscience Participates in Piper Sandler 32nd Annual Virtual Healthcare Conference</a></div>
+    </div>
+
+  </div>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+  </td>
+
+</tr>
+
+
+                  
+                  
+                  
+                  
+                  
+                                                    
+      
+                                      
+            
+    
+                            
+            
+        
+                                      
+      
+        
+    
+    
+                            
+    
+    
+    
+    
+                            
+                    
+    
+    
+                            
+                    
+    
+    
+                            
+    
+    
+                  
+
+
+<tr>
+  <td>
+              <div class="nir-widget--field nir-widget--event--date">
+            
+      
+      
+            Nov 19, 2020 at 12:30 PM EST
+      
+        </div>
+        </td>
+  <td>
+              <div class="nir-widget--field nir-widgets--event--title">
+            
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/canaccord-genuity-virtual-medtech-diagnostics-forum" hreflang="en">Canaccord Genuity Virtual MedTech &amp; Diagnostics Forum</a></div>
+  </div>
+        </div>
+                    <div class="nir-widget--field nir-widget--event--webcast">
+            
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/canaccord44/vivo/2492504" target="_blank">Click here for Webcast</a></div>
+  </div>
+        </div>
+                    <div class="nir-widget--field nir-widget--event--support-materials">
+
+                          <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+                <label>Supporting Materials</label>
+              </div>
+            
+            
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/meridian-bioscience-participate-canaccord-genuity-virtual" hreflang="en">Meridian Bioscience to Participate in Canaccord Genuity Virtual MedTech &amp; Diagnostics Forum</a></div>
+    </div>
+
+  </div>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+  </td>
+
+</tr>
+
+
+                  
+                  
+                  
+                  
+                  
+                                                    
+      
+                                      
+            
+    
+                            
+            
+        
+                                      
+      
+        
+    
+    
+                            
+    
+    
+    
+    
+                            
+                    
+    
+    
+                            
+                    
+    
+    
+                            
+    
+    
+                  
+
+
+<tr>
+  <td>
+              <div class="nir-widget--field nir-widget--event--date">
+            
+      
+      
+            Nov 13, 2020 at 10:00 AM EST
+      
+        </div>
+        </td>
+  <td>
+              <div class="nir-widget--field nir-widgets--event--title">
+            
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q4-2020-financial-results-conference-call" hreflang="en">Q4 2020 Financial Results Conference Call</a></div>
+  </div>
+        </div>
+                          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                          <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+                <label>Supporting Materials</label>
+              </div>
+            
+            
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/meridian-bioscience-reports-strong-fourth-quarter-and-record" hreflang="en">Meridian Bioscience Reports Strong Fourth Quarter and Record Full-Year Fiscal 2020 Operating Results and Provides Fiscal 2021 Guidance</a></div>
+    </div>
+
+  </div>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/be4b97f2-f12d-4c4e-baea-f8705bf4b892" type="application/pdf; length=574228" title="Meridian_Q4_2020_Earnings_Presentation_vFinal3.pdf">Q4 2020 Investor Presentation</a></span><span class="filesize"> 574.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/c4215a5f-b30e-414e-a9dc-e0d486ee694a" type="application/pdf; length=271836" title="Meridian_FY20_Q4_Prepared_Remarks_vFinal2.pdf">Q4 2020 Prepared Remarks</a></span><span class="filesize"> 271.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/ee5289f9-c8d4-4026-a748-48c615fe053f" type="application/pdf; length=175088" title="VIVO-USQ_Transcript_2020_11_13_R2.pdf">Q4 2020 Transcript</a></span><span class="filesize"> 175 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+  </td>
+
+</tr>
+
+
+                  
+                  
+                  
+                  
+                  
+                                                    
+      
+                                      
+            
+    
+                            
+            
+        
+                                      
+      
+        
+    
+    
+                            
+    
+    
+    
+    
+                            
+                    
+    
+    
+                            
+                    
+    
+    
+                            
+    
+    
+                  
+
+
+<tr>
+  <td>
+              <div class="nir-widget--field nir-widget--event--date">
+            
+      
+      
+            Sep 14, 2020 at 12:30 PM EDT
+      
+        </div>
+        </td>
+  <td>
+              <div class="nir-widget--field nir-widgets--event--title">
+            
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/h-c-wainright-22nd-annual-global-investment-conference" hreflang="en">H.C. Wainwright 22nd Annual Global Investment Conference </a></div>
+  </div>
+        </div>
+                    <div class="nir-widget--field nir-widget--event--webcast">
+            
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/hcw7/vivo/1633156" target="_blank">Click here for Webcast</a></div>
+  </div>
+        </div>
+                    <div class="nir-widget--field nir-widget--event--support-materials">
+
+                          <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+                <label>Supporting Materials</label>
+              </div>
+            
+            
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/meridian-bioscience-present-h-c-wainright-22nd-annual-global" hreflang="en">Meridian Bioscience to Present at the H.C. Wainwright 22nd Annual Global Investment Conference</a></div>
+    </div>
+
+  </div>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/1f623bf9-66d7-4f6a-a5bd-a98a58528fcd" type="application/pdf; length=758668" title="HCWCo_Conference_VIVO_Presentation_20200914_vFinal.pdf">H.C. Wainwright Global Investment Conference Presentation</a></span><span class="filesize"> 758.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+  </td>
+
+</tr>
+
+
+                  
+                  
+                  
+                  
+                  
+                                                    
+      
+                                      
+            
+    
+                            
+            
+        
+                                      
+      
+        
+    
+    
+                            
+    
+    
+    
+    
+                            
+                    
+    
+    
+                            
+                    
+    
+    
+                            
+    
+    
+                  
+
+
+<tr>
+  <td>
+              <div class="nir-widget--field nir-widget--event--date">
+            
+      
+      
+            Aug 7, 2020 at 10:00 AM EDT
+      
+        </div>
+        </td>
+  <td>
+              <div class="nir-widget--field nir-widgets--event--title">
+            
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q3-2020-financial-results-conference-call" hreflang="en">Q3 2020 Financial Results Conference Call</a></div>
+  </div>
+        </div>
+                          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                          <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+                <label>Supporting Materials</label>
+              </div>
+            
+            
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/meridian-bioscience-reports-fiscal-third-quarter-2020-operating" hreflang="en">Meridian Bioscience Reports Fiscal Third Quarter 2020 Operating Results – Best Quarter in Company History – Raises Full Year Guidance</a></div>
+    </div>
+
+  </div>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/5eee2692-6b5f-4cd3-8f24-766f002a8dd6" type="application/pdf; length=382168" title="Meridian Q3 2020 Earnings Presentation vFinal2.pdf">Q3 2020 Investor Presentation</a></span><span class="filesize"> 382.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/c305e42b-b7f5-4d4d-a9d5-f66fae120fd3" type="application/pdf; length=297128" title="Meridian FY20 Q3 Prepared Remarks vFinal2.pdf">Q3 2020 Prepared Remarks</a></span><span class="filesize"> 297.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/5a65ef36-987a-47ba-87f1-1b5cde02fd31" type="application/pdf; length=161687" title="VIVO-USQ_Transcript_2020-08-07_R.pdf">Q3 2020 Transcript</a></span><span class="filesize"> 161.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+  </td>
+
+</tr>
+
+
+                  
+                  
+                  
+                  
+                  
+                                                    
+      
+                                      
+            
+    
+                            
+            
+        
+                                      
+      
+        
+    
+    
+                            
+    
+    
+    
+    
+                            
+                    
+    
+    
+                            
+                    
+    
+    
+                            
+    
+    
+                  
+
+
+<tr>
+  <td>
+              <div class="nir-widget--field nir-widget--event--date">
+            
+      
+      
+            Jun 9, 2020 at 9:40 AM EDT
+      
+        </div>
+        </td>
+  <td>
+              <div class="nir-widget--field nir-widgets--event--title">
+            
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/william-blair-40th-annual-growth-stock-conference" hreflang="en">William Blair 40th Annual Growth Stock Conference</a></div>
+  </div>
+        </div>
+                          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                          <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+                <label>Supporting Materials</label>
+              </div>
+            
+            
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/meridian-bioscience-participate-40th-annual-william-blair-growth" hreflang="en">Meridian Bioscience to Participate in the 40th Annual William Blair Growth Stock Conference</a></div>
+    </div>
+
+  </div>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+  </td>
+
+</tr>
+
+
+                  
+                  
+                  
+                  
+                  
+                                                    
+      
+                                      
+            
+    
+                            
+            
+        
+                                      
+      
+        
+    
+    
+                            
+    
+    
+    
+    
+                            
+                    
+    
+    
+                            
+                    
+    
+    
+                            
+    
+    
+                  
+
+
+<tr>
+  <td>
+              <div class="nir-widget--field nir-widget--event--date">
+            
+      
+      
+            May 8, 2020 at 10:00 AM EDT
+      
+        </div>
+        </td>
+  <td>
+              <div class="nir-widget--field nir-widgets--event--title">
+            
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q2-2020-financial-results-conference-call" hreflang="en">Q2 2020 Financial Results Conference Call</a></div>
+  </div>
+        </div>
+                          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                          <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+                <label>Supporting Materials</label>
+              </div>
+            
+            
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>  <div class="asset-link">
+    
+<div class="field field--name-field-nir-news-title field--type-string field--label-above">
+        <div class="field__item"><a href="/news-releases/news-release-details/meridian-bioscience-reports-second-quarter-2020-operating" hreflang="en">Meridian Bioscience Reports Second Quarter 2020 Operating Results; Raises Guidance on Strength of COVID-19 Related Products</a></div>
+    </div>
+
+  </div>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/ed86a96b-8a89-4efa-930a-c82b2c32455b" type="application/pdf; length=794002" title="Meridian_Q2_2020_Earnings_Presentation_vFinal.pdf">Q2 2020 Investor Presentation</a></span><span class="filesize"> 794 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.meridianbioscience.com/static-files/2509db60-8bd7-47a5-a4e4-f8a9a540a5f3" type="application/pdf; length=274474" title="VIVO_Q2_2020_Prepared_Remarks.pdf">Q2 2020 Prepared Remarks</a></span><span class="filesize"> 274.4 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+  </td>
+
+</tr>
+
+
+                  
+                  
+                  
+                  
+                  
+                                                    
+      
+                                      
+            
+    
+                            
+            
+        
+                                      
+      
+        
+    
+    
+                            
+    
+    
+    
+    
+                            
+                    
+    
+    
+                            
+                    
+    
+    
+                            
+    
+    
+                  
+
+                  </tbody>
+        </table>
+    </div>
+    <div class="nir-widget--pager">
+        <nav class="pager" role="navigation" aria-labelledby="pagination-heading">
+    <h4 id="pagination-heading" class="visually-hidden">Pagination</h4>
+    <ul class="pager__items js-pager__items">
+                                                        <li class="pager__item is-active">
+                                          <a href="?page=0%2C0" title="Current page">
+            <span class="visually-hidden">
+              Current page
+            </span>1</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C1" title="Go to page 2">
+            <span class="visually-hidden">
+              Page
+            </span>2</a>
+        </li>
+                                      <li class="pager__item pager__item--next">
+          <a href="?page=0%2C1" title="Go to next page" rel="next">
+            <span class="visually-hidden">Next page</span>
+            <span aria-hidden="true">next ›</span>
+          </a>
+        </li>
+                          <li class="pager__item pager__item--last">
+          <a href="?page=0%2C1" title="Go to last page">
+            <span class="visually-hidden">Last page</span>
+            <span aria-hidden="true">last »</span>
+          </a>
+        </li>
+          </ul>
+  </nav>
+
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+<div id="block-nir-pid2751-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5821 block--content--website-notice-block block--content--website-notice-block--5821 block--91ac5d68-a982-4d78-8ddd-2df4bc6913c2 block--91ac5d68-a982-4d78-8ddd-2df4bc6913c2--5821 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+
+  </div>
+
+    </section>
+
+    <section class="container ir-tools">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 radix-layouts-header panel-panel">
+                    <div class="panel-panel-inner">
+                          <div class="region region-toolkit">
+    
+
+                                
+                
+
+        <div class="ndq-tools">
+  <div class="text-center small-up-2 medium-up-4 large-up-4">
+    <div class="column"><a href="javascript: window.print()"><i class="fa fa-print"></i> <span>Print Page</span></a></div>
+    <div class="column"><a href="#" onclick="window.location='mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href); return false;"  rel="nofollow" title="Email Page" alt="Email Page"><i class="fa fa-envelope"></i> <span>Email Page</span></a></div>
+                    
+                  <div class="column"><a href="/shareholder-services/email-alerts"><i class="fa fa-exclamation-circle"></i> <span>Email Alerts</span></a></div>
+
+      
+                  <div class="column"><a href="/shareholder-services/rss-feeds"><i class="fa fa-rss"></i> <span>RSS Feeds</span></a></div>
+
+      
+  
+
+  </div>
+</div>
+    
+  </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <section class="two-column-text-block padding-180 bg-blue footer-interior-ir">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-4 offset-lg-2">
+                    <h1>Investor Relations</h1>
+                </div>
+                <div class="col-12 col-lg-5">
+                      <div class="region region-footer-interior-ir">
+    <div id="block-gpfooterinteriorir" class="block-content--nir-global-block block-content--nir-global-block--14946 block--block-contentd24c584f-39d0-4093-908b-da1feed77530 block--block-contentd24c584f-39d0-4093-908b-da1feed77530--5821 block--footer-interior-ir--block-content--d24c584f-39d0-4093-908b-da1feed77530 block--footer-interior-ir--block-content--d24c584f-39d0-4093-908b-da1feed77530--5821 block--74a1aed4-ee66-421a-be2c-21d400dda76c block--74a1aed4-ee66-421a-be2c-21d400dda76c--5821 block block-block-content block-block-contentd24c584f-39d0-4093-908b-da1feed77530">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><p class="mb-4">Our goal is to simplify healthcare and improve the lives of patients and healthcare professionals worldwide.</p></div>
+      
+</div>
+      
+  </div>
+
+  </div>
+
+                    <a href="/" class="btn "><div class="btn-circle"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="17" viewBox="0 0 27 17">
+                                <path fill-rule="evenodd" d="M26.714 8.903c-.011-.29-.13-.624-.329-.835L19.91 1.187c-.439-.395-1.28-.558-1.77-.102-.484.45-.47 1.32.012 1.771l4.554 4.832H1.215a1.214 1.214 0 0 0 0 2.429h21.49l-4.554 4.832c-.414.415-.491 1.317-.013 1.771.479.454 1.35.309 1.771-.101l6.476-6.882c.222-.235.33-.511.33-.834z"></path>
+                            </svg>
+                        </div>View Investor Relations</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</main>
+
+<footer>
+    <div class="container">
+        <div class="row footer-top">
+            <div class="col-12 col-lg-6">
+                <form action="" class="footer-left--newsletter d-none">
+                    <h6 class="super-text">Stay Up To Date </h6>
+                    <fieldgroup>
+                        <input type="text" placholder="Your Email Here" required="">
+                        <button class="newsletter-submit" type="submit" value=""></button>
+                    </fieldgroup>
+                </form>
+                <div class="footer-bottom">
+                    <div class="footer-left--social">
+                          <div class="region region-footer-social">
+    
+
+                                
+                <h6 class="super-text">Follow Us</h6>
+                                                    
+        <a href="https://www.linkedin.com/company/meridian-bioscience/" class="social-icon" target="_blank"><img src="../../sites/g/files/knoqqb42316/themes/site/nir_pid2751/client/images/linkedin.svg" alt="" /></a>
+                                                                          
+        <a href="https://www.facebook.com/meridianbio" class="social-icon" target="_blank"><img src="../../sites/g/files/knoqqb42316/themes/site/nir_pid2751/client/images/icon-fb.svg" alt="" /></a>
+                                                                          
+        <a href="https://twitter.com/meridian_bio" class="social-icon" target="_blank"><img src="../../sites/g/files/knoqqb42316/themes/site/nir_pid2751/client/images/icon-twit.svg" alt="" /></a>
+                                                            </ul>
+  
+
+
+    
+  </div>
+
+                    </div>
+
+                    <div class="footer-left--country">
+                          <div class="region region-footer-country">
+    <div id="block-gpfooterselectcoutry" class="block-content--nir-global-block block-content--nir-global-block--14646 block--block-contenta66fe212-ad46-4b8a-a649-63185edee7d0 block--block-contenta66fe212-ad46-4b8a-a649-63185edee7d0--5821 block--footer-country--block-content--a66fe212-ad46-4b8a-a649-63185edee7d0 block--footer-country--block-content--a66fe212-ad46-4b8a-a649-63185edee7d0--5821 block--056587bb-fa39-43ce-b4f7-f9af27e421a7 block--056587bb-fa39-43ce-b4f7-f9af27e421a7--5821 block block-block-content block-block-contenta66fe212-ad46-4b8a-a649-63185edee7d0">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><form action="" value="">
+	<h6 class="super-text">Select Country</h6>
+	<div class="select-wrap">
+		<select name="country"><option value="US" selected="selected">United States</option><option value="AF">Afghanistan</option><option value="AX">Aland Islands</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AS">American Samoa</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctica</option><option value="AG">Antigua And Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BJ">Benin</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BA">Bosnia And Herzegovina</option><option value="BW">Botswana</option><option value="BV">Bouvet Island</option><option value="BR">Brazil</option><option value="IO">British Indian Ocean Territory</option><option value="BN">Brunei Darussalam</option><option value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="CV">Cape Verde</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="TD">Chad</option><option value="CL">Chile</option><option value="CN">China</option><option value="CX">Christmas Island</option><option value="CC">Cocos (Keeling) Islands</option><option value="CO">Colombia</option><option value="KM">Comoros</option><option value="CG">Congo</option><option value="CD">Congo, Democratic Republic</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica</option><option value="CI">Cote D'Ivoire</option><option value="HR">Croatia</option><option value="CU">Cuba</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DJ">Djibouti</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option value="ER">Eritrea</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FK">Falkland Islands (Malvinas)</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HM">Heard Island &amp; Mcdonald Islands</option><option value="VA">Holy See (Vatican City State)</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IR">Iran, Islamic Republic Of</option><option value="IQ">Iraq</option><option value="IE">Ireland</option><option value="IM">Isle Of Man</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KI">Kiribati</option><option value="KR">Korea</option><option value="KW">Kuwait</option><option value="KG">Kyrgyzstan</option><option value="LA">Lao People's Democratic Republic</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LR">Liberia</option><option value="LY">Libyan Arab Jamahiriya</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macao</option><option value="MK">Macedonia</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MQ">Martinique</option><option value="MR">Mauritania</option><option value="MU">Mauritius</option><option value="YT">Mayotte</option><option value="MX">Mexico</option><option value="FM">Micronesia, Federated States Of</option><option value="MD">Moldova</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="MM">Myanmar</option><option value="NA">Namibia</option><option value="NR">Nauru</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="AN">Netherlands Antilles</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigeria</option><option value="NU">Niue</option><option value="NF">Norfolk Island</option><option value="MP">Northern Mariana Islands</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PW">Palau</option><option value="PS">Palestinian Territory, Occupied</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PN">Pitcairn</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="QA">Qatar</option><option value="RE">Reunion</option><option value="RO">Romania</option><option value="RU">Russian Federation</option><option value="RW">Rwanda</option><option value="BL">Saint Barthelemy</option><option value="SH">Saint Helena</option><option value="KN">Saint Kitts And Nevis</option><option value="LC">Saint Lucia</option><option value="MF">Saint Martin</option><option value="PM">Saint Pierre And Miquelon</option><option value="VC">Saint Vincent And Grenadines</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="ST">Sao Tome And Principe</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="SO">Somalia</option><option value="ZA">South Africa</option><option value="GS">South Georgia And Sandwich Isl.</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SD">Sudan</option><option value="SR">Suriname</option><option value="SJ">Svalbard And Jan Mayen</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="SY">Syrian Arab Republic</option><option value="TW">Taiwan</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania</option><option value="TH">Thailand</option><option value="TL">Timor-Leste</option><option value="TG">Togo</option><option value="TK">Tokelau</option><option value="TO">Tonga</option><option value="TT">Trinidad And Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TM">Turkmenistan</option><option value="TC">Turks And Caicos Islands</option><option value="TV">Tuvalu</option><option value="UG">Uganda</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="UM">United States Outlying Islands</option><option value="UY">Uruguay</option><option value="UZ">Uzbekistan</option><option value="VU">Vanuatu</option><option value="VE">Venezuela</option><option value="VN">Viet Nam</option><option value="VG">Virgin Islands, British</option><option value="VI">Virgin Islands, U.S.</option><option value="WF">Wallis And Futuna</option><option value="EH">Western Sahara</option><option value="YE">Yemen</option><option value="ZM">Zambia</option><option value="ZW">Zimbabwe</option></select></div>
+</form></div>
+      
+</div>
+      
+  </div>
+
+  </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-lg-3 footer-right">
+                  <div class="region region-footer-nav1">
+    
+
+                                
+                              <ul data-block-uuid="1a6d0e8f-d09d-4a5c-8f24-59f8c0e63345" class="footer-nav">
+    
+      
+        <li>
+          <a href="https://www.meridianbioscience.com/platforms/?country=GU" target="" rel="" class="platforms">Platforms</a>
+                  </li>
+      
+        <li>
+          <a href="https://www.meridianbioscience.com/human-conditions/?country=GU" target="" rel="" class="human-conditions">Human Conditions</a>
+                  </li>
+      
+        <li>
+          <a href="https://www.meridianbioscience.com/about/?country=GU" target="" rel="" class="about">About</a>
+                  </li>
+          </ul>
+  
+
+
+    
+  </div>
+
+            </div>
+
+            <div class="col-12 col-lg-3 footer-right">
+                  <div class="region region-footer-nav2">
+    
+
+                                
+                              <ul data-block-uuid="52233749-9535-457e-8603-7d65cc72351f" class="footer-nav">
+    
+      
+        <li>
+          <a href="https://www.meridianbioscience.com/customer-support/?country=GU" target="" rel="" class="customer-support">Customer Support</a>
+                  </li>
+      
+        <li>
+          <a href="https://www.meridianbioscience.com/careers/?country=GU" target="" rel="" class="careers">Careers</a>
+                  </li>
+      
+        <li>
+          <a href="https://www.meridianbioscience.com/contact-us/?country=GU" target="" rel="" class="contact-us">Contact Us</a>
+                  </li>
+          </ul>
+  
+
+
+    
+  </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="footer-bottom">
+                <p>COPYRIGHT ©2021 ALL RIGHTS RESERVED</p>
+
+                <div class="footer-utility">
+  <div class="region region-footer">
+    
+
+                                
+                              <ul data-block-uuid="ad59770d-feec-45a9-9fba-0f6388dced58" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="https://www.meridianbioscience.com/privacy/?country=GU" target="" rel="">Privacy</a>
+                  </li>
+          </ul>
+  
+
+
+    
+  </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+ 
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb1538";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5821","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid2751\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid2751","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"d52acc4f320e5ccc47291eba093981082fb45e626a756005bdaf4f9eec85487b"}}</script>
+<script src="/sites/g/files/knoqqb42316/files/js/js_Jx7IasE0VhQynn_Iv0TBA0pEJ75NXXr6Nk7dGj7xb6Y.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"39077635,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":813,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

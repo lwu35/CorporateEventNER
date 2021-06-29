@@ -1,0 +1,2484 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="MINERVA NEUROSCIENCES, INC" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://ir.minervaneurosciences.com/events-and-presentations" />
+<meta property="og:title" content="Events &amp; Presentations | MINERVA NEUROSCIENCES, INC" />
+<meta property="og:description" content="The Investor Relations website contains information about MINERVA NEUROSCIENCES, INC &#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb7776/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="http://ir.minervaneurosciences.com/events-and-presentations" />
+<link rel="canonical" href="http://ir.minervaneurosciences.com/events-and-presentations" />
+<link rel="shortlink" href="http://ir.minervaneurosciences.com/node/5821" />
+<link rel="revision" href="http://ir.minervaneurosciences.com/events-and-presentations" />
+
+    <title>Events &amp; Presentations | MINERVA NEUROSCIENCES, INC</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb7776/files/css/css_SQBKl25X50_ss2d0gozsTTn-Wxa9dWu131cAz6rP_-E.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb7776/files/css/css_jtyCJo4sIxXeqH7eOI-rXEpETXZatPkn3yeGj6_jols.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb7776/files/css/css_LTwGURYgYsdoIhk_ySz18OWNpFkAUzqYKiOCDbtG6aQ.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb7776/files/css/css_oWTLQIu7pjiiU1d_dIjk_UaPbIyf7CR3xoeh-691458.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb7776/files/css/css_uR7CBnjEs5VZNOTbN5egaIVEsuJ_uLDLaCxQpDsgq_0.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb7776/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5821 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<nav id="menumobile" class="mm-menu mm-offcanvas mm-right">
+    <div class="mm-panels">
+        <div class="menu-primary-navigation-container mm-panel mm-hasnavbar mm-opened mm-current" id="mm-1">
+            <div class="mm-navbar"><a class="mm-title">Menu</a></div>
+            <ul id="menu-primary-navigation-1" class="nav navbar-nav mm-listview">
+                <li class="menuicon menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-164 menuicon"><a class="mm-next" href="#mm-2" data-target="#mm-2"></a><a href="http://www.minervaneurosciences.com/focus-strategy/">Focus &amp; Strategy</a>
+                </li>
+                <li class="menuicon menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-324 menuicon"><a class="mm-next" href="#mm-3" data-target="#mm-3"></a><a href="http://www.minervaneurosciences.com/innovation-pipeline/">Innovation &amp; Pipeline</a>
+                </li>
+                <li class="menuicon menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-161 menuicon"><a class="mm-next" href="#mm-4" data-target="#mm-4"></a><a href="http://www.minervaneurosciences.com/disease-areas/">Disease Areas</a>
+                </li>
+                <li class="menuicon menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children current-menu-item page_item page-item-548 current_page_item menu-item-550 active menuicon"><a class="mm-next" href="#mm-5" data-target="#mm-5"></a><a href="/">Investors &amp; Media</a>
+                </li>
+                <li class="menuicon menu-item menu-item-type-post_type menu-item-object-page menu-item-159"><a href="http://www.minervaneurosciences.com/contact/">Contact</a></li>
+            </ul>
+        </div>
+        <div class="mm-panel mm-hasnavbar mm-hidden" id="mm-2">
+            <div class="mm-navbar"><a class="mm-btn mm-prev" href="#mm-1" data-target="#mm-1"></a><a class="mm-title" href="#mm-1">Focus &amp; Strategy</a></div>
+            <ul class="sub-menu mm-listview">
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-318"><a href="http://www.minervaneurosciences.com/focus-strategy/presidents-letter/">President’s Letter</a></li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-317"><a href="http://www.minervaneurosciences.com/focus-strategy/leadership/">Leadership</a></li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-411"><a href="http://www.minervaneurosciences.com/focus-strategy/board-of-directors/">Board of Directors</a></li>
+            </ul>
+        </div>
+        <div class="mm-panel mm-hasnavbar mm-hidden" id="mm-3">
+            <div class="mm-navbar"><a class="mm-btn mm-prev" href="#mm-1" data-target="#mm-1"></a><a class="mm-title" href="#mm-1">Innovation &amp; Pipeline</a></div>
+            <ul class="sub-menu mm-listview">
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-319"><a href="http://www.minervaneurosciences.com/innovation-pipeline/min-101/">Roluperidone (MIN-101)</a></li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-437"><a href="http://www.minervaneurosciences.com/innovation-pipeline/min-202/">Seltorexant (MIN-202)</a></li>
+                
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-438"><a href="http://www.minervaneurosciences.com/innovation-pipeline/min-301/">MIN-301</a></li>
+            </ul>
+        </div>
+        <div class="mm-panel mm-hasnavbar mm-hidden" id="mm-4">
+            <div class="mm-navbar"><a class="mm-btn mm-prev" href="#mm-1" data-target="#mm-1"></a><a class="mm-title" href="#mm-1">Disease Areas</a></div>
+            <ul class="sub-menu mm-listview">
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="http://www.minervaneurosciences.com/disease-areas/schizophrenia/">Schizophrenia</a></li>
+                
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-320"><a href="http://www.minervaneurosciences.com/disease-areas/insomnia/">Insomnia and Mood Disorders</a></li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-322"><a href="http://www.minervaneurosciences.com/disease-areas/parkinsons-disease/">Parkinson’s Disease</a></li>
+            </ul>
+        </div>
+        <div class="mm-panel mm-hasnavbar mm-hidden" id="mm-5">
+            <div class="mm-navbar"><a class="mm-btn mm-prev" href="#mm-1" data-target="#mm-1"></a><a class="mm-title" href="#mm-1">Investors &amp; Media</a></div>
+            <ul class="sub-menu mm-listview">
+                <li><a href="/press-releases">Press Releases</a></li>
+                <li><a href="/events-and-presentations">Events &amp; Presentations</a></li>
+                <li class="menu-item-has-children"><a class="mm-next" href="#mm-6" data-target="#mm-6"></a><a href="/corporate-governance">Corporate Governance</a>
+                </li>
+                <li class="menu-item-has-children"><a class="mm-next" href="#mm-7" data-target="#mm-7"></a><a href="/financial-information">Financials &amp; Filings</a>
+                </li>
+                <li class="menu-item-has-children"><a class="mm-next" href="#mm-8" data-target="#mm-8"></a><a href="/stock-information">Stock Information</a>
+                </li>
+                <li><a href="/investor-faqs">Investor FAQs</a></li>
+                <li><a href="/contact-us">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="mm-panel mm-hasnavbar mm-hidden" id="mm-6">
+            <div class="mm-navbar"><a class="mm-btn mm-prev" href="#mm-5" data-target="#mm-5"></a><a class="mm-title" href="#mm-5">Corporate Governance</a></div>
+            <ul class="collapse mm-listview">
+                <li><a href="/corporate-governance/management">Executive Management</a></li>
+                <li><a href="/corporate-governance/board-of-directors">Board of Directors</a></li>
+                <li><a href="/corporate-governance/committee-composition">Committee Composition</a></li>
+                <li><a href="/corporate-governance/contact-the-board">Contact the Board</a></li>
+            </ul>
+        </div>
+        <div class="mm-panel mm-hasnavbar mm-hidden" id="mm-7">
+            <div class="mm-navbar"><a class="mm-btn mm-prev" href="#mm-5" data-target="#mm-5"></a><a class="mm-title" href="#mm-5">Financials &amp; Filings</a></div>
+            <ul class="collapse mm-listview">
+                <li><a href="/financial-information/sec-filings">SEC Filings</a></li>
+                <li><a href="/financial-information/annual-reports">Annual Reports and Proxies</a></li>
+                <li><a href="/financial-information/quarterly-results">Quarterly Results</a></li>
+                <li><a href="/financial-information/key-ratios">Key Ratios</a></li>
+            </ul>
+        </div>
+        <div class="mm-panel mm-hasnavbar mm-hidden" id="mm-8">
+            <div class="mm-navbar"><a class="mm-btn mm-prev" href="#mm-5" data-target="#mm-5"></a><a class="mm-title" href="#mm-5">Stock Information</a></div>
+            <ul class="collapse mm-listview">
+                <li><a href="/stock-information/historic-stock-lookup">Historic Stock Lookup</a></li>
+                <li><a href="/stock-information/investment-calculator">Investment Calculator</a></li>
+                <li><a href="/stock-information/analyst-coverage">Analyst Coverage</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-main mm-page mm-slideout" id="mm-0">
+     <header class="header-main header-inner">
+        <div class="top-bar">
+            <a href="#menumobile" class="mobileicon"><span></span></a>
+            <div class="container">
+                <div class="brand">
+                    <a href="http://www.minervaneurosciences.com/" title="Minerva Neurosciences logo">
+                        <img src="/sites/g/files/knoqqb7776/themes/site/nir_pid709/client/images/brand-minerva@2x.png" alt="Minerva Neurosciences logo"></a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-bar">
+            <div class="container">
+                <div class="menu-collapse collapse">
+                    <nav>
+                        <div class="menu-primary-navigation-container">
+                            <ul id="menu-primary-navigation" class="nav navbar-nav">
+                                <li id="menu-item-164" class="menuicon menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-164 menuicon"><a href="http://www.minervaneurosciences.com/focus-strategy/">Focus &amp; Strategy</a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-318" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-318"><a href="http://www.minervaneurosciences.com/focus-strategy/presidents-letter/">President’s Letter</a></li>
+                                        <li id="menu-item-317" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-317"><a href="http://www.minervaneurosciences.com/focus-strategy/leadership/">Leadership</a></li>
+                                        <li id="menu-item-411" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-411"><a href="http://www.minervaneurosciences.com/focus-strategy/board-of-directors/">Board of Directors</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-324" class="menuicon menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-324 menuicon"><a href="http://www.minervaneurosciences.com/innovation-pipeline/">Innovation &amp; Pipeline</a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-319" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-319"><a href="http://www.minervaneurosciences.com/innovation-pipeline/min-101/">Roluperidone (MIN-101)</a></li>
+                                        <li id="menu-item-437" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-437"><a href="http://www.minervaneurosciences.com/innovation-pipeline/min-202/">Seltorexant (MIN-202)</a></li>
+                                       
+                                        <li id="menu-item-438" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-438"><a href="http://www.minervaneurosciences.com/innovation-pipeline/min-301/">MIN-301</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-161" class="menuicon menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-161 menuicon"><a href="http://www.minervaneurosciences.com/disease-areas/">Disease Areas</a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323"><a href="http://www.minervaneurosciences.com/disease-areas/schizophrenia/">Schizophrenia</a></li>
+                                        
+                                        <li id="menu-item-320" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-320"><a href="http://www.minervaneurosciences.com/disease-areas/insomnia/">Insomnia and Mood Disorders</a></li>
+                                        <li id="menu-item-322" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-322"><a href="http://www.minervaneurosciences.com/disease-areas/parkinsons-disease/">Parkinson’s Disease</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-550" class="menuicon menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children current-menu-item page_item page-item-548 current_page_item menu-item-550 active "><a href="/">Investors &amp; Media</a>
+
+                                    <ul class="sub-menu">
+
+                                        <li><a href="/press-releases">Press Releases</a></li>
+                                        <li><a href="/events-and-presentations">Events &amp; Presentations</a></li>
+                                        <li class="menu-item-has-children"><a href="/corporate-governance" class="selected">Corporate Governance</a>
+                                            <ul>
+
+                                                <li><a href="/corporate-governance/management">Executive Management</a></li>
+                                                <li><a href="/corporate-governance/board-of-directors">Board of Directors</a></li>
+                                                <li><a href="/corporate-governance/committee-composition">Committee Composition</a></li>
+                                                <li><a href="/corporate-governance/contact-the-board">Contact the Board</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children"><a href="/financial-information">Financials &amp; Filings</a>
+                                            <ul class="collapse">
+
+                                                <li><a href="/financial-information/sec-filings">SEC Filings</a></li>
+                                                <li><a href="/financial-information/annual-reports">Annual Reports and Proxies</a></li>
+                                                <li><a href="/financial-information/quarterly-results">Quarterly Results</a></li>
+                                                <li><a href="/financial-information/key-ratios">Key Ratios</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children"><a href="/stock-information">Stock Information</a>
+                                            <ul class="collapse">
+
+                                                <li><a href="/stock-information/historic-stock-lookup">Historic Stock Lookup</a></li>
+                                                <li><a href="/stock-information/investment-calculator">Investment Calculator</a></li>
+
+                                                <li><a href="/stock-information/analyst-coverage">Analyst Coverage</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <li><a href="/investor-faqs">Investor FAQs</a></li>
+                                        <li><a href="/contact-us">Contact Us</a></li>
+
+                                    </ul>
+
+                                </li>
+                                <li id="menu-item-159" class="menuicon menu-item menu-item-type-post_type menu-item-object-page menu-item-159"><a href="http://www.minervaneurosciences.com/contact/">Contact</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <div class="search-box">
+                        <form action="http://www.minervaneurosciences.com/" method="get" role="search">
+                            <div class="input-bg">
+                                <input name="s" type="search" class="input" value="Search">
+                                <input name="" value="" type="submit" class="btn-search">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </header>
+     <div class="wrap " role="document">
+         <div class="content row">
+             <main class="main">
+
+                 <!-- Content Inner
+     ================================================== -->
+                 <div class="content-inner">
+                      <div class="container">
+                          <div class="col-xs-2">
+                              <div class="side-nav">
+                                                                          <aside class="sidebar-first sidebars" id="sidebar-first">
+                                            <div class="region region-sidebar-first">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid709-investorrelations-menu" id="block-nir-pid709-investorrelations" class="block--system-menu-blockir block--system-menu-blockir--5821 block--sidebar-first--system-menu-block--ir block--sidebar-first--system-menu-block--ir--5821 block--2fbc6b58-45f5-47db-9c1b-7d98c7038038 block--2fbc6b58-45f5-47db-9c1b-7d98c7038038--5821 block block-menu navigation block-system-menublock menu--ir">
+            
+    <h2 id="block-nir-pid709-investorrelations-menu">INVESTORS &amp; MEDIA</h2>
+    
+
+                              <ul data-block-uuid="2fbc6b58-45f5-47db-9c1b-7d98c7038038" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/press-releases" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-and-presentations" data-drupal-link-system-path="node/5821" class="is-active">Events &amp; Presentations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance" data-drupal-link-system-path="node/5836">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information" data-drupal-link-system-path="node/5871">Financials &amp; Filings</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information" data-drupal-link-system-path="node/5916">Stock Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/investor-faqs" data-drupal-link-system-path="node/5941">Investor FAQs</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/contact-us" data-drupal-link-system-path="node/5981">Contact Us</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+                                          <div id="ndq-tools">
+                                                                <h3>Shareholder Tools</h3>
+
+                                                                
+                                                                <a class="ndq-noTxtDec" href="/printed-materials" title="Printed Materials" alt="Printed Materials">
+                                                                    <div class="ndqicon-printed-materials-1"><strong style="opacity: 0;">Printed Materials</strong></div>
+                                                                </a>
+
+                                                                <a class="ndq-noTxtDec" href="/email-alerts" title="Email Alerts" alt="Email Alerts">
+                                                                    <div class="ndqicon-alerts"><strong style="opacity: 0;">Email Alerts</strong></div>
+                                                                </a>
+
+                                                                <a class="ndq-noTxtDec" href="/download-library" title="Downloads" alt="Downloads">
+                                                                    <div class="ndqicon-downloads-3"><strong style="opacity: 0;">Downloads</strong></div>
+                                                                </a>
+
+                                                                
+                                                                <a class="ndq-noTxtDec" href="/rss-news-feeds" onfocus="this.blur();" title="RSS" alt="RSS">
+                                                                    <div class="ndqicon-rss"><strong style="opacity: 0;">RSS</strong></div>
+                                                                </a>
+
+                                                                <a class="ndq-noTxtDec" href="javascript:window.print();" rel="nofollow" title="Print" alt="Print">
+                                                                    <div class="ndqicon-print"><strong style="opacity: 0;">Print</strong></div>
+                                                                </a>
+
+                                                                <a class="ndq-noTxtDec ndq-open-dialog" onfocus="this.blur();" title="Share" alt="Share">
+                                                                    <div class="ndqicon-share"><strong style="opacity: 0;">Share</strong></div>
+                                                                </a>
+                                                                <div id="output"></div>
+                                                                <div class="ndq-dialog-overlay"></div>
+                                                                <div class="ndq-dialog" style="display: none;">
+                                                                    <a class="ndq-close-dialog ndqicon-close" title="Close"></a>
+                                                                    <br clear="all">
+
+                                                                    <ul id="ndq-share">
+
+                                                                        <li><a class="icon ndqicon-fb" href="https://www.facebook.com/share.php?u=http%3A%2F%2Fir.minervaneurosciences.com%2Fevents-and-presentations&t=MINERVA NEUROSCIENCES, INC  - Events &amp; Presentations" onclick="window.open('https://www.facebook.com/share.php?u=http%3A%2F%2Fir.minervaneurosciences.com%2Fevents-and-presentations&t=MINERVA NEUROSCIENCES, INC  - Events &amp; Presentations','Facebook','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Facebook" title="Facebook" aria-label="Facebook"></a></li>
+
+                                                                        <li><a class="icon ndqicon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fir.minervaneurosciences.com%2Fevents-and-presentations&title=MINERVA NEUROSCIENCES, INC  - Events &amp; Presentations" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fir.minervaneurosciences.com%2Fevents-and-presentations&title=MINERVA NEUROSCIENCES, INC  - Events &amp; Presentations','LinkedIn','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="LinkedIn" title="LinkedIn" aria-label="LinkedIn"></a></li>
+
+                                                                        <li><a class="icon ndqicon-tw" href="https://twitter.com/intent/tweet?text=MINERVA NEUROSCIENCES, INC  - Events &amp; Presentations+http%3A%2F%2Fir.minervaneurosciences.com%2Fevents-and-presentations" onclick="window.open('https://twitter.com/intent/tweet?text=MINERVA NEUROSCIENCES, INC  - Events &amp; Presentations+http%3A%2F%2Fir.minervaneurosciences.com%2Fevents-and-presentations','Twitter','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Twitter" title="Twitter" aria-label="Twitter"></a></li>
+
+
+                                                                        <li><a class="ndqicon-rss" href="/rss-news-feeds"><span class="hide-txt">RSS</span></a></li>
+                                                                    </ul>
+
+                                                                </div>
+
+                                                                <form action="/search" method="get">
+                                                                                                                                       <div id="ndq-tools-search">
+                                                                        <input type="text" name="query" id="ndq_keyword" value="Search Investors" onfocus="if(this.value=='Search Investors'){this.value=''};" onblur="if(this.value==''){this.value='Search Investors'};">
+                                                                        <button class="ndqicon-search"></button>
+                                                                    </div>
+                                                                </form>
+
+                                                            </div>
+                                                  </aside>
+                                                                                          </div>
+                                      </div>
+                                      <div class="col-xs-6 col-xs-10">
+                                          <div class="cont-mid">
+
+                                              <div id="ndq-content" class="ndq-index ">
+                                                <section id="content">
+                                                  <div id="content-header">
+
+                                                    
+
+                                                  </div>
+
+                                                  <div id="content-area">  <div class="region region-content">
+    <div id="block-nir-pid709-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5821 block--content--website-notice-block block--content--website-notice-block--5821 block--2bbf93e5-c4fb-4cb1-af0f-e7a67be505ab block--2bbf93e5-c4fb-4cb1-af0f-e7a67be505ab--5821 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid709-content" class="block--system-main-block block--system-main-block--5821 block--content--system-main-block block--content--system-main-block--5821 block--754a5a1a-8b47-47ee-8ded-126d3aa4c766 block--754a5a1a-8b47-47ee-8ded-126d3aa4c766--5821 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--5821 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--5821 block--2c7557e1-714a-47cd-9b43-9bcff1e0f276 block--2c7557e1-714a-47cd-9b43-9bcff1e0f276--5821 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Upcoming Events</h2>
+    
+      <div data-block-uuid="2c7557e1-714a-47cd-9b43-9bcff1e0f276"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-9c980d808f1a2a803d9963951ee7a220a814f81ef31515421a554a2a0cfb1ef5">
+  
+    
+      
+      <div class="view-empty">
+      There are currently no events to display.
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-assets-widget-assets-table block--views-blockwidget-assets-widget-assets-table--5821 block--contentmain--views-block--widget-assets-widget-assets-table block--contentmain--views-block--widget-assets-widget-assets-table--5821 block--26824207-b2fd-4097-9112-93a13b795385 block--26824207-b2fd-4097-9112-93a13b795385--5821 block block-views block-views-blockwidget-assets-widget-assets-table">
+  
+      <h2>Presentations</h2>
+    
+      <div data-block-uuid="26824207-b2fd-4097-9112-93a13b795385"><div class="view view-widget-assets view-id-widget_assets view-display-id-widget_assets_table js-view-dom-id-52485773d5578f6e3a9bf8d4031d853830451595d012ceb5a8e4f5afafd91465">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-assets-widget-assets-table" action="/events-and-presentations" method="get" id="views-exposed-form-widget-assets-widget-assets-table" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions--2"><input data-drupal-selector="edit-submit-widget-assets" type="submit" id="edit-submit-widget-assets" value="Filter" class="button js-form-submit form-submit" />
+<input data-drupal-selector="edit-reset" type="submit" id="edit-reset--2" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 striped-odd collapse-table">
+    <thead>
+  <tr>
+  <th>Date</th>
+  <th>Title</th>
+  </tr>
+  </thead>
+  <tbody>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2020-06-19T12:00:00Z" timezone="America/New_York" class="datetime">June 19, 2020</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/9b84baec-a519-4f25-806a-16b111fab06d" type="application/pdf; length=555202" title="Minerva Annual Meeting June 19, 2020.pdf">Annual Meeting of Stockholders</a></span><span class="filesize"> 555.2 KB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2020-06-05T12:00:00Z" timezone="America/New_York" class="datetime">June 5, 2020</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/c4ab2610-9da5-4024-b29c-1353136f5192" type="application/pdf; length=1333144" title="Minerva Phase 3 KEY Slides Final 1435 PM 4JUNE2020-WEBCAST.pdf">Conference call: Results from Phase 3 trial of roluperidone</a></span><span class="filesize"> 1.3 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2020-05-29T12:00:00Z" timezone="America/New_York" class="datetime">May 29, 2020</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/215190cc-8124-4040-b6ae-4fb52ea6578c" type="application/pdf; length=842831" title="Minerva Phase 3 TLR KEY MESSAGES 29MAY2020 Final V1.pdf">Topline results from the Phase 3 trial of Roluperidone</a></span><span class="filesize"> 842.8 KB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2020-05-05T12:00:00Z" timezone="America/New_York" class="datetime">May 5, 2020</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/544c0702-f4e2-48e8-9019-0ab9e7ca9286" type="application/pdf; length=1305756" title="Minerva May 2020 corporate presentation.pdf">May Corporate Presentation</a></span><span class="filesize"> 1.3 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--5821 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--5821 block--90ce9a40-7294-42f6-93ef-409270795662 block--90ce9a40-7294-42f6-93ef-409270795662--5821 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Archived Events</h2>
+    
+      <div data-block-uuid="90ce9a40-7294-42f6-93ef-409270795662"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-df9e4be4fbd8352441ad138376f6aacbd51e8b5c05c7f47081d52e1f0cfa1cdf">
+  
+    
+      
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" scope="col"><a href="?field_nir_event_start_date_value_1=-8%20hours&amp;sort_order=DESC&amp;order=field_nir_event_start_date&amp;sort=asc" title="sort by Date">Date</a></th>
+                                                  <th id="view-nothing-table-column" class="views-field views-field-nothing" scope="col">Event Details</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Mar 8, 2021 at 8:30 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Mar 8, 2021 <br> 8:30 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Fourth Quarter 2020 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/88vr9c8w" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Nov 17, 2020 at 7:55 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Nov 17, 2020 <br> 7:55 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Jefferies London Healthcare Conference</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://wsw.com/webcast/jeff141/nerv/1862475" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Nov 2, 2020 at 8:30 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Nov 2, 2020 <br> 8:30 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Third Quarter 2020 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/fgm2pxsf" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Sep 16, 2020 at 10:00 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Sep 16, 2020 <br> 10:00 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>H. C. Wainwright 22nd Annual Global Investment Conference</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://wsw.com/webcast/hcw7/register.aspx?conf=hcw7&amp;page=nerv&amp;url=https%3A//wsw.com/webcast/hcw7/nerv/1621987" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Sep 9, 2020 at 1:30 PM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Sep 9, 2020 <br> 1:30 PM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Citi 15th Annual Biopharma Conference </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://www.veracast.com/webcasts/citigroup/bpharma2020/75207334965.cfm" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Aug 19, 2020 at 10:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Aug 19, 2020 <br> 10:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>JMP Securities CNS Forum </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://wsw.com/webcast/jmp44/nerv/1692565" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Aug 3, 2020 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Aug 3, 2020 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Second Quarter 2020 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/kjfxpe7r" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Jun 5, 2020 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Jun 5, 2020 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Phase 3 Trial of Roluperidone (MIN-101) for Treatment of Negative Symptoms in Schizophrenia</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://public.viavid.com/index.php?id=139821" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            May 4, 2020 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            May 4, 2020 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences First Quarter 2020 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/if6fpphp" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Mar 31, 2020 at 8:00 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Mar 31, 2020 <br> 8:00 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3> Key Opinion Leader (KOL) call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://viavid.webcasts.com/starthere.jsp?ei=1293503&amp;tp_key=89ca7e9c4b" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Mar 9, 2020 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Mar 9, 2020 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Fourth Quarter 2019 Conference Call </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/52xu5nos" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Mar 6, 2020
+      </span>
+
+<span class="date2">
+
+      
+      
+            Mar 6, 2020
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Key Opinion Leader (KOL) breakfast: the importance of improving avolition in the successful treatment of negative symptoms of schizophrenia </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://lifesci.rampard.com/20200306/reg.jsp" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Dec 18, 2019 at 5:00 PM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Dec 18, 2019 <br> 5:00 PM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/wbfogfj9" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Nov 21, 2019 at 9:40 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Nov 21, 2019 <br> 9:40 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Jefferies London Healthcare Conference</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/jeff123/nerv/" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Nov 4, 2019 at 8:30 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Nov 4, 2019 <br> 8:30 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Third Quarter 2019 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/dxvrzb3z" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Oct 1, 2019 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Oct 1, 2019 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Investor Call </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/xazdqtav" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Aug 5, 2019 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Aug 5, 2019 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Second Quarter 2019 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/2q7gpguf" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Jun 24, 2019 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Jun 24, 2019 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Investor Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://engage.vevent.com/rt/minervaneurosciencesinc~062419" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+            <div class="nir-events-summary-event-details-supporting-materials">
+            <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/4d596abb-ed12-4019-b6ed-18c4ed9d5458" type="application/pdf; length=722895" title="Seltorexant (MIN-202)  INSOMNIA 2005 Study Investor Call Presentation.pdf">View Presentation</a></span><span class="filesize"> 722.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+    </div>
+      
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Jun 19, 2019 at 9:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Jun 19, 2019 <br> 9:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>JMP Securities 2019 Life Sciences Conference </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/jmp39/nerv/" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Jun 4, 2019 at 3:00 PM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Jun 4, 2019 <br> 3:00 PM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Jefferies 2019 Global Healthcare Conference </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/jeff118/nerv/" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            May 6, 2019 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            May 6, 2019 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences First Quarter 2019 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/z6qx8436" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Mar 21, 2019 at 10:00 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Mar 21, 2019 <br> 10:00 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Webcast: Schizophrenia: Disease Landscape and Forecast</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://www.webcaster4.com/Webcast/Page/359/29852" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Mar 12, 2019 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Mar 12, 2019 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Fourth Quarter 2018 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/banoh877" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Nov 28, 2018 at 3:05 PM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Nov 28, 2018 <br> 3:05 PM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Evercore ISI HealthconX</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/evercore2/nerv/" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Nov 20, 2018 at 8:00 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Nov 20, 2018 <br> 8:00 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Roluperidone Update and Key Opinion Leader Event</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://www.webcaster4.com/Webcast/Page/359/28229" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Nov 14, 2018 at 3:00 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Nov 14, 2018 <br> 3:00 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Jefferies London Healthcare Conference</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/jeff115/nerv/" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+            <div class="nir-events-summary-event-details-supporting-materials">
+            <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/4f0dee2c-02de-494a-9e07-61bac6c95946" type="application/pdf; length=1129801" title="Jefferies London Nov 2018.pdf">View Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+    </div>
+      
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Nov 5, 2018 at 8:30 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Nov 5, 2018 <br> 8:30 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Third Quarter 2018 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/qnx32iyx" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Aug 2, 2018 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Aug 2, 2018 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Second Quarter 2018 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/szm5rfik" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Jun 6, 2018 at 9:00 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Jun 6, 2018 <br> 9:00 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Jefferies 2018 Global Healthcare Conference </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/jeff113/nerv/" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            May 3, 2018 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            May 3, 2018 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences First Quarter 2018 Conference Call </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/uovgkq6o" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Mar 22, 2018 at 12:00 PM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Mar 22, 2018 <br> 12:00 PM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Key Opinion Leader Meeting on the Negative Symptoms of Schizophrenia</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://lifesci.rampard.com/20180322/reg.jsp" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+            <div class="nir-events-summary-event-details-supporting-materials">
+            <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/2a876fc1-7e0a-4080-a936-870a28ae52f0" type="application/pdf; length=3279379" title="KOL event March 22 2018.pdf">View Presentation</a></span><span class="filesize"> 3.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+    </div>
+      
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Mar 12, 2018 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Mar 12, 2018 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Fourth Quarter 2017 Conference Call </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/75hsuwsu" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Nov 15, 2017 at 9:00 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Nov 15, 2017 <br> 9:00 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Jefferies 2017 London Healthcare Conference</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/jeff108/nerv/" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Nov 6, 2017 at 8:30 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Nov 6, 2017 <br> 8:30 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Third Quarter 2017 Conference Call </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/w28syvuf" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Aug 3, 2017 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Aug 3, 2017 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Second Quarter 2017 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/95e7ktpi" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Jun 6, 2017 at 11:00 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Jun 6, 2017 <br> 11:00 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Jefferies 2017 Global Healthcare Conference </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/jeff105/nerv" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            May 16, 2017 at 10:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            May 16, 2017 <br> 10:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Investor Call </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://viavid.webcasts.com/starthere.jsp?ei=1147106" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+            <div class="nir-events-summary-event-details-supporting-materials">
+            <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/2d39d1dc-f8a8-4a1a-aff3-cf75ee9f55ec" type="application/pdf; length=583154" title="KOL_event_May_16.pdf">View Presentation</a></span><span class="filesize"> 583.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+    </div>
+      
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            May 4, 2017 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            May 4, 2017 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences First Quarter 2017 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/tuggbnaj" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Mar 13, 2017 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Mar 13, 2017 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Fourth Quarter 2016 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/frtfxn5y" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Mar 7, 2017 at 10:40 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Mar 7, 2017 <br> 10:40 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Cowen and Company 37th Annual Health Care Conference</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/cowen38/nerv" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Mar 2, 2017 at 8:00 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Mar 2, 2017 <br> 8:00 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Research and Development Day </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://lifesci.rampard.com/20170302/reg.jsp" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Dec 5, 2016
+      </span>
+
+<span class="date2">
+
+      
+      
+            Dec 5, 2016
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>American College of Neuropsychopharmacology 2016</h3>
+      </div>
+  
+          <div class="nir-events-summary-event-details-supporting-materials">
+                    <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/6da3fc78-5425-4ba7-8c49-27577a26206c" type="application/pdf; length=1686394" title="MIN-101_Hot_Topics_Session_2016_ACNP.pdf">MIN-101 Hot Topics Oral Session.</a></span><span class="filesize"> 1.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/5a037521-bbe7-486f-aefa-eec818122cc2" type="application/pdf; length=1156822" title="General_poster_MIN-101_ACNP.pdf">MIN-101: A Drug in Development for the Treatment of Negative Symptoms in Schizophrenia</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/2003c6c9-bfe1-4097-a674-6a4738a3a42f" type="application/pdf; length=665187" title="Effect_of_MIN-101_on_Cognitive_Functioning_in_Stable_Schizophrenic_Patients_with_Negative_Symptoms.pdf">Effect of MIN-101 on Cognitive Functioning in Stable Schizophrenic Patients with Negative Symptoms</a></span><span class="filesize"> 665.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/dcf510af-9f1e-4500-8eb5-c22df2f3bf5a" type="application/pdf; length=607920" title="MIN-117_A_Randomized_Double-Blind_Parallel-Group_Placebo-_and_Active-Controlled_Study_to_Evaluate_Efficacy_and_Safety_in_Patients_with_Major_Depressive_Disorder.pdf">MIN-117: A Randomized, Double-Blind, Parallel-Group, Placebo- and Active-Controlled Study to Evaluate Efficacy and Safety in Patients with Major Depressive Disorder</a></span><span class="filesize"> 607.9 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://ir.minervaneurosciences.com/static-files/9fed808a-28d6-4e0d-8da7-5073f24b7bf3" type="application/pdf; length=338945" title="MIN-101_Improves_Sleep_in_Patients_Suffering_from_Schizophrenia.pdf">MIN-101 Improves Sleep in Patients Suffering from Schizophrenia</a></span><span class="filesize"> 338.9 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+    </div>
+      
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Nov 17, 2016 at 7:40 AM EST
+      </span>
+
+<span class="date2">
+
+      
+      
+            Nov 17, 2016 <br> 7:40 AM EST
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Jefferies 2016 London Healthcare Conference </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/jeff100/nerv" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Nov 3, 2016 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Nov 3, 2016 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Third Quarter 2016 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/33y889is" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Sep 9, 2016 at 1:30 PM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Sep 9, 2016 <br> 1:30 PM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>23rd Annual NewsMakers in the Biotech Industry Conference</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/biocentury3/nerv" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Aug 4, 2016 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Aug 4, 2016 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences Second Quarter 2016 Conference Call </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/r4ypexom" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Jun 21, 2016 at 12:30 PM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Jun 21, 2016 <br> 12:30 PM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>JMP Securities Life Sciences Conference</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/jmp29/nerv" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            Jun 8, 2016 at 11:00 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            Jun 8, 2016 <br> 11:00 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Jefferies 2016 Healthcare Conference </h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://wsw.com/webcast/jeff97/nerv" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+<span class="date1">
+
+      
+      
+            May 3, 2016 at 8:30 AM EDT
+      </span>
+
+<span class="date2">
+
+      
+      
+            May 3, 2016 <br> 8:30 AM EDT
+      </span>
+          </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Minerva Neurosciences First Quarter 2016 Conference Call</h3>
+      </div>
+  
+      <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://edge.media-server.com/m/p/n8cqdt7m" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          
+  
+  </div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+</div>
+                                                </section>
+
+                                                
+                                              </div>
+                                            </div>
+                                      </div>
+
+                     <div id="ndq-tools" class="mm-ndq-tools">
+                         <h3>Shareholder Tools</h3>
+
+                         
+                         <a class="ndq-noTxtDec" href="/printed-materials" title="Printed Materials" alt="Printed Materials">
+                             <div class="ndqicon-printed-materials-1"><strong style="opacity: 0;">Printed Materials</strong></div>
+                         </a>
+
+                         <a class="ndq-noTxtDec" href="/email-alerts" title="Email Alerts" alt="Email Alerts">
+                             <div class="ndqicon-alerts"><strong style="opacity: 0;">Email Alerts</strong></div>
+                         </a>
+
+                         <a class="ndq-noTxtDec" href="/download-library" title="Downloads" alt="Downloads">
+                             <div class="ndqicon-downloads-3"><strong style="opacity: 0;">Downloads</strong></div>
+                         </a>
+
+                         
+                         <a class="ndq-noTxtDec" href="/rss-news-feeds" onfocus="this.blur();" title="RSS" alt="RSS">
+                             <div class="ndqicon-rss"><strong style="opacity: 0;">RSS</strong></div>
+                         </a>
+
+                         <a class="ndq-noTxtDec" href="javascript:window.print();" rel="nofollow" title="Print" alt="Print">
+                             <div class="ndqicon-print"><strong style="opacity: 0;">Print</strong></div>
+                         </a>
+
+                         <a class="ndq-noTxtDec ndq-open-dialog" onfocus="this.blur();" title="Share" alt="Share">
+                             <div class="ndqicon-share"><strong style="opacity: 0;">Share</strong></div>
+                         </a>
+                         <div id="output"></div>
+                         <div class="ndq-dialog-overlay"></div>
+                         <div class="ndq-dialog" style="display: none;">
+                             <a class="ndq-close-dialog ndqicon-close" title="Close"></a>
+                             <br clear="all">
+
+                             <ul id="ndq-share">
+
+                                 <li><a class="icon ndqicon-fb" href="https://www.facebook.com/share.php?u=http%3A%2F%2Fir.minervaneurosciences.com%2Fevents-and-presentations&t=MINERVA NEUROSCIENCES, INC  - Events &amp; Presentations" onclick="window.open('https://www.facebook.com/share.php?u=http%3A%2F%2Fir.minervaneurosciences.com%2Fevents-and-presentations&t=MINERVA NEUROSCIENCES, INC  - Events &amp; Presentations','Facebook','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Facebook" title="Facebook" aria-label="Facebook"></a></li>
+
+                                 <li><a class="icon ndqicon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fir.minervaneurosciences.com%2Fevents-and-presentations&title=MINERVA NEUROSCIENCES, INC  - Events &amp; Presentations" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fir.minervaneurosciences.com%2Fevents-and-presentations&title=MINERVA NEUROSCIENCES, INC  - Events &amp; Presentations','LinkedIn','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="LinkedIn" title="LinkedIn" aria-label="LinkedIn"></a></li>
+
+                                 <li><a class="icon ndqicon-tw" href="https://twitter.com/intent/tweet?text=MINERVA NEUROSCIENCES, INC  - Events &amp; Presentations+http%3A%2F%2Fir.minervaneurosciences.com%2Fevents-and-presentations" onclick="window.open('https://twitter.com/intent/tweet?text=MINERVA NEUROSCIENCES, INC  - Events &amp; Presentations+http%3A%2F%2Fir.minervaneurosciences.com%2Fevents-and-presentations','Twitter','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Twitter" title="Twitter" aria-label="Twitter"></a></li>
+
+                                 <li><a class="ndqicon-rss" href="/rss-news-feeds"><span class="hide-txt">RSS</span></a></li>
+                             </ul>
+
+                         </div>
+
+                         <form action="/search" method="get">
+                                                          <div id="ndq-tools-search">
+                                 <input type="text" name="query" id="ndq_keyword" value="Search Investors" onfocus="if(this.value=='Search Investors'){this.value=''};" onblur="if(this.value==''){this.value='Search Investors'};">
+                                 <button class="ndqicon-search"></button>
+                             </div>
+                         </form>
+
+                     </div>
+                 </div>
+                 </div>
+
+             </main>
+         </div>
+     </div>
+	
+	<footer class="footer-main">
+    <div class="container">
+        <div class="footer-mid">
+            <article>
+                <li id="better-menu-widget-3" class="widget-container better-menu-widget">
+                    <h4 class="widget-title"><a href="http://www.minervaneurosciences.com/focus-strategy/">About Us</a></h4>
+                    <ul id="menu-focus-strategy-1" class="sub-menu">
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-410"><a href="http://www.minervaneurosciences.com/focus-strategy/presidents-letter/">President's Letter</a></li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-170"><a href="http://www.minervaneurosciences.com/focus-strategy/leadership/">Leadership</a></li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-409"><a href="http://www.minervaneurosciences.com/focus-strategy/board-of-directors/">Board of Directors</a></li>
+                    </ul>
+                </li>
+            </article>
+            <article>
+                <li id="better-menu-widget-4" class="widget-container better-menu-widget">
+                    <h4 class="widget-title"><a href="http://www.minervaneurosciences.com/disease-areas/">Disease Areas</a></h4>
+                    <ul id="menu-disease-areas" class="sub-menu">
+                        <li id="menu-item-326" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-326"><a href="http://www.minervaneurosciences.com/disease-areas/schizophrenia/">Schizophrenia</a></li>
+                        <li id="menu-item-174" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-174"><a href="http://www.minervaneurosciences.com/disease-areas/insomnia/">Insomnia and Mood Disorders</a></li>
+                        
+                        <li id="menu-item-176" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"><a href="http://www.minervaneurosciences.com/disease-areas/parkinsons-disease/">Parkinson’s Disease</a></li>
+                    </ul>
+                </li>
+            </article>
+            <article>
+                <li id="better-menu-widget-6" class="widget-container better-menu-widget">
+                    <h4 class="widget-title"><a href="http://www.minervaneurosciences.com/innovation-pipeline/">Innovation &amp; Pipeline</a></h4>
+                    <ul id="menu-pipeline" class="sub-menu">
+                        <li id="menu-item-442" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-442"><a href="http://www.minervaneurosciences.com/innovation-pipeline/min-101/">Roluperidone (MIN-101)</a></li>
+                        <li id="menu-item-440" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-440"><a href="http://www.minervaneurosciences.com/innovation-pipeline/min-202/">Seltorexant (MIN-202)</a></li>
+                       
+                        <li id="menu-item-439" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-439"><a href="http://www.minervaneurosciences.com/innovation-pipeline/min-301/">MIN-301</a></li>
+                    </ul>
+                </li>
+            </article>
+            <article class="footersec">
+              <p>(617) 600-7373
+                    <br><a href="http://www.minervaneurosciences.com/contact/">email us</a>
+                    <br><a href="http://www.minervaneurosciences.com/privacy-policy/">Privacy Policy</a> | <a href="http://www.minervaneurosciences.com/terms-of-use/">Terms of Use</a></p>
+					<p> <span> <a href="http://www.3mediaweb.com/" title="Biotech Web Design Company" target="_blank" class="web_logo"> <img src="http://www.minervaneurosciences.com/wordpress/wp-content/themes/minervaneurosciences/assets/images/3-media-web-square-logo-for-footer.png" alt="Biotech Web Design Company"> </a></span>©2017 <span>Minerva Neurosciences</span></p>
+            </article>
+        </div>
+    </div>
+</footer>
+</div>
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "TRCGCLIENTWEB2714";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5821","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid709\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid709","theme_token":null},"ajaxTrustedUrl":{"\/events-and-presentations":true},"user":{"uid":0,"permissionsHash":"b86f999a50881ae719187855497d90ea2838784ef0534d0975e7f3a3d7575162"}}</script>
+<script src="/sites/g/files/knoqqb7776/files/js/js_78TAybQXgzvSP0TCYGiU5CqZkTWV6UzU2-cC1b2JGF4.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":438,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

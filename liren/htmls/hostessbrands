@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"37278538"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Hostess Brands" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.hostessbrands.com/upcoming-events" />
+<meta property="og:title" content="Events | Hostess Brands" />
+<meta property="og:description" content="The Investor Relations website contains information about Hostess Brands&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="alternate" hreflang="en" href="https://www.hostessbrands.com/upcoming-events" />
+<link rel="canonical" href="https://www.hostessbrands.com/upcoming-events" />
+<link rel="shortlink" href="https://www.hostessbrands.com/node/5826" />
+<link rel="revision" href="https://www.hostessbrands.com/upcoming-events" />
+
+    <title>Events | Hostess Brands</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb15616/files/css/css_SQBKl25X50_ss2d0gozsTTn-Wxa9dWu131cAz6rP_-E.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb15616/files/css/css_P5VwjHl1jDEQqkljV5ulLAMPjYXbMI9HnKhFtuR_n0g.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Lato:400,400italic,700,300italic" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb15616/files/css/css_vOrzOgz0zaTBLBobV6As6vt1TBuLU_q6UntYKsNIblA.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb15616/files/css/css_-0mF5jUGlhTGZcZJWP9cTwvMbTIyzRv_sFCiwBigcVE.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb15616/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5826 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div class="ndq-interior"><header>
+   <div class="top-bar sticky is-at-top is-stuck">
+      <div class="row">
+         <div class="top-bar-left"><a href="/"><img src="/sites/g/files/knoqqb15616/themes/site/nir_pid1437/client/images/hostess-logo.png" alt="logo" style="position: absolute; top: 0px; left: 0px;"></a></div>
+         <div class="top-bar-right">
+            <div class="title-bar" data-hide-for="medium">
+                <div data-responsive-toggle="main-menu"><button class="menu-icon" type="button" aria-label="Open Search" data-toggle="data-toggle"></button></div>
+            </div>
+            <div class="" id="main-menu">
+                 
+    
+
+
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1437-investorrelations-menu">Investor Relations</h2>
+    
+
+                              <ul data-block-uuid="ba4fb947-29a2-4af5-8305-89b4f43e3742" class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
+                  <li class="has-submenu">
+          <a href="/About%20the%20Company" target="" rel="" data-drupal-link-system-path="node/5806">Company</a>
+                                    <ul class="submenu menu vertical" data-submenu="data-submenu">
+	  <div class="arrow_box"></div>
+                  <li>
+          <a href="/About%20the%20Company" target="" rel="" data-drupal-link-system-path="node/5806">Overview</a>
+                  </li>
+              <li>
+          <a href="/management" target="" rel="" data-drupal-link-system-path="node/5846">Management</a>
+                  </li>
+              <li>
+          <a href="/board-of-directors" target="" rel="" data-drupal-link-system-path="node/5841">Board of Directors</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="has-submenu">
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">News &amp; Events</a>
+                                    <ul class="submenu menu vertical" data-submenu="data-submenu">
+	  <div class="arrow_box"></div>
+                  <li>
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+              <li>
+          <a href="/upcoming-events" target="" rel="" data-drupal-link-system-path="node/5826" class="is-active">Events</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="has-submenu">
+          <a href="/stock-information/stock-quote" target="" rel="" data-drupal-link-system-path="node/5911">Investors</a>
+                                    <ul class="submenu menu vertical" data-submenu="data-submenu">
+	  <div class="arrow_box"></div>
+                  <li>
+          <a href="/stock-information/stock-quote" target="" rel="" data-drupal-link-system-path="node/5911">Stock </a>
+                  </li>
+              <li>
+          <a href="/sec-filings" target="" rel="" data-drupal-link-system-path="node/7571">SEC Filings</a>
+                  </li>
+              <li>
+          <a href="/governance" data-drupal-link-system-path="node/7486">Governance</a>
+                  </li>
+              <li>
+          <a href="/shareholder-services/investor-faqs" target="" rel="" data-drupal-link-system-path="node/5941">FAQs</a>
+                  </li>
+              <li>
+          <a href="/stock-information/analyst-coverage" target="" rel="" data-drupal-link-system-path="node/5896">Analyst Coverage</a>
+                  </li>
+              <li>
+          <a href="/financial-reports" target="" rel="" data-drupal-link-system-path="node/7506">Financial Reports</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="https://careers-hostessbrands.icims.com/" title="Main Investor Relations Page">Careers</a>
+                  </li>
+              <li class="has-submenu">
+          <a href="/shareholder-services/contact-ir" target="" rel="" data-drupal-link-system-path="node/5981">Contact</a>
+                                    <ul class="submenu menu vertical" data-submenu="data-submenu">
+	  <div class="arrow_box"></div>
+                  <li>
+          <a href="/shareholder-services/contact-ir" target="" rel="" data-drupal-link-system-path="node/5981">Contact Information</a>
+                  </li>
+              <li>
+          <a href="/shareholder-services/document-request" target="" rel="" data-drupal-link-system-path="node/5966">Information Request</a>
+                  </li>
+              <li>
+          <a href="https://hostessbrands.gcs-web.com/email-alerts" target="" rel="">E-mail Alerts</a>
+                  </li>
+          </ul>
+  
+                  </li>
+          </ul>
+  
+
+
+    
+
+  
+
+            </div>
+         </div>
+      </div>
+   </div>
+</header>
+<div class="banner watermark" id="skip-to-content">
+   <div class="row">
+      <div style="display: flex; align-items: center; justify-content: center;">
+         <div class="large-8 columns"><div class="bannerImg"></div></div>
+         <div class="large-4 columns">
+            <h1>News &amp; Events</h1>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="clearfix" id="main">
+  <div class="container">
+    
+    <section id="content">
+      <div id="content-header">
+
+        
+
+      </div>
+
+      <div id="content-area">  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1437-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--76a16770-3ccf-4bca-a83a-caab79a28ac2 block--76a16770-3ccf-4bca-a83a-caab79a28ac2--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="views-element-container block--views-blockwidget-events-block-1 block--views-blockwidget-events-block-1--5826 block--contentmain--views-block--widget-events-block-1 block--contentmain--views-block--widget-events-block-1--5826 block--009bfc4e-3798-4cf9-81ab-c7fb4826e65c block--009bfc4e-3798-4cf9-81ab-c7fb4826e65c--5826 block block-views block-views-blockwidget-events-block-1">
+  
+      <h2> Upcoming Events</h2>
+    
+      <div data-block-uuid="009bfc4e-3798-4cf9-81ab-c7fb4826e65c"><div class="view view-widget-events view-id-widget_events view-display-id-block_1 js-view-dom-id-f74421ffb5b59acedb5a9e57e56b1db1dcfdb0e22559b9714cd5a73fdecd98c7">
+  
+    
+      
+      <div class="view-content">
+      <div class="item-list">
+  
+  <ul>
+
+          <li>
+<table width="100%" border="0" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblTxt">
+         <td valign="top" colspan="2"><span class="ccbnTxtBold"><a class="ccbnLnk" href="/events/event-details/first-quarter-hostess-brands-earnings-conference-call">First Quarter Hostess Brands Earnings Conference Call</a></span><br><span class="ccbnTxt">
+            
+        
+                            05/17/21 at 8:30 AM EDT
+            </span></td>
+      </tr>
+          </tbody>
+</table>
+           <div class="add-outlook">
+          <a href="/node/9726/ics">Add to Outlook</a>
+       </div>
+               <div class="add-gcal">
+          <a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;text=Hostess Brands - First Quarter Hostess Brands Earnings Conference Call&amp;dates=20210517T123000Z/20210517T123000Z&amp;details=Event Details: http://www.hostessbrands.com/events/event-details/first-quarter-hostess-brands-earnings-conference-call%0A%0AWebcast: http://public.viavid.com/index.php?id=144059&amp;location=&amp;trp=false&amp;sprop=&amp;sprop=name:" target="_blank" rel="nofollow">Add to Google Calendar</a>
+       </div>
+    </li>
+    
+  </ul>
+
+</div>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+<div class="block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--7c5e8dd2-fb20-4787-bd78-2cf185020587 block--7c5e8dd2-fb20-4787-bd78-2cf185020587--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Past Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/ubs-global-consumer-and-retail-conference" hreflang="en">UBS Global Consumer and Retail Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+            
+        
+                            03/10/21 at 1:00 PM EST
+            
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://protect-us.mimecast.com/s/QBOHCOYEPAI0YNwMCPkflW?domain=event.webcasts.com" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/fourth-quarter-and-full-year-2020-hostess-brands-earnings-conference-call" hreflang="en">Fourth Quarter and Full Year 2020 Hostess Brands Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+            
+        
+                            02/24/21 at 4:30 PM EST
+            
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://public.viavid.com/index.php?id=142985" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.hostessbrands.com/static-files/fc57928e-7263-47b8-8c53-790af3ea73a1" type="application/pdf; length=1745699" title="Hostess Investor Deck 2020 Q4 - (CURRENT).pdf">Q4 2020 Earnings Investor Presentation</a></span><span class="filesize"> 1.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/jefferies-virtual-west-coast-consumer-conference" hreflang="en">Jefferies Virtual West Coast Consumer Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+            
+        
+                            11/16/20 at 12:20 PM EST
+            
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/jeff150/twnk/1875300" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/third-quarter-2020-hostess-brands-earnings-conference-call" hreflang="en">Third Quarter 2020 Hostess Brands Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+            
+        
+                            11/05/20 at 4:30 PM EST
+            
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://public.viavid.com/player/index.php?id=141446" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.hostessbrands.com/static-files/2a95b8c5-1127-4d0c-867b-d9437adc9036" type="application/pdf; length=2078651" title="Hostess Investor Deck 2020 Q3 - (11.5.20 10am).pdf">Q3 2020 Earnings Investor Presentation</a></span><span class="filesize"> 2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/barclays-global-consumer-staples-conference" hreflang="en">Barclays Global Consumer Staples Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+            
+        
+                            09/10/20 at 1:20 PM EDT
+            
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://kvgo.com/barclays/hbi-september-2020" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+        <nav class="pager" role="navigation" aria-labelledby="pagination-heading">
+    <h4 id="pagination-heading" class="visually-hidden">Pagination</h4>
+    <ul class="pager__items js-pager__items">
+                                                        <li class="pager__item is-active">
+                                          <a href="?page=0" title="Current page">
+            <span class="visually-hidden">
+              Current page
+            </span>1</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=1" title="Go to page 2">
+            <span class="visually-hidden">
+              Page
+            </span>2</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=2" title="Go to page 3">
+            <span class="visually-hidden">
+              Page
+            </span>3</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=3" title="Go to page 4">
+            <span class="visually-hidden">
+              Page
+            </span>4</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=4" title="Go to page 5">
+            <span class="visually-hidden">
+              Page
+            </span>5</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=5" title="Go to page 6">
+            <span class="visually-hidden">
+              Page
+            </span>6</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=6" title="Go to page 7">
+            <span class="visually-hidden">
+              Page
+            </span>7</a>
+        </li>
+                                      <li class="pager__item pager__item--next">
+          <a href="?page=1" title="Go to next page" rel="next">
+            <span class="visually-hidden">Next page</span>
+            <span aria-hidden="true">next ›</span>
+          </a>
+        </li>
+                          <li class="pager__item pager__item--last">
+          <a href="?page=6" title="Go to last page">
+            <span class="visually-hidden">Last page</span>
+            <span aria-hidden="true">last »</span>
+          </a>
+        </li>
+          </ul>
+  </nav>
+
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="views-element-container block--views-blockwidget-assets-widget-assets-table block--views-blockwidget-assets-widget-assets-table--5826 block--contentmain--views-block--widget-assets-widget-assets-table block--contentmain--views-block--widget-assets-widget-assets-table--5826 block--c218f3b5-538c-452c-a885-f510c87414fc block--c218f3b5-538c-452c-a885-f510c87414fc--5826 block block-views block-views-blockwidget-assets-widget-assets-table">
+  
+      <h2>Presentations</h2>
+    
+      <div data-block-uuid="c218f3b5-538c-452c-a885-f510c87414fc"><div class="view view-widget-assets view-id-widget_assets view-display-id-widget_assets_table js-view-dom-id-6fe4012053fc6c84c400660a9e0352ee8221563aca51f2c6efbc703fb04076e7">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-assets-widget-assets-table" action="/upcoming-events" method="get" id="views-exposed-form-widget-assets-widget-assets-table" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions--2"><input data-drupal-selector="edit-reset" type="submit" id="edit-reset--2" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 striped-odd collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date" scope="col">Date</th>
+                                                  <th id="view-field-nir-document-table-column" class="views-field views-field-field-nir-document" scope="col">Documents</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2021-02-24T12:00:00Z" timezone="America/New_York" class="datetime">02/24/21</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.hostessbrands.com/static-files/fc57928e-7263-47b8-8c53-790af3ea73a1" type="application/pdf; length=1745699" title="Hostess Investor Deck 2020 Q4 - (CURRENT).pdf">Q4 2020 Earnings Investor Presentation</a></span><span class="filesize"> 1.7 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2020-11-05T12:00:00Z" timezone="America/New_York" class="datetime">11/05/20</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.hostessbrands.com/static-files/2a95b8c5-1127-4d0c-867b-d9437adc9036" type="application/pdf; length=2078651" title="Hostess Investor Deck 2020 Q3 - (11.5.20 10am).pdf">Q3 2020 Earnings Investor Presentation</a></span><span class="filesize"> 2 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2020-08-05T12:00:00Z" timezone="America/New_York" class="datetime">08/05/20</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.hostessbrands.com/static-files/812d3cc5-4fc8-4f5c-bce7-30adffcedf69" type="application/pdf; length=1910497" title="Hostess Investor Deck 2020 Q2(current).pdf">Q2 2020 Earnings Investor Presentation</a></span><span class="filesize"> 1.9 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2020-05-08T12:00:00Z" timezone="America/New_York" class="datetime">05/08/20</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.hostessbrands.com/static-files/f247ab6e-8ee9-4700-9fad-5af84476beef" type="application/pdf; length=8004356" title="Hostess Investor Deck 2020 Q1_FINAL.pdf">Q1 2020 Earnings Investor Presentation</a></span><span class="filesize"> 8 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2020-02-26T12:00:00Z" timezone="America/New_York" class="datetime">02/26/20</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.hostessbrands.com/static-files/04695988-97ad-4ba5-ad99-e4ed2a902beb" type="application/pdf; length=1079711" title="Hostess Investor Deck 2019 Q4(Final ICR).pdf">Q4 2019 Earnings Investor Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2019-12-02T12:00:00Z" timezone="America/New_York" class="datetime">12/02/19</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.hostessbrands.com/static-files/27c9ebfa-9448-4987-ae0f-b6b23c794ee6" type="application/pdf; length=1185710" title="Victoria investor deck (final).pdf">Hostess Acquisition of Voortman Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2019-11-06T12:00:00Z" timezone="America/New_York" class="datetime">11/06/19</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.hostessbrands.com/static-files/d04ad510-75d6-4e82-8fc2-7404d82a324a" type="application/pdf; length=1034994" title="Hostess Investor Deck 2019 Q3_current.pdf">Q3 2019 Earnings Investor Presentation </a></span><span class="filesize"> 1 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2019-09-10T12:00:00Z" timezone="America/New_York" class="datetime">09/10/19</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.hostessbrands.com/static-files/2a7fc8af-041e-4998-8d25-0214339c1c59" type="application/pdf; length=8450979" title="Hostess Investor Day Deck 2019.pdf">Hostess Brands Investor Presentation</a></span><span class="filesize"> 8.4 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2019-08-07T12:00:00Z" timezone="America/New_York" class="datetime">08/07/19</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.hostessbrands.com/static-files/0c60697d-3ef3-4caf-8f29-7509ce716660" type="application/pdf; length=2694273" title="Q2 2019 Earnings Investor Presentation.pdf">Q2 2019 Earnings Investor Presentation</a></span><span class="filesize"> 2.6 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2019-06-11T12:00:00Z" timezone="America/New_York" class="datetime">06/11/19</time>
+          </td>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.hostessbrands.com/static-files/70a9fd00-c925-44cb-b60a-a10d88725327" type="application/pdf; length=3748754" title="June 2019 Investor Presentation_ (current).pdf">Hostess Brands Investor Presentation</a></span><span class="filesize"> 3.7 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+</div>
+    </section>
+
+    
+  </div>
+</div>
+<div class="column large secondary ndq-tools">
+   <div class="row text-center small-up-5 medium-up-5 large-up-5">
+         <div class="region region-footer">
+    
+
+<nav role="navigation" aria-labelledby="block-shareholdertools-menu" id="block-shareholdertools" class="block--system-menu-blocktools block--system-menu-blocktools--5816 block--footer--system-menu-block--tools block--footer--system-menu-block--tools--5816 block--06b788b1-2ace-4c4a-a2da-87f8797ae290 block--06b788b1-2ace-4c4a-a2da-87f8797ae290--5816 block block-menu navigation block-system-menublock menu--tools">
+                        
+    <h2 class="visually-hidden" id="block-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                              
+                  <div class="column">
+          <a href="" target="" rel="" class="fa fa-print">Print Page</a>
+                  </div>
+              <div class="column">
+          <a href="/rss-feeds" target="" rel="" class="fa fa-rss" data-drupal-link-system-path="node/5951">RSS Feeds</a>
+                  </div>
+              <div class="column">
+          <a href="https://hostessbrands.gcs-web.com/email-alerts" target="" rel="" class="fa fa-exclamation-circle">E-mail Alerts</a>
+                  </div>
+              <div class="column">
+          <a href="/shareholder-services/contact-ir" target="" rel="" class="fa fa-user" data-drupal-link-system-path="node/5981">IR Contact</a>
+                  </div>
+          
+  
+
+
+    </nav>
+
+  </div>
+
+   </div>
+</div>
+
+
+
+<footer>
+   <div class="column primary footer-global">
+      <div class="row">
+         <div class="medium-4 columns">
+            <ul class="menu float-left">
+               <li class="menu-text">
+                  ©
+                  2021 Hostess Brands, LLC.
+               </li>
+            </ul>
+         </div>
+         <div class="medium-8 columns">
+            <ul class="menu float-right">
+               <li><a href="#">Privacy Policy</a></li>
+               <li><a href="#">Terms of Use</a></li>
+               <li class="social"><a href="https://www.facebook.com/Hostess" target="_blank"><i class="icon ndqicon-fb"></i></a><a href="https://twitter.com/hostess_snacks" target="_blank"><i class="icon ndqicon-tw-1"></i></a><a href="http://pinterest.com/hostesscakes" target="_blank"><i class="icon ndqicon-pinterest"></i></a><a href="http://instagram.com/hostess_snacks" target="_blank"><i class="icon ndqicon-instagram"></i></a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</footer>
+    </div>
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb3051";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1437\/override,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid1437","theme_token":null},"ajaxTrustedUrl":{"\/upcoming-events":true},"user":{"uid":0,"permissionsHash":"8b94db626ff665904c0dc9e07b6ef4cb89e87e59dd286119507ec4ab479ae0a2"}}</script>
+<script src="/sites/g/files/knoqqb15616/files/js/js_MeE_16o2C60XsoeWabnRxj64EF5GW-BajEHJ9wmdM04.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"37278538,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":404,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

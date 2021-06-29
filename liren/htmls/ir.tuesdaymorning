@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Tuesday Morning Corp." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.tuesdaymorning.com/events" />
+<meta property="og:title" content="Events &amp; Presentations | Tuesday Morning Corp." />
+<meta property="og:description" content="The Investor Relations website contains information about Tuesday Morning Corp.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=0.36" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb10946/files/favicon.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://ir.tuesdaymorning.com/events" />
+<link rel="canonical" href="https://ir.tuesdaymorning.com/events" />
+<link rel="shortlink" href="https://ir.tuesdaymorning.com/node/13136" />
+<link rel="revision" href="https://ir.tuesdaymorning.com/events" />
+
+    <title>Events &amp; Presentations | Tuesday Morning Corp.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb10946/files/css/css_SQBKl25X50_ss2d0gozsTTn-Wxa9dWu131cAz6rP_-E.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb10946/files/css/css_uey-NndHTF3093MwTxxONJ_iUqASTbAcou7hU2T5yhc.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb10946/files/css/css_uR7CBnjEs5VZNOTbN5egaIVEsuJ_uLDLaCxQpDsgq_0.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb10946/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-last nir-node nir-node--type-nir-landing-page nir-node--13136 page-node-13136 node_type_nir_landing_page path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div id="header" role="banner">
+
+    <!-- mainnav -->
+    <div id="mainnav" class="mod  basic" role="navigation">
+      <span class="s top"><span class="s tl"></span><span class="s tr"></span></span>
+      <div class="inner">
+        <div class="bd">
+			  <div class="region region-header">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1019-investorrelations-2-menu" id="block-nir-pid1019-investorrelations-2" class="block--system-menu-blockir block--system-menu-blockir--13136 block--header--system-menu-block--ir block--header--system-menu-block--ir--13136 block--3e1748d1-146b-4aa9-a2c7-1d0168d0c50b block--3e1748d1-146b-4aa9-a2c7-1d0168d0c50b--13136 block block-menu navigation block-system-menublock menu--ir">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1019-investorrelations-2-menu">Investor Relations</h2>
+    
+
+                              <ul data-block-uuid="3e1748d1-146b-4aa9-a2c7-1d0168d0c50b" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/" target="" rel="" title="Main Investor Relations Page" data-drupal-link-system-path="&lt;front&gt;">Overview</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/governance" target="" rel="" data-drupal-link-system-path="node/10606">Corporate Governance</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/governance" target="" rel="" data-drupal-link-system-path="node/10606">Corporate Governance Documents</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/governance/management" target="" rel="" data-drupal-link-system-path="node/5846">Senior Management</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/governance/board-of-directors" target="" rel="" data-drupal-link-system-path="node/5841">Board of Directors</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/governance/committee-composition" target="" rel="" data-drupal-link-system-path="node/5851">Committee Composition</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/governance/contact-the-board" target="" rel="" data-drupal-link-system-path="node/13076">Contact the Board</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information" data-drupal-link-system-path="node/5916">Stock Information</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/5916">Stock Info</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/historic-stock-lookup" data-drupal-link-system-path="node/5921">Historic Stock Lookup</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/investment-calculator" data-drupal-link-system-path="node/5926">Investment Calculator</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/dividends-splits" data-drupal-link-system-path="node/5931">Dividend History</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/ownership-profile" data-drupal-link-system-path="node/5901">Ownership Profile</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/fundamentals/income-statement" target="" rel="" data-drupal-link-system-path="node/6006">Fundamentals</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">News &amp; Events</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/press-releases" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events" target="" rel="" data-drupal-link-system-path="node/13136" class="is-active">Events &amp; Presentations</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information" target="" rel="" data-drupal-link-system-path="node/5871">Financial Info</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/financial-information" target="" rel="" data-drupal-link-system-path="node/5871">Financial Info</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/annual-reports" data-drupal-link-system-path="node/5881">Annual Reports</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/sec-filings" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/quarterly-results" data-drupal-link-system-path="node/5986">Quarterly Results</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/analyst-coverage" data-drupal-link-system-path="node/5896">Analyst Coverage</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/contact-us" data-drupal-link-system-path="node/5981">Contact Us</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+        </div>
+      </div>
+      <span class="s bottom"><span class="s bl"></span><span class="s br"></span></span>
+    </div>
+    <!-- end mainnav -->
+
+    <div id="brand_wrapper">
+      <div class="brand">
+        <a href="http://www.tuesdaymorning.com/">
+		<img src="/sites/g/files/knoqqb10946/themes/site/nir_pid1019/client/images/logo10-16.png" alt="Tuesday Morning" title="Tuesday Morning" width="352" style="margin-right:19px;"></a>
+      </div>
+
+      <div class="header_social">
+        <p class="social">
+          <a class="facebook_link" href="https://www.facebook.com/TuesdayAM?ref=ts" target="_blank">&nbsp;</a>
+          <a class="twitter_link" href="http://twitter.com/#%21/TuesdayMorning" target="_blank">&nbsp;</a>
+          <a class="pinterest_link" href="http://pinterest.com/tuesdayam/" target="_blank">&nbsp;</a>
+          <a class="instagram_link" href="http://instagram.com/tuesdaymorning" target="_blank">&nbsp;</a>
+        </p>
+      </div>
+
+      <div id="store_link">
+        <a href="http://www.tuesdaymorning.com/">VISIT TUESDAYMORNING.COM</a>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+  </div>
+  
+<div id="doc4" class="yui-t7">
+	<div id="hd" role="banner">
+		<div id="bd" role="main">
+            <div id="yui-main">
+                <div class="yui-b">
+					<div id="content-inner">
+                        <div id="bd" role="main">
+							<div class="yui-g">
+								<div class="mod">
+									<span class="s top"><span class="s tl"></span><span class="s tr"></span></span>
+									<div class="inner">
+										<div class="bd">
+											<h1>Events &amp; Presentations</h1>
+											<div>
+												<div id="sitePageStylePageSubHeaderH2-products-1206" class="sitePageStylePageSubHeaderH2">
+												<span id="sitePageStylePageSubHeader-products-1206" class="sitePageStylePageSubHeader">
+												<p></p>
+												<div id="mainContent">
+													
+													  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1019-websitenoticeblock" class="block--website-notice-block block--website-notice-block--13136 block--content--website-notice-block block--content--website-notice-block--13136 block--5133daf8-82c5-422b-a620-b3a5936ced62 block--5133daf8-82c5-422b-a620-b3a5936ced62--13136 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div id="block-nir-pid1019-content" class="block--system-main-block block--system-main-block--13136 block--content--system-main-block block--content--system-main-block--13136 block--e3505ec4-594f-467c-b0df-c5ae710a25ba block--e3505ec4-594f-467c-b0df-c5ae710a25ba--13136 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--13136 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--13136 block--09ef5588-61ef-4e02-bf58-54a5ca795957 block--09ef5588-61ef-4e02-bf58-54a5ca795957--13136 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Upcoming Event</h2>
+    
+      <div data-block-uuid="09ef5588-61ef-4e02-bf58-54a5ca795957"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-8d2b0e19abf5167dbc14be7c2199d1c333e765f371f8197ed9390b3ca0f0bbb9">
+  
+    
+      
+      <div class="view-empty">
+      There are currently no events to display.
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--13136 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--13136 block--f4b20072-e3fc-43ed-a03f-6b937ef05963 block--f4b20072-e3fc-43ed-a03f-6b937ef05963--13136 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Archived Events</h2>
+    
+      <div data-block-uuid="f4b20072-e3fc-43ed-a03f-6b937ef05963"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-62e99ab41d8e2ddb8c9faa093edb205761168fba08201e6c537bc44dd25be448">
+  
+    
+      
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" scope="col"><a href="?field_nir_event_start_date_value_1=now&amp;sort_order=DESC&amp;order=field_nir_event_start_date&amp;sort=asc" title="sort by Date">Date</a></th>
+                                                  <th id="view-nothing-table-column" class="views-field views-field-nothing" scope="col">Event Details</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 05, 2020</br>8:00 am CST
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Tuesday Morning Corporation Second Quarter Fiscal 2020 Results Conference Call</h3>
+      </div>
+  <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/gw3yryvg" target="_blank">Listen to Webcast</a></div>
+    </div>
+
+    </div>
+            <div class="nir-events-summary-event-details-supporting-materials">
+          <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tuesdaymorning.com/static-files/d6c27642-ac99-4b2f-b677-5b7869cdcdf3" type="application/pdf; length=304695" title="Q2 FY20 TMC Non-GAAP tables for web posting.pdf">Non GAAP Tables Q2 2020</a></span><span class="filesize"> 304.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+    </div>
+      </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 05, 2019</br>8:00 am CST
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Tuesday Morning Corporation First Quarter Fiscal 2020 Results Conference Call</h3>
+      </div>
+  <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/8hxygw72" target="_blank">Listen to Webcast</a></div>
+    </div>
+
+    </div>
+            <div class="nir-events-summary-event-details-supporting-materials">
+          <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tuesdaymorning.com/static-files/58312504-81a9-4bc7-84d8-aadd2cac17dd" type="application/pdf; length=165629" title="Q1 FY20 TMC Non-GAAP tables for web posting.pdf">Non GAAP Tables Q1 2020</a></span><span class="filesize"> 165.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+    </div>
+      </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Oct 03, 2019</br>10:00 am EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>B. Riley FBR 5th Annual Consumer &amp; Media Conference</h3>
+      </div>
+  <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="http://www.wsw.com/webcast/brileyfbr4/tues/" target="_blank">Listen to Webcast</a></div>
+    </div>
+
+    </div>
+          </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Aug 22, 2019</br>8:00 am CDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Tuesday Morning Corporation Fourth Quarter Fiscal 2019 Results Conference Call</h3>
+      </div>
+  <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/dzf32ai3" target="_blank">Listen to Webcast</a></div>
+    </div>
+
+    </div>
+            <div class="nir-events-summary-event-details-supporting-materials">
+          <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tuesdaymorning.com/static-files/94ebcfc6-71b8-4824-9c87-3c3715b9a0dd" type="application/pdf; length=173791" title="2019 TMC Non-GAAP tables for web posting 10K.pdf">Non GAAP Tables Q4 2019</a></span><span class="filesize"> 173.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+    </div>
+      </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            May 07, 2019</br>8:00 am CDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Tuesday Morning Corporation Third Quarter Fiscal 2019 Results Conference Call </h3>
+      </div>
+  <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/ckuuwzya" target="_blank">Listen to webcast </a></div>
+    </div>
+
+    </div>
+            <div class="nir-events-summary-event-details-supporting-materials">
+          <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tuesdaymorning.com/static-files/7da4a519-da19-4e3b-86db-ca5c86064e8b" type="application/pdf; length=182802" title="2019_03 TMC Non-GAAP tables for web posting 10Q.pdf">Non GAAP Tables Q3 2019 </a></span><span class="filesize"> 182.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+    </div>
+      </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 31, 2019</br>8:00 am CST
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Tuesday Morning Corporation Second Quarter Fiscal 2019 Results Conference Call</h3>
+      </div>
+  <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/943tr43o" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          </div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 01, 2018</br>8:00 am CDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <h3>Tuesday Morning Corporation First Quarter Fiscal 2019 Results Conference Call </h3>
+      </div>
+  <div class="nir-events-widget-event-details-expanded summary-hidden">
+                    <div class="nir-events-summary-event-details-webcast">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/uof8vf99" target="_blank">Listen to webcast</a></div>
+    </div>
+
+    </div>
+          </div>
+</div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-assets-widget-assets-ul block--views-blockwidget-assets-widget-assets-ul--13136 block--contentmain--views-block--widget-assets-widget-assets-ul block--contentmain--views-block--widget-assets-widget-assets-ul--13136 block--496f969f-243e-4810-99a9-12fa0941a36e block--496f969f-243e-4810-99a9-12fa0941a36e--13136 block block-views block-views-blockwidget-assets-widget-assets-ul">
+  
+      <h2>Presentations</h2>
+    
+      <div data-block-uuid="496f969f-243e-4810-99a9-12fa0941a36e"><div class="view view-widget-assets view-id-widget_assets view-display-id-widget_assets_ul js-view-dom-id-d0c26197866fe4c54ecef11c12b5bb13f0ec05e1926334b1ac90a36b4d3a34ac">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-assets-widget-assets-ul" action="/events" method="get" id="views-exposed-form-widget-assets-widget-assets-ul" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions--3"><input data-drupal-selector="edit-submit-widget-assets" type="submit" id="edit-submit-widget-assets" value="Filter" class="button js-form-submit form-submit" />
+<input data-drupal-selector="edit-reset" type="submit" id="edit-reset--3" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <div class="item-list">
+  
+  <ul>
+
+          <li>
+<article role="article" class="node node--nir-asset--nir-unordered-list node--type-nir-asset node--view-mode-nir-unordered-list two-col-node-alt3">
+  
+  <h3 class="field__item">Current Investor Presentation - October 2019</h3>
+
+    <div>
+      <div class="asset-date">
+              
+
+  <span  class="field__item"><time datetime="2019-10-03T12:00:00Z" timezone="America/New_York" class="datetime">Oct 03, 2019</time>
+</span>
+
+                
+                
+                  </div>
+    
+    <div class="nir-docs">
+      
+      
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.tuesdaymorning.com/static-files/385fc787-0ba0-4b42-9144-778453b02a9c" type="application/pdf; length=5597655" title="Tuesday Morning Investor Relations October 2019 - FINAL.pdf">Current Investor Presentation - October 2019</a></span><span class="filesize"> 5.5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+    </div>
+    
+  </div>
+</article>
+</li>
+    
+  </ul>
+
+</div>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+												</div>
+												<div id="mainSidebar">
+													  <div class="region region-sidebar-last">
+    <div id="block-globalblockstatement" class="block-content--nir-global-block block-content--nir-global-block--14351 block--block-contentd5a06201-72e3-479c-9385-28eb5b0e4676 block--block-contentd5a06201-72e3-479c-9385-28eb5b0e4676--13136 block--sidebar-last--block-content--d5a06201-72e3-479c-9385-28eb5b0e4676 block--sidebar-last--block-content--d5a06201-72e3-479c-9385-28eb5b0e4676--13136 block--db60af4d-d327-48ed-8fbc-0619299a2ae5 block--db60af4d-d327-48ed-8fbc-0619299a2ae5--13136 block block-block-content block-block-contentd5a06201-72e3-479c-9385-28eb5b0e4676">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item">Following its successful financial and operational reorganization and emergence from Chapter 11, Tuesday Morning Corporation is now trading on the OTCQX under the symbol “TUEM” (OTCQX: TUEM).</div>
+      
+</div>
+      
+  </div>
+<div id="block-nir-pid1019-stockquote" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5876 block--sidebar-last--market-data-block__stock-quote block--sidebar-last--market-data-block__stock-quote--5876 block--b2414b66-5237-4160-bef4-edfa6df5230d block--b2414b66-5237-4160-bef4-edfa6df5230d--5876 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+    
+      <div class='quote-wrap user-toggle-off stock-quote__featured'>
+  <div class="quote-wrapper">
+                        	   <div id="wsh_miniQuote">
+
+		<h3 class="wsh_home center"></h3>
+		
+		<div class="wsh_miniQuote_Label">Price:</div>	
+		<div class="wsh_miniQuote_Data"></div>
+		<div class="wsh_clear"></div>
+		
+		<div class="wsh_miniQuote_Label">Change:</div>
+		<div class="wsh_miniQuote_Data "></div>
+		<div class="wsh_clear"></div>
+	 
+		<div class="wsh_miniQuote_Label">Day High:</div>
+		<div class="wsh_miniQuote_Data"></div>
+		<div class="wsh_clear"></div>
+		
+		<div class="wsh_miniQuote_Label">Day Low:</div>
+		<div class="wsh_miniQuote_Data"></div>
+		<div class="wsh_clear"></div>
+		
+		<div class="wsh_miniQuote_Label">Volume:</div>
+		<div class="wsh_miniQuote_Data"></div>
+		<div class="wsh_clear"></div>
+		
+		<div class="wsh_miniQuote_Date">6:27 AM EDT on Apr 26, 2021</div>
+	</div>
+
+    </div>
+</div>
+
+  </div>
+<div id="block-nir-pid1019-widgetstockchart-3" class="block--nir-stock-chart block--nir-stock-chart--5876 block--sidebar-last--nir-stock-chart block--sidebar-last--nir-stock-chart--5876 block--c4ea9921-dda6-4499-8fed-5d79f8624219 block--c4ea9921-dda6-4499-8fed-5d79f8624219--5876 block block-nir-stock-chart">
+  
+    
+      
+<img src="https://api.nasdaqomx.wallst.com/api/chart?display=mountain&symbol=TUEM.PK-TUEM&scale=linear&duration=1yr&frequency=1dy&gridLine=b&bgColor=ffffff&lineColor=22cdff&fillcolor=8ae4ff|ecfaff&width=243&height=110" width="243" height="110" ></img>
+
+  </div>
+<div id="block-nir-pid1019-widgetstockchart" class="block--nir-stock-chart block--nir-stock-chart--5876 block--sidebar-last--nir-stock-chart block--sidebar-last--nir-stock-chart--5876 block--01f9b5a8-0b05-460b-a98f-bd68f14390ef block--01f9b5a8-0b05-460b-a98f-bd68f14390ef--5876 block block-nir-stock-chart">
+  
+    
+      
+<img src="https://api.nasdaqomx.wallst.com/api/chart?display=mountain&symbol=TUEM.PK-TUEM&scale=linear&duration=3mo&frequency=1dy&gridLine=b&bgColor=ffffff&lineColor=75e0ff&fillcolor=6fdeff|eafbff&width=243&height=110" width="243" height="110" ></img>
+
+  </div>
+<div id="block-nir-pid1019-widgetstockchart-2" class="block--nir-stock-chart block--nir-stock-chart--5876 block--sidebar-last--nir-stock-chart block--sidebar-last--nir-stock-chart--5876 block--78acef5d-c7a7-4fef-bf4c-4ff43ecce6e9 block--78acef5d-c7a7-4fef-bf4c-4ff43ecce6e9--5876 block block-nir-stock-chart">
+  
+    
+      
+<img src="https://api.nasdaqomx.wallst.com/api/chart?display=mountain&symbol=TUEM.PK-TUEM&scale=linear&duration=6mo&frequency=1dy&gridLine=b&bgColor=ffffff&lineColor=22cdff&fillcolor=82e2ff|eafbff&width=243&height=110" width="243" height="110" ></img>
+
+  </div>
+<div id="block-nir-pid1019-stockradiobuttons" class="block-content--nir-global-block block-content--nir-global-block--13186 block--block-content5a178d72-a108-4080-9504-9a98018fcdba block--block-content5a178d72-a108-4080-9504-9a98018fcdba--13136 block--sidebar-last--block-content--5a178d72-a108-4080-9504-9a98018fcdba block--sidebar-last--block-content--5a178d72-a108-4080-9504-9a98018fcdba--13136 block--769b55e9-75db-4228-a413-11afd69f225a block--769b55e9-75db-4228-a413-11afd69f225a--13136 block block-block-content block-block-content5a178d72-a108-4080-9504-9a98018fcdba">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="wsh_minichart" id="ndq-tab-1" style="display: block;"><img alt="Intraday stock price graph" border="0" src="https://api.nasdaqomx.wallst.com/api/chart?display=mountain&amp;symbol=TUEM.PK-TUEM&amp;scale=linear&amp;duration=3mo&amp;frequency=1dy&amp;gridLine=b&amp;bgColor=ffffff&amp;lineColor=75e0ff&amp;fillcolor=6fdeff|eafbff&amp;width=243&amp;height=110" title="" /></div>
+
+<div id="ndq-tabs">
+<ul><li class="active"><input checked="checked" id="chart_months_3" name="chart_months" onclick="changeChart(3)" type="radio" value="3" />3 mo.</li>
+	<li><input id="chart_months_3" name="chart_months" onclick="changeChart(6)" type="radio" value="6" />6 mo.</li>
+	<li><input id="chart_months_3" name="chart_months" onclick="changeChart(12)" type="radio" value="12" />1 yr.</li>
+</ul></div>
+</div>
+      
+</div>
+      
+  </div>
+
+
+<nav role="navigation" aria-labelledby="block-nir-pid1019-shareholdertools-menu" id="block-nir-pid1019-shareholdertools" class="block--system-menu-blockshareholder-tools block--system-menu-blockshareholder-tools--5876 block--sidebar-last--system-menu-block--shareholder-tools block--sidebar-last--system-menu-block--shareholder-tools--5876 block--96530907-72af-4585-a3ab-a7553c3871d9 block--96530907-72af-4585-a3ab-a7553c3871d9--5876 block block-menu navigation block-system-menublock menu--shareholder-tools">
+            
+    <h2 id="block-nir-pid1019-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                              <ul data-block-uuid="96530907-72af-4585-a3ab-a7553c3871d9" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/printed-materials" data-drupal-link-system-path="node/5966">Printed Materials</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/email-alerts" data-drupal-link-system-path="node/5946">Email Alerts</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/download-library" data-drupal-link-system-path="node/6016">Download Library</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/rss-news-feeds" data-drupal-link-system-path="node/5951">RSS News Feeds</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+<div id="block-search-2" class="block--search-form block--search-form--5876 block--sidebar-last--search-form block--sidebar-last--search-form--5876 block--8fde2134-53cc-4ec7-8528-4db7faba3170 block--8fde2134-53cc-4ec7-8528-4db7faba3170--5876 block block-nir-search block-search-form">
+  
+      <h2>Search Investor</h2>
+    
+      <form data-block-uuid="8fde2134-53cc-4ec7-8528-4db7faba3170" action="/search" method="get" accept-charset="UTF-8">
+  <div class="js-form-item form-item js-form-type-search form-item-query js-form-item-query form-no-label">
+        <input type="search" name="query" size="60" maxlength="128" placeholder="keyword(s)" class="form-search required" required="required" aria-required="true" />
+
+        </div>
+<input type="submit" name="op" value="Search" class="button button--primary js-form-submit form-submit" />
+
+</form>
+
+  </div>
+
+  </div>
+
+												</div>
+												</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<span class="s top"><span class="s tl"></span><span class="s tr"></span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+ 
+<footer id="footer">
+        <div id="media_tracking"></div>
+        <div class="container">
+
+            <div class="footer_content">
+                <nav id="nav_footer">
+                    <div class="nav_footer_unique">
+                        <h5>Categories</h5>
+                        
+                        <ul class="dropdown_menu unique_finds">
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/bath-body">Bath and Body</a>
+                            </li>
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/bed">Bed</a>
+                            </li>
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/craft-supplies">Craft Supplies</a>
+                            </li>
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/dining-kitchen">Dining &amp; Kitchen</a>
+                            </li>
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/furniture">Furniture</a>
+                            </li>
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/gifts">Gifts &amp; More</a>
+                            </li>
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/gourmet-food">Gourmet Food</a>
+                            </li>
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/holiday-party">Holiday &amp; Party</a>
+                            </li>
+                            <li>
+                                <a class="home" href="https://www.tuesdaymorning.com/departments">Home Decor</a>
+                            </li>
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/luggage">Luggage</a>
+                            </li>
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/outdoor">Outdoor</a>
+                            </li>
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/pets">Pets</a>
+                            </li>
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/small-appliances">Small Appliances</a>
+                            </li>
+                            <li>
+                                <a class="home" href="http://www.tuesdaymorning.com/toys">Toys</a>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                        <hr>
+                        <ul>
+                            <li><a href="http://www.tuesdaymorning.com/brands">Our Departments</a></li>
+                            
+                            <li>
+                                <a target="_blank" href="https://www.tuesdaymorning.com/in-stores-now">In Stores Now</a>
+                            </li>
+                            <li>
+                                <a href="http://www.tuesdaymorning.com/inspireme">Inspiration</a>
+                            </li>
+                            <li><a href="https://www.tuesdaymorning.com/store-experience">How We Do It</a></li>
+                        </ul>
+
+
+                    </div>
+                    <div class="nav_footer_inspiration">
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="http://www.tuesdaymorning.com/corporate-information">Corporate Information</a></li>
+                            <li><a href="http://ir.tuesdaymorning.com/" target="_blank">Investor Relations</a></li>
+                            <li><a href="https://www.tuesdaymorning.com/update">Company Reorganization</a></li>
+                            <li><a href="https://www.tuesdaymorning.com/careers" target="_blank">Careers</a></li>
+                            <li><a href="http://www.tuesdaymorning.com/privacy-policy">Privacy Policy</a></li>
+                            <li><a href="http://www.tuesdaymorning.com//terms-of-use">Terms of Use</a></li>
+                            <li><a href="http://www.tuesdaymorning.com/accessibility-notice">ADA&nbsp;&nbsp;Accessibility Notice</a></li>
+                            <li><a href="http://www.tuesdaymorning.com/california-supply-chains-act">California Supply Chains Act</a></li>
+                             <li><a href="https://www.tuesdaymorning.com/CCPA">California Consumer Privacy Act </a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="nav_footer_pages">
+                        <h5>How Can We Help You?</h5>
+                        <ul>
+                            <li><a href="http://www.tuesdaymorning.com/contact-us">Contact Us</a></li>
+                            <li><a href="http://www.tuesdaymorning.com/return-policy">Return Policies</a></li>
+                            <li><a href="http://www.tuesdaymorning.com/pricing">Pricing</a></li>
+                            <li><a href="http://www.tuesdaymorning.com/product-information">Product Information/Recalls</a></li>
+                            <li><a href="http://www.tuesdaymorning.com/customer-service">Customer Service</a></li>
+                            <li class="phone-contact">Call: <a class="no_mobile" href="tel:18004570099">1-800-457-0099</a></li>
+                            <li class="open-time">Mon - Fri 8am - 5pm CST</li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </nav>
+            </div>
+
+            <div class="footer_social">
+                <div class="footer_social_inner">
+                    <div class="footer_brand">
+                                                <div class="logo-white-bg">
+                          <a href="https://www.tuesdaymorning.com/"><img alt="Tuesday Morning" title="Tuesday Morning" src="/sites/g/files/knoqqb10946/themes/site/nir_pid1019/client/images/logo-white.png"></a>
+                        </div>
+                  
+                    </div>
+
+              
+
+                          <div class="user_links">
+                          </div>
+                      
+                      
+            </div>
+
+                                 <p>
+                        </p>
+  <a class="facebook_link" href="https://www.facebook.com/TuesdayMorning?ref=ts" style="color: transparent;" target="_blank">Facebook</a>
+  <a class="twitter_link" href="http://twitter.com/#!/TuesdayMorning" style="color: transparent;" target="_blank">Twitter</a>
+  <a class="pinterest_link" href="https://www.pinterest.com/tuesdaymorning/" style="color: transparent;" target="_blank">Pinterest</a>
+  <a class="instagram_link" href="http://instagram.com/tuesdaymorning" style="color: transparent;" target="_blank">Instagram</a>
+
+                   </div>
+            </div>
+
+            <div class="clear"></div>
+        <!-- /.container -->
+
+        <div class="footer_copyright">
+            <div>We offer upscale, name brand closeouts for the home at un-paralleled savings.<br>Discover our ever changing selection of home furnishings, housewares, gifts, toys, pet accessories and much more.</div><br>
+            <p>© 2021
+            Tuesday Morning.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Content protected by United States and international copyright laws.</p>
+        </div>
+
+
+        
+ </footer>
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb2800";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/13136","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid1019\/override,nir_stock_chart\/nir_stock_chart.stockChartStyling,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid1019","theme_token":null},"ajaxTrustedUrl":{"\/events":true},"user":{"uid":0,"permissionsHash":"b78e1de4eaa3906ff32c6fd57b240d097f18b013fe19506942288bfd000a6a6c"}}</script>
+<script src="/sites/g/files/knoqqb10946/files/js/js_vpesyNviHjt4B1M4jhW5sXZuspQzFXwR9XPhohlebBE.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":370,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

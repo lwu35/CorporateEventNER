@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"72688270"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<link rel="shortlink" href="http://shareholders.stepstoneglobal.com/" />
+<meta property="og:site_name" content="StepStone Group Inc." />
+<link rel="canonical" href="https://shareholders.stepstonegroup.com/shareholder-relations/" />
+<meta property="og:type" content="website" />
+<meta name="description" content="The Investor Relations website contains information about StepStone Group Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta property="og:url" content="https://shareholders.stepstonegroup.com/shareholder-relations" />
+<meta property="og:title" content="Shareholder Relations | StepStone Group Inc." />
+<meta name="referrer" content="no-referrer" />
+<meta property="og:description" content="The Investor Relations website contains information about StepStone Group Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb51096/files/favicons.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://shareholders.stepstonegroup.com/shareholder-relations" />
+<link rel="revision" href="https://shareholders.stepstonegroup.com/shareholder-relations" />
+
+    <title>Shareholder Relations | StepStone Group Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51096/files/css/css_SQBKl25X50_ss2d0gozsTTn-Wxa9dWu131cAz6rP_-E.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51096/files/css/css_W7rvv2Sqih-cMHyAop_-IS9kiLkupn4pF1oORxjZoJg.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700,800" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb51096/files/css/css_SPrftobRWJFuXyxeeiMsZYAAzcYVVLvlHr9Dwfb5JAY.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51096/files/css/css_6hDFed7HTKFFcav2z3-UM4H9CeIPqYjcHCq5IkyMmfY.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Lato:400,400italic,700,300italic" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51096/files/css/css_9UaILB1wGlrELHkSTGac-R1WUgFf5NGky-t9pqObZYA.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb51096/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-78328932-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-78328932-1');
+</script>
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5806 path-frontpage page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<a href="index.html#skip-to-content" class="hide-txt">Skip to Content</a>
+<header role="banner">
+    <div class="top-bar sticky is-at-top is-stuck">
+        <div class="row">
+            <div class="top-bar-left">
+                                <a href="https://www.stepstoneglobal.com/" target="_blank">
+                    <img src="/sites/g/files/knoqqb51096/themes/site/nir_pid3598/dist/images/logo.png" alt="logo">
+                </a>
+                            </div>
+
+            <div class="top-bar-right">
+                <div class="title-bar hide-for-medium" data-hide-for="medium">
+                    <div data-responsive-toggle="main-menu">
+                        <button class="menu-icon" type="button" aria-label="Open Search" data-toggle></button>
+                    </div>
+                </div>
+                <div class="" id="main-menu">
+                                            
+
+                        
+                                <ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
+                                    
+          
+
+          
+                              <li class="active-trail">
+                                                  <a href="/">Overview</a>
+                                      </li>
+                                    
+          
+
+          
+                              <li class="has-submenu">
+                                                  <a href="/stock-information/stock-quote-chart">Stock Information</a>
+                                                        <ul class="submenu menu vertical" data-submenu>
+                                    
+          
+
+          
+                    <li class="side-menu__item">
+                              <a href="/stock-information/stock-quote-chart">Stock Quote/Chart</a>
+                                      </li>
+                              </ul>
+              
+                  </li>
+                                    
+          
+
+          
+                              <li class="has-submenu">
+                                                  <a href="/news-events/news-releases">News &amp; Events</a>
+                                                        <ul class="submenu menu vertical" data-submenu>
+                                    
+          
+
+          
+                    <li class="side-menu__item">
+                              <a href="/news-events/news-releases">News Releases</a>
+                                      </li>
+                                    
+          
+
+          
+                    <li class="side-menu__item">
+                              <a href="/news-events/shareholder-calendar">  Shareholder Calendar</a>
+                                      </li>
+                              </ul>
+              
+                  </li>
+                                    
+          
+
+          
+                              <li class="has-submenu">
+                                                  <a href="/financial-information/sec-filings">Financial Information</a>
+                                                        <ul class="submenu menu vertical" data-submenu>
+                                    
+          
+
+          
+                    <li class="side-menu__item">
+                              <a href="/financial-information/financial-results">Financial Results</a>
+                                      </li>
+                                    
+          
+
+          
+                    <li class="side-menu__item">
+                              <a href="/financial-information/sec-filings">SEC Filings</a>
+                                      </li>
+                              </ul>
+              
+                  </li>
+                                    
+          
+
+          
+                              <li class="has-submenu">
+                                                  <a href="/corporate-governance">Corporate Governance</a>
+                                                        <ul class="submenu menu vertical" data-submenu>
+                                    
+          
+
+          
+                    <li class="side-menu__item">
+                              <a href="/corporate-governance">Corporate Governance</a>
+                                      </li>
+                                    
+          
+
+          
+                    <li class="side-menu__item">
+                              <a href="/corporate-governance/management-team">Management Team</a>
+                                      </li>
+                                    
+          
+
+          
+                    <li class="side-menu__item">
+                              <a href="/corporate-governance/board-of-directors">Board of Directors</a>
+                                      </li>
+                                    
+          
+
+          
+                    <li class="side-menu__item">
+                              <a href="/corporate-governance/committee-composition">Committee Composition</a>
+                                      </li>
+                              </ul>
+              
+                  </li>
+                                    
+          
+
+          
+                              <li class="has-submenu">
+                                                  <a href="/shareholder-resources/shareholder-faqs">Shareholder Resources</a>
+                                                        <ul class="submenu menu vertical" data-submenu>
+                                    
+          
+
+          
+                    <li class="side-menu__item">
+                              <a href="/shareholder-resources/shareholder-faqs">Shareholder FAQs</a>
+                                      </li>
+                                    
+          
+
+          
+                    <li class="side-menu__item">
+                              <a href="/shareholder-resources/email-alerts">Email Alerts</a>
+                                      </li>
+                                    
+          
+
+          
+                    <li class="side-menu__item">
+                              <a href="/shareholder-resources/contact-shareholder-relations">Contact Shareholder Relations</a>
+                                      </li>
+                              </ul>
+              
+                  </li>
+                                    
+          
+
+          
+                              <li class="ndq-drawer-toggle">
+                                                    <a href="/search" class="ndq-search" aria-label="Search"><i class="fa fa-search fa-lg"></i></a>
+                                      </li>
+                                    
+                                  
+
+          
+                                    </ul>
+                      <div class="row ndq-search-bar" style="display:none;">
+                            <form class="views-exposed-form" data-drupal-selector="views-exposed-form-search-page-1" action="/search" method="get" id="views-exposed-form-search-page-1" accept-charset="UTF-8" data-drupal-form-fields="edit-query">
+                  <input data-drupal-selector="edit-query" type="search" id="edit-query" name="query" value="" size="30" class="form-text" placeholder="Search">
+                                    <button type="submit" class="button" aria-label="Submit search entry"></button>
+              </form>
+          </div>
+        
+
+
+
+    
+    
+                                    </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div role="main">
+            <div class="banner interior" id="skip-to-content">
+            <div class="row">
+
+                                    <h1>Shareholder Relations</h1>
+                            </div>
+        </div>
+    
+    <div id="ndq-content" class="ndq-5806">
+
+                                   <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid3598-content" class="block--system-main-block block--system-main-block--5806 block--content--system-main-block block--content--system-main-block--5806 block--3f08ab14-bd36-4f81-a52e-a9c5d0fc15bc block--3f08ab14-bd36-4f81-a52e-a9c5d0fc15bc--5806 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Shareholder Relations
+          </h1>
+    
+
+  <div>
+    
+<div class="panel-display sutro-double clearfix " >
+
+  <div class="">
+    <div class="row">
+      <div class="column medium-12 radix-layouts-header">
+        <div class="panel-panel-inner">
+          
+        </div>
+      </div>
+    </div>
+
+      <div class="row wrap">
+      <div class="">
+        <div class="column medium-6 radix-layouts-column1">
+          <div class="panel-panel-inner">
+            <div class="block-region-column1"><div class="block-content--nir-global-block block-content--nir-global-block--6116 block--block-contentf390be37-9ad7-4a7e-a354-7aad647bf74c block--block-contentf390be37-9ad7-4a7e-a354-7aad647bf74c--5806 block--column1--block-content--f390be37-9ad7-4a7e-a354-7aad647bf74c block--column1--block-content--f390be37-9ad7-4a7e-a354-7aad647bf74c--5806 block--62a3f554-e81b-4368-97e5-6d45e942029b block--62a3f554-e81b-4368-97e5-6d45e942029b--5806 block block-block-content block-block-contentf390be37-9ad7-4a7e-a354-7aad647bf74c">
+  
+      <h2>Corporate Profile</h2>
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item">StepStone Group is a global private markets investment firm focused on providing customized investment solutions and advisory and data services to our clients. We partner with our clients to develop and build private markets portfolios designed to meet their specific objectives across private equity, infrastructure, private debt and real estate asset classes.</div>
+      
+</div>
+      
+  </div>
+</div>
+          </div>
+        </div>
+        <div class="column medium-5 stock-quotes radix-layouts-column2">
+          <div class="panel-panel-inner">
+            <div class="block-region-column2"><div data-storage-id="node:5806:full:13526" data-uuid="ef6147b4-5c48-4bb5-a249-efadc198f426" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5806 block--column2--market-data-block__stock-quote block--column2--market-data-block__stock-quote--5806 block--ef6147b4-5c48-4bb5-a249-efadc198f426 block--ef6147b4-5c48-4bb5-a249-efadc198f426--5806 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+    
+      <div class='stock-quote stock-quote__short'>
+    <div class="quote-wrapper">
+                                                                
+            <div class="column medium-5"></div>
+            <div class="column medium-5 end">
+                                           </div>
+            </div>
+</div>
+
+
+  </div>
+<div class="block--nir-stock-chart block--nir-stock-chart--5806 block--column2--nir-stock-chart block--column2--nir-stock-chart--5806 block--b889e83c-5f5e-49c2-be87-06ca2d13e4d8 block--b889e83c-5f5e-49c2-be87-06ca2d13e4d8--5806 block block-nir-stock-chart">
+  
+    
+      
+<img src="https://api.nasdaqomx.wallst.com/api/chart?display=mountain&symbol=STEP.O-STEP&scale=linear&duration=1dy&frequency=15min&gridLine=n&bgColor=ffffff&lineColor=0c6286&fillcolor=ffffff|ffffff&width=100%&height=230&headerType=&amp;volume=0&amp;bgTransparent=0&amp;lineSizePrimary=2&amp;fontColor=000000" width="100%" height="230" ></img>
+
+  </div>
+<div class="block--attribution-block__stock-info-attribution__thomson-reuters block--attribution-block__stock-info-attribution__thomson-reuters--5806 block--column2--attribution-block__stock-info-attribution__thomson-reuters block--column2--attribution-block__stock-info-attribution__thomson-reuters--5806 block--2f58128a-1a49-4441-8f00-f948675b17d4 block--2f58128a-1a49-4441-8f00-f948675b17d4--5806 block block-nir-attribution-block block-attribution-block__stock-info-attribution__thomson-reuters">
+  
+    
+      <p>
+  Data Provided by Refinitiv. Minimum 15 minutes delayed.</p>
+
+  </div>
+</div>
+          </div>
+        </div>
+      </div>
+  </div>
+    
+        <div class="column primary press-releases">
+      <div class="row">
+        <div class="column medium-12 radix-layouts-middle">
+          <div class="panel-panel-inner">
+            <div class="block-region-middle"><div class="block--nir-news__widget block--nir-news__widget--5806 block--middle--nir-news__widget block--middle--nir-news__widget--5806 block--3af540cd-fdfd-4b45-b154-d5c0bb32e60c block--3af540cd-fdfd-4b45-b154-d5c0bb32e60c--5806 block block-nir-news block-nir-news__widget">
+  <div class="">
+    
+        
+
+              <div class="nir-widget">
+                    <h2 class="mimic-h3 text-center">News Releases</h2>
+      <hr>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list owl-carousel">
+              
+<div class="news-wrapper">
+  <div class="column medium-12 news-article">
+
+            
+        <div class="column medium-3"> <i class="fa fa-newspaper-o fa-4"></i> </div>
+        <div class="column medium-9">
+                             <a href="/news-releases/news-release-details/stepstone-group-bolsters-board-directors-appointment-valerie"><p class="news-title">StepStone Group Bolsters Board of Directors with Appointment of Valerie Brown</p></a>
+                            <p class="news-date">April 13, 2021</p>
+        </div>
+    
+
+    <div class="column medium-12">
+        
+        
+        
+        
+        
+            </div>
+
+
+
+
+  </div>
+</div>
+<div class="news-wrapper">
+  <div class="column medium-12 news-article">
+
+            
+        <div class="column medium-3"> <i class="fa fa-newspaper-o fa-4"></i> </div>
+        <div class="column medium-9">
+                             <a href="/news-releases/news-release-details/stepstone-real-estate-adds-frank-forster-managing-director"><p class="news-title">StepStone Real Estate Adds Frank Forster as Managing Director in Europe</p></a>
+                            <p class="news-date">March 30, 2021</p>
+        </div>
+    
+
+    <div class="column medium-12">
+        
+        
+        
+        
+        
+            </div>
+
+
+
+
+  </div>
+</div>
+<div class="news-wrapper">
+  <div class="column medium-12 news-article">
+
+            
+        <div class="column medium-3"> <i class="fa fa-newspaper-o fa-4"></i> </div>
+        <div class="column medium-9">
+                             <a href="/news-releases/news-release-details/stepstone-announces-closing-secondary-offering"><p class="news-title">StepStone Announces Closing of Secondary Offering</p></a>
+                            <p class="news-date">March 23, 2021</p>
+        </div>
+    
+
+    <div class="column medium-12">
+        
+        
+        
+        
+        
+            </div>
+
+
+
+
+  </div>
+</div>
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+          </div>
+</div>
+<div class="block-content--nir-global-block block-content--nir-global-block--6321 block--block-contentca33dd56-fdca-4626-adc1-40f1b8047b39 block--block-contentca33dd56-fdca-4626-adc1-40f1b8047b39--5806 block--middle--block-content--ca33dd56-fdca-4626-adc1-40f1b8047b39 block--middle--block-content--ca33dd56-fdca-4626-adc1-40f1b8047b39--5806 block--28378a23-12cf-466f-9a03-30f57e2c30a8 block--28378a23-12cf-466f-9a03-30f57e2c30a8--5806 block block-block-content block-block-contentca33dd56-fdca-4626-adc1-40f1b8047b39">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><a class="button inverted" href="/news-events/news-releases">View All</a></div>
+      
+</div>
+      
+  </div>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+          <div class="row wrap">
+        <div class="column medium-6 events radix-layouts-secondcolumn1">
+          <div class="panel-panel-inner">
+            <div class="block-region-secondcolumn1"><div class="block--nir-events__widget block--nir-events__widget--5806 block--secondcolumn1--nir-events__widget block--secondcolumn1--nir-events__widget--5806 block--9fdc82d4-4b55-42df-a5a0-922505cf6c6e block--9fdc82d4-4b55-42df-a5a0-922505cf6c6e--5806 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+                        <h2>Events</h2>
+        <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+          <div class="nir-widget--field nir-widget--event--date">
+          
+      
+      
+            February 9, 2021 5:00 PM EST
+      
+      </div>
+    
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q3-2021-stepstone-group-inc-earnings-conference-call" hreflang="en">Q3 2021 StepStone Group Inc. Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+
+
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://public.viavid.com/index.php?id=143253" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+          <div class="nir-widget--field nir-widget--event--date">
+          
+      
+      
+            November 10, 2020 5:00 PM EST
+      
+      </div>
+    
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q2-2021-stepstone-group-inc-earnings-conference-call" hreflang="en">Q2 2021 StepStone Group Inc. Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+
+
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://public.viavid.com/index.php?id=142156" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block-content--nir-global-block block-content--nir-global-block--6326 block--block-content80f79923-88fb-4180-8018-513c0045cd05 block--block-content80f79923-88fb-4180-8018-513c0045cd05--5806 block--secondcolumn1--block-content--80f79923-88fb-4180-8018-513c0045cd05 block--secondcolumn1--block-content--80f79923-88fb-4180-8018-513c0045cd05--5806 block--ec8cbd93-f6c9-4ec3-9733-b6e4a30d2b12 block--ec8cbd93-f6c9-4ec3-9733-b6e4a30d2b12--5806 block block-block-content block-block-content80f79923-88fb-4180-8018-513c0045cd05">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><a class="button" href="/news-events/shareholder-calendar">View All</a></div>
+      
+</div>
+      
+  </div>
+</div>
+          </div>
+        </div>
+        <div class="column medium-6 earnings-releases radix-layouts-secondcolumn2">
+          <div class="panel-panel-inner">
+            <div class="block-region-secondcolumn2"><div class="views-element-container block--views-blockwidget-bundled-content-block-1 block--views-blockwidget-bundled-content-block-1--5806 block--secondcolumn2--views-block--widget-bundled-content-block-1 block--secondcolumn2--views-block--widget-bundled-content-block-1--5806 block--8b593752-acaa-405e-aa84-d32286765bf2 block--8b593752-acaa-405e-aa84-d32286765bf2--5806 block block-views block-views-blockwidget-bundled-content-block-1">
+  
+      <h2>Latest Earnings</h2>
+    
+  <a href="#" class="show-all">Show all</a>
+      <div data-block-uuid="8b593752-acaa-405e-aa84-d32286765bf2"><div class="acc-wrap view view-widget-bundled-content view-id-widget_bundled_content view-display-id-block_1 js-view-dom-id-646ed4df28712ad73d9cb6cb85089675cca3e3d4a3a66119d1890b6563c97404">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-bundled-content-block-1" action="/" method="get" id="views-exposed-form-widget-bundled-content-block-1" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <div class="view-grouping">
+      <h2>2021</h2>
+    <div class="view-grouping-content">  <div class="acc-title">Q3</div>
+  <div class="acc-body visually-hidden">
+          <div class="views-row ">
+      <div class="views-field views-field-field-nir-bundle-content"><div class="field-content"><div class="item-list"><ul><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item webcast-link"><a href="/events/event-details/q3-2021-stepstone-group-inc-earnings-conference-call" hreflang="en">Q3 2021 StepStone Group Inc. Earnings Conference Call</a></div>
+      
+  </div>
+</div>
+</li><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item html-link"><a href="/news-releases/news-release-details/stepstone-group-reports-third-quarter-fiscal-2021-results" hreflang="en">StepStone Group Reports Third Quarter Fiscal 2021 Results</a></div>
+      
+  </div>
+</div>
+</li><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item">  <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://shareholders.stepstonegroup.com/static-files/2b1d61fa-0558-464d-a724-3a25ff4c0b88" type="application/pdf; length=780236" title="STEP F3Q21 Earnings Presentation FINAL (2-9-21).pdf">Fiscal Year 2021 Third Quarter Earnings Presentation</a></span><span class="filesize"> 780.2 KB</span>
+</div>
+</div>
+      
+  </div>
+</div>
+</li><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item html-link"><a href="/sec-filings/sec-filing/10-q/0001796022-21-000007" hreflang="en">Form 10-Q</a></div>
+      
+  </div>
+</div>
+</li></ul></div></div></div>
+    </div>
+    </div>
+  <div class="acc-title">Q2</div>
+  <div class="acc-body visually-hidden">
+          <div class="views-row ">
+      <div class="views-field views-field-field-nir-bundle-content"><div class="field-content"><div class="item-list"><ul><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item webcast-link"><a href="/events/event-details/q2-2021-stepstone-group-inc-earnings-conference-call" hreflang="en">Q2 2021 StepStone Group Inc. Earnings Conference Call</a></div>
+      
+  </div>
+</div>
+</li><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item html-link"><a href="/news-releases/news-release-details/stepstone-group-reports-second-quarter-fiscal-2021-results" hreflang="en">StepStone Group Reports Second Quarter Fiscal 2021 Results</a></div>
+      
+  </div>
+</div>
+</li><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item">  <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://shareholders.stepstonegroup.com/static-files/2af5f527-0b3d-4d2a-be3a-25b1c11ab290" type="application/pdf; length=1729527" title="STEP F2Q21 Earnings Presentation.pdf">Fiscal Year 2021 Second Quarter Earnings Presentation</a></span><span class="filesize"> 1.7 MB</span>
+</div>
+</div>
+      
+  </div>
+</div>
+</li><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item html-link"><a href="/sec-filings/sec-filing/10-q/0001796022-20-000010" hreflang="en">Form 10-Q</a></div>
+      
+  </div>
+</div>
+</li></ul></div></div></div>
+    </div>
+    </div>
+</div>
+  
+</div>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+<div class="block-content--nir-global-block block-content--nir-global-block--6331 block--block-content607bd06e-d8a8-480c-be09-ea21d236033d block--block-content607bd06e-d8a8-480c-be09-ea21d236033d--5806 block--secondcolumn2--block-content--607bd06e-d8a8-480c-be09-ea21d236033d block--secondcolumn2--block-content--607bd06e-d8a8-480c-be09-ea21d236033d--5806 block--1b675eb6-e3d7-47b1-ba45-f6e376b1231b block--1b675eb6-e3d7-47b1-ba45-f6e376b1231b--5806 block block-block-content block-block-content607bd06e-d8a8-480c-be09-ea21d236033d">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><a class="button" href="/financial-information/financial-results">View Earnings</a></div>
+      
+</div>
+      
+  </div>
+</div>
+          </div>
+        </div>
+      </div>
+    
+      </div>
+
+</div><!-- /.sutro-double -->
+
+  </div>
+</article>
+
+  </div>
+<div id="block-nir-pid3598-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5806 block--content--website-notice-block block--content--website-notice-block--5806 block--17132a78-0191-4e5e-b69c-1fa893fa7b14 block--17132a78-0191-4e5e-b69c-1fa893fa7b14--5806 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+
+  </div>
+
+                        </div>
+
+
+    <!-- row wrap-->
+
+    <div class="" id="search-field">
+        <div class="row">
+            <form class="views-exposed-form" data-drupal-selector="views-exposed-form-search-page-1" action="/search" method="get" id="views-exposed-form-search-page-1" accept-charset="UTF-8" data-drupal-form-fields="edit-query">
+                <input data-drupal-selector="edit-query" type="search" id="edit-query" name="query" value="" size="30" class="form-text" placeholder="Search">
+                                <button type="submit" class="button" aria-label="Submit search entry"></button>
+            </form>
+        </div>
+    </div>
+
+            
+
+<div class="column large secondary ndq-tools" role="complementary">
+                        
+    <h2 class="visually-hidden" id="block-stepstoneinvestortools-menu">StepStone - Investor Tools</h2>
+    
+
+                        <div class="row text-center tool-wrap">
+                                                  <div class="column">
+            <a href="/shareholder-services/rss-feeds" class="rss"><i class="fa fa-rss"></i>
+                <span>RSS Feeds</span>
+            </a>
+        </div>
+                                                        <div class="column">
+            <a href="" class="print print-page"><i class="fa fa-print print-page"></i>
+                <span>Print Page</span>
+            </a>
+        </div>
+                                                        <div class="column">
+            <a href="" class="share gcs-share"><i class="fa fa-share gcs-share"></i>
+                <span>Share</span>
+            </a>
+        </div>
+                                                      <div class="column">
+            <a href="/shareholder-resources/email-alerts" class="envelope"><i class="fa fa-envelope"></i>
+                <span>Email Alerts</span>
+            </a>
+        </div>
+                        </div>
+          
+
+
+
+
+    </div>
+    
+</div>
+<!-- role main -->
+
+<footer role="contentinfo">
+    <div class="column primary footer-global">
+        <div class="row">
+            <div class="medium-6 columns">
+                <ul class="menu float-left">
+                                            <li class="menu-text">Copyright &#169; 2021 StepStone Group Inc. All rights reserved.</li>
+                                    </ul>
+            </div>
+                    </div>
+    </div>
+</footer>
+
+
+<div class="gcs-share-modal" style="display:none;">
+    <ul class="lf-share">
+        <li>
+            <a class="icon ndqicon-fb" href="http://www.facebook.com/share.php?u=https://shareholders.stepstonegroup.com/shareholder-relations&t=StepStone Group Inc. - Shareholder Relations"
+               onclick="window.open('http://www.facebook.com/share.php?u=https://shareholders.stepstonegroup.com/shareholder-relations&t=StepStone Group Inc. - Shareholder Relations','Facebook','resizable=yes,scrollbars=yes,width=900,height=570'); return false;"
+               alt="Facebook" title="Facebook" aria-label="Facebook">Facebook</a>
+        </li>
+
+        <li>
+            <a class="icon ndqicon-tw" href="http://twitter.com/home?status=StepStone Group Inc. - Shareholder Relations+https://shareholders.stepstonegroup.com/shareholder-relations"
+               onclick="window.open('http://twitter.com/home?status=StepStone Group Inc. - Shareholder Relations+https://shareholders.stepstonegroup.com/shareholder-relations','Twitter','resizable=yes,scrollbars=yes,width=900,height=570'); return false;"
+               alt="Twitter" title="Twitter" aria-label="Twitter">Twitter</a>
+        </li>
+
+        <li>
+            <a class="icon ndqicon-linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url=https://shareholders.stepstonegroup.com/shareholder-relations&title=StepStone Group Inc. - Shareholder Relations"
+               onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=https://shareholders.stepstonegroup.com/shareholder-relations&title=StepStone Group Inc. - Shareholder Relations','LinkedIn','resizable=yes,scrollbars=yes,width=900,height=570'); return false;"
+               alt="LinkedIn" title="LinkedIn" aria-label="LinkedIn">LinkedIn</a>
+        </li>
+
+        <li>
+            <a class="icon ndqicon-google-plus" href="https://plus.google.com/share?url=https://shareholders.stepstonegroup.com/shareholder-relations?&amp;t=StepStone Group Inc. - Shareholder Relations"
+               onclick="window.open('https://plus.google.com/share?url=https://shareholders.stepstonegroup.com/shareholder-relations?&amp;t=StepStone Group Inc. - Shareholder Relations','GooglePlus','resizable=yes,scrollbars=yes,width=900,height=570'); return false;"
+               alt="Google" title="GooglePlus" aria-label="GooglePlus">Google+</a>
+        </li>
+    </ul>
+</div>
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgstepstonegroupinc";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5806","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en","themeUrl":"sites\/g\/files\/knoqqb51096\/themes\/site\/nir_pid3598"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid3598\/override,nir_stock_chart\/nir_stock_chart.stockChartStyling,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid3598","theme_token":null},"ajaxTrustedUrl":{"\/shareholder-relations":true},"user":{"uid":0,"permissionsHash":"038eea74ae0d12b1ee5ec1c2abd71229e7a13c396dd1432a11e7623ca0363223"}}</script>
+<script src="/sites/g/files/knoqqb51096/files/js/js_kZFDg8J4SUzmtrbOKchprf3AEYZ0mkVjdHfzsYCTJGw.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    <script>(function(){var s = document.createElement('script'),e = ! document.body ? document.querySelector('head') : document.body;s.src = 'https://acsbapp.com/apps/app/assets/js/acsb.js';s.async = s.defer = true;s.onload = function(){acsbJS.init({statementLink : '',feedbackLink : '',footerHtml : '',hideMobile : false,hideTrigger : false,language : 'en',position : 'right',leadColor : '#146FF8',triggerColor : '#146FF8',triggerRadius : '50%',triggerPositionX : 'right',triggerPositionY : 'bottom',triggerIcon : 'default',triggerSize : 'medium',triggerOffsetX : 20,triggerOffsetY : 20,mobile : {triggerSize : 'small',triggerPositionX : 'right',triggerPositionY : 'center',triggerOffsetX : 0,triggerOffsetY : 0,triggerRadius : '50%'}});};e.appendChild(s);}());</script>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"72688270,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":528,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

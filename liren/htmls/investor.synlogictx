@@ -1,0 +1,2263 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"39077635"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Synlogic" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investor.synlogictx.com/news-and-events/event-calendar" />
+<meta property="og:title" content="Event Calendar - Synlogic" />
+<meta name="referrer" content="no-referrer" />
+<meta property="og:description" content="The Investor Relations website contains information about Synlogic&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb40461/files/favicon-32x32.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://investor.synlogictx.com/news-and-events/event-calendar" />
+<link rel="canonical" href="https://investor.synlogictx.com/news-and-events/event-calendar" />
+<link rel="shortlink" href="https://investor.synlogictx.com/node/5826" />
+<link rel="revision" href="https://investor.synlogictx.com/news-and-events/event-calendar" />
+
+    <title>Event Calendar | Investor Relations | Synlogic</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb40461/files/css/css_rfjm6CJ_0NMC2yDcg2-ndYMEx1qfufTwwHO3KArx5Oc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb40461/files/css/css_Z6zH24129uei-6H1C5fWdSwJbKMyvZWvInqShJAm5_g.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb40461/themes/site/nir_pid894/dist/css/settings.css?ver=5.4.8.1&amp;qs1fjx" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb40461/files/css/css_dW34Nc3D5tUav6pvLNDUijQw4rzCwSVm4G3Hnzuk_3Q.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans%3A400%2C700&amp;#038;ver=5.0.2" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb40461/themes/site/nir_pid894/dist/css/default.min.css?ver=1.9.1&amp;qs1fjx" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb40461/files/css/css_iGzHSmGuuALknfbLnkKqEJGRC2qvGNC-YtvALt5ZYrY.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb40461/themes/site/nir_pid894/dist/css/js_composer.min.css?ver=5.6&amp;qs1fjx" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb40461/themes/site/nir_pid894/dist/css/Defaults.css?ver=5.0.2&amp;qs1fjx" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb40461/files/css/css_47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb40461/files/css/css_89VFv_N-lt6j8bGUTVLj3DlLdK-qz_uodwXlvO8WKDY.css" />
+
+      
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb40461/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+        
+        </head>
+<body   class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5826 page-template-default page page-id-47 page-child parent-pageid-14 interior designing-synbiotic-medicines wpb-js-composer js-comp-ver-5.6 vc_responsive" data-gr-c-s-loaded="true">
+
+<div id="skip">
+  <a class="visually-hidden focusable skip-link" href="#main-menu">
+    Skip to main navigation
+  </a>
+</div>
+
+  <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+<div class="menu-wrap">
+  <nav class="navigation" role="navigation">
+      <div class="region region-side-links">
+    
+
+        
+                        <ul id="menu-main-menu" class="menu">
+                          <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.synlogictx.com/">Home</a>
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
+          <a href="https://www.synlogictx.com/synthetic-biology/">Synthetic Biology</a>
+                                <ul class="sub-menu menu-odd  menu-depth-1">
+                          <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.synlogictx.com/synthetic-biology/timeline-and-history/">The History of Synthetic Biology</a>
+                  </li>
+          </ul>
+  
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
+          <a href="https://www.synlogictx.com/living-medicines/">Living Medicines</a>
+                                <ul class="sub-menu menu-odd  menu-depth-1">
+                          <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.synlogictx.com/living-medicines/designing-synbiotic-medicines/">Designing Synthetic Biotic™ Medicines</a>
+                  </li>
+          </ul>
+  
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.synlogictx.com/pipeline-programs/">Pipeline + Programs</a>
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.synlogictx.com/for-patients/">For Patients</a>
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
+          <a href="https://www.synlogictx.com/our-people/">Our People</a>
+                                <ul class="sub-menu menu-odd  menu-depth-1">
+                          <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.synlogictx.com/our-people/leadership/">Leadership</a>
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.synlogictx.com/our-people/board-of-directors/">Board of Directors</a>
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.synlogictx.com/our-people/founders-and-advisors/">Founders and Advisors</a>
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.synlogictx.com/our-people/join-us/">Join Us</a>
+                  </li>
+          </ul>
+  
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page current_page_ancestor open menu-item-has-children">
+          <a href="/">Investors + Media</a>
+                                <ul class="sub-menu menu-odd  menu-depth-1">
+                          <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="/">Company Overview</a>
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page current_page_ancestor open menu-item-has-children">
+          <a href="/news-and-events/news-releases">News &amp; Events</a>
+                                <ul class="sub-menu menu-odd  menu-depth-1">
+                          <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="/news-and-events/news-releases">News Releases</a>
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page current_page_item">
+          <a href="/news-and-events/event-calendar">Event Calendar</a>
+                  </li>
+          </ul>
+  
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="/news-and-events/presentations">Presentations &amp; Publications</a>
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="/stock-information/stock-quote-chart">Stock Information</a>
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="/corporate-governance/governance-highlights">Corporate Governance</a>
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="/financials/sec-filings">Financials</a>
+                  </li>
+                      <li class="main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="/investor-resources/faqs">Investor Resources</a>
+                  </li>
+          </ul>
+  
+                  </li>
+          </ul>
+  
+
+
+    
+  </div>
+
+
+
+    <div class="menu-search-form">
+      <form class="search" method="get" action="https://www.synlogictx.com" role="search">
+        <div class="input-wrapper">
+          <div class="search-field">
+            <input class="search-input" type="text" name="s" placeholder="">
+          </div>
+          <button type="submit" role="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+      </form>
+    </div>
+
+  </nav>
+  <button class="close-button" id="close-button">Close Menu</button>
+  <div class="morph-shape" id="morph-shape" data-morph-open="M-1,0h101c0,0,0-1,0,395c0,404,0,405,0,405H-1V0z">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+      <path fill="#092f87" d="M-1,0h101c0,0-97.833,153.603-97.833,396.167C2.167,627.579,100,800,100,800H-1V0z"/>
+    </svg>
+  </div>
+</div>
+<div class="menu-button" id="open-button">
+  <div id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<div class="text-menu">
+  <span>explore the<br>possibilities</span>
+</div>
+<header class="header vc_row wpb_row vc_row-fluid outer-collapse" role="masthead" style="background-image:url(/sites/g/files/knoqqb40461/themes/site/nir_pid894/dist/images/main-bg.png);    background-position-x: 39%;">
+  <div class="wpb_column vc_column_container vc_col-sm-12">
+    <div class="vc_column-inner">
+      <div class="wpb_wrapper">
+        <div class="vc_row wpb_row top-menu ">
+          <div class="wpb_column vc_column_container vc_col-sm-4 logo">
+            <div class="vc_column-inner">
+              <div class="wpb_wrapper">
+                <h1 class="site-title"><a href="https://www.synlogictx.com/" rel="home"><span class="acc">Synlogic Therapeutics</span></a></h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vc_row wpb_row interior-title ">
+          <div class="wpb_column vc_column_container vc_col-sm-12">
+            <div class="vc_column-inner">
+              <div class="wpb_wrapper">
+                <h1 class="page-title">Investor Relations</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="outer-wrapper vc_row wpb_row vc_row-fluid outer-collapse">		<div class="wpb_column vc_column_container vc_col-sm-12">
+    <div class="vc_column-inner">
+      <div class="wpb_wrapper">
+
+
+
+        <main class="main vc_row vc_row-fluid outer-collapse" role="main">
+          <article id="post-47" class="post-47 page type-page status-publish has-post-thumbnail hentry">
+
+            <div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12">
+                <div class="vc_column-inner">
+                  <div class="wpb_wrapper">
+
+                    <h2 style="text-align: left" class="vc_custom_heading" >
+
+                                                                        Event Calendar
+                                              
+                    </h2>
+                      <div class="region region-secondary-nav">
+    
+
+        
+                
+
+
+<ul id="parent" class="menu">
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="https://www.synlogictx.com/" target="" rel="">Home</a>
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113 menu-item-has-children" >
+
+            <a href="https://www.synlogictx.com/synthetic-biology/" target="" rel="">Synthetic Biology</a>
+                            <ul id="menu-submenu-pipeline" class="menu">
+                
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="https://www.synlogictx.com/synthetic-biology/timeline-and-history/" target="" rel="">The History of Synthetic Biology</a>
+                    </li>
+
+
+
+    </ul>
+
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113 menu-item-has-children" >
+
+            <a href="https://www.synlogictx.com/living-medicines/" target="" rel="">Living Medicines</a>
+                            <ul id="menu-submenu-pipeline" class="menu">
+                
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="https://www.synlogictx.com/living-medicines/designing-synbiotic-medicines/" target="" rel="">Designing Synthetic Biotic™ Medicines</a>
+                    </li>
+
+
+
+    </ul>
+
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="https://www.synlogictx.com/pipeline-programs/" target="" rel="">Pipeline + Programs</a>
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="https://www.synlogictx.com/for-patients/" target="" rel="">For Patients</a>
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113 menu-item-has-children" >
+
+            <a href="https://www.synlogictx.com/our-people/" target="" rel="">Our People</a>
+                            <ul id="menu-submenu-pipeline" class="menu">
+                
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="https://www.synlogictx.com/our-people/leadership/" target="" rel="">Leadership</a>
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="https://www.synlogictx.com/our-people/board-of-directors/" target="" rel="">Board of Directors</a>
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="https://www.synlogictx.com/our-people/founders-and-advisors/" target="" rel="">Founders and Advisors</a>
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="https://www.synlogictx.com/our-people/join-us/" target="" rel="">Join Us</a>
+                    </li>
+
+
+
+    </ul>
+
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113 is-active current_page_ancestor open menu-item-has-children" >
+
+            <a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;">Investors + Media</a>
+                            <ul id="menu-submenu-pipeline" class="menu">
+                
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;">Company Overview</a>
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113 is-active current_page_ancestor open menu-item-has-children" >
+
+            <a href="/news-and-events/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">News &amp; Events</a>
+                            <ul id="menu-submenu-pipeline" class="menu">
+                
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="/news-and-events/news-releases" data-drupal-link-system-path="node/5816">News Releases</a>
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113 is-active current_page_item" >
+
+            <a href="/news-and-events/event-calendar" target="" rel="" data-drupal-link-system-path="node/5826" class="is-active">Event Calendar</a>
+                    </li>
+
+
+
+    </ul>
+
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="/news-and-events/presentations" target="" rel="" data-drupal-link-system-path="node/5831">Presentations &amp; Publications</a>
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="/stock-information/stock-quote-chart" target="" rel="" data-drupal-link-system-path="node/5911">Stock Information</a>
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="/corporate-governance/governance-highlights" target="" rel="" data-drupal-link-system-path="node/5836">Corporate Governance</a>
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="/financials/sec-filings" target="" rel="" data-drupal-link-system-path="node/6016">Financials</a>
+                    </li>
+
+
+
+            
+
+        <li  class=" menu-item menu-item-type-post_type menu-item-object-page menu-item-113" >
+
+            <a href="/investor-resources/faqs" target="" rel="" data-drupal-link-system-path="node/5941">Investor Resources</a>
+                    </li>
+
+
+
+    </ul>
+
+                    </li>
+
+
+
+    </ul>
+
+
+
+
+
+    
+  </div>
+
+                    <div class="wpb_text_column wpb_content_element " >
+                      <div class="wpb_wrapper">
+                        <div id="ndq-content" class="ndq-5826">
+
+                            <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid894-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5826 block--content--website-notice-block block--content--website-notice-block--5826 block--c1689f67-75ad-4df9-b218-e43ee76657a4 block--c1689f67-75ad-4df9-b218-e43ee76657a4--5826 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div id="block-nir-pid894-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--b4c45e06-5277-4a04-8d85-bcacba204d5f block--b4c45e06-5277-4a04-8d85-bcacba204d5f--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--events-grid-custom block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--e1c178ff-a0b9-448f-aed9-60c626aca59c block--e1c178ff-a0b9-448f-aed9-60c626aca59c--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <h2>
+      Upcoming Events
+    </h2>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list row">
+              <div  class="col-md-12">
+        There are currently no events to display.
+        </div>
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block-content--nir-global-block block-content--nir-global-block--8196 block--block-contentcfa32a8a-a63c-4ddf-87f5-4916abcdd145 block--block-contentcfa32a8a-a63c-4ddf-87f5-4916abcdd145--5826 block--contentmain--block-content--cfa32a8a-a63c-4ddf-87f5-4916abcdd145 block--contentmain--block-content--cfa32a8a-a63c-4ddf-87f5-4916abcdd145--5826 block--543f1d2b-52ba-444f-9797-4f50602c987e block--543f1d2b-52ba-444f-9797-4f50602c987e--5826 block block-block-content block-block-contentcfa32a8a-a63c-4ddf-87f5-4916abcdd145">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><br /></div>
+      
+</div>
+      
+  </div>
+<div class="block-content--nir-global-block block-content--nir-global-block--8196 block--block-contentcfa32a8a-a63c-4ddf-87f5-4916abcdd145 block--block-contentcfa32a8a-a63c-4ddf-87f5-4916abcdd145--5826 block--contentmain--block-content--cfa32a8a-a63c-4ddf-87f5-4916abcdd145 block--contentmain--block-content--cfa32a8a-a63c-4ddf-87f5-4916abcdd145--5826 block--67a4ecb9-d7c8-45c5-9b3f-d1e5bc5b18ce block--67a4ecb9-d7c8-45c5-9b3f-d1e5bc5b18ce--5826 block block-block-content block-block-contentcfa32a8a-a63c-4ddf-87f5-4916abcdd145">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><br /></div>
+      
+</div>
+      
+  </div>
+<div class="block--events-grid-custom block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--0a4a5b03-11ff-4311-ad65-84f1749f864e block--0a4a5b03-11ff-4311-ad65-84f1749f864e--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <h2>
+      Past Events
+    </h2>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list row">
+              
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Mar 25, 2021 at 8:30 AM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item"> Synlogic, Inc. Fourth Quarter and Full Year 2020 Financial Results Conference Call</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/jxf4in36" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogic-inc-fourth-quarter-and-full-year-2020-financial-results-conference" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Mar 9, 2021 at 4:00 PM EST
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">H.C. Wainwright Global Life Sciences Conference</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://journey.ct.events/view/714f2970-0fc4-48b3-ad0c-80caf103dae3" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/hc-wainwright-global-life-sciences-conference" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Mar 8, 2021 at 1:30 PM EST
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Chardan&#039;s 3rd Annual Microbiome Medicines Summit</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/chard7/register.aspx?conf=chard7&amp;page=sybx&amp;url=https%3A//wsw.com/webcast/chard7/sybx/1888694" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/chardans-3rd-annual-microbiome-medicines-summit" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Mar 4, 2021 at 9:10 AM EST
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Cowen 41st Annual Health Care Conference</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/cowen81/register.aspx?conf=cowen81&amp;page=sybx&amp;url=https%3A//wsw.com/webcast/cowen81/sybx/1988862" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/cowen-41st-annual-health-care-conference" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Feb 25, 2021 at 5:00 PM EST
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">SVB Leerink 10th Annual Global Healthcare Conference</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/svbleerink47/sybx/2699264" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/svb-leerink-10th-annual-global-healthcare-conference" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Feb 18, 2021 at 10:00 AM EST
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Cantor Fitzgerald Industry Panel</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://us02web.zoom.us/rec/share/hE75z6M2qB-mHmdAKxnN3dKILsWHu2kgkIW-_Lt8r2UsSvl7pmXJ4rbpDz7zK9tB.Y2Lqf_WvsCHWrc8H" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/cantor-fitzgerald-industry-panel" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Nov 13, 2020
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synthetic Biotic Medicines Designed for Life</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://vimeo.com/479010407" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synthetic-biotic-medicines-designed-life" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Nov 5, 2020 at 8:30 AM EST
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic, Inc. Third Quarter 2020 Financial Results Conference Call</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/5yiybtxn" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+              <div class="nir-widget--field nir-widget--event--support-materials">
+
+          
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.synlogictx.com/static-files/a9ab9a13-b195-4796-a528-16e16f1149a3" type="application/pdf; length=2146871" title="SYBX 3Q2020 Quarterly Presentation 11 05 2020.pdf">Synlogic, Inc. Third Quarter 2020 Financial Results Presentation</a></span><span class="filesize"> 2.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogic-inc-third-quarter-2020-financial-results-conference-call" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Sep 23, 2020 at 4:10 PM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Oppenheimer Fall Healthcare Life Sciences &amp; Med Tech Summit</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/oppenheimer5/sybx/2763846" target="_blank">Listen to webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/oppenheimer-fall-healthcare-life-sciences-med-tech-summit" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+              Sep 23 - Sep 24, 2020
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies Next Generation IBD Therapeutics Virtual Summit</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/jeff143/cyng/1850819" target="_blank">Listen to webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/jefferies-next-generation-ibd-therapeutics-virtual-summit" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Sep 15, 2020 at 12:00 PM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">HC Wainwright 22nd Annual Global Investor Conference</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/hcw7/sybx/1635638" target="_blank">Listen to webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/hc-wainwright-22nd-annual-global-investor-conference" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Aug 12, 2020
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Wedbush Healthcare Conference 2020</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/wedbush36/sybx/2270914" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/wedbush-healthcare-conference-2020" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Aug 10, 2020 at 2:00 PM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">BTIG Biotechnology Conference 2020</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/btig/register.aspx?conf=btig&amp;page=sybx&amp;url=https%3A//wsw.com/webcast/btig/sybx/index.aspx" target="_blank">Click for replay</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/btig-biotechnology-conference-2020" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Aug 10, 2020
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">BTIG Virtual Biotechnology Conference, Fireside Chat </div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/btig/sybx/" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/btig-virtual-biotechnology-conference-fireside-chat" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Aug 6, 2020 at 8:00 AM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic, Inc. Second Quarter 2020 Financial Results Conference Call</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/2ooixb9y" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+              <div class="nir-widget--field nir-widget--event--support-materials">
+
+          
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.synlogictx.com/static-files/b0865a9f-33bf-4d21-88c7-a01f90566c08" type="application/pdf; length=1784329" title="SYBX 2Q2020 Quarterly Presentation 08 06 2020.pdf">Synlogic, Inc. Second Quarter 2020 Financial Results Presentation</a></span><span class="filesize"> 1.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogic-inc-second-quarter-2020-financial-results-conference-call" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            May 27, 2020 at 12:30 PM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic’s Virtual R&amp;D Event</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/48zuutt6" target="_blank">Click here for replay</a></div>
+  </div>
+        </div>
+      
+      
+              <div class="nir-widget--field nir-widget--event--support-materials">
+
+          
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.synlogictx.com/static-files/ce901f45-b53c-46a7-aba7-9d6a0b0402ff" type="application/pdf; length=7386443" title="RD Day Final Version052720.pdf">R&amp;D Presentation</a></span><span class="filesize"> 7.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogics-virtual-rd-event" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            May 8, 2020 at 8:00 AM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic, Inc. First Quarter 2020 Financial Results Conference Call</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/o38dmqqm" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogic-inc-first-quarter-2020-financial-results-conference-call" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Mar 16, 2020 at 12:00 PM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic at the Chardan Microbiome Medicines Summit (This is a virtual event)</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://chardan.6connex.com/event/ChardanMicrobiomeMedicinesSummit/login" target="_blank">This webcast is no longer available</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogic-chardan-microbiome-medicines-summit-virtual-event" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Mar 12, 2020 at 5:00 PM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic, Inc. Fourth Quarter and Full Year 2019 Financial Results Conference Call</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/y4f5yc5y" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogic-inc-fourth-quarter-and-full-year-2019-financial-results-conference" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Mar 2, 2020 at 2:10 PM EST
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic at the Cowen 40th Annual Health Care Conference</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/cowen57/sybx/" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/cowen-40th-annual-health-care-conference" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Feb 25, 2020 at 1:00 PM EST
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic at the 9th Annual SVB Leerink Global Healthcare Conference</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/svbleerink34/sybx/" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/9th-annual-svb-leerink-global-healthcare-conference" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Nov 12, 2019 at 5:00 PM EST
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic, Inc.Third Quarter 2019 Financial Results Conference Call</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/t6rj6rfd" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogic-incthird-quarter-2019-financial-results-conference-call" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Oct 7, 2019 at 4:15 PM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic at the Chardan 3rd Annual Genetic Medicines Conference</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/chard4/sybx/" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogic-chardan-3rd-annual-genetic-medicines-conference" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Aug 13, 2019 at 9:45 AM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic at the 2019 Wedbush PacGrow Healthcare Conference</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/wedbush35/sybx/" target="_blank">Click here for webcast</a></div>
+  </div>
+        </div>
+      
+      
+              <div class="nir-widget--field nir-widget--event--support-materials">
+
+          
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.synlogictx.com/static-files/e94ac7e2-8c15-45fa-a558-836d99495531" type="application/pdf; length=2911843" title="SYBX_Corporate Presentation_WEDBUSH_August 2019v6.pdf">Synlogic at the 2019 Wedbush PacGrow Healthcare Conference Presentation</a></span><span class="filesize"> 2.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogic-2019-wedbush-pacgrow-healthcare-conference" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Aug 8, 2019 at 5:00 PM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic, Inc. Second Quarter 2019 Financial Results Conference Call</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/bpmgapes" target="_blank">Click here for webcast </a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogic-inc-second-quarter-2019-financial-results-conference-call" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Jul 15, 2019 at 8:00 AM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic, Inc. SYNB1618 Phase1/2a Clinical Trial Topline Data from PKU Patient Cohorts</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/t7ye8tjr" target="_blank">This webcast is no longer available</a></div>
+  </div>
+        </div>
+      
+      
+              <div class="nir-widget--field nir-widget--event--support-materials">
+
+          
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.synlogictx.com/static-files/5cce6e26-43bc-4875-ba6e-e950879366cd" type="application/pdf; length=1021807" title="Investor call on PKU Clinical Data 12Jul2019-FINALVersion.pdf">Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.synlogictx.com/static-files/b674a615-a574-449c-ab2c-b7ae0d3db191" type="application/pdf; length=253964" title="PKU_Patient_data results_FINALVERSION.pdf">Press Release</a></span><span class="filesize"> 253.9 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogic-inc-synb1618-phase12a-clinical-trial-topline-data-pku-patient-cohorts" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Jun 12, 2019 at 6:35 AM EDT
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Synlogic Teleconference to Discuss Collaboration with Ginkgo Bioworks</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/m6/p/aesvhzz3" target="_blank">This webcast is no longer available</a></div>
+  </div>
+        </div>
+      
+      
+              <div class="nir-widget--field nir-widget--event--support-materials">
+
+          
+          
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.synlogictx.com/static-files/49387e05-ba12-4e14-9d3a-29c0f6e543f2" type="application/pdf; length=2903942" title="SYBX_Corporate Presentation_June122019v5.pdf">Synlogic Corporate Presentation June 2019</a></span><span class="filesize"> 2.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.synlogictx.com/static-files/38150bb9-2c05-4e04-92eb-3768c10a772f" type="application/pdf; length=247312" title="Synlogic Ginkgo Press Release June122019_FINAL VERSION.pdf">Press Release</a></span><span class="filesize"> 247.3 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/synlogic-teleconference-discuss-collaboration-ginkgo-bioworks" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+<div  class="col-md-4 col-sm-12">
+
+  <div class="news_grid_column">
+    <div class="news_grid_sameH">
+      
+
+              <div class="nir-widget--field nir-widget--news--date-time">
+          
+      
+      
+            Nov 10, 2018 at 12:30 PM EST
+      
+        </div>
+      
+              <div class="news_grid_title">
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Investor and Analyst Event to Discuss Synlogic’s Immuno-Oncology Program</div>
+  </div>
+        </div>
+      
+
+
+      
+              <div class="nir-widget--field nir-widget--event--webcast">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/m6/p/orehug5u" target="_blank">This webcast is no longer available</a></div>
+  </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+
+      <div class="nir-widget--field nir-widget--news--read-more">
+        <a href="/events/event-details/investor-and-analyst-event-discuss-synlogics-immuno-oncology-program" title="Continue Reading">Continue Reading</a>
+      </div>
+
+  </div>
+
+
+</div>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+                                                      <div class="ndq-toolkit">
+                                <div class="region region-toolkit">
+    
+
+        
+                              <ul data-block-uuid="1d794f49-4539-4eea-a019-a3d114c018fb">
+                    <li>
+        <a  class="ndqicon-alerts" href="/index.php/investor-resources/email-alerts" title="Email Alerts" alt="Email Alerts">
+          <span>Email Alerts</span>
+        </a>
+              </li>
+                <li>
+        <a  class="ndqicon-mobile" href="/index.php/investor-resources/contact-ir" title="Contact IR" alt="Contact IR">
+          <span>Contact IR</span>
+        </a>
+              </li>
+                <li>
+        <a  class="ndqicon-rss" href="/index.php/rss-feeds" title="RSS Feeds" alt="RSS Feeds">
+          <span>RSS Feeds</span>
+        </a>
+              </li>
+          <li>
+        <a class="ndqicon-print" href="javascript:window.print();" rel="nofollow" title="Print Page" alt="Print Page">
+          <span>Print Page</span>
+        </a>
+      </li>
+      <li>
+        <a class="ndqicon-mail-3" href="#" onclick="window.location='mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href); return false;" rel="nofollow" title="Email Page" alt="Email Page">
+          <span>Email Page</span>
+        </a>
+      </li>
+    </ul>
+  
+
+
+    
+  </div>
+
+                            </div>
+                          
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </article>
+        </main>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer vc_row wpb_row vc_row-fluid outer-collapse" role="contentinfo">
+  <div class="wpb_column vc_column_container vc_col-xs-12">
+    <div class="vc_column-inner">
+      <div class="wpb_wrapper">
+        <div class="wpb_row synlogic">
+          <div class="wpb_column vc_column_container vc_col-xs-12 vc_col-sm-6 vc_col-lg-6 vc_col-lg-offset-1">
+            <div class="vc_column-inner">
+              <div class="wpb_wrapper">
+                <h1 class="site-title"><a href="https://www.synlogictx.com/" rel="home">
+                    <img src="/sites/g/files/knoqqb40461/themes/site/nir_pid894/dist/images/flogo.png" alt="Synlogic Therapeutics" width="200px" /></a></h1>
+              </div>
+            </div>
+          </div>
+          <div class="widget_text wpb_column vc_column_container vc_col-xs-12 vc_col-sm-3 vc_col-lg-2 "><div class="widget_text vc_column-inner"><div class="widget_text wpb_wrapper"><h4 class="acc">Contact</h4><div class="textwidget custom-html-widget"><h6>Synlogic</h6>
+
+                  <address>
+                    <p>
+                      301 Binney St #402<br>
+                      Cambridge, MA 02142
+                    </p>
+                  </address>
+
+                  <p>
+                    <a href="mailto:info@synlogictx.com">info@synlogictx.com</a><br>
+                    <a href="tel:6174019975" class="tel">(617) 401-9975</a>
+                  </p>
+
+                  <ul class="social">
+                    <li><a href="https://twitter.com/synlogic_tx" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i><span class="acc">Twitter</span></a></li>
+                    <li><a href="https://www.linkedin.com/company/synlogic-therapeutics/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i><span class="acc">LinkedIn</span></a></li>
+                  </ul></div></div></div></div><div class="widget_text wpb_column vc_column_container vc_col-xs-12 vc_col-sm-3 vc_col-lg-2 "><div class="widget_text vc_column-inner"><div class="widget_text wpb_wrapper"><h4 class="acc">Privacy and Terms</h4><div class="textwidget custom-html-widget"><p>
+                    &copy; 2018 Synlogic
+                    <br>
+                    <a href="https://www.synlogictx.com/privacy-policy/">Privacy Policy</a>
+                  </p></div></div></div></div>					</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+  </div>
+
+
+  <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb2745";</script>
+<script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid894\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid894","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"00fc1e3b39957c6a36dd368b8386b5f6fe87e2ca11e420c27eab02dc39e738bc"}}</script>
+<script src="/sites/g/files/knoqqb40461/files/js/js_x4WubvAIHRhe9q4QIDLlVOWh6gqBZjdzNRBs8oC2o_k.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+  
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"39077635,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":734,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Halliburton" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.halliburton.com/news-and-events/event-calendar" />
+<meta property="og:title" content="Events Calendar - Halliburton" />
+<meta property="og:description" content="The Investor Relations website contains information about Halliburton&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb59961/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://ir.halliburton.com/news-and-events/event-calendar" />
+<link rel="canonical" href="https://ir.halliburton.com/news-and-events/event-calendar" />
+<link rel="shortlink" href="https://ir.halliburton.com/node/5826" />
+<link rel="revision" href="https://ir.halliburton.com/news-and-events/event-calendar" />
+
+    <title>Events Calendar - Halliburton</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb59961/files/css/css_rfjm6CJ_0NMC2yDcg2-ndYMEx1qfufTwwHO3KArx5Oc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb59961/files/css/css__lTwU8eMrcNteef-FSSuoNdV3JDZpLEVIU5WGsmVLEk.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb59961/files/css/css_e2Iue4GB0Dn3plSYwdm1ga1qE1SJWqCEu6Mg2fUSsU4.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb59961/files/css/css_E4ybw-906DW_FnsUCpNnfVr5e7nuicR43uXIz8QWhoM.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb59961/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5826 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <header class="hdr-primary fixed">
+    <button class="hdr-menu-toggle">
+        <span class="sr-only">Toggle Primary Navigation</span>
+        <i class="icon icon-cross"></i>
+        <i class="icon icon-hamburger"></i>
+    </button>
+    <a href="https://www.halliburton.com/" class="logo" rel="home">
+        <img src="/sites/g/files/knoqqb59961/themes/site/nir_pid2107/dist/images/logos/halliburton-logo.svg" alt="Halliburton"/>
+    </a>
+    <div class="hdr-links" id="headerLinks">
+        <nav class="primary-nav" role="navigation">
+            <ul>
+                <li class="primary-nav-item parent">
+                    <a href="#" class="primary-nav-link" aria-haspopup="true" aria-expanded="false" tabindex="0">Subsurface</a>
+
+
+
+                    <style> .subnav-hidden { visibility: hidden; opacity: 0; } body.xf-web-container .subnav-hidden { visibility: visible; opacity: 1; } </style>
+                    <div class="sub-nav subnav-hidden">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-offset-1 col-md-4 col-lg-3 col-nav">
+                                    <nav role="navigation">
+                                        <ul class="sub-nav-secondary">
+                                            <li class="back"><a href="" class="sub-nav-link">Back</a></li>
+                                            <li class="category">Subsurface Testing</li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/subsurface/formation-evaluation.html" target="_self" class="sub-nav-link false">Formation Evaluation</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Formation Evaluation</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/surface-data-logging.html" target="_self" class="sub-nav-link false">Surface Data Logging</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/logging-while-drilling.html" target="_self" class="sub-nav-link false">Logging-While-Drilling</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/wireline-openhole-logging.html" target="_self" class="sub-nav-link false">Wireline Openhole Logging</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/wireline-cased-hole-logging.html" target="_self" class="sub-nav-link false">Wireline Cased Hole Logging</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/digital-slickline.html" target="_self" class="sub-nav-link false">Digital Slickline</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/borehole-seismic.html" target="_self" class="sub-nav-link false">Borehole Seismic</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation.html" target="_self" class="action-link false">VIEW ALL FORMATION EVALUATION</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/subsurface/reservoir-testing.html" target="_self" class="sub-nav-link false">Reservoir Testing</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Reservoir Testing</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/reservoir-testing/drill-stem-testing.html" target="_self" class="sub-nav-link false">Drill Stem Testing</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/reservoir-testing/surface-well-testing.html" target="_self" class="sub-nav-link false">Surface Well Testing</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/reservoir-testing/subsea-safety-systems.html" target="_self" class="sub-nav-link false">Subsea Safety Systems</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/subsurface/reservoir-testing.html" target="_self" class="action-link false">VIEW ALL RESERVOIR TESTING</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/subsurface/operations-data-analysis.html" target="_self" class="sub-nav-link false">Data Analysis &amp; Operations</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Data Analysis &amp; Operations</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/operations-data-analysis/applied-geoscience.html" target="_self" class="sub-nav-link false">Applied Geoscience</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/operations-data-analysis/digital-rock-analysis.html" target="_self" class="sub-nav-link false">Digital Rock Analysis</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/operations-data-analysis/coring-services.html" target="_self" class="sub-nav-link false">Coring Services</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/operations-data-analysis/real-time-operations.html" target="_self" class="sub-nav-link false">Real-Time Operations</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/subsurface/operations-data-analysis.html" target="_self" class="action-link false">VIEW ALL DATA ANALYSIS &amp; OPERATIONS</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.halliburton.com/en/integrated-services/consulting/subsurface-intelligence.html" target="_self" class="sub-nav-link false">SubSurface Intelligence</a>
+
+                                            </li>
+
+                                            <li class="cta">
+                                                <a class="btn btn-tertiary " href="https://www.halliburton.com/en/subsurface.html" target="_self">
+                                                    View All Subsurface
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-xs-12 col-md-7 col-lg-8 col-cards">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6 col-lg-4 col-card">
+                                            <div class="category">PixStar™ High-Resolution Ultrasonic Imaging Service</div>
+                                            <div class="card-sub-nav-feature ">
+                                                <img src="/sites/g/files/knoqqb59961/themes/site/nir_pid2107/dist/images/PixStar.jpg?width=1600&height=900&quality=85" alt="PixStar™ High-Resolution Ultrasonic Imaging Service"/>
+                                                <div class="card-body">
+                                                    <p class="card-title">High-resolution images for real-time wellbore stability</p>
+                                                    <a href="https://www.halliburton.com/en/products/pixstar-high-resolution-ultrasonic-imaging-service.html" target="_self" class="action-link false">Explore</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </li>
+
+                <li class="primary-nav-item parent">
+                    <a href="#" class="primary-nav-link" aria-haspopup="true" aria-expanded="false" tabindex="0">Well Construction</a>
+
+
+
+                    <style> .subnav-hidden { visibility: hidden; opacity: 0; } body.xf-web-container .subnav-hidden { visibility: visible; opacity: 1; } </style>
+                    <div class="sub-nav subnav-hidden">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-offset-1 col-md-4 col-lg-3 col-nav">
+                                    <nav role="navigation">
+                                        <ul class="sub-nav-secondary">
+                                            <li class="back"><a href="" class="sub-nav-link">Back</a></li>
+                                            <li class="category">Well Construction</li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/well-construction/drilling-completion-fluids.html" target="_self" class="sub-nav-link false">Drilling &amp; Completion Fluids</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Drilling &amp; Completion Fluids</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling-completion-fluids/baroid-drilling-fluids-solutions.html" target="_self" class="sub-nav-link false">Drilling Fluids Solutions</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling-completion-fluids/baroid-solids-control-solutions.html" target="_self" class="sub-nav-link false">Solids Control</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling-completion-fluids/baroid-separation-handling-solutions.html" target="_self" class="sub-nav-link false">Separation and Handling</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling-completion-fluids/baroid-reservoir-drilling-fluid-solutions.html" target="_self" class="sub-nav-link false">Reservoir Drilling Fluids</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling-completion-fluids.html" target="_self" class="action-link false">View All Drilling &amp; Completion Fluids</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/well-construction/drilling.html" target="_self" class="sub-nav-link false">Drilling</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Drilling</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling/drill-bits.html" target="_self" class="sub-nav-link false">Drill Bits</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling/halliburton-sperry-directional-drilling-solutions.html" target="_self" class="sub-nav-link false">Directional Drilling</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling/halliburton-sperry-drilling-optimization-solutions.html" target="_self" class="sub-nav-link false">Drilling Optimization</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling/drilling-automation.html" target="_self" class="sub-nav-link false">Drilling Automation</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling/managed-pressure-drilling-services.html" target="_self" class="sub-nav-link false">Managed Pressure Drilling Services</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling/pipe-recovery.html" target="_self" class="sub-nav-link false">Pipe Recovery</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling.html" target="_self" class="action-link false">View All Drilling</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/subsurface/formation-evaluation.html" target="_self" class="sub-nav-link false">Formation Evaluation</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Formation Evaluation</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/surface-data-logging.html" target="_self" class="sub-nav-link false">Surface Data Logging</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/logging-while-drilling.html" target="_self" class="sub-nav-link false">Logging-While-Drilling</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/wireline-openhole-logging.html" target="_self" class="sub-nav-link false">Wireline Openhole Logging</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/wireline-cased-hole-logging.html" target="_self" class="sub-nav-link false">Wireline Cased Hole Logging</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/digital-slickline.html" target="_self" class="sub-nav-link false">Digital Slickline</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/borehole-seismic.html" target="_self" class="sub-nav-link false">Borehole Seismic</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation.html" target="_self" class="action-link false">View All Formation Evaluation</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/well-construction/well-cementing.html" target="_self" class="sub-nav-link false">Well Cementing</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Well Cementing</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/well-cementing/cementing-equipment.html" target="_self" class="sub-nav-link false">Cementing Equipment</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/well-cementing/cementing-solutions.html" target="_self" class="sub-nav-link false">Cementing Solutions</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/well-cementing/cement-evaluation.html" target="_self" class="sub-nav-link false">Cement Evaluation</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/well-cementing/cementing-software.html" target="_self" class="sub-nav-link false">Cementing Software</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/well-cementing/cement-systems-additives.html" target="_self" class="sub-nav-link false">Cement Systems and Additives</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/well-cementing/casing-equipment.html" target="_self" class="sub-nav-link false">Casing Equipment</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/well-construction/well-cementing.html" target="_self" class="action-link false">View All Well Cementing</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/well-construction/well-construction-hardware-completions-solutions.html" target="_self" class="sub-nav-link false">Well Construction Hardware</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Well Construction Hardware</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/liner-hangers.html" target="_self" class="sub-nav-link false">Liner Hangers</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/multilateral-systems.html" target="_self" class="sub-nav-link false">Multilateral Systems</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/cementing-retainers-bridge-plugs.html" target="_self" class="sub-nav-link false">Cementing Retainers and Bridge Plugs</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/well-cementing/casing-equipment.html" target="_self" class="sub-nav-link false">Casing Equipment</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/frac-toe-sleeves.html" target="_self" class="sub-nav-link false">Frac/Toe Sleeves</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/annular-barrier-packers.html" target="_self" class="sub-nav-link false">Annular Barrier Packers</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/well-construction/well-construction-hardware-completions-solutions.html" target="_self" class="action-link false">View All Well Construction Hardware</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.halliburton.com/en/integrated-services/consulting/agile-field-development.html" target="_self" class="sub-nav-link false">Agile Field Development</a>
+
+                                            </li>
+
+                                            <li class="cta">
+                                                <a class="btn btn-tertiary " href="https://www.halliburton.com/en/well-construction.html" target="_self">
+                                                    View All Well Construction
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-xs-12 col-md-7 col-lg-8 col-cards">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6 col-lg-4 col-card">
+                                            <div class="category">LOGIX™ Automated Drilling Solution</div>
+                                            <div class="card-sub-nav-feature ">
+                                                <img src="/sites/g/files/knoqqb59961/themes/site/nir_pid2107/dist/images/HAL124775.jpg?width=1600&quality=85" alt="LOGIX™ Automated Drilling Solution"/>
+                                                <div class="card-body">
+                                                    <p class="card-title">Smart design meets drilling automation</p>
+                                                    <a href="https://www.halliburton.com/en/products/logix-automated-drilling-solution.html" target="_self" class="action-link false">Explore</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </li>
+
+                <li class="primary-nav-item parent">
+                    <a href="#" class="primary-nav-link" aria-haspopup="true" aria-expanded="false" tabindex="0">Completions</a>
+
+
+
+                    <style> .subnav-hidden { visibility: hidden; opacity: 0; } body.xf-web-container .subnav-hidden { visibility: visible; opacity: 1; } </style>
+                    <div class="sub-nav subnav-hidden">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-offset-1 col-md-4 col-lg-3 col-nav">
+                                    <nav role="navigation">
+                                        <ul class="sub-nav-secondary">
+                                            <li class="back"><a href="" class="sub-nav-link">Back</a></li>
+                                            <li class="category">Completions</li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/completions/well-completions.html" target="_self" class="sub-nav-link false">Well Completions</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Well Completions</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/intelligent-completions.html" target="_self" class="sub-nav-link false">Intelligent Completions</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.futureofcompletions.com" target="_self" class="sub-nav-link external-link">Digital Ecosystem</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/isolation-barrier-valves.html" target="_self" class="sub-nav-link false">Isolation Barrier Values</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/liner-hangers.html" target="_self" class="sub-nav-link false">Liner Hangers</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/multilateral-systems.html" target="_self" class="sub-nav-link false">Multilateral Systems</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/production-packers.html" target="_self" class="sub-nav-link false">Production Packers</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/subsurface-flow-controls.html" target="_self" class="sub-nav-link false">Subsurface Flow Controls</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/subsurface-safety-valves.html" target="_self" class="sub-nav-link false">Subsurface Safety Valves</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/sand-control.html" target="_self" class="sub-nav-link false">Sand Control</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/annular-barrier-packers.html" target="_self" class="sub-nav-link false">Annular Barrier Packers</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/frac-toe-sleeves.html" target="_self" class="sub-nav-link false">Frac / Toe Sleeves</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/frac-plugs.html" target="_self" class="sub-nav-link false">Frac Plugs</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/cementing-retainers-bridge-plugs.html" target="_self" class="sub-nav-link false">Cementing Retainers and Bridge Plugs</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/thru-tubing-intervention-tools.html" target="_self" class="sub-nav-link false">Thru-Tubing Intervention Tools</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/perforating.html" target="_self" class="sub-nav-link false">Perforating</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions.html" target="_self" class="action-link false">View All Well Completions</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/completions/wellbore-service-tools.html" target="_self" class="sub-nav-link false">Wellbore Service Tools</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Wellbore Service Tools</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/perforating.html" target="_self" class="sub-nav-link false">Perforating</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/abandonment/plug-abandonment-tools.html" target="_self" class="sub-nav-link false">Plug and Abandonment</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/completions/wellbore-service-tools.html" target="_self" class="action-link false">View All Wellbore Service Tools</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/completions/completion-fluids.html" target="_self" class="sub-nav-link false">Completion Fluids</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Completion Fluids</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/completion-fluids/cleanup-chemicals.html" target="_self" class="sub-nav-link false">Cleanup Chemicals</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/completion-fluids/corrosive-environment.html" target="_self" class="sub-nav-link false">Corrosive Environment</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/completion-fluids/stimulation-chemicals.html" target="_self" class="sub-nav-link false">Stimulation Chemicals</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/completion-fluids/filtercake-removal-technologies.html" target="_self" class="sub-nav-link false">Filtercake Removal Technologies</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/completion-fluids/filtration.html" target="_self" class="sub-nav-link false">Filtration</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/completion-fluids/packer-fluids.html" target="_self" class="sub-nav-link false">Packer Fluids</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/completions/completion-fluids.html" target="_self" class="action-link false">View All Completion Fluids</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/completions/stimulation.html" target="_self" class="sub-nav-link false">Stimulation</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Stimulation</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/stimulation/hydraulic-fracturing.html" target="_self" class="sub-nav-link false">Hydraulic Fracturing</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/stimulation/fracture-monitoring.html" target="_self" class="sub-nav-link false">Fracture Monitoring</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/stimulation/sand-logistics.html" target="_self" class="sub-nav-link false">Sand and Logistics</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/stimulation/fracture-modeling.html" target="_self" class="sub-nav-link false">Fracture Modeling</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/stimulation/acidizing-services.html" target="_self" class="sub-nav-link false">Acidizing Services</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/stimulation/stimulation-vessels.html" target="_self" class="sub-nav-link false">Stimulation Vessels</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/sand-control.html" target="_self" class="sub-nav-link false">Sand Control</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/stimulation/microdeformation-monitoring.html" target="_self" class="sub-nav-link false">Microdeformation Monitoring</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/completions/stimulation.html" target="_self" class="action-link false">View All Stimulation</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics.html" target="_self" class="sub-nav-link false">Well Intervention and Diagnostics</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Well Intervention and Diagnostics</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/coiled-tubing.html" target="_self" class="sub-nav-link false">Coiled Tubing</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/hydraulic-workover.html" target="_self" class="sub-nav-link false">Hydraulic Work Over</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/downhole-tools.html" target="_self" class="sub-nav-link false">Downhole Tools</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/pumping-nitrogen.html" target="_self" class="sub-nav-link false">Pumping and Nitrogen</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/custom-chemistry.html" target="_self" class="sub-nav-link false">Custom Chemistry</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/subsea-safety-system.html" target="_self" class="sub-nav-link false">Subsea Safety System (Large Bore)</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/surface-flowback-equipment.html" target="_self" class="sub-nav-link false">Surface Flowback Equipment</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling/pipe-recovery.html" target="_self" class="sub-nav-link false">Pipe Recovery</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/thru-tubing-intervention-tools.html" target="_self" class="sub-nav-link false">Thru-Tubing Intervention Tools</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/wireline-cased-hole-logging.html" target="_self" class="sub-nav-link false">Wireline Cased Hole Logging</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/digital-slickline.html" target="_self" class="sub-nav-link false">Digital Slickline</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics.html" target="_self" class="action-link false">View All Well Intervention and Diagnostics</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="cta">
+                                                <a class="btn btn-tertiary " href="https://www.halliburton.com/en/completions.html" target="_self">
+                                                    View All Completions
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-xs-12 col-md-7 col-lg-8 col-cards">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6 col-lg-4 col-card">
+                                            <div class="category">Future of Completions™</div>
+                                            <div class="card-sub-nav-feature ">
+                                                <img src="/sites/g/files/knoqqb59961/themes/site/nir_pid2107/dist/images/foc-big-bang.jpg?width=1600&height=900&quality=85" alt="Future of Completions™"/>
+                                                <div class="card-body">
+                                                    <p class="card-title">Advancing the speed of digital oilfield capabilities</p>
+                                                    <a href="https://www.futureofcompletions.com" target="_blank" class="action-link external-link">Explore</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </li>
+
+                <li class="primary-nav-item parent">
+                    <a href="#" class="primary-nav-link" aria-haspopup="true" aria-expanded="false" tabindex="0">Production</a>
+
+
+
+                    <style> .subnav-hidden { visibility: hidden; opacity: 0; } body.xf-web-container .subnav-hidden { visibility: visible; opacity: 1; } </style>
+                    <div class="sub-nav subnav-hidden">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-offset-1 col-md-4 col-lg-3 col-nav">
+                                    <nav role="navigation">
+                                        <ul class="sub-nav-secondary">
+                                            <li class="back"><a href="" class="sub-nav-link">Back</a></li>
+                                            <li class="category">Production</li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/production/artificial-lift.html" target="_self" class="sub-nav-link false">Artificial Lift</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Artificial Lift</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/production/artificial-lift/electric-submsersible-pumping-systems.html" target="_self" class="sub-nav-link false">Electric Submersible Pumping Systems</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/production/artificial-lift/horizontal-pumping-systems.html" target="_self" class="sub-nav-link false">Horizontal Pumping Systems</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/production/artificial-lift/geothermal-pumping-systems.html" target="_self" class="sub-nav-link false">Geothermal Pumping Systems</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/production/artificial-lift/mining-pumping-systems.html" target="_self" class="sub-nav-link false">Mining Pumping Systems</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/production/artificial-lift/municipal-pumping-systems.html" target="_self" class="sub-nav-link false">Municipal Pumping Systems</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/production/artificial-lift/variable-speed-drives.html" target="_self" class="sub-nav-link false">Variable Speed Drives</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/production/artificial-lift/well-surveillance-monitoring.html" target="_self" class="sub-nav-link false">Well Surveillance &amp; Monitoring</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/production/artificial-lift.html" target="_self" class="action-link false">View All Artificial Lift</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/production/specialty-chemicals.html" target="_self" class="sub-nav-link false">Specialty Chemicals</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Specialty Chemicals</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/production/specialty-chemicals/upstream-chemicals.html" target="_self" class="sub-nav-link false">Upstream</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/production/specialty-chemicals/midstream-chemicals.html" target="_self" class="sub-nav-link false">Midstream</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/production/specialty-chemicals/downstream-chemicals.html" target="_self" class="sub-nav-link false">Downstream</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/production/specialty-chemicals/contract-manufacturing-and-wholesale.html" target="_self" class="sub-nav-link false">Contract Manufacturing and Wholesale</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/production/specialty-chemicals.html" target="_self" class="action-link false">View All Specialty Chemicals</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/production/well-intervention.html" target="_self" class="sub-nav-link false">Well Intervention</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Well Intervention</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/coiled-tubing.html" target="_self" class="sub-nav-link false">Coiled Tubing</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/hydraulic-workover.html" target="_self" class="sub-nav-link false">Hydraulic Work Over</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/downhole-tools.html" target="_self" class="sub-nav-link false">Downhole Tools</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/pumping-nitrogen.html" target="_self" class="sub-nav-link false">Pumping and Nitrogen</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/custom-chemistry.html" target="_self" class="sub-nav-link false">Custom Chemistry</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/subsea-safety-system.html" target="_self" class="sub-nav-link false">Subsea Safety System (Large Bore)</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/project-management/integrated-well-intervention.html" target="_self" class="sub-nav-link false">Integrated Intervention</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/production/well-intervention/mature-fields-annular-pressure.html" target="_self" class="sub-nav-link false">Mature Fields Annular Pressure</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/abandonment/halliburton-slickline-services.html" target="_self" class="sub-nav-link false">Slickline Services</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/production/well-intervention.html" target="_self" class="action-link false">View All Well Intervention</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.halliburton.com/en/production/pre-commissioning-maintenance.html" target="_self" class="sub-nav-link false">Precommissioning &amp; Maintenance</a>
+
+                                            </li>
+                                            <li>
+                                                <a href="https://www.halliburton.com/en/integrated-services/consulting/reservoir-production-consulting.html" target="_self" class="sub-nav-link false">Reservoir and Production Consulting</a>
+
+                                            </li>
+
+                                            <li class="cta">
+                                                <a class="btn btn-tertiary " href="https://www.halliburton.com/en/production.html" target="_self">
+                                                    View All Production
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-xs-12 col-md-7 col-lg-8 col-cards">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6 col-lg-4 col-card">
+                                            <div class="category">X-Tend™ Acid Stimulation Service</div>
+                                            <div class="card-sub-nav-feature ">
+                                                <img src="/sites/g/files/knoqqb59961/themes/site/nir_pid2107/dist/images/X-Tend_-_Header.jpg?width=1600&height=900&quality=85" alt="X-Tend™ Acid Stimulation Service"/>
+                                                <div class="card-body">
+                                                    <p class="card-title">Optimizing stimulated reservoir contact</p>
+                                                    <a href="https://www.halliburton.com/en/products/x-tend-acid-stimulation-service.html" target="_self" class="action-link false">Explore</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </li>
+
+                <li class="primary-nav-item parent">
+                    <a href="#" class="primary-nav-link" aria-haspopup="true" aria-expanded="false" tabindex="0">Abandonment</a>
+
+
+
+                    <style> .subnav-hidden { visibility: hidden; opacity: 0; } body.xf-web-container .subnav-hidden { visibility: visible; opacity: 1; } </style>
+                    <div class="sub-nav subnav-hidden">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-offset-1 col-md-4 col-lg-3 col-nav">
+                                    <nav role="navigation">
+                                        <ul class="sub-nav-secondary">
+                                            <li class="back"><a href="" class="sub-nav-link">Back</a></li>
+                                            <li class="category">Abandonment</li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/integrated-services/project-management.html" target="_self" class="sub-nav-link false">Project Management</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Project Management</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/project-management/integrated-plug-abandonment.html" target="_self" class="sub-nav-link false">Integrated P&amp;A Services</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/integrated-services/project-management.html" target="_self" class="action-link false">View All Project Management</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/abandonment/plug-abandonment-tools.html" target="_self" class="sub-nav-link false">Plug &amp; Abandonment Tools</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Plug &amp; Abandonment Tools</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/completion-fluids/cleanup-chemicals.html" target="_self" class="sub-nav-link false">Cleanup Chemicals</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/well-cementing.html" target="_self" class="sub-nav-link false">Well Cementing</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/project-management/integrated-plug-abandonment.html" target="_self" class="sub-nav-link false">Integrated Plug &amp; Abandonment</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/cementing-retainers-bridge-plugs.html" target="_self" class="sub-nav-link false">Cementing Retainers and Bridge Plugs</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/wellbore-service-tools.html" target="_self" class="sub-nav-link false">Wellbore Service Tools</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/abandonment/plug-abandonment-tools.html" target="_self" class="action-link false">View All Plug &amp; Abandonment Tools</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/abandonment/halliburton-slickline-services.html" target="_self" class="sub-nav-link false">Slickline Services</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Slickline Services</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/digital-slickline.html" target="_self" class="sub-nav-link false">Digital Slickline Services</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/thru-tubing-intervention-tools.html" target="_self" class="sub-nav-link false">Thru-Tubing Intervention Tools</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/subsurface/formation-evaluation/wireline-cased-hole-logging.html" target="_self" class="sub-nav-link false">Cased Hole Logging</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-completions/perforating.html" target="_self" class="sub-nav-link false">Perforating</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/abandonment/halliburton-slickline-services.html" target="_self" class="action-link false">View All Slickline Services</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics.html" target="_self" class="sub-nav-link false">Well Intervention</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Well Intervention</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/coiled-tubing.html" target="_self" class="sub-nav-link false">Coiled Tubing</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/hydraulic-workover.html" target="_self" class="sub-nav-link false">Hydraulic Work Over</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/subsea-safety-system.html" target="_self" class="sub-nav-link false">Subsea Safety Systems</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics/surface-flowback-equipment.html" target="_self" class="sub-nav-link false">Surface Flowback Equipment</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/well-construction/drilling/pipe-recovery.html" target="_self" class="sub-nav-link false">Pipe Recovery</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/completions/well-intervention-and-diagnostics.html" target="_self" class="action-link false">View All Well Intervention</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.halliburton.com/en/abandonment/midstream-downstream-decommissioning.html" target="_self" class="sub-nav-link false">Midstream &amp; Downstream Decommissioning</a>
+
+                                            </li>
+
+                                            <li class="cta">
+                                                <a class="btn btn-tertiary " href="https://www.halliburton.com/en/abandonment.html" target="_self">
+                                                    View All Abandonment
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-xs-12 col-md-7 col-lg-8 col-cards">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6 col-lg-4 col-card">
+                                            <div class="category">Acoustic Conformance Xaminer® Service</div>
+                                            <div class="card-sub-nav-feature ">
+                                                <img src="/sites/g/files/knoqqb59961/themes/site/nir_pid2107/dist/images/Tool-Beams-1.jpg?width=1600&height=900&quality=85" alt="Acoustic Conformance Xaminer® Service"/>
+                                                <div class="card-body">
+                                                    <p class="card-title">Identify and pinpoint costly wellbore leaks</p>
+                                                    <a href="https://www.halliburton.com/en/products/acoustic-conformance-xaminer-service.html" target="_self" class="action-link false">Explore</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </li>
+
+                <li class="primary-nav-item parent">
+                    <a href="#" class="primary-nav-link" aria-haspopup="true" aria-expanded="false" tabindex="0">Integrated Services</a>
+
+
+
+                    <style> .subnav-hidden { visibility: hidden; opacity: 0; } body.xf-web-container .subnav-hidden { visibility: visible; opacity: 1; } </style>
+                    <div class="sub-nav subnav-hidden">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-offset-1 col-md-4 col-lg-3 col-nav">
+                                    <nav role="navigation">
+                                        <ul class="sub-nav-secondary">
+                                            <li class="back"><a href="" class="sub-nav-link">Back</a></li>
+                                            <li class="category">Integrated Services</li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/integrated-services/project-management.html" target="_self" class="sub-nav-link false">Project Management</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Project Management</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/project-management/integrated-plug-abandonment.html" target="_self" class="sub-nav-link false">Integrated P&amp;A Services</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/integrated-services/project-management.html" target="_self" class="action-link false">View All Project Management</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/integrated-services/well-control-prevention-services.html" target="_self" class="sub-nav-link false">Well Control &amp; Prevention Services</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Well Control &amp; Prevention Services</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/well-control-prevention-services/well-control-response.html" target="_self" class="sub-nav-link false">Well Control Response</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/well-control-prevention-services/prevention-services.html" target="_self" class="sub-nav-link false">Prevention Services</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/well-control-prevention-services/well-insurance-program.html" target="_self" class="sub-nav-link false">Control of Well Insurance Program</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/well-control-prevention-services/well-control-engineering.html" target="_self" class="sub-nav-link false">Well Control Engineering</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/well-control-prevention-services/wellhead-integrity-services.html" target="_self" class="sub-nav-link false">Wellhead Integrity Services</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/well-control-prevention-services/subsea-source-control.html" target="_self" class="sub-nav-link false">Subsea Source Control</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/integrated-services/well-control-prevention-services.html" target="_self" class="action-link false">View all Well Control &amp; Prevention Services</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/integrated-services/consulting.html" target="_self" class="sub-nav-link false">Consulting</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">Consulting</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/consulting/subsurface-intelligence.html" target="_self" class="sub-nav-link false">Subsurface Intelligence</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/consulting/agile-field-development.html" target="_self" class="sub-nav-link false">Agile Field Development</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/consulting/reservoir-production-consulting.html" target="_self" class="sub-nav-link false">Reservoir and Production Consulting</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/integrated-services/consulting/sustainable-energy-solutions.html" target="_self" class="sub-nav-link false">Sustainable Energy Solutions</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/integrated-services/consulting.html" target="_self" class="action-link false">View All Consulting</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="cta">
+                                                <a class="btn btn-tertiary " href="https://www.halliburton.com/en/integrated-services.html" target="_self">
+                                                    View All Integrated Services
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-xs-12 col-md-7 col-lg-8 col-cards">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6 col-lg-4 col-card">
+                                            <div class="category">Halliburton Consulting</div>
+                                            <div class="card-sub-nav-feature ">
+                                                <img src="/sites/g/files/knoqqb59961/themes/site/nir_pid2107/dist/images/CNS_HAL125545_v2.jpg?width=1600&height=900&quality=85" alt="Halliburton Consulting"/>
+                                                <div class="card-body">
+                                                    <p class="card-title">Digital integration for increased asset value</p>
+                                                    <a href="https://www.halliburton.com/en/integrated-services/consulting.html" target="_self" class="action-link false">Explore</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </li>
+
+                <li class="primary-nav-item parent">
+                    <a href="#" class="primary-nav-link" aria-haspopup="true" aria-expanded="false" tabindex="0">Software</a>
+
+
+
+                    <style> .subnav-hidden { visibility: hidden; opacity: 0; } body.xf-web-container .subnav-hidden { visibility: visible; opacity: 1; } </style>
+                    <div class="sub-nav subnav-hidden">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-offset-1 col-md-4 col-lg-3 col-nav">
+                                    <nav role="navigation">
+                                        <ul class="sub-nav-secondary">
+                                            <li class="back"><a href="" class="sub-nav-link">Back</a></li>
+                                            <li class="category">Software</li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/software/decisionspace-365-exploration-reservoir-development.html" target="_self" class="sub-nav-link false">DecisionSpace® 365 Exploration &amp; Reservoir Development</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">DecisionSpace® 365 Exploration &amp; Reservoir Development</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-exploration-reservoir-development/fairwayfinder.html" target="_self" class="sub-nav-link false">FairwayFinder</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-exploration-reservoir-development/assisted-lithology-interpretation.html" target="_self" class="sub-nav-link false">Assisted Lithology Interpretation</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-exploration-reservoir-development/full-scale-asset-simulation.html" target="_self" class="sub-nav-link false">Full-Scale Asset Simulation</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-exploration-reservoir-development/scalable-earth-modeling.html" target="_self" class="sub-nav-link false">Scalable Earth Modeling</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-exploration-reservoir-development/seismic-engine.html" target="_self" class="sub-nav-link false">Seismic Engine</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-exploration-reservoir-development/neftex-predictions.html" target="_self" class="sub-nav-link false">Neftex® Predictions</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-exploration-reservoir-development/geoscience-suite.html" target="_self" class="sub-nav-link false">Geoscience Suite</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-exploration-reservoir-development.html" target="_self" class="action-link false">View All DecisionSpace® 365 Exploration &amp; Reservoir Development</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/software/decisionspace-365-well-construction.html" target="_self" class="sub-nav-link false">DecisionSpace® 365 Well Construction</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">DecisionSpace® 365 Well Construction</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-well-construction/digital-well-program.html" target="_self" class="sub-nav-link false">Digital Well Program®</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-well-construction/holistic-field-development-planning.html" target="_self" class="sub-nav-link false">Holistic Field Development Planning®</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-well-construction/Real-time-well-engineering.html" target="_self" class="sub-nav-link false">Real-Time Well Engineering</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-well-construction/digital-well-operations.html" target="_self" class="sub-nav-link false">Digital Well Operations</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-well-construction/well-construction-suite.html" target="_self" class="sub-nav-link false">Well Construction Suite</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-well-construction.html" target="_self" class="action-link false">View All DecisionSpace® 365 Well Construction</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/software/decisionspace-365-production.html" target="_self" class="sub-nav-link false">DecisionSpace® 365 Production</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">DecisionSpace® 365 Production</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-production/digital-field-solver.html" target="_self" class="sub-nav-link false">Digital Field Solver</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-production.html" target="_self" class="action-link false">View All DecisionSpace® 365 Production</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a href="https://www.halliburton.com/en/software/decisionspace-365-information-management.html" target="_self" class="sub-nav-link false">DecisionSpace® 365 Information Management</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">DecisionSpace® 365 Information Management</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-information-management/integration-foundation.html" target="_self" class="sub-nav-link false">Integration Foundation</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a href="https://www.halliburton.com/en/software/decisionspace-365-information-management.html" target="_self" class="action-link false">View All DecisionSpace® 365 Information Management</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.halliburton.com/en/software/decisionspace-365-solutions.html" target="_self" class="sub-nav-link false">DecisionSpace® 365 SAS</a>
+
+                                            </li>
+                                            <li class="parent">
+                                                <a target="_self" class="sub-nav-link false">iEnergy®</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">iEnergy®</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/ienergy.html" target="_self" class="sub-nav-link false">iEnergy®</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a target="_self" class="action-link false"></a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="parent">
+                                                <a target="_self" class="sub-nav-link false">SmartDigital™</a>
+                                                <ul class="sub-nav-tertiary">
+                                                    <li class="back"><a href="#" class="sub-nav-link">Back</a></li>
+                                                    <li class="category">SmartDigital™</li>
+                                                    <li>
+                                                        <a href="https://www.halliburton.com/en/software/smartdigital.html" target="_self" class="sub-nav-link false">SmartDigital™</a>
+                                                    </li>
+
+                                                    <li class="cta">
+                                                        <a target="_self" class="action-link false"></a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="cta">
+                                                <a class="btn btn-tertiary " href="https://www.halliburton.com/en/software.html" target="_self">
+                                                    View All Software
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-xs-12 col-md-7 col-lg-8 col-cards">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6 col-lg-4 col-card">
+                                            <div class="category">DecisionSpace365 Solutions</div>
+                                            <div class="card-sub-nav-feature ">
+                                                <img src="/sites/g/files/knoqqb59961/themes/site/nir_pid2107/dist/images/DecisionSpace365_Header.jpg?width=1600&height=900&quality=85" alt="DecisionSpace365 Solutions"/>
+                                                <div class="card-body">
+                                                    <p class="card-title">A Cloud-Based, Subscription Service for E&amp;P Applications</p>
+                                                    <a href="https://www.halliburton.com/en/software/decisionspace-365-solutions.html" target="_self" class="action-link false">Explore</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <nav class="utility-nav" role="navigation">
+                            
+
+      
+                              <ul>
+                  <li>
+          <a href="https://www.halliburton.com/en/sustainability.html">Sustainability</a>
+                  </li>
+              <li>
+          <a href="https://jobs.halliburton.com" target="_blank" class="external-link">Careers</a>
+                  </li>
+              <li>
+          <a href="/investor-overview" data-drupal-link-system-path="node/5806">Investors</a>
+                  </li>
+          </ul>
+  
+
+
+    
+                    </nav>
+    </div>
+    <a href="https://www.halliburton.com/en/search-results" class="hdr-search">
+        <span class="sr-only">Search</span>
+    </a>
+</header><span class="secondary-listener"></span>
+<nav class="idm-navbar idm-navbar-light idm-navbar-expand-lg idm-section-nav idm-pr-3 idm-pr-xl-2" id="main-ir-nav">
+    <div class="idm-container-fluid idm-px-0">
+        <div class="idm-navbar-brand">
+            <a class="" href="/">Investors</a>
+        </div>
+        <button class="idm-navbar-toggler" type="button" data-toggle="collapse" data-target="#irNav" aria-controls="irNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="icon icon-cross"></i>
+            <i class="icon icon-hamburger"></i>
+        </button>
+                    <div class="idm-collapse idm-navbar-collapse" id="irNav">
+                
+
+      
+                              <ul data-block-uuid="5a56b65f-650b-41d5-9daf-206c814d78b3" class="idm-navbar-nav idm-justify-content-end idm-w-100">
+                            <li class="idm-nav-item idm-dropdown">
+            <a class="idm-nav-link idm-dropdown-toggle dropdown-toggle" href="https://www.halliburton.com/en-US/about-us/corporate-profile/default.html?node-id=hgeyxt5p" id="navbarDropdownMenuLink1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Company Information
+            </a>
+                                                    <div class="idm-dropdown-menu">
+                            <a class="idm-dropdown-item" href="https://www.halliburton.com/en-US/about-us/corporate-governance-guidelines.html?node-id=hgeyxt6e">
+            Corporate Governance
+          </a>
+                                                          <a class="idm-dropdown-item" href="https://www.halliburton.com/en/sustainability">
+            Sustainability
+          </a>
+                                                  </div>
+      
+                              </li>
+                                <li class="idm-nav-item idm-dropdown">
+            <a class="idm-nav-link idm-dropdown-toggle dropdown-toggle" href="/financial-information/sec-filings" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Financial Information
+            </a>
+                                                    <div class="idm-dropdown-menu">
+                            <a class="idm-dropdown-item" href="/financial-information/sec-filings">
+            SEC Filings
+          </a>
+                                                          <a class="idm-dropdown-item" href="/financial-information/annual-reports">
+            Annual Reports &amp; Proxies
+          </a>
+                                                          <a class="idm-dropdown-item" href="/financial-information/quarterly-results">
+            Quarterly Results &amp; Presentations
+          </a>
+                                                  </div>
+      
+                              </li>
+                                <li class="idm-nav-item idm-dropdown">
+            <a class="idm-nav-link idm-dropdown-toggle dropdown-toggle" href="/stock-information/stock-quote" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Stock Information
+            </a>
+                                                    <div class="idm-dropdown-menu">
+                            <a class="idm-dropdown-item" href="/stock-information/stock-quote">
+            Stock Quote
+          </a>
+                                                          <a class="idm-dropdown-item" href="/stock-information/stock-chart">
+            Stock Chart
+          </a>
+                                                          <a class="idm-dropdown-item" href="/stock-information/investment-calculator">
+            Investment Calculator
+          </a>
+                                                          <a class="idm-dropdown-item" href="/stock-information/dividend-history">
+            Dividend History
+          </a>
+                                                          <a class="idm-dropdown-item" href="/stock-information/analyst-coverage">
+            Analyst Coverage
+          </a>
+                                                          <a class="idm-dropdown-item" href="/stock-information/historical-price-lookup">
+            Historical Price Lookup
+          </a>
+                                                          <a class="idm-dropdown-item" href="/stock-information/earnings-estimates">
+            Earnings Estimates
+          </a>
+                                                  </div>
+      
+                              </li>
+                                <li class="idm-nav-item idm-dropdown">
+            <a class="idm-nav-link idm-dropdown-toggle dropdown-toggle" href="/news-and-events/event-calendar" id="navbarDropdownMenuLink4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              News &amp; Events 
+            </a>
+                                                    <div class="idm-dropdown-menu">
+                            <a class="idm-dropdown-item" href="/news-and-events/event-calendar">
+            Events Calendar
+          </a>
+                                                          <a class="idm-dropdown-item" href="/news-and-events/financial-news">
+            Financial News
+          </a>
+                                                  </div>
+      
+                              </li>
+                                <li class="idm-nav-item idm-dropdown">
+            <a class="idm-nav-link idm-dropdown-toggle dropdown-toggle" href="/shareholder-services/contact-ir" id="navbarDropdownMenuLink5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Shareholder Services
+            </a>
+                                                    <div class="idm-dropdown-menu">
+                            <a class="idm-dropdown-item" href="/shareholder-services/contact-ir">
+            IR Contacts
+          </a>
+                                                          <a class="idm-dropdown-item" href="/shareholder-services/transfer-agent">
+            Transfer Agent
+          </a>
+                                                          <a class="idm-dropdown-item" href="/shareholder-services/investor-faqs">
+            FAQs
+          </a>
+                                                          <a class="idm-dropdown-item" href="/shareholder-services/investor-toolkit">
+            Investor Toolkit
+          </a>
+                                                          <a class="idm-dropdown-item" href="/shareholder-services/email-alerts">
+            Email Alerts
+          </a>
+                                                  </div>
+      
+                              </li>
+                        </ul>
+      
+
+
+    
+            </div>
+            </div>
+</nav>
+
+
+        
+<section class="page-header page-header-no-image page-header-no-subtitle" >
+
+    <div class="header-body">
+                    <h1 class="headline fade-in animate">
+                                    Events Calendar
+                            </h1>
+        
+    </div>
+
+</section>
+    <section class="idm-py-5 idm-content" id="ndq-content">
+        <div class="idm-py-5 ndq-5826">
+              <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid2107-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--4dad2790-5e8f-46b0-9b6b-68d2f3b64d1e block--4dad2790-5e8f-46b0-9b6b-68d2f3b64d1e--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+    <div>
+    
+<div  class="panel-display sutro clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-header panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-header"><div class="block--grid-events-upcoming block--nir-events__widget block--nir-events__widget--5826 block--header--nir-events__widget block--header--nir-events__widget--5826 block--cf0c9c45-a87f-4547-b323-24b015e0acb6 block--cf0c9c45-a87f-4547-b323-24b015e0acb6--5826 block block-nir-events block-nir-events__widget">
+  
+    
+          <h3>Upcoming Events</h3>
+
+
+
+    <p>
+        More events are coming soon.
+    </p>
+
+
+
+  </div>
+<div class="block--grid-events block--nir-events__widget block--nir-events__widget--5826 block--header--nir-events__widget block--header--nir-events__widget--5826 block--8574ab03-63be-479f-b24c-b3171109df24 block--8574ab03-63be-479f-b24c-b3171109df24--5826 block block-nir-events block-nir-events__widget">
+  
+    
+          <h3>Past Events</h3>
+
+
+
+    <div class="idm-row">
+        
+
+
+
+
+
+<div class="idm-col-md-6">
+  <div class="idm-card idm-h-100 idm-gen-card">
+    <div class="idm-card-body idm-d-flex idm-flex-column">
+              <div class="text-a idm-small idm-font-weight-5">
+          
+      
+      
+            Apr 21, 2021 at 9:00 AM EDT
+      
+        </div>
+                    <h4>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Q1 2021 Halliburton Company Earnings Conference Call</div>
+  </div>
+        </h4>
+                                          <div class="idm-mt-auto webcast-link-wrapper">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/pq9aq7bp" target="_blank">Listen to Webcast</a></div>
+  </div>
+        </div>
+          </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="idm-col-md-6">
+  <div class="idm-card idm-h-100 idm-gen-card">
+    <div class="idm-card-body idm-d-flex idm-flex-column">
+              <div class="text-a idm-small idm-font-weight-5">
+          
+      
+      
+            Jan 19, 2021 at 9:00 AM EST
+      
+        </div>
+                    <h4>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Q4 2020 Halliburton Company Earnings Conference Call</div>
+  </div>
+        </h4>
+                                          <div class="idm-mt-auto webcast-link-wrapper">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/5r22divf" target="_blank">Listen to Webcast</a></div>
+  </div>
+        </div>
+          </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="idm-col-md-6">
+  <div class="idm-card idm-h-100 idm-gen-card">
+    <div class="idm-card-body idm-d-flex idm-flex-column">
+              <div class="text-a idm-small idm-font-weight-5">
+          
+      
+      
+            Oct 19, 2020 at 9:00 AM EDT
+      
+        </div>
+                    <h4>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Q3 2020 Halliburton Company Earnings Conference Call</div>
+  </div>
+        </h4>
+                                          <div class="idm-mt-auto webcast-link-wrapper">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/y9ojvnj4" target="_blank">Listen to Webcast</a></div>
+  </div>
+        </div>
+          </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="idm-col-md-6">
+  <div class="idm-card idm-h-100 idm-gen-card">
+    <div class="idm-card-body idm-d-flex idm-flex-column">
+              <div class="text-a idm-small idm-font-weight-5">
+          
+      
+      
+            Jul 20, 2020 at 9:00 AM EDT
+      
+        </div>
+                    <h4>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Q2 2020 Halliburton Company Earnings Conference Call</div>
+  </div>
+        </h4>
+                                          <div class="idm-mt-auto webcast-link-wrapper">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/ozsuo3hi" target="_blank">Listen to Webcast</a></div>
+  </div>
+        </div>
+          </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="idm-col-md-6">
+  <div class="idm-card idm-h-100 idm-gen-card">
+    <div class="idm-card-body idm-d-flex idm-flex-column">
+              <div class="text-a idm-small idm-font-weight-5">
+          
+      
+      
+            May 19, 2020 at 2:00 PM CDT
+      
+        </div>
+                    <h4>
+          
+<div class="field-nir-event-title">
+      <div class="field__item">Halliburton Company Virtual Annual Shareholder Meeting</div>
+  </div>
+        </h4>
+                                          <div class="idm-mt-auto webcast-link-wrapper">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.virtualshareholdermeeting.com/HAL2020" target="_blank">Attend Virtual Meeting</a></div>
+  </div>
+        </div>
+          </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6 radix-layouts-column1 panel-panel">
+        <div >
+          
+        </div>
+      </div>
+      <div class="col-md-6 radix-layouts-column2 panel-panel">
+        <div >
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12 radix-layouts-footer panel-panel">
+        <div >
+          
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</div><!-- /.sutro -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+        </div>
+    </section>
+
+
+
+
+<footer>
+    <nav role="navigation" class="ftr-top">
+
+        <!-- Start Accordion: Accordion usesclass name 'accordion' -->
+                    
+<ul class="links-container accordion">
+            
+    <li class="links-category accordion-btn" tabindex="0">About Halliburton</li>
+        
+
+                              <ul data-block-uuid="3b308794-d03a-41df-acbd-a3c1791375b3" class="links-list accordion-content" data-collapsed="true">
+                  <li>
+          <a href="https://www.halliburton.com/en/about-us">Company Overview</a>
+                  </li>
+              <li>
+          <a href="https://jobs.halliburton.com/" class="external-link">Careers</a>
+                  </li>
+              <li>
+          <a href="/investor-overview" data-drupal-link-system-path="node/5806">Investors</a>
+                  </li>
+              <li>
+          <a href="https://www.halliburton.com/en/about-us/health-safety-environment-service-quality">HSE &amp; Service Quality</a>
+                  </li>
+              <li>
+          <a href="https://www.halliburton.com/en/about-us/supplier-relations">Suppliers</a>
+                  </li>
+              <li>
+          <a href="https://www.halliburton.com/en/about-us/serving-communities">Community</a>
+                  </li>
+              <li>
+          <a href="https://www.halliburton.com/en/about-us/press-release">Press Releases</a>
+                  </li>
+          </ul>
+  
+
+
+    </ul>
+<ul class="links-container accordion">
+            
+    <li class="links-category accordion-btn" tabindex="0">Sustainability</li>
+        
+
+                              <ul data-block-uuid="89fdba4f-33d9-4d1a-8fae-1ebef009f419" class="links-list accordion-content" data-collapsed="true">
+                  <li>
+          <a href="https://www.halliburton.com/en/sustainability">Sustainability Overview</a>
+                  </li>
+              <li>
+          <a href="https://www.halliburton.com/en/sustainability/guiding-principles">Guiding Principles</a>
+                  </li>
+              <li>
+          <a href="https://www.halliburton.com/en/sustainability/climate-change">Climate Change</a>
+                  </li>
+          </ul>
+  
+
+
+    </ul>
+<ul class="links-container accordion">
+            
+    <li class="links-category accordion-btn" tabindex="0">Discover &amp; Learn</li>
+        
+
+                              <ul data-block-uuid="ca32dc2f-fd58-4626-a063-d339f838e4c0" class="links-list accordion-content" data-collapsed="true">
+                  <li>
+          <a href="https://www.halliburton.com/en/halliburton-4-0">Halliburton 4.0</a>
+                  </li>
+              <li>
+          <a href="https://www.halliburtonlabs.com/" class="external-link">Halliburton Labs</a>
+                  </li>
+          </ul>
+  
+
+
+    </ul>
+                <!-- End Accordion -->
+
+
+        <div class="canvas-cover"></div>
+        <div class="backup-image"></div>
+        <canvas id="canvas"></canvas>
+
+    </nav>
+    <div class="ftr-bottom">
+                    <div class="ftr-social-links">
+                <nav role="navigation">
+                    
+
+      
+                              <ul>
+                  <li>
+          <a href="" target="_blank">
+            <span  class="icon icon-social-linkedin" aria-hidden="true"></span>
+            <span class="sr-only">LinkedIn</span>
+          </a>
+                            </li>
+              <li>
+          <a href="" target="_blank">
+            <span  class="icon icon-social-twitter icon-twitter-adjust" aria-hidden="true"></span>
+            <span class="sr-only">Twitter</span>
+          </a>
+                            </li>
+              <li>
+          <a href="" target="_blank">
+            <span  class="icon icon-social-facebook" aria-hidden="true"></span>
+            <span class="sr-only">Facebook</span>
+          </a>
+                            </li>
+              <li>
+          <a href="" target="_blank">
+            <span  class="icon icon-social-instagram" aria-hidden="true"></span>
+            <span class="sr-only">Instagram</span>
+          </a>
+                            </li>
+              <li>
+          <a href="" target="_blank">
+            <span  class="icon icon-social-youtube icon-youtube-adjust" aria-hidden="true"></span>
+            <span class="sr-only">Youtube</span>
+          </a>
+                            </li>
+          </ul>
+  
+
+
+    
+                </nav>
+            </div>
+                <div class="ftr-bottom-links copyright-container">
+            <nav role="navigation">
+                <span class="copyright"><sup>©</sup> 2021</span>
+                                    
+
+      
+                              <ul>
+                  <li>
+          <a href="https://www.halliburton.com/en/about-us/corporate-governance/privacy-policy" class="txt-color-light">Privacy</a>
+                  </li>
+              <li>
+          <a href="https://www.halliburton.com/en/about-us/corporate-governance/term-and-conditions" class="txt-color-light">Terms</a>
+                  </li>
+          </ul>
+  
+
+
+    
+                            </nav>
+        </div>
+    </div>
+</footer>
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb699";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","themeUrl":"sites\/g\/files\/knoqqb59961\/themes\/site\/nir_pid2107"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid2107\/client,nir_pid2107\/override,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid2107","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"854748aaf5a1b196b137767cc6fc4ea4ecc8c745dbe37a0275fe3ea2c52c3b7d"}}</script>
+<script src="/sites/g/files/knoqqb59961/files/js/js_Vd_jcqZdVMk7k-9LCvlT1aca0A-FlMmnBWnUBjkZc4o.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fYEcMTlxbVF1ITUBZQA==","queueTime":0,"applicationTime":77,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"32397309"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Iveric Bio" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investors.ivericbio.com/events-and-presentation" />
+<meta property="og:title" content="Events &amp; Presentations – Iveric Bio" />
+<meta property="og:description" content="The Investor Relations website contains information about Iveric Bio&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb59171/files/favicon.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://investors.ivericbio.com/events-and-presentation" />
+<link rel="canonical" href="https://investors.ivericbio.com/events-and-presentation" />
+<link rel="shortlink" href="https://investors.ivericbio.com/node/9276" />
+<link rel="revision" href="https://investors.ivericbio.com/events-and-presentation" />
+
+    <title>Events &amp; Presentations – Iveric Bio</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb59171/files/css/css_rfjm6CJ_0NMC2yDcg2-ndYMEx1qfufTwwHO3KArx5Oc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb59171/files/css/css_nPesODicx9MjsWN-cF_8Lx3_7r_oXg5pt4dVZ3wrssw.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&amp;display=swap" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb59171/files/css/css_YCumMjeOg08h4pCpt1ViUIG_PA3xFXqjj_BoLABKux4.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb59171/files/css/css_B6L_buQodjYcsBE4TScLqehy4KPvxq3RLsWx4c_xpKM.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb59171/files/css/css_AiEdH_XxzVeLqCfBpklewlLn6_wH72kIpUmLYD3xbbs.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb59171/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+    <body  class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--9276 path-node page-node-type-nir-landing-page mode-content inner-page" >
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+
+    <!--<div id="animated">
+    <div id="hero-go">
+    </div>
+    </div>-->
+
+
+
+    <div class="print-logo">
+        <img src="/sites/g/files/knoqqb59171/themes/site/nir_pid1528/dist/images/logo-iveric.png" alt="logo"/>
+    </div>
+
+
+
+    <div id="left-gradient">
+        <div id="diamonds">
+        </div>
+    </div>
+    <div id="top-gradient">
+    </div>
+
+
+
+    <div id="controls">
+
+        <a id="logo" href="https://ivericbio.com/">Logo</a>
+
+        <div id="header-outer">
+            <div id="header">
+
+                                    <div class="region region-top-nav">
+    
+
+<nav role="navigation" aria-labelledby="block-sitetopnav-menu" id="block-sitetopnav" class="block--system-menu-blocksite---top-nav block--system-menu-blocksite---top-nav--9276 block--top-nav--system-menu-block--site---top-nav block--top-nav--system-menu-block--site---top-nav--9276 block--523024e7-b9ce-4f6b-ae88-3601d1450a3a block--523024e7-b9ce-4f6b-ae88-3601d1450a3a--9276 block block-menu navigation block-system-menublock menu--site---top-nav">
+                        
+    <h2 class="visually-hidden" id="block-sitetopnav-menu">Site - Top Nav</h2>
+    
+
+                              <ul id="nav"  data-block-uuid="523024e7-b9ce-4f6b-ae88-3601d1450a3a">
+              <li id=""  class="" >
+          <a href="https://ivericbio.com/">About Iveric</a>
+          <span class="gold"></span>
+                  </li>
+              <li id=""  class="" >
+          <a href="https://ivericbio.com/our-commitment/">Our Commitment</a>
+          <span class="gold"></span>
+                  </li>
+              <li id=""  class="" >
+          <a href="https://ivericbio.com/why-iveric/">Why Iveric?</a>
+          <span class="gold"></span>
+                  </li>
+              <li id=""  class="" >
+          <a href="https://ivericbio.com/clinical-programs/">Clinical Programs</a>
+          <span class="gold"></span>
+                  </li>
+              <li id=""  class="" >
+          <a href="/" class="current" data-drupal-link-system-path="&lt;front&gt;"> Investor Relations</a>
+          <span class="gold"></span>
+                  </li>
+              <li id=""  class="" >
+          <a href="https://ivericbio.com/contact-us/">Contact Us</a>
+          <span class="gold"></span>
+                  </li>
+            </ul>
+      
+
+
+
+
+
+    </nav>
+
+  </div>
+
+                
+                <ul id="menu-icon" class="norm">
+                    <li>
+                    </li>
+                    <li>
+                    </li>
+                    <li>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!---Left Nav Old Place-->
+
+    </div>
+
+    <div id="left-col">
+
+        <div id="left-col-pad">
+
+
+            <div id="left-vertical" class="vertical">
+
+                                    <div class="region region-ir-nav">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1528-investorrelations-menu" id="block-nir-pid1528-investorrelations" class="block--system-menu-blockir block--system-menu-blockir--9276 block--ir-nav--system-menu-block--ir block--ir-nav--system-menu-block--ir--9276 block--1fd37e36-1920-4619-8f94-d416f89109ba block--1fd37e36-1920-4619-8f94-d416f89109ba--9276 block block-menu navigation block-system-menublock menu--ir">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1528-investorrelations-menu">Site - IR Nav</h2>
+    
+
+                              <ul id="left-nav"  data-block-uuid="1fd37e36-1920-4619-8f94-d416f89109ba">
+              <li id=""  class="" >
+          <a href="/investor-relations" title="Main Investor Relations Page" data-drupal-link-system-path="node/5806">Investor Relations</a>
+          <svg class="svg-inline--fa fa-minus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="minus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+              <path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+          </svg>
+                  </li>
+              <li id=""  class="" >
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">News</a>
+          <svg class="svg-inline--fa fa-minus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="minus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+              <path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+          </svg>
+                  </li>
+              <li id=""  class="active" >
+          <a href="/events-and-presentation" target="" rel="" data-drupal-link-system-path="node/9276" class="is-active">Events &amp; Presentations</a>
+          <svg class="svg-inline--fa fa-minus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="minus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+              <path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+          </svg>
+                  </li>
+              <li id=""  class="" >
+          <a href="/corporate-governance" target="" rel="" data-drupal-link-system-path="node/9281">Corporate Governance</a>
+          <svg class="svg-inline--fa fa-minus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="minus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+              <path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+          </svg>
+                                        <ul id="menu2" class="left-sub">
+                      <li id=""  class="" >
+              <a href="http://www.ivericbio.com/about/#management">Leadership</a>
+                          </li>
+                      <li id=""  class="" >
+              <a href="http://www.ivericbio.com/about/#directors" target="" rel="">Board of Directors</a>
+                          </li>
+                      <li id=""  class="" >
+              <a href="/corporate-governance/committee-composition" target="" rel="" data-drupal-link-system-path="node/5851">Committee Composition</a>
+                          </li>
+                      <li id=""  class="" >
+              <a href="/corporate-governance/contact-the-board" target="" rel="" data-drupal-link-system-path="node/5866">Contact the Board</a>
+                          </li>
+                    </ul>
+      
+
+                  </li>
+              <li id=""  class="" >
+          <a href="/financial-information" target="" rel="" data-drupal-link-system-path="node/5871">Financial Information</a>
+          <svg class="svg-inline--fa fa-minus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="minus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+              <path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+          </svg>
+                                        <ul id="menu2" class="left-sub">
+                      <li id=""  class="" >
+              <a href="/financial-information/sec-filings" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                          </li>
+                      <li id=""  class="" >
+              <a href="/financial-information/annual-reports" data-drupal-link-system-path="node/5881">Annual Reports</a>
+                          </li>
+                      <li id=""  class="" >
+              <a href="/financial-information/quarterly-results" data-drupal-link-system-path="node/5986">Quarterly Results</a>
+                          </li>
+                      <li id=""  class="" >
+              <a href="/financial-information/key-ratios" data-drupal-link-system-path="node/5906">Key Ratios</a>
+                          </li>
+                    </ul>
+      
+
+                  </li>
+              <li id=""  class="" >
+          <a href="/irs-form" target="" rel="" data-drupal-link-system-path="node/10161">IRS Form 8937</a>
+          <svg class="svg-inline--fa fa-minus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="minus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+              <path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+          </svg>
+                  </li>
+              <li id=""  class="" >
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/5916">Stock Information</a>
+          <svg class="svg-inline--fa fa-minus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="minus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+              <path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+          </svg>
+                                        <ul id="menu2" class="left-sub">
+                      <li id=""  class="" >
+              <a href="/stock-information/historic-stock-lookup" data-drupal-link-system-path="node/5921">Historic Stock Lookup</a>
+                          </li>
+                      <li id=""  class="" >
+              <a href="/stock-information/investment-calculator" data-drupal-link-system-path="node/5926">Investment Calculator</a>
+                          </li>
+                      <li id=""  class="" >
+              <a href="/stock-information/analyst-coverage" data-drupal-link-system-path="node/5896">Analyst Coverage</a>
+                          </li>
+                    </ul>
+      
+
+                  </li>
+              <li id=""  class="" >
+          <a href="/investor-faqs" data-drupal-link-system-path="node/5941">Investor FAQs</a>
+          <svg class="svg-inline--fa fa-minus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="minus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+              <path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+          </svg>
+                  </li>
+              <li id=""  class="" >
+          <a href="/contact-us" data-drupal-link-system-path="node/5981">Contact Us</a>
+          <svg class="svg-inline--fa fa-minus fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="minus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+              <path fill="currentColor" d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+          </svg>
+                  </li>
+            </ul>
+      
+
+
+
+
+
+    </nav>
+
+  </div>
+
+                
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    
+    
+
+
+    <div id="wrapper">
+
+        <div id="frame-outer">
+
+            <div id="frame">
+
+                <div id="frame-pad">
+
+                    <div class="section" data-slide="1">
+
+                        
+
+                                                            <h2>  <div class="region region-title">
+    <div id="block-pagetitle" class="block--page-title-block block--page-title-block--9276 block--title--page-title-block block--title--page-title-block--9276 block--fefdfe64-64e8-4240-bfcc-28b076c9dbb3 block--fefdfe64-64e8-4240-bfcc-28b076c9dbb3--9276 block block-core block-page-title-block">
+  
+    
+      
+  Events &amp; Presentations
+
+  </div>
+
+  </div>
+</h2>
+                            
+                        
+
+                        <div id="ndq-content" class="ndq-9276">
+
+                            
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                          <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1528-websitenoticeblock" class="block--website-notice-block block--website-notice-block--9276 block--content--website-notice-block block--content--website-notice-block--9276 block--38ba8031-2cbc-4481-812f-f83110fb42dc block--38ba8031-2cbc-4481-812f-f83110fb42dc--9276 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div id="block-nir-pid1528-content" class="block--system-main-block block--system-main-block--9276 block--content--system-main-block block--content--system-main-block--9276 block--a9e3d965-4f8d-4692-83bd-6f158fd1661e block--a9e3d965-4f8d-4692-83bd-6f158fd1661e--9276 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--assets-list block--nir-assets__widget block--nir-assets__widget--9276 block--contentmain--nir-assets__widget block--contentmain--nir-assets__widget--9276 block--b71daf57-e30c-4a03-8cd5-9097bf5a8352 block--b71daf57-e30c-4a03-8cd5-9097bf5a8352--9276 block block-nir-assets block-nir-assets__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Corporate Presentation
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+<div class="field-nir-asset-date">
+      <div class="field__item">03.03.2021</div>
+  </div>
+    </div>
+          
+
+      <div class="ir-title">
+      <span class="nir-widget--asset--title--title">
+<div class="field-nir-asset-title">
+      <div class="file file--mime-application-pdf file--application-pdf field__item"><a href="https://investors.ivericbio.com/static-files/cb1f4ad6-5d0d-46e0-a0b3-614b83e944d2" type="application/pdf">Iveric Bio Corporate Overview March 2021</a></div>
+  </div></span>
+      <span class="nir-widget--asset--title-file-size"></span>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+          </div>
+    <div class="nir-widget--pager">
+        <nav class="pager" role="navigation" aria-labelledby="pagination-heading">
+    <h4 id="pagination-heading" class="visually-hidden">Pagination</h4>
+    <ul class="pager__items js-pager__items">
+                                                        <li class="pager__item is-active">
+                                          <a href="?page=0%2C0%2C0" title="Current page">
+            <span class="visually-hidden">
+              Current page
+            </span>1</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=1%2C0%2C0" title="Go to page 2">
+            <span class="visually-hidden">
+              Page
+            </span>2</a>
+        </li>
+                                      <li class="pager__item pager__item--next">
+          <a href="?page=1%2C0%2C0" title="Go to next page" rel="next">
+            <span class="visually-hidden">Next page</span>
+            <span aria-hidden="true">next ›</span>
+          </a>
+        </li>
+                          <li class="pager__item pager__item--last">
+          <a href="?page=1%2C0%2C0" title="Go to last page">
+            <span class="visually-hidden">Last page</span>
+            <span aria-hidden="true">last »</span>
+          </a>
+        </li>
+          </ul>
+  </nav>
+
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--nir-events__widget block--nir-events__widget--9276 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--9276 block--7c799ee9-319b-4d1f-88d0-85e403de8ff0 block--7c799ee9-319b-4d1f-88d0-85e403de8ff0--9276 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Upcoming Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            05.05.2021 | <div class="date-time">8:00 <span>AM EDT</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iveric-bio-inc-first-quarter-2021-earnings-conference-call" hreflang="en">IVERIC bio, Inc. First Quarter 2021 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/ymrqapc2" target="_blank">Listen to webcast</a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--nir-events__widget block--nir-events__widget--9276 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--9276 block--fab7a19c-56b7-4af1-bea2-5d5ccc1f71b5 block--fab7a19c-56b7-4af1-bea2-5d5ccc1f71b5--9276 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Featured Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            01.14.2020 | <div class="date-time">6:30 <span>AM PST</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/rd-investor-symposium" hreflang="en">R&amp;D Investor Symposium </a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/rgehtgcz." target="_blank">Listen to webcast</a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            11.20.2019 | <div class="date-time">8:00 <span>AM EST</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/zimurar-rd-symposium" hreflang="en">Zimura® R&amp;D Symposium </a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/jnskqj79" target="_blank">Listen to webcast</a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--nir-events__widget block--nir-events__widget--9276 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--9276 block--2fa98c9a-b91f-4870-aff6-145765a96804 block--2fa98c9a-b91f-4870-aff6-145765a96804--9276 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Archived Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            03.04.2021 | <div class="date-time">9:50 <span>AM EST</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/cowen-41st-annual-health-care-conference" hreflang="en">Cowen 41st Annual Health Care Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/cowen81/isee/1940574" target="_blank">Listen to webcast</a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            03.03.2021 | <div class="date-time">8:00 <span>AM EST</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iveric-bio-inc-q4-and-year-end-2020-results-conference-call" hreflang="en">Iveric Bio Inc. Q4 and Year End 2020 results conference call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/z2z7ttds" target="_blank">Listen to webcast</a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            01.14.2021 | <div class="date-time">2:50 <span>PM EST</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/39th-annual-jp-morgan-healthcare-conference" hreflang="en">39th Annual J.P. Morgan Healthcare Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://jpmorgan.metameetings.net/events/healthcare21/sessions/35579-iveric-bio-inc/webcast?gpu_only=true&amp;kiosk=true" target="_blank">Listen to webcast</a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            11.16.2020 | <div class="date-time">11:20 <span>AM EST</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/stifel-2020-virtual-healthcare-conference" hreflang="en">Stifel 2020 Virtual Healthcare Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/stifel27/isee/2078176" target="_blank">Listen to webcast</a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            11.10.2020 | <div class="date-time">8:00 <span>AM EST</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/29th-annual-credit-suisse-virtual-healthcare-conference" hreflang="en">29th Annual Credit Suisse Virtual Healthcare Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://kvgo.com/credit-suisse/iveric-november-2020" target="_blank">Listen to webcast</a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            11.02.2020 | <div class="date-time">8:00 <span>AM EST</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iveric-bio-inc-corporation-third-quarter-results-conference-call-0" hreflang="en">Iveric Bio, Inc. Corporation Third Quarter Results Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/mmsfo2xm" target="_blank">Listen to webcast</a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            09.17.2020 | <div class="date-time">4:40 <span>PM EDT</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/cantor-virtual-global-healthcare-conference-2020" hreflang="en">Cantor Virtual Global Healthcare Conference 2020</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://www.webcaster4.com/Webcast/Page/2495/37355" target="_blank">Listen to webcast</a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            09.10.2020 | <div class="date-time">1:00 <span>PM EDT</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/ophthalmology-innovation-summit-ois-retina-innovation-showcase" hreflang="en">Ophthalmology Innovation Summit (OIS) Retina Innovation Showcase</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://vimeo.com/456616833" target="_blank">Listen to webcast</a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            08.12.2020 | <div class="date-time">9:10 <span>AM EDT</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/wedbush-pacgrow-healthcare-virtual-conference" hreflang="en"> Wedbush PacGrow Healthcare Virtual Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/wedbush36/isee/2215778" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ir-box">
+
+      <div class="ir-date">
+      
+    
+            
+        
+                 
+            08.05.2020 | <div class="date-time">8:00 <span>AM EDT</span></div>
+                
+
+    </div>
+          
+      <div class="ir-title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/iveric-bio-inc-corporation-second-quarter-results-conference-call" hreflang="en">Iveric Bio, Inc. Corporation Second Quarter Results Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/9egom79i" target="_blank">Listen to webcast </a></div>
+  </div>
+    </div>
+  
+  <i class="fas fa-chevron-right"></i>
+
+  <div class="ir-box-divider"></div>
+        
+</div>
+
+          </div>
+    <div class="nir-widget--pager">
+        <nav class="pager" role="navigation" aria-labelledby="pagination-heading--2">
+    <h4 id="pagination-heading--2" class="visually-hidden">Pagination</h4>
+    <ul class="pager__items js-pager__items">
+                                                        <li class="pager__item is-active">
+                                          <a href="?page=0%2C0%2C0" title="Current page">
+            <span class="visually-hidden">
+              Current page
+            </span>1</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C0%2C1" title="Go to page 2">
+            <span class="visually-hidden">
+              Page
+            </span>2</a>
+        </li>
+                                      <li class="pager__item pager__item--next">
+          <a href="?page=0%2C0%2C1" title="Go to next page" rel="next">
+            <span class="visually-hidden">Next page</span>
+            <span aria-hidden="true">next ›</span>
+          </a>
+        </li>
+                          <li class="pager__item pager__item--last">
+          <a href="?page=0%2C0%2C1" title="Go to last page">
+            <span class="visually-hidden">Last page</span>
+            <span aria-hidden="true">last »</span>
+          </a>
+        </li>
+          </ul>
+  </nav>
+
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+                                    </div>
+
+                                </div>
+
+                            
+                            <div id="ndq-toolkit-div">
+
+                                                                    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1528-shareholdertools-menu" id="block-nir-pid1528-shareholdertools" class="block--system-menu-blockshareholder-tools block--system-menu-blockshareholder-tools--9276 block--investor-tools--system-menu-block--shareholder-tools block--investor-tools--system-menu-block--shareholder-tools--9276 block--b9546445-d24b-42eb-b323-7fa3529d8004 block--b9546445-d24b-42eb-b323-7fa3529d8004--9276 block block-menu navigation block-system-menublock menu--shareholder-tools">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1528-shareholdertools-menu">Site - Shareholder Tools</h2>
+    
+
+                
+<div class="row small-up-2 medium-up-4 large-up-7">
+                        
+           
+
+        <div class="column">
+          <div class="icoTools">
+
+            
+              <a class="" href="/printed-materials">
+                <span  class="menu-item fa-file-alt far icon""></span>
+                <span class="hide">Printed Materials</span>
+              </a>
+
+            
+          </div>
+          <div class="text-center">Printed Materials</div>
+        </div>
+              
+           
+
+        <div class="column">
+          <div class="icoTools">
+
+            
+              <a class="alerts" href="/email-alerts">
+                <span  class="menu-item fa-envelope far icon""></span>
+                <span class="hide">Email Alerts</span>
+              </a>
+
+            
+          </div>
+          <div class="text-center">Email Alerts</div>
+        </div>
+              
+           
+
+        <div class="column">
+          <div class="icoTools">
+
+            
+              <a class="downloads" href="/download-library">
+                <span  class="menu-item fa-download fas icon""></span>
+                <span class="hide">Downloads</span>
+              </a>
+
+            
+          </div>
+          <div class="text-center">Downloads</div>
+        </div>
+              
+           
+
+        <div class="column">
+          <div class="icoTools">
+
+            
+              <a class="rss" href="/rss-news-feeds">
+                <span  class="menu-item fa-rss fas icon""></span>
+                <span class="hide">RSS Feeds</span>
+              </a>
+
+            
+          </div>
+          <div class="text-center">RSS Feeds</div>
+        </div>
+              
+           
+
+        <div class="column">
+          <div class="icoTools">
+
+            
+              <a class="print" href="">
+                <span  class="menu-item fa-print fas icon""></span>
+                <span class="hide">Print</span>
+              </a>
+
+            
+          </div>
+          <div class="text-center">Print</div>
+        </div>
+              
+           
+
+        <div class="column">
+          <div class="icoTools">
+
+            
+              <a href="mailto:?subject=I%20wanted%20you%20to%20see%20this%20site&body=https://investors.ivericbio.com/events-and-presentation" title="Share This" aria-label="Share This"> 
+                <span  class="menu-item fa-share-alt fas icon""></span>
+                <span class="hide">Share This</span>
+              </a>
+
+            
+          </div>
+          <div class="text-center">Share This</div>
+        </div>
+              
+           
+
+        <div class="column">
+          <div class="icoTools">
+
+            
+              <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Finvestors.ivericbio.com%2Fevents-and-presentation" target="_blank" title="Twitter" aria-label="Twitter"> 
+                <span  class="menu-item fa-twitter fab icon""></span>
+                <span class="hide">Twitter</span>
+              </a>
+
+            
+          </div>
+          <div class="text-center">Twitter</div>
+        </div>
+                    </div>
+
+
+ 
+ 
+    </nav>
+
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="footer">
+
+                                                    <div class="region region-footer-nav">
+    
+
+<nav role="navigation" aria-labelledby="block-sitefooternav-menu" id="block-sitefooternav" class="block--system-menu-blocksite---footer-site-map block--system-menu-blocksite---footer-site-map--9276 block--footer-nav--system-menu-block--site---footer-site-map block--footer-nav--system-menu-block--site---footer-site-map--9276 block--9d81176e-3cff-4198-ae64-7697ba1a94cd block--9d81176e-3cff-4198-ae64-7697ba1a94cd--9276 block block-menu navigation block-system-menublock menu--site---footer-site-map">
+                        
+    <h2 class="visually-hidden" id="block-sitefooternav-menu">Site - Footer Nav</h2>
+    
+
+                              <ul data-block-uuid="9d81176e-3cff-4198-ae64-7697ba1a94cd" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="https://ivericbio.com/contact-us/">Contact Us</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://ivericbio.com/careers/">Careers</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://ivericbio.com/expanded-access/">Expanded Access</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://ivericbio.com/privacy-policy/">Privacy Policy</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://ivericbio.com/sitemap/">Sitemap</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+                        
+                        <a id="footer-logo" href="https://ivericbio.com/">
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="bg-popup">
+    </div>
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb2658";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/9276","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","themeUrl":"sites\/g\/files\/knoqqb59171\/themes\/site\/nir_pid1528"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1528\/override,nir_pid1528\/vendor,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid1528","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"3daa2a1401248999b972800de522aba7dc069940b95f7ad7c084c5a98602d1c8"}}</script>
+<script src="/sites/g/files/knoqqb59171/themes/site/nir_pid1528/dist/js/jquery.js?qq8x2f"></script>
+<script src="/sites/g/files/knoqqb59171/themes/site/nir_pid1528/dist/vendor/jquery-ui/jquery-ui.min.js?qq8x2f"></script>
+<script src="/sites/g/files/knoqqb59171/themes/site/nir_pid1528/dist/vendor/jquery-visible/jquery.visible.min.js?qq8x2f"></script>
+<script src="/sites/g/files/knoqqb59171/themes/site/nir_pid1528/dist/vendor/fontawesome/js/all.min.js?qq8x2f"></script>
+<script src="/sites/g/files/knoqqb59171/themes/site/nir_pid1528/dist/js/scripts.js?qq8x2f"></script>
+<script src="/sites/g/files/knoqqb59171/themes/site/nir_pid1528/dist/vendor/slick/slick.min.js?qq8x2f"></script>
+<script src="/sites/g/files/knoqqb59171/files/js/js_Uwj6YNaS5iyJWMHWpxBGJLRvcw_DXYbepwa6ObUvFB4.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"32397309,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGl2ChNQaX1dXhZsdVVTVBANQXhVVkUvWV9bYUcABHhUXlFAFlxQRFpHFkwLVlhdUwhxUlNQRhY=","queueTime":0,"applicationTime":784,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

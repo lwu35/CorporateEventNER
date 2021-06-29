@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"186020377"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="FIS" />
+<link rel="canonical" href="https://fisglobal.gcs-web.com/presentations/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fisglobal.gcs-web.com/presentations" />
+<meta property="og:title" content="Presentations | FIS" />
+<meta property="og:description" content="The Investor Relations website contains information about FIS&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb53356/files/favicon-32x32_0.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://fisglobal.gcs-web.com/presentations" />
+<link rel="revision" href="https://fisglobal.gcs-web.com/presentations" />
+
+    <title>Presentations | FIS</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb53356/files/css/css_rfjm6CJ_0NMC2yDcg2-ndYMEx1qfufTwwHO3KArx5Oc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb53356/files/css/css_rFv-ua7p8N-9_a9ESTz73rF8_qAoLZsfdiHZdJTJ7bs.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&amp;display=swap" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb53356/files/css/css_eT6Uhu-vexgMM7Cycg0OC84d0qJiP6fHHLMhJ7BBfEY.css" />
+<link rel="stylesheet" media="all" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<link rel="stylesheet" media="all" href="//pro.fontawesome.com/releases/v5.12.0/css/all.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb53356/files/css/css_Yg7hihwk4COzFMxdCZN-4kxk7odw_R1Nz_zLvuJFSf4.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb53356/files/css/css_ZjPiLc4awFvRyJaaHE-PAf7VRk1XDlPMNX0XeevdT8Y.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb53356/files/css/css_pHMPChLSEz2LQaVeGEVNw7rxSFfjgcZUVr2weIjQksk.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb53356/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-PTLC22');</script>
+  </head>
+  <body class="body-sidebars-last nir-node nir-node--type-nir-landing-page nir-node--5831 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="page">
+    <!-- Logo, Close and Social Icons -->
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <symbol id="fis-icon-x" viewBox="0 0 32 32">
+                <title></title>
+                <path d="M3.048 30.781c-0.457 0-0.914-0.152-1.219-0.61-0.762-0.762-0.762-1.829 0-2.59l25.905-25.905c0.762-0.762 1.829-0.762 2.59 0s0.762 1.829 0 2.59l-25.905 25.905c-0.457 0.457-0.914 0.61-1.371 0.61z"></path>
+                <path d="M28.952 30.781c-0.457 0-0.914-0.152-1.219-0.61l-25.905-25.905c-0.762-0.762-0.762-1.829 0-2.59s1.829-0.762 2.59 0l25.905 25.905c0.762 0.762 0.762 1.829 0 2.59-0.457 0.457-0.914 0.61-1.371 0.61z"></path>
+            </symbol>
+            <symbol id="fis-icon-logo" viewBox="0 0 65 32">
+                <title></title>
+                <path d="M56.013 13.747c0-0.614-0.486-1.101-1.101-1.101h-12.723c-2.33 0-4.198 1.792-4.198 4.122s1.894 4.096 4.198 4.096h10.214c0.998 0 1.792 0.922 1.792 1.894 0 0.998-0.819 1.894-1.792 1.894h-12.723c-0.614 0-1.101 0.486-1.101 1.101s0.486 1.101 1.101 1.101h12.723c2.33 0 4.198-1.792 4.198-4.096 0-2.33-1.894-4.096-4.198-4.096h-10.214c-0.998 0-1.792-0.922-1.792-1.894 0-0.998 0.819-1.894 1.792-1.894h12.723c0.614 0 1.101-0.512 1.101-1.126z"></path>
+                <path d="M33.587 7.757c0-0.896-0.717-1.613-1.613-1.613s-1.613 0.717-1.613 1.613c0 0.896 0.717 1.613 1.613 1.613 0.896-0.026 1.613-0.742 1.613-1.613z"></path>
+                <path d="M28.467 7.757c0-0.896-0.717-1.613-1.613-1.613s-1.613 0.717-1.613 1.613c0 0.896 0.717 1.613 1.613 1.613 0.896-0.026 1.613-0.742 1.613-1.613z"></path>
+                <path d="M23.347 7.757c0-0.896-0.717-1.613-1.613-1.613s-1.613 0.717-1.613 1.613c0 0.896 0.717 1.613 1.613 1.613 0.896-0.026 1.613-0.742 1.613-1.613z"></path>
+                <path d="M18.253 7.757c0-0.896-0.717-1.613-1.613-1.613s-1.613 0.717-1.613 1.613c0 0.896 0.717 1.613 1.613 1.613 0.896-0.026 1.613-0.742 1.613-1.613z"></path>
+                <path d="M13.133 7.757c0-0.896-0.717-1.613-1.613-1.613s-1.613 0.717-1.613 1.613c0 0.896 0.717 1.613 1.613 1.613 0.896-0.026 1.613-0.742 1.613-1.613z"></path>
+                <path d="M24.858 12.646c-0.026 0-0.077 0-0.102 0v0h-10.829c-4.301 0-7.219 2.816-7.219 7.117v6.016c0 0.666 0.538 1.203 1.203 1.203s1.203-0.538 1.203-1.203v-6.016c0-2.97 1.792-4.915 4.813-4.915h10.829c0.026 0 0.077 0 0.102 0 0.614 0 1.101-0.486 1.101-1.101 0-0.589-0.486-1.101-1.101-1.101z"></path>
+                <path d="M10.342 19.763c0 0.614 0.486 1.101 1.101 1.101h11.034c0.614 0 1.101-0.486 1.101-1.101s-0.486-1.101-1.101-1.101h-11.034c-0.614 0-1.101 0.512-1.101 1.101z"></path>
+                <path d="M30.771 13.747v12.032c0 0.666 0.538 1.203 1.203 1.203s1.203-0.538 1.203-1.203v-12.032c0-0.666-0.538-1.203-1.203-1.203-0.666 0.026-1.203 0.563-1.203 1.203z"></path>
+            </symbol>
+            <symbol id="fis-icon-email" viewBox="0 0 45 32">
+                <title></title>
+                <path d="M21.254 23.642l-21.254-10.269v18.627h44.896v-18.866l-21.254 10.507c-0.716 0.478-1.672 0.478-2.388 0z"></path>
+                <path d="M22.209 18.149l22.687-10.985v-7.164h-44.896v7.164h0.239z"></path>
+            </symbol>
+            <symbol id="fis-icon-linked-in" viewBox="0 0 32 32">
+                <title></title>
+                <path d="M4.608 8.074c-2.097 0-3.797-1.73-3.797-3.864s1.7-3.864 3.797-3.864c2.098 0 3.798 1.73 3.798 3.864s-1.7 3.864-3.798 3.864zM1.429 31.755v-20.939h6.422v20.939h-6.422zM18.114 20.764v10.991h-6.159v-20.939h6.159v2.821c0 0 1.852-3.459 6.251-3.459s7.548 2.712 7.548 8.319v13.258h-6.39v-10.991c0-3.015-1.134-4.697-3.497-4.697-2.57 0-3.912 1.752-3.912 4.697z"></path>
+            </symbol>
+            <symbol id="fis-icon-facebook" viewBox="0 0 16 32">
+                <title></title>
+                <path d="M4.629 31.856h6.158v-15.655h4.296l0.458-5.241h-4.754v-2.985c0-1.236 0.245-1.725 1.421-1.725h3.333v-5.439h-4.264c-4.582 0-6.648 2.048-6.648 5.97v4.179h-3.203v5.307h3.203v15.589z"></path>
+            </symbol>
+            <symbol id="fis-icon-twitter" viewBox="0 0 38 32">
+                <title></title>
+                <path d="M12.668 30.909c14.022 0 21.943-11.971 21.466-22.707 1.475-1.076 2.756-2.42 3.768-3.951-1.355 0.607-2.81 1.018-4.338 1.201 1.559-0.943 2.757-2.44 3.32-4.223-1.459 0.875-3.075 1.51-4.796 1.852-1.377-1.484-3.339-2.41-5.512-2.41-4.874 0-8.458 4.598-7.357 9.373-6.276-0.319-11.842-3.358-15.565-7.977-1.979 3.431-1.027 7.92 2.337 10.192-1.238-0.039-2.403-0.383-3.422-0.954-0.081 3.536 2.425 6.843 6.057 7.582-1.063 0.292-2.227 0.358-3.41 0.13 0.961 3.032 3.75 5.239 7.054 5.301-3.174 2.516-7.174 3.639-11.18 3.161 3.342 2.166 7.312 3.43 11.577 3.43z"></path>
+            </symbol>
+            <symbol id="fis-icon-arrow" viewBox="0 0 73 32">
+                <title></title>
+                <path d="M72.131 17.677l-10.899 13.331c-1.063 1.183-2.717 1.289-3.832 0.417s-1.317-2.659-0.426-3.75l7.351-8.998h-61.602c-1.505 0-2.725-1.194-2.725-2.666s1.22-2.666 2.725-2.666h61.602l-7.351-8.998c-0.892-1.091-0.655-2.837 0.426-3.749 1.174-0.992 2.94-0.674 3.832 0.417l10.899 13.331c0.461 0.552 0.588 0.958 0.596 1.666-0.051 0.59-0.277 1.287-0.596 1.666z"></path>
+            </symbol>
+        </defs>
+    </svg>
+    <!-- Logo and Close Icons End -->
+
+    <!-- Main Navigation -->
+    <header class="fis-main-nav fis-bg-base">
+        <a href="https://www.fisglobal.com" class="fis-logo" target="_blank">
+            <svg class="fis-logo-svg fis-svg-white">
+                <title></title>
+                <use xlink:href="#fis-icon-logo"></use>
+            </svg>
+        </a>
+        <div class="hamburger-menu" id="mobi-nav">
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+        </div>
+        <div class="nav-container fis-bg-base">
+            <span class="primary-nav">
+                                    
+
+                        
+    <h2 class="visually-hidden" id="block-headermain-menu">Header Main</h2>
+    
+
+                              <a href="https://www.fisglobal.com/merchant-solutions-worldpay" class="fis-text-white" target="_blank">Merchants</a>
+                <a href="https://www.fisglobal.com/banking-solutions" class="fis-text-white" target="_blank">Banking</a>
+                <a href="https://www.fisglobal.com/capital-markets-solutions" class="fis-text-white" target="_blank">Capital Markets</a>
+            
+
+
+    
+                            </span>
+            <div class="mobile-dropdown-header fis-bg-base">
+                <a class="close" href="javascript:void(0)">
+                    <span class="fis-srOnly-content">close</span>
+                    <svg class="fis-icon fis-icon-x" aria-hidden="true">
+                        <use xlink:href="#fis-icon-x"></use>
+                    </svg>
+                </a>
+                <a class="fis-logo">
+                    <svg class="fis-logo-svg ">
+                        <title></title>
+                        <use xlink:href="#fis-icon-logo"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="right-nav-container">
+                <span class="secondary-nav">
+                                            
+
+                        
+    <h2 class="visually-hidden" id="block-headersecondary-menu">Header Secondary</h2>
+    
+
+                              <a href="https://www.fisglobal.com/insights" class="fis-text-white" target="_blank">Insights</a>
+                <a href="https://www.fisglobal.com/about-us" class="fis-text-white" target="_blank">About</a>
+                <a href="https://www.fisglobal.com/careers" class="fis-text-white" target="_blank">Careers</a>
+            
+
+
+    
+                                    </span>
+                                    
+
+                        
+    <h2 class="visually-hidden" id="block-headertertiary-menu">Header Tertiary</h2>
+    
+
+                              <a href="https://www.fisglobal.com/contact-us" class="contact-us btn-primary-green-on-dark" target="_blank">Contact Us</a>
+            
+
+
+    
+                            </div>
+            <div class="nav-contact-row fis-bg-base">
+                <div class="column-content">
+                    <div class="contact-section">
+                        <div class="row">
+                                                            
+
+<div class="fis-phone">
+            
+    <h4 id="block-headermobileone-menu" class="fis-primary-content-bold-font fis-text-white">CALL US</h4>
+    
+
+                              <span><a href="tel:+1 877.776.3706" target="_top" class="fis-primary-content-semibold-font">+1 877.776.3706</a></span>
+            
+
+
+    </div>
+
+                                                                                        
+
+<div class="fis-email">
+            
+    <h4 id="block-headermobiletwo-menu" class="fis-primary-content-bold-font fis-text-white">EMAIL US</h4>
+    
+
+                              <span><a href="mailto:getinfo@fisglobal.com?Subject=FIS" target="_top" class="fis-primary-content-semibold-font">getinfo@fisglobal.com</a></span>
+            
+
+
+    </div>
+
+                                                    </div>
+                        <div class="row">
+                                                            
+
+<div class="fis-address">
+            
+    <h4 id="block-headermobilethree-menu" class="fis-primary-content-bold-font fis-text-white">HEADQUARTERS</h4>
+    
+
+                              <span class="fis-primary-content-semibold-font">Jacksonville, Florida United States</span>
+            
+
+
+    </div>
+
+                                                                                        
+
+<div class="fis-connect">
+            
+    <h4 id="block-headermobilefour-menu" class="fis-primary-content-bold-font fis-text-white">STAY CONNECTED</h4>
+    
+
+                              <ul>
+                  <li class="fis-social-link">
+          <a  href="mailto:getinfo@fisglobal.com" target="_blank">
+            <svg class="fis-icon fis-icon-email">
+              <use xlink:href="#fis-icon-email"></use>
+            </svg>
+          </a>
+                  </li>
+              <li class="fis-social-link">
+          <a  href="https://www.linkedin.com/company/fis/" target="_blank">
+            <svg class="fis-icon fis-icon-linked-in">
+              <use xlink:href="#fis-icon-linked-in"></use>
+            </svg>
+          </a>
+                  </li>
+              <li class="fis-social-link">
+          <a  href="https://twitter.com/fisglobal" target="_blank">
+            <svg class="fis-icon fis-icon-twitter">
+              <use xlink:href="#fis-icon-twitter"></use>
+            </svg>
+          </a>
+                  </li>
+              <li class="fis-social-link">
+          <a  href="https://www.facebook.com/FIStoday/" target="_blank">
+            <svg class="fis-icon fis-icon-facebook">
+              <use xlink:href="#fis-icon-facebook"></use>
+            </svg>
+          </a>
+                  </li>
+          </ul>
+  
+
+
+    </div>
+
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-support-column mobile-support fis-bg-sherpa-blue">
+                                    <div id="block-gbneedsupport" class="block-content--nir-global-block block-content--nir-global-block--32756 block--block-contentace885d8-1978-4cce-80ea-67adf89550d5 block--block-contentace885d8-1978-4cce-80ea-67adf89550d5--5831 block--header-mobile-five--block-content--ace885d8-1978-4cce-80ea-67adf89550d5 block--header-mobile-five--block-content--ace885d8-1978-4cce-80ea-67adf89550d5--5831 block--4235f797-f843-4e8c-9815-0b4cb977d135 block--4235f797-f843-4e8c-9815-0b4cb977d135--5831 block block-block-content block-block-contentace885d8-1978-4cce-80ea-67adf89550d5">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><h3 class="fis-text-white">Need Support</h3>
+
+<p class="fis-text-white"><span>Worldpay is now FIS. </span>Your experience is our top priority. We’re here to help.</p>
+
+<div><a class="fis-text-picton-blue email" href="mailto:getinfo@fisglobal.com?Subject=FIS" target="">getinfo@fisglobal.com</a></div>
+
+<div><a class="fis-text-picton-blue call" href="tel:+1 877.776.3706" target="">+1 877.776.3706</a></div>
+
+<div class="btn-cont"><a class="btn-secondary-white-on-dark" href="https://www.fisglobal.com/merchant-solutions-worldpay/support" target="_blank">Get support</a></div></div>
+      
+</div>
+      
+  </div>
+
+                            </div>
+        </div>
+    </header>
+    <!-- Main Navigation End -->
+    <section id="" class="hero hero-marketplace-bg hero--default hero--image-bg hero--default insurance-hero " style="">
+        <div class="hero-inner">
+            <div class="hero-copy content-width">
+                <h5 class="fis-h5">Investor Relations</h5>
+                <h1 class="hero-title display-block">
+                    <span style="color: #ffffff;">
+                                                    Presentations
+                                            </span>
+                </h1>
+            </div>
+            <div class="hero-image-container">            
+                <div class="hero-image" data-image-url="/sites/g/files/knoqqb53356/themes/site/nir_pid2511/dist/images/897944_InvestorSite2.jpg" data-image-mobile-url="" style="background-image: url(/sites/g/files/knoqqb53356/themes/site/nir_pid2511/dist/images/897944_InvestorSite2.jpg); background-color: rgb(0, 0, 0);">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="fisbodywrapper content-width">
+        <div class="clearfix" id="main">
+            <div class="container">
+                <section id="content">
+                    <div id="content-header">
+
+                        
+
+                    </div>
+
+                                        
+                    <div  class="row" id="ndq-content">
+                                                <div  class="ndq-5831 col-md-12" >
+                              <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid2511-content" class="block--system-main-block block--system-main-block--5831 block--content--system-main-block block--content--system-main-block--5831 block--54c0e9a0-412b-4348-bf30-c1b93fef85a9 block--54c0e9a0-412b-4348-bf30-c1b93fef85a9--5831 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--presentations block--nir-assets__widget block--nir-assets__widget--5831 block--contentmain--nir-assets__widget block--contentmain--nir-assets__widget--5831 block--66aa0836-9e9f-461f-91c8-d241edca876f block--66aa0836-9e9f-461f-91c8-d241edca876f--5831 block block-nir-assets block-nir-assets__widget">
+  
+    
+      <div class="nir-widget">
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/be261de1-270f-48f3-9ca6-4ec5a11677bb" type="application/pdf; length=1439016" title="FIS Q4-20 Earnings Call Presentation (2).pdf">Q4 2020 Earnings Call Presentation</a></span><span class="filesize"> 1.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/0c6de495-428f-410e-a479-903b8e8ed3df" type="application/pdf; length=4710544" title="3Q 2020 Earnings Call Presentation.pdf">Q3 2020 Earnings Call Presentation</a></span><span class="filesize"> 4.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/8cd1190a-9858-4b8a-81e7-cdd3ccac5059" type="application/pdf; length=17104583" title="2Q 2020 Earnings Call Deck_08 03 2020_vFINAL.pdf">Q2 2020 Earnings Call Presentation</a></span><span class="filesize"> 17.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/1b07b550-219d-4947-8e7f-2bdf8696ef7a" type="application/pdf; length=619425" title="FIS Q1-20 Supplemental Slides.pdf">Q1 2020 Earnings Call Presentation</a></span><span class="filesize"> 619.4 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/ca6031d8-8fc9-4080-907b-4bd96ec3f426" type="application/pdf; length=798592" title="FIS 2020-03-02 Raymond James presentation_FINAL v2.pdf">Raymond James 41st Annual Institutional Investors Conference Presentation</a></span><span class="filesize"> 798.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/5bacf529-94d7-4103-96e8-6676f57d5900" type="application/pdf; length=1166083" title="FIS Q4-19 Supplemental Slides FINAL.pdf">Q4 2019 Earnings Call Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/fffd4386-cb28-4831-b1e5-5bb700b2328f" type="application/pdf; length=903164" title="FIS Q3-19 Supplemental Data.pdf">Q3 2019 Earnings Call Presentation</a></span><span class="filesize"> 903.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/a098566b-a737-4307-81f5-47c87eaf678b" type="application/pdf; length=660308" title="FIS Q2-19 Supplemental Data.pdf">Q2 2019 Earnings Call Presentation</a></span><span class="filesize"> 660.3 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/1b638bfc-a83c-4702-a42c-4c608ac0a972" type="application/pdf; length=847771" title="FIS Q1-19 Supplemental Slides.pdf">Q1 2019 Earnings Call Presentation</a></span><span class="filesize"> 847.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/a27ae755-9548-486e-970d-29aa2cc37061" type="application/pdf; length=1070335" title="FIS Worldpay Announcement Supplemental Slides.pdf">FIS Worldpay Announcement Supplemental Slides</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/ef382b67-468a-450b-8b62-fa78e7a31ee0" type="application/pdf; length=951992" title="FIS Q4-18 Supplemental Slides.pdf">Q4 2018 Earnings Call Presentation</a></span><span class="filesize"> 951.9 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/d1c0ab3b-6689-479f-a9d6-512bd3b2d892" type="application/pdf; length=1345209" title="FIS Q3-18 Supplemental Slides.pdf">Q3 2018 Earnings Call Presentation</a></span><span class="filesize"> 1.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/9829127b-928d-4f17-9ebe-206a9df32fe9" type="application/pdf; length=1332294" title="FIS Q2-18 Supplemental Slides.pdf">Q2 2018 Earnings Call Presentation</a></span><span class="filesize"> 1.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/985c0d59-a90a-4be5-afed-d1e820732407" type="application/pdf; length=3525138" title="2018_Investor Day_FINAL_EXTERNAL.pdf">FIS 2018 Investor Day</a></span><span class="filesize"> 3.5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/e483b6e5-3d8c-4835-b72a-17399ff3bcb0" type="application/pdf; length=958396" title="FIS Q1-18 Earnings Supplemental Data.pdf">Q1 2018 Earnings Call Presentation</a></span><span class="filesize"> 958.3 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/e108cc1a-e914-4164-9bcd-8c755e7d7fa8" type="application/pdf; length=1321787" title="FIS Q4-17 Earnings Supplemental Data.pdf">Q4 2017 Earnings Call Presentation</a></span><span class="filesize"> 1.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/25315162-2880-44d4-b88b-12b88ba1b2bb" type="application/pdf; length=1192539" title="FIS Q3-17 Supplemental Slides.pdf">Q3 2017 Earnings Call Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/4f89ef47-7673-46fa-9adb-387e982a2ced" type="application/pdf; length=1230019" title="FIS Q2-17 Supplemental Slides.pdf">Q2 2017 Earnings Call Presentation</a></span><span class="filesize"> 1.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/95de75fe-36f6-4a16-b6b9-8d54cd1a3552" type="application/pdf; length=958608" title="FIS Q1-17 Supplemental Slides.pdf">Q1 2017 Earnings Call Presentation</a></span><span class="filesize"> 958.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/e3a32f47-0565-443b-a7aa-1fbae64ef529" type="application/pdf; length=1162262" title="FIS Q4-16 Earnings Supplemental Data.pdf">Q4 2016 Earnings Call Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/bfa6298b-921b-44e4-8e70-f322c3018aa7" type="application/pdf; length=1144735" title="FIS Q3-16 Earnings Supplemental Data.pdf">Q3 2016 Earnings Call Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/5e958c99-eabc-41f1-9f88-b2a9435d9b26" type="application/pdf; length=1135064" title="FIS Q2-16 Earnings Supplemental Data.pdf">Q2 2016 Earnings Call Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/230717a0-8ec6-4c66-97be-dfd2d7edf2c9" type="application/pdf; length=7379239" title="FIS 2016 05 09_Investor Day_Master V25 Full Master_BK_Print.pdf">FIS 2016 Investor Day</a></span><span class="filesize"> 7.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/b3201650-1d31-4315-a16b-28a8910ae61c" type="application/pdf; length=1309468" title="FIS Q1-16 Earnings Supplemental Data.pdf">Q1 2016 Earnings Call Presentation</a></span><span class="filesize"> 1.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/a739d514-9eb9-4536-ac73-12fcb3f3f14b" type="application/pdf; length=1397888" title="FIS (C) Q4-15 Earnings Supplemental Data FINAL.pdf">Q4 2015 Earnings Call Presentation</a></span><span class="filesize"> 1.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/d6313239-0150-48bb-a66b-5e4fc2aee584" type="application/pdf; length=1244258" title="FIS Q3-15 Supplemental Data.pdf">Q3 2015 Earnings Call Presentation</a></span><span class="filesize"> 1.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/ff6e20f3-ba55-4b2f-a1b1-446e9e03adad" type="application/pdf; length=1354924" title="Q2-15 Earnings Supplemental Data.pdf">Q2 2015 Earnings Call Presentation</a></span><span class="filesize"> 1.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/4f58a99d-4e43-45c5-98bc-ced14e03640e" type="application/pdf; length=3957195" title="2015 Investor Day_Master_v3h FINAL.pdf">FIS 2015 Investor Day</a></span><span class="filesize"> 3.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/49a007e7-f99e-482c-8d68-f68bdd96eae7" type="application/pdf; length=1542163" title="FIS Q1-15 Earnings Supplemental Data.pdf">Q1 2015 Earnings Call Presentation</a></span><span class="filesize"> 1.5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/4f957f62-2e1c-4ef5-892c-35f4563d2448" type="application/pdf; length=1071838" title="FIS Q4-14 Earnings Supplemental Data FINAL.pdf">Q4 2014 Earnings Call Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/a1cebf64-1858-4579-9109-bfbba187ddb7" type="application/pdf; length=970671" title="Q3 2014 Earnings Supplmental Data.pdf">Q3 2014 Earnings Call Presentation</a></span><span class="filesize"> 970.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/a2837f11-0f9e-43f1-81c3-f6103437c9ef" type="application/pdf; length=1168221" title="FIS Q2-14 Supplemental Data FINAL.pdf">Q2 2014 Earnings Call Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/eed424d3-812e-4b75-9756-67064852660d" type="application/pdf; length=712863" title="FIS Q1-14 Earnings Supplemental Data FINAL.pdf">Q1 2014 Earnings Call Presentation</a></span><span class="filesize"> 712.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/e7dd1915-3d4e-4db7-a4ea-2176126efa65" type="application/pdf; length=1072582" title="FIS 4Q Earnings Supplemental Data Draft FINAL.pdf">Q4 2013 Earnings Call Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/d5bdcafd-0f80-4ca3-b6ee-aa6420ee2a3c" type="application/pdf; length=1050248" title="FIS 3Q-13 Earnings Supplemental Data FINAL.pdf">Q3 2013 Earnings Call Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/3e266dfd-37fc-4a4a-9015-724cc1935577" type="application/pdf; length=1712151" title="FIS 2Q2013 Earnings_Supplemental Data_FINAL.pdf">Q2 2013 Earnings Call Presentation</a></span><span class="filesize"> 1.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://fisglobal.gcs-web.com/static-files/e49c0a2f-8562-48d5-8679-e9ec40f44e4f" type="application/pdf; length=5055143" title="FIS 2013 Investor Day FINAL.pdf">FIS 2013 Investor Day </a></span><span class="filesize"> 5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+                        </div><!-- end col-md-9/12 -->
+                    </div><!-- end row -->
+
+
+                </section>
+                                    <aside class="sidebar-last sidebars" id="sidebar-last">
+                        <div id="ndq-content">
+                          <div class="region region-sidebar-last">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid2511-irmenu-menu" id="block-nir-pid2511-irmenu" class="block--system-menu-blockir-menu block--system-menu-blockir-menu--5831 block--sidebar-last--system-menu-block--ir-menu block--sidebar-last--system-menu-block--ir-menu--5831 block--d1b24281-f770-41fa-be0e-31131b7bb984 block--d1b24281-f770-41fa-be0e-31131b7bb984--5831 block block-menu navigation block-system-menublock menu--ir-menu">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid2511-irmenu-menu">IR menu</h2>
+    
+
+                              <ul id="main-menu">
+                                  <li>
+          <a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;">Overview</a>
+                  </li>
+                              <li>
+          <a href="http://www.fisglobal.com/About-Us/About-Our-Company" target="" rel="">Company Profile</a>
+                  </li>
+                              <li class="expanded">
+          <a href="#collapseGovernance" target="" rel="">Corporate Governance</a>
+                                    <ul class="submenu">
+                                  <li>
+          <a href="/corporate-governance-highlights" target="" rel="" data-drupal-link-system-path="node/5836">Highlights</a>
+                  </li>
+                              <li>
+          <a href="https://www.fisglobal.com/about-us/executive-team" target="" rel="">Executive Team</a>
+                  </li>
+                              <li>
+          <a href="/board-of-directors" target="" rel="" data-drupal-link-system-path="node/5841">Board of Directors</a>
+                  </li>
+                              <li>
+          <a href="/corporate-governance/committee-composition" target="" rel="" data-drupal-link-system-path="node/5851">Committee Composition</a>
+                  </li>
+                              <li>
+          <a href="/code-of-business-conduct-and-ethics" target="" rel="" data-drupal-link-system-path="node/22616">Code of Business Conduct and Ethics</a>
+                  </li>
+                              <li>
+          <a href="/corporate-governance-guideline" target="" rel="" data-drupal-link-system-path="node/22621">Corporate Governance Guidelines</a>
+                  </li>
+                              <li>
+          <a href="https://fisglobal.gcs-web.com/static-files/3a0f20e1-2fc4-4bf1-8352-8e15f50a3cae" target="_blank" rel="">FIS Anti-bribery Anti-corruption Policy</a>
+                  </li>
+                              <li>
+          <a href="https://fisglobal.gcs-web.com/static-files/7ac16a80-3090-43d2-9e5e-157480b5fbb4" target="_blank" rel="">Modern Slavery Act Transparency Statement</a>
+                  </li>
+                              <li>
+          <a href="https://fisglobal.gcs-web.com/static-files/bf8230f8-f18e-4d03-8d7a-d6d0c32e77c0" target="_blank" rel="">FIS Tax Strategy</a>
+                  </li>
+                              <li>
+          <a href="https://www.fisglobal.com/Privacy" target="" rel="">Privacy</a>
+                  </li>
+                              <li>
+          <a href="/committees-and-charters" target="" rel="" data-drupal-link-system-path="node/22626">Committees and Charters</a>
+                  </li>
+                              <li>
+          <a href="/static-files/1fdf8002-46c4-4ee6-a8a4-909bc1cbe110" data-drupal-link-system-path="static-files/1fdf8002-46c4-4ee6-a8a4-909bc1cbe110">Environmental, Social and Governance (ESG) Policy</a>
+                  </li>
+                              <li>
+          <a href="/static-files/b875324f-98c3-49d0-ba01-def60cb1e8dd" data-drupal-link-system-path="static-files/b875324f-98c3-49d0-ba01-def60cb1e8dd">Political Activities Policy</a>
+                  </li>
+          </ul>
+  
+                  </li>
+                              <li class="expanded">
+          <a href="#Financial-Information" target="" rel="">Financial Information</a>
+                                    <ul class="submenu">
+                                  <li>
+          <a href="/financial-information/quarterly-results" target="" rel="" data-drupal-link-system-path="node/5986">Quarterly Earnings</a>
+                  </li>
+                              <li>
+          <a href="/financial-information/annual-reports" target="" rel="" data-drupal-link-system-path="node/5881">Annual Reports</a>
+                  </li>
+                              <li>
+          <a href="/debt-ratings" target="" rel="" data-drupal-link-system-path="node/22631">Debt Ratings</a>
+                  </li>
+                              <li>
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+                              <li>
+          <a href="/dividend-history" target="" rel="" data-drupal-link-system-path="node/22636">Dividend History</a>
+                  </li>
+          </ul>
+  
+                  </li>
+                              <li class="expanded active-trail">
+          <a href="#News-and-Events" target="" rel="">News and Events</a>
+                                    <ul class="submenu">
+                                  <li>
+          <a href="/events-calendar" target="" rel="" data-drupal-link-system-path="node/5826">Events Calendar</a>
+                  </li>
+                              <li class="active-trail">
+          <a href="/presentations" target="" rel="" data-drupal-link-system-path="node/5831" class="is-active">Presentations</a>
+                  </li>
+                              <li>
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+          </ul>
+  
+                  </li>
+                              <li class="expanded">
+          <a href="#collapseStock" target="" rel="">Stock Information</a>
+                                    <ul class="submenu">
+                                  <li>
+          <a href="/stock-information/stock-quote" target="" rel="" data-drupal-link-system-path="node/5911">Stock Quote</a>
+                  </li>
+                              <li>
+          <a href="/stock-information/stock-chart" target="" rel="" data-drupal-link-system-path="node/6126">Stock Chart</a>
+                  </li>
+                              <li>
+          <a href="/stock-information/historical-price-lookup" target="" rel="" data-drupal-link-system-path="node/5921">Historical Price Lookup</a>
+                  </li>
+                              <li>
+          <a href="/stock-information/investment-calculator" target="" rel="" data-drupal-link-system-path="node/5926">Investment Calculator</a>
+                  </li>
+                              <li>
+          <a href="/stock-information/analyst-coverage" target="" rel="" data-drupal-link-system-path="node/5896">Analyst Coverage</a>
+                  </li>
+          </ul>
+  
+                  </li>
+                              <li>
+          <a href="/shareholder-services/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">E-mail Alerts</a>
+                  </li>
+                              <li class="expanded">
+          <a href="#Shareholder-Services" target="" rel="">Shareholder Services</a>
+                                    <ul class="submenu">
+                                  <li>
+          <a href="/shareholder-information" target="" rel="" data-drupal-link-system-path="node/22641">Shareholder Information</a>
+                  </li>
+                              <li>
+          <a href="/shareholder-services/document-request" target="" rel="" data-drupal-link-system-path="node/5966">Information Request</a>
+                  </li>
+                              <li>
+          <a href="/faqs-0" target="" rel="" data-drupal-link-system-path="node/5941">FAQs</a>
+                  </li>
+          </ul>
+  
+                  </li>
+                              <li class="expanded">
+          <a href="#collapseCorporate" target="" rel="">Global Sustainability</a>
+                                    <ul class="submenu">
+                                  <li>
+          <a href="https://fisglobal.com/global-sustainability" target="" rel="">Global Sustainability</a>
+                  </li>
+                              <li>
+          <a href="https://www.fisglobal.com/about-us/global-community-involvement" target="" rel="">Community</a>
+                  </li>
+                              <li>
+          <a href="/static-files/1fdf8002-46c4-4ee6-a8a4-909bc1cbe110" data-drupal-link-system-path="static-files/1fdf8002-46c4-4ee6-a8a4-909bc1cbe110">Environmental, Social and Governance (ESG) Policy</a>
+                  </li>
+                              <li>
+          <a href="/static-files/b875324f-98c3-49d0-ba01-def60cb1e8dd" data-drupal-link-system-path="static-files/b875324f-98c3-49d0-ba01-def60cb1e8dd">Political Activities Policy</a>
+                  </li>
+          </ul>
+  
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+                        </div>
+                    </aside>
+                
+            </div>
+            <div class="shareholder-tools clearfix">
+                            
+                        
+    <h2 class="visually-hidden" id="block-nir-pid2511-shareholdertools-menu" class="thin">Shareholder Tools</h2>
+    
+
+                            <div id="ndq-content" class="row">
+                    <div class="columns col-xs-4 shareholder-item">
+                                                    
+            <a href="" title="Print Page">
+              <span class="fa-stack">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-print fa-stack-1x fa-inverse"></i>
+              </span>
+                          </a>
+                                  </div>
+                <div class="columns col-xs-4 shareholder-item">
+                                                    
+            <a href="/rss-feed" title="RSS Feeds">
+              <span class="fa-stack">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+                          </a>
+                                  </div>
+                <div class="columns col-xs-4 shareholder-item">
+                                                    
+            <a href="/shareholder-services/email-alerts" title="E-mail Alerts">
+              <span class="fa-stack">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-at fa-stack-1x fa-inverse"></i>
+              </span>
+                          </a>
+                                  </div>
+                </div>
+            
+
+
+
+        
+    
+                        </div>
+        </div>
+    </div>
+
+
+    <!-- Footer Start -->
+    <section class="fis-footer-wrapper">
+        <div class="fis-contact-section fis-bg-sherpa-blue" style="">
+            <div class="content-width columns">
+                <div class="column-content">
+                                            <div id="block-gbfooterphrase" class="block-content--nir-global-block block-content--nir-global-block--32766 block--block-contentb8cae968-a435-4421-a5bd-9650190c90c8 block--block-contentb8cae968-a435-4421-a5bd-9650190c90c8--5831 block--footer-one--block-content--b8cae968-a435-4421-a5bd-9650190c90c8 block--footer-one--block-content--b8cae968-a435-4421-a5bd-9650190c90c8--5831 block--1b051ce3-eafd-4587-a031-e7830bbf2215 block--1b051ce3-eafd-4587-a031-e7830bbf2215--5831 block block-block-content block-block-contentb8cae968-a435-4421-a5bd-9650190c90c8">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><h2 class="fis-primary-heading-font fis-text-white">ADVANCING THE WAY THE WORLD</h2>
+
+<h2 class="fis-primary-heading-font fis-text-observatory">PAYS, BANKS AND INVESTS</h2></div>
+      
+</div>
+      
+  </div>
+
+                                    </div>
+                <div class="column-content">
+                                            <div id="block-gbletsstartaconversation" class="block-content--nir-global-block block-content--nir-global-block--32771 block--block-content6c431049-d4e3-414e-81af-8f9e2e3d4c5d block--block-content6c431049-d4e3-414e-81af-8f9e2e3d4c5d--5831 block--footer-two--block-content--6c431049-d4e3-414e-81af-8f9e2e3d4c5d block--footer-two--block-content--6c431049-d4e3-414e-81af-8f9e2e3d4c5d--5831 block--452959e3-a915-41d8-a3e4-8774ab254106 block--452959e3-a915-41d8-a3e4-8774ab254106--5831 block block-block-content block-block-content6c431049-d4e3-414e-81af-8f9e2e3d4c5d">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><h3 class="fis-text-white fis-primary-heading-font">Let's Start a <span>Conversation</span></h3>
+
+<p class="fis-text-white fis-primary-content-font">Let's work together to reach your goals. Contact us at the links below and a representative will be in touch.</p></div>
+      
+</div>
+      
+  </div>
+
+                                        <div class="contact-section">
+                        <div class="row">
+                                                            
+
+<div class="fis-email">
+            
+    <h4 id="block-headermobiletwo-2-menu" class="fis-primary-content-bold-font fis-text-white">EMAIL US</h4>
+    
+
+                              <span><a href="mailto:getinfo@fisglobal.com?Subject=FIS" target="_top" class="fis-primary-content-semibold-font">getinfo@fisglobal.com</a></span>
+            
+
+
+    </div>
+
+                                                                                        
+
+<div class="fis-phone">
+            
+    <h4 id="block-headermobileone-2-menu" class="fis-primary-content-bold-font fis-text-white">CALL US</h4>
+    
+
+                              <span><a href="tel:+1 877.776.3706" target="_top" class="fis-primary-content-semibold-font">+1 877.776.3706</a></span>
+            
+
+
+    </div>
+
+                                                    </div>
+                        <div class="row">
+                                                            
+
+<div class="fis-address">
+            
+    <h4 id="block-headermobilethree-2-menu" class="fis-primary-content-bold-font fis-text-white">HEADQUARTERS</h4>
+    
+
+                              <span class="fis-primary-content-semibold-font">Jacksonville, Florida United States</span>
+            
+
+
+    </div>
+
+                                                                                        
+
+<div class="fis-connect">
+            
+    <h4 id="block-headermobilefour-2-menu" class="fis-primary-content-bold-font fis-text-white">STAY CONNECTED</h4>
+    
+
+                              <ul>
+                  <li class="fis-social-link">
+          <a  href="mailto:getinfo@fisglobal.com" target="_blank">
+            <svg class="fis-icon fis-icon-email">
+              <use xlink:href="#fis-icon-email"></use>
+            </svg>
+          </a>
+                  </li>
+              <li class="fis-social-link">
+          <a  href="https://www.linkedin.com/company/fis/" target="_blank">
+            <svg class="fis-icon fis-icon-linked-in">
+              <use xlink:href="#fis-icon-linked-in"></use>
+            </svg>
+          </a>
+                  </li>
+              <li class="fis-social-link">
+          <a  href="https://twitter.com/fisglobal" target="_blank">
+            <svg class="fis-icon fis-icon-twitter">
+              <use xlink:href="#fis-icon-twitter"></use>
+            </svg>
+          </a>
+                  </li>
+              <li class="fis-social-link">
+          <a  href="https://www.facebook.com/FIStoday/" target="_blank">
+            <svg class="fis-icon fis-icon-facebook">
+              <use xlink:href="#fis-icon-facebook"></use>
+            </svg>
+          </a>
+                  </li>
+          </ul>
+  
+
+
+    </div>
+
+                                                    </div>
+                    </div>
+                </div>
+                <div class="column-content">
+                                            <div id="block-gbgetintouch" class="block-content--nir-global-block block-content--nir-global-block--32776 block--block-content7788efb8-7397-4c54-be0c-5d12079eeff5 block--block-content7788efb8-7397-4c54-be0c-5d12079eeff5--5831 block--footer-seven--block-content--7788efb8-7397-4c54-be0c-5d12079eeff5 block--footer-seven--block-content--7788efb8-7397-4c54-be0c-5d12079eeff5--5831 block--0c5ac837-d26d-4e6a-b189-508a40a702c0 block--0c5ac837-d26d-4e6a-b189-508a40a702c0--5831 block block-block-content block-block-content7788efb8-7397-4c54-be0c-5d12079eeff5">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><h3 class="fis-text-white fis-primary-heading-font">Get in<span>Touch</span></h3>
+
+<p class="fis-text-white fis-primary-content-font">Your experience is our top priority. We're here to help.</p>
+<a class="btn-secondary-white-on-dark" href="https://www.fisglobal.com/contact-us" target="_blank" title="Learn more">Learn more</a></div>
+      
+</div>
+      
+  </div>
+
+                                    </div>
+            </div>
+        </div>
+        <div class="fis-footer-nav-container fis-bg-base " style="">
+            <div class="content-width">
+                                    
+
+                        
+    <h4 class="visually-hidden fis-primary-content-bold-font fis-text-white" id="block-footermenu-menu">Footer Menu</h4>
+    
+
+                              <ul class="row footer-column7" id="fis-footer-nav">
+                  <li class="footer-section">
+          <a href="https://www.fisglobal.com/merchant-solutions-worldpay" target="_blank"><h4 class="fis-primary-heading-semibold-font fis-text-white">Merchants</h4></a>
+                  </li>
+              <li class="footer-section">
+          <a href="https://www.fisglobal.com/banking-solutions" target="_blank"><h4 class="fis-primary-heading-semibold-font fis-text-white">Banking</h4></a>
+                  </li>
+              <li class="footer-section">
+          <a href="https://www.fisglobal.com/capital-markets-solutions" target="_blank"><h4 class="fis-primary-heading-semibold-font fis-text-white">Capital Markets</h4></a>
+                  </li>
+              <li class="footer-section">
+          <a href="https://www.fisglobal.com/corporate-solutions" target="_blank"><h4 class="fis-primary-heading-semibold-font fis-text-white">Corporates</h4></a>
+                  </li>
+              <li class="footer-section">
+          <a href="https://www.fisglobal.com/insights" target="_blank"><h4 class="fis-primary-heading-semibold-font fis-text-white">Insights</h4></a>
+                  </li>
+              <li class="footer-section">
+          <a href="https://www.fisglobal.com/about-us" target="_blank"><h4 class="fis-primary-heading-semibold-font fis-text-white">About</h4></a>
+                  </li>
+              <li class="footer-section">
+          <a href="https://www.fisglobal.com/careers" target="_blank"><h4 class="fis-primary-heading-semibold-font fis-text-white">Careers</h4></a>
+                  </li>
+          </ul>
+  
+
+
+    
+                            </div>
+            <div class="fis-copyright content-width">
+                <div class="ancillary-nav">
+                                            
+
+                        
+    <h4 class="visually-hidden fis-primary-content-bold-font fis-text-white" id="block-legal-menu">Legal</h4>
+    
+
+                              <ul>
+                  <li>
+          <a href="https://www.fisglobal.com/privacy" target="_blank" title="Privacy">Privacy</a>
+                  </li>
+              <li>
+          <a href="https://www.fisglobal.com/cookies" target="_blank" title="Cookies">Cookies</a>
+                  </li>
+              <li>
+          <a href="https://www.fisglobal.com/terms-of-use" target="_blank" title="Terms of Use">Terms of Use</a>
+                  </li>
+              <li>
+          <a href="https://www.fisglobal.com/login" target="_blank" title="Login">Login</a>
+                  </li>
+              <li>
+          <a href="https://www.fisglobal.com/contact-us" target="_blank" title="Contact Us">Contact Us</a>
+                  </li>
+              <li>
+          <a href="https://www.fisglobal.com/preferencecenter?utm_medium=fisglobal&amp;amp%3Butm_source=footerlink&amp;amp%3Butm_campaign=preferencecentergdpr" target="_blank" title="Preference Center">Preference Center</a>
+                  </li>
+          </ul>
+  
+
+
+    
+                                    </div>
+                <div class="message"><p class="fis-text-white fis-primary-content-font">©2021 FIS. Advancing the way the world pays, banks and invests™</p></div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Start End -->
+</div>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb1242";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5831","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid2511\/override,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid2511","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"534673b90ff2b56bda43fc7bafb8aa94b734a0e5eb5f0d060e61d15577c5ae37"}}</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/sites/g/files/knoqqb53356/files/js/js_iU5wu7PprntEwcJqeB0gZHklOYoghRoBxnstURVtuKg.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"186020377,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":1854,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Eagle Bulk Shipping Inc." />
+<link rel="canonical" href="https://ir.eagleships.com/presentations/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.eagleships.com/presentations" />
+<meta property="og:title" content="Presentations | Eagle Bulk Shipping Inc." />
+<meta name="referrer" content="no-referrer" />
+<meta property="og:description" content="The Investor Relations website contains information about Eagle Bulk Shipping Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb38331/files/eb-fav-1.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://ir.eagleships.com/presentations" />
+<link rel="revision" href="https://ir.eagleships.com/presentations" />
+
+    <title>Presentations | Eagle Bulk Shipping Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb38331/files/css/css_rfjm6CJ_0NMC2yDcg2-ndYMEx1qfufTwwHO3KArx5Oc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb38331/files/css/css_OfMqV9lF8sDXCkgNOwksIW7uCCjzxvbmJVQXICIQlf0.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb38331/files/css/css_47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb38331/files/css/css_FOWFcd8BAOuFg16BH9I4yHPhqe3R4KmT1MBOZfxEIk0.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb38331/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5826 page-template-default page page-id-662 page-parent kingcomposer kc-css-system investor-relations fixed-nav sidebar-primary path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<header class="banner" data-scrolled-size="49">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="https://www.eagleships.com/">Eagle Ships</a>
+    </div>
+
+    <nav class="collapse navbar-collapse nav-primary" role="navigation">
+            <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+        
+
+<nav role="navigation" aria-labelledby="block-corporatenavigation-menu" id="block-corporatenavigation" class="block--system-menu-blockcorporate-navigation block--system-menu-blockcorporate-navigation--13286 block--header--system-menu-block--corporate-navigation block--header--system-menu-block--corporate-navigation--13286 block--acc8fa66-fb85-46a0-9a8e-9e7c2ef5f765 block--acc8fa66-fb85-46a0-9a8e-9e7c2ef5f765--13286 block block-menu navigation block-system-menublock menu--corporate-navigation">
+                        
+    <h2 class="visually-hidden" id="block-corporatenavigation-menu">Corporate Navigation</h2>
+    
+
+                    
+    <ul id="menu-menu-1" class="nav navbar-nav">
+
+                      <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.eagleships.com/company/" target="" rel="">Company</a>
+        </li>
+                              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.eagleships.com/ESG/" target="_blank" rel="">ESG</a>
+        </li>
+                              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.eagleships.com/industry/" target="" rel="">Industry</a>
+        </li>
+                              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.eagleships.com/fleet/" target="" rel="">Fleet</a>
+        </li>
+                              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="/press-releases" target="" rel="" class="media-nav" data-drupal-link-system-path="node/5816">Media</a>
+        </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page current_page_item active">
+            <a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;">Investors</a>
+          </li>
+                              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.eagleships.com/careers/" target="" rel="">Careers</a>
+        </li>
+                              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.eagleships.com/contacts/" target="" rel="">Contacts</a>
+        </li>
+                                <li class="nav-search menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="https://www.eagleships.com/search/" target="" rel="">Search</a>
+          </li>
+              
+    </ul>
+  
+
+
+    </nav>
+
+      </div>
+          </nav>
+  </div>
+</header>
+
+
+<div class="wrap" role="document">
+  <div class="content">
+    <main class="main">
+      <div class="kc_clfw"></div>
+      <section class="kc-elm kc-css-980350 kc_row">
+        <div class="kc-row-container">
+          <div class="kc-wrap-columns">
+            <div class="kc-elm kc-css-834852 kc_col-sm-12 kc_column kc_col-sm-12">
+              <div class="kc-col-container">
+                                <div id="masthead--module-16292789875c095328ec5ac" class="masthead masthead--module has-image has-menu center-top" style="background-image:url(/sites/g/files/knoqqb38331/themes/site/nir_pid3146/dist/images/background-investor.jpg)">
+                                  <div class="masthead--inner">
+                    <div class="container">
+                      <div class="masthead--container">
+                        <h1 class="masthead--title">
+                          <span>
+                                                          Presentations
+                                                      </span>
+                        </h1>
+                      </div>
+                    </div>
+                    <img class="masthead--arrow" src="/sites/g/files/knoqqb38331/themes/site/nir_pid3146/dist/themes/eagle-bulk/assets/images/icon-arrow.png" />
+
+                                        <div class="masthead--child-nav">
+                                            
+
+<nav role="navigation" aria-labelledby="block-irnavigation-menu" id="block-irnavigation" class="block--system-menu-blockir-navigation block--system-menu-blockir-navigation--5826 block--ir-menu--system-menu-block--ir-navigation block--ir-menu--system-menu-block--ir-navigation--5826 block--0c0064e4-5b42-4e85-99a9-b38bfa7962b7 block--0c0064e4-5b42-4e85-99a9-b38bfa7962b7--5826 block block-menu navigation block-system-menublock menu--ir-navigation">
+                        
+    <h2 class="visually-hidden" id="block-irnavigation-menu">IR Navigation</h2>
+    
+
+                              <ul data-block-uuid="0c0064e4-5b42-4e85-99a9-b38bfa7962b7">
+                  <li class="page_item">
+          <a href="/equity" target="" rel="" data-drupal-link-system-path="node/5916">Equity</a>
+                  </li>
+              <li class="page_item">
+          <a href="/debt" target="" rel="" data-drupal-link-system-path="node/11651">Debt</a>
+                  </li>
+              <li class="page_item">
+          <a href="/analyst" target="" rel="" data-drupal-link-system-path="node/5896">Analyst</a>
+                  </li>
+              <li class="page_item">
+          <a href="/presentations" target="" rel="" data-drupal-link-system-path="node/5826" class="is-active">Presentations</a>
+                  </li>
+              <li class="page_item">
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+              <li class="page_item">
+          <a href="/financial-reports" target="" rel="" data-drupal-link-system-path="node/5871">Financial Reports</a>
+                  </li>
+              <li class="page_item">
+          <a href="/sec-filings?field_nir_sec_form_group_target_id%5B0%5D=496&amp;field_nir_sec_date_filed_value=#views-exposed-form-widget-sec-filings-table" target="" rel="" data-drupal-link-query="{&quot;field_nir_sec_date_filed_value&quot;:&quot;&quot;,&quot;field_nir_sec_form_group_target_id&quot;:[&quot;496&quot;]}" data-drupal-link-system-path="node/6016">SEC Filings</a>
+                  </li>
+              <li class="page_item">
+          <a href="/esg-reports" target="" rel="" data-drupal-link-system-path="node/12791">ESG Reports</a>
+                  </li>
+              <li class="page_item">
+          <a href="/governance" target="" rel="" data-drupal-link-system-path="node/5836">Governance</a>
+                  </li>
+              <li class="page_item">
+          <a href="/glossary" target="" rel="" data-drupal-link-system-path="node/11696">Glossary</a>
+                  </li>
+              <li class="page_item">
+          <a href="/alerts" target="" rel="" data-drupal-link-system-path="node/5946">Alerts</a>
+                  </li>
+              <li class="page_item">
+          <a href="/faq" target="" rel="" data-drupal-link-system-path="node/5941">FAQ</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+                                          </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      
+      
+            <section class="kc-elm kc-css-96186 kc_row">
+          <div class="kc-row-container  kc-container">
+              <div class="kc-wrap-columns">
+
+                <div id="ndq-content" class="ndq-content ndq-5826">
+                    <div class="region region-content">
+    <div id="block-nir-pid3146-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5826 block--content--website-notice-block block--content--website-notice-block--5826 block--dcc35539-2ab1-4816-a4d8-4f528311561f block--dcc35539-2ab1-4816-a4d8-4f528311561f--5826 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid3146-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--c62e6dd3-13e1-4fdc-93e3-09ceb118d34e block--c62e6dd3-13e1-4fdc-93e3-09ceb118d34e--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--e6bc2424-8fec-4c8e-8f87-062f8a74ef34 block--e6bc2424-8fec-4c8e-8f87-062f8a74ef34--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Upcoming Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+      
+              <div class="col-md-3 col-label">
+          Date
+        </div>
+        <div class="col-md-9 col-label">
+          Item
+        </div>
+        
+          
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+<div class="col-md-3">
+  <div class="nir-widget--field nir-widget--event--date">
+    
+      
+      
+            May 7, 2021 at 8:00 AM EDT
+      
+  </div>
+</div>
+<div class="col-md-9">
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/eagle-bulk-shipping-reports-first-quarter-2021-results" hreflang="en">Eagle Bulk Shipping Reports First Quarter 2021 Results</a></div>
+  </div>
+    </div>
+  
+  
+
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/23kwvw7k" target="_blank">Click Here for Webcast</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--add-to-calendar clearfix">
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--outlook">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-outlook field__item"><a href="/node/13326/ics" class="add-outlook">Add to Outlook</a></div>
+  </div>
+      </div>
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--google">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-gcal field__item"><a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;text=Eagle%20Bulk%20Shipping%20Inc.%20-%20Eagle%20Bulk%20Shipping%20Reports%20First%20Quarter%202021%20Results&amp;dates=20210507T120000Z/20210507T120000Z&amp;details=Event%20Details%3A%20http%3A//ir.eagleships.com/events/event-details/eagle-bulk-shipping-reports-first-quarter-2021-results%0A%0AWebcast%3A%20https%3A//edge.media-server.com/mmc/p/23kwvw7k&amp;location=&amp;trp=false&amp;sprop=name%3A" class="add-gcal">Add to Google Calendar</a></div>
+  </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  
+
+</article>
+
+        
+          
+    </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--9829f7c9-8d99-407b-9541-7c7edaae0fd6 block--9829f7c9-8d99-407b-9541-7c7edaae0fd6--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Past Events
+    </div>
+    <div class="nir-widget--content">
+          <div class="nir-widget--form">
+        <form data-drupal-selector="widget-form-base" action="/presentations" method="get" id="widget-form-base" accept-charset="UTF-8">
+  <div class="nir-widgets--field-container nir-widgets--field-container--yeartimezone js-form-wrapper form-wrapper" data-drupal-selector="edit-a6f30999-year" id="edit-a6f30999-year"><div class="two-col-field form-item js-form-item js-form-type-select form-type-select form-item-a6f30999-year-value js-form-item-a6f30999-year-value">
+      <label for="edit-a6f30999-year-value">Year</label>
+        <select data-drupal-selector="edit-a6f30999-year-value" id="edit-a6f30999-year-value" name="a6f30999_year[value]" class="form-select"><option value="_none">None</option><option value="2021" selected="selected">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option></select>
+        </div>
+</div>
+<input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Filter" class="button button--primary js-form-submit form-submit" />
+<input data-drupal-selector="edit-a6f30999-widget-id" type="hidden" name="a6f30999_widget_id" value="a6f30999" />
+<input autocomplete="off" data-drupal-selector="form-dtevju-wr83aat8dkvzeskjju2j-yeb80jeisrpjmgq" type="hidden" name="form_build_id" value="form-DTevju-wr83aaT8DkvZESkJJU2j_yEb80jEisrPjmgQ" />
+<input data-drupal-selector="edit-widget-form-base" type="hidden" name="form_id" value="widget_form_base" />
+
+</form>
+
+      </div>
+        <div class="nir-widget--list">
+      
+              <div class="col-md-3 col-label">
+          Date
+        </div>
+        <div class="col-md-9 col-label">
+          Item
+        </div>
+        
+          
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+<div class="col-md-3">
+  <div class="nir-widget--field nir-widget--event--date">
+    
+      
+      
+            Apr 1, 2021
+      
+  </div>
+</div>
+<div class="col-md-9">
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/bloomberg-webinar-presentation" hreflang="en">Bloomberg Webinar Presentation</a></div>
+  </div>
+    </div>
+  
+  
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.eagleships.com/static-files/fd563386-4c29-4519-98f0-77ac14376791" type="application/pdf; length=1555397" title="EGLE_1apr21BloombergPresvF.pdf">Bloomberg Webinar Presentation</a></span><span class="filesize"> 1.5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  
+
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+<div class="col-md-3">
+  <div class="nir-widget--field nir-widget--event--date">
+    
+      
+      
+            Mar 24, 2021
+      
+  </div>
+</div>
+<div class="col-md-9">
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/investor-presentation-4" hreflang="en">Investor Presentation</a></div>
+  </div>
+    </div>
+  
+  
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.eagleships.com/static-files/72ccf0d5-4b5a-4492-a672-fa4f05758b9e" type="application/pdf; length=2491572" title="08mar21 EGLE Investor Presentation vF.pdf">Investor Presentation</a></span><span class="filesize"> 2.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  
+
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+<div class="col-md-3">
+  <div class="nir-widget--field nir-widget--event--date">
+    
+      
+      
+            Mar 5, 2021 at 8:00 AM EST
+      
+  </div>
+</div>
+<div class="col-md-9">
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/eagle-bulk-shipping-reports-fourth-quarter-2020-results" hreflang="en">Eagle Bulk Shipping Reports Fourth Quarter 2020 Results</a></div>
+  </div>
+    </div>
+  
+  
+
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/4jv5woz5" target="_blank">Click Here for Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.eagleships.com/static-files/8ebc76b2-5d1a-43b1-a4af-fe869706ef47" type="application/pdf; length=1187395" title="EGLE 4q20 Earnings Presentation vF.pdf">Eagle Bulk 4Q20 Earnings Presentation </a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  
+
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+<div class="col-md-3">
+  <div class="nir-widget--field nir-widget--event--date">
+    
+      
+      
+            Feb 8, 2021
+      
+  </div>
+</div>
+<div class="col-md-9">
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/investor-presentation-3" hreflang="en">Investor Presentation</a></div>
+  </div>
+    </div>
+  
+  
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.eagleships.com/static-files/626750e4-04ae-4823-bf30-d43c532669c6" type="application/pdf; length=2492230" title="EGLE_8feb21PresentationvF.pdf">Investor Presentation</a></span><span class="filesize"> 2.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  
+
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+<div class="col-md-3">
+  <div class="nir-widget--field nir-widget--event--date">
+    
+      
+      
+            Jan 11, 2021
+      
+  </div>
+</div>
+<div class="col-md-9">
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/investor-presentation-5" hreflang="en">Investor Presentation</a></div>
+  </div>
+    </div>
+  
+  
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.eagleships.com/static-files/30a2beba-14ad-4411-95b8-977130fab7da" type="application/pdf; length=2468802" title="10jan21 EGLE Investor Presentation vF2.pdf">Investor Presentation</a></span><span class="filesize"> 2.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  
+
+</article>
+
+        
+          
+    </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+                </div>
+
+              </div>
+          </div>
+      </section>
+      
+      <section class="kc-elm kc-css-148410 kc_row">
+        <div class="kc-row-container  kc-container">
+          <div class="kc-wrap-columns">
+            <div class="kc-elm kc-css-364166 kc_col-sm-12 kc_column kc_col-sm-12">
+              <div class="kc-col-container">
+                  <div class="kc-elm kc-css-756694" style="height: 80px; clear: both; width:100%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- /.main -->
+  </div>
+  <!-- /.content -->
+</div>
+<!-- /.wrap -->
+
+
+<div id="cookie-notice" class="cookie-notice fixed-bottom" style="background-color:#1b304a">
+  <div class="cookie-notice--content" style="color:#ffffff">
+    <p><strong>This Website uses cookies</strong> to enhance the user experience and administer the Website. By continuing to use our Website you consent to our use of cookies as described in our <a href="https://www.eagleships.com/privacy-policy/">Privacy Policy</a>.</p>
+  </div>
+
+  <div class="cookie-notice--action">
+    <a href="index.html#" class="cookie-notice--action-button" style="background-color:#ffffff;color:#294975">
+      Agree
+    </a>
+  </div>
+</div>
+
+
+<footer class="content-info" role="contentinfo">
+  <section class="kc-elm kc-css-315081 kc_row">
+    <div class="kc-row-container  kc-container">
+        <div class="kc-wrap-columns">
+
+          <div class="kc-elm kc-css-3266355 kc_col-sm-3 kc_column kc_col-sm-3">
+            <div class="kc-col-container">
+              <div class="kc-elm kc-css-1579975" style="height: 30px; clear: both; width:100%;"></div>
+              <div id="country-time-module-15862404355b7dcf0f4ffd9" class="country-time" data-zone="America/New_York" data-time=""><img src="/sites/g/files/knoqqb38331/themes/site/nir_pid3146/dist/themes/eagle-bulk/dist/images/flag_us.png" alt="Stamford">
+                  <p><strong>Stamford</strong></p>
+                  <time><span class="clock-hour">05</span>:<span class="clock-minute">49</span>AM</time>
+                  <p>+1 203 276 8100</p>
+              </div>
+              <div class="kc-elm kc-css-2159287" style="height: 30px; clear: both; width:100%;"></div>
+            </div>
+          </div>
+
+          <div class="kc-elm kc-css-2834605 kc_col-sm-3 kc_column kc_col-sm-3">
+            <div class="kc-col-container">
+              <div class="kc-elm kc-css-1300396" style="height: 30px; clear: both; width:100%;"></div>
+              <div id="country-time-module-11367615395b7dcf0f50340" class="country-time" data-zone="Asia/Singapore" data-time=""><img src="/sites/g/files/knoqqb38331/themes/site/nir_pid3146/dist/themes/eagle-bulk/dist/images/flag_singapore.png" alt="Singapore">
+                  <p><strong>Singapore</strong></p>
+                  <time><span class="clock-hour">05</span>:<span class="clock-minute">49</span>PM</time>
+                  <p>+65 6508 8180</p>
+              </div>
+              <div class="kc-elm kc-css-3222563" style="height: 30px; clear: both; width:100%;"></div>
+            </div>
+          </div>
+
+          <div class="kc-elm kc-css-2249536 kc_col-sm-3 kc_column kc_col-sm-3">
+            <div class="kc-col-container">
+              <div class="kc-elm kc-css-1400795" style="height: 30px; clear: both; width:100%;"></div>
+              <div id="country-time-module-9243531765b7dcf0f50710" class="country-time" data-zone="Europe/Berlin" data-time=""><img src="/sites/g/files/knoqqb38331/themes/site/nir_pid3146/dist/themes/eagle-bulk/dist/images/flag_denmark_sml.png" alt="Copenhagen">
+                  <p><strong>Copenhagen</strong></p>
+                  <time><span class="clock-hour">11</span>:<span class="clock-minute">49</span>AM</time>
+                  <p>+49 40 4600080 0</p>
+              </div>
+              <div class="kc-elm kc-css-1450982" style="height: 30px; clear: both; width:100%;"></div>
+            </div>
+          </div>
+
+          <div class="kc-elm kc-css-2288184 kc_col-sm-3 kc_column kc_col-sm-3">
+            <div class="kc-col-container">
+              <div class="kc-elm kc-css-2008106" style="height: 30px; clear: both; width:100%;"></div>
+
+              <div class="kc-elm kc-css-555930 kc_row kc_row_inner">
+                <div class="kc-elm kc-css-2323652 kc_col-sm-6 kc_column_inner kc_col-sm-6">
+                  <div class="kc_wrapper kc-col-inner-container">
+
+                  </div>
+                </div>
+                <div class="kc-elm kc-css-4260743 kc_col-sm-6 kc_column_inner kc_col-sm-6">
+                  <div class="kc_wrapper kc-col-inner-container">
+                    <div class="kc-elm kc-css-1470678 kc-multi-icons-wrapper">
+                      <a href="https://twitter.com/EagleBulk?lang=en" target="_blank" title="" class="multi-icons-link multi-iconsfab-twitter">
+                        <i class="fab-twitter"></i>
+                      </a>
+
+                      <a href="https://www.linkedin.com/company/eagle-bulk-shipping-inc-" target="_blank" title="" class="multi-icons-link multi-iconsfab-linkedin-in">
+                        <i class="fab-linkedin-in"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="kc-elm kc-css-3986977" style="height: 30px; clear: both; width:100%;"></div>
+
+            </div>
+
+          </div>
+
+          <div class="kc-elm kc_col-sm-12 kc_column kc_col-sm-12">
+            <div class="kc-elm kc-css-2796090" style="height: 20px; clear: both; width:100%;"></div>
+            <div class="kc-elm kc-css-1337562 kc_text_block footer--info">
+              <p>
+                <a href="https://www.eagleships.com/privacy-policy/">Privacy Policy</a> |
+                <a href="https://www.eagleships.com/terms-of-use/">Terms of Use</a> | 
+                <a href="https://www.eagleships.com/disclaimer/">Disclaimer</a></p>
+              <p>
+                &copy; 2021 EAGLE BULK SHIPPING INC.
+                <br>ALL RIGHTS RESERVED.
+              </p>
+            </div>
+
+            <div class="kc-elm kc-css-2796090" style="height: 8px; clear: both; width:100%;"></div>
+          </div>
+
+        </div>
+
+    </div>
+  </section>
+</footer>
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb1191";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.filterform,nir_multimedia\/nir_multimedia,nir_pid3146\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid3146","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"user":{"uid":0,"permissionsHash":"0d7cd65fd36d1f2f3fcad5a8a781d192eaeb478fa70328ae18d52b10e12623fc"}}</script>
+<script src="/sites/g/files/knoqqb38331/themes/site/nir_pid3146/dist/js/jquery/jquery.js?qq8xth"></script>
+<script src="/sites/g/files/knoqqb38331/themes/site/nir_pid3146/dist/js/jquery/jquery-migrate.min.js?qq8xth"></script>
+<script src="/sites/g/files/knoqqb38331/themes/site/nir_pid3146/dist/mu-plugins/crx-engine/dist/build/scripts/app.js?qq8xth"></script>
+<script src="/sites/g/files/knoqqb38331/themes/site/nir_pid3146/dist/plugins/kingcomposer/assets/frontend/js/kingcomposer.min.js?qq8xth"></script>
+<script src="/sites/g/files/knoqqb38331/themes/site/nir_pid3146/dist/themes/eagle-bulk/dist/scripts/app.js?qq8xth"></script>
+<script src="/sites/g/files/knoqqb38331/files/js/js_4gybJDCKjRmAlXQaU6lS7k2_28vq6_KRiKuonkTE7yQ.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":383,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://www.meipharma.com/about-us -->
+<html lang="en" dir="ltr" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# book: http://ogp.me/ns/book# profile: http://ogp.me/ns/profile# video: http://ogp.me/ns/video# product: http://ogp.me/ns/product# content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#" class="js">
+	<head>
+<!-- begin spin_special_output(head_start) -->
+<script type="text/javascript" src="js/jquery-webdriver.js" wd_script_id="jquery-webdriver.js"></script>
+<script type="text/javascript" src="js/webdriver.js" wd_script_id="webdriver.js"></script>
+<script type="text/javascript" wd_script_id="featurebox_financial_script">
+			var ir_featurebox = {
+				featureboxes: new Array,
+				ticker_data: new Array,
+
+				update: function(index, ticker, filer) {
+					var item_id = ticker || filer;
+					if (!this.featureboxes[index]) {
+						this.featureboxes[index] = {
+							ticker: ticker,
+							filer: filer,
+							chart: false,
+							size: false
+						};
+					}
+
+					if (!this.ticker_data[item_id])
+						this.ticker_data[item_id] = {};
+
+					if (ticker && webDriver.jQuery("#ir_featurebox_"+index+"-quote").length)
+						this.update_quote(index, ticker);
+
+					if (ticker && webDriver.jQuery("#ir_featurebox_"+index+"-chart").length)
+						this.update_chart(index, ticker);
+
+					if (ticker && webDriver.jQuery("#ir_featurebox_"+index+"-data").length)
+						this.update_data(index, ticker);
+
+					if (filer && webDriver.jQuery("#ir_featurebox_"+index+"-filings").length)
+						this.update_filings(index, filer);
+
+					if (webDriver.jQuery("#ir_featurebox_"+index+"-footer").length)
+						this.update_labels(index, ticker, filer);
+				},
+
+				update_labels: function(index, ticker, filer) {
+					var item_id = ticker || filer;
+					if (!this.ticker_data[item_id]["labels"]) {
+						webDriver.jQuery("#ir_featurebox_"+index+"-footer").html("");
+						webDriver.jQuery.getJSON(
+							"index.php",
+							{
+								ajax: "ir_featurebox",
+								ticker: ticker,
+								filer: filer,
+								data: "labels"
+							},
+							function(data) {
+								ir_featurebox.ticker_data[item_id]["labels"] = data;
+								ir_featurebox.update_labels(index, ticker, filer);
+							}
+						);
+					} else {
+						webDriver.jQuery("#ir_featurebox_"+index+"-footer").html(this.ticker_data[item_id]["labels"].footer);
+					}
+				}
+			};
+		</script>
+<style type="text/css" wd_script_id="ir_ticker_label_style">
+				div.wd_ticker_label {
+					text-align: right;
+					margin: 5px 0;
+				}
+				div.wd_ticker_label span.wd_exchange {
+					color: #999999;
+				}
+
+				div.wd_ticker_label span.wd_exchange:after {
+					content: ": ";
+				}
+			</style>
+<script type="text/javascript">webDriver.push_jQuery();</script>
+<script type="text/javascript" src="js/highstock/highstock.src.js" wd_script_id="highstock.src.js"></script>
+<link href="css/jquery-ui/jquery-ui.css" type="text/css" rel="stylesheet" wd_script_id="jquery-ui.css">
+<script type="text/javascript" wd_script_id="highcharts_locale_script">
+webDriver.jQuery(function($){
+	Highcharts.setOptions({
+		lang: {
+			loading: "Loading...",
+			months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+			shortMonths: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+			weekdays: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+		}
+	});
+});
+</script>
+<style type="text/css" wd_script_id="ir_featurebox_chart_style">
+				div.wd_chart-ranges {
+					width: 100%;
+					margin: 3px 0 0 0;
+					overflow: auto;
+				}
+
+				div.wd_chart-range {
+					background: #777777;
+					color: #ffffff;
+					cursor: pointer;
+					float: left;
+					width: 19%;
+					text-align: center;
+					border-left: 1px solid #ffffff;
+					border-bottom: 1px solid #777777;
+				}
+
+				div.wd_chart-range:first_child {
+					border-left: 0;
+				}
+
+				div.wd_chart-range-active {
+					background: #ffffff;
+					color: #000000;
+					border-left: 1px solid #777777;
+					border-right: 1px solid #777777;
+				}
+				</style>
+<link href="css/wd_wcag.css" type="text/css" rel="stylesheet" wd_script_id="wd_wcag.css">
+<link href="thirdparty/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" wd_script_id="font-awesome.min.css">
+<script type="text/javascript" wd_script_id="ir_featurebox_chart_script">
+					ir_featurebox.update_chart = function(index, ticker) {
+						if (!this.featureboxes[index].chart) {
+							var groupingUnits = [[
+								"minute",
+								[5, 10, 15, 30]
+							], [
+								"hour",
+								[1, 2, 3, 4]
+							], [
+								"day",
+								[1]
+							], [
+								"week",
+								[1]
+							], [
+								"month",
+								[1, 2, 3, 4, 6]
+							]];
+							
+							var chart = new Highcharts.StockChart({
+								chart: {
+									renderTo: "ir_featurebox_"+index+"-chart",
+									spacingTop: 0,
+									spacingBottom: 5,
+									spacingLeft: 0,
+									spacingRight: 0,
+									backgroundColor: null,
+									borderColor: "#CCCCCC",
+									borderWidth: 0,
+									borderRadius: 5,
+									plotBackgroundColor: "#FFFFFF",
+									plotBorderColor: "#CCCCCC",
+									plotBorderWidth: 0,
+
+									events: {
+										load: function() {
+											ir_featurebox.featureboxes[index].chart = this;
+											ir_featurebox.update_chart(index, ticker);
+										}
+									}
+								},
+
+								rangeSelector: {enabled: false},
+								navigator: {enabled: false},
+								scrollbar: {enabled: false},
+								credits: {enabled: false},
+
+								xAxis: {
+									dayOffset: 57600000,
+									lineWidth: 2,
+									lineColor: "#CCCCCC",
+									gridLineWidth: 0,
+									gridLineColor: "#CCCCCC",
+									tickWidth: 1,
+									tickColor: "#CCCCCC",
+									dateTimeLabelFormats: {
+			millisecond: "%H:%M:%S.%L",
+			second: "%H:%M:%S",
+			minute: "%H:%M",
+			hour: "%H:%M",
+			day: "%b %e",
+			week: "%b %e",
+			month: "%b '%y",
+			year: "%Y"
+		},
+									labels: {
+										style: {
+											color: "#808080",
+											fontWeight: "normal"
+										}
+									}
+								},
+
+								yAxis: {
+									opposite: true,
+									lineWidth: 2,
+									lineColor: "#CCCCCC",
+									gridLineWidth: 1,
+									gridLineColor: "#CCCCCC",
+									tickWidth: 0,
+									tickColor: "#CCCCCC",
+									labels: {
+										align: "left",
+										x: 2,
+										formatter: function() {
+											return Highcharts.currencyFormat(this.value,["${V}","-${V}"],-2,".",",");
+										},
+										style: {
+											color: "#808080",
+											fontWeight: "normal"
+										}
+									}
+								},
+
+								tooltip: {
+									backgroundColor: "rgba(255,255,255,0.85)",
+									borderColor: null,
+									borderWidth: 2,
+									borderRadius: 3,
+									shadow: true,
+									crosshairs: [
+										{
+											color: "#CCCCCC",
+											width: 1
+										},
+										{
+											color: "#CCCCCC",
+											width: 0
+										}
+									],
+									useHTML: true,
+									style: {
+										color: null,
+										fontSize: "12px",
+										padding: "5px",
+										whiteSpace: "nowrap",
+										width: 300
+									}
+								},
+
+								series: [{
+									name: "Price",
+									id: "price",
+									color: "rgb(94,151,50)",
+									lineColor: "rgb(94,151,50)",
+									marker: {
+										states: {
+											hover: {
+												lineColor: "#FFFFFF"
+											}
+										}
+									},
+									fillColor: "rgb(94,151,50)",
+									fillOpacity: "0.3",
+									type: "area",
+									threshold: null,
+									data: [],
+									tooltip: {
+										pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b><br/>',
+										valueFormatter: function(value) {return Highcharts.currencyFormat(value,["${V}","-${V}"],[2,4],".",",");}
+									},
+									dataGrouping: {
+										approximation: "close",
+										timeOffset: 1,
+										forced: true,
+										dateTimeLabelFormats: {
+				millisecond: ["", "%A, %b %e, %H:%M:%S.%L", ""],
+				second: ["", "%A, %b %e, %H:%M:%S", ""],
+				minute: ["", "%A, %b %e, %H:%M", ""],
+				hour: ["", "%A, %b %e, %H:%M", ""],
+				day: ["", "%A, %b %e, %Y", ""],
+				week: ["", "%A, %b %e, %Y", ""],
+				month: ["", "%B %Y", ""],
+				year: ["", "%Y", ""]
+			},
+										groupTime: "last",
+										tooltipAdjust: false,
+										units: groupingUnits
+									}
+								}]
+							});
+							return;
+						}
+						
+						if (!this.ticker_data[ticker]["chart"]) {
+							webDriver.jQuery("#wd_chart_"+index+"-ranges .wd_chart-range").hide();
+							this.featureboxes[index].chart.showLoading('<span class="wd_loading_rotate" ><span class="fa-spin fa-fw fa fa-circle-o-notch" style="font-size: 3em;"></span><span class="wd_sr-only">Loading...</span></span>');
+							webDriver.jQuery.getJSON(
+								"index.php",
+								{
+									ajax: "ir_featurebox",
+									ticker: ticker,
+									data: "chart"
+								},
+								function(data) {
+									data.quotes = new Array;
+									ir_featurebox.ticker_data[ticker]["chart"] = data;
+									
+									ir_featurebox.featureboxes[index].chart.hideLoading();
+									ir_featurebox.update_chart(index, ticker);
+								}
+							);
+						} else {
+							this.featureboxes[index].ticker = ticker;
+
+							webDriver.jQuery("#wd_chart_"+index+"-ranges .wd_chart-range").hide();
+							for (range in this.ticker_data[ticker].chart.ranges)
+								webDriver.jQuery("#wd_chart_"+index+"-range-"+range).show();
+
+							var range = webDriver.jQuery("#wd_chart_"+index+"-ranges").attr("wd_default_range") || "1mo";
+							this.chart_set_range(index, range, true);
+						}
+					}
+					
+					ir_featurebox.chart_set_range = function(index, range, ticker_changed) {
+						webDriver.jQuery("#wd_chart_"+index+"-ranges .wd_chart-range")
+							.removeClass("wd_chart-range-active")
+							.attr("aria-checked", "false")
+							.attr("tabindex", -1)
+						;
+						webDriver.jQuery("#wd_chart_"+index+"-range-"+range)
+							.addClass("wd_chart-range-active")
+							.attr("aria-checked", "true")
+							.attr("tabindex", 0)
+						;
+
+						var ticker = this.featureboxes[index].ticker;
+						var size = (range == "1dy") ? "minute" : "day";
+						
+						if (!this.ticker_data[ticker].chart.quotes[size]) {
+							this.featureboxes[index].chart.showLoading('<span class="wd_loading_rotate" ><span class="fa-spin fa-fw fa fa-circle-o-notch" style="font-size: 3em;"></span><span class="wd_sr-only">Loading...</span></span>');
+							webDriver.jQuery.getJSON(
+								"index.php",
+								{
+									ajax: "ir_quotes",
+									ticker: ticker,
+									data: "X",
+									size: size,
+									mult: (size == "day") ? 1 : 5,
+									min: this.ticker_data[ticker].chart.mins[size]
+								},
+								function(data) {
+									ir_featurebox.ticker_data[ticker].chart.quotes[size] = data;
+
+									ir_featurebox.featureboxes[index].chart.hideLoading();
+									ir_featurebox.chart_set_range(index, range, ticker_changed);
+								}
+							);
+						} else {
+							if (ticker_changed || size != this.featureboxes[index].size) {
+								this.featureboxes[index].chart.get("price").setData(this.ticker_data[ticker].chart.quotes[size], false);
+								this.featureboxes[index].size = size;
+							}
+							this.featureboxes[index].chart.xAxis[0].setExtremes(this.ticker_data[ticker].chart.ranges[range], this.ticker_data[ticker].chart.last);
+						}
+					}
+				</script>
+<script type="text/javascript" src="js/wd_wcag.js" wd_script_id="wd_wcag.js"></script>
+<style type="text/css" wd_script_id="ir_featurebox_data_style">
+				div.wd_chart-quote {
+					width: 100%;
+					overflow: auto;
+				}
+
+				div.wd_chart-quote-item {
+					width: 49%;
+					float: left;
+					margin: 10px 0;
+				}
+
+				div.wd_chart-quote-value {
+					margin: 0;
+					font-weight: bold;
+				}
+
+				div.wd_chart-quote-value-down {
+					color: #cc0000;
+				}
+
+				div.wd_chart-quote-value-up {
+					color: #00cc00;
+				}
+
+				div.wd_chart-quote-label {
+					margin: 0;
+					color: #999999;
+				}
+
+				div.wd_chart-quote-footer {
+					margin: 5px 0 0 0;
+					font-size: .75em;
+					color: #999999;
+				}
+				</style>
+<script type="text/javascript" wd_script_id="ir_featurebox_data_script">
+					ir_featurebox.update_data = function(index, ticker) {
+						if (!this.ticker_data[ticker]["data"]) {
+							webDriver.jQuery("#ir_featurebox_"+index+"-data").html('<center><span class="wd_loading_rotate" ><span class="fa-spin fa-fw fa fa-circle-o-notch" style="font-size: 3em;"></span><span class="wd_sr-only">Loading...</span></span></center>');
+							webDriver.jQuery.get(
+								"index.php",
+								{
+									ajax: "ir_featurebox",
+									ticker: ticker,
+									data: "data"
+								},
+								function(data) {
+									ir_featurebox.ticker_data[ticker]["data"] = data;
+									ir_featurebox.update_data(index, ticker);
+								}
+							);
+						} else {
+							webDriver.jQuery("#ir_featurebox_"+index+"-data").html(this.ticker_data[ticker]["data"]);
+						}
+					}
+				</script>
+<style type="text/css" wd_script_id="featurebox_financial_style">
+			div.wd_chart-quote-footer {
+				margin: 5px 0 0 0;
+				font-size: .75em;
+				color: #999999;
+			}
+		</style>
+<style type="text/css" wd_script_id="featureboxes_style">
+		.wd_featurebox_icon {
+			display: inline;
+		}
+		.wd_featurebox_icon img {
+			vertical-align: middle;
+		}
+		div.wd_featurebox_group div.wd_tabs_wrapper {
+			border: none;
+			border-bottom: 1px solid #E1E1E1;
+			padding: 0 0 5px 0;
+		}
+		div.wd_featurebox_group div.wd_featurebox {
+			border: none;
+			padding: 8px 0 0 0;
+		}
+		div.wd_featurebox_group li.wd_tab {
+			float: none;
+			color: #666666;
+		}
+		div.wd_featurebox_group li.wd_tab-active {
+			border: none;
+			background-color: transparent;
+			color: #000000;
+			font-weight: bold;
+		}
+		div.wd_featurebox_group li.wd_tab-inactive {
+			cursor: auto;
+		}
+	</style>
+<style type="text/css" wd_script_id="template subscribe_link:base:system style">
+div.wd_subscribe_link {
+	text-align: right;
+	margin: 10px 0;
+	padding: 0px;
+	border: 0px;
+}
+span.wd_subscribe_icon {
+	margin-left: 1em;
+}
+.wd_subscribe_link img {
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="js/wd_scriptloader.js" wd_script_id="wd_scriptloader.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js" wd_script_id="jquery-ui.js"></script>
+<script type="text/javascript" src="js/wd_resize.js" wd_script_id="wd_resize.js"></script>
+<link href="css/wd_modal.css" type="text/css" rel="stylesheet" wd_script_id="wd_modal.css">
+<script type="text/javascript" wd_script_id="wd_modal_script">
+(function($) {
+	webDriver.resizeModal = function() {
+		$(this).find(".wd_modal").wd_modal("resize");
+		return false;
+	}
+	
+	var modals = [];
+		
+	function _value(value, base) {
+		if (typeof value == "string" && value.indexOf("%") > 0) {
+			return  base * parseInt(value, 10) / 100;
+		} else {
+			return parseInt(value, 10);
+		}
+	}
+	
+	var wd_modal = function(element, options) {
+		this.init(element, options);
+	};
+	
+	wd_modal.prototype = {
+		init: function(element, options) {
+			var self = this;
+			
+			this.isOpen = false;
+			this.opener = null;
+			
+			this.$element = $(element);
+			this._options = {
+				autoOpen: false,
+				closeExisting: false,
+				closeOnEscape: true,
+				closeOnOverlayClick: true,
+				fadeDuration: null,
+				margin: "10%",
+				padding: 10
+			};
+			
+			this.options(options);
+			
+			this.$overlay = $("<div>").addClass("wd_modal-overlay").attr("wd_resize","resizeModal").appendTo($("body")).hide();
+			this.$outer = $("<div>").addClass("wd_modal-outer").appendTo(this.$overlay);
+			this.$inner = $("<div>").addClass("wd_modal-inner").appendTo(this.$outer).append(this.$element);
+			// Hack because I can't figure out where the extra few pixels at the bottom of the content are coming from
+			this.$inner.css("overflow-y", "hidden");
+			this.$close = $("<a class=\"wd_modal-close fa fa-times\" href=\"#close\" title=\"Close\"><span class=\"wd_sr-only\">Close Dialog<\/span><\/a>")
+					.on("click", function(event) {self.close(); event.preventDefault();})
+					.appendTo(this.$outer);
+			this.$element.addClass("wd_modal");
+			
+			if (this._options.autoOpen)
+				this.open(this._options.closeExisting);
+		},
+		
+		options: function(options) {
+			if (options) {
+				$.extend(this._options, options);
+
+				this._options.fadeDuration = parseInt(this._options.fadeDuration, 10);
+				if (isNaN(this._options.fadeDuration))
+					this._options.fadeDuration = false;
+				
+				if (!$.isArray(this._options.margin))
+					this._options.margin = [this._options.margin];
+				if (this._options.margin.length < 2)
+					this._options.margin[1] = this._options.margin[0];
+				if (this._options.margin.length < 3)
+					this._options.margin[2] = this._options.margin[0];
+				if (this._options.margin.length < 4)
+					this._options.margin[3] = this._options.margin[1];
+				
+				if (!$.isArray(this._options.padding))
+					this._options.padding = [this._options.padding];
+				if (this._options.padding.length < 2)
+					this._options.padding[1] = this._options.padding[0];
+				if (this._options.padding.length < 3)
+					this._options.padding[2] = this._options.padding[0];
+				if (this._options.padding.length < 4)
+					this._options.padding[3] = this._options.padding[1];
+			} else {
+				return this._options;
+			}
+		},
+		
+		reload: function(options) {
+			if (options) {
+				this.options(options);
+			}
+			
+			this.resize();
+		},
+		
+		open: function(closeExisting, now) {
+			if (this.isOpen)
+				return;
+			
+			var self = this;
+			var myCloseExisting = closeExisting;
+			
+			if (!this.opener)
+				this.opener = document.activeElement;
+
+			if (closeExisting && modals.length > 0) {
+				for (var i = modals.length - 1; i >= 0; --i)
+					modals[i].close(true, true);
+			}
+
+			this.$overlay.addClass("wd_modal-current");
+			$("body").append(this.$overlay);
+
+			if (!now && this._options.fadeDuration) {
+				this.$overlay.fadeIn(this._options.fadeDuration, function() {self.open(myCloseExisting, true);});
+			} else {
+				if (modals.length == 0) {
+					$("body").css("overflow","hidden");
+					$(document).on("keydown.wd_modal", function (event) {
+						var current = modals[modals.length - 1];
+						if ((event.which == 27 || event.keyCode == 27) && current._options.closeOnEscape) {
+							current.close();
+							event.stopImmediatePropagation();
+							event.preventDefault();
+						}
+					});
+				}
+
+				if (this._options.closeOnOverlayClick) {
+					this.$overlay.on("click.wd_modal", function (event) {
+						if (event.target == this) {
+							self.close();
+							event.preventDefault();
+						}
+					});
+				}
+
+				modals.push(this);
+				
+				this.$overlay.show();
+				
+				var $focus = this.$element.find(":focusable");
+				if ($focus.length > 0)
+					$focus[0].focus();
+				
+				this.isOpen = true;
+
+				this.$element.trigger("open");
+			}
+		},
+		
+		close: function(skipCurrent, now) {
+			if (!this.isOpen)
+				return;
+			
+			this.$element.trigger("beforeClose");
+			
+			// TODO: allow closing of lower modals
+			modals.pop();
+			
+			if (modals.length == 0) {
+				$("body").css("overflow","");
+				$(document).off("keydown.wd_modal");
+			}
+			
+			this.$overlay.off("click.wd_modal");
+			
+			if (this.opener) {
+				this.opener.focus();
+				this.opener = null;
+			}
+			
+			this.isOpen = false;
+			this.$overlay.removeClass("wd_modal-current").hide();
+			
+			if (!skipCurrent && modals.length > 0)
+				modals[modals.length-1].$overlay.addClass("wd_modal-current");
+			
+			this.$element.trigger("close");
+		},
+		
+		destroy: function() {
+			this.close(false, true);
+			$("body").append(this.$element);
+			this.$overlay.remove();
+		},
+		
+		resize: function() {
+			if (!this.isOpen)
+				return;
+			
+			var self = this;
+			var winWidth = $(window).width();
+			var winHeight = $(window).height();
+			
+			var margin = this._options.margin;
+			var padding = this._options.padding;
+			
+			var width = winWidth - _value(margin[1], winWidth) - _value(margin[3], winWidth) - _value(padding[1], winWidth) - _value(padding[1], winWidth);
+			var height = winHeight - _value(margin[0], winHeight) - _value(margin[2], winHeight) - _value(padding[0], winHeight) - _value(padding[2], winHeight);
+			
+			this.$inner.css("max-width", width);
+			this.$inner.css("max-height", height);
+			
+			$.each(["Top", "Right", "Bottom", "Left"], function(i, v) {
+				self.$outer.css("padding" + v, _value(padding[i])+"px");
+			});
+			
+			var fixed = this.$element.find("[wd_need_fixed_container]").is(":visible");
+			
+			this.$inner.css("width", width);
+			this.$inner.css("height", height);
+
+			webDriver.doResize(this.$inner);
+			
+			if (!fixed) {
+				this.$inner.css("width", "auto");
+				this.$inner.css("height", "auto");
+				if (this.$element.outerHeight() > height)
+					this.$inner.css("height", height);
+				if (this.$element.outerWidth() > width)
+					this.$inner.css("width", width);
+			}
+		}
+	};
+
+	$.fn.wd_modal = function(options) {
+		if (options == "exists") {
+			return !!$(this).data("wd_modal");
+		} else if (typeof options == "string") {
+            var instance = $(this).data("wd_modal");
+			if (!instance)
+				return null;
+			var args = Array.prototype.slice.call(arguments, 1);
+            return instance[options].apply(instance, args);
+        } else {
+            return this.each(function() {
+                var instance = $(this).data("wd_modal");
+                if (instance) {
+                    instance.reload(options);
+                } else {
+                    $(this).data("wd_modal", new wd_modal(this, options));
+                }
+            });
+        }
+    };
+})(webDriver.jQuery);
+</script>
+<script type="text/javascript" wd_script_id="events_tools_script">
+			function spin_event_popup(url) {
+				var $modal = webDriver.jQuery("#wd_event_modal");
+				if (url && $modal.length == 0) {
+					$modal = webDriver.jQuery('<div id="wd_event_modal">');
+					$modal.wd_modal({
+						autoOpen: false,
+					});
+				}
+
+				if (url) {
+					$modal.html("Loading...");
+					$modal.wd_modal("open");
+					if (/^https?:\/\//.test(url)) {
+						$modal.load(url, function() {webDriver.queueCallback(function() {$modal.wd_modal("resize");});});
+					} else {
+						$modal.html(url);
+						$modal.wd_modal("resize");
+					}
+				} else if ($modal.length > 0) {
+					$modal.wd_modal("close");
+				}
+			}
+		</script>
+<script type="text/javascript" wd_script_id="recaptcha2_script">
+			var recaptcha2_loaded = false;
+
+			function wd_recaptcha2_init() {
+				if (recaptcha2_loaded) {
+					$(".wd_recaptcha2_needed").each(function() {
+						grecaptcha.render(this, {"sitekey": "6LdDmR8TAAAAAJ72DH_RtavsrDUlu6g6lzvajKsK"});
+						$(this).removeClass("wd_recaptcha2_needed");
+					});
+				}
+			}
+
+			function on_recaptcha2_loaded() {
+				recaptcha2_loaded = true;
+				wd_recaptcha2_init();
+			}
+		</script>
+<style type="text/css" wd_script_id="recaptcha2_style">)
+			.g-recaptcha iframe {
+				vertical-align: bottom;
+			}
+		</style>
+<script type="text/javascript" wd_script_id="events_list_script">
+			(function($) {
+				var direction = "auto";
+				var category = "";
+				var start_date = false;
+				var limit_year = 2021;
+				var limit_month = 5;
+				var groups = [];
+
+				function load_events(clear) {
+					if (clear) {
+						$(".wd_events_list").empty();
+						$(".wd_events_none").hide();
+					}
+
+					$(".wd_events_more").hide();
+					$(".wd_events_error").hide();
+					$(".wd_events_loading").show();
+					$(".wd_events_past_summary").toggle(direction=="auto");
+
+					var limit_date;
+					if (limit_year == 2021 && limit_month == 5) {
+						limit_date = "2021-05-03";
+					} else if (direction != "past") {
+						limit_date = limit_year+"-"+limit_month+"-01";
+					} else {
+						var month = limit_month + 1;
+						if (month > 12) {
+							month -= 12;
+							limit_year += 1;
+						}
+						limit_date = limit_year+"-"+month+"-00";
+					}
+
+					var args = {
+						s: "19",
+						ajax: "ajax",
+						op: "list"
+					};
+					args.direction = (direction == "past") ? "past" : "future";
+					args.limit_date = limit_date;
+					if (start_date)
+						args.start_date = start_date;
+					if (category)
+						args.category = category;
+					for (var i = 0; i < groups.length; ++i) {
+						var group = groups[i];
+						args["group["+group.id+"]"] = group.val;
+					}
+
+					$.ajax({
+						url: "index.php",
+						data: args,
+						dataType: "json",
+						success: function(data) {
+							if (data.items.length > 0) {
+								if (direction == "auto")
+									direction = "future";
+
+								var $container = $(".wd_events_list");
+								for (var i = 0; i < data.items.length; ++i) {
+									var item = data.items[i];
+									if (item.type == "month") {
+										if ($("#"+item.id).length == 0)
+											$(".wd_events_list").append(item.content);
+										$container = $("#"+item.id).find(".wd_events_month_events");
+									} else {
+										if ($("#"+item.id).length == 0)
+											$container.append(item.content);
+									}
+								}
+
+								start_date = data.last_start;
+
+								if (data.more)
+									$(".wd_events_more").show();
+							} else if ($(".wd_events_list").children().length == 0) {
+								if (direction == "auto")
+									setTimeout(function () {set_direction("past", false);}, 10);
+								else
+									$(".wd_events_none").show();
+							}
+							
+							if (data.script) {
+								var $script = $(data.script);
+								webDriver.push_jQuery();
+								$script.appendTo($("head"));
+								webDriver.push_jQuery();
+							}
+						},
+						error: function(jqxhr, status, error) {
+							$(".wd_events_more").show();
+							$(".wd_events_error").show().text("Unable to load events ("+status+":"+error+")");
+						},
+						complete: function() {
+							$(".wd_events_loading").hide();
+						}
+					});
+				}
+
+				var month_names = {
+					 1: "January",
+					 2: "February",
+					 3: "March",
+					 4: "April",
+					 5: "May",
+					 6: "June",
+					 7: "July",
+					 8: "August",
+					 9: "September",
+					10: "October",
+					11: "November",
+					12: "December"
+				};
+
+				var prev_year = 0;
+				var prev_dir = "";
+				function update_events_inputs(reset) {
+					var new_dir = (direction == "past") ? "past" : "future";
+
+					if (new_dir != prev_dir) {
+						$(".wd_events_tab")
+							.removeClass("active")
+							.attr("aria-checked", "false")
+							.attr("tabindex", -1)
+						;
+						$(".wd_events_tab[data-direction="+new_dir+"]")
+							.addClass("active")
+							.attr("aria-checked", "true")
+							.attr("tabindex", 0)
+						;
+					}
+
+					if (new_dir != prev_dir) {
+						var min_year, max_year;
+						if (new_dir == "past") {
+							min_year = 2021;
+							max_year = 2021;
+						} else {
+							min_year = 2021;
+							max_year = 2021;
+						}
+
+						var $years = $("#wd_events_input_year");
+						var selected_year = Math.max(min_year, Math.min($years.val(), max_year));
+						$years.empty();
+						for (var year = min_year; year <= max_year; ++year) {
+							var $opt = $("<option></option>").attr("value", year).append(year);
+							$years.append($opt);
+						}
+						$years.val(selected_year);
+					}
+
+					var selected_year = $("#wd_events_input_year").val();
+					if (new_dir != prev_dir || (selected_year != prev_year && (selected_year == 2021 || prev_year == 2021))) {
+						var min_month, max_month;
+						if (selected_year != 2021) {
+							min_month = 1;
+							max_month = 12;
+						} else if (new_dir == "past") {
+							min_month = 1;
+							max_month = 5;
+						} else {
+							min_month = 5;
+							max_month = 12;
+						}
+
+						var $months = $("#wd_events_input_month");
+						var selected_month = Math.max(min_month, Math.min($months.val(), max_month));
+						$months.empty();
+						for (var month = min_month; month <= max_month; ++month) {
+							var $opt = $("<option></option>").attr("value", month).append(month_names[month]);
+							$months.append($opt);
+						}
+						$months.val(selected_month);
+					}
+
+					if (reset) {
+						$("#wd_events_input_year").val(limit_year);
+						$("#wd_events_input_month").val(limit_month);
+						$("#wd_events_input_category").val(category);
+						for (var i = 0; i < groups.length; ++i) {
+							var group = groups[i];
+							$("#wd_events_input_category_group_"+group.id).val(group.val);
+						}
+					}
+
+					prev_year = selected_year;
+					prev_dir = new_dir;
+				}
+
+				function set_direction(new_dir, update_hash) {
+					direction = new_dir;
+					limit_year = 2021;
+					limit_month = 5;
+					start_date = false;
+					update_events_inputs(true);
+					if (update_hash)
+						update_url_hash();
+					load_events(true);
+				}
+
+				var default_hash = "#auto:2021:5";
+				var prev_hash = false;
+				function hash_changed() {
+					var hash = window.location.hash;
+					if (!hash || hash == "#")
+						hash = default_hash;
+
+					if (hash == prev_hash) return;
+					prev_hash = hash;
+
+					hash = hash.substr(1);
+					var parts = hash.split(":");
+					direction = (parts.length > 0 && parts[0]) ? parts[0] : "auto";
+					limit_year = (parts.length > 1 && parts[1]) ? parseInt(parts[1]) : "2021";
+					limit_month = (parts.length > 2 && parts[2]) ? parseInt(parts[2]) : "5";
+					category = (parts.length > 3) ? parts[3] : "";
+					groups = [];
+					for (var i = 4; i < parts.length-1; i += 2)
+						groups.push({id:parseInt(parts[i]), val:parseInt(parts[i+1])});
+					start_date = false;
+
+					update_events_inputs(true);
+					load_events(true);
+				}
+
+				function update_url_hash() {
+					var hash = "#"+direction+":"+limit_year+":"+limit_month;
+					var group_hash = "";
+					for (var i = 0; i < groups.length; ++i) {
+						var group = groups[i];
+						group_hash += ":"+group.id+":"+group.val;
+					}
+					if (category || group_hash)
+						hash += ":"+category;
+					hash += group_hash;
+					prev_hash = hash;
+					window.location.hash = hash;
+				}
+
+				$(function() {
+					setTimeout(hash_changed, 10);
+
+					var liar = (navigator.userAgent.indexOf("MSIE") >= 0 && (!("documentMode" in document) || document.documentMode < 8));
+
+					if ("onhashchange" in window && !liar) {
+						window.onhashchange = function() {hash_changed();};
+					} else {
+						setInterval(hash_changed,200);
+					}
+
+					$(".wd_events_tab").on(
+						"click",
+						function(e) {
+							set_direction($(this).data("direction"), true);
+						}
+					);
+
+					$("#wd_events_input_year").on(
+						"change",
+						function(e) {
+							update_events_inputs();
+						}
+					);
+
+					$(".wd_events_input_go").on(
+						"click",
+						function(e) {
+							limit_year = parseInt($("#wd_events_input_year").val());
+							limit_month = parseInt($("#wd_events_input_month").val());
+							start_date = false;
+							category = $("#wd_events_input_category").val();
+							groups = [];
+							$(".wd_input_category_group").each(function() {
+								var group_val = $(this).val();
+								if (group_val) {
+									var group_id = this.id.replace("wd_events_input_category_group_", "");
+									groups.push({id:group_id, val:group_val});
+								}
+							});
+							update_url_hash();
+							load_events(true);
+						}
+					);
+
+					$(".wd_events_more").on(
+						"click",
+						function(e) {
+							load_events(false);
+						}
+					);
+				});
+			})(webDriver.jQuery);
+		</script>
+<style type="text/css" wd_script_id="addthis_WCAG_style">
+		#at15s .at4-icon {
+			height: auto !important;
+			line-height: auto !important;
+			min-height: 16px;
+		}
+		span.wd_page_tool .at-share-tbx-element .at-share-btn {
+			margin: 0;
+		}
+		span.wd_page_tool .at-share-tbx-element .at-share-btn + .at-share-btn {
+			margin-left: 2ex;
+		}
+		div.wd_page_toolbar td span.wd_page_tool .at-share-tbx-element .at-share-btn + .at-share-btn {
+			margin-left: 4px;
+		}
+		li.wd_tool .at-resp-share-element .at-share-btn {
+			margin: 0;
+		}
+		li.wd_tool .at-resp-share-element .at-share-btn + .at-share-btn {
+			margin-left: 2px;
+		}
+	</style>
+<style type="text/css" wd_script_id="toolbar_style">
+			div.wd_toolbar {
+				border-top: 1px solid #cccccc;
+				border-bottom: 1px solid #cccccc;
+				margin: 15px 0px 15px 0px;
+				padding: 5px;
+				line-height: 1;
+			}
+			div.wd_toolbar-page {
+				clear: both;
+			}
+			div.wd_toolbar ul.wd_tools {
+				display: inline-block;
+				width: 100%;
+				margin: 0;
+				padding: 5px 0;
+			}
+			div.wd_toolbar ul.wd_tools li.wd_tool {
+				display: block;
+				list-style-type: none;
+				margin-right: 5px;
+				padding: 0;
+				float: right;
+			}
+			span.wd_tool_icon > a:link,
+			span.wd_tool_icon > a:visited {
+				border-radius: 2px;
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 7px;
+				font-size: 16px;
+				line-height: 1;
+				text-align: center;
+				color: #ffffff;
+				background-color: #8d8d8d;
+			}
+			span.wd_tool_icon > a:hover {
+				color: #ffffff;
+				background-color: #666666;
+				text-decoration: none;
+			}
+			div.wd_toolbar ul.wd_tools li.wd_tool-addthis {
+				float: left;
+			}
+		</style>
+<style type="text/css" wd_script_id="template page:events:system style">
+.wd_events_inputs {
+	margin: 10px 0;
+	overflow: auto;
+}
+.wd_events_inputs select {
+	margin-right: 1ex;
+}
+ul.wd_events_tabs {
+	float: right;
+	overflow: hidden;
+	margin: 5px 0;
+	padding: 0px;
+}
+li.wd_events_tab {
+	float: left;
+	display: block;
+	margin: 0;
+	border: 1px solid #666666;
+	padding: 5px;
+	cursor: pointer;
+	border: 1px solid #E1E1E1;
+}
+.wd_events_tab_label {
+}
+.wd_events_tab_label.wd_events_tab_future {
+}
+.wd_events_tab_label.wd_events_tab_past {
+}
+li.wd_events_tab:first-child {
+	border-top-left-radius:4px;
+	border-bottom-left-radius:4px;
+	-webkit-border-top-left-radius:4px;
+	-webkit-border-bottom-left-radius:4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-bottomleft: 4px;
+}
+li.wd_events_tab:last-child {
+	border-top-right-radius:4px;
+	border-bottom-right-radius:4px;
+	-webkit-border-top-right-radius:4px;
+	-webkit-border-bottom-right-radius:4px;
+	-moz-border-radius-topright: 4px;
+	-moz-border-radius-bottomright: 4px;
+}
+li.wd_events_tab.active {
+	background: url("images/webdriver/events/tab_background.gif") repeat-x scroll 0 bottom #FFFFFF;
+	color: #333;
+	font-weight: bold;
+}
+.wd_events_more {
+	margin: 10px 0;
+	cursor: pointer;
+	padding: 0 0 0 20px;
+	border: none;
+}
+.wd_event {
+	margin: 15px 0 5px 0;
+	padding: 0;
+	overflow: auto;
+}
+.wd_events_list .wd_event {
+	padding-top: 24px;
+	background: transparent url(images/webdriver/events/shadow.png) center top / 100% 14px no-repeat;
+}
+.wd_events_list .wd_event:first-child {
+	padding-top: 10px;
+	background: none;
+}
+.wd_event_sidebar {
+	float: left;
+	margin: 0 1em 0 0;
+	padding: 0;
+	width: 250px;
+}
+.wd_events-detail .wd_event_sidebar {
+	padding-bottom: 24px;
+	background: transparent url(images/webdriver/events/shadow-narrow.png) center bottom / 100% 14px no-repeat;
+}
+.wd_event_sidebar_group {
+	margin: 2em 0 0 0;
+}
+.wd_event_sidebar_item {
+	margin: 0 0 5px 0;
+}
+@media(max-width:768px){
+	ul.wd_events_tabs {
+		float: none;
+	}
+}
+.wd_events_header_container {
+	border: 0px none;
+	margin: 0 0 5px 0;
+	padding: 0 0 14px;
+}
+.wd_events_month_header {
+	margin: 10px 0 0 0;
+	padding: 5px 10px;
+	font-size: 125%;
+	font-weight: bold;
+	background: url("images/webdriver/events/tab_background.gif") repeat-x scroll 0 bottom #FFFFFF;
+	border: 1px solid #E1E1E1;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+.wd_event {
+	margin: 15px 0 5px 0;
+	padding: 0;
+	overflow: auto;
+}
+.wd_events_list .wd_event {
+	padding-top: 24px;
+	background: transparent url(images/webdriver/events/shadow.png) center top / 100% 14px no-repeat;
+}
+.wd_events_list .wd_event:first-child {
+	padding-top: 10px;
+	background: none;
+}
+.wd_event_sidebar {
+	float: left;
+	margin: 0 1em 0 0;
+	padding: 0;
+	width: 250px;
+}
+.wd_event_sidebar_group {
+	margin: 2em 0 0 0;
+}
+.wd_event_sidebar_item {
+	margin: 0 0 5px 0;
+	padding: 0 0 0 0px;
+}
+.wd_event_sidebar .wd_event_location {
+}
+.wd_event_sidebar .wd_event_location_url {
+}
+@media(max-width:768px){
+	.wd_event_sidebar {
+		float: none;
+		width: auto;
+		max-width: none;
+	}
+}
+</style>
+<script type="text/javascript">webDriver.pop_jQuery();</script>
+
+<!-- end spin_special_output(head_start) -->
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,700,700italic|Source+Sans+Pro:400,700" rel="stylesheet" type="text/css">
+		<link rel="profile" href="http://www.w3.org/1999/xhtml/vocab">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="http://www.meipharma.com/sites/default/files/mei-pharma.favicon_0.png" type="image/png">
+		<title>MEI Pharma - Events and Webcasts</title>
+		
+ <meta name="keywords" content="" />
+ <meta name="description" content="" />
+ <meta name="twitter:card" content="summary" />
+ <meta property="og:site_name" content="MEI Pharma" />
+ <meta property="og:url" content="https://investor.meipharma.com/events-webcasts" />
+	
+		<meta property="og:title" content="MEI Pharma - Events and Webcasts">
+		<meta property="og:url" content="http://investor.meipharma.com/events-webcasts">
+
+		
+		
+		<link type="text/css" rel="stylesheet" href="css/css_lQaZfjVpwP_oGNqdtWCSpJT1EMqXdMiU84ekLLxQnc4.css" media="all">
+		<link type="text/css" rel="stylesheet" href="css/css_zkG2T5pRW6q20eM2IbNVge6Oub5_rTk1ywWpFXibv9I.css" media="all">
+		<link type="text/css" rel="stylesheet" href="css/css_mWr8NLaind2AumF_HGVJfij4i1mI1_XM19s6-BOUmCw.css" media="all">
+		<link type="text/css" rel="stylesheet" href="css/css_uNEwYSmQw-16-WEewlynrTI5hSC3OQnHlaEpz6Pn4MQ.css" media="all">
+		<!-- HTML5 element support for IE6-8 -->
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+<!-- 		<script src="js/js_MpKfe1sTh5JIVGCZ17DsAuT1rqAC38MLLlkjqjQ1X_k.js"></script>
+		<script src="js/js_yhKRalXlyCf8z2RZoi7aq-lgfLO28YYWoVZfbIaQHFI.js"></script>
+		<script src="js/js_6ejk4gpNSdfrI_XM6-QfHQUxyscr2sJHyTCsV3pjxDs.js"></script>
+		<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"meipharma","theme_token":"h5oQzP2Rk8SuXi_zmC37Pi3lTzMqr3WnlIy2g8qOsdM","js":{"sites\/all\/themes\/bootstrap\/js\/bootstrap.js":1,"sites\/all\/modules\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/libraries\/colorbox\/jquery.colorbox-min.js":1,"sites\/all\/modules\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/colorbox\/styles\/default\/colorbox_style.js":1,"sites\/all\/themes\/meipharma\/bootstrap\/js\/affix.js":1,"sites\/all\/themes\/meipharma\/bootstrap\/js\/alert.js":1,"sites\/all\/themes\/meipharma\/bootstrap\/js\/button.js":1,"sites\/all\/themes\/meipharma\/bootstrap\/js\/carousel.js":1,"sites\/all\/themes\/meipharma\/bootstrap\/js\/collapse.js":1,"sites\/all\/themes\/meipharma\/bootstrap\/js\/dropdown.js":1,"sites\/all\/themes\/meipharma\/bootstrap\/js\/modal.js":1,"sites\/all\/themes\/meipharma\/bootstrap\/js\/tooltip.js":1,"sites\/all\/themes\/meipharma\/bootstrap\/js\/popover.js":1,"sites\/all\/themes\/meipharma\/bootstrap\/js\/scrollspy.js":1,"sites\/all\/themes\/meipharma\/bootstrap\/js\/tab.js":1,"sites\/all\/themes\/meipharma\/bootstrap\/js\/transition.js":1,"sites\/all\/themes\/meipharma\/js\/meipharma.init.js":1},"css":{"modules\/system\/system.base.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/colorbox\/styles\/default\/colorbox_style.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/print\/print_ui\/css\/print_ui.theme.css":1,"sites\/all\/themes\/meipharma\/css\/font\/css\/fontello.css":1,"sites\/all\/themes\/meipharma\/css\/style.css":1}},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"urlIsAjaxTrusted":{"\/about-us":true},"bootstrap":{"anchorsFix":"0","anchorsSmoothScrolling":"0","formHasError":1,"popoverEnabled":1,"popoverOptions":{"animation":1,"html":0,"placement":"right","selector":"","trigger":"click","triggerAutoclose":1,"title":"","content":"","delay":0,"container":"body"},"tooltipEnabled":1,"tooltipOptions":{"animation":1,"html":0,"placement":"auto left","selector":"","trigger":"hover focus","delay":0,"container":"body"}}});</script> -->
+		<link rel="stylesheet" href="css/venobox.css" type="text/css" media="screen" />
+
+		<link rel="stylesheet" type="text/css" href="css/wdcontent.css">
+		<link rel="stylesheet" type="text/css" href="css/wd_media_query.css">
+		<link rel="alternate" href="https://investor.meipharma.com/news?pagetemplate=rss" type="application/rss+xml" title="MEI Pharma">	
+<!-- begin spin_special_output(head_end) -->
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=on_recaptcha2_loaded&render=explicit&hl=en-US" wd_script_id="api.js?onload=on_recaptcha2_loaded&render=explicit&hl=en-US"></script>
+<link rel="canonical" href="https://investor.meipharma.com/events-webcasts" />
+<!-- end spin_special_output(head_end) -->
+</head>
+	    <body class="wd_pageid_19  html not-front not-logged-in one-sidebar sidebar-second page-node page-node- page-node-1 node-type-page" role="document" >
+		<div id="skip-link">
+			<a href="http://www.meipharma.com/about-us#main-content" class="element-invisible element-focusable">Skip to main content</a>
+		</div>
+		<div class="main-container container">
+			<header role="banner" id="page-header" class="hidden-xs clearfix">
+				<div class="region region-header">
+					<section id="block-search-form" class="block block-search clearfix">
+						<form class="form-search content-search" action="http://www.meipharma.com/" method="post" id="search-block-form" accept-charset="UTF-8">
+							<div>
+								<div>
+									<h2 class="element-invisible">Search form</h2>
+									<div class="input-group"><input title="Enter the terms you wish to search for." placeholder="Search" class="form-control form-text" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128"><span class="input-group-btn"><button type="submit" class="btn btn-primary"><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span></button></span></div>
+									<div class="form-actions form-wrapper form-group" id="edit-actions">
+										<button class="element-invisible btn btn-primary form-submit" type="submit" id="edit-submit" name="op" value="Search">Search</button>
+									</div>
+									<input type="hidden" name="form_build_id" value="form-jexWa505ZhGq1RBAzFa879J0B1ohvZN-Cp5eHhYilkU">
+									<input type="hidden" name="form_id" value="search_block_form">
+								</div>
+							</div>
+						</form>
+					</section>
+					<section id="block-print-ui-print-links" class="block block-print-ui clearfix">
+						<span class="print_html"><a href="http://investor.meipharma.com/events-webcasts?pagetemplate=printable" title="Display a printer-friendly version of this page." class="print-page" onclick="window.open(this.href); return false" rel="nofollow">Print </a></span>
+						<!-- <span class="print_mail"><a href="" onclick="window.location.href = 'mailto:?subject=MEI%20Pharma%20-%20Press%20Room&amp;body='+encodeURIComponent(window.location.href);return false;" title="Send this page by email." class="print-mail" rel="nofollow">Email </a></span> -->
+					</section>
+				</div>
+			</header>
+			<!-- /#page-header -->
+			<div class="row">
+				<aside id="nav-column" class="col-sm-3 col-md-2 nav-column clearfix">
+					<div class="visible-xs-block pull-right">
+						<i class="icon-menu mobile-menu-toggle"></i>
+					</div>
+					<a class="logo navbar-btn" href="http://www.meipharma.com/" title="Home">
+						<img src="images/mei-pharma.logo__0.jpg" alt="Home" class="img-responsive">
+					</a>
+					<div class="nav-wrapper hidden-xs">
+						<nav role="navigation">
+							<ul class="menu nav navbar-nav">
+								<li class="first leaf"><a href="http://www.meipharma.com/">Home</a></li>
+								<li class="">
+									<a href="http://www.meipharma.com/about-us" class="">About Us</a>
+									<!-- <ul class="secondary-menu">
+										<li class="first leaf"><a href="http://www.meipharma.com/about-us/management">Management</a></li>
+										<li class="last leaf"><a href="http://www.meipharma.com/about-us/directors">Directors</a></li>
+									</ul> -->
+								</li>
+								<li class="collapsed"><a href="http://www.meipharma.com/our-programs" title="">Programs</a></li>
+								
+
+<li>
+	<a href="https://investor.meipharma.com/news" target="_self">
+		NewsRoom	</a>
+</li>
+
+
+
+
+<li class=" active active-trail">
+	<a class="active-trail active" href="https://investor.meipharma.com/investors" target="_self">
+		Investors	</a>
+<ul class="secondary-menu">
+
+
+<li class="leaf">
+	<a href="https://investor.meipharma.com/stock-information" target="_self">
+		Stock Information	</a>
+</li>
+
+
+
+
+<li class="active active-trail leaf">
+	<a href="https://investor.meipharma.com/events-webcasts" target="_self" class="active-trail active">
+		Events & Webcasts	</a>
+	</li>
+
+
+
+
+<li class="leaf">
+	<a href="https://investor.meipharma.com/sec-filings" target="_self">
+		SEC Filings	</a>
+</li>
+
+
+
+
+<li class="leaf">
+	<a href="https://www.meipharma.com/2020ar/" target="_blank">
+		Annual Report	</a>
+</li>
+
+
+
+
+<li class="leaf">
+	<a href="https://investor.meipharma.com/analyst-coverage" target="_self">
+		Analyst Coverage	</a>
+</li>
+
+
+
+
+<li class="leaf">
+	<a href="https://investor.meipharma.com/corporate-governance" target="_self">
+		Corporate Governance	</a>
+</li>
+
+
+
+
+<li class="leaf">
+	<a href="alerts-by-email" target="_self">
+		News Alerts	</a>
+</li>
+
+
+
+
+<li class="leaf">
+	<a href="https://investor.meipharma.com/contact-ir" target="_self">
+		Contact IR	</a>
+</li>
+
+
+
+
+<li class="leaf">
+	<a href="https://investor.meipharma.com/financial-reporting" target="_self">
+		Financial Reporting	</a>
+</li>
+
+
+</ul>
+
+
+</li>
+
+
+
+
+								<!-- <li class="leaf"><a href="http://investor.meipharma.com/news" title="">Newsroom</a></li>
+								<li class="leaf"><a href="http://investor.meipharma.com/" title="">Investors</a></li> -->
+								<li class="leaf"><a href="http://www.meipharma.com/careers">Careers</a></li>
+								<li class="last leaf"><a href="http://www.meipharma.com/contact">Contact</a></li>
+							</ul>
+						</nav>
+											</div>
+				</aside>
+				<section id="main-content-column" class="col-sm-9 col-md-10">
+					<div class="row">
+												<section id="main-content-center" class="col-sm-8">
+							<a id="main-content"></a>
+							<h1 class="page-header">Events and Webcasts</h1>
+							<div class="region region-content">
+								<section id="block-system-main" class="block block-system clearfix">
+									<article id="node-1" class="node node-page clearfix" about="/about-us" typeof="foaf:Document">
+										
+<!-- <a href="https://investor.meipharma.com/stock-information" target="_self">Stock Information</a>
+ --><!-- &nbsp;|&nbsp; -->
+ 
+<!-- <b><a class="on" href="https://investor.meipharma.com/events-webcasts" target="_self">Events & Webcasts</a></b>
+ -->
+ <!-- &nbsp;|&nbsp; -->
+<!-- <a href="https://investor.meipharma.com/sec-filings" target="_self">SEC Filings</a>
+ --><!-- &nbsp;|&nbsp; -->
+<!-- <a href="https://www.meipharma.com/2020ar/" target="_blank">Annual Report</a>
+ --><!-- &nbsp;|&nbsp; -->
+<!-- <a href="https://investor.meipharma.com/analyst-coverage" target="_self">Analyst Coverage</a>
+ --><!-- &nbsp;|&nbsp; -->
+<!-- <a href="https://investor.meipharma.com/corporate-governance" target="_self">Corporate Governance</a>
+ --><!-- &nbsp;|&nbsp; -->
+<!-- <a href="alerts-by-email" target="_self">News Alerts</a>
+ --><!-- &nbsp;|&nbsp; -->
+<!-- <a href="https://investor.meipharma.com/contact-ir" target="_self">Contact IR</a>
+ --><!-- &nbsp;|&nbsp; -->
+<!-- <a href="https://investor.meipharma.com/financial-reporting" target="_self">Financial Reporting</a>
+ -->
+										<div id="wd_printable_content">
+<div class="wd_events">
+<div class="wd_subscribe_link">
+	<a href="https://investor.meipharma.com/alerts-by-email?type=4">
+		<span class="wd_subscribe_title">Get News Alerts by Email</span><span class="wd_subscribe_icon"><img src="images/webdriver/email_alerts.png" title="Get News Alerts by Email" role="presentation"/></span>
+	</a>
+</div>
+
+<div class="wd_events_inputs">
+<select name="year" id="wd_events_input_year" title="Year">
+ <option value="2021" selected>2021</option>
+</select>
+
+<select name="month" id="wd_events_input_month" title="Month">
+ <option value="1">January</option>
+ <option value="2">February</option>
+ <option value="3">March</option>
+ <option value="4">April</option>
+ <option value="5" selected>May</option>
+ <option value="6">June</option>
+ <option value="7">July</option>
+ <option value="8">August</option>
+ <option value="9">September</option>
+ <option value="10">October</option>
+ <option value="11">November</option>
+ <option value="12">December</option>
+</select>
+<button class="wd_events_input_go">GO</button><ul class="wd_events_tabs" role="radiogroup"><li class="wd_events_tab active" data-direction="future" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="0" role="radio" aria-checked="true"><span class="wd_events_tab_label wd_events_tab_future"><span class="fa fa-arrow-circle-right">&nbsp;</span>Upcoming Events</span></li><li class="wd_events_tab" data-direction="past" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false"><span class="wd_events_tab_label wd_events_tab_past"><span class="fa fa-arrow-circle-left">&nbsp;</span>Past Events</span></li></ul></div>
+<div class="wd_events_list"></div><div class="wd_events_none" style="display:none;">No events to display</div>
+<div class="wd_events_loading" style="display:none;">Loading Events...</div><div class="wd_events_error" style="display:none;"></div><button class="wd_events_more" style="display:none;"><span class="fa fa-chevron-circle-down">&nbsp;</span>Load More Events</button>
+
+<div class="wd_toolbar wd_toolbar-main"><ul class="wd_tools"><li class="wd_tool wd_tool-rss"><span class="wd_tool_icon"><a href="https://investor.meipharma.com/all-rss-feeds?rsspage=19" title="rss"><span class="fa fa-rss"></span></a></span></li><li class="wd_tool wd_tool-addthis"><a class="addthis_inline_share_toolbox_5yrt"></a></li></ul></div>
+		<script type="text/javascript">
+			var addthis_config = {
+				"data_track_clickback": true,
+				"pubid" : "thefuelteam",
+				"ui_language" : "en"
+			};
+		</script>
+		<script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=thefuelteam" async="async"></script>
+	
+
+</div>
+</div><br clear="all">										
+										<!-- 	<a class="wd_popup" data-vbtype="iframe" href="https://investor.meipharma.com/test-form">LINK</a> -->
+									</article>
+								</section>
+							</div>
+						</section>
+												<aside class="col-sm-4" role="complementary">
+							<div class="region region-sidebar-second">
+								<section id="block-views-node-secondary-content-block" class="block block-views clearfix">
+									<div class="wd_featureboxes_right wd_featureboxes-vertical">
+<div id="wd_featurebox-financial_1" class="wd_featurebox_container wd_featurebox-financial"><div class="wd_featurebox_title">Stock Quote</div><div class="wd_featurebox"><div class="wd_ticker_label"><span class="wd_exchange">NASDAQ</span><span class="wd_symbol">MEIP</span></div>
+					<div style="position:relative;overflow:hidden;height:250px;width:100%;margin:0;padding:0;border:0;">
+					<div id="ir_featurebox_1-chart" style="height:100%; width:100%;position:absolute;margin:0;padding:0;border:0;"></div>
+					</div>
+				<div id="wd_chart_1-ranges" class="wd_chart-ranges" wd_default_range="1mo" role="radiogroup"><div id="wd_chart_1-range-1dy" class="wd_chart-range" style="display:none;" onclick="ir_featurebox.chart_set_range(1, '1dy');" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false" aria-label="1 Day" title="1 Day">1dy</div><div id="wd_chart_1-range-1mo" class="wd_chart-range" style="display:none;" onclick="ir_featurebox.chart_set_range(1, '1mo');" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false" aria-label="1 Month" title="1 Month">1mo</div><div id="wd_chart_1-range-6mo" class="wd_chart-range" style="display:none;" onclick="ir_featurebox.chart_set_range(1, '6mo');" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false" aria-label="6 Months" title="6 Months">6mo</div><div id="wd_chart_1-range-1yr" class="wd_chart-range" style="display:none;" onclick="ir_featurebox.chart_set_range(1, '1yr');" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false" aria-label="1 Year" title="1 Year">1yr</div><div id="wd_chart_1-range-5yr" class="wd_chart-range" style="display:none;" onclick="ir_featurebox.chart_set_range(1, '5yr');" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false" aria-label="5 Years" title="5 Years">5yr</div></div><div class="wd_quote-container" id="ir_featurebox_1-data"></div><div class="wd_chart-quote-footer" id="ir_featurebox_1-footer"></div><script type="text/javascript">webDriver.jQuery(function() {ir_featurebox.update(1, "MEIP", false);});</script></div></div></div>
+								</section>
+							</div>
+						</aside>
+												<!-- /#sidebar-second -->
+					</div>
+				</section>
+				<!-- /#main-content-column -->
+			</div>
+			<footer class="footer">
+				<div class="region region-footer">
+					<section id="block-block-1" class="block block-block clearfix">
+						<p class="rtecenter">©2021 MEI Pharma Inc. | 
+							<a href="http://www.meipharma.com/terms-conditions">Terms &amp; Conditions</a> | 
+							<a href="http://www.meipharma.com/privacy-policy">Privacy Policy</a>
+						</p>
+					</section>
+				</div>
+			</footer>
+		</div>
+		<div id="mobile-menu-overlay"></div>
+		<div id="mobile-menu">
+			<div class="mobile-menu-inner">
+				<div class="mobile-menu-close">
+					<a class="mobile-menu-toggle"><i class="icon-cancel"></i></a>
+				</div>
+				<div class="search">
+					<div class="region region-header">
+						<section id="block-search-form" class="block block-search clearfix">
+							<form class="form-search content-search" action="http://www.meipharma.com/about-us" method="post" id="search-block-form" accept-charset="UTF-8">
+								<div>
+									<div>
+										<h2 class="element-invisible">Search form</h2>
+										<div class="input-group">
+											<input title="Enter the terms you wish to search for." placeholder="Search" class="form-control form-text" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128">
+											<span class="input-group-btn">
+												<button type="submit" class="btn btn-primary">
+													<span class="icon glyphicon glyphicon-search" aria-hidden="true"></span>
+												</button>
+											</span>
+										</div>
+										<div class="form-actions form-wrapper form-group" id="edit-actions">
+											<button class="element-invisible btn btn-primary form-submit" type="submit" id="edit-submit" name="op" value="Search">Search</button>
+										</div>
+										<input type="hidden" name="form_build_id" value="form-jexWa505ZhGq1RBAzFa879J0B1ohvZN-Cp5eHhYilkU">
+										<input type="hidden" name="form_id" value="search_block_form">
+									</div>
+								</div>
+							</form>
+						</section>
+						<section id="block-print-ui-print-links" class="block block-print-ui clearfix">
+							<span class="print_html"><a href="http://investor.meipharma.com/events-webcasts?pagetemplate=printable" title="Display a printer-friendly version of this page." class="print-page" rel="nofollow">Print </a></span>
+							<span class="print_mail"><a href="http://www.meipharma.com/printmail/about-us" title="Send this page by email." class="print-mail" rel="nofollow">Email </a></span>
+						</section>
+					</div>
+				</div>
+				<div class="branding">
+					<a class="logo navbar-btn" href="http://www.meipharma.com/" title="Home">
+						<img src="images/mei-pharma.logo__0.jpg" alt="Home" class="img-responsive">
+					</a>
+				</div>
+				<div class="nav-column">
+					<ul class="menu nav navbar-nav">
+						<li class="first leaf"><a href="http://www.meipharma.com/">Home</a></li>
+						<li class="leaf">
+							<a href="http://www.meipharma.com/about-us">About Us</a>
+						</li>
+						<li class="collapsed"><a href="http://www.meipharma.com/our-programs" title="">Programs</a></li>
+						
+
+<li>
+	<a href="https://investor.meipharma.com/news" target="_self">
+		NewsRoom	</a>
+</li>
+
+
+
+
+<li class=" active active-trail">
+	<a class="active-trail active" href="https://investor.meipharma.com/investors" target="_self">
+		Investors	</a>
+<ul class="secondary-menu">
+
+
+<li class="leaf">
+	<a href="https://investor.meipharma.com/stock-information" target="_self">
+		Stock Information	</a>
+</li>
+
+
+
+
+<li class="active active-trail leaf">
+	<a href="https://investor.meipharma.com/events-webcasts" target="_self" class="active-trail active">
+		Events & Webcasts	</a>
+	</li>
+
+
+
+
+<li class="leaf">
+	<a href="https://investor.meipharma.com/sec-filings" target="_self">
+		SEC Filings	</a>
+</li>
+
+
+
+
+<li class="leaf">
+	<a href="https://www.meipharma.com/2020ar/" target="_blank">
+		Annual Report	</a>
+</li>
+
+
+
+
+<li class="leaf">
+	<a href="https://investor.meipharma.com/analyst-coverage" target="_self">
+		Analyst Coverage	</a>
+</li>
+
+
+
+
+<li class="leaf">
+	<a href="https://investor.meipharma.com/corporate-governance" target="_self">
+		Corporate Governance	</a>
+</li>
+
+
+
+
+<li class="leaf">
+	<a href="alerts-by-email" target="_self">
+		News Alerts	</a>
+</li>
+
+
+
+
+<li class="leaf">
+	<a href="https://investor.meipharma.com/contact-ir" target="_self">
+		Contact IR	</a>
+</li>
+
+
+
+
+<li class="leaf">
+	<a href="https://investor.meipharma.com/financial-reporting" target="_self">
+		Financial Reporting	</a>
+</li>
+
+
+</ul>
+
+
+</li>
+
+
+
+
+						<li class="leaf"><a href="http://www.meipharma.com/careers">Careers</a></li>
+						<li class="last leaf"><a href="http://www.meipharma.com/contact">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+<!-- 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+ -->		<script type="text/javascript" src="js/venobox.min.js"></script>
+		
+		<script src="js/js_L50O_PWoAuMOxVjnzZCkNSSmI0kFwhZsO1_KS8WnGKw.js"></script>
+					<script type="text/javascript">
+					$(document).ready(function(){
+						// $('.wd_exchange').text("NSC").replaceWith('Nasdaq');
+						$('div.wd_ticker_label span.wd_exchange').replaceWith('<span class="wd_exchange">Nasdaq</span> ');
+						$('.wd_pageid_11 #wd_printable_content').append('<iframe id="test" src="test-form" width="100%"></iframe>');
+					}); 
+
+
+				
+			</script>
+			<script>
+        	$(document).ready(function(){
+
+        		//Thier Nav
+        		$('.mobile-menu-toggle').click(function(e){
+        			e.preventDefault();
+        			$('body').toggleClass('show-mobile-menu');
+        		});
+
+        		$(".wd_featureboxes_right.wd_featureboxes-vertical #wd_featurebox-teaser_3 .wd_contacts-teaser a").each(function() {
+        			var hrefTitle = $(this).text();
+			      	$(this).replaceWith('<a class="wd_popup" data-vbtype="iframe" href="test-form">'+hrefTitle+'</a>');
+			  	});
+		    	$('.wd_popup').venobox(); 
+			    $('.wd_popup').venobox({
+			        framewidth: '400px',        // default: ''
+			        frameheight: '400px',       // default: ''
+			        border: '10px',             // default: '0'
+			        bgcolor: '#5dff5e',         // default: '#fff'
+			        titleattr: 'data-title',    // default: 'title'
+			        numeratio: true,            // default: false
+			        infinigall: true            // default: false
+			    });
+			    
+
+		    });
+        </script>
+
+					
+	
+<!-- begin spin_special_output(body_end) -->
+<script wd_script_id="piwik_tracking_code"></script>
+<!-- Piwik Tracking Code -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+
+  _paq.push(["setCustomVariable", 1, "Content Type", "Events", "page"]);
+
+  _paq.push(["setCustomVariable", 3, "Navigation Page", "Investors : Events & Webcasts", "page"]);
+
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+  (function() {
+    var u="//stats.drivetheweb.com/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", 1708]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0];
+    g.type="text/javascript"; g.async=true; g.defer=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript>
+	<img src="https://stats.drivetheweb.com/piwik.php?idsite=1708&rec=1" style="border:0" alt="" />
+</noscript>
+<!-- End Piwik Tracking Code -->
+		
+<!-- end spin_special_output(body_end) -->
+</body>
+</html>

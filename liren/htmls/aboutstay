@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"37278538"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Extended Stay America, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.aboutstay.com/news-releases/events" />
+<meta property="og:title" content="Events | Extended Stay America, Inc." />
+<meta name="referrer" content="no-referrer" />
+<meta property="og:description" content="The Investor Relations website contains information about Extended Stay America, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb11516/files/favicon.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://www.aboutstay.com/news-releases/events" />
+<link rel="canonical" href="https://www.aboutstay.com/news-releases/events" />
+<link rel="shortlink" href="https://www.aboutstay.com/node/5826" />
+<link rel="revision" href="https://www.aboutstay.com/news-releases/events" />
+
+    <title>Events | Investor Relations | Extended Stay America, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb11516/files/css/css_TG1V7ZoS1V5Mbexd5rawrUCy8Y-mf6vzGGIFzWlGMg0.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb11516/files/css/css_gqFiZD1D9EOGpDkDuABrrEbLG_BRXQGh_V0cSbB0Gzg.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb11516/files/css/css_ElOTGVfPXRDmNOcOnJF5b6D4KJtwDKma_7D4yybaRNc.css" />
+
+    <script src="/sites/g/files/knoqqb11516/files/js/js_tYECBQFkJZsUtN2xtQJoiqYXadHEniSj-vyXxLXV97A.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb11516/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    <script language="JavaScript">
+  /* Redirect http to https */
+  if(window.location.protocol != 'https:') {
+    location.href = location.href.replace("http://", "https://");
+  }
+</script>
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5826 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <body>
+<div class="grid-x">
+  <div class="cell topbar">
+    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+      <!-- Menu -->
+      
+    
+
+<nav role="navigation" aria-labelledby="block-mainnavigation-2-menu" id="block-mainnavigation-2" class="block--system-menu-blockmain block--system-menu-blockmain--5826 block--mobile-nav--system-menu-block--main block--mobile-nav--system-menu-block--main--5826 block--e015b2ef-a9ac-4e4a-9c9b-c0f40f7ec961 block--e015b2ef-a9ac-4e4a-9c9b-c0f40f7ec961--5826 block block-menu navigation block-system-menublock menu--main">
+                        
+    <h3 class="visually-hidden" id="block-mainnavigation-2-menu">Main navigation</h3>
+    <hr class="greenunderline"/>
+    
+
+                              <ul data-block-uuid="e015b2ef-a9ac-4e4a-9c9b-c0f40f7ec961" class="dropdown menu vertical medium-horizontal align-right" id="main-menu" data-dropdown-menu="urb5pp-dropdown-menu" role="menubar">
+                  <li>
+          <a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;">overview</a>
+                                    <ul class="sub-menu">
+                  <li>
+          <a href="/investor-relations/about-esa" target="" rel="" data-drupal-link-system-path="node/8731">about esa</a>
+                  </li>
+              <li>
+          <a href="/investor-relations/why-esa" target="" rel="" data-drupal-link-system-path="node/8741">why esa</a>
+                  </li>
+              <li>
+          <a href="/investor-relations/awards" target="" rel="" data-drupal-link-system-path="node/8746">awards</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">news</a>
+                                    <ul class="sub-menu">
+                  <li>
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">company news</a>
+                  </li>
+              <li>
+          <a href="/news-releases/presentations" target="" rel="" data-drupal-link-system-path="node/8751">presentations</a>
+                  </li>
+              <li>
+          <a href="/news-releases/events" target="" rel="" data-drupal-link-system-path="node/5826" class="is-active">events</a>
+                  </li>
+              <li>
+          <a href="/stock-information/quarterly-reports" target="" rel="" data-drupal-link-system-path="node/8956">quarterly reports</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/6016">filings</a>
+                                    <ul class="sub-menu">
+                  <li>
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/6016">sec filings</a>
+                  </li>
+              <li>
+          <a href="/financial-information/tax-filings" target="" rel="" data-drupal-link-system-path="node/8756">tax filings</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/corporate-governance-esa" target="" rel="" data-drupal-link-system-path="node/8716">corporate governance</a>
+                                    <ul class="sub-menu">
+                  <li>
+          <a href="/corporate-governance-esa" target="" rel="" data-drupal-link-system-path="node/8716">extended stay america</a>
+                  </li>
+              <li>
+          <a href="/corporate-governance-esh" target="" rel="" data-drupal-link-system-path="node/8721">esh hospitality</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/stock-information/stock-quote-chart" target="" rel="" data-drupal-link-system-path="node/5911">stock information</a>
+                                    <ul class="sub-menu">
+                  <li>
+          <a href="/stock-information/esg-information" target="" rel="" data-drupal-link-system-path="node/9941">esg information</a>
+                  </li>
+              <li>
+          <a href="https://extendedstayamerica.gcs-web.com/static-files/1082edc3-565f-4698-8f1a-754496c412dd" target="" rel="">esg steering committee charter</a>
+                  </li>
+              <li>
+          <a href="/stock-information/quarterly-reports" target="" rel="" data-drupal-link-system-path="node/8956">quarterly reports</a>
+                  </li>
+              <li>
+          <a href="/stock-information/annual-reports" target="" rel="" data-drupal-link-system-path="node/5881">annual reports</a>
+                  </li>
+              <li>
+          <a href="/stock-information/proxy" target="" rel="" data-drupal-link-system-path="node/8726">proxy materials</a>
+                  </li>
+              <li>
+          <a href="/stock-information/stock-quote-chart" target="" rel="" data-drupal-link-system-path="node/5911">stock quote</a>
+                  </li>
+              <li>
+          <a href="/stock-information/historic-price-lookup" target="" rel="" data-drupal-link-system-path="node/5921">historic prices</a>
+                  </li>
+              <li>
+          <a href="/stock-information/dividends-splits" target="" rel="" data-drupal-link-system-path="node/5931">dividends</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/shareholder-services/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">shareholder services</a>
+                                    <ul class="sub-menu">
+                  <li>
+          <a href="/shareholder-services/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">email alerts</a>
+                  </li>
+              <li>
+          <a href="/shareholder-services/contact-ir" target="" rel="" data-drupal-link-system-path="node/5981">contact information</a>
+                  </li>
+          </ul>
+  
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+
+
+    </div>
+    <div class="off-canvas-content" data-off-canvas-content>
+      <div class="button clear hide-for-large hide-for-medium" data-toggle="offCanvasLeft"><i class="fas fa-bars"></i></div>
+    </div>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div class="grid-x grid-margin-x align-bottom">
+    <div class="cell small-6 medium-2 large-2"><a href="https://www.aboutstay.com/"><img class="logo" src="/sites/g/files/knoqqb11516/themes/site/nir_pid1072/images/logo.png" /></a></div>
+    <div class="cell auto">
+      
+    
+
+
+                          <ul data-block-uuid="c85ba528-a0a1-4617-9f90-09867b8b2c83" class="hide-for-small-only dropdown menu vertical medium-horizontal align-right" id="main-menu" data-dropdown-menu="urb5pp-dropdown-menu" role="menubar">
+                  <li>
+          <a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;">overview</a>
+                                    <ul class="sub-menu">
+                  <li>
+          <a href="/investor-relations/about-esa" target="" rel="" data-drupal-link-system-path="node/8731">about esa</a>
+                  </li>
+              <li>
+          <a href="/investor-relations/why-esa" target="" rel="" data-drupal-link-system-path="node/8741">why esa</a>
+                  </li>
+              <li>
+          <a href="/investor-relations/awards" target="" rel="" data-drupal-link-system-path="node/8746">awards</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">news</a>
+                                    <ul class="sub-menu">
+                  <li>
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">company news</a>
+                  </li>
+              <li>
+          <a href="/news-releases/presentations" target="" rel="" data-drupal-link-system-path="node/8751">presentations</a>
+                  </li>
+              <li>
+          <a href="/news-releases/events" target="" rel="" data-drupal-link-system-path="node/5826" class="is-active">events</a>
+                  </li>
+              <li>
+          <a href="/stock-information/quarterly-reports" target="" rel="" data-drupal-link-system-path="node/8956">quarterly reports</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/6016">filings</a>
+                                    <ul class="sub-menu">
+                  <li>
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/6016">sec filings</a>
+                  </li>
+              <li>
+          <a href="/financial-information/tax-filings" target="" rel="" data-drupal-link-system-path="node/8756">tax filings</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/corporate-governance-esa" target="" rel="" data-drupal-link-system-path="node/8716">corporate governance</a>
+                                    <ul class="sub-menu">
+                  <li>
+          <a href="/corporate-governance-esa" target="" rel="" data-drupal-link-system-path="node/8716">extended stay america</a>
+                  </li>
+              <li>
+          <a href="/corporate-governance-esh" target="" rel="" data-drupal-link-system-path="node/8721">esh hospitality</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/stock-information/stock-quote-chart" target="" rel="" data-drupal-link-system-path="node/5911">stock information</a>
+                                    <ul class="sub-menu">
+                  <li>
+          <a href="/stock-information/esg-information" target="" rel="" data-drupal-link-system-path="node/9941">esg information</a>
+                  </li>
+              <li>
+          <a href="https://extendedstayamerica.gcs-web.com/static-files/1082edc3-565f-4698-8f1a-754496c412dd" target="" rel="">esg steering committee charter</a>
+                  </li>
+              <li>
+          <a href="/stock-information/quarterly-reports" target="" rel="" data-drupal-link-system-path="node/8956">quarterly reports</a>
+                  </li>
+              <li>
+          <a href="/stock-information/annual-reports" target="" rel="" data-drupal-link-system-path="node/5881">annual reports</a>
+                  </li>
+              <li>
+          <a href="/stock-information/proxy" target="" rel="" data-drupal-link-system-path="node/8726">proxy materials</a>
+                  </li>
+              <li>
+          <a href="/stock-information/stock-quote-chart" target="" rel="" data-drupal-link-system-path="node/5911">stock quote</a>
+                  </li>
+              <li>
+          <a href="/stock-information/historic-price-lookup" target="" rel="" data-drupal-link-system-path="node/5921">historic prices</a>
+                  </li>
+              <li>
+          <a href="/stock-information/dividends-splits" target="" rel="" data-drupal-link-system-path="node/5931">dividends</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/shareholder-services/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">shareholder services</a>
+                                    <ul class="sub-menu">
+                  <li>
+          <a href="/shareholder-services/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">email alerts</a>
+                  </li>
+              <li>
+          <a href="/shareholder-services/contact-ir" target="" rel="" data-drupal-link-system-path="node/5981">contact information</a>
+                  </li>
+          </ul>
+  
+                  </li>
+          </ul>
+  
+
+
+    
+
+
+
+    </div>
+  </div>
+</div>
+
+<div class="grid-x">
+      <div id="block-gbbannerinnerpages" class="block-content--nir-global-block block-content--nir-global-block--8766 block--block-content0733f964-c6cf-459f-b11b-4723e194fcd4 block--block-content0733f964-c6cf-459f-b11b-4723e194fcd4--5826 block--banner--block-content--0733f964-c6cf-459f-b11b-4723e194fcd4 block--banner--block-content--0733f964-c6cf-459f-b11b-4723e194fcd4--5826 block--8f38dbb3-0201-4c2d-9dcc-e0468a934e94 block--8f38dbb3-0201-4c2d-9dcc-e0468a934e94--5826 block block-block-content block-block-content0733f964-c6cf-459f-b11b-4723e194fcd4">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><img alt="inner hero" class="greenbottommborder hero-large" data-entity-type="file" data-entity-uuid="9fd9b97a-cde9-4873-90e3-e820be70a1bc" src="/system/files-encrypted/nasdaq_kms/inline-images/Inner%20hero.jpg" /><img alt="hero-medium" class="greenbottommborder hero-medium" data-entity-type="file" data-entity-uuid="77b6f104-f7a2-4701-986c-aa6612a5981f" src="/system/files-encrypted/nasdaq_kms/inline-images/Inner%20hero%400%2C5x.jpg" /><img alt="hero-small" class="greenbottommborder hero-small" data-entity-type="file" data-entity-uuid="e2aea5eb-d786-4bd6-92c6-9b0c763eba26" src="/system/files-encrypted/nasdaq_kms/inline-images/Inner%20hero%400%2C25x.jpg" /></div>
+      
+</div>
+      
+  </div>
+
+  
+</div>
+
+<div class="grid-container ir-content"><br/>
+  
+    
+    
+
+
+              <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+    <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
+    <ul class="breadcrumbs">
+    
+      <li >
+                  <a href="https://www.extendedstayamerica.com/">Home</a>
+              </li>
+    
+      <li >
+                  <a href="/news-releases">Company News</a>
+              </li>
+    
+      <li >
+        
+          Events
+              </li>
+        </ul>
+  </nav>
+
+    
+
+
+
+  <div class="grid-x grid-margin-x">
+  <div class="cell large-9">
+    
+  <div class="region region-content">
+    <div id="block-nir-pid1072-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5826 block--content--website-notice-block block--content--website-notice-block--5826 block--11893fcf-71ed-483b-8600-71de65800030 block--11893fcf-71ed-483b-8600-71de65800030--5826 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1072-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--fe20d5aa-5304-4727-971f-bf61a0471990 block--fe20d5aa-5304-4727-971f-bf61a0471990--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+                      <h3>Events</h3>
+              
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--block-upcoming-events block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--dd9411d8-ee59-41c6-aec9-15e35c2867bd block--dd9411d8-ee59-41c6-aec9-15e35c2867bd--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+     <h3>Upcoming Events</h3>
+      <hr class="greenunderline"/>
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              More events are coming soon.
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--block-past-events block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--f8f54043-eebc-4a64-8290-79b85eb93803 block--f8f54043-eebc-4a64-8290-79b85eb93803--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+     <h3>Past Events</h3>
+      <hr class="greenunderline"/>
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/fourth-quarter-2020-earnings" hreflang="en">Fourth Quarter 2020 Earnings</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Feb 26, 2021 at 8:30 AM EST
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/6h793499" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/third-quarter-2020-earnings" hreflang="en">Third Quarter 2020 Earnings</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Nov 10, 2020 at 8:30 AM EST
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/tvparz9v" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/jp-morgan-gaming-lodging-restaurant-leisure-forum" hreflang="en">J.P. Morgan Gaming, Lodging, Restaurant &amp; Leisure Forum</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Sep 15, 2020 at 11:20 AM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://d7zyd276c902t.cloudfront.net/jpmorgan/2020gaming/31836_ExtendedS_1080p.mp4" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/second-quarter-2020-earnings" hreflang="en">Second Quarter 2020 Earnings</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Aug 11, 2020 at 8:30 AM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/9cthapnx" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/stifel-2020-cross-sector-insight-conference" hreflang="en">Stifel 2020 Cross Sector Insight Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jun 10, 2020 at 9:20 AM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.wsw.com/webcast/stifel19/stay" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/first-quarter-2020-earnings" hreflang="en">First Quarter 2020 Earnings</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            May 7, 2020 at 8:30 AM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/ciwqoywo" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/fourth-quarter-2019-earnings" hreflang="en">Fourth Quarter 2019 Earnings</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Feb 27, 2020 at 8:30 AM EST
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/fgn3up72" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/third-quarter-2019-earnings" hreflang="en">Third Quarter 2019 Earnings</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Nov 7, 2019 at 8:00 AM EST
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/ke36nq73" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/second-quarter-2019-earnings" hreflang="en">Second Quarter 2019 Earnings</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Aug 7, 2019 at 8:30 AM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/acfhrjsz" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/first-quarter-2019-earnings" hreflang="en">First Quarter 2019 Earnings</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            May 2, 2019 at 8:30 AM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/m6/p/kcq559zw" target="_blank">Listen to webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+        <nav class="pager" role="navigation" aria-labelledby="pagination-heading">
+    <h4 id="pagination-heading" class="visually-hidden">Pagination</h4>
+    <ul class="pager__items js-pager__items">
+                                                        <li class="pager__item is-active">
+                                          <a href="?page=0" title="Current page">
+            <span class="visually-hidden">
+              Current page
+            </span>1</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=1" title="Go to page 2">
+            <span class="visually-hidden">
+              Page
+            </span>2</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=2" title="Go to page 3">
+            <span class="visually-hidden">
+              Page
+            </span>3</a>
+        </li>
+                                      <li class="pager__item pager__item--next">
+          <a href="?page=1" title="Go to next page" rel="next">
+            <span class="visually-hidden">Next page</span>
+            <span aria-hidden="true">next ›</span>
+          </a>
+        </li>
+                          <li class="pager__item pager__item--last">
+          <a href="?page=2" title="Go to last page">
+            <span class="visually-hidden">Last page</span>
+            <span aria-hidden="true">last »</span>
+          </a>
+        </li>
+          </ul>
+  </nav>
+
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+
+
+
+      </div>
+          <div class="cell large-3">
+        
+    
+
+                                
+                              <ul data-block-uuid="7c6770dd-16ce-43a4-b3e3-4bb022e698ee" class="vertical submenu no-bullet">
+                  
+        <li>
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">Company news</a>
+                  </li>
+              
+        <li>
+          <a href="/news-releases/presentations" target="" rel="" data-drupal-link-system-path="node/8751">Presentations</a>
+                  </li>
+              
+        <li class="current">
+          <a href="/news-releases/events" target="" rel="" data-drupal-link-system-path="node/5826" class="is-active">Events</a>
+                  </li>
+              
+        <li>
+          <a href="/stock-information/quarterly-reports" target="" rel="" data-drupal-link-system-path="node/8956">Quarterly reports</a>
+                  </li>
+          </ul>
+  
+
+
+    
+
+
+      </div>
+      </div>
+  </div>
+    <div class="grid-container ir-toolkit"></div>
+<div class="footer">
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="cell small-12 medium-6 large-4 sitelinks">
+        <div class="grid-x">
+          <div class="cell small-6 auto">
+            
+    
+
+
+                          <ul data-block-uuid="5bbae7fd-bdd7-4be2-8d5c-e394ad07a51e" class="no-bullet">
+                  <li>
+          <a href="/stock-information/stock-quote-chart" target="" rel="" data-drupal-link-system-path="node/5911">Stock Information</a>
+                  </li>
+              <li>
+          <a href="/stock-information/esg-information" target="" rel="" data-drupal-link-system-path="node/9941">esg information</a>
+                  </li>
+              <li>
+          <a href="/stock-information/stock-quote-chart" target="" rel="" data-drupal-link-system-path="node/5911">stock quote</a>
+                  </li>
+              <li>
+          <a href="/stock-information/historic-price-lookup" target="" rel="" data-drupal-link-system-path="node/5921">historic prices</a>
+                  </li>
+              <li>
+          <a href="/stock-information/dividends-splits" target="" rel="" data-drupal-link-system-path="node/5931">dividends</a>
+                  </li>
+              <li>
+          <a href="/stock-information/annual-reports" target="" rel="" data-drupal-link-system-path="node/5881">annual reports</a>
+                  </li>
+              <li>
+          <a href="/stock-information/proxy" target="" rel="" data-drupal-link-system-path="node/8726">proxy materials</a>
+                  </li>
+          </ul>
+  
+
+
+    
+
+
+
+                          <ul data-block-uuid="5a57c27c-c931-4351-9fc0-a6aa46285c76" class="no-bullet">
+                  <li>
+          <a href="/shareholder-services/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">Shareholder services</a>
+                  </li>
+              <li>
+          <a href="/shareholder-services/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">email alerts</a>
+                  </li>
+              <li>
+          <a href="/shareholder-services/contact-ir" target="" rel="" data-drupal-link-system-path="node/5981">contact information</a>
+                  </li>
+          </ul>
+  
+
+
+    
+
+
+
+                          <ul data-block-uuid="9a5c31e2-fe69-4ef2-9ef8-61bf43079adf" class="no-bullet">
+                  <li>
+          <a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;">Overview</a>
+                  </li>
+              <li>
+          <a href="/investor-relations/about-esa" target="" rel="" data-drupal-link-system-path="node/8731">about esa</a>
+                  </li>
+              <li>
+          <a href="/investor-relations/why-esa" target="" rel="" data-drupal-link-system-path="node/8741">why esa</a>
+                  </li>
+              <li>
+          <a href="/investor-relations/awards" target="" rel="" data-drupal-link-system-path="node/8746">awards</a>
+                  </li>
+          </ul>
+  
+
+
+    
+
+
+
+          </div>
+          <div class="cell small-6 auto">
+            
+    
+
+
+                          <ul data-block-uuid="0ae56707-0cc8-4704-b131-f7a7ea437913" class="no-bullet">
+                  <li>
+          <a href="/corporate-governance-esa" target="" rel="" data-drupal-link-system-path="node/8716">Corporate Governance</a>
+                  </li>
+              <li>
+          <a href="/corporate-governance-esa" target="" rel="" data-drupal-link-system-path="node/8716">extended stay america</a>
+                  </li>
+              <li>
+          <a href="/corporate-governance-esh" target="" rel="" data-drupal-link-system-path="node/8721">ESH hospitality</a>
+                  </li>
+          </ul>
+  
+
+
+    
+
+
+
+                          <ul data-block-uuid="99127114-e866-4122-ab43-a3a85afa2db7" class="no-bullet">
+                  <li>
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/6016">Filings</a>
+                  </li>
+              <li>
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/6016">SEC filings</a>
+                  </li>
+              <li>
+          <a href="/financial-information/tax-filings" target="" rel="" data-drupal-link-system-path="node/8756">tax filings</a>
+                  </li>
+          </ul>
+  
+
+
+    
+
+
+
+                          <ul data-block-uuid="2d5f5354-7f0a-45cc-b3d2-d9c261976ae1" class="no-bullet">
+                  <li>
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">News</a>
+                  </li>
+              <li>
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">company news</a>
+                  </li>
+              <li>
+          <a href="/news/presentations" target="" rel="">presentations</a>
+                  </li>
+              <li>
+          <a href="/news-releases/events" target="" rel="" data-drupal-link-system-path="node/5826" class="is-active">events</a>
+                  </li>
+          </ul>
+  
+
+
+    
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="cell small-12 medium-6 large-4 contactinfo">
+        
+    <div id="block-nir-pid1072-globalcontactinformationfooter" class="block-content--nir-global-block block-content--nir-global-block--8536 block--block-content45157a48-cb14-4e7e-b064-ba2bbb893e8a block--block-content45157a48-cb14-4e7e-b064-ba2bbb893e8a--5826 block--footer-contact--block-content--45157a48-cb14-4e7e-b064-ba2bbb893e8a block--footer-contact--block-content--45157a48-cb14-4e7e-b064-ba2bbb893e8a--5826 block--07c088f5-2258-415a-831e-584a2cc61ded block--07c088f5-2258-415a-831e-584a2cc61ded--5826 block block-block-content block-block-content45157a48-cb14-4e7e-b064-ba2bbb893e8a">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><h4>CONTACT INFORMATION</h4>
+
+<div class="grid-x grid-padding-x">
+<div class="cell auto small-12">
+<ul class="no-bullet"><li><strong>Extended Stay America, Inc.</strong></li>
+	<li>11525 N. Community House Rd. Suite 100</li>
+	<li>Charlotte, NC 28277</li>
+	<li>(980) 345-1600</li>
+</ul><ul class="no-bullet"><li><strong>Investor Relations</strong></li>
+	<li>(980) 345-1546</li>
+	<li><a href="mailto:investorrelations@extendedstay.com">investorrelations@extendedstay.com</a></li>
+</ul><ul class="no-bullet"><li><strong>American Stock Transfer</strong></li>
+	<li>American Stock Transfer &amp; Trust Company LLC</li>
+	<li>6201 15th Avenue, Brooklyn, NY 11219</li>
+	<li>(800) 937-5449</li>
+	<li><a href="https://www.astfinancial.com/" target="_blank">www.astfinancial.com</a></li>
+	<li><a href="mailto:info@astfinancial.com">info@astfinancial.com</a></li>
+</ul></div>
+</div>
+</div>
+      
+</div>
+      
+  </div>
+
+
+
+      </div>
+      <div class="cell small-12 medium-12 large-4 emailalerts">
+          <div class="region region-footer-social">
+    <div id="block-nir-pid1072-gbfootersocialmedia" class="block-content--nir-global-block block-content--nir-global-block--8706 block--block-content0475ec18-a8c4-4c59-a9d4-a1cb5602bb67 block--block-content0475ec18-a8c4-4c59-a9d4-a1cb5602bb67--5826 block--footer-social--block-content--0475ec18-a8c4-4c59-a9d4-a1cb5602bb67 block--footer-social--block-content--0475ec18-a8c4-4c59-a9d4-a1cb5602bb67--5826 block--d6fefec7-105f-4aba-9909-89325460a43f block--d6fefec7-105f-4aba-9909-89325460a43f--5826 block block-block-content block-block-content0475ec18-a8c4-4c59-a9d4-a1cb5602bb67">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="grid-x">
+<div class="cell small-12 medium-6 large-12 text-center">
+<h4>EMAIL ALERTS</h4>
+
+<p>sign up for ESA news &amp; notifications</p>
+<a href="/shareholder-services/email-alerts"><button class="success expanded button" type="button">SIGN UP</button></a></div>
+
+<div class="cell small-12 medium-4 large-12">
+<div class="grid-x align-bottom">
+<div class="cell auto"><a href="https://www.facebook.com/ExtendedStayAmerica/" target="_blank"><svg aria-hidden="true" class="svg-inline--fa fa-facebook-f fa-w-16 fa-3x" data-fa-mask="fas fa-circle" data-fa-processed="" data-fa-transform="shrink-3.5 down-1.6 right-1.25" data-icon="facebook-f" data-prefix="fab" role="img" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><defs><clippath id="clip-2"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z" fill="currentColor"></path></clippath><mask height="100%" id="mask-1" maskcontentunits="userSpaceOnUse" maskunits="userSpaceOnUse" width="100%" x="0" y="0"><rect fill="white" height="100%" width="100%" x="0" y="0"></rect><g transform="translate(256 256)"><g transform="translate(40, 51.2)  scale(0.78125, 0.78125)  rotate(0 0 0)"><path d="M76.7 512V283H0v-91h76.7v-71.7C76.7 42.4 124.3 0 193.8 0c33.3 0 61.9 2.5 70.2 3.6V85h-48.2c-37.8 0-45.1 18-45.1 44.3V192H256l-11.7 91h-73.6v229" fill="black" transform="translate(-132 -256)"></path></g></g></mask></defs><rect clip-path="url(#clip-2)" fill="currentColor" height="100%" mask="url(#mask-1)" width="100%" x="0" y="0"></rect></svg><!-- <i class="fab fa-facebook-f fa-3x" data-fa-transform="shrink-3.5 down-1.6 right-1.25" data-fa-mask="fas fa-circle"></i> --></a></div>
+
+<div class="cell auto"><a href="https://twitter.com/ExtendedStay" target="_blank"><svg aria-hidden="true" class="svg-inline--fa fa-twitter fa-w-16 fa-3x" data-fa-mask="fas fa-circle" data-fa-processed="" data-fa-transform="shrink-6 down-1.0 right-1.0" data-icon="twitter" data-prefix="fab" role="img" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><defs><clippath id="clip-4"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z" fill="currentColor"></path></clippath><mask height="100%" id="mask-3" maskcontentunits="userSpaceOnUse" maskunits="userSpaceOnUse" width="100%" x="0" y="0"><rect fill="white" height="100%" width="100%" x="0" y="0"></rect><g transform="translate(256 256)"><g transform="translate(32, 32)  scale(0.625, 0.625)  rotate(0 0 0)"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" fill="black" transform="translate(-256 -256)"></path></g></g></mask></defs><rect clip-path="url(#clip-4)" fill="currentColor" height="100%" mask="url(#mask-3)" width="100%" x="0" y="0"></rect></svg><!-- <i class="fab fa-twitter fa-3x" data-fa-transform="shrink-6 down-1.0 right-1.0" data-fa-mask="fas fa-circle"></i> --></a></div>
+
+<div class="cell auto"><a href="https://www.youtube.com/user/ExtendedStayAmerica1" target="_blank"><svg aria-hidden="true" class="svg-inline--fa fa-youtube fa-w-16 fa-3x" data-fa-mask="fas fa-circle" data-fa-processed="" data-fa-transform="shrink-6" data-icon="youtube" data-prefix="fab" role="img" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><defs><clippath id="clip-6"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z" fill="currentColor"></path></clippath><mask height="100%" id="mask-5" maskcontentunits="userSpaceOnUse" maskunits="userSpaceOnUse" width="100%" x="0" y="0"><rect fill="white" height="100%" width="100%" x="0" y="0"></rect><g transform="translate(256 256)"><g transform="translate(0, 0)  scale(0.625, 0.625)  rotate(0 0 0)"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" fill="black" transform="translate(-288 -256)"></path></g></g></mask></defs><rect clip-path="url(#clip-6)" fill="currentColor" height="100%" mask="url(#mask-5)" width="100%" x="0" y="0"></rect></svg><!-- <i class="fab fa-youtube fa-3x" data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"></i> --></a></div>
+
+<div class="cell auto"><a href="https://www.instagram.com/extendedstayamerica/" target="_blank"><svg aria-hidden="true" class="svg-inline--fa fa-instagram fa-w-16 fa-3x" data-fa-mask="fas fa-circle" data-fa-processed="" data-fa-transform="shrink-6" data-icon="instagram" data-prefix="fab" role="img" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><defs><clippath id="clip-8"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z" fill="currentColor"></path></clippath><mask height="100%" id="mask-7" maskcontentunits="userSpaceOnUse" maskunits="userSpaceOnUse" width="100%" x="0" y="0"><rect fill="white" height="100%" width="100%" x="0" y="0"></rect><g transform="translate(256 256)"><g transform="translate(0, 0)  scale(0.625, 0.625)  rotate(0 0 0)"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" fill="black" transform="translate(-224 -256)"></path></g></g></mask></defs><rect clip-path="url(#clip-8)" fill="currentColor" height="100%" mask="url(#mask-7)" width="100%" x="0" y="0"></rect></svg><!-- <i class="fab fa-instagram fa-3x" data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"></i> --></a></div>
+
+<div class="cell auto"><a href="https://pinterest.com/TheExtendedStay/" target="_blank"><svg aria-hidden="true" class="svg-inline--fa fa-pinterest-p fa-w-16 fa-3x" data-fa-mask="fas fa-circle" data-fa-processed="" data-fa-transform="shrink-6" data-icon="pinterest-p" data-prefix="fab" role="img" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><defs><clippath id="clip-10"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z" fill="currentColor"></path></clippath><mask height="100%" id="mask-9" maskcontentunits="userSpaceOnUse" maskunits="userSpaceOnUse" width="100%" x="0" y="0"><rect fill="white" height="100%" width="100%" x="0" y="0"></rect><g transform="translate(256 256)"><g transform="translate(0, 0)  scale(0.625, 0.625)  rotate(0 0 0)"><path d="M204 6.5C101.4 6.5 0 74.9 0 185.6 0 256 39.6 296 63.6 296c9.9 0 15.6-27.6 15.6-35.4 0-9.3-23.7-29.1-23.7-67.8 0-80.4 61.2-137.4 140.4-137.4 68.1 0 118.5 38.7 118.5 109.8 0 53.1-21.3 152.7-90.3 152.7-24.9 0-46.2-18-46.2-43.8 0-37.8 26.4-74.4 26.4-113.4 0-66.2-93.9-54.2-93.9 25.8 0 16.8 2.1 35.4 9.6 50.7-13.8 59.4-42 147.9-42 209.1 0 18.9 2.7 37.5 4.5 56.4 3.4 3.8 1.7 3.4 6.9 1.5 50.4-69 48.6-82.5 71.4-172.8 12.3 23.4 44.1 36 69.3 36 106.2 0 153.9-103.5 153.9-196.8C384 71.3 298.2 6.5 204 6.5z" fill="black" transform="translate(-192 -256)"></path></g></g></mask></defs><rect clip-path="url(#clip-10)" fill="currentColor" height="100%" mask="url(#mask-9)" width="100%" x="0" y="0"></rect></svg><!-- <i class="fab fa-pinterest-p fa-3x" data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"></i> --></a></div>
+
+<div class="cell auto"><a href="https://www.linkedin.com/company/19756/" target="_blank"><svg aria-hidden="true" class="svg-inline--fa fa-linkedin-in fa-w-16 fa-3x" data-fa-mask="fas fa-circle" data-fa-processed="" data-fa-transform="shrink-6" data-icon="linkedin-in" data-prefix="fab" role="img" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><defs><clippath id="clip-12"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z" fill="currentColor"></path></clippath><mask height="100%" id="mask-11" maskcontentunits="userSpaceOnUse" maskunits="userSpaceOnUse" width="100%" x="0" y="0"><rect fill="white" height="100%" width="100%" x="0" y="0"></rect><g transform="translate(256 256)"><g transform="translate(0, 0)  scale(0.625, 0.625)  rotate(0 0 0)"><path d="M100.3 480H7.4V180.9h92.9V480zM53.8 140.1C24.1 140.1 0 115.5 0 85.8 0 56.1 24.1 32 53.8 32c29.7 0 53.8 24.1 53.8 53.8 0 29.7-24.1 54.3-53.8 54.3zM448 480h-92.7V334.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V480h-92.8V180.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V480z" fill="black" transform="translate(-224 -256)"></path></g></g></mask></defs><rect clip-path="url(#clip-12)" fill="currentColor" height="100%" mask="url(#mask-11)" width="100%" x="0" y="0"></rect></svg><!-- <i class="fab fa-linkedin-in fa-3x" data-fa-transform="shrink-6" data-fa-mask="fas fa-circle"></i> --></a></div>
+</div>
+</div>
+</div>
+</div>
+      
+</div>
+      
+  </div>
+
+  </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb2818";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1072\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid1072","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"aca8b0f3a5cabc981e9b9fc5ba3cf1687b2795dd13ab2ef91503802784a039f2"}}</script>
+<script src="/sites/g/files/knoqqb11516/files/js/js_ua5E2wwm6iFAYA99Cj6jFcZkFaj7kGt1snEfXEMT4u4.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"37278538,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fYEcMTlxbVF1ITUBZQA==","queueTime":0,"applicationTime":204,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

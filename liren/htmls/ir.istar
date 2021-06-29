@@ -1,0 +1,1602 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="iStar" />
+<link rel="canonical" href="https://ir.istar.com/events-presentations/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.istar.com/events-presentations" />
+<meta property="og:title" content="Events &amp; Presentations | iStar" />
+<meta property="og:description" content="The Investor Relations website contains information about iStar&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb51656/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://ir.istar.com/events-presentations" />
+<link rel="revision" href="https://ir.istar.com/events-presentations" />
+
+    <title>Events &amp; Presentations | iStar</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51656/files/css/css_rfjm6CJ_0NMC2yDcg2-ndYMEx1qfufTwwHO3KArx5Oc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51656/files/css/css_7lPm9eBejMZKoBmIxm1RBHC7-9-msVefE3ZPFTsFWJ8.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb51656/files/css/css_Rqq1pcMtyPYMLGQNasd_s_KXIbN6lLEp0kz6sGS6aRI.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51656/files/css/css_kZFJ8OFcnfgpzC-naTUPrgfCGllosT77UQwcJB35fYE.css" />
+<link rel="stylesheet" media="screen" href="/sites/g/files/knoqqb51656/files/css/css_P1EGvaZ-Cz8jSAMhnct-8NFLEXgoDcfmozSt28rBF34.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51656/files/css/css_WyOXF3MCOPUnn8t2T7XaawpzF9iVn2NV8a7nJzoHNuI.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb51656/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5826 path-node page-node-type-nir-landing-page page-template-default">
+
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div class="site" id="page">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+    <header class="site-header header headroom headroom--not-top headroom--not-bottom headroom--unpinned" id="masthead">
+        <div class="header-logo">
+            <a href="https://www.istar.com/" rel="home"><svg class="svg_icon svg_logo" height="80" viewbox="0 0 80 80" width="80" xmlns="http://www.w3.org/2000/svg">
+                    <title>iStar</title>
+                    <path d="M58.8 41.4C58.8 38.4 56.6 35.9 53.4 35.9 50.3 35.9 48 38.3 48 41.4 48 44.6 50.2 46.9 53.4 46.9 56.6 46.8 58.8 44.4 58.8 41.4ZM58.9 48.3L58.9 45.9C57.6 47.8 55.7 48.7 53.4 48.7 49.2 48.7 46 45.5 46 41.3 46 37.1 49.3 34 53.4 34 55.7 34 57.6 34.9 58.9 36.8L58.9 34.3 60.9 34.3 60.9 48.4 58.9 48.3 58.9 48.3ZM63.6 34.3L63.6 48.4 65.7 48.4 65.7 40.9C65.7 38.4 66.5 36 71.2 36L71.2 34.1C68.5 34.1 67.1 34.4 65.7 36.7L65.7 34.4 63.6 34.3 63.6 34.3ZM39.1 29.5L39.1 34.2 36.6 34.2 36.6 36.1 39.1 36.1 39.1 44.9C39.1 46.7 39.6 48.7 42.8 48.7 43.5 48.7 44.1 48.6 44.7 48.4L44.7 46.5C44.1 46.7 43.5 46.7 43.1 46.7 41.6 46.7 41.1 45.9 41.1 43.9L41.1 36 45.1 36 45.1 34.1 41.1 34.1 41.1 29.4 39.1 29.4 39.1 29.5ZM19 48.3L21 48.3 21 34.3 19 34.3 19 48.3ZM39.6 0C33.1 0 27 1.6 21.6 4.3L21.6 6.5C27.1 3.6 33.2 2 39.6 2 49.6 2 59 5.9 66.1 13 73.3 20.1 77.1 29.5 77.1 39.6 77.1 49.7 73.3 59.1 66.1 66.2 59 73.3 49.6 77.2 39.6 77.2 29.5 77.2 20.1 73.3 13 66.2 5.9 59.1 2 49.7 2 39.6 2 29.5 5.9 20.1 13 13 14.7 11.2 16.5 9.7 18.4 8.4L18.4 6.1C7.4 13.1 0 25.5 0 39.6 0 61.5 17.7 79.2 39.6 79.2 61.4 79.2 79.1 61.5 79.1 39.6 79.1 17.7 61.4 0 39.6 0ZM34.2 43C34.2 40.4 32 39.4 29.6 38.4 28.6 38 27.7 37.6 26.8 37.1 25.5 36.3 24 35 24 32.6 24 29.4 26.5 27 30 27 33 27 34.8 28.6 35.4 29.1L35.4 29.2 34.1 30.7 34 30.7C32.7 29.5 31.5 29.1 30 29.1 27.6 29.1 25.9 30.5 25.9 32.6 25.9 34.6 27.8 35.5 30.1 36.4 31.1 36.8 32.1 37.3 33 37.9 35.1 39.2 36.2 40.9 36.2 43 36.2 46.3 33.5 48.7 30.1 48.7 27.2 48.7 24.8 47.5 23.1 45.1L23 45.1 24.5 43.7 24.6 43.9C25.6 45.2 27.2 46.8 30.1 46.8 32 46.7 34.2 45.3 34.2 43Z" fill="#FFF"></path></svg></a>
+        </div><!-- .site-branding -->
+
+                <nav class="main-navigation header-menu" id="site-navigation">
+            <button aria-controls="primary-menu" aria-expanded="false" class="menu-toggle">Primary Menu</button>
+            <div class="header-menu-links">
+                <div class="menu-menu-1-container">
+                    <ul aria-expanded="false" class="menu nav-menu" id="primary-menu">
+                        
+
+                        
+    <h2 class="visually-hidden" id="block-ourbusinesses-menu">Our businesses</h2>
+    
+
+                                                                
+                          
+                <li class="menu-item menu-item-has-children">
+          <a href="" target="" rel="">Our businesses</a>
+                                    <ul class="sub-menu">
+                                    
+                        <li class="menu-item">
+          <a href="https://www.istar.com/our-businesses/safehold/" target="" rel="">Safehold™ ground leases</a>
+                  </li>
+                                
+                        <li class="menu-item">
+          <a href="https://www.istar.com/our-businesses/other-businesses" target="" rel="">Other businesses</a>
+                  </li>
+            </ul>
+      
+                  </li>
+        
+      
+
+
+
+
+    
+
+                        
+    <h2 class="visually-hidden" id="block-ourcompany-menu">Our company</h2>
+    
+
+                                                                
+                          
+                <li class="menu-item menu-item-has-children">
+          <a href="" target="" rel="">Our company</a>
+                                    <ul class="sub-menu">
+                                    
+                        <li class="menu-item">
+          <a href="https://www.istar.com/about-us/" target="" rel="">About us</a>
+                  </li>
+                                
+                        <li class="menu-item">
+          <a href="https://www.istar.com/about-us/leadership/" target="" rel="">Leadership</a>
+                  </li>
+                                
+                        <li class="menu-item">
+          <a href="https://www.istar.com/about-us/careers/" target="" rel="">Careers</a>
+                  </li>
+                                
+                        <li class="menu-item">
+          <a href="https://www.istar.com/about-us/contact/" target="" rel="">Contact</a>
+                  </li>
+                                
+                        <li class="menu-item">
+          <a href="https://www.istar.com/sustainability">Sustainability</a>
+                  </li>
+            </ul>
+      
+                  </li>
+        
+      
+
+
+
+
+    
+
+                        
+    <h2 class="visually-hidden" id="block-nir-pid2442-investorrelations-menu">Investor Relations</h2>
+    
+
+                                                                
+                          
+                <li class="menu-item menu-item-has-children current-menu-ancestor open">
+          <a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;">Investors</a>
+                                    <ul class="sub-menu">
+                                    
+                        <li class="menu-item">
+          <a href="https://www.istar.com/2020-annual-report/" class="hide">2020 Annual Report</a>
+                  </li>
+                                
+                        <li class="menu-item">
+          <a href="/" target="" rel="" class="mobile-view" title="Main Investor Relations Page" data-drupal-link-system-path="&lt;front&gt;">Investor relations</a>
+                  </li>
+                                
+                        <li class="menu-item">
+          <a href="/nws" target="" rel="">News</a>
+                  </li>
+                                
+                        <li class="menu-item current-menu-item open">
+          <a href="/events-presentations" target="" rel="" class="events is-active" data-drupal-link-system-path="node/5826">Events &amp; presentations</a>
+                  </li>
+                                
+                        <li class="menu-item">
+          <a href="/financial-information/quarterly-results" target="" rel="" class="earnings" data-drupal-link-system-path="node/5986">Earnings &amp; financials</a>
+                  </li>
+                                
+                        <li class="menu-item">
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">SEC filings</a>
+                  </li>
+                                
+                        <li class="menu-item">
+          <a href="/corporate-governance/highlights" target="" rel="" class="governance" data-drupal-link-system-path="node/5836">Governance &amp; proxy</a>
+                  </li>
+                                
+                        <li class="menu-item">
+          <a href="/stock-information/stock-quote" target="" rel="" data-drupal-link-system-path="node/5911">Stock information</a>
+                  </li>
+            </ul>
+      
+                  </li>
+        
+      
+
+
+
+
+    
+
+                        
+    <h2 class="visually-hidden" id="block-news-menu">News</h2>
+    
+
+                                                                
+                        <li class="menu-item">
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">News</a>
+                  </li>
+        
+      
+
+
+
+
+    
+                    </ul>
+                </div>
+            </div>
+
+                                    
+        </nav><!-- #site-navigation -->
+        <a class="header-search" href="#" role="button"><svg class="svg_icon svg_search" height="14" viewbox="0 0 14 14" width="14" xmlns="http://www.w3.org/2000/svg">
+                <title>Search</title>
+                <path d="M10.2 1.5C12.7 3.7 13 7.4 11 9.9L13.8 12.7C14 12.9 14 13.2 14 13.4 13.9 13.7 13.7 13.9 13.4 14 13.2 14 12.9 14 12.7 13.8L9.9 11C7.4 13 3.7 12.7 1.5 10.2 -0.6 7.8-0.5 4.1 1.8 1.8 4.1-0.5 7.8-0.6 10.2 1.5ZM6.2 1.5C3.6 1.5 1.5 3.6 1.5 6.2 1.5 8.7 3.6 10.8 6.2 10.8 7.8 10.8 9.3 9.9 10.1 8.5 11 7 11 5.3 10.1 3.8 9.3 2.4 7.8 1.5 6.2 1.5Z" fill="#FFF"></path></svg></a>
+        <div class="header-hamburger_container">
+            <div class="header-hamburger">
+                <span></span> <span></span> <span></span> <span></span>
+            </div>
+        </div>
+        
+        
+    </header><!-- #masthead -->
+
+
+
+    <div class="content-area" id="primary">
+        <main class="site-main" id="main">
+            <span id="content"></span>
+            <div class="container">
+
+
+                
+                
+
+                <div id="ndq-content" class="ndq-5826 idm-inner-page">
+
+                    
+                                              <div class="region region-content">
+    <div id="block-nir-pid2442-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--5362dd41-1230-40b1-800c-4d60d14345fc block--5362dd41-1230-40b1-800c-4d60d14345fc--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div class="panel-display sutro clearfix " >
+
+  <div class="idm-container-fluid idm-p-0">
+    <div class="idm-row">
+      <div class="idm-col-md-12 radix-layouts-header panel-panel">
+        <div class="panel-panel-inner">
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="idm-row">
+      <div class="idm-col-md-6 radix-layouts-column1 panel-panel">
+        <div class="panel-panel-inner">
+          <div class="block-region-column1"><div class="block--nir-assets__widget block--nir-assets__widget--5826 block--column1--nir-assets__widget block--column1--nir-assets__widget--5826 block--e47a36b7-1cd8-45c9-9e34-585d3542e4ef block--e47a36b7-1cd8-45c9-9e34-585d3542e4ef--5826 block block-nir-assets block-nir-assets__widget">
+  
+    
+      <div class="nir-widget">
+      <h2 class="mb-5">Corporate Presentation</h2>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list items-list mb-5">
+              
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+      <div class="nir-widget--field nir-widget--asset--thumbnail float-left">
+      
+<div class="field-nir-thumbnail">
+      <div class="field__item"><a href="https://ir.istar.com/static-files/07f7be0e-2fcb-40eb-b72e-b4e591f8522f" target="_blank"><img src="/system/files-encrypted/styles/nir_asset_small/encrypt/nasdaq_kms/assets/2020/09/14/9-00-22/STAR%202020%20Corporate%20Presentation%20.png?itok=WxWril9T" alt="" class="image-style-nir-asset-small" />
+
+</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="idm-col-md-6 radix-layouts-column2 panel-panel">
+        <div class="panel-panel-inner">
+          <div class="block-region-column2"><div class="block--nir-assets__widget block--nir-assets__widget--5826 block--column2--nir-assets__widget block--column2--nir-assets__widget--5826 block--953d5ee5-cfa0-4910-b596-8277a8442aff block--953d5ee5-cfa0-4910-b596-8277a8442aff--5826 block block-nir-assets block-nir-assets__widget">
+  
+    
+      <div class="nir-widget">
+      <h2 class="mb-5">Earnings Presentation</h2>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list items-list mb-5">
+              
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+      <div class="nir-widget--field nir-widget--asset--thumbnail float-left">
+      
+<div class="field-nir-thumbnail">
+      <div class="field__item"><a href="https://ir.istar.com/static-files/9a5d60a2-fd41-4d71-a8dd-958281125a65" target="_blank"><img src="/system/files-encrypted/styles/nir_asset_small/encrypt/nasdaq_kms/assets/2021/04/29/6-41-21/Q121%20Presentation%20Cover_303.png?itok=UiZR2_ot" alt="" class="image-style-nir-asset-small" />
+
+</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="idm-row">
+      <div class="idm-col-md-12 radix-layouts-footer panel-panel">
+        <div class="panel-panel-inner">
+          <div class="block-region-footer"><div class="block-content--nir-lp-block block-content--nir-lp-block--18736 block--block-content9967bf44-3c45-4c20-ac97-50d729a08a0c block--block-content9967bf44-3c45-4c20-ac97-50d729a08a0c--5826 block--footer--block-content--9967bf44-3c45-4c20-ac97-50d729a08a0c block--footer--block-content--9967bf44-3c45-4c20-ac97-50d729a08a0c--5826 block--288e5b6f-124f-4623-90a8-a09d27b94dbb block--288e5b6f-124f-4623-90a8-a09d27b94dbb--5826 block block-block-content block-block-content9967bf44-3c45-4c20-ac97-50d729a08a0c">
+  
+    
+      
+            <div class="field field--name-field-nir-lp-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-lp-block-body field--type-text-long field--label-hidden field__item"><div class="idm-container">
+<div class="idm-row idm-justify-content-center idm-mb-5">
+<div class="idm-col-md-10">
+<p>The information below is current as of the dates of the applicable events. Please refer to our SEC reports for our most recent financial results and other information.</p>
+</div>
+</div>
+</div></div>
+      
+</div>
+      
+  </div>
+<div class="block--upcoming-event block--nir-events__widget block--nir-events__widget--5826 block--footer--nir-events__widget block--footer--nir-events__widget--5826 block--615b2e69-ff21-4a61-bfdd-4b5f1a616b6e block--615b2e69-ff21-4a61-bfdd-4b5f1a616b6e--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <h2 class="mb-5">Upcoming Events</h2>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list items-list mb-5">
+              There are currently no events scheduled.
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--past-event block--nir-events__widget block--nir-events__widget--5826 block--footer--nir-events__widget block--footer--nir-events__widget--5826 block--0bf05294-c3b8-4f74-a876-4cd3b66b974f block--0bf05294-c3b8-4f74-a876-4cd3b66b974f--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <h2 class="mb-5">Past Events</h2>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list items-list mb-5">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Apr 29, 2021 at 10:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q1-2021-istar-earnings-conference-call" hreflang="en">Q1 2021 iStar Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  <div class="idm-event-assets d-flex idm-flex-column idm-flex-md-row idm-mb-4">
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/43mwex8n" target="_blank">Replay Event</a></div>
+  </div>
+    </div>
+  
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/b442a84f-6f13-4a90-8641-c04068a1d114" type="application/pdf; length=65260" title="2021-Apr-29-STAR.N-140832251598-Transcript.pdf">Transcript</a></span><span class="filesize"> 65.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/ae1e09d8-bdad-4c5c-8696-40ab479be546" type="application/pdf; length=64587" title="iStar Reports Q121 Earnings.pdf">Earnings Release</a></span><span class="filesize"> 64.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/9a5d60a2-fd41-4d71-a8dd-958281125a65" type="application/pdf; length=339308" title="Q121 STAR Earnings Presentation.pdf">Earnings Presentation</a></span><span class="filesize"> 339.3 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-audio-mpeg file--audio"> <a href="https://ir.istar.com/static-files/0ab59fab-a51d-442b-81a3-83d4ef6b45de" type="audio/mpeg; length=11921449" title="Q1 2021 STAR MP3.mp3">MP3 (audio)</a></span><span class="filesize"> 11.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+      </div>
+
+  
+
+
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Feb 23, 2021 at 10:00 AM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q4-2020-istar-earnings-conference-call" hreflang="en">Q4 2020 iStar Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  <div class="idm-event-assets d-flex idm-flex-column idm-flex-md-row idm-mb-4">
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/uescih25" target="_blank">Replay Event</a></div>
+  </div>
+    </div>
+  
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/f4e32b5d-8884-4c05-bf31-a92c3dc8b552" type="application/pdf; length=81329" title="2021-Feb-23-STAR.N-138813848882-Transcript.pdf">Transcript</a></span><span class="filesize"> 81.3 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/2d152fd6-a063-40f7-9da9-f2e5de5aa2e6" type="application/pdf; length=66576" title="iStar Reports Q4 20 FY 20 Results.pdf">Earnings Release</a></span><span class="filesize"> 66.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/51ee150a-702f-4c96-858d-21667ff53008" type="application/pdf; length=334749" title="Q4 20 FY 20 STAR Earnings Presentation.pdf">Earnings Presentation</a></span><span class="filesize"> 334.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-audio-mpeg file--audio"> <a href="https://ir.istar.com/static-files/5ac416a7-677f-481d-b6b6-5325f3ddb9e8" type="audio/mpeg; length=16610742" title="Q4 &#039;20 STAR MP3.mp3">MP3 (audio)</a></span><span class="filesize"> 16.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+      </div>
+
+  
+
+
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Dec 2, 2020 at 5:15 PM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/istar-bofa-securities-2020-leveraged-finance-virtual-conference" hreflang="en">iStar at the BofA Securities 2020 Leveraged Finance Virtual Conference</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  <div class="idm-event-assets d-flex idm-flex-column idm-flex-md-row idm-mb-4">
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://www.veracast.com/webcasts/bofa/levfin2020/id03313445905.cfm" target="_blank">Replay Event</a></div>
+  </div>
+    </div>
+  
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/ac9095c1-a96b-460c-b459-66ab2d855a5a" type="application/pdf; length=199777" title="11.2020 - STAR Corporate Presentation (BofA Lev Fin).pdf">Event Presentation</a></span><span class="filesize"> 199.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+      </div>
+
+  
+
+
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Nov 19, 2020 at 11:15 AM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/istar-nareits-reitworld-2020-annual-conference" hreflang="en">iStar at Nareit’s REITworld: 2020 Annual Conference</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  <div class="idm-event-assets d-flex idm-flex-column idm-flex-md-row idm-mb-4">
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://onlinexperiences.com/scripts/Server.nxp?LASCmd=L%3A0&amp;AI=1&amp;ShowKey=119291&amp;LoginType=0&amp;InitialDisplay=1&amp;ClientBrowser=0&amp;DisplayItem=E473928&amp;LangLocaleID=0&amp;SSO=1&amp;RFR=https%3A//onlinexperiences.com/Launch/Event.htm%3FShowKey%3D119291&amp;RandomValue=1606253625900" target="_blank">Replay Event</a></div>
+  </div>
+    </div>
+  
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/07f7be0e-2fcb-40eb-b72e-b4e591f8522f" type="application/pdf; length=180870" title="11.2020 - STAR Corporate Presentation (Nareit REITworld).pdf">Corporate Presentation</a></span><span class="filesize"> 180.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+      </div>
+
+  
+
+
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Nov 3, 2020 at 10:00 AM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q3-2020-istar-inc-earnings-conference-call" hreflang="en">Q3 2020 iStar Inc. Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  <div class="idm-event-assets d-flex idm-flex-column idm-flex-md-row idm-mb-4">
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/wypviv5f" target="_blank">Replay Event</a></div>
+  </div>
+    </div>
+  
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/b891f5de-fae1-4594-989e-6cbaa8c75160" type="application/pdf; length=94311" title="2020-Nov-03-STAR.N-138790132130-Transcript.pdf">Transcript</a></span><span class="filesize"> 94.3 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/644820f0-41e4-4094-bcb9-470306c85299" type="application/pdf; length=66067" title="iStar Reports Q3 &#039;20 Results.pdf">Earnings Release</a></span><span class="filesize"> 66 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/4b4794a8-8448-43fe-ba5b-b110c8d26235" type="application/pdf; length=253007" title="Q3 &#039;20 STAR Earnings Presentation.pdf">Earnings Presentation</a></span><span class="filesize"> 253 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-audio-mpeg file--audio"> <a href="https://ir.istar.com/static-files/8ce83c6d-5a3e-408f-a6bb-486c951fcfee" type="audio/mpeg; length=20458475" title="Q3 &#039;20 STAR MP3.mp3">MP3 (audio)</a></span><span class="filesize"> 20.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+      </div>
+
+  
+
+
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Sep 14, 2020 at 12:00 PM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/istar-barclays-global-financial-services-conference-0" hreflang="en">iStar at the Barclays Global Financial Services Conference</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  <div class="idm-event-assets d-flex idm-flex-column idm-flex-md-row idm-mb-4">
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://kvgo.com/barclays/istar-september-2020" target="_blank">Replay Event</a></div>
+  </div>
+    </div>
+  
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/71d4dff6-1e7d-462c-898d-65d87f40d10b" type="application/pdf; length=231347" title="09.2020_STAR &amp; SAFE Corporate Presentation.pdf">Corporate Presentation</a></span><span class="filesize"> 231.3 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+      </div>
+
+  
+
+
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Aug 6, 2020 at 10:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q2-2020-istar-inc-earnings-conference-call" hreflang="en">Q2 2020 iStar Inc. Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  <div class="idm-event-assets d-flex idm-flex-column idm-flex-md-row idm-mb-4">
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/p6b39tvw" target="_blank">Replay Event</a></div>
+  </div>
+    </div>
+  
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/ce78f9c5-043a-4806-ba54-cf3b750ed93e" type="application/pdf; length=93877" title="2020-Aug-5-STAR.N-140664265547-Transcript.pdf">Transcript</a></span><span class="filesize"> 93.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/943d5089-2102-4fa3-a105-bae0a54f8e5f" type="application/pdf; length=68625" title="iStar Reports Q2 &#039;20 Results.pdf">Earnings Release</a></span><span class="filesize"> 68.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/7c11a7b6-90e9-44a1-b16f-1ab554f978c1" type="application/pdf; length=248247" title="Q2 &#039;20 STAR Earnings Presentation.pdf">Earnings Presentation</a></span><span class="filesize"> 248.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-audio-mpeg file--audio"> <a href="https://ir.istar.com/static-files/fb4efc8c-c319-470f-b75c-efab3a72bdf8" type="audio/mpeg; length=16574380" title="Q2 &#039;20 STAR MP3.mp3">MP3 (audio)</a></span><span class="filesize"> 16.5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+      </div>
+
+  
+
+
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jun 25, 2020 at 2:55 PM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/istar-goldman-sachs-leveraged-finance-virtual-conference" hreflang="en">iStar at the Goldman Sachs Leveraged Finance Virtual Conference</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  <div class="idm-event-assets d-flex idm-flex-column idm-flex-md-row idm-mb-4">
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://event.webcasts.com/starthere.jsp?ei=1335145&amp;tp_key=ff06254749" target="_blank">Replay Event</a></div>
+  </div>
+    </div>
+  
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/8e203387-7778-43f1-94b3-3e0f3db12764" type="application/pdf; length=266904" title="06.2020 - STAR Corporate Presentation (GS Lev Fin).pdf">Corporate Presentation</a></span><span class="filesize"> 266.9 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+      </div>
+
+  
+
+
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jun 3, 2020 at 2:15 PM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/istar-nareit-reitweek-2020-virtual-investor-conference" hreflang="en">iStar at Nareit REITweek: 2020 Virtual Investor Conference</a></div>
+  </div>
+    </div>
+  
+
+
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><div class="normal-webcast-link"><a href="https://nareit.6connex.com/event/REITweek/login" target="_blank">Company Presentation Webcast</a></div>
+
+<p><strong>2:15 - 2:45 PM EDT</strong></p>
+
+<div class="normal-webcast-link"><a href="https://zoom.us/j/97972953824" target="_blank">Post-Presentation Breakout Session</a></div>
+
+<p><strong>2:45 - 3:15 PM EDT</strong> (Join Zoom Meeting)</p>
+
+<p>Meeting ID: 979 7295 3824</p>
+
+<p>Password: 517994</p></div>
+          </div>
+
+    </div>
+  
+  <div class="idm-event-assets d-flex idm-flex-column idm-flex-md-row idm-mb-4">
+  
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.istar.com/static-files/132fa501-bd33-4737-bdaa-c88ff3d88144" type="application/pdf; length=246875" title="06.2020 - STAR Corporate Presentation (Nareit).pdf">Corporate Presentation </a></span><span class="filesize"> 246.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+      </div>
+
+  
+
+
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</div><!-- /.sutro -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+                                    </div>
+
+                                <div class="block block__contacts">
+                      <div class="region region-alerts">
+    <div id="block-nir-pid2442-contactus" class="block-content--nir-global-block block-content--nir-global-block--15771 block--block-content4aa04aa9-2d84-4425-a90b-7ce06b7fb1cd block--block-content4aa04aa9-2d84-4425-a90b-7ce06b7fb1cd--5826 block--alerts--block-content--4aa04aa9-2d84-4425-a90b-7ce06b7fb1cd block--alerts--block-content--4aa04aa9-2d84-4425-a90b-7ce06b7fb1cd--5826 block--c65e69ab-2124-4d35-aa28-70c75c014b92 block--c65e69ab-2124-4d35-aa28-70c75c014b92--5826 block block-block-content block-block-content4aa04aa9-2d84-4425-a90b-7ce06b7fb1cd">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="h4 active">Contact us</div>
+
+<ul class="contacts"><li class="active"><span>T.</span> <a href="tel:8883353122">888.335.3122</a></li>
+	<li class="active"><span>E.</span> <a href="mailto:investors@istar.com">investors@istar.com</a></li>
+</ul></div>
+      
+</div>
+      
+  </div>
+<div id="block-nir-pid2442-emailalertssignupblock" class="block--nir-email-alerts-signup-block block--nir-email-alerts-signup-block--5816 block--alerts--nir-email-alerts-signup-block block--alerts--nir-email-alerts-signup-block--5816 block--83297aae-8bc3-429c-b3ab-0b2d7dc8a7be block--83297aae-8bc3-429c-b3ab-0b2d7dc8a7be--5816 block block-nir-email-alerts block-nir-email-alerts-signup-block">
+  
+      <div class="h4 active">Email Alerts</div>
+        
+      <form class="nir-email-alerts-signup-form" data-drupal-selector="nir-email-alerts-signup-form" action="/events-presentations" method="post" id="nir-email-alerts-signup-form" accept-charset="UTF-8">
+  <div class="form-item">Required fields denoted by an asterisk (<span class="asterisk"></span>).</div><table data-drupal-selector="edit-nir-email-alerts-signup-alerts" id="edit-nir-email-alerts-signup-alerts" class="responsive-enabled nirtable" data-striping="1">
+  
+  
+      <thead>
+      <tr>
+                            <th>Alert type</th>
+              </tr>
+    </thead>
+  
+      <tbody>
+                      <tr data-drupal-selector="edit-nir-email-alerts-signup-alerts-5" class="odd">
+                      <td><div class="js-form-item form-item js-form-type-checkbox form-item-nir-email-alerts-signup-alerts-5-en js-form-item-nir-email-alerts-signup-alerts-5-en">
+        <input data-drupal-selector="edit-nir-email-alerts-signup-alerts-5-en" type="checkbox" id="edit-nir-email-alerts-signup-alerts-5-en" name="nir_email_alerts_signup_alerts[5][en]" value="1" class="form-checkbox" />
+
+        <label for="edit-nir-email-alerts-signup-alerts-5-en" class="option">End-of-Day Stock Quote</label>
+      </div>
+</td>
+                  </tr>
+                      <tr data-drupal-selector="edit-nir-email-alerts-signup-alerts-4" class="even">
+                      <td><div class="js-form-item form-item js-form-type-checkbox form-item-nir-email-alerts-signup-alerts-4-en js-form-item-nir-email-alerts-signup-alerts-4-en">
+        <input data-drupal-selector="edit-nir-email-alerts-signup-alerts-4-en" type="checkbox" id="edit-nir-email-alerts-signup-alerts-4-en" name="nir_email_alerts_signup_alerts[4][en]" value="1" class="form-checkbox" />
+
+        <label for="edit-nir-email-alerts-signup-alerts-4-en" class="option">SEC Filings</label>
+      </div>
+</td>
+                  </tr>
+                      <tr data-drupal-selector="edit-nir-email-alerts-signup-alerts-6" class="odd">
+                      <td><div class="js-form-item form-item js-form-type-checkbox form-item-nir-email-alerts-signup-alerts-6-en js-form-item-nir-email-alerts-signup-alerts-6-en">
+        <input data-drupal-selector="edit-nir-email-alerts-signup-alerts-6-en" type="checkbox" id="edit-nir-email-alerts-signup-alerts-6-en" name="nir_email_alerts_signup_alerts[6][en]" value="1" class="form-checkbox" />
+
+        <label for="edit-nir-email-alerts-signup-alerts-6-en" class="option">End-of-Day SEC Filings</label>
+      </div>
+</td>
+                  </tr>
+                      <tr data-drupal-selector="edit-nir-email-alerts-signup-alerts-3" class="even">
+                      <td><div class="js-form-item form-item js-form-type-checkbox form-item-nir-email-alerts-signup-alerts-3-en js-form-item-nir-email-alerts-signup-alerts-3-en">
+        <input data-drupal-selector="edit-nir-email-alerts-signup-alerts-3-en" type="checkbox" id="edit-nir-email-alerts-signup-alerts-3-en" name="nir_email_alerts_signup_alerts[3][en]" value="1" class="form-checkbox" />
+
+        <label for="edit-nir-email-alerts-signup-alerts-3-en" class="option">Calendar of Events</label>
+      </div>
+</td>
+                  </tr>
+                      <tr data-drupal-selector="edit-nir-email-alerts-signup-alerts-2" class="odd">
+                      <td><div class="js-form-item form-item js-form-type-checkbox form-item-nir-email-alerts-signup-alerts-2-en js-form-item-nir-email-alerts-signup-alerts-2-en">
+        <input data-drupal-selector="edit-nir-email-alerts-signup-alerts-2-en" type="checkbox" id="edit-nir-email-alerts-signup-alerts-2-en" name="nir_email_alerts_signup_alerts[2][en]" value="1" class="form-checkbox" />
+
+        <label for="edit-nir-email-alerts-signup-alerts-2-en" class="option">Press Releases</label>
+      </div>
+</td>
+                  </tr>
+                      <tr data-drupal-selector="edit-nir-email-alerts-signup-alerts-11235" class="even">
+                      <td><div class="js-form-item form-item js-form-type-checkbox form-item-nir-email-alerts-signup-alerts-11235-en js-form-item-nir-email-alerts-signup-alerts-11235-en">
+        <input data-drupal-selector="edit-nir-email-alerts-signup-alerts-11235-en" type="checkbox" id="edit-nir-email-alerts-signup-alerts-11235-en" name="nir_email_alerts_signup_alerts[11235][en]" value="1" class="form-checkbox" />
+
+        <label for="edit-nir-email-alerts-signup-alerts-11235-en" class="option">Archived Conference Call</label>
+      </div>
+</td>
+                  </tr>
+                      <tr data-drupal-selector="edit-nir-email-alerts-signup-alerts-11236" class="odd">
+                      <td><div class="js-form-item form-item js-form-type-checkbox form-item-nir-email-alerts-signup-alerts-11236-en js-form-item-nir-email-alerts-signup-alerts-11236-en">
+        <input data-drupal-selector="edit-nir-email-alerts-signup-alerts-11236-en" type="checkbox" id="edit-nir-email-alerts-signup-alerts-11236-en" name="nir_email_alerts_signup_alerts[11236][en]" value="1" class="form-checkbox" />
+
+        <label for="edit-nir-email-alerts-signup-alerts-11236-en" class="option">Financial Reports</label>
+      </div>
+</td>
+                  </tr>
+                      <tr data-drupal-selector="edit-nir-email-alerts-signup-alerts-11237" class="even">
+                      <td><div class="js-form-item form-item js-form-type-checkbox form-item-nir-email-alerts-signup-alerts-11237-en js-form-item-nir-email-alerts-signup-alerts-11237-en">
+        <input data-drupal-selector="edit-nir-email-alerts-signup-alerts-11237-en" type="checkbox" id="edit-nir-email-alerts-signup-alerts-11237-en" name="nir_email_alerts_signup_alerts[11237][en]" value="1" class="form-checkbox" />
+
+        <label for="edit-nir-email-alerts-signup-alerts-11237-en" class="option">Presentations</label>
+      </div>
+</td>
+                  </tr>
+                      <tr data-drupal-selector="edit-nir-email-alerts-signup-alerts-11238" class="odd">
+                      <td><div class="js-form-item form-item js-form-type-checkbox form-item-nir-email-alerts-signup-alerts-11238-en js-form-item-nir-email-alerts-signup-alerts-11238-en">
+        <input data-drupal-selector="edit-nir-email-alerts-signup-alerts-11238-en" type="checkbox" id="edit-nir-email-alerts-signup-alerts-11238-en" name="nir_email_alerts_signup_alerts[11238][en]" value="1" class="form-checkbox" />
+
+        <label for="edit-nir-email-alerts-signup-alerts-11238-en" class="option">Annual Reports</label>
+      </div>
+</td>
+                  </tr>
+          </tbody>
+    </table>
+<div class="js-form-item form-item js-form-type-email form-item-nir-email-alerts-signup-email js-form-item-nir-email-alerts-signup-email">
+      <label for="edit-nir-email-alerts-signup-email" class="js-form-required form-required">Email</label>
+        <input data-drupal-selector="edit-nir-email-alerts-signup-email" type="email" id="edit-nir-email-alerts-signup-email" name="nir_email_alerts_signup_email" value="" size="60" maxlength="254" class="form-email required" required="required" aria-required="true" />
+
+        </div>
+<input data-drupal-selector="edit-submit" type="submit" id="edit-submit--2" name="op" value="Submit" class="button button--primary js-form-submit form-submit" />
+<input autocomplete="off" data-drupal-selector="form-rswlvk5pfzv-vwzgjdauu0rzps5oszlx9xykznuahqi" type="hidden" name="form_build_id" value="form-RSwLVK5pfZv_VwzGJDAUu0rZPS5oszLX9XykZnUahQI" />
+<input data-drupal-selector="edit-nir-email-alerts-signup-form" type="hidden" name="form_id" value="nir_email_alerts_signup_form" />
+<div class="url-textfield js-form-wrapper form-wrapper" style="display: none !important;"><div class="js-form-item form-item js-form-type-textfield form-item-url js-form-item-url">
+      <label for="edit-url">Leave this field blank</label>
+        <input autocomplete="off" data-drupal-selector="edit-url" type="text" id="edit-url" name="url" value="" size="20" maxlength="128" class="form-text" />
+
+        </div>
+</div>
+
+</form>
+
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+
+  </div>
+
+                </div>
+                
+            </div>
+        </main><!-- #main -->
+    </div><!-- #primary -->
+    <footer class="site-footer footer" id="colophon">
+        <div class="container">
+            <div class="footer-higher">
+                <div class="footer-logo">
+                    <svg class="svg_icon svg_logo" height="80" viewbox="0 0 80 80" width="80" xmlns="http://www.w3.org/2000/svg">
+                        <title>iStar</title>
+                        <path d="M58.8 41.4C58.8 38.4 56.6 35.9 53.4 35.9 50.3 35.9 48 38.3 48 41.4 48 44.6 50.2 46.9 53.4 46.9 56.6 46.8 58.8 44.4 58.8 41.4ZM58.9 48.3L58.9 45.9C57.6 47.8 55.7 48.7 53.4 48.7 49.2 48.7 46 45.5 46 41.3 46 37.1 49.3 34 53.4 34 55.7 34 57.6 34.9 58.9 36.8L58.9 34.3 60.9 34.3 60.9 48.4 58.9 48.3 58.9 48.3ZM63.6 34.3L63.6 48.4 65.7 48.4 65.7 40.9C65.7 38.4 66.5 36 71.2 36L71.2 34.1C68.5 34.1 67.1 34.4 65.7 36.7L65.7 34.4 63.6 34.3 63.6 34.3ZM39.1 29.5L39.1 34.2 36.6 34.2 36.6 36.1 39.1 36.1 39.1 44.9C39.1 46.7 39.6 48.7 42.8 48.7 43.5 48.7 44.1 48.6 44.7 48.4L44.7 46.5C44.1 46.7 43.5 46.7 43.1 46.7 41.6 46.7 41.1 45.9 41.1 43.9L41.1 36 45.1 36 45.1 34.1 41.1 34.1 41.1 29.4 39.1 29.4 39.1 29.5ZM19 48.3L21 48.3 21 34.3 19 34.3 19 48.3ZM39.6 0C33.1 0 27 1.6 21.6 4.3L21.6 6.5C27.1 3.6 33.2 2 39.6 2 49.6 2 59 5.9 66.1 13 73.3 20.1 77.1 29.5 77.1 39.6 77.1 49.7 73.3 59.1 66.1 66.2 59 73.3 49.6 77.2 39.6 77.2 29.5 77.2 20.1 73.3 13 66.2 5.9 59.1 2 49.7 2 39.6 2 29.5 5.9 20.1 13 13 14.7 11.2 16.5 9.7 18.4 8.4L18.4 6.1C7.4 13.1 0 25.5 0 39.6 0 61.5 17.7 79.2 39.6 79.2 61.4 79.2 79.1 61.5 79.1 39.6 79.1 17.7 61.4 0 39.6 0ZM34.2 43C34.2 40.4 32 39.4 29.6 38.4 28.6 38 27.7 37.6 26.8 37.1 25.5 36.3 24 35 24 32.6 24 29.4 26.5 27 30 27 33 27 34.8 28.6 35.4 29.1L35.4 29.2 34.1 30.7 34 30.7C32.7 29.5 31.5 29.1 30 29.1 27.6 29.1 25.9 30.5 25.9 32.6 25.9 34.6 27.8 35.5 30.1 36.4 31.1 36.8 32.1 37.3 33 37.9 35.1 39.2 36.2 40.9 36.2 43 36.2 46.3 33.5 48.7 30.1 48.7 27.2 48.7 24.8 47.5 23.1 45.1L23 45.1 24.5 43.7 24.6 43.9C25.6 45.2 27.2 46.8 30.1 46.8 32 46.7 34.2 45.3 34.2 43Z" fill="#FFF"></path></svg>
+
+                                            <div class="footer-text">
+                              <div class="region region-footer-text">
+    <div id="block-gbfootertext" class="block-content--nir-global-block block-content--nir-global-block--18671 block--block-content7bcc2ef3-ad48-4093-98ef-36b68c3a4bd0 block--block-content7bcc2ef3-ad48-4093-98ef-36b68c3a4bd0--5826 block--footer-text--block-content--7bcc2ef3-ad48-4093-98ef-36b68c3a4bd0 block--footer-text--block-content--7bcc2ef3-ad48-4093-98ef-36b68c3a4bd0--5826 block--19440c51-33e8-4c0a-8e9c-0442393fe312 block--19440c51-33e8-4c0a-8e9c-0442393fe312--5826 block block-block-content block-block-content7bcc2ef3-ad48-4093-98ef-36b68c3a4bd0">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><p class="p1"><span class="s1">Interested in </span><a href="mailto:customers@istar.com"><span class="s2">working with</span></a><span class="s1">, </span><a href="mailto:careers@istar.com"><span class="s2">working for</span></a><span class="s1"> or </span><a href="mailto:investors@istar.com"><span class="s2">investing in</span></a><span class="s1"> iStar? We want to talk with you.</span></p></div>
+      
+</div>
+      
+  </div>
+
+  </div>
+
+                        </div>
+                    
+                </div>
+
+                                <div class="footer-nav">
+                    <ul class="menu" id="menu-menu-1">
+                        
+
+                        
+        
+
+                                                          
+            <li class="menu-item menu-item-has-children">
+        <a href="" target="" rel="">Our businesses</a>
+                                <ul class="sub-menu">
+                          <li class="menu-item">
+        <a href="https://www.istar.com/our-businesses/safehold/" target="" rel="">Safehold™ ground leases</a>
+              </li>
+                      <li class="menu-item">
+        <a href="https://www.istar.com/our-businesses/other-businesses" target="" rel="">Other businesses</a>
+              </li>
+              </ul>
+      
+              </li>
+        
+      
+
+
+    
+
+                        
+        
+
+                                                          
+            <li class="menu-item menu-item-has-children">
+        <a href="" target="" rel="">Our company</a>
+                                <ul class="sub-menu">
+                          <li class="menu-item">
+        <a href="https://www.istar.com/about-us/" target="" rel="">About us</a>
+              </li>
+                      <li class="menu-item">
+        <a href="https://www.istar.com/about-us/leadership/" target="" rel="">Leadership</a>
+              </li>
+                      <li class="menu-item">
+        <a href="https://www.istar.com/about-us/careers/" target="" rel="">Careers</a>
+              </li>
+                      <li class="menu-item">
+        <a href="https://www.istar.com/about-us/contact/" target="" rel="">Contact</a>
+              </li>
+                      <li class="menu-item">
+        <a href="https://www.istar.com/sustainability">Sustainability</a>
+              </li>
+              </ul>
+      
+              </li>
+        
+      
+
+
+    
+
+                        
+        
+
+                                                          
+            <li class="menu-item menu-item-has-children">
+        <a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;">Investors</a>
+                                <ul class="sub-menu">
+                          <li class="menu-item">
+        <a href="https://www.istar.com/2020-annual-report/" class="hide">2020 Annual Report</a>
+              </li>
+                      <li class="menu-item">
+        <a href="/" target="" rel="" class="mobile-view" title="Main Investor Relations Page" data-drupal-link-system-path="&lt;front&gt;">Investor relations</a>
+              </li>
+                      <li class="menu-item">
+        <a href="/nws" target="" rel="">News</a>
+              </li>
+                      <li class="menu-item">
+        <a href="/events-presentations" target="" rel="" class="events is-active" data-drupal-link-system-path="node/5826">Events &amp; presentations</a>
+              </li>
+                      <li class="menu-item">
+        <a href="/financial-information/quarterly-results" target="" rel="" class="earnings" data-drupal-link-system-path="node/5986">Earnings &amp; financials</a>
+              </li>
+                      <li class="menu-item">
+        <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">SEC filings</a>
+              </li>
+                      <li class="menu-item">
+        <a href="/corporate-governance/highlights" target="" rel="" class="governance" data-drupal-link-system-path="node/5836">Governance &amp; proxy</a>
+              </li>
+                      <li class="menu-item">
+        <a href="/stock-information/stock-quote" target="" rel="" data-drupal-link-system-path="node/5911">Stock information</a>
+              </li>
+              </ul>
+      
+              </li>
+        
+      
+
+
+    
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="footer-lower">
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/company/istar-inc" target="_blank" class="arrow_link">Connect with us on LinkedIn</a>
+                </div>
+                <div class="footer-lower-nav">
+                    <ul class="menu" id="menu-footer-menu">
+                        
+
+                        
+        
+
+                                                        <li class="menu-item">
+        <a href="https://www.istar.com/terms-conditions/" target="" rel="">Terms &amp; Conditions</a>
+              </li>
+                      <li class="menu-item">
+        <a href="https://www.istar.com/privacy-policy/" target="" rel="">Privacy Policy</a>
+              </li>
+        
+      
+
+
+    
+                    </ul>
+                </div>
+                <div class="footer-copyright">
+                    © iStar 2021
+                </div>
+
+            </div>
+
+        </div>
+    </footer><!-- #colophon -->
+</div><!-- #page -->
+
+<div class="preloader" style="display: none;">
+    <div class="loading" style="display: none;">
+        <svg class="ic_loading" height="119" viewbox="0 0 119 119" width="119" xmlns="http://www.w3.org/2000/svg">
+            <title>Loading</title>
+            <circle cx="59.5" cy="59.5" r="57.4" style="stroke-width:4;stroke:#0000FF"></circle></svg> <svg class="ic_loading" height="119" viewbox="0 0 119 119" width="119" xmlns="http://www.w3.org/2000/svg">
+            <title>Loading</title>
+            <circle cx="59.5" cy="59.5" r="57.4" style="stroke-width:4;stroke:#979797"></circle></svg> <svg class="ic_loading" height="119" viewbox="0 0 119 119" width="119" xmlns="http://www.w3.org/2000/svg">
+            <title>Loading</title>
+            <rect fill="#FFF" height="12" width="6.8" x="25.5" y="5"></rect></svg>
+    </div>
+</div>
+<div class="search_modal" style="display: none;">
+    <div class="search_modal-content">
+        <form action="https://www.istar.com/">
+            <input autocomplete="off" name="s" placeholder="Type search…" type="search"> <button type="submit"><svg class="svg_icon svg_search" height="14" viewbox="0 0 14 14" width="14" xmlns="http://www.w3.org/2000/svg">
+                    <title>Search</title>
+                    <path d="M10.2 1.5C12.7 3.7 13 7.4 11 9.9L13.8 12.7C14 12.9 14 13.2 14 13.4 13.9 13.7 13.7 13.9 13.4 14 13.2 14 12.9 14 12.7 13.8L9.9 11C7.4 13 3.7 12.7 1.5 10.2 -0.6 7.8-0.5 4.1 1.8 1.8 4.1-0.5 7.8-0.6 10.2 1.5ZM6.2 1.5C3.6 1.5 1.5 3.6 1.5 6.2 1.5 8.7 3.6 10.8 6.2 10.8 7.8 10.8 9.3 9.9 10.1 8.5 11 7 11 5.3 10.1 3.8 9.3 2.4 7.8 1.5 6.2 1.5Z" fill="#FFF"></path></svg></button>
+        </form>
+    </div><a class="search_modal-close" href="#" role="button"></a>
+</div>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb622";</script>
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","themeUrl":"sites\/g\/files\/knoqqb51656\/themes\/site\/nir_pid2442"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/drupal.tableresponsive,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid2442\/override,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid2442","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"user":{"uid":0,"permissionsHash":"6a638c813def74fd2be3e670702bec1345200c4dc243601f6de986fa9ab3ec5a"}}</script>
+<script src="/sites/g/files/knoqqb51656/files/js/js_dGkGQHjDVvnH4ptogQwnuuu0nCR0_RH45h8AS0_q_eA.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-63928713-1', 'auto', { 'allowLinker': true });
+ ga('require', 'linker');
+ ga('linker:autoLink', ['istar.com', 'ir.istar.com','istarlandanddev.com'], false, true);
+ ga('send', 'pageview');</script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PV3RS5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PV3RS5');</script>
+
+      <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":958,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

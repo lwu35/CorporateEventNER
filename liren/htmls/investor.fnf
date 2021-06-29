@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"37278538"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Fidelity National Financial" />
+<link rel="canonical" href="https://www.investor.fnf.com/news-and-events/presentations/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.investor.fnf.com/news-and-events/presentations" />
+<meta property="og:title" content="Presentations | Fidelity National Financial" />
+<meta property="og:description" content="The Investor Relations website contains information about Fidelity National Financial&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb54936/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://www.investor.fnf.com/news-and-events/presentations" />
+<link rel="revision" href="https://www.investor.fnf.com/news-and-events/presentations" />
+
+    <title>Presentations - Fidelity National Financial</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb54936/files/css/css_rfjm6CJ_0NMC2yDcg2-ndYMEx1qfufTwwHO3KArx5Oc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb54936/files/css/css_RXDpnSwi4vRSHMfz3IsSfN0ebN5ymSChSKIImUIJ3NI.css" />
+<link rel="stylesheet" media="all" href="//use.typekit.net/ddy6kus.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb54936/files/css/css_6PzQjX0xsFP5arR8Po8hoENG84Aa2lqC_1kKryuhzP4.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb54936/files/css/css_8xMgkp8H7hTV5BHCucaEKNBWqtwCelW_yZK2rDFmF0A.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb54936/files/css/css_tRSz8yj4iz3agDjV9W1vjmYbtb9O8tBFL8dUJan7Ix8.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb54936/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3212682-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-3212682-9');
+</script>
+
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5831 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="banner" id="banner-inner-pages">         
+    <header>
+        <div class="top-bar sticky is-at-top is-stuck">  
+            <div class="row">
+                <div class="top-bar-left">
+                    <a href="https://www.fnf.com/">
+                        <img src="/sites/g/files/knoqqb54936/themes/site/nir_pid609/dist/images/FNF_Logo_White.png" alt="logo"/>
+                    </a>
+                </div>
+                <div class="top-bar-right">
+                    <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="large">
+                        <button class="menu-icon" type="button" aria-label="Open Search" data-toggle=""><span class="menu-style">Menu</span></button>
+                    </div>
+                    <div class="" id="main-menu">
+                            			          
+
+
+                        
+    <h2 class="visually-hidden" id="block-topnav-menu">Top Nav</h2>
+    
+
+                              <ul class="menu vertical large-horizontal expanded large-text-left" data-responsive-menu="drilldown large-dropdown">
+    
+
+          
+            
+
+            <li id="WhoWeAre" class="  ">
+
+                <a href="https://fnf.com/Who-We-Are" target="" rel="">Who We Are</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="Mission" class="  ">
+
+                <a href="https://fnf.com/Mission" target="" rel="">Mission</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="Expertise" class="  ">
+
+                <a href="https://fnf.com/Expertise" target="" rel="">Expertise</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="Companies" class=" has-submenu ">
+
+                <a href="https://fnf.com/Companies" target="" rel="">Companies</a>
+
+                
+                                                        
+                               <ul class="submenu menu vertical" data-submenu>        
+          
+          <li><span class="dropdown-subheading">Companies</span></li>
+            
+
+          
+            
+
+            <li id="TitleInsurance" class=" has-submenu ">
+
+                <a href="https://fnf.com/Companies/Title-Insurance" target="" rel="">Title Insurance</a>
+
+                
+                                                        
+                               <ul class="submenu menu vertical" data-submenu>        
+          
+          <li><span class="dropdown-subheading">Title Insurance</span></li>
+            
+
+          
+            
+
+            <li id="DirectOperations" class="  ">
+
+                <a href="https://fnf.com/Companies/Title-Insurance/#Direct%20Operations" target="" rel="">Direct Operations</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="CommercialOperations" class="  ">
+
+                <a href="https://fnf.com/Companies/Title-Insurance/#Commercial%20Operations" target="" rel="">Commercial Operations</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="AgencyOperations" class="  ">
+
+                <a href="https://fnf.com/Companies/Title-Insurance/#Agency%20Operations" target="" rel="">Agency Operations</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="CanadianOperations" class="  ">
+
+                <a href="https://fnf.com/Companies/Title-Insurance/#Canadian%20Operations" target="" rel="">Canadian Operations</a>
+
+                
+            </li>
+
+
+              
+    </ul>
+  
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="Mortgage&amp;RealEstateServices" class=" has-submenu ">
+
+                <a href="https://fnf.com/Companies/Mortgage-Real-Estate-Services" target="" rel="">Mortgage &amp; Real Estate Services</a>
+
+                
+                                                        
+                               <ul class="submenu menu vertical" data-submenu>        
+          
+          <li><span class="dropdown-subheading">Mortgage &amp; Real Estate Services</span></li>
+            
+
+          
+            
+
+            <li id="ServiceLink" class="  ">
+
+                <a href="https://fnf.com/Companies/Mortgage-Real-Estate-Services/#ServiceLink" target="" rel="">ServiceLink</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="LoanCare" class="  ">
+
+                <a href="https://fnf.com/Companies/Mortgage-Real-Estate-Services/#LoanCare" target="" rel="">LoanCare</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="IPX1031" class="  ">
+
+                <a href="https://fnf.com/Companies/Mortgage-Real-Estate-Services/#IPX%201031" target="" rel="">IPX 1031</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="HomeWarranty" class="  ">
+
+                <a href="https://fnf.com/Companies/Mortgage-Real-Estate-Services/#Home%20Warranty" target="" rel="">Home Warranty</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="UCCPlus" class="  ">
+
+                <a href="https://fnf.com/Companies/Mortgage-Real-Estate-Services/#UCCPlus" target="" rel="">UCCPlus</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="DisclosureSource" class="  ">
+
+                <a href="https://fnf.com/Companies/Mortgage-Real-Estate-Services/#Disclosure%20Source" target="" rel="">Disclosure Source</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="FRS" class="  ">
+
+                <a href="https://fnf.com/Companies/Mortgage-Real-Estate-Services/#FRS" target="" rel="">FRS</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="Bancserv" class="  ">
+
+                <a href="https://fnf.com/Companies/Mortgage-Real-Estate-Services/#Bancserv" target="" rel="">Bancserv</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="PCAgentGroup" class="  ">
+
+                <a href="https://fnf.com/Companies/Mortgage-Real-Estate-Services/#PC%20Agent%20Group" target="" rel="">PC Agent Group</a>
+
+                
+            </li>
+
+
+              
+    </ul>
+  
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="RealEstateTechnology" class=" has-submenu ">
+
+                <a href="https://fnf.com/Companies/Real-Estate-Technology" target="" rel="">Real Estate Technology</a>
+
+                
+                                                        
+                               <ul class="submenu menu vertical" data-submenu>        
+          
+          <li><span class="dropdown-subheading">Real Estate Technology</span></li>
+            
+
+          
+            
+
+            <li id="SoftPro" class="  ">
+
+                <a href="https://fnf.com/Companies/Real-Estate-Technology/#SoftPro" target="" rel="">SoftPro</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="NextAce" class="  ">
+
+                <a href="https://fnf.com/Companies/Real-Estate-Technology/#NextAce" target="" rel="">NextAce</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="HudsonMarshall" class="  ">
+
+                <a href="https://fnf.com/Companies/Real-Estate-Technology/#Hudson%20&amp;%20Marshall" target="" rel="">Hudson Marshall</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="CINC" class="  ">
+
+                <a href="https://fnf.com/Companies/Real-Estate-Technology/#CINC" target="" rel="">CINC</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="RealGeeks" class="  ">
+
+                <a href="https://fnf.com/Companies/Real-Estate-Technology/#Real%20Geeks" target="" rel="">Real Geeks</a>
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="SkySlope" class="  ">
+
+                <a href="https://fnf.com/Companies/Real-Estate-Technology/#SkySlope" target="" rel="">SkySlope</a>
+
+                
+            </li>
+
+
+              
+    </ul>
+  
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="Annuities&amp;LifeInsurance" class="  ">
+
+                <a href="https://fnf.com/Companies/Annuities-Life-Insurance" target="" rel="">Annuities &amp; Life Insurance</a>
+
+                
+            </li>
+
+
+              
+    </ul>
+  
+
+                
+            </li>
+
+
+          
+            
+
+            <li id="Investors" class="  ">
+
+                <a href="/investor-relations" target="" rel="" data-drupal-link-system-path="node/5806">Investors</a>
+
+                
+            </li>
+
+
+              
+    </ul>
+  
+
+
+
+    
+
+    			                            </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="row" id="banner-content">
+
+         
+
+	  	<div class="large-8 small-12 column">
+	    	                <h2>Presentations</h2>
+              
+
+			        </div>
+
+      
+    </div>
+    
+</div>
+<!-- End of Parallax Banner -->
+<div class="ir-mobile-menu">
+    <div class="row">
+        <div class="columns large-12">
+                
+            <div class="title-menu">Investors</div>
+            <div class="title-bar" data-responsive-toggle="mobile-menu" data-hide-for="large">
+                <button class="menu-icon" type="button" aria-label="Open Search" data-toggle=""></button>
+            </div>
+            <div class="" id="mobile-menu">
+                                  
+
+
+                        
+    <h2 class="visually-hidden" id="block-investorrelations-2-menu">Investor Relations</h2>
+    
+
+                              <ul class="menu vertical large-horizontal expanded" data-responsive-menu="drilldown large-dropdown">
+    
+
+                      <li id="Overview" class="                ">
+
+              <a href="/" target="" rel="" title="Main Investor Relations Page" data-drupal-link-system-path="&lt;front&gt;">Overview</a>
+
+              
+            </li>
+                      <li id="News &amp; Events" class="has-submenu                active">
+
+              <a href="/news-and-events/press-room" target="" rel="" data-drupal-link-system-path="node/5816">News &amp; Events</a>
+
+                                            <ul class="submenu menu vertical" data-submenu>
+    
+
+                      <li id="Press Room" class="                ">
+
+              <a href="/news-and-events/press-room" target="" rel="" data-drupal-link-system-path="node/5816">Press Room</a>
+
+              
+            </li>
+                      <li id="Events &amp; Multimedia" class="                ">
+
+              <a href="/news-and-events/events-and-multimedia" target="" rel="" data-drupal-link-system-path="node/5821">Events &amp; Multimedia</a>
+
+              
+            </li>
+                      <li id="Presentations" class="                active">
+
+              <a href="/news-and-events/presentations" data-drupal-link-system-path="node/5831" class="is-active">Presentations</a>
+
+              
+            </li>
+              
+    </ul>
+  
+              
+            </li>
+                      <li id="Stock Info" class="has-submenu                ">
+
+              <a href="/stock-information/stock-quote-and-chart" target="" rel="" data-drupal-link-system-path="node/5916">Stock Info</a>
+
+                                            <ul class="submenu menu vertical" data-submenu>
+    
+
+                      <li id="Stock Quote &amp; Chart" class="                ">
+
+              <a href="/stock-information/stock-quote-and-chart" target="" rel="" data-drupal-link-system-path="node/5916">Stock Quote &amp; Chart</a>
+
+              
+            </li>
+                      <li id="Shareholder Return" class="                ">
+
+              <a href="/stock-information/shareholder-return" target="" rel="" data-drupal-link-system-path="node/5926">Shareholder Return</a>
+
+              
+            </li>
+                      <li id="Analyst Coverage" class="                ">
+
+              <a href="/stock-information/analyst-coverage" data-drupal-link-system-path="node/5896">Analyst Coverage</a>
+
+              
+            </li>
+              
+    </ul>
+  
+              
+            </li>
+                      <li id="Financials" class="has-submenu                ">
+
+              <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">Financials</a>
+
+                                            <ul class="submenu menu vertical" data-submenu>
+    
+
+                      <li id="SEC Filings" class="                ">
+
+              <a href="/financial-information/sec-filings" data-drupal-link-system-path="node/5876">SEC Filings</a>
+
+              
+            </li>
+                      <li id="Financial Documents" class="                ">
+
+              <a href="/financial-information/financial-documents" target="" rel="" data-drupal-link-system-path="node/6016">Financial Documents</a>
+
+              
+            </li>
+                      <li id="Quarterly Results" class="                ">
+
+              <a href="/financial-information/quarterly-results" data-drupal-link-system-path="node/5986">Quarterly Results</a>
+
+              
+            </li>
+                      <li id="Ratings" class="                ">
+
+              <a href="/financial-information/ratings" target="" rel="" data-drupal-link-system-path="node/23096">Ratings</a>
+
+              
+            </li>
+              
+    </ul>
+  
+              
+            </li>
+                      <li id="Corporate Governance" class="has-submenu                ">
+
+              <a href="/corporate-governance/governance-documents" target="" rel="" data-drupal-link-system-path="node/23101">Corporate Governance</a>
+
+                                            <ul class="submenu menu vertical" data-submenu>
+    
+
+                      <li id="Governance Documents" class="                ">
+
+              <a href="/corporate-governance/governance-documents" target="" rel="" data-drupal-link-system-path="node/23101">Governance Documents</a>
+
+              
+            </li>
+                      <li id="Board of Directors" class="                ">
+
+              <a href="/corporate-governance/board-of-directors" data-drupal-link-system-path="node/5841">Board of Directors</a>
+
+              
+            </li>
+                      <li id="Executives" class="                ">
+
+              <a href="/corporate-governance/executive" target="" rel="" data-drupal-link-system-path="node/5846">Executives</a>
+
+              
+            </li>
+              
+    </ul>
+  
+              
+            </li>
+                      <li id="IR Resources" class="has-submenu                ">
+
+              <a href="/ir-resources/investor-faqs" target="" rel="" data-drupal-link-system-path="node/5941">IR Resources</a>
+
+                                            <ul class="submenu menu vertical" data-submenu>
+    
+
+                      <li id="Investor FAQs" class="                ">
+
+              <a href="/ir-resources/investor-faqs" data-drupal-link-system-path="node/5941">Investor FAQs</a>
+
+              
+            </li>
+                      <li id="News by Email" class="                ">
+
+              <a href="/ir-resources/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">News by Email</a>
+
+              
+            </li>
+                      <li id="Investor Kit" class="                ">
+
+              <a href="/ir-resources/online-investor-kit" target="" rel="" data-drupal-link-system-path="node/5961">Investor Kit</a>
+
+              
+            </li>
+                      <li id="Contact IR" class="                ">
+
+              <a href="/ir-resources/contact-ir" target="" rel="" data-drupal-link-system-path="node/5981">Contact IR</a>
+
+              
+            </li>
+              
+    </ul>
+  
+              
+            </li>
+              
+    </ul>
+  
+
+
+    
+
+                            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+
+    <div class="row">
+      <div  class="ndq-5831" id="ndq-content">          
+                        <div  class="columns large-12" >
+                  <div class="region region-content">
+    <div id="block-nir-pid609-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5831 block--content--website-notice-block block--content--website-notice-block--5831 block--69c1682d-c53f-4dd5-b2f0-8cabe017fbfe block--69c1682d-c53f-4dd5-b2f0-8cabe017fbfe--5831 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid609-content" class="block--system-main-block block--system-main-block--5831 block--content--system-main-block block--content--system-main-block--5831 block--4fd5c217-ba37-4ca3-817b-3fede70d1246 block--4fd5c217-ba37-4ca3-817b-3fede70d1246--5831 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--asset-presentation block--nir-assets__widget block--nir-assets__widget--5831 block--contentmain--nir-assets__widget block--contentmain--nir-assets__widget--5831 block--cefce11a-4743-4189-8953-158388f0e514 block--cefce11a-4743-4189-8953-158388f0e514--5831 block block-nir-assets block-nir-assets__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Presentations
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.investor.fnf.com/static-files/0fa36210-9608-4bad-8659-13719af70ed3" type="application/pdf; length=737958" title="FNF Winter 2021 Investor Presentation.pdf">FNF Winter 2021 Investor Presentation</a></span><span class="filesize"> 737.9 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.investor.fnf.com/static-files/84970666-fe30-4844-b88f-b0f49a424c6d" type="application/pdf; length=1704313" title="FG General Account Investment Strategy  Portfolio Review.pdf">F&amp;G General Account Investment Strategy &amp; Portfolio Review</a></span><span class="filesize"> 1.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+            </div><!--- end col-md-9/12 --->
+
+          <br class="clear" />
+        </div>
+    </div><!--- end row --->
+
+
+<!-- Toolkit -->
+<div id="ndq-toolkit-div">
+            <div class="region region-tools">
+    
+
+
+                        
+    <h2 class="visually-hidden" id="block-tools-menu">Tools</h2>
+    
+
+                            
+     <div class="row small-up-2 medium-up-4 large-up-4">
+    
+      
+      
+
+              
+        <div class="column">
+          <div class="icoTools">
+            <a href="/ir-resources/contact-ir" title="Contact IR" alt="Contact IR">
+              <span  class="icon ndqicon-chair">
+              </span>
+                <span class="hide">Contact IR</span>
+            </a>
+          </div>
+        </div>
+
+
+                  
+              
+        <div class="column">
+          <div class="icoTools">
+            <a href="/ir-resources/email-alerts" title="Email Alerts" alt="Email Alerts">
+              <span  class="icon ndqicon-alerts">
+              </span>
+                <span class="hide">Email Alerts</span>
+            </a>
+          </div>
+        </div>
+
+
+                  
+              
+        <div class="column">
+          <div class="icoTools">
+            <a href="/news-and-events/events-and-multimedia" title="Events &amp; Multimedia" alt="Events &amp; Multimedia">
+              <span  class="icon ndqicon-mic">
+              </span>
+                <span class="hide">Events &amp; Multimedia</span>
+            </a>
+          </div>
+        </div>
+
+
+                  
+              
+        <div class="column">
+          <div class="icoTools">
+            <a href="/ir-resources/online-investor-kit" title="Investor Kit" alt="Investor Kit">
+              <span  class="icon ndqicon-downloads-3">
+              </span>
+                <span class="hide">Investor Kit</span>
+            </a>
+          </div>
+        </div>
+
+
+                  
+      
+      <!-- 
+      <a href="/search" rel="nofollow" title="Search" alt="Search">
+        <div class="ndqicon-search" style="opacity: 1;">
+          <strong style="opacity: 0;">Search</strong>
+        </div>
+      </a>
+    -->
+
+    </div>
+
+  
+
+
+    
+
+  </div>
+
+    </div>
+<!-- End of toolkit-->
+
+<!-- Social Icons
+<div class="column text-center" id="ndq-social-div">
+    <div class="row column">
+        <div>
+        	        </div>
+    </div>
+</div> -->
+<!-- End of Social Icons -->
+
+<footer>
+    <div class="footer-Marketing-block">
+        <div class="container">
+            <div class="row">
+                <div class="mrkt-block columns large-2 small-2">
+                    <span>&nbsp;</span>
+                </div>
+                            </div>
+        </div>
+    </div>
+    <div class="footer-block">
+        <div class="container">
+            <div class="row">
+                <div class="footer-links">
+                                          
+
+
+                        
+    <h2 class="visually-hidden" id="block-footerlinks-menu">Footer Links</h2>
+    
+
+                    
+      
+          <a id="Sustainability" href="https://www.investor.fnf.com/static-files/3b04c12b-0fc5-441e-9074-3b21ab25916c" alt="Sustainability" class="col-4 col-sm-2 FooterNavLink">
+                          <img src="/sites/g/files/knoqqb54936/themes/site/nir_pid609/dist/images/Sustainability_Icon.png" alt="">
+                        Sustainability
+          </a>
+
+          
+          
+      
+          <a id="Accessibility" href="https://www.fnf.com/Accessibility" alt="Accessibility" class="col-4 col-sm-2 FooterNavLink">
+                        Accessibility
+          </a>
+
+          
+          
+      
+          <a id="Privacy Policy (PDF)" href="https://fnf.com/privacy" alt="Privacy Policy (PDF)" class="col-4 col-sm-2 FooterNavLink">
+                        Privacy Policy (PDF)
+          </a>
+
+          
+          
+      
+          <a id="California Privacy" href="https://www.fnf.com/California-Privacy" alt="California Privacy" class="col-4 col-sm-2 FooterNavLink">
+                        California Privacy
+          </a>
+
+          
+          
+      
+          <a id="Contact Us" href="https://www.fnf.com/Who-We-Are/#Contact%20Us" alt="Contact Us" class="col-4 col-sm-2 FooterNavLink">
+                        Contact Us
+          </a>
+
+          
+          
+      
+  
+
+
+    
+
+                                        
+                </div>
+                <span class="footer-copyright"> © 2012 -  2021 Fidelity National Financial | All Rights Reserved.</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgfidelitynationalfinancial";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5831","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid609\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid609","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"5cb921adcbe06fad9491c52ec85ffb2476412b9aa4cf295a231700b27bcd391d"}}</script>
+<script src="/sites/g/files/knoqqb54936/files/js/js_sU44xgzYkIpODGA3yRiaBrgjS8y3t31gx9Ua43ixw0Q.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"37278538,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":464,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

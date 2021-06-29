@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"37278538"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="American Financial Group, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Event Calendar | American Financial Group, Inc." />
+<meta name="referrer" content="no-referrer" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb59326/themes/site/nir_pid335/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://www.afginc.com/news-and-events/event-calendar" />
+<link rel="canonical" href="https://www.afginc.com/news-and-events/event-calendar" />
+<link rel="shortlink" href="https://www.afginc.com/node/5826" />
+<link rel="revision" href="https://www.afginc.com/news-and-events/event-calendar" />
+
+    <title>Event Calendar | Investor Relations | American Financial Group, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb59326/files/css/css_TG1V7ZoS1V5Mbexd5rawrUCy8Y-mf6vzGGIFzWlGMg0.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb59326/files/css/css_1C-WzKKAzIiOkk9fqr10KJyv6k_sV6p1bYWzVD0ekxc.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb59326/files/css/css_AIBXsCROik9UhZD_cHF-gbIB-IoiHkLSouPv01qU7TE.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb59326/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+<script src="//use.typekit.net/hyd3nsq.js"></script>
+<script src="/sites/g/files/knoqqb59326/files/js/js_8jLws_DwdvtHrxBAi1EcL1jq2Ta60yhJOtRNcfyYlvI.js"></script>
+
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5V9D5W5');</script>
+<!-- End Google Tag Manager -->
+
+
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5826 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+     
+
+
+
+<div class="visible-print print-logo">
+  <img src="/sites/g/files/knoqqb59326/themes/site/nir_pid335/logo.svg"/>
+</div>
+
+<div class="sfPublicWrapper" id="PublicWrapper">
+
+  <header id="site-header" class="global-header" role="banner">
+    <div class="sf_colsIn navbar1" data-sf-element="Div" data-placeholder-label="Top Navigation Bar">
+      <div class="sf_colsIn container-fluid" data-sf-element="Container" data-placeholder-label="Container">    
+                    <div class="region region-header-top">
+    
+
+        
+                              <ul  data-block-uuid="5029d389-2a53-43b2-91fe-5944ef78aca6" class="nav navbar-nav navbar-right">
+          <li class="li-search"><a class="search-toggle" href="#">Search <span class="fa fa-search"></span></a></li>
+                      <li class="leaf first hidden-xs hidden-sm">
+          <a href="/investors/shareholder-services/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">Email Alerts</a>
+                  </li>
+                      <li class="leaf hidden-xs hidden-sm">
+          <a href="https://www.greatamericaninsurancegroup.com/job-seekers" target="" rel="">Careers</a>
+                  </li>
+                      <li class="leaf last">
+          <a href="/contact-us" target="" rel="" data-drupal-link-system-path="node/5981">Contact Us</a>
+                  </li>
+          </ul>
+  
+
+
+    
+  </div>
+
+                <div class="site-search clearfix">
+          <form action="/search" method="get">
+            <div class="input-group">
+                <input type="search" title="Search input" placeholder="Enter Keywords" class="form-control" name="query" value=""/>
+                <span class="input-group-btn"><input type="submit" class="btn btn-primary" value="Search" /></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+          <nav class="sf_colsIn navbar2 yamm navbar-default" data-sf-element="HTML 5 Navigation Container" data-placeholder-label="Header Logo and Navigation" role="navigation">
+        <div class="sf_colsIn container-fluid" data-sf-element="Container" data-placeholder-label="Container">
+          <div class="sf-contentblock navbar-header">
+            <div>
+              <button class="navbar-toggle" data-target="#navbar-collapse-grid" data-toggle="collapse" type="button"><span class="icon-bar center-block"></span><span class="icon-bar center-block"></span><span class="icon-bar center-block"></span>
+                <div>MENU</div>
+              </button><a class="navbar-brand" href="/"></a></div>
+          </div>
+          <div id="navbar-collapse-grid" class="navbar-collapse collapse">
+              <div class="region region-header">
+    
+
+        
+                              <ul  data-block-uuid="6b656902-482f-4708-af83-860626e454f8" class="nav navbar-nav navbar-right">
+                                    <li class="leaf first">
+        
+                      <a href="/about-us/company-overview" target="" rel="" data-drupal-link-system-path="node/15376">About Us</a>
+                    
+              
+          
+                  </li>
+                                <li class="leaf">
+        
+                      <a href="/insurance-operations" target="" rel="" data-drupal-link-system-path="node/17546">Insurance Operations</a>
+                    
+              
+          
+                  </li>
+                                <li class="leaf">
+        
+                      <a href="/investors" target="" rel="" data-drupal-link-system-path="node/5806">Investor Relations</a>
+                    
+              
+          
+                  </li>
+                                <li class="leaf">
+        
+                      <a href="/news-and-events/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">News &amp; Events</a>
+                    
+              
+          
+                  </li>
+                                <li class="leaf last">
+        
+                      <a href="/ratings" target="" rel="" data-drupal-link-system-path="node/19086">Ratings</a>
+                    
+              
+          
+                  </li>
+          </ul>
+  
+
+
+    
+  </div>
+
+          </div>
+        </div>
+      </nav>
+      </header>
+
+  <main id="site-main" class="main" tabindex="-1" role="main">
+          <section class="banner page-heading-banner small" style="background-image: url('/sites/g/files/knoqqb59326/themes/site/nir_pid335/dist/images/EventCalendar-Banner.jpg')">
+        <div class="banner-gradient"></div>
+        <div class="banner-header">
+                        <div class="region region-breadcrumb">
+    <div id="block-breadcrumbs-2" class="block--system-breadcrumb-block block--system-breadcrumb-block--5826 block--breadcrumb--system-breadcrumb-block block--breadcrumb--system-breadcrumb-block--5826 block--72c305a5-22d2-43c4-8373-7f0fd5348507 block--72c305a5-22d2-43c4-8373-7f0fd5348507--5826 block block-system block-system-breadcrumb-block">
+  
+    
+            <ol class="breadcrumb page-heading-crumb">
+          <li >
+                  <a href="/news-and-events">News &amp; Events</a>
+              </li>
+        </ol>
+  
+  </div>
+
+  </div>
+
+                              <h1 class="title">
+                                          Event Calendar
+                                    </h1>
+        </div>
+      </section>
+        <div class="sf_colsIn container" data-sf-element="Container" data-placeholder-label="Container">
+      <div class="row" data-sf-element="Row">
+                <div class="sf_colsIn col-md-8" data-sf-element="Column 1" data-placeholder-label="Main Content">
+          <div id="content-header"></div>
+          <div id="ndq-5826" class="ndq-content">  <div class="region region-content">
+    <div id="block-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5826 block--content--website-notice-block block--content--website-notice-block--5826 block--81e1831f-8f1b-4865-b661-e104c629078e block--81e1831f-8f1b-4865-b661-e104c629078e--5826 block block-nir-website-notices block-website-notice-block">
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid335-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--abba5d57-9fe6-4f1c-8843-41caef6b6348 block--abba5d57-9fe6-4f1c-8843-41caef6b6348--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--table block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--336c3f1e-8a4f-4ff4-aca4-ca61d663af44 block--336c3f1e-8a4f-4ff4-aca4-ca61d663af44--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <h2 class="nir-widget--label">
+      Upcoming Events
+    </h2>
+    <div class="nir-widget--content">
+              <div class="nir-widget--events-table">
+        <table width="100%" border="0" cellspacing="1" cellpadding="3" class="nirtable collapse-table-wide">
+          <thead>
+            <tr>
+              <th width="25%">Date</th>
+              <th>Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            May 5, 2021 at 11:30 AM EDT
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-2021-1st-quarter-results-conference-call" hreflang="en">American Financial Group 2021 1st Quarter Results Conference Call</a></div>
+  </div>
+      </div>
+    
+    
+          <div class="nir-widget--field nir-widget--event--webcast">
+        
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/f82z7r7w" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </div>
+    
+          <div class="nir-widget--field nir-widget--event--add-to-calendar clearfix">
+        <div class="nir-widget--field nir-widget--event--add-to-calendar--outlook">
+          
+<div class="field-nir-event-add-calender">
+      <div class="add-outlook field__item"><a href="/node/24101/ics" class="add-outlook">Add to Outlook</a></div>
+  </div>
+        </div>
+        <div class="nir-widget--field nir-widget--event--add-to-calendar--google">
+          
+<div class="field-nir-event-add-calender">
+      <div class="add-gcal field__item"><a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;text=American%20Financial%20Group%2C%20Inc.%20-%20American%20Financial%20Group%202021%201st%20Quarter%20Results%20Conference%20Call&amp;dates=20210505T153000Z/20210505T153000Z&amp;details=Event%20Details%3A%20http%3A//www.afginc.com/events/event-details/american-financial-group-2021-1st-quarter-results-conference-call%0A%0AWebcast%3A%20https%3A//edge.media-server.com/mmc/p/f82z7r7w&amp;location=&amp;trp=false&amp;sprop=name%3A" class="add-gcal">Add to Google Calendar</a></div>
+  </div>
+        </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            May 19, 2021 at 11:00 AM EDT
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-2021-annual-meeting-shareholders" hreflang="en">American Financial Group 2021 Annual Meeting of Shareholders</a></div>
+  </div>
+      </div>
+    
+    
+          <div class="nir-widget--field nir-widget--event--webcast">
+        
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://east.virtualshareholdermeeting.com/vsm/web?pvskey=AFG2021" target="_blank">Click Here for Meeting Link</a></div>
+  </div>
+      </div>
+    
+          <div class="nir-widget--field nir-widget--event--add-to-calendar clearfix">
+        <div class="nir-widget--field nir-widget--event--add-to-calendar--outlook">
+          
+<div class="field-nir-event-add-calender">
+      <div class="add-outlook field__item"><a href="/node/24096/ics" class="add-outlook">Add to Outlook</a></div>
+  </div>
+        </div>
+        <div class="nir-widget--field nir-widget--event--add-to-calendar--google">
+          
+<div class="field-nir-event-add-calender">
+      <div class="add-gcal field__item"><a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;text=American%20Financial%20Group%2C%20Inc.%20-%20American%20Financial%20Group%202021%20Annual%20Meeting%20of%20Shareholders&amp;dates=20210519T150000Z/20210519T150000Z&amp;details=Event%20Details%3A%20http%3A//www.afginc.com/events/event-details/american-financial-group-2021-annual-meeting-shareholders%0A%0AWebcast%3A%20https%3A//east.virtualshareholdermeeting.com/vsm/web%3Fpvskey%3DAFG2021&amp;location=&amp;trp=false&amp;sprop=name%3A" class="add-gcal">Add to Google Calendar</a></div>
+  </div>
+        </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+          </tbody>
+        </table>
+      </div>
+        <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--table block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--ca5eb09c-c163-4940-bc93-c4bc66d24b0a block--ca5eb09c-c163-4940-bc93-c4bc66d24b0a--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <h2 class="nir-widget--label">
+      Past Events
+    </h2>
+    <div class="nir-widget--content">
+              <div class="nir-widget--events-table">
+        <table width="100%" border="0" cellspacing="1" cellpadding="3" class="nirtable collapse-table-wide">
+          <thead>
+            <tr>
+              <th width="25%">Date</th>
+              <th>Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            Mar 2, 2021 at 8:30 AM EST
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-2021-association-insurance-and-financial-analysts" hreflang="en">American Financial Group at the 2021 Association of Insurance and Financial Analysts (AIFA) Virtual Conference</a></div>
+  </div>
+      </div>
+    
+    
+    
+    
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                  <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+            <label>Supporting Materials</label>
+          </div>
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.afginc.com/static-files/cb01a5ea-bf9c-4d2e-a1f1-69bee6e146e5" type="application/pdf; length=1035462" title="AIFA 03_02_2021_final.pdf">2021 Association of Insurance and Financial Analysts (AIFA) Conference Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            Feb 25, 2021 at 8:30 AM EST
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-22nd-annual-credit-suisse-virtual-financial-services" hreflang="en">American Financial Group at the 22nd Annual Credit Suisse Virtual Financial Services Forum</a></div>
+  </div>
+      </div>
+    
+    
+    
+    
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                  <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+            <label>Supporting Materials</label>
+          </div>
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.afginc.com/static-files/101db309-e0c4-44d3-ac14-8e6e3f453545" type="application/pdf; length=1034758" title="CreditSuisse 02_25_2021_final.pdf">22nd Annual Credit Suisse Virtual Financial Services Forum Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            Feb 10, 2021 at 8:00 AM EST
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-bank-america-securities-2021-virtual-insurance" hreflang="en">American Financial Group at the Bank of America Securities 2021 Virtual Insurance Conference</a></div>
+  </div>
+      </div>
+    
+    
+    
+    
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                  <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+            <label>Supporting Materials</label>
+          </div>
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.afginc.com/static-files/7a09f336-0873-4ad0-b885-2afc115c26ad" type="application/pdf; length=1601739" title="BofA Securities 02_10_21_final.pdf">Bank of America Securities 2021 Virtual Insurance Conference Presentation</a></span><span class="filesize"> 1.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            Feb 4, 2021 at 11:30 AM EST
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-2020-4th-quarter-results-conference-call" hreflang="en">American Financial Group 2020 4th Quarter Results Conference Call</a></div>
+  </div>
+      </div>
+    
+    
+          <div class="nir-widget--field nir-widget--event--webcast">
+        
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/89pxdkjx" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </div>
+    
+    
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                  <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+            <label>Supporting Materials</label>
+          </div>
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.afginc.com/static-files/5eed8933-38dd-4130-889f-8496915af74d" type="application/pdf; length=400536" title="4th_qtr_2020_webcast_slides_final.pdf">4th Quarter 2020 Earnings Presentation (printer friendly version)</a></span><span class="filesize"> 400.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            Nov 18, 2020 at 2:30 PM EST
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-virtual-investor-meeting-dowling-partners" hreflang="en">American Financial Group Virtual Investor Meeting with Dowling &amp; Partners</a></div>
+  </div>
+      </div>
+    
+    
+    
+    
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                  <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+            <label>Supporting Materials</label>
+          </div>
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.afginc.com/static-files/814cd9bd-86d2-4634-bad2-9369fffb3d31" type="application/pdf; length=1509391" title="Dowling &amp; Partners Meeting 11_18_2020_final.pdf">Dowling &amp; Partners Meeting Presentation</a></span><span class="filesize"> 1.5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            Nov 10, 2020 at 8:00 AM EST
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-virtual-2020-morgan-stanley-insurance-corporate" hreflang="en">American Financial Group at the Virtual 2020 Morgan Stanley Insurance Corporate Access Day: Life and P&amp;C Conference</a></div>
+  </div>
+      </div>
+    
+    
+    
+    
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                  <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+            <label>Supporting Materials</label>
+          </div>
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.afginc.com/static-files/1eb5565b-e859-46ad-a6e8-04eb9cbb673a" type="application/pdf; length=1948099" title="Morgan Stanley 11_10_20  _FINAL.pdf">Virtual 2020 Morgan Stanley Insurance Corporate Access Day: Life and P&amp;C Conference Presentation</a></span><span class="filesize"> 1.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            Oct 29, 2020 at 11:30 AM EDT
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-2020-3rd-quarter-results-conference-call" hreflang="en">American Financial Group 2020 3rd Quarter Results Conference Call</a></div>
+  </div>
+      </div>
+    
+    
+          <div class="nir-widget--field nir-widget--event--webcast">
+        
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/bha5nrrg" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </div>
+    
+    
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                  <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+            <label>Supporting Materials</label>
+          </div>
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.afginc.com/static-files/c5d493ec-05c3-4bf2-8b8f-3f385775557e" type="application/pdf; length=402101" title="3rd_qtr_2020_webcast_slides_final.pdf">3rd Quarter 2020 Earnings Presentation (printer friendly version)</a></span><span class="filesize"> 402.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            Sep 9, 2020 at 9:00 AM EDT
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-2020-keefe-bruyette-woods-virtual-insurance" hreflang="en">American Financial Group at the 2020 Keefe, Bruyette &amp; Woods Virtual Insurance Conference</a></div>
+  </div>
+      </div>
+    
+    
+    
+    
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                  <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+            <label>Supporting Materials</label>
+          </div>
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.afginc.com/static-files/f8e7e71f-5b24-4fb2-8f3b-c2495d209313" type="application/pdf; length=1200546" title="KBW 9_09_20_final.pdf">Keefe, Bruyette &amp; Woods Virtual Insurance Conference Presentation</a></span><span class="filesize"> 1.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            Aug 11, 2020 at 9:00 AM EDT
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-investor-meetings-9" hreflang="en">American Financial Group Investor Meetings</a></div>
+  </div>
+      </div>
+    
+    
+    
+    
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                  <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+            <label>Supporting Materials</label>
+          </div>
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.afginc.com/static-files/e4f1cc06-bc4c-4cd8-a4dd-88cc335e2ac6" type="application/pdf; length=1121023" title="IR Presentation_Q2 2020_final.pdf">American Financial Group Investor Meetings Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            Aug 5, 2020 at 11:30 AM EDT
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-2020-2nd-quarter-results-conference-call" hreflang="en">American Financial Group 2020 2nd Quarter Results Conference Call</a></div>
+  </div>
+      </div>
+    
+    
+          <div class="nir-widget--field nir-widget--event--webcast">
+        
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/2p3epr3w" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </div>
+    
+    
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                  <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+            <label>Supporting Materials</label>
+          </div>
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.afginc.com/static-files/dbd94d29-45c2-4073-9a89-7d5115dc0b0d" type="application/pdf; length=386777" title="2nd_qtr_2020_webcast_slides_final.pdf">2nd Quarter 2020 Earnings Presentation (printer friendly version)</a></span><span class="filesize"> 386.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            May 20, 2020 at 11:00 AM EDT
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-2020-annual-meeting-shareholders" hreflang="en">American Financial Group 2020 Annual Meeting of Shareholders</a></div>
+  </div>
+      </div>
+    
+    
+          <div class="nir-widget--field nir-widget--event--webcast">
+        
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://central.virtualshareholdermeeting.com/vsm/web?pvskey=AFG2020" target="_blank">Click Here for Meeting Link</a></div>
+  </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+          <div class="nir-widget--field nir-widget--event--date">
+        
+            
+      
+            May 12, 2020 at 11:30 AM EDT
+      
+      </div>
+      </td>
+  <td vaign="top">
+
+          <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/american-financial-group-2020-1st-quarter-results-conference-call" hreflang="en">American Financial Group 2020 1st Quarter Results Conference Call</a></div>
+  </div>
+      </div>
+    
+    
+          <div class="nir-widget--field nir-widget--event--webcast">
+        
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/kz6e8n9o" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </div>
+    
+    
+          <div class="nir-widget--field nir-widget--event--support-materials">
+
+                  <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+            <label>Supporting Materials</label>
+          </div>
+        
+        
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://www.afginc.com/static-files/793f3cc0-c4cc-48aa-84a3-40ea2205e613" type="application/pdf; length=369262" title="1st_qtr_2020_webcast_slides_final.pdf">1st Quarter 2020 Earnings Presentation (printer friendly version)</a></span><span class="filesize"> 369.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+  </td>
+</tr>
+          </tbody>
+        </table>
+      </div>
+        <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+</div>
+        </div>
+                  <div class="sf_colsIn col-md-3 col-md-offset-1" data-sf-element="Column 2" data-placeholder-label="Rail Content">
+              <div class="region region-sidebar-first">
+    
+
+        
+                <nav class="rail-nav sidebar">
+
+                        <ul  data-block-uuid="b7ab3d19-6e24-44d6-8bec-ddb442f4f725" class="list-unstyled">
+                                  <li class="leaf first">
+                        <a href="/news-and-events/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">Press Releases</a>
+                                  </li>
+                            <li class="leaf active-trail last">
+                        <a href="/news-and-events/event-calendar" target="" rel="" data-drupal-link-system-path="node/5826" class="is-active">Event Calendar</a>
+                                  </li>
+              </ul>
+      
+
+  
+</nav>
+    
+  </div>
+
+          </div>
+              </div>
+    </div>
+  </main>
+
+      <div class="ndq-toolkit clearfix">
+        <div class="region region-toolkit">
+    
+
+        
+                              <ul data-block-uuid="d838111c-9c45-48df-8b37-023cf72d5c4e">
+          <li>
+        <a class="ndqicon-print" href="javascript:window.print();" rel="nofollow">
+          <span>Print Page</span>
+        </a>
+      </li>
+      <li>
+        <a class="ndqicon-mail-3" href="#" onclick="window.location='mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href); return false;" rel="nofollow">
+          <span>Email Page</span>
+        </a>
+      </li>      
+                <li>
+        <a  class="ndqicon-alerts" href="/investors/shareholder-services/email-alerts">
+          <span>Email Alerts</span>
+        </a>
+              </li>
+                <li>
+        <a  class="ndqicon-mobile" href="/contact-us">
+          <span>Contact Us</span>
+        </a>
+              </li>
+                <li>
+        <a  class="ndqicon-rss" href="/rss-feeds">
+          <span>RSS Feeds</span>
+        </a>
+              </li>
+        </ul>
+  
+
+
+    
+  </div>
+
+    </div>
+  
+  <footer id="site-footer" class="global-footer" role="contentinfo">
+    <div class="sf_colsIn container-fluid" data-sf-element="Container" data-placeholder-label="Footer Container">
+      <div class="sf-contentblock footer-logo">
+        <div>
+          <hr /><a href="/"></a></div>
+      </div>
+      <nav class="sf_colsIn" data-sf-element="HTML 5 Navigation Container" data-placeholder-label="Footer Navigation" role="navigation">
+        <div class="sf_colsIn container" data-sf-element="Container" data-placeholder-label="Footer Navigation Container">
+          <div class="row" data-sf-element="Row" data-placeholder-label="Row">
+            <div class="sf_colsIn col-md-4" data-sf-element="Column 1" data-placeholder-label="Column 1">
+              <div class="sf-contentblock footer-logo">
+                <div>
+                  <p class="footer-title">Specialty Property &amp; Casualty U.S. Operations</p>
+                </div>
+              </div>
+              <div class="row" data-sf-element="Row" data-placeholder-label="Row">
+                <div class="sf_colsIn col-md-6" data-sf-element="Column 1" data-placeholder-label="Column 1">
+                  <div class="sf-contentblock">
+                    <div>
+                      <ul class="list-unstyled">
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/aba-insurance-services">ABA Insurance Services</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/accident-health">Accident &amp; Health (pomi)</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/agribusiness">AgriBusiness®</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/alternative-markets">Alternative Markets</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/aviation">Aviation</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/bonds">Bond</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/crop">Crop</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/cyber-risk-insurance">Cyber Risk</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/environmental">Environmental</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/equine-mortality">Equine Mortality</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/excess-liability">Excess Liability</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/executive-liability">Executive Liability</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/fcia---trade-credit-political-risk">FCIA - Trade Credit &amp; Political Risk</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/fidelity-crime">Fidelity / Crime</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/financial-institution-services">Financial Institution Services</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="sf_colsIn col-md-6" data-sf-element="Column 2" data-placeholder-label="Column 2">
+                  <div class="sf-contentblock">
+                    <div>
+                      <ul class="list-unstyled">
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/great-american-custom">Great American Custom</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/great-american-risks-solutions">Great American Risk Solutions</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/mergers-acquisitions-liability">Mergers &amp; Acquisitions Liability</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/mid-continent-group">Mid-Continent Group</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/national-interstate">National Interstate</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/ocean-marine">Ocean Marine</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/professional-liability">Professional Liability</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/property-inland-marine">Property &amp; Inland Marine</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/public-sector">Public Sector</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/republic-indemnity">Republic Indemnity</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/equipment-insurance">Specialty Equipment</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/specialty-human-services">Specialty Human Services</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/strategic-comp">Strategic Comp</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/summit">Summit</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/trucking">Trucking</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/unemployment-risk-solutions">Unemployment Risk Solutions</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/vanliner">Vanliner</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sf_colsIn col-md-4" data-sf-element="Column 2" data-placeholder-label="Column 2">
+              <div class="sf-contentblock footer-logo">
+                <div>
+                  <p class="footer-title">Annuity Operations - Subsidiaries</p>
+                </div>
+              </div>
+              <div class="sf-contentblock">
+                <div>
+                  <ul class="list-unstyled">
+                    <li><a href="https://www.greatamericaninsurancegroup.com/for-individuals">Annuity Investors Life Insurance Company&reg;</a></li>
+                    <li><a href="https://www.greatamericaninsurancegroup.com/for-individuals">Great American Life Insurance Company&reg;</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="sf-contentblock footer-logo">
+                <div>
+                  <p class="footer-title">Specialty Property &amp; Casualty International Operations</p>
+                </div>
+              </div>
+              <div class="sf-contentblock">
+                <div>
+                  <ul class="list-unstyled">
+                    <li><a href="https://www.greatamericaninsurancegroup.com/contact/canadian-contacts">Canadian Branch</a></li>
+                    <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/trade-credit">Canada - Trade Credit</a></li>
+                    <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/el-aguila">El Aguila</a></li>
+                    <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/great-american-europe">Great American Europe</a></li>
+                    <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/great-american-p-c-mexico-division">Great American P&amp;C Mexico</a></li>
+                    <li><a href="https://www.greatamericaninsurancegroup.com/for-businesses/division-details/singapore-branch">Singapore Branch</a></li>
+                  </ul>
+                </div>
+              </div>
+              
+            </div>
+            <div class="sf_colsIn col-md-4" data-sf-element="Column 3" data-placeholder-label="Column 3">
+              <div class="sf-contentblock">
+                <div>
+                  <p class="footer-title">About Us</p>
+                  <ul class="list-unstyled">
+                    <li><a href="https://www.greatamericaninsurancegroup.com/about-us">About Great American</a></li>
+                    <li><a href="https://www.greatamericaninsurancegroup.com/content-hub">Great Insights &amp; News</a></li>
+                    <li><a href="https://www.greatamericaninsurancegroup.com/about-us/financial-strength">Financial Strength</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="sf-contentblock footer-info">
+                <div>
+                  <p>Great American Insurance Group&rsquo;s member companies are subsidiaries of <a href="http://www.afginc.com/" target="_blank">American Financial Group, Inc. (AFG)</a>. AFG is a Fortune 500 holding company whose common stock is listed on the New York Stock Exchange.</p>
+                  <address><strong>Corporate Headquarters</strong>
+                    <br />Great American Insurance Group Tower
+                    <br />301 E. Fourth St.
+                    <br />Cincinnati, Ohio 45202
+                    <br /><a href="tel:800-545-4269">800-545-4269</a> / <a href="tel:513-369-5000">513-369-5000</a>
+                  </address>
+                </div>
+              </div>
+              <div class="sf-contentblock footer-social">
+                <div>
+                  <ul class="list-inline" style="margin-bottom:20px;font-size:160%;">
+                    <li><a href="https://www.linkedin.com/company/great-american-insurance" target="_blank"><span class="fa fa-linkedin fa-lg"></span><span class="sr-only">LinkedIn</span></a></li><li><a href="https://www.facebook.com/GreatAmericanInsuranceGroup" target="_blank"><span class="fa fa-facebook fa-lg"></span><span class="sr-only">Facebook</span></a></li><li><a href="https://twitter.com/gaigroup" target="_blank"><span class="fa fa-twitter fa-lg"></span><span class="sr-only">Twitter</span></a></li><li><a href="https://www.youtube.com/user/GAIGroup" target="_blank"><span class="fa fa-youtube-play fa-lg"></span><span class="sr-only">YouTube</span></a></li>
+                  </ul>
+                </div>
+              </div>
+              &copy; 2021 Great American Insurance Company. All Rights Reserved.
+              <div class="sf-contentblock">
+                <div>
+                  <div style="margin-top:20px;">&nbsp;</div>
+                </div>
+              </div>
+              <div class="sf-contentblock">
+                   <div>
+                    <ul class="list-unstyled">
+                      <li>
+                        <a href="https://www.greatamericaninsurancegroup.com/contact/legal-disclosures">Legal Disclosures/Terms and Conditions</a>
+                      </li>
+                    </ul>
+                  </div> 
+                 
+              </div>
+              <div class="row" data-sf-element="Row" data-placeholder-label="Row">
+                <div class="sf_colsIn col-md-6" data-sf-element="Column 1" data-placeholder-label="Column 1">
+                  <div class="sf-contentblock">
+                    <div>
+                      <ul class="list-unstyled">
+        
+                        <li><a href="https://www.greatamericaninsurancegroup.com/contact/privacy">Privacy</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/contact/privacy/cookie-policy">Cookie Policy</a></li>
+                        <li><a href="https://www.greatamericaninsurancegroup.com/docs/default-source/default-document-library/gaig-pcservice-marks.pdf" target="_blank">Service Marks</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="sf_colsIn col-md-6" data-sf-element="Column 2" data-placeholder-label="Column 2">
+                  <div class="sf-contentblock">
+                    <div>
+                      <ul class="list-unstyled">
+                        <li><a href="https://www.greatamericaninsurancegroup.com/site-map">Site Map</a></li>
+                        <li><a href="https://gateway.gaig.com/" target="_blank">Gateway Employee Login</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </footer>
+
+</div>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb85";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid335\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid335","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"cc030138992612dfeb53e4a75d02e3ca8c21b98445aaf490ce1d9b040bd2dcd3"}}</script>
+<script src="/sites/g/files/knoqqb59326/files/js/js_8NjDyuHWZ1-Phe1lnxTyrYLD5ZoNWSzfSzUDZDnc0ek.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"37278538,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":820,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"39077635"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Trimble, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investor.trimble.com/events-presentations" />
+<meta property="og:title" content="Events &amp; Presentations | Trimble, Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about Trimble, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=0.35" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb18881/files/favicon%20%281%29.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://investor.trimble.com/events-presentations" />
+<link rel="canonical" href="https://investor.trimble.com/events-presentations" />
+<link rel="shortlink" href="https://investor.trimble.com/node/26171" />
+<link rel="revision" href="https://investor.trimble.com/events-presentations" />
+
+    <title>Events &amp; Presentations | Trimble, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb18881/files/css/css_rfjm6CJ_0NMC2yDcg2-ndYMEx1qfufTwwHO3KArx5Oc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb18881/files/css/css_62auaEgulZZ8U60zyZyB4NJY3bgDnU-36aYYpwqtFac.css" />
+<link rel="stylesheet" media="screen" href="/sites/g/files/knoqqb18881/files/css/css_ueTMO7UPQQ8HBcK-YtkbnhLzGAGfc1SKewYoWRMDWJc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb18881/files/css/css_rC3Lixa9PeyRvOhTEJHlOFanycqXC4f0ajYb6zAfUN8.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb18881/files/css/css_hgbd8JKgAPph_F6Kxev2pGYzhceqEaJGK2HKdqeUiY8.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb18881/files/css/css_GGS1TNY5DGx86pfAIEdhKLVwBK27dn2A54oCWjo04Kk.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb18881/files/css/css_z3LWElDyE0U4bMoClAqucRWn_ngCPcuKpEIUbBaLnXE.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb18881/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--26171 page-node-26171 node_type_nir_landing_page path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+      <!--***************************************TopHeader********************************-->
+      <div id="container_top">
+         <div class="container">
+            <div id="partners"><a href="http://www.trimble.com/partners/partners/">Partners</a></div>
+            <div class="top_links"><a href="http://www.trimble.com/worldwide.aspx">Trimble Worldwide</a></div>
+            <div class="trimble_worldwide header_icon"></div>
+            <div class="top_links"><a href="http://www.trimble.com/SPLocator/">Service Provider Locator</a></div>
+            <div class="service_center header_icon"></div>
+            <div class="top_links"><a href="http://dealerlocator.trimble.com/" target="_blank">Dealer Locator</a></div>
+            <div class="dealer_locator header_icon"></div>
+         </div>
+      </div>
+      <!--***************************************End TopHeader********************************--> 
+      <!--***************************************Header********************************-->
+      <div class="topNavContainer">
+         <div id="container_header">
+            <div id="logo">
+               <a href="http://www.trimble.com/"> <img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/trimble_logo.png" alt="Trimble" width="160" height="36" /> </a> <br />
+               <div class="tag-line"><span class="orange">Transforming </span><span class="blue">the way the world works</span></div>
+            </div>
+            
+            <div class="topsearch">
+               <div class="form">
+                  <form action="http://trimble.resultspage.com/search" method="get">
+                     <input type="text" class="input search" name="w" size="16" value="Search..." onfocus="this.value=''" id="sli_search_1" autocomplete="off" style="height:17px; font-size:11px;" onkeydown="javascript:return fnTrapKD(event,this);">
+                     <input name="Submit" type="button" class="button" onclick="javascript:return fnTrapKD(event,document.getElementById('sli_search_1'));">
+                  </form>
+               </div>
+            </div>
+            <div class="navigationmenu">
+               <ul class="menuTemplate1 decor1_1" license="mylicense">
+                  <li>
+                     <span class="arrow">Industries</span>
+                     <div class="drop decor1_1 full-width" style="width:980px;">
+                        <div class="left">
+                           <div class="dropimg"> <a href="https://agriculture.trimble.com/" data-icon="images/AgBanner_global2.jpg"><img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/AgBanner_global2.jpg" alt="Agriculture" /></a><br>
+                              <a href="https://agriculture.trimble.com/" class="link">Agriculture</a>
+                           </div>
+                        </div>
+                        <div class="left">
+                           <div class="dropimg"> <a href="https://construction.trimble.com/en/" data-icon="images/TrimbleInfrastructureAndBuildingsBanner_global.jpg"><img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/TrimbleInfrastructureAndBuildingsBanner_global.jpg" alt="Construction &amp; Operations" /></a><br>
+                              <a href="https://construction.trimble.com/en/" class="link">Construction</a>
+                           </div>
+                        </div>
+                        <div class="left">
+                           <div class="dropimg"> <a href="https://www.trimble.com/Industries/Geospatial/index.aspx" data-icon="images/GeospatialBanner_global.jpg"><img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/GeospatialBanner_global.jpg" alt="Geospatial" /></a><br>
+                              <a href="https://www.trimble.com/Industries/Geospatial/index.aspx" class="link">Geospatial</a>
+                           </div>
+                        </div>
+                        <div class="left">
+                           <div class="dropimg"> <a href="https://www.trimble.com/Industries/Transportation/index.aspx" data-icon="images/TLBanner_global.jpg"><img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/TLBanner_global.jpg" alt="Transportation &amp; Logistics" /></a><br>
+                              <a href="https://www.trimble.com/Industries/Transportation/index.aspx" class="link">Transportation</a>
+                           </div>
+                        </div>
+                        <div class="left">
+                           <div class="dropimg"> <a href="https://www.trimble.com/Industries/Index.aspx" data-icon="images/all_industry_thumb.jpg"><img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/all_industry_thumb.jpg" alt="All Industries " /></a><br>
+                              <a href="https://www.trimble.com/Industries/Index.aspx" class="link">More Industries</a>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <span class="arrow">Solutions</span>
+                     <div class="drop decor1_2 dropToLeft1 full-width lpad10">
+                        <div class="left">
+                           <p class=""><a href="https://agriculture.trimble.com/solutions/">Agriculture</a></p>
+                           <p class=""><a href="http://construction.trimble.com/">Construction</a></p>
+                           <p class=""><a href="https://geospatial.trimble.com/">Geospatial Survey, Mapping & GIS</a></p>
+                           <p class=""><a href="https://transportation.trimble.com/solutions">Transportation</a></p>
+                           <p class=""><a href="https://upa.trimble.com/electric-solutions.html">Utilities</a></p>
+                           <p class=""><a href="https://heavyindustry.trimble.com/en/solutions/aggregates">More Solutions</a></p>
+                        </div>
+                     </div>
+                  </li>
+                  <li>
+                     <span class="arrow">Investors</span>
+                     <div class="drop decor1_2 dropToLeft1 full-width lpad10">
+                          <div class="region region-secondary-menu">
+    
+
+<nav role="navigation" aria-labelledby="block-investorrelationsfootermenu-menu" id="block-investorrelationsfootermenu" class="block--system-menu-blockinvestor-relations-footer-m block--system-menu-blockinvestor-relations-footer-m--26171 block--secondary-menu--system-menu-block--investor-relations-footer-m block--secondary-menu--system-menu-block--investor-relations-footer-m--26171 block--a886a972-69b0-49fe-b7b8-5c4d15e6ad2a block--a886a972-69b0-49fe-b7b8-5c4d15e6ad2a--26171 block block-menu navigation block-system-menublock menu--investor-relations-footer-m">
+                        
+    <h2 class="visually-hidden" id="block-investorrelationsfootermenu-menu">Investors</h2>
+    
+
+                              <ul data-block-uuid="a886a972-69b0-49fe-b7b8-5c4d15e6ad2a" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/investor-relations" target="" rel="" data-drupal-link-system-path="node/5806">Investor Relations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">News Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-presentations" target="" rel="" data-drupal-link-system-path="node/26171" class="is-active">Events &amp; Presentations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance" target="" rel="" data-drupal-link-system-path="node/26176">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://www.trimble.com/Corporate/Sustainability.aspx">Sustainability</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/5916">Stock Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information" target="" rel="" data-drupal-link-system-path="node/26231">Financial Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/contact-us" target="" rel="" data-drupal-link-system-path="node/5981">Contact Us</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+                     </div>
+                  </li>
+                  <li><a href="https://www.trimble.com/Support/Support_AZ.aspx">Support</a></li>
+                  <li><a href="https://www.trimble.com/Corporate/About_at_Glance.aspx">About</a></li>
+                                 </ul>
+            </div>
+         </div>
+      </div>
+      <!--***************************************End Header********************************--> 
+      <!--***************************************Body********************************--> 
+      
+      <div class="clear-both"> </div>
+      <!-- ******************************** Container Banner ******************************** -->
+      <div id="container_banner"></div>
+      <!-- ***************************** End of Container Banner ***************************** -->
+      <div class="clear-both"> </div>
+      <div id="container_body">
+         <!-- ******************************** Side Menu bar ******************************** -->
+         <div class="full-width-white-container">
+            <div class="center-content">
+               <div class="sidebar-container clear positionRel">
+                    <div class="region region-sidebar-first">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1728-investorrelations-menu" id="block-nir-pid1728-investorrelations" class="block--system-menu-blockir block--system-menu-blockir--26171 block--sidebar-first--system-menu-block--ir block--sidebar-first--system-menu-block--ir--26171 block--bbfc1811-2d5c-429d-a2d3-828489157e00 block--bbfc1811-2d5c-429d-a2d3-828489157e00--26171 block block-menu navigation block-system-menublock menu--ir">
+            
+    <h2 id="block-nir-pid1728-investorrelations-menu">Investors</h2>
+    
+
+                              <ul data-block-uuid="bbfc1811-2d5c-429d-a2d3-828489157e00" class="menu side-menu mega-menu">
+                  <li class="side-menu__item">
+          <a href="" target="" rel="" title="Main Investor Relations Page">Investor Relations</a>
+                      <div class="sub-container arrow_box non-mega" style="height: 180px; margin-top: -47px; z-index: 1000; width: 230px;  left: 284px;">
+                              <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;">Investor Relations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/static-files/81e80b9b-b4e5-4e2e-91cd-fb161aebdfe3" target="" rel="" class="cprpre" data-drupal-link-system-path="static-files/81e80b9b-b4e5-4e2e-91cd-fb161aebdfe3">Corporate Presentation</a>
+                  </li>
+          </ul>
+  
+            </div>
+            
+                  </li>
+              <li class="side-menu__item">
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">News Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-presentations" target="" rel="" data-drupal-link-system-path="node/26171" class="is-active">Events &amp; Presentations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="" target="" rel="">Corporate Governance</a>
+                      <div class="sub-container arrow_box non-mega" style="height: 180px; margin-top: -47px; z-index: 1000; width: 230px;  left: 284px;">
+                              <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/corporate-governance" target="" rel="" data-drupal-link-system-path="node/26176">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="http://www.trimble.com/Corporate/About_Executives.aspx" target="" rel="">Management</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance/committee-composition" target="" rel="" data-drupal-link-system-path="node/5851">Board of Directors</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/insider-ownership" data-drupal-link-system-path="node/5886">Insider Ownership</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/insider-transactions" target="" rel="" data-drupal-link-system-path="node/26196">Insider Transactions</a>
+                  </li>
+          </ul>
+  
+            </div>
+            
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://www.trimble.com/Corporate/Sustainability.aspx">Sustainability</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="" target="" rel="">Stock Information</a>
+                      <div class="sub-container arrow_box non-mega" style="height: 180px; margin-top: -47px; z-index: 1000; width: 230px;  left: 284px;">
+                              <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/5916">Stock Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/historic-stock-lookup" data-drupal-link-system-path="node/5921">Historic Stock Lookup</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/investment-calculator" data-drupal-link-system-path="node/5926">Investment Calculator</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/analyst-coverage" target="" rel="" data-drupal-link-system-path="node/26226">Analyst Coverage</a>
+                  </li>
+          </ul>
+  
+            </div>
+            
+                  </li>
+              <li class="side-menu__item">
+          <a href="" target="" rel="">Financial Information</a>
+                      <div class="sub-container arrow_box non-mega" style="height: 180px; margin-top: -47px; z-index: 1000; width: 230px;  left: 284px;">
+                              <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/financial-information" target="" rel="" data-drupal-link-system-path="node/26231">Financial Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/sec-filings" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/annuals-and-proxies" target="" rel="" data-drupal-link-system-path="node/26236">Annuals and Proxies</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/static-files/1ae81255-5732-40c6-b90a-a630b10360e8" target="" rel="" class="financial_summary" data-drupal-link-system-path="static-files/1ae81255-5732-40c6-b90a-a630b10360e8">Financial Summary</a>
+                  </li>
+          </ul>
+  
+            </div>
+            
+                  </li>
+              <li class="side-menu__item">
+          <a href="/contact-us" data-drupal-link-system-path="node/5981">Contact Us</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+                  <div class="quick-links">
+                     <!-- ******************************** Quick Links ******************************** --> 
+                     <!-- ******************************** End Of Quick Links ******************************** --> 
+                  </div>
+                  <div class="leftNavSocialIcons">
+                     <!-- ********************************Social Media ******************************** -->
+                     <div id="scbody_0_scaboutsocialmedia_0_divTitle" class="heading"> <span> Connect with Trimble </span> </div>
+                     <div class="socialicons-container">
+                        <ul class="socialicons marginLeft10">
+                           <li> <a href="https://www.facebook.com/TrimbleCorporate" data-icon="images/facebook_blue.png" data-hover-icon="images/facebook_m.png" title="Facebook" target="_blank"> <img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/facebook_blue.png" alt="Facebook Icon Blue" width="32" height="32" /> </a> </li>
+                           <li> <a href="https://www.linkedin.com/company/trimble?trk=top_nav_home" data-icon="images/linkedin_blue.png" data-hover-icon="images/linkedin_m.png" title="LinkedIn" target="_blank"> <img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/linkedin_blue.png" alt="Trimble Linkedin" width="32" height="32" /> </a> </li>
+                           <li> <a href="https://twitter.com/TrimbleCorpNews" data-icon="images/twitter_blue.png" data-hover-icon="images/twitter_m.png" title="Twitter" target="_blank"> <img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/twitter_blue.png" alt="Trimble Product Twitter " width="32" height="32" /> </a> </li>
+                           <li> <a href="http://www.trimble.com/Corporate/Contacts.aspx" data-icon="images/mail_blue.png" data-hover-icon="images/mail_m.png"> <img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/mail_blue.png" alt="Trimble Mail" width="32" height="32" /> </a> </li>
+                           <!-- CSS guys need to fix this layout -->
+                        </ul>
+                     </div>
+                     <!-- ******************************** End Social Media******************************** --> 
+                  </div>
+                  <!-- ********************************Featured Product Module******************************** --> 
+                  <!-- ******************************** End of featured Product Module******************************** --> 
+                  <!-- ********************************Featured Video Module******************************** --> 
+                  <!-- ******************************** End of featured Module******************************** --> 
+               </div>
+            </div>
+         </div>
+         <!-- **************************** End of Side Menu bar ***************************** -->
+         <div class="full-width-white-container">
+            <div class="center-content">
+               <div class="center-right-content">
+                  <!-- ******************************** Breadcrumb *********************** -->
+										  <div class="breadcrumb"> 
+					    <div class="region region-breadcrumb">
+    <div id="block-nir-pid1728-breadcrumbs" class="block--system-breadcrumb-block block--system-breadcrumb-block--26171 block--breadcrumb--system-breadcrumb-block block--breadcrumb--system-breadcrumb-block--26171 block--3aa466c9-b1cf-4dc9-92ca-01f884c5d33a block--3aa466c9-b1cf-4dc9-92ca-01f884c5d33a--26171 block block-system block-system-breadcrumb-block">
+  
+    
+      <div class="breadcrumb main-container">
+   <span><a href="http://www.trimble.com/">Home</a></span>&nbsp;>&nbsp;
+                            <span><a href="/">Investor Relations</a></span>&nbsp;>&nbsp;
+            
+                        <span class='breadcrumb-last'>Events &amp; Presentations</span>
+            
+           </div>
+  </div>
+
+  </div>
+
+					  </div>                                                   
+				  
+                  <!-- ****************************** End of Breadcrumb  ******************* --> 
+                  <div class="main_content">
+                      <div class="region region-content">
+    <div id="block-nir-pid1728-websitenoticeblock" class="block--website-notice-block block--website-notice-block--26171 block--content--website-notice-block block--content--website-notice-block--26171 block--144ca2f8-6b7b-4849-aaa0-a71e5d052cad block--144ca2f8-6b7b-4849-aaa0-a71e5d052cad--26171 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1728-content" class="block--system-main-block block--system-main-block--26171 block--content--system-main-block block--content--system-main-block--26171 block--c8d0dd6f-5567-44b7-b289-4aaac896fbf9 block--c8d0dd6f-5567-44b7-b289-4aaac896fbf9--26171 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--trimble-events block--nir-events__widget block--nir-events__widget--26171 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--26171 block--fe7ae029-f2b1-4a62-afbd-819808c80f10 block--fe7ae029-f2b1-4a62-afbd-819808c80f10--26171 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Upcoming Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+       <table class="nirtable views-table views-view-table cols-2 collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" scope="col">Date</th>
+                                                  <th id="view-nothing-table-column" class="views-field views-field-nothing" scope="col">Event Details</th>
+              </tr>
+    </thead>
+    <tbody>
+        
+<tr class="node--type-nir-event">
+  <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" data-before="Date">
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            <span class = "home"><strong> May 25, 2021</strong> / 3:40 PM EDT</span>
+	  <span class = "nothome">May 25, 2021 <br> 3:40 PM EDT</span>
+      
+    </div>
+  </td>
+<td headers="view-nothing-table-column" class="views-field views-field-nothing" data-before="Event Details">
+  
+      <div class="nir-events-widget-event-details-title">
+          <h3>
+      
+<div class="field-nir-event-title">
+      <div class="field__item">J.P. Morgan Global Technology, Media and Communications Conference</div>
+  </div>
+          </h3>
+      </div>
+    </div>
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://jpmorgan.metameetings.net/events/tmc21/sessions/37954-trimble/webcast?gpu_only=true&amp;kiosk=true" target="_blank">View Webcast</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--add-to-calendar clearfix">
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--outlook">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-outlook field__item"><a href="/node/30921/ics" class="add-outlook">Add to Outlook</a></div>
+  </div>
+      </div>
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--google">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-gcal field__item"><a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;text=Trimble%2C%20Inc.%20-%20J.P.%20Morgan%20Global%20Technology%2C%20Media%20and%20Communications%20Conference&amp;dates=20210525T194000Z/20210525T194000Z&amp;details=Event%20Details%3A%20http%3A//investor.trimble.com/events/event-details/jp-morgan-global-technology-media-and-communications-conference%0A%0AWebcast%3A%20https%3A//jpmorgan.metameetings.net/events/tmc21/sessions/37954-trimble/webcast%3Fgpu_only%3Dtrue&amp;kiosk=true&amp;location=&amp;trp=false&amp;sprop=name%3A" class="add-gcal">Add to Google Calendar</a></div>
+  </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+     </td>
+</tr>
+
+<tr class="node--type-nir-event">
+  <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" data-before="Date">
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            <span class = "home"><strong> May 12, 2021</strong> / 5:00 PM PDT</span>
+	  <span class = "nothome">May 12, 2021 <br> 5:00 PM PDT</span>
+      
+    </div>
+  </td>
+<td headers="view-nothing-table-column" class="views-field views-field-nothing" data-before="Event Details">
+  
+      <div class="nir-events-widget-event-details-title">
+          <h3>
+      
+<div class="field-nir-event-title">
+      <div class="field__item">2021 Annual Meeting of Stockholders</div>
+  </div>
+          </h3>
+      </div>
+    </div>
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://www.virtualshareholdermeeting.com/TRMB2021" target="_blank">View Webcast</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--add-to-calendar clearfix">
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--outlook">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-outlook field__item"><a href="/node/30871/ics" class="add-outlook">Add to Outlook</a></div>
+  </div>
+      </div>
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--google">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-gcal field__item"><a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;text=Trimble%2C%20Inc.%20-%202021%20Annual%20Meeting%20of%20Stockholders&amp;dates=20210513T000000Z/20210513T000000Z&amp;details=Event%20Details%3A%20http%3A//investor.trimble.com/events/event-details/2021-annual-meeting-stockholders%0A%0AWebcast%3A%20https%3A//www.virtualshareholdermeeting.com/TRMB2021&amp;location=&amp;trp=false&amp;sprop=name%3A" class="add-gcal">Add to Google Calendar</a></div>
+  </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+     </td>
+</tr>
+
+<tr class="node--type-nir-event">
+  <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" data-before="Date">
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            <span class = "home"><strong> May 5, 2021</strong> / 2:00 PM PDT</span>
+	  <span class = "nothome">May 5, 2021 <br> 2:00 PM PDT</span>
+      
+    </div>
+  </td>
+<td headers="view-nothing-table-column" class="views-field views-field-nothing" data-before="Event Details">
+  
+      <div class="nir-events-widget-event-details-title">
+          <h3>
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Trimble First Quarter 2021 Earnings Call	</div>
+  </div>
+          </h3>
+      </div>
+    </div>
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/mdk9sfma" target="_blank">View Webcast</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--add-to-calendar clearfix">
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--outlook">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-outlook field__item"><a href="/node/30901/ics" class="add-outlook">Add to Outlook</a></div>
+  </div>
+      </div>
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--google">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-gcal field__item"><a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;text=Trimble%2C%20Inc.%20-%20Trimble%20First%20Quarter%202021%20Earnings%20Call%09&amp;dates=20210505T210000Z/20210505T210000Z&amp;details=Event%20Details%3A%20http%3A//investor.trimble.com/events/event-details/trimble-first-quarter-2021-earnings-call%0A%0AWebcast%3A%20https%3A//edge.media-server.com/mmc/p/mdk9sfma&amp;location=&amp;trp=false&amp;sprop=name%3A" class="add-gcal">Add to Google Calendar</a></div>
+  </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+     </td>
+</tr>
+
+    </tbody>
+  </table>
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--trimble-events block--nir-events__widget block--nir-events__widget--26171 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--26171 block--c64f7acd-09fa-4232-b5c4-836dc670e9d3 block--c64f7acd-09fa-4232-b5c4-836dc670e9d3--26171 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Archived Events
+    </div>
+    <div class="nir-widget--content">
+          <div class="nir-widget--form">
+        <form data-drupal-selector="widget-form-base" action="/events-presentations" method="get" id="widget-form-base" accept-charset="UTF-8">
+  <div class="nir-widgets--field-container nir-widgets--field-container--yeartimezone js-form-wrapper form-wrapper" data-drupal-selector="edit-b69109aa-year" id="edit-b69109aa-year"><div class="two-col-field form-item js-form-item js-form-type-select form-type-select form-item-b69109aa-year-value js-form-item-b69109aa-year-value">
+      <label for="edit-b69109aa-year-value">Year</label>
+        <select data-drupal-selector="edit-b69109aa-year-value" id="edit-b69109aa-year-value" name="b69109aa_year[value]" class="form-select"><option value="_none">None</option><option value="2021" selected="selected">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option></select>
+        </div>
+</div>
+<input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Filter" class="button button--primary js-form-submit form-submit" />
+<input data-drupal-selector="edit-b69109aa-widget-id" type="hidden" name="b69109aa_widget_id" value="b69109aa" />
+<input autocomplete="off" data-drupal-selector="form-lazg-swk623vxnccftcizm95muspqswo-t4zu1vxov8" type="hidden" name="form_build_id" value="form-lazG_sWK623VXNCCFTcizm95MUspqsWO_T4zU1VXoV8" />
+<input data-drupal-selector="edit-widget-form-base" type="hidden" name="form_id" value="widget_form_base" />
+
+</form>
+
+      </div>
+        <div class="nir-widget--list">
+       <table class="nirtable views-table views-view-table cols-2 collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" scope="col">Date</th>
+                                                  <th id="view-nothing-table-column" class="views-field views-field-nothing" scope="col">Event Details</th>
+              </tr>
+    </thead>
+    <tbody>
+        
+<tr class="node--type-nir-event">
+  <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" data-before="Date">
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            <span class = "home"><strong> Mar 15, 2021</strong> / 11:20 AM EDT</span>
+	  <span class = "nothome">Mar 15, 2021 <br> 11:20 AM EDT</span>
+      
+    </div>
+  </td>
+<td headers="view-nothing-table-column" class="views-field views-field-nothing" data-before="Event Details">
+  
+      <div class="nir-events-widget-event-details-title">
+          <h3>
+      
+<div class="field-nir-event-title">
+      <div class="field__item">J.P. Morgan Industrials Conference</div>
+  </div>
+          </h3>
+      </div>
+    </div>
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://jpmorgan.metameetings.net/events/industrials21/sessions/36942-trimble/webcast?gpu_only=true&amp;kiosk=true" target="_blank">View Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.trimble.com/static-files/96120c27-74f0-434c-b1bc-385cf8d94aeb" type="application/pdf; length=1271115" title="JP Morgan Industrials Conference-Trimble.pdf">View Presentation</a></span><span class="filesize"> 1.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+     </td>
+</tr>
+
+<tr class="node--type-nir-event">
+  <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" data-before="Date">
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            <span class = "home"><strong> Mar 11, 2021</strong> / 4:00 PM EST</span>
+	  <span class = "nothome">Mar 11, 2021 <br> 4:00 PM EST</span>
+      
+    </div>
+  </td>
+<td headers="view-nothing-table-column" class="views-field views-field-nothing" data-before="Event Details">
+  
+      <div class="nir-events-widget-event-details-title">
+          <h3>
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Berenberg Design Software Conference USA</div>
+  </div>
+          </h3>
+      </div>
+    </div>
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://kvgo.com/berenbergdesign/trimble-inc-2021" target="_blank">View Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+     </td>
+</tr>
+
+<tr class="node--type-nir-event">
+  <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" data-before="Date">
+      <div class="nir-widget--field nir-widget--event--date">
+      
+            
+              Mar 2, 2021 from 10:15 AM to 10:45 AM EST
+      
+    </div>
+  </td>
+<td headers="view-nothing-table-column" class="views-field views-field-nothing" data-before="Event Details">
+  
+      <div class="nir-events-widget-event-details-title">
+          <h3>
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Morgan Stanley Technology, Media and Telecom Conference</div>
+  </div>
+          </h3>
+      </div>
+    </div>
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://morganstanley.webcasts.com/starthere.jsp?ei=1430130&amp;tp_key=8ea0a3ef48" target="_blank">View Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+     </td>
+</tr>
+
+<tr class="node--type-nir-event">
+  <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" data-before="Date">
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            <span class = "home"><strong> Feb 10, 2021</strong> / 2:00 PM PST</span>
+	  <span class = "nothome">Feb 10, 2021 <br> 2:00 PM PST</span>
+      
+    </div>
+  </td>
+<td headers="view-nothing-table-column" class="views-field views-field-nothing" data-before="Event Details">
+  
+      <div class="nir-events-widget-event-details-title">
+          <h3>
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Trimble Fourth Quarter 2020 Earnings Call</div>
+  </div>
+          </h3>
+      </div>
+    </div>
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/hw8r2x3r" target="_blank">View Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.trimble.com/static-files/0ba10f7d-62f4-4550-88b2-ebe6d63a234e" type="application/pdf; length=1051666" title="Trimble Fourth Quarter 2020 Results Presentation.pdf">Trimble Fourth Quarter 2020 Results Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.trimble.com/static-files/8dce7d44-03f2-4140-bdd5-cd2e0f7f3a54" type="application/pdf; length=522331" title="Trimble Fourth Quarter 2020 Financial Summary.pdf">Trimble Fourth Quarter 2020 Financial Summary</a></span><span class="filesize"> 522.3 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.trimble.com/static-files/0e427ecf-85f4-465a-94ae-fad319005749" type="application/pdf; length=281131" title="Trimble Fourth Quarter 2020 Conference Call Prepared Remarks.pdf">Trimble Fourth Quarter 2020 Results Prepared Remarks</a></span><span class="filesize"> 281.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+     </td>
+</tr>
+
+    </tbody>
+  </table>
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+					<div class="ndq-vSpaceL"></div>
+                  </div>
+                  <!-- ******************************End of Main Content Container ******************* --> 
+               </div>
+            </div>
+         </div>
+         <div style="clear: both"> </div>
+      </div>
+      <div class="full-width-blue-container">
+         <div class="center-content">
+              <div class="region region-footer">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1728-shareholdertools-menu" id="block-nir-pid1728-shareholdertools" class="block--system-menu-blockshareholder-tools block--system-menu-blockshareholder-tools--26171 block--footer--system-menu-block--shareholder-tools block--footer--system-menu-block--shareholder-tools--26171 block--f982851d-16a4-4c54-923c-a6ffc55a8b9f block--f982851d-16a4-4c54-923c-a6ffc55a8b9f--26171 block block-menu navigation block-system-menublock menu--shareholder-tools">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1728-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                <div id="ndq-tools" style="">
+
+              <ul id="ndq-tools">
+                  <li>
+                                <a class="ndq-noTxtDec" href="/printed-materials" title="Printed Materials" alt="Printed Materials">
+          <div class="ndqicon-printed-materials-1"><strong style="opacity: 0;">Printed Materials</strong></div>
+                                  <h3>Printed Materials</h3>
+                                  </a>
+                  </li>
+              <li>
+                                <a class="ndq-noTxtDec" href="/email-alerts" title="Email Alerts" alt="Email Alerts">
+          <div class="ndqicon-alerts"><strong style="opacity: 0;">Email Alerts</strong></div>
+                                  <h3>Email Alerts</h3>
+                                  </a>
+                  </li>
+              <li>
+                                <a class="ndq-noTxtDec" href="/download-library" title="Downloads" alt="Downloads">
+          <div class="ndqicon-downloads-3"><strong style="opacity: 0;">Downloads</strong></div>
+                                  <h3>Downloads</h3>
+                                  </a>
+                  </li>
+              <li>
+                                <a class="ndq-noTxtDec" href="/rss-news-feeds" title="RSS" alt="RSS">
+          <div class="ndqicon-rss"><strong style="opacity: 0;">RSS</strong></div>
+                                  <h3>RSS</h3>
+                                  </a>
+                  </li>
+              <li>
+                                <a class="ndq-noTxtDec" href="" title="Print" alt="Print">
+          <div class="ndqicon-print"><strong style="opacity: 0;">Print</strong></div>
+                                  <h3>Print</h3>
+                                  </a>
+                  </li>
+              <li>
+                                <a class="ndq-noTxtDec" href="" title="Share" alt="Share">
+          <div class="ndqicon-share"><strong style="opacity: 0;">Share</strong></div>
+                                  <h3>Share</h3>
+                                  </a>
+                  </li>
+              <li>
+                                <a class="ndq-noTxtDec" href="/search-0" title="Search" alt="Search">
+          <div class="ndqicon-search"><strong style="opacity: 0;">Search</strong></div>
+                                  <h3>Search</h3>
+                                  </a>
+                  </li>
+                        
+    </ul>
+  
+
+<div class="ndq-dialog-overlay" style="display: none;"></div>
+                                <div class="ndq-dialog" style="display: none;">
+   <a class="ndq-close-dialog ndqicon-close" title="Close"></a>
+   <br clear="all">
+   <ul id="ndq-share">
+      <li><a class="ndqicon-fb" href="https://www.facebook.com/share.php?u=https%3A%2F%2Finvestor.trimble.com%2Fevents-presentations?&amp;t= | " onclick="window.open('https://www.facebook.com/share.php?u=https%3A%2F%2Finvestor.trimble.com%2Fevents-presentations','Facebook','resizable=yes,scrollbars=yes,width=520,height=570'); return false;" title="Facebook"><span class="hide-txt">Facebook</span></a></li>
+       <li><a class="ndqicon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Finvestor.trimble.com%2Fevents-presentations" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Finvestor.trimble.com%2Fevents-presentations','LinkedIn','resizable=yes,scrollbars=yes,width=520,height=570'); return false;" title="LinkedIn"><span class="hide-txt">LinkedIn</span></a></li>
+      <li><a class="ndqicon-tw" href="https://twitter.com/intent/tweet?status=Currently%20reading%20https%3A%2F%2Finvestor.trimble.com%2Fevents-presentations" onclick="window.open('https://twitter.com/intent/tweet?status=Currently%20reading%20https%3A%2F%2Finvestor.trimble.com%2Fevents-presentations','Twitter','resizable=yes,scrollbars=yes,width=520,height=570'); return false;" title="Twitter"><span class="hide-txt">Twitter</span></a></li>
+      <li><a class="ndqicon-rss" href="/rss-news-feeds"><span class="hide-txt">RSS</span></a></li>
+   </ul>
+</div>
+</div>
+
+    </nav>
+
+  </div>
+
+			 <div id="output"></div>
+		
+         </div>
+      </div>
+      <!--***************************************End Body********************************--> 
+      <!--***************************************Footer********************************-->
+      <div class="clear-both" ></div>
+      <div class="container_footer">
+         <div class="container">
+            <div>
+               <div class="footer_heading">
+                  <a id="scfooter_0_Column1titlerenderer"> About Trimble </a>
+                  <div class="padd8"> </div>
+                  <div class="footer_links">
+                     <ul class="footerli">
+                        <li>
+                           <a href="https://www.trimble.com/Corporate/About_at_Glance.aspx" title="Trimble at a Glance">Trimble at a Glance</a>
+                        </li>
+                        <li>
+                           <a href="https://www.trimble.com/Corporate/About_Executives.aspx">Leadership</a>
+                        </li>
+                        <li>
+                           <a href="https://www.trimble.com/Corporate/About_History.aspx">History</a>
+                        </li>
+                        <li>
+                           <a href="https://www.trimble.com/Corporate/About_Companies.aspx">Trimble Companies</a>
+                        </li>
+                        <li>
+                           <a href="https://www.trimble.com/Events/Trimble-Events.aspx">Events</a>
+                        </li>
+                        <li>
+                           <a href="https://www.trimble.com/Corporate/News_Release.aspx">Trimble News</a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="footer_heading margl10">
+                  <a id="scfooter_0_Column3titlerenderer">Investors</a>
+                  <div class="padd8"> </div>
+                    <div class="region region-secondary-menu">
+    
+
+<nav role="navigation" aria-labelledby="block-investorrelationsfootermenu-menu" id="block-investorrelationsfootermenu" class="block--system-menu-blockinvestor-relations-footer-m block--system-menu-blockinvestor-relations-footer-m--26171 block--secondary-menu--system-menu-block--investor-relations-footer-m block--secondary-menu--system-menu-block--investor-relations-footer-m--26171 block--a886a972-69b0-49fe-b7b8-5c4d15e6ad2a block--a886a972-69b0-49fe-b7b8-5c4d15e6ad2a--26171 block block-menu navigation block-system-menublock menu--investor-relations-footer-m">
+                        
+    <h2 class="visually-hidden" id="block-investorrelationsfootermenu-menu">Investors</h2>
+    
+
+                              <ul data-block-uuid="a886a972-69b0-49fe-b7b8-5c4d15e6ad2a" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/investor-relations" target="" rel="" data-drupal-link-system-path="node/5806">Investor Relations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">News Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-presentations" target="" rel="" data-drupal-link-system-path="node/26171" class="is-active">Events &amp; Presentations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance" target="" rel="" data-drupal-link-system-path="node/26176">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://www.trimble.com/Corporate/Sustainability.aspx">Sustainability</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/5916">Stock Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information" target="" rel="" data-drupal-link-system-path="node/26231">Financial Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/contact-us" target="" rel="" data-drupal-link-system-path="node/5981">Contact Us</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+               </div>
+               <div class="footer_heading margl10">
+                  <a id="scfooter_0_Column3titlerenderer"> Support </a>
+                  <div class="padd8"> </div>
+                  <div class="footer_links">
+                     <ul class="footerli">
+                        <li>
+                           <a href="https://www.trimble.com/Support/Support_AZ.aspx">Support A-Z</a>
+                        </li>
+                        <li>
+                           <a href="https://www.trimble.com/TrimbleProtected/Global_Technical_Support.aspx">Technical Support</a>
+                        </li>
+                        <li>
+                           <a href="https://www.trimble.com/TrimbleProtected/Index.aspx">Trimble Protected</a>
+                        </li>
+                        <li>
+                           <a target="_blank" href="https://login.trimble.com/cas/login?service=http%3a%2f%2fsupport.trimble.com%2fCPRS%2fModules%2fLogon%2fcas.aspx%3fa%3db%26ReturnUrl%3d%2fCPRS%2fhome.aspx">Product Registration</a>
+                        </li>
+                        <li>
+                           <a href="https://www.trimble.com/Support/Terms_of_Sale.aspx">Terms of Sale</a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="footer_heading margl10">
+                  <a id="scfooter_0_Column5titlerenderer"> Contact Us </a>
+                  <div class="padd8"> </div>
+                  <div class="footer_links">
+                     <ul class="footerli">
+                        <li>
+                           <a href="https://www.trimble.com/Corporate/Contacts.aspx">Contacts</a>
+                        </li>
+                        <li>
+                           <a href="https://www.trimble.com/Corporate/Public_Relations.aspx">Public Relations</a>
+                        </li>
+                        <li>
+                           <a target="_blank" href="https://investor.trimble.com/contact-us">Investor Relations</a>
+                        </li>
+                        <li>
+                           <a href="https://www.trimble.com/Support/Index_Training.aspx">Product Training</a>
+                        </li>
+                        <li>
+                           <a href="https://www.trimble.com/Corporate/About_Locations.aspx">Trimble Locations</a>
+                        </li>
+                        <li>
+                           <a target="_blank" href="http://dealerlocator.trimble.com/">Sales</a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <br clear="all" />
+            </div>
+            <div class="bottom_footer">
+               <div class="container">
+               <div class="footer_menu">
+               <div class="links"> <a class="sitemap" href="https://www.trimble.com/Corporate/Privacy.aspx?tab=contact_us">Do Not Sell My Information</a> <a class="sitemap" href="https://www.trimble.com/Corporate/Privacy.aspx">Privacy Statement</a> <a class="sitemap" href="http://www.trimble.com/Corporate/Terms_of_Use.aspx">Terms Of Use</a> <a class="sitemap" href="https://www.trimble.com/Corporate/Contacts.aspx">Contacts</a> <a class="sitemap" href="/Corporate/Copyrights.aspx">© <span id="scfooterbottom_0_lblCopyright">Copyright</span> <span id="scfooterbottom_0_lblCopyrightYear">2021</span>, Trimble Inc.</a> </div>
+            </div>
+            <div class="socialicons-container">
+               <ul class="socialicons marginLeft10">
+                  <li><a href="https://www.facebook.com/TrimbleCorporate" target="_blank"><img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/fb-new.png" alt="logo"></a></li>
+                  <li><a href="https://twitter.com/TrimbleCorpNews" target="_blank"><img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/tw-new.jpg" alt="logo"></a></li>
+                  <li><a href="http://www.linkedin.com/company/trimble" target="_blank"><img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/lnk-new.jpg" alt="logo"></a></li>
+                  <li><a href="https://www.youtube.com/channel/UCD5r7hBRwI6NFc4izfm-ocg"><img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/yt-new.jpg" alt="logo"></a></li>
+                  <li><a href="http://www.trimble.com/Corporate/Contacts.aspx"><img src="/sites/g/files/knoqqb18881/themes/site/nir_pid1728/client/images/email-new.jpg" alt="logo"></a></li>
+                  <!-- CSS guys need to fix this layout -->
+               </ul>
+            </div>
+            <div class="copyrights">&nbsp;</div>
+         </div>
+      </div>
+   </div>
+</div>
+     
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgtrimble";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/26171","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.filterform,nir_multimedia\/nir_multimedia,nir_pid1728\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid1728","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"user":{"uid":0,"permissionsHash":"03b07050bffbd68497dcd200b8f30c82d51de11153eb1921760406d9eafaa572"}}</script>
+<script src="/sites/g/files/knoqqb18881/files/js/js_DlqY3sKjaqI8k2XndyE0qzwB_Pi7xmGnoVDPvIQyJ0M.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"39077635,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":439,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

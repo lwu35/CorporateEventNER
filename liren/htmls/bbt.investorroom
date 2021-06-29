@@ -1,0 +1,1765 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- begin spin_special_output(head_start) -->
+<style type="text/css" wd_script_id="template subscribe_link:base:system style">
+div.wd_subscribe_link {
+	text-align: right;
+	margin: 10px 0;
+	padding: 0px;
+	border: 0px;
+}
+span.wd_subscribe_icon {
+	margin-left: 1em;
+}
+.wd_subscribe_link img {
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript" src="js/jquery-webdriver.js" wd_script_id="jquery-webdriver.js"></script>
+<script type="text/javascript" src="js/webdriver.js" wd_script_id="webdriver.js"></script>
+<script type="text/javascript" src="js/wd_scriptloader.js" wd_script_id="wd_scriptloader.js"></script>
+<script type="text/javascript">webDriver.push_jQuery();</script>
+<script type="text/javascript" src="js/jquery-ui.js" wd_script_id="jquery-ui.js"></script>
+<script type="text/javascript" src="js/wd_resize.js" wd_script_id="wd_resize.js"></script>
+<link href="css/wd_modal.css" type="text/css" rel="stylesheet" wd_script_id="wd_modal.css">
+<link href="css/wd_wcag.css" type="text/css" rel="stylesheet" wd_script_id="wd_wcag.css">
+<script type="text/javascript" wd_script_id="wd_modal_script">
+(function($) {
+	webDriver.resizeModal = function() {
+		$(this).find(".wd_modal").wd_modal("resize");
+		return false;
+	}
+	
+	var modals = [];
+		
+	function _value(value, base) {
+		if (typeof value == "string" && value.indexOf("%") > 0) {
+			return  base * parseInt(value, 10) / 100;
+		} else {
+			return parseInt(value, 10);
+		}
+	}
+	
+	var wd_modal = function(element, options) {
+		this.init(element, options);
+	};
+	
+	wd_modal.prototype = {
+		init: function(element, options) {
+			var self = this;
+			
+			this.isOpen = false;
+			this.opener = null;
+			
+			this.$element = $(element);
+			this._options = {
+				autoOpen: false,
+				closeExisting: false,
+				closeOnEscape: true,
+				closeOnOverlayClick: true,
+				fadeDuration: null,
+				margin: "10%",
+				padding: 10
+			};
+			
+			this.options(options);
+			
+			this.$overlay = $("<div>").addClass("wd_modal-overlay").attr("wd_resize","resizeModal").appendTo($("body")).hide();
+			this.$outer = $("<div>").addClass("wd_modal-outer").appendTo(this.$overlay);
+			this.$inner = $("<div>").addClass("wd_modal-inner").appendTo(this.$outer).append(this.$element);
+			// Hack because I can't figure out where the extra few pixels at the bottom of the content are coming from
+			this.$inner.css("overflow-y", "hidden");
+			this.$close = $("<a class=\"wd_modal-close fa fa-times\" href=\"#close\" title=\"Close\"><span class=\"wd_sr-only\">Close Dialog<\/span><\/a>")
+					.on("click", function(event) {self.close(); event.preventDefault();})
+					.appendTo(this.$outer);
+			this.$element.addClass("wd_modal");
+			
+			if (this._options.autoOpen)
+				this.open(this._options.closeExisting);
+		},
+		
+		options: function(options) {
+			if (options) {
+				$.extend(this._options, options);
+
+				this._options.fadeDuration = parseInt(this._options.fadeDuration, 10);
+				if (isNaN(this._options.fadeDuration))
+					this._options.fadeDuration = false;
+				
+				if (!$.isArray(this._options.margin))
+					this._options.margin = [this._options.margin];
+				if (this._options.margin.length < 2)
+					this._options.margin[1] = this._options.margin[0];
+				if (this._options.margin.length < 3)
+					this._options.margin[2] = this._options.margin[0];
+				if (this._options.margin.length < 4)
+					this._options.margin[3] = this._options.margin[1];
+				
+				if (!$.isArray(this._options.padding))
+					this._options.padding = [this._options.padding];
+				if (this._options.padding.length < 2)
+					this._options.padding[1] = this._options.padding[0];
+				if (this._options.padding.length < 3)
+					this._options.padding[2] = this._options.padding[0];
+				if (this._options.padding.length < 4)
+					this._options.padding[3] = this._options.padding[1];
+			} else {
+				return this._options;
+			}
+		},
+		
+		reload: function(options) {
+			if (options) {
+				this.options(options);
+			}
+			
+			this.resize();
+		},
+		
+		open: function(closeExisting, now) {
+			if (this.isOpen)
+				return;
+			
+			var self = this;
+			var myCloseExisting = closeExisting;
+			
+			if (!this.opener)
+				this.opener = document.activeElement;
+
+			if (closeExisting && modals.length > 0) {
+				for (var i = modals.length - 1; i >= 0; --i)
+					modals[i].close(true, true);
+			}
+
+			this.$overlay.addClass("wd_modal-current");
+			$("body").append(this.$overlay);
+
+			if (!now && this._options.fadeDuration) {
+				this.$overlay.fadeIn(this._options.fadeDuration, function() {self.open(myCloseExisting, true);});
+			} else {
+				if (modals.length == 0) {
+					$("body").css("overflow","hidden");
+					$(document).on("keydown.wd_modal", function (event) {
+						var current = modals[modals.length - 1];
+						if ((event.which == 27 || event.keyCode == 27) && current._options.closeOnEscape) {
+							current.close();
+							event.stopImmediatePropagation();
+							event.preventDefault();
+						}
+					});
+				}
+
+				if (this._options.closeOnOverlayClick) {
+					this.$overlay.on("click.wd_modal", function (event) {
+						if (event.target == this) {
+							self.close();
+							event.preventDefault();
+						}
+					});
+				}
+
+				modals.push(this);
+				
+				this.$overlay.show();
+				
+				var $focus = this.$element.find(":focusable");
+				if ($focus.length > 0)
+					$focus[0].focus();
+				
+				this.isOpen = true;
+
+				this.$element.trigger("open");
+			}
+		},
+		
+		close: function(skipCurrent, now) {
+			if (!this.isOpen)
+				return;
+			
+			this.$element.trigger("beforeClose");
+			
+			// TODO: allow closing of lower modals
+			modals.pop();
+			
+			if (modals.length == 0) {
+				$("body").css("overflow","");
+				$(document).off("keydown.wd_modal");
+			}
+			
+			this.$overlay.off("click.wd_modal");
+			
+			if (this.opener) {
+				this.opener.focus();
+				this.opener = null;
+			}
+			
+			this.isOpen = false;
+			this.$overlay.removeClass("wd_modal-current").hide();
+			
+			if (!skipCurrent && modals.length > 0)
+				modals[modals.length-1].$overlay.addClass("wd_modal-current");
+			
+			this.$element.trigger("close");
+		},
+		
+		destroy: function() {
+			this.close(false, true);
+			$("body").append(this.$element);
+			this.$overlay.remove();
+		},
+		
+		resize: function() {
+			if (!this.isOpen)
+				return;
+			
+			var self = this;
+			var winWidth = $(window).width();
+			var winHeight = $(window).height();
+			
+			var margin = this._options.margin;
+			var padding = this._options.padding;
+			
+			var width = winWidth - _value(margin[1], winWidth) - _value(margin[3], winWidth) - _value(padding[1], winWidth) - _value(padding[1], winWidth);
+			var height = winHeight - _value(margin[0], winHeight) - _value(margin[2], winHeight) - _value(padding[0], winHeight) - _value(padding[2], winHeight);
+			
+			this.$inner.css("max-width", width);
+			this.$inner.css("max-height", height);
+			
+			$.each(["Top", "Right", "Bottom", "Left"], function(i, v) {
+				self.$outer.css("padding" + v, _value(padding[i])+"px");
+			});
+			
+			var fixed = this.$element.find("[wd_need_fixed_container]").is(":visible");
+			
+			this.$inner.css("width", width);
+			this.$inner.css("height", height);
+
+			webDriver.doResize(this.$inner);
+			
+			if (!fixed) {
+				this.$inner.css("width", "auto");
+				this.$inner.css("height", "auto");
+				if (this.$element.outerHeight() > height)
+					this.$inner.css("height", height);
+				if (this.$element.outerWidth() > width)
+					this.$inner.css("width", width);
+			}
+		}
+	};
+
+	$.fn.wd_modal = function(options) {
+		if (options == "exists") {
+			return !!$(this).data("wd_modal");
+		} else if (typeof options == "string") {
+            var instance = $(this).data("wd_modal");
+			if (!instance)
+				return null;
+			var args = Array.prototype.slice.call(arguments, 1);
+            return instance[options].apply(instance, args);
+        } else {
+            return this.each(function() {
+                var instance = $(this).data("wd_modal");
+                if (instance) {
+                    instance.reload(options);
+                } else {
+                    $(this).data("wd_modal", new wd_modal(this, options));
+                }
+            });
+        }
+    };
+})(webDriver.jQuery);
+</script>
+<script type="text/javascript" wd_script_id="events_tools_script">
+			function spin_event_popup(url) {
+				var $modal = webDriver.jQuery("#wd_event_modal");
+				if (url && $modal.length == 0) {
+					$modal = webDriver.jQuery('<div id="wd_event_modal">');
+					$modal.wd_modal({
+						autoOpen: false,
+					});
+				}
+
+				if (url) {
+					$modal.html("Loading...");
+					$modal.wd_modal("open");
+					if (/^https?:\/\//.test(url)) {
+						$modal.load(url, function() {webDriver.queueCallback(function() {$modal.wd_modal("resize");});});
+					} else {
+						$modal.html(url);
+						$modal.wd_modal("resize");
+					}
+				} else if ($modal.length > 0) {
+					$modal.wd_modal("close");
+				}
+			}
+		</script>
+<script type="text/javascript" wd_script_id="recaptcha2_script">
+			var recaptcha2_loaded = false;
+
+			function wd_recaptcha2_init() {
+				if (recaptcha2_loaded) {
+					$(".wd_recaptcha2_needed").each(function() {
+						grecaptcha.render(this, {"sitekey": "6LdDmR8TAAAAAJ72DH_RtavsrDUlu6g6lzvajKsK"});
+						$(this).removeClass("wd_recaptcha2_needed");
+					});
+				}
+			}
+
+			function on_recaptcha2_loaded() {
+				recaptcha2_loaded = true;
+				wd_recaptcha2_init();
+			}
+		</script>
+<style type="text/css" wd_script_id="recaptcha2_style">)
+			.g-recaptcha iframe {
+				vertical-align: bottom;
+			}
+		</style>
+<script type="text/javascript" wd_script_id="events_list_script">
+			(function($) {
+				var direction = "auto";
+				var category = "";
+				var start_date = false;
+				var limit_year = 2021;
+				var limit_month = 5;
+				var groups = [];
+
+				function load_events(clear) {
+					if (clear) {
+						$(".wd_events_list").empty();
+						$(".wd_events_none").hide();
+					}
+
+					$(".wd_events_more").hide();
+					$(".wd_events_error").hide();
+					$(".wd_events_loading").show();
+					$(".wd_events_past_summary").toggle(direction=="auto");
+
+					var limit_date;
+					if (limit_year == 2021 && limit_month == 5) {
+						limit_date = "2021-05-03";
+					} else if (direction != "past") {
+						limit_date = limit_year+"-"+limit_month+"-01";
+					} else {
+						var month = limit_month + 1;
+						if (month > 12) {
+							month -= 12;
+							limit_year += 1;
+						}
+						limit_date = limit_year+"-"+month+"-00";
+					}
+
+					var args = {
+						s: "19",
+						ajax: "ajax",
+						op: "list"
+					};
+					args.direction = (direction == "past") ? "past" : "future";
+					args.limit_date = limit_date;
+					if (start_date)
+						args.start_date = start_date;
+					if (category)
+						args.category = category;
+					for (var i = 0; i < groups.length; ++i) {
+						var group = groups[i];
+						args["group["+group.id+"]"] = group.val;
+					}
+
+					$.ajax({
+						url: "index.php",
+						data: args,
+						dataType: "json",
+						success: function(data) {
+							if (data.items.length > 0) {
+								if (direction == "auto")
+									direction = "future";
+
+								var $container = $(".wd_events_list");
+								for (var i = 0; i < data.items.length; ++i) {
+									var item = data.items[i];
+									if (item.type == "month") {
+										if ($("#"+item.id).length == 0)
+											$(".wd_events_list").append(item.content);
+										$container = $("#"+item.id).find(".wd_events_month_events");
+									} else {
+										if ($("#"+item.id).length == 0)
+											$container.append(item.content);
+									}
+								}
+
+								start_date = data.last_start;
+
+								if (data.more)
+									$(".wd_events_more").show();
+							} else if ($(".wd_events_list").children().length == 0) {
+								if (direction == "auto")
+									setTimeout(function () {set_direction("past", false);}, 10);
+								else
+									$(".wd_events_none").show();
+							}
+							
+							if (data.script) {
+								var $script = $(data.script);
+								webDriver.push_jQuery();
+								$script.appendTo($("head"));
+								webDriver.push_jQuery();
+							}
+						},
+						error: function(jqxhr, status, error) {
+							$(".wd_events_more").show();
+							$(".wd_events_error").show().text("Unable to load events ("+status+":"+error+")");
+						},
+						complete: function() {
+							$(".wd_events_loading").hide();
+						}
+					});
+				}
+
+				var month_names = {
+					 1: "January",
+					 2: "February",
+					 3: "March",
+					 4: "April",
+					 5: "May",
+					 6: "June",
+					 7: "July",
+					 8: "August",
+					 9: "September",
+					10: "October",
+					11: "November",
+					12: "December"
+				};
+
+				var prev_year = 0;
+				var prev_dir = "";
+				function update_events_inputs(reset) {
+					var new_dir = (direction == "past") ? "past" : "future";
+
+					if (new_dir != prev_dir) {
+						$(".wd_events_tab")
+							.removeClass("active")
+							.attr("aria-checked", "false")
+							.attr("tabindex", -1)
+						;
+						$(".wd_events_tab[data-direction="+new_dir+"]")
+							.addClass("active")
+							.attr("aria-checked", "true")
+							.attr("tabindex", 0)
+						;
+					}
+
+					if (new_dir != prev_dir) {
+						var min_year, max_year;
+						if (new_dir == "past") {
+							min_year = 2019;
+							max_year = 2021;
+						} else {
+							min_year = 2021;
+							max_year = 2021;
+						}
+
+						var $years = $("#wd_events_input_year");
+						var selected_year = Math.max(min_year, Math.min($years.val(), max_year));
+						$years.empty();
+						for (var year = min_year; year <= max_year; ++year) {
+							var $opt = $("<option></option>").attr("value", year).append(year);
+							$years.append($opt);
+						}
+						$years.val(selected_year);
+					}
+
+					var selected_year = $("#wd_events_input_year").val();
+					if (new_dir != prev_dir || (selected_year != prev_year && (selected_year == 2021 || prev_year == 2021))) {
+						var min_month, max_month;
+						if (selected_year != 2021) {
+							min_month = 1;
+							max_month = 12;
+						} else if (new_dir == "past") {
+							min_month = 1;
+							max_month = 5;
+						} else {
+							min_month = 5;
+							max_month = 12;
+						}
+
+						var $months = $("#wd_events_input_month");
+						var selected_month = Math.max(min_month, Math.min($months.val(), max_month));
+						$months.empty();
+						for (var month = min_month; month <= max_month; ++month) {
+							var $opt = $("<option></option>").attr("value", month).append(month_names[month]);
+							$months.append($opt);
+						}
+						$months.val(selected_month);
+					}
+
+					if (reset) {
+						$("#wd_events_input_year").val(limit_year);
+						$("#wd_events_input_month").val(limit_month);
+						$("#wd_events_input_category").val(category);
+						for (var i = 0; i < groups.length; ++i) {
+							var group = groups[i];
+							$("#wd_events_input_category_group_"+group.id).val(group.val);
+						}
+					}
+
+					prev_year = selected_year;
+					prev_dir = new_dir;
+				}
+
+				function set_direction(new_dir, update_hash) {
+					direction = new_dir;
+					limit_year = 2021;
+					limit_month = 5;
+					start_date = false;
+					update_events_inputs(true);
+					if (update_hash)
+						update_url_hash();
+					load_events(true);
+				}
+
+				var default_hash = "#auto:2021:5";
+				var prev_hash = false;
+				function hash_changed() {
+					var hash = window.location.hash;
+					if (!hash || hash == "#")
+						hash = default_hash;
+
+					if (hash == prev_hash) return;
+					prev_hash = hash;
+
+					hash = hash.substr(1);
+					var parts = hash.split(":");
+					direction = (parts.length > 0 && parts[0]) ? parts[0] : "auto";
+					limit_year = (parts.length > 1 && parts[1]) ? parseInt(parts[1]) : "2021";
+					limit_month = (parts.length > 2 && parts[2]) ? parseInt(parts[2]) : "5";
+					category = (parts.length > 3) ? parts[3] : "";
+					groups = [];
+					for (var i = 4; i < parts.length-1; i += 2)
+						groups.push({id:parseInt(parts[i]), val:parseInt(parts[i+1])});
+					start_date = false;
+
+					update_events_inputs(true);
+					load_events(true);
+				}
+
+				function update_url_hash() {
+					var hash = "#"+direction+":"+limit_year+":"+limit_month;
+					var group_hash = "";
+					for (var i = 0; i < groups.length; ++i) {
+						var group = groups[i];
+						group_hash += ":"+group.id+":"+group.val;
+					}
+					if (category || group_hash)
+						hash += ":"+category;
+					hash += group_hash;
+					prev_hash = hash;
+					window.location.hash = hash;
+				}
+
+				$(function() {
+					setTimeout(hash_changed, 10);
+
+					var liar = (navigator.userAgent.indexOf("MSIE") >= 0 && (!("documentMode" in document) || document.documentMode < 8));
+
+					if ("onhashchange" in window && !liar) {
+						window.onhashchange = function() {hash_changed();};
+					} else {
+						setInterval(hash_changed,200);
+					}
+
+					$(".wd_events_tab").on(
+						"click",
+						function(e) {
+							set_direction($(this).data("direction"), true);
+						}
+					);
+
+					$("#wd_events_input_year").on(
+						"change",
+						function(e) {
+							update_events_inputs();
+						}
+					);
+
+					$(".wd_events_input_go").on(
+						"click",
+						function(e) {
+							limit_year = parseInt($("#wd_events_input_year").val());
+							limit_month = parseInt($("#wd_events_input_month").val());
+							start_date = false;
+							category = $("#wd_events_input_category").val();
+							groups = [];
+							$(".wd_input_category_group").each(function() {
+								var group_val = $(this).val();
+								if (group_val) {
+									var group_id = this.id.replace("wd_events_input_category_group_", "");
+									groups.push({id:group_id, val:group_val});
+								}
+							});
+							update_url_hash();
+							load_events(true);
+						}
+					);
+
+					$(".wd_events_more").on(
+						"click",
+						function(e) {
+							load_events(false);
+						}
+					);
+				});
+			})(webDriver.jQuery);
+		</script>
+<script type="text/javascript" src="js/wd_wcag.js" wd_script_id="wd_wcag.js"></script>
+<script type="text/javascript" wd_script_id="view_printable_script">
+	function view_printable() {
+		var loc = window.location;
+		var sep = (loc.search == "") ? "?" : "&";
+		var url = loc.protocol+"//"+loc.host+loc.pathname+loc.search+sep+"printable"+loc.hash;
+		window.open(url, "_blank", "");
+	}
+</script>
+<link href="thirdparty/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" wd_script_id="font-awesome.min.css">
+<style type="text/css" wd_script_id="toolbar_style">
+			div.wd_toolbar {
+				border-top: 1px solid #cccccc;
+				border-bottom: 1px solid #cccccc;
+				margin: 15px 0px 15px 0px;
+				padding: 5px;
+				line-height: 1;
+			}
+			div.wd_toolbar-page {
+				clear: both;
+			}
+			div.wd_toolbar ul.wd_tools {
+				display: inline-block;
+				width: 100%;
+				margin: 0;
+				padding: 5px 0;
+			}
+			div.wd_toolbar ul.wd_tools li.wd_tool {
+				display: block;
+				list-style-type: none;
+				margin-right: 5px;
+				padding: 0;
+				float: right;
+			}
+			span.wd_tool_icon > a:link,
+			span.wd_tool_icon > a:visited {
+				border-radius: 2px;
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 7px;
+				font-size: 16px;
+				line-height: 1;
+				text-align: center;
+				color: #ffffff;
+				background-color: #8d8d8d;
+			}
+			span.wd_tool_icon > a:hover {
+				color: #ffffff;
+				background-color: #666666;
+				text-decoration: none;
+			}
+			div.wd_toolbar ul.wd_tools li.wd_tool-addthis {
+				float: left;
+			}
+		</style>
+<style type="text/css" wd_script_id="template page:events:site style">.wd_events_inputs {
+	margin: 10px 0;
+	overflow: auto;
+}
+.wd_events_inputs select {
+	margin-right: 1ex;
+}
+ul.wd_events_tabs {
+	float: right;
+	overflow: hidden;
+	margin: 5px 0;
+	padding: 0px;
+}
+li.wd_events_tab {
+	float: left;
+	display: block;
+	margin: 0;
+	border: 1px solid #666666;
+	padding: 5px;
+	cursor: pointer;
+	border: 1px solid #E1E1E1;
+}
+.wd_events_tab_label {
+}
+.wd_events_tab_label.wd_events_tab_future {
+}
+.wd_events_tab_label.wd_events_tab_past {
+}
+li.wd_events_tab:first-child {
+	border-top-left-radius:4px;
+	border-bottom-left-radius:4px;
+	-webkit-border-top-left-radius:4px;
+	-webkit-border-bottom-left-radius:4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-bottomleft: 4px;
+}
+li.wd_events_tab:last-child {
+	border-top-right-radius:4px;
+	border-bottom-right-radius:4px;
+	-webkit-border-top-right-radius:4px;
+	-webkit-border-bottom-right-radius:4px;
+	-moz-border-radius-topright: 4px;
+	-moz-border-radius-bottomright: 4px;
+}
+li.wd_events_tab.active {
+	background: url("images/webdriver/events/tab_background.gif") repeat-x scroll 0 bottom #FFFFFF;
+	color: #333;
+	font-weight: bold;
+}
+.wd_events_more {
+	margin: 10px 0;
+	cursor: pointer;
+	padding: 0 0 0 20px;
+	border: none;
+}
+.wd_event {
+	margin: 15px 0 5px 0;
+	padding: 0;
+	overflow: auto;
+}
+.wd_events_list .wd_event {
+	padding-top: 24px;
+	background: transparent url(images/webdriver/events/shadow.png) center top / 100% 14px no-repeat;
+}
+.wd_events_list .wd_event:first-child {
+	padding-top: 10px;
+	background: none;
+}
+.wd_event_sidebar {
+	float: left;
+	margin: 0 1em 0 0;
+	padding: 0;
+	width: 250px;
+}
+.wd_events-detail .wd_event_sidebar {
+	padding-bottom: 24px;
+	background: transparent url(images/webdriver/events/shadow-narrow.png) center bottom / 100% 14px no-repeat;
+}
+.wd_event_sidebar_group {
+	margin: 2em 0 0 0;
+}
+.wd_event_sidebar_item {
+	margin: 0 0 5px 0;
+}
+@media(max-width:768px){
+	ul.wd_events_tabs {
+		float: none;
+	}
+}
+.wd_events_header_container {
+	border: 0px none;
+	margin: 0 0 5px 0;
+	padding: 0 0 14px;
+}
+.wd_events_month_header {
+	margin: 10px 0 0 0;
+	padding: 5px 10px;
+	font-size: 125%;
+	font-weight: bold;
+	background: url("images/webdriver/events/tab_background.gif") repeat-x scroll 0 bottom #FFFFFF;
+	border: 1px solid #E1E1E1;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+.wd_event {
+	margin: 15px 0 5px 0;
+	padding: 0;
+	overflow: auto;
+}
+.wd_events_list .wd_event {
+	padding-top: 24px;
+	background: transparent url(images/webdriver/events/shadow.png) center top / 100% 14px no-repeat;
+}
+.wd_events_list .wd_event:first-child {
+	padding-top: 10px;
+	background: none;
+}
+.wd_event_sidebar {
+	float: left;
+	margin: 0 1em 0 0;
+	padding: 0;
+	width: 250px;
+}
+.wd_event_sidebar_group {
+	margin: 2em 0 0 0;
+}
+.wd_event_sidebar_item {
+	margin: 0 0 5px 0;
+	padding: 0 0 0 0px;
+}
+.wd_event_sidebar .wd_event_location {
+}
+.wd_event_sidebar .wd_event_location_url {
+}
+@media(max-width:768px){
+	.wd_event_sidebar {
+		float: none;
+		width: auto;
+		max-width: none;
+	}
+}
+</style>
+<script type="text/javascript">webDriver.pop_jQuery();</script>
+
+<!-- end spin_special_output(head_start) -->
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	
+ <meta name="keywords" content="" />
+ <meta name="description" content="Browse Truist investor-related events and announcements and view previous events." />
+ <meta name="twitter:card" content="summary" />
+ <meta property="og:site_name" content="Truist Investor Relations" />
+ <meta property="og:url" content="https://ir.truist.com/events-and-presentation" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Events and Presentations | Truist Investor Relations</title>
+	<link rel="icon" type="image/png" href="https://ir.truist.com/images/icons/favicon.ico" sizes="16x16">
+<!-- 	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"> -->
+	<link rel="stylesheet" href="thirdparty/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	
+	<link rel="stylesheet" href="css/styles.css">
+	
+	<link rel="stylesheet" type="text/css" href="css/header-footer.css">
+	<link rel="stylesheet" type="text/css" href="css/wdcontent.css">
+
+		<script src="//assets.adobedtm.com/550322ae7d69/0539ab2980b3/launch-e63559efc6b0.min.js"></script>   
+	
+<!-- begin spin_special_output(head_end) -->
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=on_recaptcha2_loaded&render=explicit&hl=en-US" wd_script_id="api.js?onload=on_recaptcha2_loaded&render=explicit&hl=en-US"></script>
+<link rel="canonical" href="https://ir.truist.com/events-and-presentation" />
+<!-- end spin_special_output(head_end) -->
+</head>
+<body class="wd_pageid_19">
+	<div id="js-header" class="not-main-content component--standalone js-component--standalone header js-header analytics-header" data-current-segment="en" data-editable="true">
+	<header>
+		<a class="wd_visually_hidden" href="#wd_main_content" id="wd_skip_link">Skip to main content</a>
+		<h2 class="lx-screen-reader-only">&nbsp;Header</h2>
+		<nav class="header__navbar header__navbar--secondary">
+			<div class="header__container lx-display--flex lx-justify-content--space-between">
+				<div class="header__wrapper header__wrapper--secondary-navbar header__wrapper--secondary-navbar--left">
+
+				</div>
+
+				<div class="header__wrapper header__wrapper--secondary-navbar header__wrapper--secondary-navbar--right">
+
+				</div>
+			</div>
+		</nav>
+
+		<nav class="header__navbar header__navbar--primary">
+			<div class="header__container header__container--primary-navbar ">
+				<div class="header__wrapper header__wrapper--primary-navbar header__wrapper--primary-navbar--left">
+
+					<a class="header__brand-logo js-header__brand-logo" href="index.php">
+						<img src="images/truist-logo.svg" alt="Truist">
+						<span class="screen-reader-only">&nbsp;Homepage</span>
+					</a>
+
+				</div>
+				<!-- Header Mobile Starts -->
+				<div class="header__wrapper header__wrapper--primary-navbar header__wrapper--primary-navbar--center">
+
+					<div class="js-lx-collapsible header__navigation-collapse--mobile-menu">
+
+						<button class="lx-button  js-lx-collapsible__trigger collapsible__trigger header__offcanvas__trigger js-header__offcanvas__trigger js-header__offcanvas__trigger    is-listening-for-click" aria-expanded="false" data-toggle="collapse" aria-label="Site menu" data-animate-mobile="fade" data-animate-desktop="fade" data-dismiss="true" id="js-collapsible__trigger--0" aria-controls="js-collapsible__target--0">                                
+								<svg class="lx-icon lx-icon--action-menu lx-button__icon lx-button__icon--left" aria-hidden="true" focusable="false" id="wd_mobile_nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" id="action-menu"><path d="M32 18.8H4c-.4 0-.8-.3-.8-.8s.3-.8.8-.8h28c.4 0 .8.3.8.8s-.4.8-.8.8zm0-10H4c-.4 0-.8-.4-.8-.8s.4-.8.8-.8h28c.4 0 .8.3.8.8s-.4.8-.8.8zm0 20H4c-.4 0-.8-.3-.8-.8s.3-.8.8-.8h28c.4 0 .8.3.8.8s-.4.8-.8.8z"></path></svg>
+						
+							Menu
+
+						</button>
+
+						<div class="js-lx-collapsible__target lx-collapsible__target header__offcanvas__target__wrapper display-primary-nav-at-desktop" id="js-collapsible__target--0" data-role="region" data-aria-labelledby="js-collapsible__trigger--0">
+
+							<div class="header__offcanvas__target js-header__offcanvas__target">
+								<div class="header__container">
+									<div id="js-header__offcanvas-wrapper" class="header__offcanvas__wrapper">
+
+										<ul class="header__navigation-list--primary header__navigation-list--collapsible-container">
+											<li class="header__navigation-list-item--primary header__navigation-list-item--home header__navigation-list-item--collapsible">
+
+												<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable" href="index.php">
+
+													<span class="button-text">Home</span>
+
+												</a>
+
+											</li>
+											<!-- Primary Nav XF -->
+												<li class="header__navigation-list-item--primary nav-item dropdown">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable nav-link dropdown-toggle" href="sec-filings" target="_self" id="dropdown63" role="button" data-flip="false" data-toggle="dropdown" aria-expanded="false"><span class="button-text">Financial Information</span></a>
+			<div class="dropdown-menu" role="group" aria-labelledby="dropdown63">	<a class="dropdown-item" href="https://ir.truist.com/earnings" target="_self">Earnings</a>
+	<a class="dropdown-item" href="https://ir.truist.com/sec-filings" target="_self">SEC Filings</a>
+	<a class="dropdown-item" href="https://ir.truist.com/other-filings" target="_self">Other Filings</a>
+	<a class="dropdown-item" href="https://ir.truist.com/legacy-documents" target="_self">Legacy Documents</a>
+</div>		</li>
+		<!-- <li class="header__navigation-list-item--primary">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable" href="sec-filings" target="_self">
+				<span class="button-text">Financial Information</span>
+			</a>
+		</li>		 -->
+	<!-- <li class="header__navigation-list-item--primary  ">
+		<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable is-active" href="https://ir.truist.com/events-and-presentation" target="_self">
+			<span class="button-text">Events & Presentations</span>
+		</a>
+	</li> -->
+		<li class="nav-item  header__navigation-list-item--primary" aria-current="true">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable nav-link is-active" href="https://ir.truist.com/events-and-presentation" target="_self"><span class="button-text">Events & Presentations</span></a>
+					</li>
+	<li class="header__navigation-list-item--primary nav-item ">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable nav-link" href="https://ir.truist.com/annual-reports" target="_self"><span class="button-text">Annual Reports & Proxy Statements</span></a>
+					</li>
+		<!-- <li class="header__navigation-list-item--primary">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable" href="https://ir.truist.com/annual-reports" target="_self">
+				<span class="button-text">Annual Reports & Proxy Statements</span>
+			</a>
+		</li>		 -->
+	<li class="header__navigation-list-item--primary nav-item dropdown">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable nav-link dropdown-toggle" href="shareholder-services" target="_self" id="dropdown181" role="button" data-flip="false" data-toggle="dropdown" aria-expanded="false"><span class="button-text">Shareholder Services</span></a>
+			<div class="dropdown-menu" role="group" aria-labelledby="dropdown181">	<a class="dropdown-item" href="https://ir.truist.com/shareholder-services" target="_self">Shareholder Services</a>
+	<a class="dropdown-item" href="https://ir.truist.com/dividend-and-stock-split" target="_self">Dividend & Stock Split History</a>
+	<a class="dropdown-item" href="https://ir.truist.com/stock-price-information" target="_self">Stock Price Information</a>
+	<a class="dropdown-item" href="https://ir.truist.com/investor-alerts" target="_self">Investor Alerts</a>
+	<a class="dropdown-item" href="https://ir.truist.com/analyst-coverage" target="_self">Analyst Coverage</a>
+	<a class="dropdown-item" href="https://ir.truist.com/annual-meeting-and-proxy-information" target="_self">Annual Meeting & Proxy Information</a>
+</div>		</li>
+		<!-- <li class="header__navigation-list-item--primary">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable" href="shareholder-services" target="_self">
+				<span class="button-text">Shareholder Services</span>
+			</a>
+		</li>		 -->
+	<li class="header__navigation-list-item--primary nav-item dropdown">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable nav-link dropdown-toggle" href="credit-ratings" target="_self" id="dropdown117" role="button" data-flip="false" data-toggle="dropdown" aria-expanded="false"><span class="button-text">Fixed Income</span></a>
+			<div class="dropdown-menu" role="group" aria-labelledby="dropdown117">	<a class="dropdown-item" href="https://ir.truist.com/credit-ratings" target="_self">Credit Ratings</a>
+	<a class="dropdown-item" href="https://ir.truist.com/preferred-stock" target="_self">Preferred Stock </a>
+	<a class="dropdown-item" href="https://ir.truist.com/download/TFC+2Q20+Fixed+Income+Presentation.pdf" target="_self">Fixed Income Presentation</a>
+</div>		</li>
+		<!-- <li class="header__navigation-list-item--primary">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable" href="credit-ratings" target="_self">
+				<span class="button-text">Fixed Income</span>
+			</a>
+		</li>		 -->
+	<li class="header__navigation-list-item--primary nav-item dropdown">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable nav-link dropdown-toggle" href="board-of-directors" target="_self" id="dropdown116" role="button" data-flip="false" data-toggle="dropdown" aria-expanded="false"><span class="button-text">Governance & Responsibility</span></a>
+			<div class="dropdown-menu" role="group" aria-labelledby="dropdown116">	<a class="dropdown-item" href="https://ir.truist.com/corporate-governance" target="_self">Corporate Governance</a>
+	<a class="dropdown-item" href="https://ir.truist.com/board-of-directors" target="_self">Board of Directors</a>
+	<a class="dropdown-item" href="https://ir.truist.com/Board-Committees" target="_self">Board Committees</a>
+	<a class="dropdown-item" href="https://media.truist.com/executive-leadership-team" target="_self">Executive Leadership</a>
+	<a class="dropdown-item" href="https://ir.truist.com/code-of-ethics" target="_self">Codes of Ethics</a>
+	<a class="dropdown-item" href="https://ir.truist.com/corporate-social-responsibility" target="_self">Corporate Social Responsibility</a>
+	<a class="dropdown-item" href="https://ir.truist.com/AML" target="_self">Anti-Money Laundering</a>
+</div>		</li>
+		<!-- <li class="header__navigation-list-item--primary">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable" href="board-of-directors" target="_self">
+				<span class="button-text">Governance & Responsibility</span>
+			</a>
+		</li>		 -->
+	<li class="header__navigation-list-item--primary nav-item ">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable nav-link" href="https://media.truist.com/" target="_self"><span class="button-text">Newsroom</span></a>
+					</li>
+		<!-- <li class="header__navigation-list-item--primary">
+			<a class="lx-button header__navigation-list-item--primary__buttton js-header__mobile-menu-focusable" href="https://media.truist.com/" target="_self">
+				<span class="button-text">Newsroom</span>
+			</a>
+		</li>		 -->
+
+										</ul>
+
+										<!-- place xf placeholder here -->
+
+										<div class="hide--lg-up">
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+				<!-- Header Mobile Ends -->
+				<div class="header__wrapper header__wrapper--primary-navbar header__wrapper--primary-navbar--right">
+					<ul class="navbar--primary__list" role="presentation">
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+</div>
+<!-- <header>
+	<div class="wd_navbar-wrapper">
+		<nav class="navbar navbar-expand-md bg-faded justify-content-center" aria-label="Main Navigation">
+			<div class="container no-side-margin">
+				<a href="" class="navbar-brand d-flex w-25 mr-auto"><img src="images/header-logo-v2.svg" alt="Truist Logo"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3" aria-label="navbar-toggler">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+				<ul class="nav navbar-nav ml-auto w-100" role="menubar" aria-label="Main Navigation">
+										<li role="none" class="nav-item"><a role="menuitem" aria-label="search" class="nav-link" href="https://ir.truist.com/index.php?s=82"><i class="fa fa-search"></i></a></li>
+				</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header> -->
+<main id="wd_main_content" tabindex="-1">
+	<figure class="promo--full-width__figure" role="presentation">
+		<picture class="promo--full-width__picture">
+<!-- 			<source media="(min-width: 992px)" srcset="images/charlotte-skyline-v2-desktop.jpg 1x, images/charlotte-skyline-v2-desktop-x2.jpg 2x">
+			<source srcset="images/charlotte-skyline-v2-mobile.jpg 1x, images/charlotte-skyline-v2-mobile-x2.jpg 2x">
+			<img class="picture__image promo--full-width__img" src="images/charlotte-skyline-v2-desktop.jpg" alt=""> -->
+		</picture>
+	</figure>
+	<div class="wd_header_content container">
+	<h1>Events & Presentations</h1>	</div>
+	<!-- <div class="wd_home_hero" style="background-image: url();">
+		<div class="wd_header_content container">
+				</div>
+	</div> -->
+	<div class="container">
+		<div class="row">
+						<div class="col-md-12 wd_content">
+				<div id="wd_printable_content"><p>Browse the calendar to view investor-related events and announcements.&nbsp; Webcasts and presentations that have been archived are available by viewing past event details.</p>
+
+<p>&nbsp;</p>
+
+<div class="wd_events">
+<div class="wd_subscribe_link">
+	<a href="https://ir.truist.com/investor-alerts?type=4">
+		<span class="wd_subscribe_title">Investor Alerts</span><span class="wd_subscribe_icon"><img src="images/webdriver/email_alerts.png" title="Investor Alerts" role="presentation"/></span>
+	</a>
+</div>
+
+<div class="wd_events_inputs">
+<select name="year" id="wd_events_input_year" title="Year">
+ <option value="2019">2019</option>
+ <option value="2020">2020</option>
+ <option value="2021" selected>2021</option>
+</select>
+
+<select name="month" id="wd_events_input_month" title="Month">
+ <option value="1">January</option>
+ <option value="2">February</option>
+ <option value="3">March</option>
+ <option value="4">April</option>
+ <option value="5" selected>May</option>
+ <option value="6">June</option>
+ <option value="7">July</option>
+ <option value="8">August</option>
+ <option value="9">September</option>
+ <option value="10">October</option>
+ <option value="11">November</option>
+ <option value="12">December</option>
+</select>
+<button class="wd_events_input_go">GO</button><ul class="wd_events_tabs" role="radiogroup"><li class="wd_events_tab active" data-direction="future" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="0" role="radio" aria-checked="true"><span class="wd_events_tab_label wd_events_tab_future"><span class="fa fa-arrow-circle-right">&nbsp;</span>Upcoming Events</span></li><li class="wd_events_tab" data-direction="past" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false"><span class="wd_events_tab_label wd_events_tab_past"><span class="fa fa-arrow-circle-left">&nbsp;</span>Past Events</span></li></ul></div>
+<header class="list-tbl-header">
+                                    <strong class="header-title tbl-col-20 tbl-m-col-20">Date of Event</strong>
+                                    <strong class="header-title tbl-col-40 tbl-m-col-80">Event</strong>
+                                    <strong class="header-title tbl-col-40 stack">Download Materials</strong>
+                                </header>
+<div class="wd_events_list"></div><div class="wd_events_none" style="display:none;">No events to display</div>
+<div class="wd_events_loading" style="display:none;">Loading Events...</div><div class="wd_events_error" style="display:none;"></div><button class="wd_events_more" style="display:none;"><span class="fa fa-chevron-circle-down">&nbsp;</span>Load More Events</button>
+
+<div class="wd_toolbar wd_toolbar-main"><ul class="wd_tools"><li class="wd_tool wd_tool-print"><span class="wd_tool_icon"><a onclick="view_printable(); return false;" rel="nofollow" href="#print" title="print"><span class="fa fa-print"></span></a></span></li><li class="wd_tool wd_tool-email"><span class="wd_tool_icon"><a onclick="window.location.href = 'mailto:?subject=Events%20and%20Presentations%20%7C%20Truist%20Investor%20Relations&amp;body='+encodeURIComponent(window.location.href);return false;" href="#email" title="email"><span class="fa fa-envelope"></span></a></span></li><li class="wd_tool wd_tool-rss"><span class="wd_tool_icon"><a href="https://ir.truist.com/rss?rsspage=19" title="rss"><span class="fa fa-rss"></span></a></span></li></ul></div>
+
+</div>
+</div>			</div><!-- END CONTENT -->	
+					</div><!-- END ROW -->
+	</div><!-- END CONTAINER -->
+	</main>
+<!-- <section class="wd_subscribe_container" role="complementary">
+	<h2 class="wd_visually_hidden">Subscribe Header</h2>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6"><p class="h3">Receive updates straight to your inbox</p></div>
+			<div class="col-md-6 d-flex justify-content-center align-items-center"><a role="button" class="btn btn-lg btn-light" href="https://ir.truist.com/investor-alerts">Subscribe to alerts</a></div>
+		</div>
+	</div>
+</section> -->
+<footer class="not-main-content footer component--standalone js-component--standalone js-footer analytics-footer" role="contentinfo" data-editable="true">
+	<h2 class="lx-screen-reader-only">&nbsp;Footer</h2>
+
+	<div class="footer__section">
+		<a class="footer-logo" href="#">
+			<img src="images/truist-logo-white.svg" alt="Truist">
+			<span class="screen-reader-only">&nbsp;Homepage</span>
+		</a>
+	</div>
+	<div class="footer__section">
+
+		<div class="footer-nav footer-nav--xf">
+
+			<div id="8369091677" class="component--parent js-component--parent column-wrapper js-column-wrapper  noen ">
+
+				<div class="column js-column analytics-column ">
+
+					<div class="lx-grid lx-grid--1-columns js-lx-grid lx-grid--gutters lx-grid--2-columns-md-up lx-grid--3-columns-lg-up ">
+
+						<div class="text-block-wrapper js-text-block-wrapper">
+
+							<div class="text-block js-text-block analytics-text-block  ">
+
+								<h3 class="text-block__title ">Investor Contacts</h3>
+
+								<div class="text-block__paragraph ">
+									<ul class="rte__list">
+										<li><!-- <h4>Investor Relations</h4> -->
+										<a href="mailto:investors@truist.com">investors@truist.com</a></li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="text-block-wrapper js-text-block-wrapper">
+
+							<div class="text-block js-text-block analytics-text-block  ">
+
+								<h3 class="text-block__title ">Media Contacts</h3>
+
+								<div class="text-block__paragraph ">
+									<ul class="rte__list">
+										<li><!-- <h4>Corporate Communications</h4> -->
+										<a href="mailto:media@truist.com">media@truist.com</a></li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="text-block-wrapper js-text-block-wrapper">
+
+							<div class="text-block js-text-block analytics-text-block  ">
+
+								<h3 class="text-block__title ">Client Questions</h3>
+
+								<div class="text-block__paragraph ">
+									<ul class="rte__list">
+										<li><b>SunTrust:&nbsp;</b><a href="tel:1-800-786-8787">800-SUNTRUST (800-786-8787)</a>&nbsp;&nbsp;</li>
+										<li><b>BB&amp;T:&nbsp;</b><a href="tel:1-800-226-5228">800-BANK-BBT (800-226-5228)</a></li>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<ul class="footer-nav footer-nav--secondary">
+
+			<li class="footer-nav-item">
+				<a class="lx-button footer-nav-link" href="https://www.bbt.com/legal/truist-disclosure.html">BB&amp;T Truist Disclosure</a>
+			</li>
+
+			<li class="footer-nav-item">
+				<a class="lx-button footer-nav-link   " href="https://www.bbt.com/privacy-security.html">
+				BB&amp;T Privacy</a>
+			</li>
+
+			<li class="footer-nav-item">
+				<a class="lx-button footer-nav-link" href="https://www.suntrust.com/content/dam/truist/us/en/documents/disclosures/truist-disclosure.pdf">SunTrust Truist Disclosure</a>
+			</li>
+
+			<li class="footer-nav-item">
+
+				<a class="lx-button footer-nav-link   " href="https://www.suntrust.com/privacy">
+
+		SunTrust Privacy
+
+	</a>
+
+			</li>
+
+		
+<li class="footer-nav-item">
+				<a class="lx-button footer-nav-link" href="https://www.bbt.com/accessibility.html">Accessibility</a>
+			</li>
+
+		</ul>
+
+	</div>
+
+	<div class="footer-highlight">
+		<div class="footer__section footer__section--squish">
+			<p class="footer__legal">&copy; 2021, Truist, All Rights Reserved</p>
+		</div>
+	</div>
+
+</footer>
+
+<style>
+#suntrustbar-bar {
+    width: 100%;
+}
+
+#suntrustbar-bar p{
+	font-size: 16px;
+	color: white;
+}
+
+#suntrustbar-bar p a{
+	color: #b0e0e2;
+}
+#suntrustbar-bar.regular {
+position: fixed;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.suntrust-accessible-text{
+	display: none;
+}
+.sb-content-wrapper {
+
+}
+.sb-content-wrapper p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.sb-text-wrapper {
+    margin-right: .67em;
+    display: inline-block;
+    line-height: 1.3;
+}
+.sb-text-wrapper .sb-headline-text {
+    font-size: 1.2em;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: underline;
+}
+#suntrustbar-bar .sb-cta {
+
+}
+.sb-cta-button {
+    opacity: 1;
+    color: #000;
+    display: block;
+    cursor: pointer;
+    line-height: 1.5;
+    max-width: 22.5em;
+    text-align: center;
+    position: relative;
+    border-radius: .3rem;
+    white-space: nowrap;
+    margin: 1.75em auto 0;
+    text-decoration: none;
+    padding: 0;
+    overflow: hidden;
+}
+.sb-cta-button .sb-text-holder {
+    border-radius: inherit;
+    padding: .5rem 1.5rem;
+}
+
+.sb-close-wrapper {
+ padding-top: 15px;
+    float: right;
+    margin-right: 15px;
+	font-size: 14px;
+}
+
+.sb-close-wrapper .icon-close {
+    font-size: 2.3rem;
+    top: .5rem;
+    color: #000;
+    cursor: pointer;
+    position: absolute;
+    text-align: center;
+    line-height: 1.5rem;
+    z-index: 1000;
+	border:0;
+    text-decoration: none;
+	right: 2.2rem;
+}
+
+dcm.suntrust-notification-message > .suntrust-message-link::before {
+ font-family: "sun-icons-UXd1Fq6";
+    display: inline-block !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    text-decoration: inherit !important;
+    content: "?";
+    color: #ee6e15 !important;
+    font-size: 2rem;
+    margin-right: .5rem;
+}
+dcm.suntrust-notification-message {
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    transition: all .4s ease;
+    position: absolute;
+    display: inline-block !important;
+    bottom: 0;
+    left: 0;
+    z-index: 500;
+    width: 100%;
+    padding: 3rem 3rem;
+    background: #fff;
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 -.2rem .7rem 0 rgba(0,0,0,.2);
+    text-align: left;
+}
+
+
+.orange-icon-exclamation {
+    vertical-align: middle;
+    padding-bottom: .7rem;
+    padding-right: 2rem;
+}
+
+.alert-close-button-left {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 300;
+    vertical-align: bottom;
+}
+
+.alert-close-button-right {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 300;
+    vertical-align: bottom;
+}
+
+/* hero alert message css */
+.dcm-hero-alert-messaging-wrapper {background:#2e1a47; width: 100%; border-top: 1px solid white;} 
+.dcm-hero-alert-messaging {max-width: 109.4rem; margin: 0 auto; max-width: 1204px;}
+.dcm-hero-alert-messaging-content {padding: 3rem; color: #fff; padding: 35px 0;}
+
+ul.dcm-hero-alert-messaging-list {padding: 0; text-align: center; max-width: 32rem; margin: 0 auto;}
+ul.dcm-hero-alert-messaging-list li {list-style-type: none;}
+ul.dcm-hero-alert-messaging-list li:first-child {padding: 0 3rem 3rem;}
+ul.dcm-hero-alert-messaging-list li:first-child::after {content: " "; display: block; width: 33%; height: .1rem; background-color: #d4e1ef; margin-left: 33%; margin-bottom: -3rem; margin-top: 3rem;}
+ul.dcm-hero-alert-messaging-list li:last-child {padding: 3rem 3rem 0;}
+/* .dcm-hero-alert-messaging-list-icon {margin-bottom: 1rem;} */
+.dcm-hero-alert-messaging-list-icon img {height: 3.6rem; width: auto;}
+.dcm-hero-alert-messaging-list-copy a {text-decoration: underline; color: #fff;}
+.dcm-hero-alert-messaging-list-title {font-size: 2.2rem; font-weight:300; margin-top:.6rem;
+    font-size: 24px;
+    font-weight: 300;
+    margin-top: 10px;
+    line-height: 1;}
+ .dcm-paragraph-break {display:block;}
+@media screen and (min-width: 768px){
+	ul.dcm-hero-alert-messaging-list {display: flex; max-width: none; text-align: left;}
+	ul.dcm-hero-alert-messaging-list li {display: flex; flex: 1;}
+	ul.dcm-hero-alert-messaging-list li:first-child {padding: 0; border-bottom: none; border-right: 1px solid white;     max-width: 310px;
+    height: auto;
+    padding-right: 1em;}
+	ul.dcm-hero-alert-messaging-list li:first-child::after {content: none;}
+	ul.dcm-hero-alert-messaging-list li:last-child {padding: .7rem 0 0 1.4em;}
+	.dcm-hero-alert-messaging-list-icon {padding-right: 0;}
+	.dcm-hero-alert-messaging-list-copy {margin-top:-.3rem;}
+	.dcm-hero-alert-messaging-list-icon img {height: auto; width: 100%; max-width: 5rem;}
+        .dcm-paragraph-break {display:-webkit-inline-box;}
+}
+
+@media screen and (max-width: 768px){
+.dcm-hero-alert-messaging-list-copy {
+     margin-top: 0;
+     display: block;
+    width: 100%;
+}
+
+.dcm-hero-alert-messaging-content {
+    text-align: center;
+}
+
+ul.dcm-hero-alert-messaging-list li:first-child {
+  padding: 0 0 1em;
+}
+
+.dcm-hero-alert-messaging-list-icon {
+    margin-bottom: 0;
+}
+
+.sb-close-wrapper {
+  
+}
+
+ul.dcm-hero-alert-messaging-list li:first-child::after {
+    content: " ";
+    display: none;
+    width: 33%;
+    height: .1rem;
+    background-color: #d4e1ef;
+    margin-left: 33%;
+    margin-bottom: -3rem;
+    margin-top: 3rem;
+}
+
+ul.dcm-hero-alert-messaging-list li:last-child {
+    padding: 0;
+}
+
+.dcm-hero-alert-messaging-list-icon img {
+    height: 3.6rem;
+    width: auto;
+    margin-left: 3.3rem;
+}
+
+.dcm-paragraph-break {
+    display: initial;
+}
+
+.dcm-hero-alert-messaging-list-icon{
+	display: none;
+}
+
+ul.dcm-hero-alert-messaging-list{
+	padding: 0 2em;
+    text-align: left;
+}
+
+}
+</style>
+
+<div id="suntrustbar-bar" class="regular closable"> 
+
+		<div class="sb-close-wrapper">
+			<a href="javascript:void(0);" onclick="$('#suntrustbar-bar').fadeOut()"><span class="alert-close-button-left">CLOSE</span> <span class="alert-close-button-right">✕</span></a>
+		</div>
+		
+		<div class="dcm-hero-alert-messaging-wrapper">	
+			<div class="dcm-hero-alert-messaging">
+				<div class="dcm-hero-alert-messaging-content">
+					<ul class="dcm-hero-alert-messaging-list">
+						<li>
+							<div class="dcm-hero-alert-messaging-list-icon"><img src="images/truist-logo-white.svg" alt="white exclamation point icon"></div>
+							<div class="dcm-hero-alert-messaging-list-copy">
+								<div class="dcm-hero-alert-messaging-list-title">Coronavirus Response</div>
+								
+							</div>
+						</li>
+						<li>
+							<div class="dcm-hero-alert-messaging-list-copy">
+								<p>Learn more about our relief efforts for the <a href="https://www.truist.com/purpose/truist-cares" target="_blank" title="Coronavirus Information"><strong>coronavirus (COVID-19) pandemic<span class="suntrust-accessible-text">Link opens in a new window</span></strong></a>.</p>  
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script>
+	//Popper.Defaults.positionFixed = true;
+	Popper.Defaults.modifiers.computeStyle = false;
+</script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript" src="js/init.js"></script>
+ 
+
+
+
+<script type="text/javascript">
+function closeWdOverlay(elementId) {
+	$('#' + elementId).fadeOut();
+}
+function setSearchInputFocus(){
+	setTimeout(function() {
+		$("#wd_search_overlay input[type='text']")[0].focus();
+	}, 100);
+}
+
+var resizeTimeout;
+jQuery(window).resize(function(){
+	if(!!resizeTimeout){ clearTimeout(resizeTimeout); }
+	resizeTimeout = setTimeout(function(){    
+	if (window.outerWidth > 991) {
+		jQuery("#js-header").removeClass('backdrop-on');
+		jQuery('main, footer').removeClass('backdrop');
+	}
+  },200);
+});
+
+document.getElementById('js-collapsible__trigger--0').addEventListener('click', function(e) {
+	jQuery('#js-collapsible__target--0').toggle('slow');        
+		jQuery("#js-header").toggleClass('backdrop-on');
+		jQuery('main, footer').toggleClass('backdrop');
+		jQuery('#js-collapsible__trigger--0').toggleClass('is-expanded').attr('aria-expanded', function(index, attr) {
+			 return attr == 'false' ? 'true' : 'false';
+		});
+}, false);
+
+document.addEventListener('click', function(e) {
+	if (window.outerWidth <= 991) {
+		if(jQuery("#js-collapsible__target--0").is(':visible')){
+			if(e.target.id != 'js-collapsible__target--0' && e.target.id != 'js-collapsible__trigger--0' && jQuery(e.target).attr('data-toggle') != 'dropdown' && e.target.parentElement.id != 'js-collapsible__trigger--0' && e.target.parentElement.id != 'wd_mobile_nav-svg' && e.target.className != 'button-text') {
+				// $('#js-collapsible__target--0').collapse('toggle');
+				jQuery('#js-collapsible__target--0').toggle('slow');        
+				jQuery("#js-header").toggleClass('backdrop-on');
+				jQuery('main, footer').toggleClass('backdrop');
+				jQuery('#js-collapsible__trigger--0').toggleClass('is-expanded').attr('aria-expanded', function(index, attr) {
+					return attr == 'false' ? 'true' : 'false';
+				});
+			}
+		}
+	}
+}, false);
+
+$(document).ready(function() {
+	$(".wd_subscribe_featurebox label").each(function() {
+		$(this).text($(this).text().replace(/\*/g, '').trim());
+		// var label = $(this);
+		// var placeholder = label.text().replace(/\*/g, '').trim();
+		// //placeholder = placeholder.replace(/\*/g, '').trim();
+		// label.parent().next(".wd_form_field_input").find("input").attr("placeholder", placeholder);
+	});
+	// $('#js-collapsible__trigger--0').on('click', function() {
+	//     $("#js-header").toggleClass('backdrop-on');
+	//     $('main, footer').toggleClass('backdrop');
+	//     $(this).toggleClass('is-expanded').attr('aria-expanded', function(index, attr) {
+	//         return attr == false ? true : false;
+	//     });
+	//     $("#js-collapsible__target--0").toggle('slow');
+	// });
+	// $('#wd_search_trigger').on('click', function(e) {
+	//     $('#wd_search_overlay').fadeIn();
+	// });
+	// $(window).on('click', function(event) {
+	//     if ($("#wd_search_overlay")[0].style.display == "block") {
+	//         if (event.target.id == "wd_search_overlay") {
+	//                 closeWdOverlay("wd_search_overlay");
+	//         }
+	//     }
+	//     // if ($("#wd_mobile_search_overlay")[0].style.display == "block") {
+	//     //     if (event.target.id == "wd_mobile_search_overlay") {
+	//     //             closeWdOverlay("wd_mobile_search_overlay");
+	//     //     }
+	//     // }
+	// });
+	// $(window).on('touchstart', function(event) {
+	//     if ($("#wd_search_overlay")[0].style.display == "block") {
+	//         if (event.target.id == "wd_search_overlay") {
+	//                 closeWdOverlay("wd_search_overlay");
+	//         }
+	//     }
+	//     // if ($("#wd_mobile_search_overlay")[0].style.display == "block") {
+	//     //     if (event.target.id == "wd_mobile_search_overlay") {
+	//     //             closeWdOverlay("wd_mobile_search_overlay");
+	//     //     }
+	//     // }
+	// });
+});
+// $('.dropdown').on('show.bs.dropdown', function() {
+// 	$(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+// });
+// $('.dropdown').on('hide.bs.dropdown', function() {
+// 	$(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+// });
+$('.single_slider_carousel_caption').addClass('container');
+
+// close bootstrap menu on click outside of it
+// $(document).on('click', function (e){                     
+//     var menu_opened = jQuery('#js-collapsible__target--0').css('display') == 'block';
+//     if(!$(e.target).is('#js-collapsible__target--0') && menu_opened === true){
+//         $('#js-collapsible__target--0').collapse('toggle');
+//         $("#js-header").toggleClass('backdrop-on');
+//         $('main, footer').toggleClass('backdrop');
+//     }
+// });
+$(document).ready(function() {
+	//$('.wd_dividend_tbl').wrap('<div class="wd_dividend_container"></div>');
+	$(function() {
+		$('table.responsive').each(function() {
+			var table_id = $(this).attr('id');
+			var head_col_count =  $(this).find('thead th').length;
+			var i;
+			for ( i=0; i <= head_col_count; i++ )  {
+				var head_col_label = $(this).find('th:nth-child('+ i +')').text();
+				if (head_col_label != ""){
+					head_col_label = head_col_label + ": ";
+				}
+				$(this).find('tr td:nth-child('+ i +')').attr('data-th',head_col_label);
+			}
+		});
+	});
+	var wd_tools = document.querySelectorAll('.wd_tools li a');
+	if (wd_tools.length>0) {
+		for (var i=0;i<wd_tools.length;i++) {
+			wd_tools[i].setAttribute('aria-label', wd_tools[i].getAttribute('title'));
+		}
+	}
+	var mainRow = $('main');
+	var navBar = $('nav.navbar');
+	var navBarHeight = navBar.height();
+	$('.wd_navbar-wrapper').css('min-height',navBarHeight+'px');
+	function scroll() {
+		var mainYoffset = mainRow.offset().top - $(window).scrollTop() - navBarHeight;
+		if(navBarHeight - $(window).scrollTop() <= 0) {
+			navBar.addClass('fixed-top');
+		} else {
+			navBar.removeClass('fixed-top');
+		}
+		if(mainYoffset <= 0) {
+			navBar.addClass('in-view');
+		} else {
+			navBar.removeClass('in-view');
+		}
+	}
+	$(window).scroll(function() {
+		scroll();
+	});
+	scroll();
+});
+</script>
+<script>
+$(document).ready(function() {
+	$('.wd_events_inputs').prepend('<span class="filter_label">Filters</span>');
+});
+</script>
+
+
+
+<script>
+	//Adds banner to distinguish between past events and future events
+
+	$(document).ready(function() {
+		var currentPath = window.location.href;
+		var currentPathArr = currentPath.split('/');
+		var lastPosition = currentPathArr.length;
+		var currentPage = currentPathArr[lastPosition - 1];
+
+
+		if (currentPage == "events-and-presentation") {
+            if ($('.wd_events_past_summary').length > 0) {// if this exists, there are upcoming and past events
+                $("<div class="+ "wd_event_indicator" + ">Upcoming Events</div>").insertBefore('.wd_events_list');
+                $("<div class="+ "wd_event_indicator" + ">Past Events</div>").insertBefore('.wd_events_past_summary');	
+            } else {
+                $("<div class="+ "wd_event_indicator" + ">Past Events</div>").insertBefore('.wd_events_list');	
+            }
+		}
+	
+
+		$('.wd_events_tab_future').click(function() {
+
+			$('.wd_event_indicator').remove();
+			$('.wd_past_events').remove();
+			$("<div class="+ "wd_future_events" + ">Upcoming Events</div>").insertBefore('.wd_events_list');
+			
+			
+			
+
+		});
+		$('.wd_events_tab_past').click(function() {
+			$('.wd_event_indicator').remove();
+			$('.wd_future_events').remove();
+			$("<div class="+ "wd_past_events" + ">Past Events</div>").insertBefore('.wd_events_list');
+			
+
+		});
+	});
+</script>
+
+<script>
+	/*************************
+	Corporate and Social Responsibilty 
+	*************************/
+
+	//Prepends the item name to the the top of each item
+	$('.wd_pageid_58 .wd_category_items .item').each(function() {
+		$(this).prepend($(this).find('.item_name'));
+	})
+
+	//Wraps each item with it's respective link
+	$('.wd_pageid_58 .wd_category_items .item').each(function() {
+		var categoryLink = $(this).find('.item_name a').attr(
+			'href');
+		$(this).find('.wd_imagetable img').wrap('<a href='+categoryLink+' data-wa-track-clk="1" data-wa-linktype="download"></a>')
+	});
+
+	//Creates a seperate container for the first item in the list 
+	$('.wd_pageid_58 .wd_category_items:not(.wd_category_items_15) .item:first').wrap('<div class="responsibilty_reports"></div>');
+	$('.wd_pageid_58 .wd_category_items:not(.wd_category_items_15) .item:first').addClass('responsibilty_report');
+	/*************************
+	Annual Reports & Proxy Statements 
+	*************************/
+
+	//Prepends the item name to the the top of each item
+	$('.wd_pageid_20 .wd_category_items .item').each(function() {
+		$(this).prepend($(this).find('.item_name'));
+	})
+
+	//Wraps each item with it's respective link
+	$('.wd_pageid_20 .wd_category_items .item').each(function() {
+		var categoryLink = $(this).find('.item_name a').attr(
+			'href');
+		$(this).find('.wd_imagetable img').wrap('<a href='+categoryLink+' data-wa-track-clk="1" data-wa-linktype="download"></a>')
+	});
+</script>
+
+<script type="text/javascript">
+	try {
+		_satellite.pageBottom();
+	}
+	catch(error) {
+		if(error) {
+			console.log(error);
+		}
+	}
+</script>
+
+
+<!-- begin spin_special_output(body_end) -->
+<script wd_script_id="piwik_tracking_code"></script>
+<!-- Piwik Tracking Code -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+
+  _paq.push(["setCustomVariable", 1, "Content Type", "Events", "page"]);
+
+  _paq.push(["setCustomVariable", 3, "Navigation Page", "Events & Presentations", "page"]);
+
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+  (function() {
+    var u="//stats.drivetheweb.com/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", 5614]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0];
+    g.type="text/javascript"; g.async=true; g.defer=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript>
+	<img src="https://stats.drivetheweb.com/piwik.php?idsite=5614&rec=1" style="border:0" alt="" />
+</noscript>
+<!-- End Piwik Tracking Code -->
+		
+<!-- end spin_special_output(body_end) -->
+</body>
+</html>
