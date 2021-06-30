@@ -60,7 +60,7 @@ def extract_pages(mystr, nlp_spacy, nlp_stanza):
         for s in soup.select('footer'):
             s.extract()
 
-        # remove <footer>
+        # remove <links>
         for s in soup.select('a href'):
             s.extract()
 
@@ -142,21 +142,28 @@ def main():
                "1q", "2q", "3q", "4q",
                "quarter 1", "quarter 2", "quarter 3", "quarter 4",
                "first quarter", "second quarter", "third quarter", "fourth quarter",
-               "full year", "annual", "1S", "2S",
-               "S1", "S2", "first half", "second half", ]
+               "full year", "annual", "1s", "2s",
+               "s1", "s2", "first half", "second half", ]
     for item in periods:
         ruler.add_patterns([{"label": "FISCAL_PERIOD", "pattern": item}])
 
     # add custom rules to the pipe
     nlp_spacy.add_pipe(ruler)
+    all_names = []
+    all_dates = []
+    all_times = []
 
     for url in urls:
         page = get_page(url)
         company_name = extract_company(page, nlp_spacy, nlp_stanza)
         print(company_name)
-        all_date, all_time = extract_pages(page, nlp_spacy, nlp_stanza)
-        print(all_date)
-        print(all_time)
+        page_date, page_time = extract_pages(page, nlp_spacy, nlp_stanza)
+        print(page_date)
+        print(page_time)
+        all_names.append(company_name)
+        all_dates.append(page_date)
+        all_times.append(page_time)
+    save_to_csv(all_names, all_dates, all_times)
 
 
 def walker(soup):
@@ -253,10 +260,15 @@ def get_parent_r_text(soup, pattern, nlp_spacy, nlp_stanza):
 
         # print('\t(search_dates)', search_dates(str_elem))
 
-        stanza_all_date.append(stanza_cur_date)
+        if len(stanza_cur_date) == 0:
+            stanza_cur_date.append('0')
+        if len(spacy_cur_date) == 0:
+            spacy_cur_date.append('0')
+
+        stanza_all_date.append(stanza_cur_date[0])
         stanza_all_time.append(' '.join(stanza_cur_time))
 
-        spacy_all_date.append(spacy_cur_date)
+        spacy_all_date.append(spacy_cur_date[0])
         spacy_all_time.append(' '.join(spacy_cur_time))
         spacy_all_fp.append(spacy_cur_fp)
         if i > 5:
@@ -267,8 +279,19 @@ def get_parent_r_text(soup, pattern, nlp_spacy, nlp_stanza):
 
     # print('\tspacy dates:', spacy_all_date)
     # print('\tspacy times:', spacy_all_time)
+    if len(stanza_all_time) == 0:
+        stanza_all_time.append('0')
+    if len(spacy_all_date) == 0:
+        spacy_all_date.append('0')
 
-    return spacy_all_date[:6], stanza_all_time[:6]
+    return spacy_all_date[0], stanza_all_time[0]
+
+
+def save_to_csv(name_list, date_list, time_list):
+    print('saving prediction')
+    table = {'company_name': name_list, 'date': date_list, 'time': time_list}
+    df = pd.DataFrame(table)
+    df.to_csv('predictions.csv', index=False)
 
 
 if __name__ == '__main__':
