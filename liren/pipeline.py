@@ -22,7 +22,8 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def extract_pages(mystr, nlp_spacy, nlp_stanza):
-
+    if mystr == None:
+        return 'NONE', 'NONE'
     if len(mystr) > 0:
         soup = BeautifulSoup(mystr, 'html5lib')
 
@@ -72,31 +73,36 @@ def extract_pages(mystr, nlp_spacy, nlp_stanza):
 
 
 def extract_company(mystr, nlp_spacy, nlp_stanza):
+    if mystr == None:
+        return 'NONE'
     if len(mystr) > 0:
         soup = BeautifulSoup(mystr, 'html5lib')
 
         title = soup.find('title')
-        title = re.sub("[(]\S+[)]", "", title.string)
-        # print(title)  # Prints the tag string content
+        if title != None:
+            title = re.sub("[(]\S+[)]", "", title.string)
+            # print(title)  # Prints the tag string content
 
-        spans = re.split("\B\W+\B", title)
-        spans = [i for i in spans if i]
+            spans = re.split("\B\W+\B", title)
+            spans = [i for i in spans if i]
 
-        company_name = ''
+            company_name = ''
 
-        for span in spans:
-            # Augmented spacy
-            # doc = nlp_spacy(span.strip().lower())
-            # for ent in doc.ents:
-            #     print('\t(Spacy)', ent.text, ':', ent.label_)
+            for span in spans:
+                # Augmented spacy
+                # doc = nlp_spacy(span.strip().lower())
+                # for ent in doc.ents:
+                #     print('\t(Spacy)', ent.text, ':', ent.label_)
 
-            # stanza (stanford ner)
-            doc = nlp_stanza(span.strip())
-            for ent in doc.entities:
-                #print(f'\t(stanza) {ent.text} : {ent.type}')
-                company_name = ent.text
+                # stanza (stanford ner)
+                doc = nlp_stanza(span.strip())
+                for ent in doc.entities:
+                    #print(f'\t(stanza) {ent.text} : {ent.type}')
+                    company_name = ent.text
 
-        return company_name
+            company_name = company_name.replace(",", "")
+            return company_name
+        return 'NONE'
 
 
 def get_page(url):
@@ -116,9 +122,9 @@ def get_page(url):
 
 def main():
 
-    file_path = os.path.join('60_links.csv')
+    file_path = os.path.join('160_links_cleaned.csv')
     df = pd.read_csv(file_path, sep=',', engine='python')
-    urls = list(df['Link'])[:20]
+    urls = list(df['Link'])[:50]
     print(len(urls))
 
     nlp_spacy = spacy.load('en_core_web_lg')
@@ -152,18 +158,24 @@ def main():
     all_names = []
     all_dates = []
     all_times = []
+    all_pages = []
 
     for url in urls:
         page = get_page(url)
         company_name = extract_company(page, nlp_spacy, nlp_stanza)
-        print(company_name)
+        # print(company_name)
         page_date, page_time = extract_pages(page, nlp_spacy, nlp_stanza)
-        print(page_date)
-        print(page_time)
+
+        # print(page_date)
+        # print(page_time)
         all_names.append(company_name)
         all_dates.append(page_date)
         all_times.append(page_time)
-    save_to_csv(all_names, all_dates, all_times)
+
+        # gpt_page = print_pages(page)
+        # all_pages.append(gpt_page)
+    save_to_csv(urls, all_names, all_dates, all_times)
+    # gpt_output(all_pages)
 
 
 def walker(soup):
@@ -190,6 +202,33 @@ def walker(soup):
     t4 = [t3[i] for i in range(len(t3)) if (i == 0) or t3[i] != t3[i-1]]
     page = " ".join(t4)
     print(len(page))
+
+    return page
+
+
+def walker_gpt(soup):
+    page = ''
+    for child in soup.recursiveChildGenerator():
+        name = getattr(child, 'name', None)
+        if name is not None:
+            page += ' <' + name + '> '
+
+        elif not child.isspace():
+            blacklist_str = ['widget', 'span',
+                             'wrapper', '<', '>', 'row', 'footer']
+
+            if any(x in str(child).lower() for x in blacklist_str) or len(str(child)) < 4:
+                pass
+                # print(str(child))
+            else:
+                page += " ".join(child.split())
+
+    t1 = page.encode("ascii", "ignore")
+    t2 = t1.decode()
+    t3 = t2.split()
+    t4 = [t3[i] for i in range(len(t3)) if (i == 0) or t3[i] != t3[i-1]]
+    page = " ".join(t4)
+    # print(page)
 
     return page
 
@@ -230,7 +269,7 @@ def get_parent_r_text(soup, pattern, nlp_spacy, nlp_stanza):
         spacy_cur_time = []
         spacy_cur_fp = []
 
-        # print(f'{i}---------Text: {str_elem}')
+        #print(f'{i}---------Text: {str_elem}')
 
         doc = nlp_spacy(str_elem)
         for ent in doc.ents:
@@ -261,14 +300,14 @@ def get_parent_r_text(soup, pattern, nlp_spacy, nlp_stanza):
         # print('\t(search_dates)', search_dates(str_elem))
 
         if len(stanza_cur_date) == 0:
-            stanza_cur_date.append('0')
+            stanza_cur_date.append('NONE')
         if len(spacy_cur_date) == 0:
-            spacy_cur_date.append('0')
+            spacy_cur_date.append('NONE')
 
-        stanza_all_date.append(stanza_cur_date[0])
+        stanza_all_date.append(stanza_cur_date[0].replace(",", ""))
         stanza_all_time.append(' '.join(stanza_cur_time))
 
-        spacy_all_date.append(spacy_cur_date[0])
+        spacy_all_date.append(spacy_cur_date[0].replace(",", ""))
         spacy_all_time.append(' '.join(spacy_cur_time))
         spacy_all_fp.append(spacy_cur_fp)
         if i > 5:
@@ -280,18 +319,91 @@ def get_parent_r_text(soup, pattern, nlp_spacy, nlp_stanza):
     # print('\tspacy dates:', spacy_all_date)
     # print('\tspacy times:', spacy_all_time)
     if len(stanza_all_time) == 0:
-        stanza_all_time.append('0')
+        stanza_all_time.append('NONE')
     if len(spacy_all_date) == 0:
-        spacy_all_date.append('0')
+        spacy_all_date.append('NONE')
 
     return spacy_all_date[0], stanza_all_time[0]
 
 
-def save_to_csv(name_list, date_list, time_list):
+def print_pages(mystr):
+    if mystr == None:
+        return 'NONE', 'NONE'
+    if len(mystr) > 0:
+        soup = BeautifulSoup(mystr, 'html5lib')
+
+        #soup = soup.find("body")
+
+        # remove <script> JS
+        for s in soup.select('script'):
+            s.extract()
+
+        # remove <button>
+        for s in soup.select('button'):
+            s.extract()
+
+        # remove <style>
+        for s in soup.select('style'):
+            s.extract()
+
+        # remove <meta>
+        for s in soup.select('meta'):
+            s.extract()
+
+        # remove <nav>
+        for s in soup.select('nav'):
+            s.extract()
+
+        # remove <head>
+        for s in soup.select('head'):
+            s.extract()
+
+        # remove <header>
+        for s in soup.select('header'):
+            s.extract()
+
+        # remove <footer>
+        for s in soup.select('footer'):
+            s.extract()
+
+        # remove <links>
+        for s in soup.select('a href'):
+            s.extract()
+
+        try:
+            return walker_gpt(soup)
+        except Exception as e:
+            print('Error')
+
+
+def save_to_csv(url_list, name_list, date_list, time_list):
+    #"{Company}, {Fiscal Year}, {Fiscal Period}, {Event Type}, {Event Date}, {Time}, {Timezone}, {Language}, {Phone Number}, {Webcast URL}"
     print('saving prediction')
-    table = {'company_name': name_list, 'date': date_list, 'time': time_list}
+    event1 = []
+    event2 = []
+    event3 = []
+    event4 = []
+    event5 = []
+    blank = 'NONE'
+    empty = 'EMPTY'
+    for i in range(len(name_list)):
+        event1.append(
+            f'({name_list[i]}, {blank}, {blank}, {blank}, {date_list[i]}, {time_list[i]}, {blank}, {blank}, {blank}, {blank})')
+        event2.append(empty)
+        event3.append(empty)
+        event4.append(empty)
+        event5.append(empty)
+
+    table = {'Link': url_list, '1': event1, '2': event2,
+             '3': event3, '4': event4, '5': event5}
     df = pd.DataFrame(table)
     df.to_csv('predictions.csv', index=False)
+
+
+def gpt_output(page_list):
+    table = {'pages': page_list}
+    df = pd.DataFrame(table)
+    df.to_csv('output.csv', index=False)
 
 
 if __name__ == '__main__':
