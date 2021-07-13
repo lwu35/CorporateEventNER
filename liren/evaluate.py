@@ -44,7 +44,7 @@ def checker(gold_df, pred_df, num_ex, event_col):
 
     for i, page in enumerate(gold_tuple):
         # print(page)
-        print(i)
+        # print(i)
         if page != 'EMPTY':
             page = page[1:-1]
             event_info = page.split(',')

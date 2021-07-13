@@ -66,8 +66,60 @@ def extract_pages(mystr, nlp_spacy, nlp_stanza):
             s.extract()
 
         try:
+
             return get_parent_r_text(soup, r'\d{4}', nlp_spacy, nlp_stanza)
             # get_parent_r(soup, r'\d{4}')
+        except Exception as e:
+            print('Error')
+
+
+def extract_pages_gpt(mystr):
+    if mystr == None:
+        return 'NONE', 'NONE'
+    if len(mystr) > 0:
+        soup = BeautifulSoup(mystr, 'html5lib')
+
+        #soup = soup.find("body")
+
+        # remove <script> JS
+        for s in soup.select('script'):
+            s.extract()
+
+        # remove <button>
+        for s in soup.select('button'):
+            s.extract()
+
+        # remove <style>
+        for s in soup.select('style'):
+            s.extract()
+
+        # remove <meta>
+        for s in soup.select('meta'):
+            s.extract()
+
+        # remove <nav>
+        for s in soup.select('nav'):
+            s.extract()
+
+        # remove <head>
+        for s in soup.select('head'):
+            s.extract()
+
+        # remove <header>
+        for s in soup.select('header'):
+            s.extract()
+
+        # remove <footer>
+        for s in soup.select('footer'):
+            s.extract()
+
+        # remove <links>
+        for s in soup.select('a href'):
+            s.extract()
+
+        try:
+            return walker_gpt(soup)
+
         except Exception as e:
             print('Error')
 
@@ -124,7 +176,7 @@ def main():
 
     file_path = os.path.join('160_links_cleaned.csv')
     df = pd.read_csv(file_path, sep=',', engine='python')
-    urls = list(df['Link'])[:50]
+    urls = list(df['Link'])[:10]
     print(len(urls))
 
     nlp_spacy = spacy.load('en_core_web_lg')
@@ -164,7 +216,8 @@ def main():
         page = get_page(url)
         company_name = extract_company(page, nlp_spacy, nlp_stanza)
         # print(company_name)
-        page_date, page_time = extract_pages(page, nlp_spacy, nlp_stanza)
+        page_date, page_time = extract_pages(
+            page, nlp_spacy, nlp_stanza)
 
         # print(page_date)
         # print(page_time)
@@ -172,10 +225,10 @@ def main():
         all_dates.append(page_date)
         all_times.append(page_time)
 
-        # gpt_page = print_pages(page)
-        # all_pages.append(gpt_page)
+        gpt_page = extract_pages_gpt(page)
+        all_pages.append(gpt_page)
     save_to_csv(urls, all_names, all_dates, all_times)
-    # gpt_output(all_pages)
+    gpt_output_text(all_pages)
 
 
 def walker(soup):
@@ -211,7 +264,8 @@ def walker_gpt(soup):
     for child in soup.recursiveChildGenerator():
         name = getattr(child, 'name', None)
         if name is not None:
-            page += ' <' + name + '> '
+            pass
+            # page += ' <' + name + '> '
 
         elif not child.isspace():
             blacklist_str = ['widget', 'span',
@@ -221,14 +275,14 @@ def walker_gpt(soup):
                 pass
                 # print(str(child))
             else:
-                page += " ".join(child.split())
+                page += (" ".join(child.split()) + '. ')
 
     t1 = page.encode("ascii", "ignore")
     t2 = t1.decode()
     t3 = t2.split()
     t4 = [t3[i] for i in range(len(t3)) if (i == 0) or t3[i] != t3[i-1]]
     page = " ".join(t4)
-    # print(page)
+    print(page)
 
     return page
 
@@ -404,6 +458,12 @@ def gpt_output(page_list):
     table = {'pages': page_list}
     df = pd.DataFrame(table)
     df.to_csv('output.csv', index=False)
+
+
+def gpt_output_text(page_list):
+    table = {'pages': page_list}
+    df = pd.DataFrame(table)
+    df.to_csv('output_text.csv', index=False)
 
 
 if __name__ == '__main__':
