@@ -176,7 +176,7 @@ def main():
 
     file_path = os.path.join('160_links_cleaned.csv')
     df = pd.read_csv(file_path, sep=',', engine='python')
-    urls = list(df['Link'])[:10]
+    urls = list(df['Link'])[:50]
     print(len(urls))
 
     nlp_spacy = spacy.load('en_core_web_lg')
@@ -317,54 +317,55 @@ def get_parent_r_text(soup, pattern, nlp_spacy, nlp_stanza):
     for i, elem in enumerate(soup(text=re.compile(pattern))):
         str_elem = str(elem.parent.get_text())
         str_elem = ' '.join(str_elem.split())
-        stanza_cur_date = []
-        stanza_cur_time = []
-        spacy_cur_date = []
-        spacy_cur_time = []
-        spacy_cur_fp = []
+        if ',' in str_elem or '/' in str_elem:
+            stanza_cur_date = []
+            stanza_cur_time = []
+            spacy_cur_date = []
+            spacy_cur_time = []
+            spacy_cur_fp = []
 
-        #print(f'{i}---------Text: {str_elem}')
+            print(f'{i}---------Text: {str_elem}')
 
-        doc = nlp_spacy(str_elem)
-        for ent in doc.ents:
-            # print('\t(Spacy) <ENT>:', ent.text, '<Label>:', ent.label_)
-            if ent.label_ == 'TIME':
-                spacy_cur_time.append(ent.text)
-            if ent.label_ == 'DATE':
-                spacy_cur_date.append(ent.text)
-            if ent.label_ == 'FISCAL_PERIOD':
-                spacy_cur_fp.append(ent.text)
+            doc = nlp_spacy(str_elem)
+            for ent in doc.ents:
+                # print('\t(Spacy) <ENT>:', ent.text, '<Label>:', ent.label_)
+                if ent.label_ == 'TIME':
+                    spacy_cur_time.append(ent.text)
+                if ent.label_ == 'DATE':
+                    spacy_cur_date.append(ent.text)
+                if ent.label_ == 'FISCAL_PERIOD':
+                    spacy_cur_fp.append(ent.text)
 
-        doc = nlp_stanza(str_elem)
-        for ent in doc.entities:
-            # print(f'\t(stanza) {ent.text}\t{ent.type}')
-            if ent.type == 'TIME':
-                stanza_cur_time.append(ent.text)
-            if ent.type == 'DATE':
-                stanza_cur_date.append(ent.text)
+            doc = nlp_stanza(str_elem)
+            for ent in doc.entities:
+                # print(f'\t(stanza) {ent.text}\t{ent.type}')
+                if ent.type == 'TIME':
+                    stanza_cur_time.append(ent.text)
+                if ent.type == 'DATE':
+                    stanza_cur_date.append(ent.text)
 
-        # print('\t(datetime-extractor)', DateTimeExtractor(str_elem))
-        # print('\t(date-extractor)', extract_dates(str_elem))
-        # print('\t(date-extractor)', extract_date(str_elem))
+            # print('\t(datetime-extractor)', DateTimeExtractor(str_elem))
+            # print('\t(date-extractor)', extract_dates(str_elem))
+            # print('\t(date-extractor)', extract_date(str_elem))
 
-        # dateFounded = datefinder.find_dates(str_elem)
-        # for date in dateFounded:
-        #     print('\t(datefinder)', date)
+            # dateFounded = datefinder.find_dates(str_elem)
+            # for date in dateFounded:
+            #     print('\t(datefinder)', date)
 
-        # print('\t(search_dates)', search_dates(str_elem))
+            # print('\t(search_dates)', search_dates(str_elem))
 
-        if len(stanza_cur_date) == 0:
-            stanza_cur_date.append('NONE')
-        if len(spacy_cur_date) == 0:
-            spacy_cur_date.append('NONE')
+            if len(stanza_cur_date) == 0:
+                stanza_cur_date.append('NONE')
+            if len(spacy_cur_date) == 0:
+                spacy_cur_date.append('NONE')
 
-        stanza_all_date.append(stanza_cur_date[0].replace(",", ""))
-        stanza_all_time.append(' '.join(stanza_cur_time))
+            stanza_all_date.append(stanza_cur_date[0].replace(",", ""))
+            stanza_all_time.append(' '.join(stanza_cur_time))
 
-        spacy_all_date.append(spacy_cur_date[0].replace(",", ""))
-        spacy_all_time.append(' '.join(spacy_cur_time))
-        spacy_all_fp.append(spacy_cur_fp)
-        if i > 5:
+            spacy_all_date.append(spacy_cur_date[0].replace(",", ""))
+            spacy_all_time.append(' '.join(spacy_cur_time))
+            spacy_all_fp.append(spacy_cur_fp)
+        if i > 10:
             break
 
     # print('\tstanza dates:', stanza_all_date)
