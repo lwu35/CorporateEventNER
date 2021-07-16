@@ -13,7 +13,9 @@ import time
 from tqdm import tqdm
 import csv
   
-
+np.random.seed(123)
+torch.manual_seed(123)
+torch.cuda.manual_seed(123)
 
 class ParserModel(torch.nn.Module):
     def __init__(self,
@@ -24,28 +26,29 @@ class ParserModel(torch.nn.Module):
         self.bert_model = BertModel.from_pretrained(model_name_or_path)
         self.dropout = Dropout(dropout)
         self.num_intent_labels = num_intent_labels
+        # 52 -> 7
         self.intent_classifier = nn.Linear(self.bert_model.config.hidden_size, num_intent_labels)
+        #print(num_intent_labels)
 
     def forward(self,
                 input_ids: torch.tensor,
-                attention_mask: torch.tensor,
                 token_type_ids: torch.tensor,
                 intent_label: torch.tensor = None
                 ):
-      
+
         last_hidden_states, pooler_output = self.bert_model(input_ids=input_ids,
-                                  attention_mask=attention_mask,
                                   token_type_ids=token_type_ids,
                                    return_dict=False)
         
         #print(self.bert_model.config)
-
-
-        intent_logits = self.intent_classifier(self.dropout(pooler_output))
-
-        loss_fct = CrossEntropyLoss()
+        #print(last_hidden_states)    
+        #sigmoid
+        #print(last_hidden_states.size())
+        intent_logits = self.intent_classifier(self.dropout(pooler_output)) 
+        #print(intent_logits.size()) # 7 close to 0 or 1, if not apply sigmoid
+        loss_fct = CrossEntropyLoss() #BCE multiclass
         # Compute losses if labels provided
-
+        #print("...")
         intent_loss = loss_fct(intent_logits.view(-1, self.num_intent_labels), intent_label.type(torch.long))
 
         return intent_logits, intent_loss
@@ -74,11 +77,11 @@ class ParserModel(torch.nn.Module):
 # event_text = [['2021','Astronics','Corporation','Annual','Meeting','of','Shareholders','May','25','2021','10:00am','EDT','Orlando','Florida'],
 #              ['Fourth','Quarter','2020','Earnings','FEB','26','2021','AT','8:30','AM','EST','https://edge.media-server.com/mmc/p/6h793499']]
 
-event_tags = ['Shareholder Meeting','None','Earnings Release','Conference','Conference','Earnings Call','Stockholder Meeting','Conference','Conference','Shareholder Meeting',
+event_tags = ['Shareholder Meeting','None/Other','Earnings Release','Conference','Conference','Earnings Call','Shareholder Meeting','Conference','Conference','Shareholder Meeting',
 'Shareholder Meeting','Conference','Earnings Call','Earnings Call','Earnings Call','Earnings Release','Conference','Earnings Call','Earnings Release','Earnings Call','Earnings Release',
 'Earnings Release','Earnings Call','Earnings Release','Earnings Release','Shareholder Meeting','Earnings Release','Earnings Release','Earnings Call','Earnings Call','Earnings Call',
-'Earnings Release','Earnings Call','Earnings Call','None','Earnings Call','Earnings Release','Conference','Earnings Call','Earnings Release','Shareholder Meeting','Earnings Release','Conference',
-'Earnings Call','Earnings Call','Earnings Call','Merger/Acquisition','Earnings Call','Earnings Call','Earnings Call','Earnings Call','Earnings Release']
+'Earnings Release','Earnings Call','Earnings Call','None/Other','Earnings Call','Earnings Release','Conference','Earnings Call','Earnings Release','Shareholder Meeting','Earnings Release','Conference',
+'Earnings Call','Earnings Call','Earnings Call','Merger/Acquisition','Earnings Call','Earnings Call','Earnings Call','Earnings Call','Earnings Release','Earnings Release']
 
 
 raw_event_text = [["2021 Astronics Corporation Annual Meeting of Shareholders May 25, 2021 • 10:00am EDT Orlando, Florida"],
@@ -135,8 +138,18 @@ raw_event_text = [["2021 Astronics Corporation Annual Meeting of Shareholders Ma
 ["May 5, 2021 at 10:30 AM EDT Avista Corporation Q1 2021 Earnings Conference Call Click here for webcast"],
 ["May 06, 2021 Alleghany Corporation 2021 First Quarter Results"]]
 
+# print(len(event_tags))
+# print(len(raw_event_text))
+intent_vocab = ['Sales Results','Guidance']
+for intent in event_tags:
+    if intent not in intent_vocab:
+        intent_vocab.append(intent)
+# print(len(intent_vocab))
+# print(intent_vocab)
 # 1. For mapping slots between ints and string
-intent2id = {intent:id for id,intent in enumerate(event_tags)}
+
+
+intent2id = {intent:id for id,intent in enumerate(intent_vocab)}
 id2intent = {id:intent for intent,id in intent2id.items()}
 
 
@@ -146,12 +159,16 @@ tokenizer = BertTokenizerFast.from_pretrained('bert-base-uncased', do_lower_case
 
 
 # 4. pads to longest sequence, truncates to maximum allowed length by model, 
-# Gives encodings, token type_ids -> https://huggingface.co/transformers/glossary.html#token-type-ids and attention_masks
+# Gives encodings, token type_ids -> https://huggingface.co/transformers/glossary.html#token-type-ids 
 # and offset_mappings
 train_encodings = tokenizer(raw_event_text, return_offsets_mapping=True,is_split_into_words=True, padding=True, truncation=True)
 
+
+
 def encode_intents(intents, mapping):
+    #pytorch so no need to one hot encode
     labels = [mapping[intent] for intent in intents]
+    #print(labels)
     return labels
 
 train_intent_labels =  encode_intents(event_tags, intent2id)
@@ -175,7 +192,7 @@ train_dataset = EventDataset(train_encodings, train_intent_labels)
 
 dropout = 0.2
 
-num_intent_labels = len(event_tags)
+num_intent_labels = len(intent_vocab)
 
 model = ParserModel(model_name_or_path='bert-base-uncased',
                     dropout=dropout,
@@ -187,46 +204,62 @@ device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cp
 model.to(device)
 model.train()
 
-train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True)
+train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
 
 optim = AdamW(model.parameters(), lr=5e-5)
 
 # Number of training epochs (authors recommend between 2 and 4)
 # input_ids: torch.tensor,
-#                 attention_mask: torch.tensor,
 #                 token_type_ids: torch.tensor,
 #                 slot_labels: torch.tensor = None
-for epoch in tqdm(range(3)):
+for epoch in tqdm(range(16)):
     for batch in train_loader:
         optim.zero_grad()
         input_ids = batch['input_ids'].to(device)
-        attention_mask = batch['attention_mask'].to(device)
         token_type_ids = batch['token_type_ids'].to(device)
         intent_labels = batch['intent_labels'].to(device)
-        outputs = model(input_ids=input_ids, 
-                        attention_mask=attention_mask,
+        outputs = model(input_ids=input_ids,
                         token_type_ids=token_type_ids, 
-                        intent_label=intent_labels,)
+                        intent_label=intent_labels)
         intent_loss = outputs[1]
-        intent_loss.backward(retain_graph=True) #need to retain_graph  when working with multiple losses
+        print(intent_loss)
+        intent_loss.backward() #need to retain_graph  when working with multiple losses
         optim.step()
-
-#run predictions on new dataset currently running on training set
 model.eval()
+#run predictions on new dataset currently running on training set
+
+
+event_tags_eval = ['Earnings Release', 'Earnings Release','Conference', 'Shareholder Meeting','Earnings Release','Conference','Conference','Conference','Conference','Conference' ]
+
+raw_event_text_eval = [["Jul 23, 2021 at 9:00 AM CDT Second Quarter 2021 Earnings"],
+["Oct 25, 2021 at 9:00 AM CDT Third Quarter 2021 Earnings"],
+["Jun 3, 2021 at 10:00 AM CDT Bernstein’s 2021 Strategic Decisions Conference Click here for webcast Printable Slides"],
+["Apr 29, 2021 at 9:00 AM CDT 2021 Annual Meeting of Stockholders Click here for live webcast of Annual Meeting Event Password: KMB2021 Inspection of Stockholder List"],
+["Apr 23, 2021 at 9:00 AM CDT First Quarter 2021 Earnings Click here for webcast KMB 1Q 2021 Earnings Press Release KMB 1Q 2021 Prepared Management Remarks"],
+["June 15, 2021 11:55 AM ET Credit Suisse 23rd Annual Communications Conference"],
+["June 09, 2021 3:20 PM ET   Stifel 2021 Cross Sector Insight Conference  "],
+["June 02, 2021 3:50 PM ET   Cowen 49th Annual Technology, Media & Telecom Conference"],
+["June 01, 2021 3:00 PM ET   William Blair 41st Annual Growth Stock Conference  "],
+["May 25, 2021     RBC Capital Markets Global Datacenter, Cloud and Broadband Infrastructure Conference"]]
+
+eval_intent_labels =  encode_intents(event_tags_eval, intent2id)
+
+eval_encodings = tokenizer(raw_event_text_eval, return_offsets_mapping=True,is_split_into_words=True, padding=True, truncation=True)
+
+eval_dataset = EventDataset(eval_encodings, eval_intent_labels)
+
 acc = 0
 predictions = []
 def evaluate(model):
   model.eval()
   model.to(device)
-  val_loader = DataLoader(train_dataset, batch_size=1, shuffle=False)
+  val_loader = DataLoader(eval_dataset, batch_size=1, shuffle=False)
   losses = []
   for batch in val_loader:
     input_ids = batch['input_ids'].to(device)
-    attention_mask = batch['attention_mask'].to(device)
     token_type_ids = batch['token_type_ids'].to(device)
     intent_labels = batch['intent_labels'].to(device)
     outputs = model(input_ids=input_ids, 
-                    attention_mask=attention_mask,
                     token_type_ids=token_type_ids, 
                     intent_label=intent_labels)
     intent_logits = outputs[0]
@@ -237,13 +270,14 @@ def evaluate(model):
     #true = [id2tag[id.item()] for id in labels[0]]
     intent_prediction = [id2intent[id.item()] for id in intent_idxs]
     predictions.append(intent_prediction)
-    with open('predictions.csv', 'w+', newline ='') as f:
-        write = csv.writer(f)
+    with open('predictions_eval.csv', 'w+', newline ='') as f:
+   #with open('predictions.csv', 'w+', newline ='') as f:
+        write = csv.writer(f, delimiter='\n')
         write.writerows(predictions)
-    print(intent_prediction)
+    #print(intent_prediction)
     # print(slot_loss) 
 
 evaluate(model)
 
-print(predictions)
-print(event_tags)
+#print(predictions)
+#print(event_tags)
