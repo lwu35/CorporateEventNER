@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"32397309"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Otonomy Inc" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investors.otonomy.com/events-and-presentations/upcoming-events" />
+<meta property="og:title" content="Events and Presentations | Otonomy Inc" />
+<meta property="og:description" content="The Investor Relations website contains information about Otonomy Inc&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb47716/files/otonomy_favicon-32x32_0.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://investors.otonomy.com/events-and-presentations/upcoming-events" />
+<link rel="canonical" href="https://investors.otonomy.com/events-and-presentations/upcoming-events" />
+<link rel="shortlink" href="https://investors.otonomy.com/node/5826" />
+<link rel="revision" href="https://investors.otonomy.com/events-and-presentations/upcoming-events" />
+
+    <title>Events and Presentations | Otonomy Inc</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb47716/files/css/css_xlPnJptIC4BdD3T-gfH9N4SlWZCHxGNTtD6JVWqkd4w.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb47716/files/css/css_tBmZ2_oTwf1ULPNbLCWk8yq5JRovu24RwTDrsA5_vqc.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb47716/files/css/css_47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb47716/files/css/css_UBF5k2owPI13YHxx5JQKi6WVb7YaLXNN4DuSttIKt34.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TPHBXWW');</script>
+<!-- End Google Tag Manager -->
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5826 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<header class="header" id="header">
+    <div class="header__wrapper">
+
+        <div class="header__logo">
+            <a href="http://www.otonomy.com/">
+                <img src="/sites/g/files/knoqqb47716/themes/site/nir_pid1124/dist/images/logo.png">
+            </a>
+        </div>
+
+        <div class="header__trigger" id="header-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <div class="header__trigger__text active" id="header-trigger-text">
+                menu
+            </div>
+
+            <div class="header__trigger__close" id="header-trigger-close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="47.423" height="47.423" viewBox="0 0 47.423 47.423">
+                    <g id="close" transform="translate(-551.992 -35.585)" fill="none">
+                        <path d="M551.992,80.169l21.174-21.175-20.58-20.581,2.829-2.829,20.581,20.581,20.173-20.174,2.84,2.84L578.834,59.005l20.58,20.58-2.829,2.83-20.58-20.581L554.832,83.008Z" stroke="none" />
+                        <path d="M 554.83203125 83.00794219970703 L 551.99169921875 80.16928100585938 L 573.166015625 58.99450302124023 L 552.585693359375 38.41383361816406 L 555.414306640625 35.58505630493164 L 575.9947509765625 56.16561126708984 L 596.1680908203125 35.99194717407227 L 599.0076904296875 38.83139038085938 L 578.8343505859375 59.00505828857422 L 599.4144287109375 79.58516693115234 L 596.585693359375 82.41483306884766 L 576.0054321289063 61.83405685424805 L 554.83203125 83.00794219970703 Z" stroke="none" fill="#22d2b3" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+                    <div class="header__menu" id="header-menu">
+                
+
+                        
+    <h2 class="visually-hidden" id="block-sitetopmenu-menu">Site - Top Menu</h2>
+    
+
+                
+                                                                <ul class="menu-list" id="main-menu">
+                                              
+                      <li ><a href="https://www.otonomy.com/about/" target="" rel="">About</a></li>
+                                                  
+                      <li ><a href="https://www.otonomy.com/our-science/" target="" rel="">Our Science</a></li>
+                                                  
+                      <li ><a href="https://www.otonomy.com/neurotology/" target="" rel="">Neurotology</a></li>
+                                                  
+                      <li ><a href="https://www.otonomy.com/pipeline/" target="" rel="">Pipeline</a></li>
+                                                  
+                      <li ><a href="https://www.otonomy.com/patient-resources/" target="" rel="">Patient Resources</a></li>
+                                                                        
+                          <li class="menu-item-has-children current-menu-item">
+                              <a href="">Investors</a>
+                                                                                  <ul class="sub-menu">
+                      <li class="return-button"><a href="#">« Back</a></li>
+                                              
+                      <li ><a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;">Overview</a></li>
+                                                                        
+
+                          <li class="no-link">
+                              <a href="">News &amp; Events</a>
+                                                                                  <ul class="sub-menu">
+                                              
+                      <li ><a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">Press Releases</a></li>
+                                                  
+                      <li ><a href="/presentations" target="" rel="" data-drupal-link-system-path="node/5831">Presentations</a></li>
+                                                  
+                      <li ><a href="/events" target="" rel="" data-drupal-link-system-path="node/5821">Events</a></li>
+                                              </ul>
+                
+                          </li>
+                                                                                              
+
+                          <li class="no-link">
+                              <a href="">Financial Information</a>
+                                                                                  <ul class="sub-menu">
+                                              
+                      <li ><a href="/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">SEC Filings</a></li>
+                                                  
+                      <li ><a href="/annual-reports" target="" rel="" data-drupal-link-system-path="node/5881">Annual Reports &amp; Proxies</a></li>
+                                              </ul>
+                
+                          </li>
+                                                                                              
+
+                          <li class="no-link">
+                              <a href="">Investor Resources</a>
+                                                                                  <ul class="sub-menu">
+                                              
+                      <li ><a href="/investor-resources/investor-faqs" target="" rel="" data-drupal-link-system-path="node/5941">Investor FAQs</a></li>
+                                                  
+                      <li ><a href="/investor-resources/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">E-mail Alerts</a></li>
+                                                  
+                      <li ><a href="/investor-resources/contact-us" target="" rel="" data-drupal-link-system-path="node/5981">Contact Us</a></li>
+                                              </ul>
+                
+                          </li>
+                                                                        
+                      <li ><a href="/corporate-governance" target="" rel="" data-drupal-link-system-path="node/6116">Corporate Governance</a></li>
+                                                  
+                      <li ><a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/5911">Stock Information and Analyst Coverage</a></li>
+                                              </ul>
+                
+                          </li>
+                                                                    </ul>
+                
+
+      
+    
+            </div>
+        
+    </div>
+</header>
+
+
+
+
+<div id="content" class="site-content">
+    <main id="primary" class="site-main">
+
+
+        
+        
+                        <section id="inner-page-title">
+
+                    <h1>
+                                                    Events and Presentations
+                                            </h1>
+
+            </section>
+            
+        <section class="listing">
+            <div id="ndq-content" class="ndq-5826 listing__wrapper">
+                
+                
+                  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1124-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--87282e01-21ed-4e58-8cb9-9499dec5edea block--87282e01-21ed-4e58-8cb9-9499dec5edea--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events and Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--header-event block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--3b5c73f7-3db9-4ee8-a2c0-dde3407979bd block--3b5c73f7-3db9-4ee8-a2c0-dde3407979bd--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+
+
+<nav role="navigation" aria-labelledby="-menu" class="block--system-menu-blockevents-and-presentations block--system-menu-blockevents-and-presentations--5826 block--contentmain--system-menu-block--events-and-presentations block--contentmain--system-menu-block--events-and-presentations--5826 block--68fd0149-5896-4161-9323-de229a54d1c2 block--68fd0149-5896-4161-9323-de229a54d1c2--5826 block block-menu navigation block-system-menublock menu--events-and-presentations">
+                        
+    <h2 class="visually-hidden" id="-menu">Events and Presentations</h2>
+    
+
+                              <ul data-block-uuid="68fd0149-5896-4161-9323-de229a54d1c2" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/events-and-presentations/upcoming-events" data-drupal-link-system-path="node/5826">Upcoming Events</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+<div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--5826 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--5826 block--760caec1-83e1-4837-9ed3-81c0cd3a0e06 block--760caec1-83e1-4837-9ed3-81c0cd3a0e06--5826 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Upcoming Events</h2>
+    
+      <div data-block-uuid="760caec1-83e1-4837-9ed3-81c0cd3a0e06"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-dac1c345ec2c446739910b0fcc75c8120da2f652d01a6e48f660f90c0008303d">
+  
+    
+      
+      <div class="view-empty">
+      There are currently no events to display.
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-assets-widget-assets-table block--views-blockwidget-assets-widget-assets-table--5826 block--contentmain--views-block--widget-assets-widget-assets-table block--contentmain--views-block--widget-assets-widget-assets-table--5826 block--28ca1c7e-e18b-4a10-b6e9-5dc92df03095 block--28ca1c7e-e18b-4a10-b6e9-5dc92df03095--5826 block block-views block-views-blockwidget-assets-widget-assets-table">
+  
+      <h2>Presentations</h2>
+    
+      <div data-block-uuid="28ca1c7e-e18b-4a10-b6e9-5dc92df03095"><div class="view view-widget-assets view-id-widget_assets view-display-id-widget_assets_table js-view-dom-id-911ebb64ea3c55b08631bf34814bee74fe6d4f815d84df33c207998b5f446529">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-assets-widget-assets-table" action="/events-and-presentations/upcoming-events?c=234082&amp;p=irol-calendar" method="get" id="views-exposed-form-widget-assets-widget-assets-table" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions--2"><input data-drupal-selector="edit-reset" type="submit" id="edit-reset--2" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 striped-odd collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date" scope="col">Date</th>
+                                                  <th id="view-field-nir-document-table-column" class="views-field views-field-field-nir-document" scope="col">Documents</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2021-06-21T12:00:00Z" timezone="America/New_York" class="datetime">June 21, 2021</time>
+          </td>
+                                                                                                                  <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document views-field-field-nir-ext-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.otonomy.com/static-files/742c1d13-d0a2-4615-815a-9571ab41277c" type="application/pdf" title="Otonomy Corporate Presentation (June 21 2021) - UPDATED.pdf">June Corporate Presentation</a></span><span class="filesize"> 1.8 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2020-12-17T12:00:00Z" timezone="America/New_York" class="datetime">December 17, 2020</time>
+          </td>
+                                                                                                                  <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document views-field-field-nir-ext-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.otonomy.com/static-files/b9c45563-9e81-423d-8eb9-c12f103c56ac" type="application/pdf" title="OTO-413 Phase 1-2 Trial Results.pdf">OTO-413 Phase 1/2 Top-Line Results</a></span><span class="filesize"> 926.6 KB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+            </div>
+        </section>
+        
+
+                        <section class="share">
+                <div class="share__wrapper">
+                    
+
+                                                    
+                            <a href="/investor-resources/email-alerts" class="share__item"></a>
+                    
+                    <a href="" class="share__item"></a>
+                    
+                    <a href="/rss-feeds" class="share__item"></a>
+                    
+                    <a href="" class="share__item"></a>
+                    
+        
+        <div class="ccbn-share-main ccbn-toggle-content" style="display: block;">
+            <span class="ccbn-close-btn">X</span>
+            <ul>
+
+                <li>
+                    <a class="ndqicon-fb" href="http://www.facebook.com/share.php?u=https%3A%2F%2Finvestors.otonomy.com%2Fevents-and-presentations%2Fupcoming-events&amp;t=" onclick="window.open('http://www.facebook.com/share.php?u=https%3A%2F%2Finvestors.otonomy.com%2Fevents-and-presentations%2Fupcoming-events&amp;t= - ','Facebook','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Facebook" title="Facebook"><span class="hide-txt">Facebook</span></a>
+                </li>
+                <li>
+                    <a class="ndqicon-linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Finvestors.otonomy.com%2Fevents-and-presentations%2Fupcoming-events&amp;title= - " onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Finvestors.otonomy.com%2Fevents-and-presentations%2Fupcoming-events&amp;title= - ','LinkedIn','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="LinkedIn" title="LinkedIn"><span class="hide-txt">LinkedIn</span></a>
+                </li>
+                <li><a title="Google" target="_blank" class="ndqicon-google" href="http://www.google.com/bookmarks/mark?op=edit&bkmk=https://investors.otonomy.com/events-and-presentations/upcoming-events&title=" onclick="window.open('http://www.google.com/bookmarks/mark?op=edit&bkmk=https://investors.otonomy.com/events-and-presentations/upcoming-events&title=')">Google</a></li>
+            </ul>
+        </div>
+
+    
+
+
+    
+                </div>
+            </section>
+            
+
+    </main>
+</div>
+
+<footer class="footer">
+    <div class="footer__wrapper">
+                <div class="footer__menu">
+            
+
+                                    
+                                                                <ul id="menu-footer" class="menu">
+                                              
+                      <li ><a href="https://www.otonomy.com/careers/" target="" rel="">Careers</a></li>
+                                                  
+                      <li ><a href="https://www.otonomy.com/contact/" target="" rel="">Contact</a></li>
+                                                  
+                      <li ><a href="https://www.otonomy.com/terms-of-use/" target="" rel="">Terms of Use</a></li>
+                                                  
+                      <li ><a href="https://www.otonomy.com/privacy-policy/" target="" rel="">Privacy Policy</a></li>
+                                              </ul>
+                
+
+      
+    
+        </div>
+        
+        <div class="footer__copyright">
+            ©2021 Otonomy
+        </div>
+
+    </div>
+</footer>
+
+<div class="m-cookies"></div>
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb3291";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","themeUrl":"sites\/g\/files\/knoqqb47716\/themes\/site\/nir_pid1124","currentQuery":{"c":"234082","p":"irol-calendar"}},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1124\/override,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid1124","theme_token":null},"ajaxTrustedUrl":{"\/events-and-presentations\/upcoming-events":true},"user":{"uid":0,"permissionsHash":"4fbda30cf28368276bf5c174c9a9d4f4afc60d1a948b3bf7d397ca742a1206af"}}</script>
+<script src="/sites/g/files/knoqqb47716/files/js/js_5HAN6jk8shlK-nzRcnabvBRkeNQ25t3JSo7dw5LaZKM.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPHBXWW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"32397309,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":248,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

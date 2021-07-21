@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"39077635"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<link rel="canonical" href="http://investor.sangamo.com/" />
+<link rel="shortlink" href="http://investor.sangamo.com/" />
+<meta name="referrer" content="no-referrer" />
+<meta name="description" content="The Investor Relations website contains information about Sangamo Therapeutics, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta property="og:site_name" content="Sangamo Therapeutics, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investor.sangamo.com/investor-relations" />
+<meta property="og:title" content="Overview | Sangamo Therapeutics, Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about Sangamo Therapeutics, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb66556/files/favicon-16x16.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://investor.sangamo.com/" />
+<link rel="revision" href="https://investor.sangamo.com/investor-relations" />
+
+    <title>Overview | Sangamo Therapeutics, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb66556/files/css/css_xlPnJptIC4BdD3T-gfH9N4SlWZCHxGNTtD6JVWqkd4w.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb66556/files/css/css_7iSziWf_oRADIIJfl30uwbx4D8Rij5S6-mK1I3RF6Zk.css" />
+<link rel="stylesheet" media="all" href="//use.typekit.net/hkx6vpu.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb66556/files/css/css_ukpMsspBniN-9sR-0J-BWZn6R7Fa52ZVOQ3VRBVq_DU.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb66556/files/css/css_e8yphQ64-I9UkvtUqb4R5intidIPWaU8_weUj2cPRzk.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb66556/files/css/css_SdX-M2WqxldBpRTi4Rw-Xqt4NFHalmmhsRSiqt-Lh6Y.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NBJFGHK');</script>
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5806 path-frontpage page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+
+<header>
+  <nav class="flex justify-between">
+    <a href="https://www.sangamo.com/" class="logo"> </a>
+    <div class="menu-icon">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div class="menu-dropdown-wrap flex items-center">
+
+      
+                    <ul class="flex menu lg:hidden">
+              
+          <li class="
+                        ">
+            <a href="https://www.sangamo.com/science/" itemprop="url">Science</a>
+                  </li>
+        
+          <li class="
+                        ">
+            <a href="https://www.sangamo.com/programs/" itemprop="url">Programs</a>
+                  </li>
+        
+          <li class="
+                        ">
+            <a href="https://www.sangamo.com/patients/" itemprop="url">Patients</a>
+                  </li>
+        
+          <li class="
+                            current-menu-item page_item active
+
+                        ">
+            <a href="/" itemprop="url">Investors &amp; Media</a>
+                  </li>
+        
+          <li class="
+                        ">
+            <a href="https://www.sangamo.com/about/" itemprop="url">About</a>
+                  </li>
+              </ul>
+  
+
+
+    
+
+      <div class="pre lg:hidden">
+        <ul class="flex items-center menu">
+          <li class="search btn flex items-center"></li>
+        </ul>
+      </div>
+
+      <div class="search-icon lg:hidden"><span><svg xmlns="http://www.w3.org/2000/svg" width="20.004" height="20" viewBox="0 0 20.004 20">
+  <path id="np_search_860389_000000" d="M19.933,18.49l5.1,5.1a1.02,1.02,0,0,1-1.442,1.442l-5.1-5.1a8.161,8.161,0,1,1,1.443-1.443Zm-2.12-.677a6.121,6.121,0,1,0-8.656,0A6.12,6.12,0,0,0,17.813,17.813Z" transform="translate(-5.324 -5.324)" fill="#004875" fill-rule="evenodd"/>
+</svg>
+</span></div>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-menu">
+  <div class="wrap">
+    
+                    <ul class="menu-items mt-32 mb-12">
+                      <li class="menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="https://www.sangamo.com/science/">Science</a>
+                      </li>
+
+
+
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="https://www.sangamo.com/programs/">Programs</a>
+                      </li>
+
+
+
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="https://www.sangamo.com/patients/">Patients</a>
+                      </li>
+
+
+
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/">Investors &amp; Media</a>
+                      </li>
+
+
+
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="https://www.sangamo.com/about/">About</a>
+                      </li>
+
+
+
+              </ul>
+  
+
+
+
+    
+
+
+    <form class="form search-form form-btn" role="search" method="get" action="https://sangamo.scs-staging.com/" role="search">
+      <div class="flex mb-10 lg:mb-0 justify-between">
+        <button type="submit" value="" name="s"><span class="icon-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20.004" height="20" viewBox="0 0 20.004 20">
+  <path id="np_search_860389_000000" d="M19.933,18.49l5.1,5.1a1.02,1.02,0,0,1-1.442,1.442l-5.1-5.1a8.161,8.161,0,1,1,1.443-1.443Zm-2.12-.677a6.121,6.121,0,1,0-8.656,0A6.12,6.12,0,0,0,17.813,17.813Z" transform="translate(-5.324 -5.324)" fill="#004875" fill-rule="evenodd"/>
+</svg>
+</span></button>
+        <input type="text" placeholder="Search" value="" name="s" class="border w-full mr-2 px-5" id="searchme" />
+      </div>
+    </form>
+    </div>
+</div>
+
+
+<div class="hero investors pb-4">
+  <div class="row">
+    <div class="max-w-2xl">
+      <div class="pb-10"><h1>Investors &#038; Media</h1></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="wrap">
+      <nav class="flex justify-between">
+        <div class="flex items-center">
+            <div class="region region-sub-nav">
+    
+            
+        <ul class="flex menu md:inline-block">
+                            <li class="current-menu-item page_item active ">
+              <a href="/" itemprop="url" class="current-menu-item page_item active">All
+              </a>          </li>
+
+                  
+                        <li class="investor-hook">
+              <a href="/investors" itemprop="url" class="">Investors
+              </a>          </li>
+
+                  
+                        <li class="">
+              <a href="/news-releases" itemprop="url" class="">News Releases
+              </a>          </li>
+
+                  
+                        <li class="">
+              <a href="/events-and-presentations" itemprop="url" class="">Events + Presentations
+              </a>          </li>
+
+                  
+                        <li class="">
+              <a href="/corporate-governance/governance-overview" itemprop="url" class="">Governance
+              </a>          </li>
+
+                  
+                        <li class="">
+              <a href="/media-library" itemprop="url" class="">Media Library
+              </a>          </li>
+
+                  
+          </ul>
+  
+
+
+
+
+    
+  </div>
+
+
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+      <div class="region region-content">
+    <div id="block-nir-pid1904-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5806 block--content--website-notice-block block--content--website-notice-block--5806 block--ad8de586-2744-4d83-85fb-6ab5a9c0a9c1 block--ad8de586-2744-4d83-85fb-6ab5a9c0a9c1--5806 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1904-content" class="block--system-main-block block--system-main-block--5806 block--content--system-main-block block--content--system-main-block--5806 block--02fdca55-58e8-4107-8e9b-88e9e95aca0e block--02fdca55-58e8-4107-8e9b-88e9e95aca0e--5806 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+    <div>
+    
+
+
+
+<section class="block py-16">
+  <div class="row">
+    <div class="flex justify-between sm:block">
+      <div class="w-1/2 pr-8 lg:pr-0 p-2 pl-0 sm:px-0 sm:w-full">
+        <div  class="max-w-xl pr-5 sm:max-w-full idm-d-flex idm-flex-column idm-h-100 panel-panel-inner">
+          <div class="block-region-header"><div class="block-content--nir-lp-block block-content--nir-lp-block--16541 block--block-contentdd1b8b24-f66d-4a48-ab04-e22b7d94e05c block--block-contentdd1b8b24-f66d-4a48-ab04-e22b7d94e05c--5806 block--header--block-content--dd1b8b24-f66d-4a48-ab04-e22b7d94e05c block--header--block-content--dd1b8b24-f66d-4a48-ab04-e22b7d94e05c--5806 block--95871a63-8b96-477d-a3ba-c6614cc65bda block--95871a63-8b96-477d-a3ba-c6614cc65bda--5806 block block-block-content block-block-contentdd1b8b24-f66d-4a48-ab04-e22b7d94e05c">
+  
+    
+      
+            
+          <div class="max-w-xl pr-5 sm:max-w-full idm-d-flex idm-flex-column idm-h-100">
+<h3>Sangamo is pioneering the future of genomic medicine</h3>
+
+<p>Sangamo Therapeutics is a genomic medicine company focused on leveraging our novel platforms and scientific expertise to advance clinical programs. Our platforms have yielded multiple clinical stage programs that could provide value in the near-to-mid-term. We have a robust preclinical pipeline with programs in emerging areas that could provide value in the mid-to-long term. Our goal is to develop a wholly owned genomic medicine portfolio, which we fund via our collaborations with blue-chip biopharmaceutical partners, which have already brought in $815M in upfronts and milestones with billions in potential milestone payments. We believe that manufacturing is a strategic advantage and gives us greater control over timelines, quality and supply. Our ability to fund our projects enables us to execute and deliver on our mission.</p>
+
+<div class="idm-pt-4 idm-mt-auto"><a class="btn alt idm-blue flex items-center idm-mr-3" href="/presentations" target="_self"><span class="icon-arrow"> <!--?xml version="1.0" encoding="utf-8"?--> <!-- Generator: Adobe Illustrator 23.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --> <svg id="Layer_1" style="enable-background: new 0 0 13.08 10.03;" version="1.1" viewbox="0 0 13.08 10.03" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px"><style type="text/css">
+<!--/*--><![CDATA[/* ><!--*/
+.st0 {fill: #ffffff;}
+
+/*--><!]]>*/
+</style><path class="st0" d="M12.79,4.3L8.75,0.27C8.37-0.1,7.76-0.09,7.39,0.3c-0.36,0.37-0.36,0.96,0,1.33&#10;&#9;l2.39,2.4H0.96C0.43,4.03,0,4.46,0,4.99c0,0.53,0.43,0.96,0.96,0.96h8.81L7.39,8.34C6.99,8.69,6.95,9.3,7.31,9.7&#10;&#9;c0.35,0.4,0.97,0.44,1.37,0.08C8.71,9.76,8.74,9.73,8.77,9.7l4.02-4.02c0.18-0.18,0.29-0.43,0.29-0.69&#10;&#9;C13.08,4.73,12.98,4.48,12.79,4.3L12.79,4.3z" id="np_arrow_1920781_000000"></path></svg></span> All Presentations </a> <a class="btn alt flex items-center" href="/static-files/59eafc6d-194e-42ac-94f1-093d77e82abf&#10;" target="_blank"> <span class="download-icon"> </span> Download PDF </a></div>
+</div>
+
+      
+
+      
+  </div>
+</div>
+        </div>
+      </div>
+      <div  class="max-w-xl pr-5 sm:max-w-full idm-d-flex idm-flex-column idm-h-100 panel-panel-inner w-1/2 pr-8 lg:pr-0 p-2 pl-0 sm:px-0 sm:w-full panel-panel-inner">
+        <div class="block-region-column1"><div class="block--nir-assets__widget block--nir-assets__widget--5806 block--column1--nir-assets__widget block--column1--nir-assets__widget--5806 block--b967a8f2-d6bf-4ea8-bdbb-820ea849b4f7 block--b967a8f2-d6bf-4ea8-bdbb-820ea849b4f7--5806 block block-nir-assets block-nir-assets__widget">
+  
+    
+      <div class="nir-widget">
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+      <div class="nir-widget--field nir-widget--asset--thumbnail float-left">
+      
+<div class="field-nir-thumbnail">
+      <div class="field__item"><a href="https://investor.sangamo.com/static-files/59eafc6d-194e-42ac-94f1-093d77e82abf" target="_blank"><img src="/system/files-encrypted/styles/nir_asset_small/encrypt/nasdaq_kms/assets/2021/07/19/15-35-38/R4_Sangamo_PPT_external_DD_01-01%20%281%29.png?itok=D1Q_Ulmm" alt="" class="image-style-nir-asset-small" />
+
+</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="bm-lllblue">
+  <div class="idm-row idm-no-gutters">
+    <div class="idm-col-md-6 idm-pl-container ">
+      <div class="idm-d-flex idm-flex-column idm-h-100">
+
+
+        <div class="idm-my-5 pb-2">
+          <div class="idm-row">
+            <div class="idm-col-xl-8">
+              <div class="heading-title mb-4">
+                <div class="heading pr-10">
+                  Stock Quote
+                </div>
+              </div>
+              <div class="idm-border idm-p-4 idm-bg-white idm-stock-box">
+
+                <div  class="panel-panel-inner">
+                  <div class="block-region-column2"><div data-storage-id="node:5806:full:34176" data-uuid="ef6147b4-5c48-4bb5-a249-efadc198f426" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5806 block--column2--market-data-block__stock-quote block--column2--market-data-block__stock-quote--5806 block--ef6147b4-5c48-4bb5-a249-efadc198f426 block--ef6147b4-5c48-4bb5-a249-efadc198f426--5806 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+    
+      <div class='quote-wrap user-toggle-off stock-quote__featured'>
+  <div class="quote-wrapper">
+                            <div class="stock-quote" data-exchange="">
+      <div class="idm-ticker"></div>
+      <div class="idm-price"></div>
+
+
+      <div class="idm-stock-data">
+        <div class="idm-row idm-no-gutters">
+          <div class="idm-col-6 idm-pr-1">Change</div>
+          <div class="idm-col-6 idm-pl-1"></div>
+
+          <div class="idm-col-6 idm-pr-1">Volume</div>
+          <div class="idm-col-6 idm-pl-1"></div>
+
+          <div class="idm-col-6 idm-pr-1">52 Week High</div>
+          <div class="idm-col-6 idm-pl-1"></div>
+
+          <div class="idm-col-6 idm-pr-1">52 Week Low</div>
+          <div class="idm-col-6 idm-pl-1"></div>
+          <time>Jul 20, 2021 5:14 PM EDT</time>
+        </div>
+      </div>
+
+
+
+    </div>
+    </div>
+</div>
+
+
+
+  </div>
+<div class="block--attribution-block__stock-info-attribution__thomson-reuters block--attribution-block__stock-info-attribution__thomson-reuters--5806 block--column2--attribution-block__stock-info-attribution__thomson-reuters block--column2--attribution-block__stock-info-attribution__thomson-reuters--5806 block--2f58128a-1a49-4441-8f00-f948675b17d4 block--2f58128a-1a49-4441-8f00-f948675b17d4--5806 block block-nir-attribution-block block-attribution-block__stock-info-attribution__thomson-reuters">
+  
+    
+      <p>
+  Data Provided by Refinitiv. Minimum 15 minutes delayed.</p>
+
+  </div>
+</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="idm-col-md-6 max-height-680">
+      <img src="sites/g/files/knoqqb66556/themes/site/nir_pid1904/dist/idm-assets/images/Sangamo-2-uai-1920x1080.png" alt="">
+    </div>
+  </div>
+</section>
+
+
+
+<div  class="panel-panel-inner">
+  <div class="block-region-column3"><div class="block--nir-news__widget block--nir-news__widget--5806 block--column3--nir-news__widget block--column3--nir-news__widget--5806 block--63225f30-b6e1-4241-96bc-2510e85bca0e block--63225f30-b6e1-4241-96bc-2510e85bca0e--5806 block block-nir-news block-nir-news__widget">
+  
+    
+      <section class="block py-16">
+    <div class="row">
+  
+      <div class="heading-title flex justify-between mb-4">
+          <div class="heading pr-10">
+              Latest News Releases
+          </div>
+          <div class="more">
+              <a class="btn flex items-center plain more" href="/news-releases" target="_self"><nobr><span class="icon-arrow"><!-- Generator: Adobe Illustrator 23.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+					<svg id="Layer_1" style="enable-background:new 0 0 13.08 10.03;" version="1.1" viewBox="0 0 13.08 10.03" x="0px" xmlns="http://www.w3.org/2000/svg" y="0px">
+					<style>
+					.st0{fill:#FFFFFF;}
+					</style>
+					<path class="st0" d="M12.79,4.3L8.75,0.27C8.37-0.1,7.76-0.09,7.39,0.3c-0.36,0.37-0.36,0.96,0,1.33 l2.39,2.4H0.96C0.43,4.03,0,4.46,0,4.99c0,0.53,0.43,0.96,0.96,0.96h8.81L7.39,8.34C6.99,8.69,6.95,9.3,7.31,9.7 c0.35,0.4,0.97,0.44,1.37,0.08C8.71,9.76,8.74,9.73,8.77,9.7l4.02-4.02c0.18-0.18,0.29-0.43,0.29-0.69 C13.08,4.73,12.98,4.48,12.79,4.3L12.79,4.3z" id="np_arrow_1920781_000000"></path></svg></span> All News</nobr></a>
+          </div>
+      </div>
+
+  
+    
+      <ul class="articles has-border flex flex-wrap justify-between sm:block">
+              
+
+
+<li class="w-1/22 sm:w-full">
+  <div class="title">
+    <h3> <a href="/news-releases/news-release-details/sangamo-therapeutics-appoints-prathyusha-duraibabu-cpa-mba-chief" hreflang="en">Sangamo Therapeutics Appoints Prathyusha Duraibabu, CPA, MBA, to Chief Financial Officer</a></h3>
+  </div>
+      <div class="date mb-4">
+      May 24, 2021
+    </div>
+  
+  <p>BRISBANE, Calif. --(BUSINESS WIRE)--May 24, 2021-- Sangamo Therapeutics, Inc. (Nasdaq: SGMO), a genomic medicine company, announced today the appointment of Prathyusha Duraibabu, CPA, MBA as Senior Vice President and Chief Financial Officer, effective June 1, 2021 . Ms.</p>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="w-1/22 sm:w-full">
+  <div class="title">
+    <h3> <a href="/news-releases/news-release-details/sangamo-therapeutics-announces-participation-jefferies" hreflang="en">Sangamo Therapeutics Announces Participation at Jefferies Healthcare Conference</a></h3>
+  </div>
+      <div class="date mb-4">
+      May 21, 2021
+    </div>
+  
+  <p>BRISBANE, Calif. --(BUSINESS WIRE)--May 21, 2021-- Sangamo Therapeutics, Inc. (Nasdaq: SGMO), a genomic medicine company, announced today that management will participate in a fireside chat at the Jefferies Healthcare Conference on Friday, June 4 th at 11am Eastern Time .</p>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="w-1/22 sm:w-full">
+  <div class="title">
+    <h3> <a href="/news-releases/news-release-details/sangamo-therapeutics-reports-recent-business-highlights-and-0" hreflang="en">Sangamo Therapeutics Reports Recent Business Highlights and First Quarter 2021 Financial Results</a></h3>
+  </div>
+      <div class="date mb-4">
+      May 4, 2021
+    </div>
+  
+  <p>Conference Call and Webcast Scheduled for 5:00 p.m. Eastern Time   BRISBANE, Calif. --(BUSINESS WIRE)--May 4, 2021-- Sangamo Therapeutics, Inc. (Nasdaq: SGMO), a genomic medicine company, today reported recent business highlights and first quarter 2021 financial results.</p>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="w-1/22 sm:w-full">
+  <div class="title">
+    <h3> <a href="/news-releases/news-release-details/sangamo-therapeutics-announces-participation-upcoming-11" hreflang="en">Sangamo Therapeutics Announces Participation at Upcoming Investor Conferences</a></h3>
+  </div>
+      <div class="date mb-4">
+      May 3, 2021
+    </div>
+  
+  <p>BRISBANE, Calif. --(BUSINESS WIRE)--May 3, 2021-- Sangamo Therapeutics, Inc. (Nasdaq: SGMO), a genomic medicine company, announced today that management will be participating in fireside chats at the following investor conferences: BofA Securities 2021 Health Care Conference Date: Thursday, May 13</p>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </ul>
+
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+    </div>
+</section>
+<hr class="bm-lgry">
+  </div>
+<section class="py-16">
+  <div class="row">
+  <div id="ndq-content"  class="views-element-container block--views-blockwidget-sec-filings-table block--views-blockwidget-sec-filings-table--5806 block--column3--views-block--widget-sec-filings-table block--column3--views-block--widget-sec-filings-table--5806 block--673a7527-7bd0-4154-8fb6-0a6f7b7f7ed2 block--673a7527-7bd0-4154-8fb6-0a6f7b7f7ed2--5806 block block-views block-views-blockwidget-sec-filings-table">
+    
+        <div class="heading-title flex justify-between mb-4">
+      <div class="heading pr-10">
+        Latest Filings
+      </div>
+      <div class="more">
+        <a class="btn flex items-center plain more" href="/financial-information/sec-filings" target="_self">
+          <nobr><span class="icon-arrow"><!-- Generator: Adobe Illustrator 23.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+					<svg id="Layer_1" style="enable-background:new 0 0 13.08 10.03;" version="1.1" viewBox="0 0 13.08 10.03" x="0px" xmlns="http://www.w3.org/2000/svg" y="0px">
+					<style>
+					.st0{fill:#FFFFFF;}
+					</style>
+					<path class="st0" d="M12.79,4.3L8.75,0.27C8.37-0.1,7.76-0.09,7.39,0.3c-0.36,0.37-0.36,0.96,0,1.33 l2.39,2.4H0.96C0.43,4.03,0,4.46,0,4.99c0,0.53,0.43,0.96,0.96,0.96h8.81L7.39,8.34C6.99,8.69,6.95,9.3,7.31,9.7 c0.35,0.4,0.97,0.44,1.37,0.08C8.71,9.76,8.74,9.73,8.77,9.7l4.02-4.02c0.18-0.18,0.29-0.43,0.29-0.69 C13.08,4.73,12.98,4.48,12.79,4.3L12.79,4.3z" id="np_arrow_1920781_000000"></path></svg></span> All Filings</nobr></a>
+      </div>
+    </div>
+    
+    
+          <div data-block-uuid="673a7527-7bd0-4154-8fb6-0a6f7b7f7ed2"><div class="view view-widget-sec-filings view-id-widget_sec_filings view-display-id-table js-view-dom-id-ba255dfc88c65db2e70e200e8391db4ad3902b4cacde540d243d2ae7086667aa">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-sec-filings-table" action="/" method="get" id="views-exposed-form-widget-sec-filings-table" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions">
+
+	
+
+<input data-drupal-selector="edit-reset" type="submit" id="edit-reset" name="op" value="Reset" class="button js-form-submit form-submit" />
+
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-5 collapse-table-wide">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-sec-date-filed-table-column" class="views-field views-field-field-nir-sec-date-filed is-active" scope="col"><a href="?order=field_nir_sec_date_filed&amp;sort=asc" title="sort by Filing date">Filing date<span class="tablesort tablesort--asc"></span>
+</a></th>
+                                                  <th id="view-field-nir-sec-form-table-column" class="views-field views-field-field-nir-sec-form" scope="col"><a href="?order=field_nir_sec_form&amp;sort=asc" title="sort by Form">Form</a></th>
+                                                  <th id="view-field-nir-sec-description-table-column" class="views-field views-field-field-nir-sec-description" scope="col"><a href="?order=field_nir_sec_description&amp;sort=asc" title="sort by Description">Description</a></th>
+                                                  <th id="view-field-nir-sec-form-group-table-column" class="views-field views-field-field-nir-sec-form-group" scope="col">Filing Group</th>
+                                                  <th id="view-nothing-1-table-column" class="views-field views-field-nothing-1" scope="col">View</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr>
+                                                                                        <td headers="view-field-nir-sec-date-filed-table-column" class="views-field views-field-field-nir-sec-date-filed is-active"><time datetime="2021-07-01T04:00:00Z" timezone="America/New_York" class="datetime">Jul 01, 2021</time>
+          </td>
+                                                                                        <td headers="view-field-nir-sec-form-table-column" class="views-field views-field-field-nir-sec-form"><a href="/sec-filings/sec-filing/8-k/0001193125-21-206346" hreflang="en">8-K</a>          </td>
+                                                                                        <td headers="view-field-nir-sec-description-table-column" class="views-field views-field-field-nir-sec-description"><p>Report of unscheduled material events or corporate event</p>
+          </td>
+                                                                                        <td headers="view-field-nir-sec-form-group-table-column" class="views-field views-field-field-nir-sec-form-group">
+      <div class="field field--name-field-nir-sec-form-group field--type-entity-reference field--label-inline field__items">
+              <div class="field field--name-field-nir-sec-form-group field--type-entity-reference field--label-inline field__item">Current Reports</div>
+          </div>
+            </td>
+                                                                                                                                                                                                                          <td headers="view-nothing-1-table-column" class="views-field views-field-nothing-1 views-field-nothing-2 views-field-field-nir-sec-pdf views-field-field-nir-sec-doc views-field-field-nir-sec-xls views-field-field-nir-sec-xbrl"><span class="html-link"><a href="/node/16526/html" target="_blank">View HTML</a></span>  <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.sangamo.com/static-files/1507cd33-1b58-4a38-8f45-a35e4d969974" type="application/pdf">0001193125-21-206346.pdf</a></span><span class="filesize"> </span>
+</div>
+  <div class="file-link">
+  <span class="file file--mime-application-rtf file--general"> <a href="https://investor.sangamo.com/static-files/4aa8ba5f-a436-4801-953f-7482635411c8" type="application/rtf">0001193125-21-206346.rtf</a></span><span class="filesize"> </span>
+</div>
+  <div class="file-link">
+  <span class="file file--mime-application-vnd-ms-excel file--x-office-spreadsheet"> <a href="https://investor.sangamo.com/static-files/9e76d4ae-b2d9-48a2-af8a-f8690d493be7" type="application/vnd.ms-excel">0001193125-21-206346.xls</a></span><span class="filesize"> </span>
+</div>
+<span class="file file--mime-application-octet-stream file--general"><a href="/sec-filings/sec-filing/8-k/0001193125-21-206346" hreflang="en">EX-101.SCH - XBRL TAXONOMY EXTENSION SCHEMA</a></span>
+          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-sec-date-filed-table-column" class="views-field views-field-field-nir-sec-date-filed is-active"><time datetime="2021-06-29T04:00:00Z" timezone="America/New_York" class="datetime">Jun 29, 2021</time>
+          </td>
+                                                                                        <td headers="view-field-nir-sec-form-table-column" class="views-field views-field-field-nir-sec-form"><a href="/sec-filings/sec-filing/4/0001209191-21-043811" hreflang="en">4</a>          </td>
+                                                                                        <td headers="view-field-nir-sec-description-table-column" class="views-field views-field-field-nir-sec-description"><p>Statement of changes in beneficial ownership of securities</p>
+          </td>
+                                                                                        <td headers="view-field-nir-sec-form-group-table-column" class="views-field views-field-field-nir-sec-form-group">
+      <div class="field field--name-field-nir-sec-form-group field--type-entity-reference field--label-inline field__items">
+              <div class="field field--name-field-nir-sec-form-group field--type-entity-reference field--label-inline field__item">3,4,5</div>
+          </div>
+            </td>
+                                                                                                                                                                                                                          <td headers="view-nothing-1-table-column" class="views-field views-field-nothing-1 views-field-nothing-2 views-field-field-nir-sec-pdf views-field-field-nir-sec-doc views-field-field-nir-sec-xls views-field-field-nir-sec-xbrl"><span class="html-link"><a href="/node/16521/html" target="_blank">View HTML</a></span>  <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.sangamo.com/static-files/cfafcfd7-3cc0-4759-be94-653dfa6cc1c6" type="application/pdf">0001209191-21-043811.pdf</a></span><span class="filesize"> </span>
+</div>
+  <div class="file-link">
+  <span class="file file--mime-application-rtf file--general"> <a href="https://investor.sangamo.com/static-files/719a66b0-a756-4feb-b6b1-ecdc1f191b81" type="application/rtf">0001209191-21-043811.rtf</a></span><span class="filesize"> </span>
+</div>
+  <div class="file-link">
+  <span class="file file--mime-application-vnd-ms-excel file--x-office-spreadsheet"> <a href="https://investor.sangamo.com/static-files/4a735142-cf86-49f4-86cd-c50614528b13" type="application/vnd.ms-excel">0001209191-21-043811.xls</a></span><span class="filesize"> </span>
+</div>
+          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-sec-date-filed-table-column" class="views-field views-field-field-nir-sec-date-filed is-active"><time datetime="2021-06-14T04:00:00Z" timezone="America/New_York" class="datetime">Jun 14, 2021</time>
+          </td>
+                                                                                        <td headers="view-field-nir-sec-form-table-column" class="views-field views-field-field-nir-sec-form"><a href="/sec-filings/sec-filing/4/0001209191-21-040405" hreflang="en">4</a>          </td>
+                                                                                        <td headers="view-field-nir-sec-description-table-column" class="views-field views-field-field-nir-sec-description"><p>Statement of changes in beneficial ownership of securities</p>
+          </td>
+                                                                                        <td headers="view-field-nir-sec-form-group-table-column" class="views-field views-field-field-nir-sec-form-group">
+      <div class="field field--name-field-nir-sec-form-group field--type-entity-reference field--label-inline field__items">
+              <div class="field field--name-field-nir-sec-form-group field--type-entity-reference field--label-inline field__item">3,4,5</div>
+          </div>
+            </td>
+                                                                                                                                                                                                                          <td headers="view-nothing-1-table-column" class="views-field views-field-nothing-1 views-field-nothing-2 views-field-field-nir-sec-pdf views-field-field-nir-sec-doc views-field-field-nir-sec-xls views-field-field-nir-sec-xbrl"><span class="html-link"><a href="/node/16516/html" target="_blank">View HTML</a></span>  <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.sangamo.com/static-files/8ddb0ca8-9a37-4fe8-bfac-d44312728dca" type="application/pdf">0001209191-21-040405.pdf</a></span><span class="filesize"> </span>
+</div>
+  <div class="file-link">
+  <span class="file file--mime-application-rtf file--general"> <a href="https://investor.sangamo.com/static-files/402dc90d-7c73-4d8c-b1de-012441bdcf96" type="application/rtf">0001209191-21-040405.rtf</a></span><span class="filesize"> </span>
+</div>
+  <div class="file-link">
+  <span class="file file--mime-application-vnd-ms-excel file--x-office-spreadsheet"> <a href="https://investor.sangamo.com/static-files/e00c4ef3-08da-4d59-8c84-d13766c088b3" type="application/vnd.ms-excel">0001209191-21-040405.xls</a></span><span class="filesize"> </span>
+</div>
+          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+      </div>
+</div>
+</section>
+  <hr class="bm-lgry"></div>
+</div>
+
+<section class="py-16">
+  <div class="row">
+    <div class="idm-row">
+      <div class="idm-col-md-6 idm-col-lg-4">
+        <div class="heading-title">
+          <div class="heading">
+            Upcoming Events
+          </div>
+        </div>
+      </div>
+      <div class="idm-col-md-6 idm-col-lg-8">
+        <div class="heading-title flex justify-between mb-4">
+          <div class="heading pr-10 color-d-gray idm-d-none idm-d-lg-block">
+            Past Events
+          </div>
+          <div class="more">
+            <a class="btn flex items-center plain more" href="/events-and-presentations" target="_self"><nobr><span class="icon-arrow"><!-- Generator: Adobe Illustrator 23.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+            <svg id="Layer_1" style="enable-background:new 0 0 13.08 10.03;" version="1.1" viewBox="0 0 13.08 10.03" x="0px" xmlns="http://www.w3.org/2000/svg" y="0px">
+            <style>
+            .st0{fill:#FFFFFF;}
+            </style>
+            <path class="st0" d="M12.79,4.3L8.75,0.27C8.37-0.1,7.76-0.09,7.39,0.3c-0.36,0.37-0.36,0.96,0,1.33 l2.39,2.4H0.96C0.43,4.03,0,4.46,0,4.99c0,0.53,0.43,0.96,0.96,0.96h8.81L7.39,8.34C6.99,8.69,6.95,9.3,7.31,9.7 c0.35,0.4,0.97,0.44,1.37,0.08C8.71,9.76,8.74,9.73,8.77,9.7l4.02-4.02c0.18-0.18,0.29-0.43,0.29-0.69 C13.08,4.73,12.98,4.48,12.79,4.3L12.79,4.3z" id="np_arrow_1920781_000000"></path></svg></span> All Events</nobr></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idm-row">
+      <div class="idm-col-lg-4">
+        <div class="block-region-secondarycolumn1"><div class="block--nir-events__widget block--nir-events__widget--5806 block--secondarycolumn1--nir-events__widget block--secondarycolumn1--nir-events__widget--5806 block--65859e41-e759-4f81-8658-09e0c5beeb4a block--65859e41-e759-4f81-8658-09e0c5beeb4a--5806 block block-nir-events block-nir-events__widget">
+  
+    
+      
+  
+          <ul class="articles has-border idm-row">
+              <li class="idm-col-12">
+        More events are coming soon.
+              </li>
+    </ul>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+
+
+  </div>
+</div>
+
+      </div>
+
+      <div class="heading-title idm-col-12 idm-mt-5 idm-d-lg-none">
+        <div class="heading color-d-gray ">
+          Past Events
+        </div>
+      </div>
+      <div class="idm-col-lg-8">
+        <div class="block-region-secondarycolumn2"><div class="block--nir-events__widget block--nir-events__widget--5806 block--secondarycolumn2--nir-events__widget block--secondarycolumn2--nir-events__widget--5806 block--ba1edd3d-9f99-4220-8ea6-05e3e4b22e53 block--ba1edd3d-9f99-4220-8ea6-05e3e4b22e53--5806 block block-nir-events block-nir-events__widget">
+  
+    
+      
+  
+          <ul class="articles has-border idm-row">
+              
+
+<li class="idm-col-lg-6">
+
+  <div class="title">
+          <h3>
+      <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/jefferies-virtual-healthcare-conference-0" hreflang="en">Jefferies Virtual Healthcare Conference</a></div>
+  </div>
+      </div>
+    </h3>
+      </div>
+
+    <div class="date mb-4">
+      <div class="nir-widget--field nir-widget--event--date">
+        
+      
+      
+            Jun 4, 2021 at 11:00 AM EDT
+      
+      </div>
+  </div>
+  
+  <div class="more">
+    
+  </div>
+
+
+    <div class="nir-widget--field nir-widget--event--webcast">
+        
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/jeff174/sgmo/1863162" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="idm-col-lg-6">
+
+  <div class="title">
+          <h3>
+      <div class="nir-widget--field nir-widgets--event--title">
+        
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/2021-rbc-capital-markets-global-healthcare-conference" hreflang="en">2021 RBC Capital Markets Global Healthcare Conference</a></div>
+  </div>
+      </div>
+    </h3>
+      </div>
+
+    <div class="date mb-4">
+      <div class="nir-widget--field nir-widget--event--date">
+        
+      
+      
+            May 18, 2021 at 9:45 AM EDT
+      
+      </div>
+  </div>
+  
+  <div class="more">
+    
+  </div>
+
+
+    <div class="nir-widget--field nir-widget--event--webcast">
+        
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://event.on24.com/wcc/r/3173726/6A969F3B35B85698996A1E98CA37EB65" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </li>
+    </ul>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+
+
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="bm-lgry">
+
+<div  class="panel-panel-inner">
+  <div class="block-region-secondarycolumn3"><section class="py-16">
+  <div class="row">
+    <div class="views-element-container block--views-blocknir-media-galleries-widget-grid-block-1 block--views-blocknir-media-galleries-widget-grid-block-1--5806 block--secondarycolumn3--views-block--nir-media-galleries-widget-grid-block-1 block--secondarycolumn3--views-block--nir-media-galleries-widget-grid-block-1--5806 block--dc651eea-671d-453a-8e23-470d4f05baa8 block--dc651eea-671d-453a-8e23-470d4f05baa8--5806 block block-views block-views-blocknir-media-galleries-widget-grid-block-1">
+
+      
+
+            <div class="heading-title flex justify-between mb-4">
+        <div class="heading pr-10">
+          Media Library
+        </div>
+        <div class="more">
+          <a class="btn flex items-center plain more" href="/media-library" target="_self"><nobr><span class="icon-arrow"><!-- Generator: Adobe Illustrator 23.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+          <svg id="Layer_1" style="enable-background:new 0 0 13.08 10.03;" version="1.1" viewBox="0 0 13.08 10.03" x="0px" xmlns="http://www.w3.org/2000/svg" y="0px">
+          <style>
+          .st0{fill:#FFFFFF;}
+          </style>
+          <path class="st0" d="M12.79,4.3L8.75,0.27C8.37-0.1,7.76-0.09,7.39,0.3c-0.36,0.37-0.36,0.96,0,1.33 l2.39,2.4H0.96C0.43,4.03,0,4.46,0,4.99c0,0.53,0.43,0.96,0.96,0.96h8.81L7.39,8.34C6.99,8.69,6.95,9.3,7.31,9.7 c0.35,0.4,0.97,0.44,1.37,0.08C8.71,9.76,8.74,9.73,8.77,9.7l4.02-4.02c0.18-0.18,0.29-0.43,0.29-0.69 C13.08,4.73,12.98,4.48,12.79,4.3L12.79,4.3z" id="np_arrow_1920781_000000"></path></svg></span> All Media</nobr></a>
+        </div>
+      </div>
+            <ul class="articles has-border flex flex-wrap justify-between sm:block">
+      
+              
+    
+        
+            
+    
+                
+      
+        
+            
+
+<li class="w-1/22 sm:w-full">
+    
+    <div class="idm-d-flex idm-flex-column idm-h-100">
+        <div class="title">
+            <h3>
+
+                
+
+      
+
+    
+<div class="field field--name-field-nir-multimedia-item field--type-field-collection field--label-inline">
+  <div class="field__label">Tags</div>
+      <div class='field__items readmore'>
+                                
+    
+                  <a class="external-link" href="https://vimeo.com/user118711171/download/434140693/d8ff7bdedf">Sangamo Brisbane Research Laboratories</a>
+
+    
+                  </div>
+  </div>
+
+
+  
+            </h3>
+        </div>
+
+        <p></p>
+
+        <div class="idm-mt-auto">
+            <div class="idm-pt-4">
+                <div class="w-full ">
+                    <div class="responsive-video">
+                        <div style="position: relative; display: block; max-width: 100%;">
+                            <div >
+                                                                    <a href="/gallery/16736/grid">
+            <img src="/system/files-encrypted/styles/nir_media_item_grid_thumbnail/encrypt/nasdaq_kms/media_gallery/thumbnail/2021-07/img-labs-brisbane.png?itok=0XLhd7xA" width="300" height="200" alt="Sangamo Brisbane Research Laboratories" loading="lazy" class="image-style-nir-media-item-grid-thumbnail" />
+
+
+
+      </a>
+                                                                
+
+                                
+
+      
+
+    
+<div class="field field--name-field-nir-multimedia-item field--type-field-collection field--label-inline">
+  <div class="field__label">Tags</div>
+      <div class='field__items readmore'>
+                                
+    
+                  <a class="external-link" href="https://vimeo.com/user118711171/download/434140693/d8ff7bdedf">Sangamo Brisbane Research Laboratories</a>
+
+    
+                  </div>
+  </div>
+
+
+  
+                                
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+
+
+
+        
+            
+
+<li class="w-1/22 sm:w-full">
+    
+    <div class="idm-d-flex idm-flex-column idm-h-100">
+        <div class="title">
+            <h3>
+
+                
+
+      
+
+    
+<div class="field field--name-field-nir-multimedia-item field--type-field-collection field--label-inline">
+  <div class="field__label">Tags</div>
+      <div class='field__items readmore'>
+                                
+    
+                  <a class="external-link" href="https://vimeo.com/user118711171/download/434140945/f978521349">Sangamo Brisbane Headquarters (Exterior &amp; Interior) B-roll</a>
+
+    
+                  </div>
+  </div>
+
+
+  
+            </h3>
+        </div>
+
+        <p></p>
+
+        <div class="idm-mt-auto">
+            <div class="idm-pt-4">
+                <div class="w-full ">
+                    <div class="responsive-video">
+                        <div style="position: relative; display: block; max-width: 100%;">
+                            <div >
+                                                                    <a href="/gallery/16626/grid">
+            <img src="/system/files-encrypted/styles/nir_media_item_grid_thumbnail/encrypt/nasdaq_kms/media_gallery/thumbnail/2021-07/urn_aaid_sc_US_319b51e1-37ab-4eca-9bb3-d2f914637700%20%281%29.png?itok=eAM1xtmF" width="300" height="200" alt="Sangamo Brisbane Headquarters (Exterior &amp; Interior) B-roll" loading="lazy" class="image-style-nir-media-item-grid-thumbnail" />
+
+
+
+      </a>
+                                                                
+
+                                
+
+      
+
+    
+<div class="field field--name-field-nir-multimedia-item field--type-field-collection field--label-inline">
+  <div class="field__label">Tags</div>
+      <div class='field__items readmore'>
+                                
+    
+                  <a class="external-link" href="https://vimeo.com/user118711171/download/434140945/f978521349">Sangamo Brisbane Headquarters (Exterior &amp; Interior) B-roll</a>
+
+    
+                  </div>
+  </div>
+
+
+  
+                                
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+
+
+
+        
+      
+
+
+    
+    
+    
+            
+
+
+            </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="bm-lgry"></div>
+</div>
+
+<div  class="panel-panel-inner">
+  <div class="block-region-footer"><div class="block--nir-people__widget block--nir-people__widget--5806 block--footer--nir-people__widget block--footer--nir-people__widget--5806 block--3c092713-e471-43a0-ada4-bab1bdb916a9 block--3c092713-e471-43a0-ada4-bab1bdb916a9--5806 block block-nir-person block-nir-people__widget">
+  
+    
+      <section class="py-16">
+    <div class="row">
+  <div class="heading-title flex justify-between mb-4">
+      <div class="heading pr-10">
+              Analyst Coverage
+      </div>
+  </div>
+
+    
+        <div class="idm-row idm-contact-list">
+                      
+
+<div class="idm-col-md-4 idm-col-lg-3 idm-col-xl-5th">
+    <div class="idm-py-4 idm-border-top">
+        <div class="idm-contact-title">
+                                
+          Bank of America
+      
+                    </div>
+                        Geoff  Meacham
+        
+
+    
+
+
+            <div class="nir-widget--field nir-widget--person--title">
+            
+        </div>
+    
+    <div >
+
+                    <div class="nir-widget--field nir-widget--person--thumbnail">
+                
+            </div>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+                    <div class="nir-widget--field nir-widget--person--committees">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-type">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-rating">
+                
+            </div>
+        
+        
+    </div>
+
+    </div>
+</div>
+
+
+<div class="idm-col-md-4 idm-col-lg-3 idm-col-xl-5th">
+    <div class="idm-py-4 idm-border-top">
+        <div class="idm-contact-title">
+                                
+          Barclays
+      
+                    </div>
+                        Gena Wang, Ph.D.
+        
+
+    
+
+
+            <div class="nir-widget--field nir-widget--person--title">
+            
+        </div>
+    
+    <div >
+
+                    <div class="nir-widget--field nir-widget--person--thumbnail">
+                
+            </div>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+                    <div class="nir-widget--field nir-widget--person--committees">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-type">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-rating">
+                
+            </div>
+        
+        
+    </div>
+
+    </div>
+</div>
+
+
+<div class="idm-col-md-4 idm-col-lg-3 idm-col-xl-5th">
+    <div class="idm-py-4 idm-border-top">
+        <div class="idm-contact-title">
+                                
+          Cowen and Company
+      
+                    </div>
+                        Ritu Baral
+        
+
+    
+
+
+            <div class="nir-widget--field nir-widget--person--title">
+            
+        </div>
+    
+    <div >
+
+                    <div class="nir-widget--field nir-widget--person--thumbnail">
+                
+            </div>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+                    <div class="nir-widget--field nir-widget--person--committees">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-type">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-rating">
+                
+            </div>
+        
+        
+    </div>
+
+    </div>
+</div>
+
+
+<div class="idm-col-md-4 idm-col-lg-3 idm-col-xl-5th">
+    <div class="idm-py-4 idm-border-top">
+        <div class="idm-contact-title">
+                                
+          Guggenheim Securities LLC
+      
+                    </div>
+                        Debjit  Chattopadhyay, Ph.D.
+        
+
+    
+
+
+            <div class="nir-widget--field nir-widget--person--title">
+            
+        </div>
+    
+    <div >
+
+                    <div class="nir-widget--field nir-widget--person--thumbnail">
+                
+            </div>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+                    <div class="nir-widget--field nir-widget--person--committees">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-type">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-rating">
+                
+            </div>
+        
+        
+    </div>
+
+    </div>
+</div>
+
+
+<div class="idm-col-md-4 idm-col-lg-3 idm-col-xl-5th">
+    <div class="idm-py-4 idm-border-top">
+        <div class="idm-contact-title">
+                                
+          H.C. Wainwright &amp; Co., LLC
+      
+                    </div>
+                        Patrick R.  Trucchio, CFA
+        
+
+    
+
+
+            <div class="nir-widget--field nir-widget--person--title">
+            
+        </div>
+    
+    <div >
+
+                    <div class="nir-widget--field nir-widget--person--thumbnail">
+                
+            </div>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+                    <div class="nir-widget--field nir-widget--person--committees">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-type">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-rating">
+                
+            </div>
+        
+        
+    </div>
+
+    </div>
+</div>
+
+
+<div class="idm-col-md-4 idm-col-lg-3 idm-col-xl-5th">
+    <div class="idm-py-4 idm-border-top">
+        <div class="idm-contact-title">
+                                
+          Jefferies
+      
+                    </div>
+                        Maury Raycroft, Ph.D.
+        
+
+    
+
+
+            <div class="nir-widget--field nir-widget--person--title">
+            
+        </div>
+    
+    <div >
+
+                    <div class="nir-widget--field nir-widget--person--thumbnail">
+                
+            </div>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+                    <div class="nir-widget--field nir-widget--person--committees">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-type">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-rating">
+                
+            </div>
+        
+        
+    </div>
+
+    </div>
+</div>
+
+
+<div class="idm-col-md-4 idm-col-lg-3 idm-col-xl-5th">
+    <div class="idm-py-4 idm-border-top">
+        <div class="idm-contact-title">
+                                
+          RBC Capital Markets 
+      
+                    </div>
+                        Luca  Issi, PhD
+        
+
+    
+
+
+            <div class="nir-widget--field nir-widget--person--title">
+            
+        </div>
+    
+    <div >
+
+                    <div class="nir-widget--field nir-widget--person--thumbnail">
+                
+            </div>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+                    <div class="nir-widget--field nir-widget--person--committees">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-type">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-rating">
+                
+            </div>
+        
+        
+    </div>
+
+    </div>
+</div>
+
+
+<div class="idm-col-md-4 idm-col-lg-3 idm-col-xl-5th">
+    <div class="idm-py-4 idm-border-top">
+        <div class="idm-contact-title">
+                                
+          Stifel
+      
+                    </div>
+                        Benjamin J  Burnett, Ph.D.
+        
+
+    
+
+
+            <div class="nir-widget--field nir-widget--person--title">
+            
+        </div>
+    
+    <div >
+
+                    <div class="nir-widget--field nir-widget--person--thumbnail">
+                
+            </div>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+                    <div class="nir-widget--field nir-widget--person--committees">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-type">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-rating">
+                
+            </div>
+        
+        
+    </div>
+
+    </div>
+</div>
+
+
+<div class="idm-col-md-4 idm-col-lg-3 idm-col-xl-5th">
+    <div class="idm-py-4 idm-border-top">
+        <div class="idm-contact-title">
+                                
+          Truist Securities
+      
+                    </div>
+                        Nicole  Germino MPH
+        
+
+    
+
+
+            <div class="nir-widget--field nir-widget--person--title">
+            
+        </div>
+    
+    <div >
+
+                    <div class="nir-widget--field nir-widget--person--thumbnail">
+                
+            </div>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+                    <div class="nir-widget--field nir-widget--person--committees">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-type">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-rating">
+                
+            </div>
+        
+        
+    </div>
+
+    </div>
+</div>
+
+
+<div class="idm-col-md-4 idm-col-lg-3 idm-col-xl-5th">
+    <div class="idm-py-4 idm-border-top">
+        <div class="idm-contact-title">
+                                
+          Wedbush PacGro Lifesciences
+      
+                    </div>
+                        Liana Moussatos, Ph.D.
+        
+
+    
+
+
+            <div class="nir-widget--field nir-widget--person--title">
+            
+        </div>
+    
+    <div >
+
+                    <div class="nir-widget--field nir-widget--person--thumbnail">
+                
+            </div>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+                    <div class="nir-widget--field nir-widget--person--committees">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-type">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-rating">
+                
+            </div>
+        
+        
+    </div>
+
+    </div>
+</div>
+
+
+<div class="idm-col-md-4 idm-col-lg-3 idm-col-xl-5th">
+    <div class="idm-py-4 idm-border-top">
+        <div class="idm-contact-title">
+                                
+          Wells Fargo
+      
+                    </div>
+                        Yanan  Zhu
+        
+
+    
+
+
+            <div class="nir-widget--field nir-widget--person--title">
+            
+        </div>
+    
+    <div >
+
+                    <div class="nir-widget--field nir-widget--person--thumbnail">
+                
+            </div>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+                    <div class="nir-widget--field nir-widget--person--committees">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-type">
+                
+            </div>
+        
+                    <div class="nir-widget--field nir-widget--person--analyst-rating">
+                
+            </div>
+        
+        
+    </div>
+
+    </div>
+</div>
+
+                  </div>
+
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+    </div>
+</section>
+  </div>
+</div>
+</div>
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+
+
+
+
+
+<section class="py-16 bm-lgry" style="clear:both;">
+  <div class="row">
+      <div class="heading-title flex justify-between mb-4">
+          <div class="heading pr-10">
+              Contacts
+          </div>
+
+      </div>
+  <div id="block-gpfootercontacts" class="block-content--nir-global-block block-content--nir-global-block--16536 block--block-content936e75b6-8f03-413b-ac54-086a05161eb3 block--block-content936e75b6-8f03-413b-ac54-086a05161eb3--5806 block--footer-contacts--block-content--936e75b6-8f03-413b-ac54-086a05161eb3 block--footer-contacts--block-content--936e75b6-8f03-413b-ac54-086a05161eb3--5806 block--150980f9-2710-45c4-a55b-8f243c541fd1 block--150980f9-2710-45c4-a55b-8f243c541fd1--5806 block block-block-content block-block-content936e75b6-8f03-413b-ac54-086a05161eb3">
+  
+    
+      
+            
+          <div class="idm-row idm-contact-list">
+<div class="idm-col-md-4 idm-col-lg-3">
+<div class="idm-py-4 idm-border-top">
+<div class="idm-contact-title">Investor Relations/Media</div>
+
+<div class="idm-contact-subtitle">Aron Feingold</div>
+
+<div><a href="tel:(628)252-7494">(628) 252-7494</a><br /><a href="mailto:IR@sangamo.com">IR@sangamo.com </a><br /><a href="mailto:media@sangamo.com">media@sangamo.com</a></div>
+</div>
+</div>
+
+<div class="idm-col-md-4 idm-col-lg-3">
+<div class="idm-py-4 idm-border-top">
+<div class="idm-contact-title">Transfer Agent</div>
+
+<div class="idm-contact-subtitle">Computershare, Inc.</div>
+
+<div>250 Royall Street<br />
+Canton, MA 02021</div>
+
+<div class="idm-mt-4"><a href="#">(781) 575-3951</a><br /><a href="#">(781) 575-2152</a><br /><a href="#">computershare.com</a></div>
+</div>
+</div>
+
+<div class="idm-col-md-4 idm-col-lg-3">
+<div class="idm-py-4 idm-border-top">
+<div class="idm-contact-title">Auditor</div>
+
+<div class="idm-contact-subtitle">Ernst &amp; Young LLP</div>
+
+<div>Palo Alto, CA</div>
+</div>
+</div>
+
+<div class="idm-col-md-4 idm-col-lg-3">
+<div class="idm-py-4 idm-border-top">
+<div class="idm-contact-title">Legal Counsel</div>
+
+<div class="idm-contact-subtitle">Cooley, LLP</div>
+
+<div>Palo Alto, CA</div>
+</div>
+</div>
+</div>
+
+      
+
+      
+  </div>
+
+  </div>
+</section>
+
+
+<footer class="bm-lgry pb-20 pt-16">
+  <div class="row relative">
+    <img src="/sites/g/files/knoqqb66556/themes/site/nir_pid1904/dist/wp-content/themes/sangamo/assets/img/scroll.svg" alt="Back Top" class="back-top">
+    <div class="logo mb-16"><a href="https://sangamo.scs-staging.com/">
+        <img src="/sites/g/files/knoqqb66556/themes/site/nir_pid1904/dist/wp-content/uploads/2021/05/sangamo-logo.svg" alt="Sangamo Logo">
+        <span class="sr-only">Home</span>
+      </a></div>
+
+    <div class="flex justify-between items-center w-full mb-16 lg:block">
+      <div class="w-full">
+        <a href="/email-alerts" class="btn flex items-center more default bm-wht"><nobr><span class="icon-arrow"><?xml version="1.0" encoding="utf-8"?>
+              <!-- Generator: Adobe Illustrator 23.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 13.08 10.03" style="enable-background:new 0 0 13.08 10.03;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+</style>
+<path id="np_arrow_1920781_000000" class="st0" d="M12.79,4.3L8.75,0.27C8.37-0.1,7.76-0.09,7.39,0.3c-0.36,0.37-0.36,0.96,0,1.33
+	l2.39,2.4H0.96C0.43,4.03,0,4.46,0,4.99c0,0.53,0.43,0.96,0.96,0.96h8.81L7.39,8.34C6.99,8.69,6.95,9.3,7.31,9.7
+	c0.35,0.4,0.97,0.44,1.37,0.08C8.71,9.76,8.74,9.73,8.77,9.7l4.02-4.02c0.18-0.18,0.29-0.43,0.29-0.69
+	C13.08,4.73,12.98,4.48,12.79,4.3L12.79,4.3z"/>
+</svg>
+</span> Sign up for email alerts</nobr></a>
+      </div>
+    </div>
+
+
+    <div class="flex justify-between w-full xs:block">
+
+      <div class="w-1/2 sm:w-full">
+        <div class="flex justify-between w-full">
+
+          
+            
+                         
+
+                                                
+                                                        
+                      <div class="w-1/2">
+                          <div class="nav-title">Company</div>
+                            <ul>
+                                                     
+                                                
+                                                        <li><a href="https://www.sangamo.com/science/"  class=dropdown-item title="Science" target="">Science</a></li>
+                                              
+                                      
+                                                        <li><a href="https://www.sangamo.com/programs/"  class=dropdown-item title="Programs" target="">Programs</a></li>
+                                              
+                                      
+                                                        <li><a href="https://www.sangamo.com/programs#collaborations"  class=dropdown-item title="Collaborations" target="">Collaborations</a></li>
+                                              
+                                      
+                                                        <li><a href="https://www.sangamo.com/patients/"  class=dropdown-item title="Patients" target="">Patients</a></li>
+                                              
+                                      
+                                                        <li><a href="https://www.sangamo.com/about/"  class=dropdown-item title="About" target="">About</a></li>
+                                              
+                                      
+                                                        <li><a href="https://www.sangamo.com/careers/"  class=dropdown-item title="Jobs" target="">Jobs</a></li>
+                                              
+                                      
+                                                        <li><a href="https://www.sangamo.com/about/contact/"  class=dropdown-item title="Contact" target="">Contact</a></li>
+                                              
+                    
+        
+                          </ul>
+                      </div>
+
+                                              
+                                      
+                                                        
+                      <div class="w-1/2">
+                          <div class="nav-title">Latest</div>
+                            <ul>
+                                                     
+                                                
+                                                        <li><a href="/news-releases"  class=dropdown-item title="News Releases" target="">News Releases</a></li>
+                                              
+                                      
+                                                        <li><a href="/events-and-presentations"  class=dropdown-item title="Events" target="">Events</a></li>
+                                              
+                                      
+                                                        <li><a href="https://www.sangamo.com/science/presentations/"  class=dropdown-item title="Science Presentations" target="">Science Presentations</a></li>
+                                              
+                                      
+                                                        <li><a href="https://www.sangamo.com/science/publications/"  class=dropdown-item title="Scientific Publications" target="">Scientific Publications</a></li>
+                                              
+                                      
+                                                        <li><a href="/events-and-presentations"  class=dropdown-item title="Corporate Presentations" target="">Corporate Presentations</a></li>
+                                              
+                    
+        
+                          </ul>
+                      </div>
+
+                                              
+                    
+          
+        
+
+  
+
+
+
+
+
+    
+
+
+        </div>
+      </div>
+        <div class="w-1/2 sm:w-full">
+            <div class="flex justify-between w-full">
+
+                
+            
+                         
+
+                                                
+                                                        
+                      <div class="w-1/2">
+                          <div class="nav-title">Resources</div>
+                            <ul>
+                                                     
+                                                
+                                                        <li><a href="https://www.sangamo.com/programs/#pipeline"  class=dropdown-item title="Pipeline" target="">Pipeline</a></li>
+                                              
+                                      
+                                                        <li><a href="https://www.sangamo.com/programs/clinical-trials/"  class=dropdown-item title="Clinical Trials" target="">Clinical Trials</a></li>
+                                              
+                                      
+                                                        <li><a href="/"  class=dropdown-item title="Investor Information" target="">Investor Information</a></li>
+                                              
+                                      
+                                                        <li><a href="/media-library"  class=dropdown-item title="Media Library" target="">Media Library</a></li>
+                                              
+                                      
+                                                        <li><a href="https://www.sangamo.com/legal-disclaimer/"  class=dropdown-item title="Legal Disclaimer" target="">Legal Disclaimer</a></li>
+                                              
+                                      
+                                                        <li><a href="https://www.sangamo.com/privacy-policy/"  class=dropdown-item title="Privacy Policy" target="">Privacy Policy</a></li>
+                                              
+                    
+        
+                          </ul>
+                      </div>
+
+                                              
+                                      
+                                                        
+                      <div class="w-1/2">
+                          <div class="nav-title">Social</div>
+                            <ul>
+                                                     
+                                                
+                                                        <li><a href="https://www.facebook.com/SangamoTx/"  class=dropdown-item title="Facebook" target="">Facebook</a></li>
+                                              
+                                      
+                                                        <li><a href="https://www.linkedin.com/company/sangamo-therapeutics/"  class=dropdown-item title="Linkedin" target="">Linkedin</a></li>
+                                              
+                                      
+                                                        <li><a href="https://twitter.com/sangamotx"  class=dropdown-item title="Twitter" target="">Twitter</a></li>
+                                              
+                    
+        
+                          </ul>
+                      </div>
+
+                                              
+                    
+          
+        
+
+  
+
+
+
+
+
+    
+
+
+            </div>
+        </div>
+
+
+    </div>
+      <section class="block py-10">
+          <div class="row" style="padding:0;">
+              <div class="wrap max-w-2xl px-0">
+                  <p style="color:#C1C5C7;font-family: halcom, sans-serif;font-size:14px;font-weight: 400;">© 2021 Sangamo Therapeutics, Inc.</p>
+              </div>
+          </div>
+      </section>
+
+
+
+</footer>
+
+<div class="modal1 search pb-8 pt-32">
+  <div class="row">
+      <form role="search" method="get" action="https://www.sangamo.com/">
+          <div class="wrap flex justify-between relative">
+              <div class="pr-2 w-full"><input type="text" placeholder="Search" value="" name="s" id="s" required=""></div>
+              <input type="submit" value="Search" class="btn rounded border">
+          </div>
+      </form>
+  </div>
+</div>
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgsangamotherapeuticsinc";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5806","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en","themeUrl":"sites\/g\/files\/knoqqb66556\/themes\/site\/nir_pid1904"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid1904\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid1904","theme_token":null},"ajaxTrustedUrl":{"\/investor-relations":true},"user":{"uid":0,"permissionsHash":"1b3028fd4aea5ca81620e3dc14feec8d146f7a7b18c17174b4a0e0378c0594bb"}}</script>
+<script src="/sites/g/files/knoqqb66556/files/js/js_RskRZKaP6yHwQTsD1K0aDDDcQH4_Uo_HnJY7QVfJLN8.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="/sites/g/files/knoqqb66556/themes/site/nir_pid1904/dist/wp-content/themes/sangamo/build/js/app.js?qwjq9k"></script>
+<script src="/sites/g/files/knoqqb66556/themes/site/nir_pid1904/dist/wp-includes/js/wp-embed.min.js?qwjq9k"></script>
+<script src="/sites/g/files/knoqqb66556/files/js/js_MPjXA-ZLfk0Kf0hw4MLINESVQiH6u-qX-d80FBrHiIA.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBJFGHK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"39077635,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":851,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

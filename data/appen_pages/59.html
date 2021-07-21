@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"39077635"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Avista Corporation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investor.avistacorp.com/events-and-presentations" />
+<meta property="og:title" content="Presentations/Events | Avista Corporation" />
+<meta property="og:description" content="The Investor Relations website contains information about Avista Corporation &#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb58701/files/favicon.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://investor.avistacorp.com/events-and-presentations" />
+<link rel="canonical" href="https://investor.avistacorp.com/events-and-presentations" />
+<link rel="shortlink" href="https://investor.avistacorp.com/node/5821" />
+<link rel="revision" href="https://investor.avistacorp.com/events-and-presentations" />
+
+    <title>Presentations/Events | Avista Corporation</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb58701/files/css/css_w5uwuaEHMC9bSP8WfARp9ZhoueTvvxceydRRR7hhmEE.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb58701/files/css/css_JOM39Q5MJ2xkYognga8T7AXlncD_6y5fks-nFfl0UPY.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&amp;display=swap" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;display=swap" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb58701/files/css/css_YJr53_yuAxzDHyOklbWK9XKo0ixPQEI11p28znviLM0.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb58701/files/css/css_0n_9KvkH0hyUGeFtNvf9lkL4iqk34o4qoRPiSiSW7ak.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb58701/files/css/css_FZuRNayHerx2nyqg35u3FT82bHZyXa6elr9sU3rIzdY.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5821 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <!-- Parallax Banner -->
+<div class="banner">
+    <header>
+        <div class="top-bar row">
+            <div class="top-bar-left">
+                <a href="/">
+                    <img src="/sites/g/files/knoqqb58701/themes/site/nir_pid1034/dist/images/logo.jpg" alt="logo"/>
+                </a>
+            </div>
+            <div class="top-bar-right">
+                <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="large">
+                    <button class="menu-icon" type="button" aria-label="Open Search" data-toggle></button>
+                </div>
+                <div class="" id="main-menu">
+                    <ul class="menu vertical large-horizontal expanded large-text-center" data-responsive-menu="drilldown large-dropdown">
+                    
+
+                        
+        
+
+                                                                              <li class="side-menu__item has-submenu">
+
+                                          <a href="/about-avista">About Avista</a>
+                                                        <ul class="submenu menu vertical" data-submenu>
+                                                <li class="side-menu__item">
+                              <a href="/about-avista">About Avista</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/about-avista/company-information">Company Information</a>
+                                      </li>
+                    </ul>
+        
+                  </li>
+                                            <li class="side-menu__item has-submenu">
+
+                                          <a href="/corporate-responsibility/our-commitment">Corporate Responsibility</a>
+                                                        <ul class="submenu menu vertical" data-submenu>
+                                                <li class="side-menu__item">
+                              <a href="/corporate-responsibility/our-commitment">Our Commitment</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/corporate-governance/management">Leadership</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/corporate-governance/code-conduct">Code of Conduct</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/corporate-governance/guidelines">Guidelines</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/corporate-governance/related-party-transactions-policy">Related Party Transactions Policy</a>
+                                      </li>
+                    </ul>
+        
+                  </li>
+                                            <li class="side-menu__item has-submenu">
+
+                                          <a href="/stock-information">Stocks and Dividends</a>
+                                                        <ul class="submenu menu vertical" data-submenu>
+                                                <li class="side-menu__item">
+                              <a href="/stock-information">Stocks and Dividends Information</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/stock-information/analyst-coverage">Analyst Coverage</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/stock-information/dividend-history">Dividend History</a>
+                                      </li>
+                    </ul>
+        
+                  </li>
+                                            <li class="active-trail side-menu__item has-submenu">
+
+                                          <a href="/events-and-presentations">Financial Information</a>
+                                                        <ul class="submenu menu vertical" data-submenu>
+                                                <li class="side-menu__item">
+                              <a href="/events-and-presentations">Presentations/Events</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/shareholder-services/stock-purchase-information">Shareholder Services</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/financial-information/annual-reports">Annual Reports/Proxies</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/stock-information/earnings-estimates">Earnings Estimates</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/financial-information/fundamentals/snapshot">Fundamentals</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/financial-information/sec-filings">SEC Filings</a>
+                                      </li>
+                    </ul>
+        
+                  </li>
+                                            <li class="side-menu__item has-submenu">
+
+                                          <a href="/press-releases">Company News</a>
+                                                        <ul class="submenu menu vertical" data-submenu>
+                                                <li class="side-menu__item">
+                              <a href="/press-releases">Press Releases</a>
+                                      </li>
+                    </ul>
+        
+                  </li>
+                                            <li class="side-menu__item has-submenu">
+
+                                          <a href="/shareholder-services/contact-ir">Contact Us</a>
+                                                        <ul class="submenu menu vertical" data-submenu>
+                                                <li class="side-menu__item">
+                              <a href="/shareholder-services/contact-ir">Contact Us</a>
+                                      </li>
+                                            <li class="side-menu__item">
+                              <a href="/shareholder-services/email-alerts">Email Alerts</a>
+                                      </li>
+                    </ul>
+        
+                  </li>
+                    
+
+
+    
+    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+        <div class="row" id="banner-content">
+            <div class="large-8 small-12 column" >
+                                    <h1>
+                                                    Presentations/Events
+                                            </h1>
+                            </div>
+                    </div>
+
+</div>
+
+<!-- End of Parallax Banner -->
+<div id="ndq-content" class="ndq-5821 row">
+    <div class="columns large-12">
+
+        
+        
+        
+          <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1034-content" class="block--system-main-block block--system-main-block--5821 block--content--system-main-block block--content--system-main-block--5821 block--66b707b9-09c8-4a35-9fed-8272578e03f8 block--66b707b9-09c8-4a35-9fed-8272578e03f8--5821 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Presentations/Events
+          </h1>
+    
+
+  <div>
+    
+<div class="panel-display boxton clearfix " >
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="columns large-12 radix-layouts-content panel-panel">
+        <div class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--bb461cff-b88b-406a-9aa2-859a5aef6376 block--bb461cff-b88b-406a-9aa2-859a5aef6376--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+              <h2 class="nir-widget--label"><span class="">Upcoming</span> Events</h2>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+        <div class="">
+      
+      
+            Aug 4, 2021 at 10:30 AM EDT
+      </div>  
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/avista-corporation-q2-2021-earnings-conference-call" hreflang="en">Avista Corporation Q2 2021 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+
+
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/vbfus9s5" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--add-to-calendar clearfix">
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--outlook">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-outlook field__item"><a href="/node/25356/ics" class="add-outlook">Add to Outlook</a></div>
+  </div>
+      </div>
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--google">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-gcal field__item"><a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Avista%20Corporation%20%20-%20Avista%20Corporation%20Q2%202021%20Earnings%20Conference%20Call&amp;dates=20210804T143000Z/20210804T143000Z&amp;details=Event%20Details%3A%20http%3A//investor.avistacorp.com/events/event-details/avista-corporation-q2-2021-earnings-conference-call%0A%0AWebcast%3A%20https%3A//edge.media-server.com/mmc/p/vbfus9s5&amp;location=&amp;trp=false&amp;sprop=name%3A" class="add-gcal">Add to Google Calendar</a></div>
+  </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--a93aeb43-c7cc-4f45-9c3d-138ec0820879 block--a93aeb43-c7cc-4f45-9c3d-138ec0820879--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+              <h2 class="nir-widget--label"><span class="">Past</span> Events</h2>
+    <div class="nir-widget--content">
+          <div class="nir-widget--form">
+        <form data-drupal-selector="widget-form-base" action="/events-and-presentations" method="get" id="widget-form-base" accept-charset="UTF-8">
+  <div class="nir-widgets--field-container nir-widgets--field-container--yeartimezone js-form-wrapper form-wrapper" data-drupal-selector="edit-b8d9097d-year" id="edit-b8d9097d-year"><div class="two-col-field form-item js-form-item js-form-type-select form-type-select form-item-b8d9097d-year-value js-form-item-b8d9097d-year-value">
+      <label for="edit-b8d9097d-year-value">Year</label>
+        <select data-drupal-selector="edit-b8d9097d-year-value" id="edit-b8d9097d-year-value" name="b8d9097d_year[value]" class="form-select"><option value="_none">None</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option></select>
+        </div>
+</div>
+<input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Filter" class="button button--primary js-form-submit form-submit" />
+<input data-drupal-selector="edit-b8d9097d-widget-id" type="hidden" name="b8d9097d_widget_id" value="b8d9097d" />
+<input autocomplete="off" data-drupal-selector="form-e80axpevczp-j1bslya2qj36juhu3xrulgbyj7onqpk" type="hidden" name="form_build_id" value="form-e80AxPevczp-J1bSLya2qj36juHu3xrULGbYj7OnQPk" />
+<input data-drupal-selector="edit-widget-form-base" type="hidden" name="form_id" value="widget_form_base" />
+
+</form>
+
+      </div>
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+        <div class="">
+      
+      
+            Jun 2, 2021
+      </div>  
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/mufg-securities-americas-inc-virtual-ndr" hreflang="en">MUFG Securities Americas Inc.: Virtual NDR</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.avistacorp.com/static-files/2342a37f-b7ad-4e4b-acb4-4e3e9f58e395" type="application/pdf" title="June 2021 Presentation.pdf">MUFG Securities Americas Inc.: Virtual NDR</a></span><span class="filesize"> 2.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+        <div class="">
+      
+      
+            May 19, 2021
+      </div>  
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/avista-corporation-2021-aga-financial-forum" hreflang="en">Avista Corporation 2021 AGA Financial Forum</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.avistacorp.com/static-files/f0d21e95-cdc7-4e1c-8f53-2c967cabf722" type="application/pdf" title="May 2021 Presentation AGA.pdf">Avista Corporation 2021 AGA Financial Forum</a></span><span class="filesize"> 2.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+        <div class="">
+      
+      
+            May 11, 2021 at 8:15 AM PDT
+      </div>  
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/avista-corporation-annual-shareholder-meeting-5" hreflang="en">Avista Corporation Annual Shareholder Meeting</a></div>
+  </div>
+    </div>
+  
+
+
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://events.q4inc.com/vsm/AVA/2021" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+        <div class="">
+      
+      
+            May 5, 2021 at 10:30 AM EDT
+      </div>  
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/avista-corporation-q1-2021-earnings-conference-call" hreflang="en">Avista Corporation Q1 2021 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+
+
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/hxd6p4mp" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.avistacorp.com/static-files/d3dbb0e7-514c-4a96-b13f-1d700544893c" type="application/pdf" title="Q1 2021 Webcast Slides.pdf">Q1 2021 Earnings Presentation</a></span><span class="filesize"> 992.4 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+        <div class="">
+      
+      
+            Apr 7, 2021
+      </div>  
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/keybanc-capital-markets-virtual-ndr" hreflang="en">KeyBanc Capital Markets: Virtual NDR</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.avistacorp.com/static-files/77b8563c-0cc7-4960-826e-430fb698192a" type="application/pdf" title="April 2021 Presentation.pdf">KeyBanc Capital Markets: Virtual NDR</a></span><span class="filesize"> 2.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+        <div class="">
+      
+      
+            Mar 17, 2021
+      </div>  
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/siebert-williams-shank-virtual-west-coast-utilities-conference" hreflang="en">Siebert Williams Shank Virtual West Coast Utilities Conference</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.avistacorp.com/static-files/623665e4-b0e2-43ca-a997-465ef9b144a1" type="application/pdf" title="Avista March 2021 Presentation.pdf">Siebert Williams Shank Virtual West Coast Utilities Conference</a></span><span class="filesize"> 2.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+        <div class="">
+      
+      
+            Mar 2, 2021
+      </div>  
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/bofa-securities-2021-power-gas-and-solar-leaders-conference" hreflang="en">BofA Securities 2021 Power, Gas and Solar Leaders Conference</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.avistacorp.com/static-files/eb466afa-e37a-44c0-a7bc-c20bd179e62c" type="application/pdf" title="March 2021 Presentation.pdf">BofA Securities 2021 Power, Gas and Solar Leaders Conference</a></span><span class="filesize"> 2.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+        <div class="">
+      
+      
+            Feb 24, 2021 at 10:30 AM EST
+      </div>  
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/avista-corporation-q4-2020-earnings-conference-call" hreflang="en">Avista Corporation Q4 2020 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+
+
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/7n2cidr7" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.avistacorp.com/static-files/d08e4091-0417-46b8-be16-99058d16fe24" type="application/pdf" title="Q4 2020 Webcast Slides.pdf">Q4 2020 Earnings Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+        <div class="">
+      
+      
+            Nov 9, 2020
+      </div>  
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/2020-eei-financial-conference" hreflang="en">2020 EEI Financial Conference</a></div>
+  </div>
+    </div>
+  
+
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.avistacorp.com/static-files/0f00e8d8-65b0-4997-a525-27769c9acc12" type="application/pdf" title="EEI 11-9-20.pdf">2020 EEI Financial Conference</a></span><span class="filesize"> 1.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+        <div class="">
+      
+      
+            Nov 4, 2020 at 10:30 AM EST
+      </div>  
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/avista-corporation-q3-2020-earnings-conference-call" hreflang="en">Avista Corporation Q3 2020 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+
+
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/rsdtv46s" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.avistacorp.com/static-files/49148e82-8da7-4e50-9b93-42ebcbdbd076" type="application/pdf" title="Q3 2020 Webcast Slides.pdf">Q3 2020 Earnings Presentation</a></span><span class="filesize"> 943.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+        <nav class="pager" role="navigation" aria-labelledby="pagination-heading">
+    <h4 id="pagination-heading" class="visually-hidden">Pagination</h4>
+    <ul class="pager__items js-pager__items">
+                                                        <li class="pager__item is-active">
+                                          <a href="?page=0%2C0" title="Current page">
+            <span class="visually-hidden">
+              Current page
+            </span>1</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C1" title="Go to page 2">
+            <span class="visually-hidden">
+              Page
+            </span>2</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C2" title="Go to page 3">
+            <span class="visually-hidden">
+              Page
+            </span>3</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C3" title="Go to page 4">
+            <span class="visually-hidden">
+              Page
+            </span>4</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C4" title="Go to page 5">
+            <span class="visually-hidden">
+              Page
+            </span>5</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C5" title="Go to page 6">
+            <span class="visually-hidden">
+              Page
+            </span>6</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C6" title="Go to page 7">
+            <span class="visually-hidden">
+              Page
+            </span>7</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C7" title="Go to page 8">
+            <span class="visually-hidden">
+              Page
+            </span>8</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?page=0%2C8" title="Go to page 9">
+            <span class="visually-hidden">
+              Page
+            </span>9</a>
+        </li>
+                          <li class="pager__item pager__item--ellipsis" role="presentation">&hellip;</li>
+                          <li class="pager__item pager__item--next">
+          <a href="?page=0%2C1" title="Go to next page" rel="next">
+            <span class="visually-hidden">Next page</span>
+            <span aria-hidden="true">next ›</span>
+          </a>
+        </li>
+                          <li class="pager__item pager__item--last">
+          <a href="?page=0%2C13" title="Go to last page">
+            <span class="visually-hidden">Last page</span>
+            <span aria-hidden="true">last »</span>
+          </a>
+        </li>
+          </ul>
+  </nav>
+
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+    </div>
+</div>
+<!-- End of IR Content-->
+
+<!-- Toolkit -->
+<div class="column" id="ndq-toolkit-div">
+    <div class="row small-up-2 medium-up-4 large-up-4">
+        
+
+                        
+        
+
+                                  
+      <div class="column">
+          <div class="icoTools">
+              <a class="" href="javascript: window.print()">
+                  <span class="menu-item ndqicon-print-2 icon"></span>
+                  <span class="hide">Print Page</span>
+              </a>
+          </div>
+          <strong class="text-center">Print Page</strong>
+      </div>
+
+      <div class="column">
+          <div class="icoTools">
+              <a class="" href="mailto:?body=https://investor.avistacorp.com/events-and-presentations">
+                  <span class="menu-item ndqicon-mail-2 icon"></span>
+                  <span class="hide">Email Page</span>
+              </a>
+          </div>
+          <strong class="text-center">Email Page</strong>
+      </div>
+
+      
+          
+        <div class="column">
+          <div class="icoTools">
+            <a class="" href="/rss-feeds">
+              <span  class="menu-item ndqicon-rss-1 icon""></span>
+              <span class="hide">RSS Feeds</span>
+            </a>
+          </div>
+          <strong class="text-center">RSS Feeds</strong>
+        </div>
+
+              
+          
+        <div class="column">
+          <div class="icoTools">
+            <a class="" href="/shareholder-services/email-alerts">
+              <span  class="menu-item ndqicon-mail-1 icon""></span>
+              <span class="hide">Email Alerts</span>
+            </a>
+          </div>
+          <strong class="text-center">Email Alerts</strong>
+        </div>
+
+                    
+
+
+    
+    </div>
+</div>
+<!-- End of toolkit-->
+
+<footer>
+        <div class="row">
+                        <div class="col-md-9">
+                
+
+<nav role="navigation" aria-labelledby="block-sitefootermenu-menu" id="block-sitefootermenu" class="block--system-menu-blocksite---footer-menu block--system-menu-blocksite---footer-menu--5876 block--footer-nav--system-menu-block--site---footer-menu block--footer-nav--system-menu-block--site---footer-menu--5876 block--528173a9-9043-4ad7-a830-01dc4594875e block--528173a9-9043-4ad7-a830-01dc4594875e--5876 block block-menu navigation block-system-menublock menu--site---footer-menu">
+                        
+    <h2 class="visually-hidden" id="block-sitefootermenu-menu">Site - Footer Menu</h2>
+    
+
+                              <ul id="footer_menu">
+                  <li>
+          <a href="https://myavista.com/about-us/working-at-avista" target="" rel="">Careers</a>
+                  </li>
+              <li>
+          <a href="https://myavista.com/about-us/contact-us" target="" rel="">Contact Us</a>
+                  </li>
+              <li>
+          <a href="https://myavista.com/about-us/policies-and-guidelines" target="" rel="">Privacy &amp; Guidelines</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+            </div>
+            
+                        <div class="col-md-3">
+                
+
+<div role="navigation" aria-labelledby="block-globalfootersocial-menu" id="block-globalfootersocial" class="block-content--nir-global-block block-content--nir-global-block--22036 block--block-content14207195-3b0f-4f79-949f-07dd43f20b87 block--block-content14207195-3b0f-4f79-949f-07dd43f20b87--5821 block--social-media--block-content--14207195-3b0f-4f79-949f-07dd43f20b87 block--social-media--block-content--14207195-3b0f-4f79-949f-07dd43f20b87--5821 block--d62d1b79-4218-4095-b37b-b62c6db7ab53 block--d62d1b79-4218-4095-b37b-b62c6db7ab53--5821 block block-menu navigation block-system-menublock menu--_4207195-3b0f-4f79-949f-07dd43f20b87">
+                        
+    <h5 class="visually-hidden" id="block-globalfootersocial-menu">Global - Footer Social</h5>
+    
+
+                
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><h5>Connect with us on social media.</h5>
+
+<ul id="footer_social"><li><a target="_blank" href="https://www.facebook.com/AvistaUtilities/" title="Facebook"><span class="icon ndqicon-fb"></span></a></li>
+	<li><a target="_blank" href="https://www.linkedin.com/company/avista" title="Linkedin"><span class="icon ndqicon-linkedin"></span></a></li>
+	<li><a target="_blank" href="https://twitter.com/avistautilities" title="Twitter"><span class="icon ndqicon-tw-1"></span></a></li>
+	<li><a target="_blank" href="https://www.youtube.com/user/AvistaUtilities" title="Youtube"><span class="icon ndqicon-youtube"></span></a></li>
+	<li><a target="_blank" href="https://www.instagram.com/avistautilities/" title="Instagram"><span class="icon ndqicon-instagram"></span></a></li>
+</ul></div>
+      
+</div>
+      
+    </div>
+
+            </div>
+            
+        </div>
+</footer>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb210";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5821","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.filterform,nir_multimedia\/nir_multimedia,nir_pid1034\/override,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid1034","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"user":{"uid":0,"permissionsHash":"568e9b1c35d5ef546b338e10449a3b3b13a90c3bfb176afad8c69c7b27ae23dc"}}</script>
+<script src="/sites/g/files/knoqqb58701/files/js/js_9Dg7MX3y20K7bm-1JhKCcrtWW6wGp8DH3ny057MdldY.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"39077635,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":540,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"195287039"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="CSW Industrials Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cswindustrials.gcs-web.com/events-and-presentations/events" />
+<meta property="og:title" content="Events | CSW Industrials Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about CSW Industrials Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="alternate" hreflang="en" href="https://cswindustrials.gcs-web.com/events-and-presentations/events" />
+<link rel="canonical" href="https://cswindustrials.gcs-web.com/events-and-presentations/events" />
+<link rel="shortlink" href="https://cswindustrials.gcs-web.com/node/6031" />
+<link rel="revision" href="https://cswindustrials.gcs-web.com/events-and-presentations/events" />
+
+    <title>Events | CSW Industrials Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb21301/files/css/css_w5uwuaEHMC9bSP8WfARp9ZhoueTvvxceydRRR7hhmEE.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb21301/files/css/css_Up7WgQExbneG6MXt9cm_IXvqZwWrSEFjp0wwqzc_BuU.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb21301/files/css/css_uR7CBnjEs5VZNOTbN5egaIVEsuJ_uLDLaCxQpDsgq_0.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--6031 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="content-wrapper">
+	<div class="row">
+		<div class="large-12 columns contain-to-grid">
+			<nav class="top-bar" data-topbar="">
+				<ul class="title-area">
+					<li class="name">
+						<h1><a href="http://cswindustrials.com/"><img src="/sites/g/files/knoqqb21301/themes/site/nir_pid1946/client/images/csw-logo.png" alt="CSW Industrials logo" title="CSW Industrials" class="logo"></a></h1></li>
+					<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+				</ul>
+				<section class="top-bar-section">
+					<ul class="right">
+						<li class="has-dropdown not-click"><a href="http://cswindustrials.com/solutions">Solutions</a>
+							<ul class="dropdown">
+								<li class="title back js-generated">
+									<h5><a href="javascript:void(0)">Back</a></h5></li>
+								<li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="http://cswindustrials.com/solutions">Solutions</a></li>
+								<li><a href="http://cswindustrials.com/solutions/building-safety">Building Safety</a></li>
+								<li><a href="http://cswindustrials.com/solutions/contractor-solutions">Contractor Solutions</a></li>
+								<li><a href="http://cswindustrials.com/solutions/reliability-products">Reliability Products</a></li>
+							</ul>
+						</li>
+						<li class="has-dropdown not-click"><a href="http://cswindustrials.com/markets">Markets</a>
+							<ul class="dropdown">
+								<li class="title back js-generated">
+									<h5><a href="javascript:void(0)">Back</a></h5></li>
+								<li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="http://cswindustrials.com/markets">Markets</a></li>
+								<li><a href="http://cswindustrials.com/markets/hvac">HVAC/R</a></li>
+								<li><a href="http://cswindustrials.com/markets/building-safety-products">Building Products</a></li>
+								<li><a href="http://cswindustrials.com/markets/industrial">Industrial</a></li>
+								<li><a href="http://cswindustrials.com/markets/rail">Rail</a></li>
+								<li><a href="http://cswindustrials.com/markets/energy">Energy</a></li>
+								<li><a href="http://cswindustrials.com/markets/plumbing">Plumbing</a></li>
+								<li><a href="http://cswindustrials.com/markets/mining">Mining</a></li>
+							</ul>
+						</li>
+						<li class="has-dropdown not-click"><a href="http://cswindustrials.com/operating-segments">Segments</a>
+							<ul class="dropdown">
+								<li class="title back js-generated">
+									<h5><a href="javascript:void(0)">Back</a></h5></li>
+								<li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="http://cswindustrials.com/operating-segments">Segments</a></li>
+								<li><a href="http://cswindustrials.com/operating-segments/coatings-sealants-adhesives">Coatings, Sealants &amp; Adhesives</a></li>
+								<li><a href="http://cswindustrials.com/operating-segments/industrial-products">Industrial Products</a></li>
+								<li><a href="http://cswindustrials.com/operating-segments/specialty-chemicals">Specialty Chemicals</a></li>
+							</ul>
+						</li>
+						<li><a href="http://cswindustrials.com/companies">Companies</a></li>
+						<li class="has-dropdown not-click"><a href="http://cswindustrials.com/about">About</a>
+							<ul class="dropdown">
+								<li class="title back js-generated">
+									<h5><a href="javascript:void(0)">Back</a></h5></li>
+								<li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="http://cswindustrials.com/about">About</a></li>
+								<li><a href="http://cswindustrials.com/about/core-values">Core Values</a></li>
+								<li><a href="http://cswindustrials.com/about/management">Management</a></li>
+								<li><a href="http://cswindustrials.com/about/board-of-directors">Board of Directors</a></li>
+								<li><a href="http://cswindustrials.com/about/diversity-and-inclusion">Diversity and Inclusion</a></li>
+								<li><a href="http://cswindustrials.com/about/acquisition-strategy">Acquisition Strategy</a></li>
+								<li><a href="http://cswindustrials.com/about/careers">Careers</a></li>
+							</ul>
+						</li>
+						<li class="has-dropdown not-click irMenu"><a href="https://cswindustrials.gcs-web.com/">Investors</a>
+							<ul class="dropdown">
+                                    <li class="title back js-generated">
+                                        <h5><a href="javascript:void(0)">Back</a></h5>
+									</li>
+							</ul>
+						</li>
+						<li><a href="http://cswindustrials.com/contact">Contact</a></li>
+					</ul>
+					<div style="display:none;">
+											  <div class="region region-header">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1946-investorrelations-menu" id="block-nir-pid1946-investorrelations" class="block--system-menu-blockir block--system-menu-blockir--6031 block--header--system-menu-block--ir block--header--system-menu-block--ir--6031 block--0481d90b-3d0c-4daa-ab5d-3672a4ed2f94 block--0481d90b-3d0c-4daa-ab5d-3672a4ed2f94--6031 block block-menu navigation block-system-menublock menu--ir">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1946-investorrelations-menu">Investor Relations</h2>
+    
+
+                              <ul data-block-uuid="0481d90b-3d0c-4daa-ab5d-3672a4ed2f94" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/" target="" rel="" title="Main Investor Relations Page" data-drupal-link-system-path="&lt;front&gt;">Investors</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-and-presentations/events" data-drupal-link-system-path="node/6031" class="is-active">Events &amp; Presentations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/stock-quote" data-drupal-link-system-path="node/5911">Stock Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">Financial Reports &amp; Filings</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance/highlights" data-drupal-link-system-path="node/5836">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/contact-ir" data-drupal-link-system-path="node/5981">Investor Resources</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">Investor News</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+										</div>
+				</section>
+			</nav>
+		</div>
+	</div>
+	<article>
+		<header class="introduction has-synopsis row">
+			<div class="banner" style="background-image: url(https://cswindustrials.com/media/images/mining.jpg);">
+				<div class="medium-10 columns small-centered">
+					<div class="medium-10 columns small-centered">
+						<hgroup>
+							<h1 class="title text-center">
+																  Events &amp; Presentations
+															</h1></hgroup>
+					</div>
+				</div>
+			</div>
+					</header>
+		<section class="contact row">
+						<div class="container medium-10 columns medium-centered full ndq-content">
+			
+			
+			  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+
+
+<nav role="navigation" aria-labelledby="block-nir-pid1946-eventsandpresentations-2-menu" id="block-nir-pid1946-eventsandpresentations-2" class="block--system-menu-blockevents-and-presentations block--system-menu-blockevents-and-presentations--6031 block--content--system-menu-block--events-and-presentations block--content--system-menu-block--events-and-presentations--6031 block--b22be67e-3737-4365-b5ab-7891fa94c388 block--b22be67e-3737-4365-b5ab-7891fa94c388--6031 block block-menu navigation block-system-menublock menu--events-and-presentations">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1946-eventsandpresentations-2-menu">Events and Presentations</h2>
+    
+
+                              <ul data-block-uuid="b22be67e-3737-4365-b5ab-7891fa94c388" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/events-and-presentations/events" data-drupal-link-system-path="node/6031" class="is-active">Events</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-and-presentations/presentation" title="Past Events" data-drupal-link-system-path="node/5826">Presentations</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+<div id="block-nir-pid1946-content" class="block--system-main-block block--system-main-block--6031 block--content--system-main-block block--content--system-main-block--6031 block--62409c53-348d-4edb-a3f3-0f73a552b4b4 block--62409c53-348d-4edb-a3f3-0f73a552b4b4--6031 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--upcomingevents-table block--nir-events__widget block--nir-events__widget--6031 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--6031 block--eee79f68-f280-4411-8bba-705f2a22ad3c block--eee79f68-f280-4411-8bba-705f2a22ad3c--6031 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Upcoming Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              More events are coming soon.
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--pastevents-table block--nir-events__widget block--nir-events__widget--6031 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--6031 block--70941245-66d5-4398-8c8b-a3d36d9a2429 block--70941245-66d5-4398-8c8b-a3d36d9a2429--6031 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Past Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+      	  <table cellpadding="0" summary="" class="wsh-dataTable wsh-events col-3 nirtable">
+      
+      <colgroup>
+        <col style="width:24%">
+      
+        <col style="width:75%">
+      
+      </colgroup>
+      <thead>
+        
+        <tr>
+          <th>Date</th>
+          <th>Event Details</th>
+          
+        </tr>
+        
+      </thead>
+    
+      <tbody>
+        
+<tr>
+	<td data-before="Date">
+		<div>
+			<nobr>
+      
+      
+            05/20/21 at 10:00 AM EDT
+      </nobr>
+		</div>
+	</td>
+	<td data-before="Event Details">
+		<div class="ndq-eventtitle">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q4-2021-csw-industrials-inc-earnings-conference-call" hreflang="en">Q4 2021 CSW Industrials Inc Earnings Conference Call</a></div>
+  </div> </div>
+		 		<div></div>
+		
+					<span class="leftTitle">Supporting Materials</span>
+			<div class="ndq-filetypes">
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cswindustrials.gcs-web.com/static-files/52628bfe-2c37-4a06-ade5-a594db57789c" type="application/pdf" title="CSWI May 2021 Investor Presentation_final.pdf">Investor Presentation May 2021</a></span><span class="filesize"> 24.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div></div>
+				
+				  
+  
+    	    	
+	</td>
+	
+</tr>
+<tr>
+	<td data-before="Date">
+		<div>
+			<nobr>
+      
+      
+            02/05/21 at 10:00 AM EST
+      </nobr>
+		</div>
+	</td>
+	<td data-before="Event Details">
+		<div class="ndq-eventtitle">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q3-2021-csw-industrials-inc-earnings-conference-call" hreflang="en">Q3 2021 CSW Industrials Inc Earnings Conference Call</a></div>
+  </div> </div>
+		 		<div></div>
+		
+					<span class="leftTitle">Supporting Materials</span>
+			<div class="ndq-filetypes">
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cswindustrials.gcs-web.com/static-files/77fee436-9a43-4dba-94c5-80601b589b1b" type="application/pdf" title="CSWI February 2021 Investor Presentation FINAL.pdf">Investor Presentation February 2021</a></span><span class="filesize"> 7.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div></div>
+				
+				  
+  
+    	    	
+	</td>
+	
+</tr>
+<tr>
+	<td data-before="Date">
+		<div>
+			<nobr>
+      
+      
+            11/05/20 at 9:00 AM EST
+      </nobr>
+		</div>
+	</td>
+	<td data-before="Event Details">
+		<div class="ndq-eventtitle">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/cswi-acquisition-call" hreflang="en">CSWI Acquisition Call</a></div>
+  </div> </div>
+		 		<div></div>
+		
+					<span class="leftTitle">Supporting Materials</span>
+			<div class="ndq-filetypes">
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cswindustrials.gcs-web.com/static-files/8c016590-b39a-4ab6-a119-12a71ef86d7c" type="application/pdf" title="CSWI Announces Agreement to Acquire TRUaire_20201104 4pm.pdf">CSWI Announces TRUaire Acquisition</a></span><span class="filesize"> 3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cswindustrials.gcs-web.com/static-files/531f5c79-80dc-4aaf-8f33-3ab3dcd4f2dc" type="application/pdf" title="TRUaire Acquisition.pdf">CSWI Acquisition Call Transcript</a></span><span class="filesize"> 117.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div></div>
+				
+				  
+  
+    	    	
+	</td>
+	
+</tr>
+<tr>
+	<td data-before="Date">
+		<div>
+			<nobr>
+      
+      
+            10/30/20 at 10:00 AM EDT
+      </nobr>
+		</div>
+	</td>
+	<td data-before="Event Details">
+		<div class="ndq-eventtitle">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q2-2021-csw-industrials-inc-earnings-conference-call" hreflang="en">Q2 2021 CSW Industrials Inc Earnings Conference Call</a></div>
+  </div> </div>
+		 		<div></div>
+		
+					<span class="leftTitle">Supporting Materials</span>
+			<div class="ndq-filetypes">
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cswindustrials.gcs-web.com/static-files/67162bf1-34b0-4380-84a0-9b0462af370c" type="application/pdf" title="CSWI October 2020 Investor Presentation.pdf">Investor Presentation October 2020</a></span><span class="filesize"> 6.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cswindustrials.gcs-web.com/static-files/6630e75b-fc9b-47b9-b1f1-c554ec34fe6d" type="application/pdf" title="CSWI 2Q21 Transcript.pdf">Q2 FY21 Transcript</a></span><span class="filesize"> 89.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div></div>
+				
+				  
+  
+    	    	
+	</td>
+	
+</tr>
+<tr>
+	<td data-before="Date">
+		<div>
+			<nobr>
+      
+      
+            08/03/20 at 10:00 AM EDT
+      </nobr>
+		</div>
+	</td>
+	<td data-before="Event Details">
+		<div class="ndq-eventtitle">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q1-2021-csw-industrials-inc-earnings-conference-call" hreflang="en">Q1 2021 CSW Industrials Inc Earnings Conference Call</a></div>
+  </div> </div>
+		 		<div></div>
+		
+					<span class="leftTitle">Supporting Materials</span>
+			<div class="ndq-filetypes">
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cswindustrials.gcs-web.com/static-files/7aeb31b6-d4c2-4ba0-a801-828bf9cf0fa2" type="application/pdf" title="CSWI Investor Presentation August 2020_FINAL.pdf">Investor Presentation August 2020</a></span><span class="filesize"> 17.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cswindustrials.gcs-web.com/static-files/bde96da1-5b4f-4375-92f1-d1c734b67c49" type="application/pdf" title="CSW Industrials Inc. 1Q21 Earnings Call Transcript.pdf">Q1 FY21 Transcript</a></span><span class="filesize"> 87.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div></div>
+				
+				  
+  
+    	    	
+	</td>
+	
+</tr>
+<tr>
+	<td data-before="Date">
+		<div>
+			<nobr>
+      
+      
+            05/20/20 at 10:00 AM EDT
+      </nobr>
+		</div>
+	</td>
+	<td data-before="Event Details">
+		<div class="ndq-eventtitle">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q4-2020-csw-industrials-inc-earnings-conference-call" hreflang="en">Q4 2020 CSW Industrials Inc Earnings Conference Call</a></div>
+  </div> </div>
+		 		<div></div>
+		
+					<span class="leftTitle">Supporting Materials</span>
+			<div class="ndq-filetypes">
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cswindustrials.gcs-web.com/static-files/7f69228b-694f-49ce-9502-e40ae53ee47a" type="application/pdf" title="CSWI Investor Presentation May 2020.pdf">Investor Presentation May 2020</a></span><span class="filesize"> 2.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cswindustrials.gcs-web.com/static-files/99db5395-9989-4f75-8e5b-f4bb13ee6037" type="application/pdf" title="CSWI 4Q20 Transcript _final.pdf">Q4 FY20 Transcript</a></span><span class="filesize"> 132.4 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div></div>
+				
+				  
+  
+    	    	
+	</td>
+	
+</tr>
+<tr>
+	<td data-before="Date">
+		<div>
+			<nobr>
+      
+      
+            02/04/20 at 10:00 AM EST
+      </nobr>
+		</div>
+	</td>
+	<td data-before="Event Details">
+		<div class="ndq-eventtitle">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q3-2020-csw-industrials-inc-earnings-conference-call" hreflang="en">Q3 2020 CSW Industrials Inc Earnings Conference Call</a></div>
+  </div> </div>
+		 		<div></div>
+		
+					<span class="leftTitle">Supporting Materials</span>
+			<div class="ndq-filetypes">
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cswindustrials.gcs-web.com/static-files/5ebcc486-0638-4ce2-aff2-2999e93cee1b" type="application/pdf" title="CSWI Transcript Q3 FY20 Earnings Call Feb 4 20.pdf">Q3 FY20 Transcript</a></span><span class="filesize"> 103.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div></div>
+				
+				  
+  
+    	    	
+	</td>
+	
+</tr>
+<tr>
+	<td data-before="Date">
+		<div>
+			<nobr>
+      
+      
+            11/05/19 at 10:00 AM EST
+      </nobr>
+		</div>
+	</td>
+	<td data-before="Event Details">
+		<div class="ndq-eventtitle">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q2-2020-csw-industrials-inc-earnings-conference-call" hreflang="en">Q2 2020 CSW Industrials Inc Earnings Conference Call</a></div>
+  </div> </div>
+		 		<div></div>
+		
+					<span class="leftTitle">Supporting Materials</span>
+			<div class="ndq-filetypes">
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://cswindustrials.gcs-web.com/static-files/5967828b-069d-4d46-a38c-b295c47ca236" type="application/pdf" title="CSWI Transcript Q2 FY20 Earnings Call Nov 5 2019.pdf">Q2 FY20 Transcript </a></span><span class="filesize"> 207.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div></div>
+				
+				  
+  
+    	    	
+	</td>
+	
+</tr>
+<tr>
+	<td data-before="Date">
+		<div>
+			<nobr>
+      
+      
+            08/08/19 at 10:00 AM EDT
+      </nobr>
+		</div>
+	</td>
+	<td data-before="Event Details">
+		<div class="ndq-eventtitle">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q1-2020-csw-industrials-inc-earnings-conference-call" hreflang="en">Q1 2020 CSW Industrials Inc Earnings Conference Call</a></div>
+  </div> </div>
+		 		<div></div>
+		
+				
+				  
+  
+    	    	
+	</td>
+	
+</tr>
+<tr>
+	<td data-before="Date">
+		<div>
+			<nobr>
+      
+      
+            05/22/19 at 10:00 AM EDT
+      </nobr>
+		</div>
+	</td>
+	<td data-before="Event Details">
+		<div class="ndq-eventtitle">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q4-2019-csw-industrials-inc-earnings-conference-call" hreflang="en">Q4 2019 CSW Industrials Inc Earnings Conference Call</a></div>
+  </div> </div>
+		 		<div></div>
+		
+				
+				  
+  
+    	    	
+	</td>
+	
+</tr>
+<tr>
+	<td data-before="Date">
+		<div>
+			<nobr>
+      
+      
+            02/05/19 at 10:00 AM EST
+      </nobr>
+		</div>
+	</td>
+	<td data-before="Event Details">
+		<div class="ndq-eventtitle">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q3-2019-csw-industrials-inc-earnings-conference-call" hreflang="en">Q3 2019 CSW Industrials Inc Earnings Conference Call</a></div>
+  </div> </div>
+		 		<div></div>
+		
+				
+				  
+  
+    	    	
+	</td>
+	
+</tr>
+	</tbody>
+	</table>
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+
+<nav role="navigation" aria-labelledby="block-nir-pid1946-tools-menu" id="block-nir-pid1946-tools" class="block--system-menu-blocktools block--system-menu-blocktools--5881 block--content--system-menu-block--tools block--content--system-menu-block--tools--5881 block--ffd08f76-9062-4e1a-bf61-321d7b77ba6b block--ffd08f76-9062-4e1a-bf61-321d7b77ba6b--5881 block block-menu navigation block-system-menublock menu--tools">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1946-tools-menu">Tools</h2>
+    
+
+                              <ul data-block-uuid="ffd08f76-9062-4e1a-bf61-321d7b77ba6b" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="" target="" rel="" class="t-print">Print Page</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/rss-feeds" target="" rel="" class="t-rss" data-drupal-link-system-path="node/5951">RSS Feeds</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/email-alerts" target="" rel="" class="t-alerts" data-drupal-link-system-path="node/5946">Email Alerts</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/contact-ir" target="" rel="" class="t-contacts" data-drupal-link-system-path="node/5981">IR Contact</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+
+						</div>
+			
+		</section>
+	</article>
+	<footer class="row site-footer">
+		<div class="large-12 columns">
+			<nav class="bottom-nav">
+				<div class="right">
+					<p>
+						© Copyright 2021  CSW Industrials Inc. All Rights Reserved
+					</p>
+				</div>
+				<ul class="left">
+					<li><a href="http://cswindustrials.com/solutions">Solutions</a></li>
+					<li><a href="http://cswindustrials.com/markets">Markets</a></li>
+					<li><a href="http://cswindustrials.com/about">About</a></li>
+					<li><a href="https://cswindustrials.gcs-web.com/">Investors</a></li>
+					<li><a href="http://cswindustrials.com/contact">Contact Us</a></li>
+					<li><a href="http://cswindustrials.com/terms-and-conditions">Terms and Conditions</a></li>
+				</ul>
+			</nav>
+		</div>
+		
+	</footer>
+</div>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb3229";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/6031","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1946\/override,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid1946","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"2ed6c6c420d593fd16487f17d47e8d4d9dea979945ba539b2d9f182c8c688716"}}</script>
+<script src="/sites/g/files/knoqqb21301/files/js/js_hR3-1Pto3U5nxBA8wMAoWaJFKIr9hzQW55o9HBnm1JU.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"195287039,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":538,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

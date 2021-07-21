@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"32397309"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="AngioDynamics" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investors.angiodynamics.com/events-and-presentations" />
+<meta property="og:title" content="Events &amp; Presentations | AngioDynamics" />
+<meta property="og:description" content="The Investor Relations website contains information about AngioDynamics&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb38821/themes/site/nir_pid1355/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://investors.angiodynamics.com/events-and-presentations" />
+<link rel="canonical" href="https://investors.angiodynamics.com/events-and-presentations" />
+<link rel="shortlink" href="https://investors.angiodynamics.com/node/5821" />
+<link rel="revision" href="https://investors.angiodynamics.com/events-and-presentations" />
+
+    <title>Events &amp; Presentations | AngioDynamics</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb38821/files/css/css_w5uwuaEHMC9bSP8WfARp9ZhoueTvvxceydRRR7hhmEE.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb38821/files/css/css_BfmCkiCAOkMitbkpe1wNg9816uj1sUTcf3htJfD8NAs.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Barlow:400,500,600,700|Ubuntu:400,500" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb38821/files/css/css_QNmN0RRY7REoh-VPJvzHcbGfAaFkHOvAfXkmz-JRKT4.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb38821/files/css/css_dBiJ_veyi3DpNKs8Ik51WHDsGxOOLO1kQ0nzpuk2wIc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb38821/files/css/css_RJL91c73EPFNsia-rgT5oHXJggwCXqs7sOp-on-mVGc.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5821 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+      <div class="region region-header">
+    <div id="block-globalheader" class="block-content--nir-global-block block-content--nir-global-block--20716 block--block-contentbb939b81-1ba0-426d-b62b-50d134819a3c block--block-contentbb939b81-1ba0-426d-b62b-50d134819a3c--5821 block--header--block-content--bb939b81-1ba0-426d-b62b-50d134819a3c block--header--block-content--bb939b81-1ba0-426d-b62b-50d134819a3c--5821 block--16a26fc0-ef57-4b06-a91f-a8bdcd3a3078 block--16a26fc0-ef57-4b06-a91f-a8bdcd3a3078--5821 block block-block-content block-block-contentbb939b81-1ba0-426d-b62b-50d134819a3c">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><!-- BEGIN: Main Content HTML --><a name="top" id="top"></a>
+<div class="wrapper">
+<div id="main">
+<div id="utilnav">
+<nav id="mainnav"><ul><li><a href="https://www.angiodynamics.com/">Home</a></li>
+	<li><a href="https://www.angiodynamics.com/about-us/">About Angiodynamics</a></li>
+	<li><a class="active" href="http://investors.angiodynamics.com/" target="_blank">Investors</a></li>
+	<li><a href="https://www.angiodynamics.com/news-and-events/">News &amp; Events</a></li>
+	<li><a href="https://www.angiodynamics.com/careers/">Careers</a></li>
+	<li><a href="https://www.angiodynamics.com/research/">Research</a></li>
+	<li><a href="https://www.angiodynamics.com/contact/">Contact Us</a></li>
+</ul></nav><div id="lang"> </div>
+</div>
+
+<div id="page">
+<header><a href="https://www.angiodynamics.com/" id="logo">Angiodynamics</a>
+
+<div id="navholder">
+<div class="hamburger" data-active="on" id="navtoggle"><span class="burger"></span> <span class="burger"></span> <span class="burger"></span> <span class="cross"></span> <span class="cross"></span></div>
+</div>
+
+<div id="dnav">
+<nav id="usernav"><ul><li class="haschild"><a href="https://www.angiodynamics.com/products/">Products</a>
+
+	<ul><li><a href="https://www.angiodynamics.com/products/categories/">By Product Category</a></li>
+		<li><a href="https://www.angiodynamics.com/products/divisions/">By Division</a></li>
+		<li><a href="https://www.angiodynamics.com/products/brand-list/">By Brand List</a></li>
+	</ul></li>
+	<li><a href="https://www.angiodynamics.com/patients/">Patients</a></li>
+	<li><a href="https://www.angiodynamics.com/healthcare-professionals/">Healthcare Professionals</a></li>
+</ul></nav></div>
+
+<div id="mnav">
+<div class="scroll">
+<nav id="usernav"><ul><li><a href="https://www.angiodynamics.com/products/">Products</a></li>
+	<li><a href="https://www.angiodynamics.com/patients/">Patients</a></li>
+	<li><a href="https://www.angiodynamics.com/healthcare-professionals/">Healthcare Professionals</a></li>
+</ul></nav><nav id="sub"><ul><li><a href="https://www.angiodynamics.com/about-us/">About Angiodynamics</a></li>
+	<li><a href="http://investors.angiodynamics.com/" target="_blank">Investors</a></li>
+	<li><a href="https://www.angiodynamics.com/news-and-events/">News &amp; Events</a></li>
+	<li><a href="https://www.angiodynamics.com/careers/">Careers</a></li>
+	<li><a href="https://www.angiodynamics.com/research/">Research</a></li>
+	<li><a href="https://www.angiodynamics.com/contact/">Contact Us</a></li>
+</ul></nav></div>
+</div>
+</header></div>
+</div>
+</div>
+</div>
+      
+</div>
+      
+  </div>
+
+  </div>
+
+</div>
+</div>
+</div>
+</div>
+<div class="wrapper">
+    <div id="main">
+        <div id="page">
+            <div id="content">
+                <div class="pageHeader">
+                    <div class="pageHeaderTop">
+                                                      <div class="region region-breadcrumbs">
+    <div id="block-breadcrumbs" class="block--system-breadcrumb-block block--system-breadcrumb-block--5821 block--breadcrumbs--system-breadcrumb-block block--breadcrumbs--system-breadcrumb-block--5821 block--92c7ff4d-47bf-47f5-98db-ce9071c2253b block--92c7ff4d-47bf-47f5-98db-ce9071c2253b--5821 block block-system block-system-breadcrumb-block">
+  
+    
+        <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+    <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
+    <ol>
+          <li >
+                  <a href="https://www.angiodynamics.com">Home</a>
+              </li>
+          <li >
+                  <a href="/">Investors</a>
+              </li>
+          <li >
+                  Events &amp; Presentations
+              </li>
+        </ol>
+  </nav>
+
+  </div>
+
+  </div>
+
+                                            </div>
+                    <div class="pageTitleWrap">
+                        <h1 class="pageTitle">
+                                                            Events & Presentations
+                                                    </h1>
+                    </div>
+                </div>
+                <div class="ir-nav">
+                                              <div class="region region-ir-nav">
+    
+
+
+        
+        <div class="ir-nav-row">
+    <div class="ir-nav-container">
+    <nav>
+        <div class="menu-button">Investor Relations <span class="touch-button"><i class="navicon"></i></span><span class="touch-button"><i class="navicon"></i></span></div>
+                                    <ul class="flexnav opacity" data-breakpoint="1024">
+    
+                              <li class="expanded current first">
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">News &amp; Events</a>
+                                      <ul class="open">
+    
+                              <li class="leaf first">
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+                              <li class="leaf current last">
+          <a href="/events-and-presentations" target="" rel="" data-drupal-link-system-path="node/5821" class="is-active">Events &amp; Presentations</a>
+                  </li>
+      
+    </ul>
+  
+                  </li>
+                              <li class="expanded">
+          <a href="/financial-information" target="" rel="" data-drupal-link-system-path="node/5871">Financial Information</a>
+                                      <ul class="open">
+    
+                              <li class="leaf first">
+          <a href="/financial-information" target="" rel="" data-drupal-link-system-path="node/5871">Overview</a>
+                  </li>
+                              <li class="leaf">
+          <a href="/financial-information/sec-filings" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+                              <li class="leaf">
+          <a href="/financial-information/annual-reports" data-drupal-link-system-path="node/5881">Annual Reports</a>
+                  </li>
+                              <li class="leaf last">
+          <a href="/financial-information/quarterly-results" data-drupal-link-system-path="node/5986">Quarterly Results</a>
+                  </li>
+      
+    </ul>
+  
+                  </li>
+                              <li class="expanded">
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/5916">Stock Information</a>
+                                      <ul class="open">
+    
+                              <li class="leaf first">
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/5916">Overview</a>
+                  </li>
+                              <li class="leaf">
+          <a href="/stock-information/historic-stock-lookup" data-drupal-link-system-path="node/5921">Historic Stock Lookup</a>
+                  </li>
+                              <li class="leaf">
+          <a href="/stock-information/analyst-coverage" data-drupal-link-system-path="node/5896">Analyst Coverage</a>
+                  </li>
+                              <li class="leaf last">
+          <a href="/stock-information/ownership-profile" data-drupal-link-system-path="node/5901">Ownership Profile</a>
+                  </li>
+      
+    </ul>
+  
+                  </li>
+                              <li class="expanded">
+          <a href="/corporate-governance" target="" rel="" data-drupal-link-system-path="node/5836">Corporate Governance</a>
+                                      <ul class="open">
+    
+                              <li class="leaf first">
+          <a href="/corporate-governance" target="" rel="" data-drupal-link-system-path="node/5836">Highlights</a>
+                  </li>
+                              <li class="leaf">
+          <a href="/corporate-governance/management" data-drupal-link-system-path="node/5846">Management</a>
+                  </li>
+                              <li class="leaf">
+          <a href="/corporate-governance/board-of-directors" data-drupal-link-system-path="node/5841">Board of Directors</a>
+                  </li>
+                              <li class="leaf">
+          <a href="/corporate-governance/committee-composition" data-drupal-link-system-path="node/5851">Committee Composition</a>
+                  </li>
+                              <li class="leaf">
+          <a href="/corporate-governance/contact-the-board" data-drupal-link-system-path="node/5866">Contact the Board</a>
+                  </li>
+                              <li class="leaf last">
+          <a href="/insider-transactions" target="" rel="" data-drupal-link-system-path="node/18561">Insider Transactions</a>
+                  </li>
+      
+    </ul>
+  
+                  </li>
+                              <li class="leaf">
+          <a href="/investor-faqs" data-drupal-link-system-path="node/5941">Investor FAQs</a>
+                  </li>
+                              <li class="leaf last">
+          <a href="/contact-us" target="" rel="" data-drupal-link-system-path="node/5981">Investor Contact</a>
+                  </li>
+      
+    </ul>
+  
+
+
+            </nav>
+    </div>
+    </div>
+  </div>
+
+                                    </div>
+                            </div>
+            <section id="content" class="clearfix">
+                <div id="content-header">
+
+                    
+
+                </div>
+
+                                
+
+                                
+                <div  class="row" id="ndq-content">
+                                        <div  class="ndq-5821 col-md-12" >
+                          <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1355-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5821 block--content--website-notice-block block--content--website-notice-block--5821 block--42bdec10-6706-4437-b42f-25a640ab4d27 block--42bdec10-6706-4437-b42f-25a640ab4d27--5821 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div id="block-nir-pid1355-content" class="block--system-main-block block--system-main-block--5821 block--content--system-main-block block--content--system-main-block--5821 block--6ade675a-536a-468d-a2b5-770ed03ed1ca block--6ade675a-536a-468d-a2b5-770ed03ed1ca--5821 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--3a567ee6-f0b0-4150-a0b8-7d39824e762e block--3a567ee6-f0b0-4150-a0b8-7d39824e762e--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      
+  </div>
+<div class="block--event-table block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--b5abb6f6-3503-4ae1-adde-4430a6d9979b block--b5abb6f6-3503-4ae1-adde-4430a6d9979b--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Conferences &amp; Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jul 13, 2021 at 9:30 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">AngioDynamics’ Investor and Technology Day (Virtual)</div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/6gq5nyyb/clip_start_position/2390" target="_blank">Join Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/62d0b388-ef0c-42b6-a1fa-e8aae67703d5" type="application/pdf" title="2021.07.13 - Investor &amp; Technology Day Presentation - FINAL.pdf">Investor &amp; Technology Day Presentation</a></span><span class="filesize"> 13.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            May 25, 2021 at 12:00 PM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">UBS Virtual Global Healthcare Conference</div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://event.webcasts.com/starthere.jsp?ei=1458098&amp;tp_key=969aca0df4" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/c15eff39-cb0c-41f9-aa4f-3b48d074061a" type="application/pdf" title="2021.05.25 - UBS Virtual Global Healthcare Conference - FINAL.pdf">UBS Virtual Global Healthcare Conference Presentation</a></span><span class="filesize"> 27.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Apr 12, 2021 at 8:45 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Needham Virtual Healthcare Conference</div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/needham107/ango/2233330" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/9e30ca2c-dc9b-4524-8d4c-2ce8cb6319a6" type="application/pdf" title="2021.04.12 - Needham Healthcare Conference - FINAL.pdf">Needham Virtual Healthcare Conference Presentation</a></span><span class="filesize"> 26.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Mar 24, 2021 at 10:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">KeyBanc Life Sciences &amp; MedTech Investor Forum </div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/key15/ango/1664075" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Mar 16, 2021 at 9:20 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Oppenheimer Virtual Healthcare Conference</div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/oppenheimer9/ango/2699785" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Mar 9, 2021 at 8:00 AM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Barclays Virtual Global Healthcare Conference </div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://kvgo.com/2021-global-healthcare-conference/angiodynamics-march-2021" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/f3ed5dfe-a116-4969-8193-7ce21f2902b8" type="application/pdf" title="2021.03.09 - Barclays Global Healthcare Conference - FINAL.pdf">Barclays Virtual Global Healthcare Conference Presentation</a></span><span class="filesize"> 29.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jan 14, 2021 at 2:50 PM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">J.P. Morgan Virtual Healthcare Conference</div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://jpmorgan.metameetings.net/events/healthcare21/sessions/35641-angiodynamics-inc/webcast?gpu_only=true&amp;kiosk=true" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/c31728ee-3b06-4fdd-932b-61b79500212c" type="application/pdf" title="2021.01.14 - J.P. Morgan Virtual Healthcare Conference - FINAL.pdf">J.P. Morgan Virtual Healthcare Conference Presentation</a></span><span class="filesize"> 23.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jan 11, 2021 at 1:15 PM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Needham Virtual Growth Conference</div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/needham103/ango/2228190" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/5d8a0cba-ce27-45ae-abb2-390471473571" type="application/pdf" title="Angio 2021.01.11 - Needham Virtual Growth Conference.pdf">Needham Virtual Growth Conference Presentation</a></span><span class="filesize"> 22.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Nov 19, 2020
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Canaccord Genuity Virtual MedTech &amp; Diagnostics Forum</div>
+  </div>
+    </div>
+  
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/9f981640-82d4-4e6f-a666-a9096208d8a6" type="application/pdf" title="2020.11.19 - ANGO Investor Presentation (Canaccord Genuity Virtual MedTech &amp; Diagnostics Forum).pdf">AngioDynamics’ Investor Presentation</a></span><span class="filesize"> 2.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Aug 12, 2020 at 1:30 PM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Canaccord Genuity Growth Conference</div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://wsw.com/webcast/canaccord42/ango/" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--event-table block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--341920e5-af46-4330-9ae3-77e7d806a7fb block--341920e5-af46-4330-9ae3-77e7d806a7fb--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Earnings Results
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jul 13, 2021 at 8:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/angiodynamics-fiscal-2021-fourth-quarter-financial-results" hreflang="en">AngioDynamics’ Fiscal 2021 Fourth Quarter Financial Results </a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/6gq5nyyb" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/39d199c3-bf0c-4a24-b8fc-731c8a5e1008" type="application/pdf" title="2021.07.13 - ANGO FY21Q4 Earnings Investor Presentation - FINAL.pdf">Q4 FY2021 Presentation</a></span><span class="filesize"> 802.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Mar 30, 2021 at 8:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/angiodynamics-fiscal-2021-third-quarter-financial-results" hreflang="en">AngioDynamics’ Fiscal 2021 Third Quarter Financial Results</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/5zwesmvs" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/3bc027cf-102d-4f72-9473-5858690b4c7a" type="application/pdf" title="2021.03.30 - ANGO FY21Q3 Earnings Investor Presentation FINAL.pdf">Q3 FY2021 Presentation</a></span><span class="filesize"> 827.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jan 7, 2021 at 8:00 AM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/angiodynamics-fiscal-2021-second-quarter-financial-results" hreflang="en">AngioDynamics’ Fiscal 2021 Second Quarter Financial Results</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/r4ork9sm" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/f5542c9d-04fd-47aa-a25b-2aed19245c23" type="application/pdf" title="2021.01.07 - ANGO FY21Q2 Earnings Presentation - FINAL UPDATED.pdf">Q2 FY2021 Presentation</a></span><span class="filesize"> 6.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Sep 29, 2020 at 8:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/angiodynamics-fiscal-2021-first-quarter-financial-results" hreflang="en">AngioDynamics’ Fiscal 2021 First Quarter Financial Results</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/i2jd82xi" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/5a29e310-ff2c-4dba-b541-a25eb3df0f6f" type="application/pdf" title="2020.09.29 - ANGO FY21Q1 Earnings Slides - FINAL.pdf">Q1 FY2021 Presentation</a></span><span class="filesize"> 784.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jul 16, 2020 at 8:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/angiodynamics-fiscal-2020-fourth-quarter-financial-results" hreflang="en">AngioDynamics’ Fiscal 2020 Fourth Quarter Financial Results</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/hq97nqzr" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/b45b9115-800d-410d-9cb4-18c38b7ea580" type="application/pdf" title="ANGO 4Q20 Earnings Slides - Final2.pdf">Q4 FY2020 Presentation</a></span><span class="filesize"> 916.9 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Apr 7, 2020 at 8:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/angiodynamics-fiscal-2020-third-quarter-financial-results" hreflang="en">AngioDynamics’ Fiscal 2020 Third Quarter Financial Results</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/cbupojap" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/0f343e23-0fb3-41dc-9824-9ec5ebd46410" type="application/pdf" title="2020.04.07 - ANGO FY20Q3 Earnings Presentation - FINAL.pdf">Q3 FY2020 Presentation</a></span><span class="filesize"> 886.3 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jan 7, 2020 at 8:00 AM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/angiodynamics-fiscal-2020-second-quarter-financial-results" hreflang="en">AngioDynamics’ Fiscal 2020 Second Quarter Financial Results</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/crhetzja" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.angiodynamics.com/static-files/b1beaf36-e316-43a7-af5c-5210534bd257" type="application/pdf" title="2020.01.07 - ANGO FY20Q2 Earnings Presentation - FINAL.pdf">Q2 FY2020 Presentation</a></span><span class="filesize"> 688.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+                    </div>                </div>
+
+            </section>
+            <div id="toolkit" class="clearfix">
+                                      <div class="region region-toolkit">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1355-shareholdertools-menu" id="block-nir-pid1355-shareholdertools" class="block--system-menu-blockshareholder-tools block--system-menu-blockshareholder-tools--18561 block--toolkit--system-menu-block--shareholder-tools block--toolkit--system-menu-block--shareholder-tools--18561 block--f34507ad-7313-40a5-b20a-c20437026372 block--f34507ad-7313-40a5-b20a-c20437026372--18561 block block-menu navigation block-system-menublock menu--shareholder-tools">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1355-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                                    <div class="column">
+                          <a href="javascript:window.print();"><i class="ndq-fa ndq-fa-print"></i> <span>Print</span></a>
+                      </div>
+                <div class="column">
+                          <a href="/email-alerts"><i class="ndq-fa ndq-fa-exclamation-circle"></i> <span>Email Alerts</span></a>
+                      </div>
+                <div class="column">
+                          <a href="/rss-news-feeds"><i class="ndq-fa ndq-fa-rss"></i> <span>RSS News Feeds</span></a>
+                      </div>
+                <div class="column">
+                          <a href="https://www.angiodynamics.com/contact/"><i class="ndq-fa ndq-fa-envelope"></i> <span>Contact Us</span></a>
+                      </div>
+      
+<div class="clearfix">
+</div>
+    </nav>
+
+  </div>
+
+                            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footerline"></div>
+<div class="wrapper">
+    <div id="footermain">
+        <footer>
+            <div id="footercontent">
+                <div id="footerleft">
+                    <img src="/sites/g/files/knoqqb38821/themes/site/nir_pid1355/dist/img/footer-logo.png" alt="Angiodynamics">
+                    <div class="cf"></div>
+                    <div class="company-info">
+                        <h2>GLOBAL CUSTOMER SERVICE:</h2>
+                        <p><a href="tel:+18007726446">800-772-6446 (OPT 2)</a><br>
+                            11AM – 1AM CET | 5AM – 7PM EST<br>
+                            MONDAY – FRIDAY</p>
+                        <p><a href="http://www.angiodynamics.com/contact/" class="button">Contact Us</a></p>
+                    </div>
+                </div>
+                <div id="footermiddle">
+                    <h4>Quick Links</h4>
+                    <div class="colhalf">
+                        <a href="https://www.angiodynamics.com/research/" >Research</a>
+                        <a href="https://www.angiodynamics.com/about-us/intellectual-property/" >Intellectual Property</a>
+                        <a href="https://www.angiodynamics.com/about-us/leadership/" >Leadership</a>
+                    </div>
+                    <div class="colhalf">
+                        <a href="http://investors.angiodynamics.com/" target="_blank">Investors</a>
+                        <a href="https://www.angiodynamics.com/careers/" >Careers</a>
+                        <a href="https://www.angiodynamics.com/contact/" >Contact Us</a>
+                    </div>
+                </div>
+                <div id="footerright">
+                    <h4>Our Products</h4>
+                    <a href="https://www.angiodynamics.com/products/41/Mariner-Hydrophilic-coated-Angiographic-Catheter/" class="prodblock" style="background-image:url('/sites/g/files/knoqqb38821/themes/site/nir_pid1355/dist/img/uniblate.png');"></a>
+                    <h4>Connect with Us</h4>
+                    <div class="socialicons">
+                        <a href="https://www.facebook.com/angiodynamics" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://twitter.com/angiodynamics" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/angiodynamics" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="cf"></div>
+                <div id="copyright">
+                    &copy; 2021 AngioDynamics. All rights reserved. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.angiodynamics.com/privacy-policy/">Privacy Policy</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="https://www.angiodynamics.com/terms/">Terms of Use</a>
+                </div>
+                <div id="credit">Website Design by <a href="https://www.spiraldesign.com/" title="Website Design, Albany NY" target="_blank">Spiral Design</a></div>
+            </div>
+
+        </footer>
+
+
+
+    </div>
+    <div class="cf"></div>
+</div>
+<a href="#top" id="backtotop" title="back to top">
+    <i class="far fa-caret-square-up"></i>
+</a>
+
+<div class="bottomgradient"></div>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb2583";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5821","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1355\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid1355","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"b67aafaa39dc4e4b03491f91385cabacd4f7082e0713e9974b8e114a9ff8ef24"}}</script>
+<script src="/sites/g/files/knoqqb38821/files/js/js_wFu7SrkXws-ya7yTvyDdVRTKv96AXzxWd1nROMsbMu4.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"32397309,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":603,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

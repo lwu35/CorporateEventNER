@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"74625509"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<link rel="canonical" href="http://khov.gcs-web.com/" />
+<link rel="shortlink" href="http://khov.gcs-web.com/" />
+<meta name="description" content="The Investor Relations website contains information about Hovnanian Enterprises, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta property="og:site_name" content="Hovnanian Enterprises, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://khov.gcs-web.com/investor-overview" />
+<meta property="og:title" content="Overview | Hovnanian Enterprises, Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about Hovnanian Enterprises, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb11181/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://khov.gcs-web.com/" />
+<link rel="revision" href="https://khov.gcs-web.com/investor-overview" />
+
+    <title>Overview | Hovnanian Enterprises, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb11181/files/css/css_xlPnJptIC4BdD3T-gfH9N4SlWZCHxGNTtD6JVWqkd4w.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb11181/files/css/css_rn4huHxaUT3n9ohKfKrBRJ0o3IRFkU_UzNtSAEqRwyU.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Raleway:400,600,300,900,800,700,100" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb11181/files/css/css_SUggNgSt0Ko7DPQWGli4buBznq7S0xWaPmFBNAJ-w8g.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb11181/files/css/css_kW8Tn-QHdypKCFHwWaGu5_lSbKvrmNHFfO3hhiFCNcA.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5806 path-frontpage page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+
+
+   <div id="mboxScriptContainer" style="display:none;visibility:hidden;"></div>
+   <style>.mboxDefault{visibility:hidden;}</style>
+
+   <div id="investor-relations-wrapper" class="clearfix">
+      <div class="sub-nav-container" style="height: 106px;">
+         <div class="sub-nav full-col sticky">
+            <div class="sub-nav-rule"></div>
+            <ul>
+               <li class="active"><a href="/">Overview</a></li>
+               <li><a href="/information-request">Request Info<br> &amp; Email Alerts</a></li>
+               <li class="stock-info"><a href="/stock-information/stock-quote">Stock<br> Info</a></li>
+               <li class="financial-info"><a href="/quarterly-earnings">Financial<br> Info</a></li>
+               <li><a href="/sec-filings">Sec<br> Filings</a></li>
+               <li class="press-releases"><a href="/press-releases">Press<br> Releases</a></li>
+               <li class="events-and-presentations"><a href="/events-and-presentations/upcoming-events">Presentations<br> &amp; Events</a></li>
+               <li class="corporate-gov"><a href="/highlights">Corporate<br> Governance</a></li>
+            </ul>
+            <div class="customSelect">
+               <span>Overview</span>
+                               <select id="m-menu">
+                  <option value="/">Overview</option>
+                  <option value="/">Overview</option>
+                  <option value="/information-request">Request Info &amp; Email Alerts</option>
+                  <option value="/stock-information/stock-quote">Stock Info</option>
+                  <option value="/quarterly-earnings">Financial Info</option>
+                  <option value="/sec-filings">Sec Filings</option>
+                  <option value="/press-releases">Press Releases</option>
+                  <option value="/events-and-presentations/upcoming-events">Presentations &amp; Events</option>
+                  <option value="/highlights">Corporate Governance</option>
+               </select>
+            </div>
+         </div>
+      </div>
+	    
+      <div class="full-col">
+
+    	  
+  	    
+    		<div id="overview" class="full-col">
+    		
+            <h1 class="search-title">Search</h1>
+    
+
+
+            <div class="content lfg-printable-area">  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1041-content" class="block--system-main-block block--system-main-block--5806 block--content--system-main-block block--content--system-main-block--5806 block--698952fa-c4a8-4194-84d3-324426ce2a82 block--698952fa-c4a8-4194-84d3-324426ce2a82--5806 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Overview
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display sutro-double clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-header panel-panel">
+        <div >
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 radix-layouts-column1 panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-column1"><div class="block-content--nir-global-block block-content--nir-global-block--6041 block--block-content1419c3a5-2075-4cc7-a8d8-1c3262e5d81b block--block-content1419c3a5-2075-4cc7-a8d8-1c3262e5d81b--5806 block--column1--block-content--1419c3a5-2075-4cc7-a8d8-1c3262e5d81b block--column1--block-content--1419c3a5-2075-4cc7-a8d8-1c3262e5d81b--5806 block--35e8e5ee-859f-4573-b56e-53a2b957cffc block--35e8e5ee-859f-4573-b56e-53a2b957cffc--5806 block block-block-content block-block-content1419c3a5-2075-4cc7-a8d8-1c3262e5d81b">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><p><span class="ccbnTxt">Founded in 1959, Hovnanian Enterprises, Inc., designs, constructs and markets a variety of for-sale housing in 124 residential communities in 14 states. Hovnanian ranks among the largest homebuilding companies in the U.S., with total revenues of $2.3 billion on 6,414 home deliveries in fiscal 2020.<br /><br /><strong>Hovnanian Enterprises<sup>™</sup></strong> through its subsidiaries, is one of the nation's largest homebuilders with operations in Arizona, California, Delaware, Florida, Georgia, Illinois, Maryland, New Jersey, Ohio, Pennsylvania, South Carolina, Texas, Virginia, Washington, D.C. and West Virginia. The Company's homes are marketed and sold under the trade name K. Hovnanian® Homes.<br /><br />
+Hovnanian's... </span><span class="ccbnTxt"><a class="ccbnLnk" href="/corporate-profile" name="" id="">More</a> »</span></p></div>
+      
+</div>
+      
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="col-md-6 radix-layouts-column2 panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-column2"><div class="block--home-events-replay block--nir-events__widget block--nir-events__widget--5806 block--column2--nir-events__widget block--column2--nir-events__widget--5806 block--47ac644f-3a35-44cd-a058-bb8be1ef6507 block--47ac644f-3a35-44cd-a058-bb8be1ef6507--5806 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article  role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+
+<div class="call-to-action">
+	<div class="cta-corner"></div>
+	<div class="cta-icon">
+		<a href="/events/event-details/q2-2021-hovnanian-enterprises-inc-earnings-conference-call" target="_self">
+			<img border="0" src="/sites/g/files/knoqqb11181/themes/site/nir_pid1041/client/images/microphone2.gif" alt="Webcast Image">
+			</a>
+		</div>
+		<h1> Q2 2021 Hovnanian Enterprises, Inc. Earnings Conference Call
+			<br>
+			</h1>
+			<p><span class="wdms-date-one">
+            
+            06/03/21 at 11:00 AM EDT
+    
+  </span>
+<span class="wdms-date-two">
+                                                                                                  Jun 3
+                        </span>
+
+
+								    </p>
+			<a class="button" href="/events/event-details/q2-2021-hovnanian-enterprises-inc-earnings-conference-call" target="_self">Webcast</a>
+		</div>
+
+
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 radix-layouts-middle panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-middle"><div data-storage-id="node:5806:full:32611" data-uuid="ef6147b4-5c48-4bb5-a249-efadc198f426" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5806 block--middle--market-data-block__stock-quote block--middle--market-data-block__stock-quote--5806 block--ef6147b4-5c48-4bb5-a249-efadc198f426 block--ef6147b4-5c48-4bb5-a249-efadc198f426--5806 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+      <h2>STOCK PRICE</h2>
+    
+      <div class='quote-wrap user-toggle-off stock-quote__featured'>
+  <div class="quote-wrapper">
+                        	
+
+<div class="four-col">
+	
+	<h1></h1>
+	<p class="extra-top">Class A Common Stock</p>
+	<table border="0" cellspacing="0" cellpadding="0" width="100%" class="stock-chart">
+		<tbody>
+			<tr class="ccbnOutline">
+				<td valign="top">
+					<table border="0" cellspacing="1" cellpadding="3" width="100%">
+						
+						<tbody>
+							<tr class="ccbnBgPrice">
+								<td valign="top" class="ccbnBgTblLabelLeft" width="50%">
+									<span class="ccbnTblLabelLeft">Price</span>
+								</td>
+								<td valign="top" width="50%" align="right">
+									<span class="ccbnPrice"></span>
+								</td>
+							</tr>
+							<tr class="ccbnBgTblTxt">
+								<td valign="top" class="ccbnBgTblLabelLeft">
+									<span class="ccbnTblLabelLeft">Change</span>
+									<span class="ccbnTblLabelLeft"> (%)</span>
+								</td>
+								<td align="right">
+									<span class=""></span>
+									
+								</td>
+							</tr>
+							<tr class="ccbnBgTblTxt">
+								<td valign="top" class="ccbnBgTblLabelLeft">
+									<span class="ccbnTblLabelLeft">Volume</span>
+								</td>
+								<td align="right">
+									<span class="ccbnTblTxt"></span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a class="button extra-top" href="/stock-information/stock-quote">View Full Details</a>
+	<table width="100%" border="0" cellspacing="1" cellpadding="3">
+		<tbody>
+			<tr class="ccbnBgDisclaimer">
+				<td valign="top">
+					<span class="ccbnDisclaimer">Data provided by Nasdaq.  Minimum 15 minutes delayed.</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p class="extra-top">Data as of 07/20/21 5:40 pm EDT</p>
+	
+</div>
+    
+    </div>
+</div>
+
+
+
+
+  </div>
+<div class="views-element-container block--views-blockwidget-bundled-content-block-1 block--views-blockwidget-bundled-content-block-1--5806 block--middle--views-block--widget-bundled-content-block-1 block--middle--views-block--widget-bundled-content-block-1--5806 block--5bc90796-b26a-4a72-be7a-e7244122dc2f block--5bc90796-b26a-4a72-be7a-e7244122dc2f--5806 block block-views block-views-blockwidget-bundled-content-block-1">
+  
+    
+  <a href="#" class="show-all">Show all</a>
+      <div data-block-uuid="5bc90796-b26a-4a72-be7a-e7244122dc2f"><div class="acc-wrap view view-widget-bundled-content view-id-widget_bundled_content view-display-id-block_1 js-view-dom-id-f66bf2231adf624cb338737e1884e1bf41bd478507c4f3f320e47afe48a07fb4">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-bundled-content-block-1" action="/" method="get" id="views-exposed-form-widget-bundled-content-block-1" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <div class="view-grouping">
+      <div class="acc-title">Latest Information</div>
+    <div class="acc-content-wrap">
+        <div class="acc-title">Second Quarter 2021</div>
+  <div class="acc-body visually-hidden">
+          <div class="views-row ">
+      <div class="views-field views-field-field-nir-bundle-content"><div class="field-content"><div class="item-list"><ul><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item html-link"><a href="/news-releases/news-release-details/hovnanian-enterprises-reports-fiscal-2021-second-quarter-results" hreflang="en">Hovnanian Enterprises Reports Fiscal 2021 Second Quarter Results</a></div>
+      
+  </div>
+</div>
+</li><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item webcast-link"><a href="/events/event-details/q2-2021-hovnanian-enterprises-inc-earnings-conference-call" hreflang="en">Q2 2021 Hovnanian Enterprises, Inc. Earnings Conference Call</a></div>
+      
+  </div>
+</div>
+</li></ul></div></div></div>
+    </div>
+    </div>
+  <div class="acc-title">Most Recent Presentations</div>
+  <div class="acc-body visually-hidden">
+          <div class="views-row ">
+      
+    </div>
+    </div>
+
+    </div>
+  	<div class="current-reports">
+	 <a class="button" href="/annual-reports">View All Annual Reports</a>
+	 <a class="button" href="/email-alerts">Receive Email Alerts</a>
+	 <a class="button"href="/static-files/6b8a5092-8033-4fef-9e9b-e41d02530e84" target="_blank">IRS FORM 8937</a>
+	</div>
+
+</div>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-bundled-content-block-1 block--views-blockwidget-bundled-content-block-1--5806 block--middle--views-block--widget-bundled-content-block-1 block--middle--views-block--widget-bundled-content-block-1--5806 block--8ecf85fc-2d00-4fc6-9680-5d44e4910362 block--8ecf85fc-2d00-4fc6-9680-5d44e4910362--5806 block block-views block-views-blockwidget-bundled-content-block-1">
+  
+    
+  <a href="#" class="show-all">Show all</a>
+      <div data-block-uuid="8ecf85fc-2d00-4fc6-9680-5d44e4910362"><div class="acc-wrap view view-widget-bundled-content view-id-widget_bundled_content view-display-id-block_1 js-view-dom-id-fef5dea9de90fb959d3c42f8b42d976dc4d071ebe92f79d44e26604cfaece20c">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-bundled-content-block-1" action="/" method="get" id="views-exposed-form-widget-bundled-content-block-1" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <div class="view-grouping">
+      <div class="acc-title">Current Reports</div>
+    <div class="acc-content-wrap">
+                <div class="views-row ">
+      <div class="views-field views-field-field-nir-bundle-content"><div class="field-content"><div class="item-list"><ul><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item">  <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://khov.gcs-web.com/static-files/70bfab97-8461-449a-8eb9-880c7b9741c3" type="application/pdf" title="2Q 2021 10Q.pdf">2021 Q2 Form 10-Q</a></span><span class="filesize"> 528.5 KB</span>
+</div>
+</div>
+      
+  </div>
+</div>
+</li><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item">  <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://khov.gcs-web.com/static-files/9e9102e5-cf0f-40e3-ace2-8772008c9ab4" type="application/pdf" title="2020 10K.pdf">2020 Form 10-K</a></span><span class="filesize"> 932.4 KB</span>
+</div>
+</div>
+      
+  </div>
+</div>
+</li><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item">  <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://khov.gcs-web.com/static-files/f4d87aca-7b32-4973-8bc4-28b1f0f57c10" type="application/pdf" title="2021 Proxy Statement.pdf">2021 Proxy Statement</a></span><span class="filesize"> 1 MB</span>
+</div>
+</div>
+      
+  </div>
+</div>
+</li><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item">  <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://khov.gcs-web.com/static-files/16166d70-882a-4981-9aa7-076a002cc427" type="application/pdf" title="2020 Annual Report.pdf">2020 Annual Report</a></span><span class="filesize"> 1.8 MB</span>
+</div>
+</div>
+      
+  </div>
+</div>
+</li></ul></div></div></div>
+    </div>
+  
+    </div>
+  	<div class="current-reports">
+	 <a class="button" href="/annual-reports">View All Annual Reports</a>
+	 <a class="button" href="/email-alerts">Receive Email Alerts</a>
+	 <a class="button"href="/static-files/6b8a5092-8033-4fef-9e9b-e41d02530e84" target="_blank">IRS FORM 8937</a>
+	</div>
+
+</div>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+<div class="block--asset-homepage block--nir-assets__widget block--nir-assets__widget--5806 block--middle--nir-assets__widget block--middle--nir-assets__widget--5806 block--cd893ecf-85b6-40d5-a618-d549e31d345a block--cd893ecf-85b6-40d5-a618-d549e31d345a--5806 block block-nir-assets block-nir-assets__widget">
+  
+    
+      <div class="nir-widget">
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="ndqicon-disable-link nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://khov.gcs-web.com/static-files/752836a6-93c9-4758-904f-5dfe53e491c4" type="application/pdf" title="Hovnanian_2nd_Quarter_2021_FINAL_web.pdf">Review of Financial Results Second Quarter Fiscal 2021</a></span><span class="filesize"> 9.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--asset-presentation block--nir-assets__widget block--nir-assets__widget--5806 block--middle--nir-assets__widget block--middle--nir-assets__widget--5806 block--9fc28b8a-2a9b-48bb-89a8-d386b6dd9811 block--9fc28b8a-2a9b-48bb-89a8-d386b6dd9811--5806 block block-nir-assets block-nir-assets__widget">
+  
+    
+      <div class="nir-widget">
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="ndqicon-hide-icon nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://khov.gcs-web.com/static-files/5db25e63-1158-4d5b-8957-747e81826f62" type="application/pdf" title="June 2021 Nondeal Roadshow v2.pdf">June 2021 Nondeal Roadshow</a></span><span class="filesize"> 1.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 radix-layouts-secondcolumn1 panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-secondcolumn1"><div class="block-content--nir-lp-block block-content--nir-lp-block--15466 block--block-contentc93cee61-7434-4c38-9871-8132265474e2 block--block-contentc93cee61-7434-4c38-9871-8132265474e2--5806 block--secondcolumn1--block-content--c93cee61-7434-4c38-9871-8132265474e2 block--secondcolumn1--block-content--c93cee61-7434-4c38-9871-8132265474e2--5806 block--e53bd9e4-8902-4e79-b7fe-00efb81915a4 block--e53bd9e4-8902-4e79-b7fe-00efb81915a4--5806 block block-block-content block-block-contentc93cee61-7434-4c38-9871-8132265474e2">
+  
+    
+      
+            <div class="field field--name-field-nir-lp-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-lp-block-body field--type-text-long field--label-hidden field__item"><div class="investor-event-title">
+<p>Investor<br />
+Events</p>
+</div></div>
+      
+</div>
+      
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="col-md-6 radix-layouts-secondcolumn2 panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-secondcolumn2"><div class="block--nir-events__widget block--nir-events__widget--5806 block--secondcolumn2--nir-events__widget block--secondcolumn2--nir-events__widget--5806 block--95130739-6ce0-49a7-b023-074b57c6e2cb block--95130739-6ce0-49a7-b023-074b57c6e2cb--5806 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      UPCOMING EVENTS
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              There are currently no events scheduled.
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--nir-events__widget block--nir-events__widget--5806 block--secondcolumn2--nir-events__widget block--secondcolumn2--nir-events__widget--5806 block--f66f7123-ef71-4972-bd4b-fcad4619bdb9 block--f66f7123-ef71-4972-bd4b-fcad4619bdb9--5806 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      RECENT EVENTS
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tbody>
+		<tr class="ccbnBgTblTxt">
+			<td valign="top">
+				<span class="date"><span class="wdms-date-one">
+            
+            06/03/21 at 11:00 AM EDT
+    
+  </span>
+<span class="wdms-date-two">
+                                                                                                  Jun 3
+                        </span>
+
+</span>
+					<span class="info">
+						<div class="nir-widget--field nir-widgets--event--title">
+							
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q2-2021-hovnanian-enterprises-inc-earnings-conference-call" hreflang="en">Q2 2021 Hovnanian Enterprises, Inc. Earnings Conference Call</a></div>
+  </div>
+						</div>
+					</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block-content--nir-lp-block block-content--nir-lp-block--15581 block--block-content52e3aac0-c52a-4121-979e-39a6de4abb17 block--block-content52e3aac0-c52a-4121-979e-39a6de4abb17--5806 block--secondcolumn2--block-content--52e3aac0-c52a-4121-979e-39a6de4abb17 block--secondcolumn2--block-content--52e3aac0-c52a-4121-979e-39a6de4abb17--5806 block--601ca90b-cdab-411c-8e3f-39e6e18f3ba7 block--601ca90b-cdab-411c-8e3f-39e6e18f3ba7--5806 block block-block-content block-block-content52e3aac0-c52a-4121-979e-39a6de4abb17">
+  
+    
+      
+            <div class="field field--name-field-nir-lp-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-lp-block-body field--type-text-long field--label-hidden field__item"><div><a class="button extra-top" href="/events-and-presentations/upcoming-events">View All Events</a></div>
+</div>
+      
+</div>
+      
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 radix-layouts-footer panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-footer"><div class="views-element-container block--views-blockwidget-news-widget-news-ul block--views-blockwidget-news-widget-news-ul--5806 block--footer--views-block--widget-news-widget-news-ul block--footer--views-block--widget-news-widget-news-ul--5806 block--8451a1a0-3d07-4b65-8018-df6e976dd79e block--8451a1a0-3d07-4b65-8018-df6e976dd79e--5806 block block-views block-views-blockwidget-news-widget-news-ul">
+  
+      <h2>Recent Press Releases</h2>
+ 
+ 
+    
+      <div data-block-uuid="8451a1a0-3d07-4b65-8018-df6e976dd79e"><div class="view view-widget-news view-id-widget_news view-display-id-widget_news_ul js-view-dom-id-f1a0bab9433cf77f151e7026a4855d98f6b999cc4adcb8c28148d09a42631bac">
+  
+    
+      
+      <div class="view-content">
+      <div class="item-list">
+  
+  <ul>
+
+          <li class="has-news-supp">    <div class="col">
+                <div class="views-field views-field-field-nir-news-date"><div class="field-content">
+<div class="field field--name-field-nir-news-date field--type-datetimezone field--label-above">
+        <div class="field__item">June 03</div>
+    </div>
+</div></div>          <div class="views-field views-field-field-nir-news-title"><div class="field-content">
+<a href="#" class="summary-toggle nir-news-widget-summary-toggle-title"><span>Summary Toggle</span></a><a href="/news-releases/news-release-details/hovnanian-enterprises-reports-fiscal-2021-second-quarter-results" hreflang="en">Hovnanian Enterprises Reports Fiscal 2021 Second Quarter Results</a>
+
+</div></div>    </div>
+  </li>
+          <li class="has-news-supp">    <div class="col">
+                <div class="views-field views-field-field-nir-news-date"><div class="field-content">
+<div class="field field--name-field-nir-news-date field--type-datetimezone field--label-above">
+        <div class="field__item">May 20</div>
+    </div>
+</div></div>          <div class="views-field views-field-field-nir-news-title"><div class="field-content">
+<a href="#" class="summary-toggle nir-news-widget-summary-toggle-title"><span>Summary Toggle</span></a><a href="/news-releases/news-release-details/hovnanian-enterprises-announces-second-quarter-fiscal-year-2021" hreflang="en">Hovnanian Enterprises Announces Second Quarter Fiscal Year 2021 Earnings Release and Conference Call</a>
+
+</div></div>    </div>
+  </li>
+          <li class="has-news-supp">    <div class="col">
+                <div class="views-field views-field-field-nir-news-date"><div class="field-content">
+<div class="field field--name-field-nir-news-date field--type-datetimezone field--label-above">
+        <div class="field__item">March 02</div>
+    </div>
+</div></div>          <div class="views-field views-field-field-nir-news-title"><div class="field-content">
+<a href="#" class="summary-toggle nir-news-widget-summary-toggle-title"><span>Summary Toggle</span></a><a href="/news-releases/news-release-details/hovnanian-enterprises-reports-fiscal-2021-first-quarter-results" hreflang="en">Hovnanian Enterprises Reports Fiscal 2021 First Quarter Results</a>
+
+</div></div>    </div>
+  </li>
+          <li class="has-news-supp">    <div class="col">
+                <div class="views-field views-field-field-nir-news-date"><div class="field-content">
+<div class="field field--name-field-nir-news-date field--type-datetimezone field--label-above">
+        <div class="field__item">February 16</div>
+    </div>
+</div></div>          <div class="views-field views-field-field-nir-news-title"><div class="field-content">
+<a href="#" class="summary-toggle nir-news-widget-summary-toggle-title"><span>Summary Toggle</span></a><a href="/news-releases/news-release-details/hovnanian-enterprises-announces-first-quarter-fiscal-year-2021" hreflang="en">Hovnanian Enterprises Announces First Quarter Fiscal Year 2021 Earnings Release and Conference Call</a>
+
+</div></div>    </div>
+  </li>
+          <li class="has-news-supp">    <div class="col">
+                <div class="views-field views-field-field-nir-news-date"><div class="field-content">
+<div class="field field--name-field-nir-news-date field--type-datetimezone field--label-above">
+        <div class="field__item">December 09</div>
+    </div>
+</div></div>          <div class="views-field views-field-field-nir-news-title"><div class="field-content">
+<a href="#" class="summary-toggle nir-news-widget-summary-toggle-title"><span>Summary Toggle</span></a><a href="/news-releases/news-release-details/hovnanian-enterprises-reports-fiscal-2020-fourth-quarter-and" hreflang="en">Hovnanian Enterprises Reports Fiscal 2020 Fourth Quarter and  Full Year Results</a>
+
+</div></div>    </div>
+  </li>
+          <li class="has-news-supp">    <div class="col">
+                <div class="views-field views-field-field-nir-news-date"><div class="field-content">
+<div class="field field--name-field-nir-news-date field--type-datetimezone field--label-above">
+        <div class="field__item">November 30</div>
+    </div>
+</div></div>          <div class="views-field views-field-field-nir-news-title"><div class="field-content">
+<a href="#" class="summary-toggle nir-news-widget-summary-toggle-title"><span>Summary Toggle</span></a><a href="/news-releases/news-release-details/hovnanian-enterprises-announces-fiscal-year-2020-earnings" hreflang="en">Hovnanian Enterprises Announces Fiscal Year 2020 Earnings Release and Conference Call</a>
+
+</div></div>    </div>
+  </li>
+    
+  </ul>
+
+</div>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+    
+  <a href="/news-releases?field_nir_news_date_value[min]=2021" class="button">View All Press Releases</a>
+  
+</div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.sutro-double -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+</div>
+        </div>
+      </div>
+
+            <footer id="nir-footer">
+        <div class="container">
+            <div class="region region-footer">
+    
+
+<nav role="navigation" aria-labelledby="block-shareholdertools-menu" id="block-shareholdertools" class="block--system-menu-blocktools block--system-menu-blocktools--5816 block--footer--system-menu-block--tools block--footer--system-menu-block--tools--5816 block--4f5fd5a3-9cbf-4e82-b18b-e2ef07d3dbf8 block--4f5fd5a3-9cbf-4e82-b18b-e2ef07d3dbf8--5816 block block-menu navigation block-system-menublock menu--tools">
+                        
+    <h2 class="visually-hidden" id="block-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                              <ul data-block-uuid="4f5fd5a3-9cbf-4e82-b18b-e2ef07d3dbf8" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;" class="is-active">PRINT PAGE</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/rss-feed" target="" rel="" data-drupal-link-system-path="node/15596">RSS FEEDS</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/email-alerts" target="" rel="" data-drupal-link-system-path="node/15591">EMAIL ALERTS</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/ir-contacts" target="" rel="" data-drupal-link-system-path="node/15541">IR CONTACTS</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+        </div>
+       </footer>
+            <div class="clear"><p>&nbsp;</p></div>
+   </div>
+
+   
+
+
+   <div id="cboxOverlay" style="display: none;"></div>
+   <div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;">
+      <div id="cboxWrapper">
+         <div>
+            <div id="cboxTopLeft" style="float: left;"></div>
+            <div id="cboxTopCenter" style="float: left;"></div>
+            <div id="cboxTopRight" style="float: left;"></div>
+         </div>
+         <div style="clear: left;">
+            <div id="cboxMiddleLeft" style="float: left;"></div>
+            <div id="cboxContent" style="float: left;">
+               <div id="cboxTitle" style="float: left;"></div>
+               <div id="cboxCurrent" style="float: left;"></div>
+               <button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button id="cboxSlideshow"></button>
+               <div id="cboxLoadingOverlay" style="float: left;"></div>
+               <div id="cboxLoadingGraphic" style="float: left;"></div>
+            </div>
+            <div id="cboxMiddleRight" style="float: left;"></div>
+         </div>
+         <div style="clear: left;">
+            <div id="cboxBottomLeft" style="float: left;"></div>
+            <div id="cboxBottomCenter" style="float: left;"></div>
+            <div id="cboxBottomRight" style="float: left;"></div>
+         </div>
+      </div>
+      <div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div>
+   </div>
+
+
+
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb1358";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5806","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid1041\/override,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid1041","theme_token":null},"ajaxTrustedUrl":{"\/investor-overview":true},"user":{"uid":0,"permissionsHash":"64180ecbb015fb9ae592a4e6682d07880bac7ead7f39ef984983a333efcc0b91"}}</script>
+<script src="/sites/g/files/knoqqb11181/files/js/js_MwK_Mkprfdimq5FTgGdWKI7i8j5tGHjSHATNMwDEPwY.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"74625509,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":516,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

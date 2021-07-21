@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta name="keywords" content="Oncology, ziopharm, cancer, research, DNA Thearapeutics, medical, medicine" />
+<meta property="og:site_name" content="ZIOPHARM Oncology, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.ziopharm.com/events-presentations" />
+<meta property="og:title" content="Events &amp; Presentations | ZIOPHARM Oncology, Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about ZIOPHARM Oncology, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta property="og:image" content="https://ziopharm.gcs-web.com/static-files/3d6250ec-5175-43a4-b2b3-edfc7cf687d6" />
+<meta name="twitter:image" content="https://ziopharm.gcs-web.com/static-files/074d2550-e20a-4e20-8f7a-3d5d9e74ab7a" />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="alternate" hreflang="en" href="https://ir.ziopharm.com/events-presentations" />
+<link rel="canonical" href="https://ir.ziopharm.com/events-presentations" />
+<link rel="shortlink" href="https://ir.ziopharm.com/node/14331" />
+<link rel="revision" href="https://ir.ziopharm.com/events-presentations" />
+
+    <title>Events &amp; Presentations | ZIOPHARM Oncology, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb17721/files/css/css_w5uwuaEHMC9bSP8WfARp9ZhoueTvvxceydRRR7hhmEE.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb17721/files/css/css_rn4huHxaUT3n9ohKfKrBRJ0o3IRFkU_UzNtSAEqRwyU.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb17721/files/css/css_kWXnZ6Rz4L4FACHtXRkEElVo2xUfN0NP4OYEHzv1knY.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb17721/files/css/css_uR7CBnjEs5VZNOTbN5egaIVEsuJ_uLDLaCxQpDsgq_0.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb17721/files/css/css_sGka69JMhLNEvR9MQCT1jCpMlA5-2QbiL2E11CKDMGU.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--14331 investors-media path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="universe clear  loaded">
+   <nav class="menu hide-on-mobile">
+      <a href="http://www.ziopharm.com/">
+      <img class="logo" src="/sites/g/files/knoqqb17721/themes/site/nir_pid1624/client/images/logo-ziopharm-oncology.svg" />
+      </a>
+      <ul>
+        
+        <li id="menu-item-50" class="dropme">
+          <a title="T-Cell Therapy" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">T-Cell Therapy <span class="caret"></span></a>
+          <ul role="menu" class=" dropdown">
+            <li id="menu-item-51" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51">
+              <a title="Overview" href="https://www.ziopharm.com/t-cell-therapy/overview/">Overview</a>
+            </li>
+            <li id="menu-item-53" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-53">
+              <a title="TCRs for Solid Tumors" href="https://www.ziopharm.com/t-cell-therapy/tcrs-for-solid-tumors/">TCRs for Solid Tumors</a>
+            </li>
+            <li id="menu-item-52" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-52">
+              <a title="CAR-T Therapies" href="https://www.ziopharm.com/t-cell-therapy/car-t-therapies/">CAR-T Therapies</a>
+            </li>
+            
+          </ul>
+        </li>
+	<li><a title="Controlled IL-12" href="https://www.ziopharm.com/controlled-il-12/">Controlled IL-12</a>
+        </li>
+        <li><a title="Pipeline" href="https://www.ziopharm.com/pipeline/">Pipeline</a></li>
+        <li><a title="Patients &amp; Caregivers" href="https://www.ziopharm.com/patients-caregivers/">Patients &amp; Caregivers</a></li>
+        <li id="menu-item-56" class="dropme">
+          <a title="About" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">About <span class="caret"></span>
+          </a>
+          <ul role="menu" class=" dropdown">
+            <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-22">
+              <a title="Overview" href="https://www.ziopharm.com/about/overview/">Overview</a>
+            </li>
+            <li id="menu-item-59" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59">
+              <a title="Management Team" href="https://www.ziopharm.com/about/management-team/">Management Team</a>
+            </li>
+            <li id="menu-item-60" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-60">
+              <a title="Board of Directors" href="https://www.ziopharm.com/about/board-of-directors/">Board of Directors</a>
+            </li>
+            <li id="menu-item-58" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58">
+              <a title="Partnerships" href="https://www.ziopharm.com/about/partnerships/">Partnerships</a>
+            </li>
+          </ul>
+        </li>
+        <li id="menu-item-61" class="dropme">
+          <a title="News &amp; Publications" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">News &amp; Publications <span class="caret"></span></a>
+          <ul role="menu" class=" dropdown">
+            <li id="menu-item-62" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-62">
+              <a title="Press Releases" href="/press-releases">Press Releases</a>
+            </li>
+            <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63">
+              <a title="Scientific and Medical Publications" href="https://www.ziopharm.com/news-publications/scientific-and-medical-publications/">Scientific and Medical Publications</a>
+            </li>
+            <li id="menu-item-64" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64">
+              <a title="Videos" href="https://www.ziopharm.com/news-publications/videos/">Videos</a>
+            </li>
+          </ul>
+        </li>
+
+         <li class="dropme">
+            <a href="/" class="active">Investors</a>
+              <div class="region region-header">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1624-investorrelations-2-menu" id="block-nir-pid1624-investorrelations-2" class="block--system-menu-blockir block--system-menu-blockir--14331 block--header--system-menu-block--ir block--header--system-menu-block--ir--14331 block--079db1aa-672c-41b6-a418-0ad085d8d052 block--079db1aa-672c-41b6-a418-0ad085d8d052--14331 block block-menu navigation block-system-menublock menu--ir">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1624-investorrelations-2-menu">Investor Relations</h2>
+    
+
+                              <ul data-block-uuid="079db1aa-672c-41b6-a418-0ad085d8d052" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/" target="" rel="" title="Corporate Profile" data-drupal-link-system-path="&lt;front&gt;">Investors Home</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/14296">Stock Performance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-presentations" target="" rel="" data-drupal-link-system-path="node/14331" class="is-active">Events &amp; Presentations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/quarterly-results" data-drupal-link-system-path="node/5986">Quarterly Results</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance/highlights" target="" rel="" data-drupal-link-system-path="node/14351">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://ziopharm.gcs-web.com/analyst-coverage">Analyst Coverage</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/investor-faqs" target="" rel="" data-drupal-link-system-path="node/5941">Investor FAQs</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">Email Alerts</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+         </li>
+
+      </ul>
+   </nav>
+   <nav class="mobile-header only-on-mobile">
+      <table>
+         <tbody>
+            <tr>
+               <td>
+                  <a href="http://ziopharm.milkshak.es">
+                  <img class="logo" src="/sites/g/files/knoqqb17721/themes/site/nir_pid1624/client/images/logo-ziopharm-oncology.svg">
+                  </a>
+               </td>
+               <td>
+                  <a class=" js-mobilemenu menuBtn"><span class=" ss-icon">list </span>Menu</a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </nav>
+  <div class="mobile-menu">
+    <ul>
+      <li class="closerow">        
+        <div class="js-mobilemenu closeBTN"><span class=" ss-icon">Close </span>Close </div>
+      </li>
+      
+      <li id="menu-item-50" class="dropme">
+        <a title="T-Cell Therapy" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">T-Cell Therapy <span class="caret"></span></a>
+        <ul role="menu" class=" dropdown">
+          <li id="menu-item-51" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51">
+            <a title="Overview" href="https://www.ziopharm.com/t-cell-therapy/overview/">Overview</a>
+          </li>
+          <li id="menu-item-53" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-53">
+            <a title="TCRs for Solid Tumors" href="https://www.ziopharm.com/t-cell-therapy/tcrs-for-solid-tumors/">TCRs for Solid Tumors</a>
+          </li>
+          <li id="menu-item-52" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-52">
+            <a title="CAR-T Therapies" href="https://www.ziopharm.com/t-cell-therapy/car-t-therapies/">CAR-T Therapies</a>
+          </li>
+          
+        </ul>
+      </li>
+      <li><a title="Controlled IL-12" href="https://www.ziopharm.com/controlled-il-12/">Controlled IL-12</a>
+      </li>
+      <li><a title="Pipeline" href="https://www.ziopharm.com/pipeline/">Pipeline</a></li>
+      <li><a title="Patients &amp; Caregivers" href="https://www.ziopharm.com/patients-caregivers/">Patients &amp; Caregivers</a></li>
+      <li id="menu-item-56" class="dropme">
+        <a title="About" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">About <span class="caret"></span>
+        </a>
+        <ul role="menu" class=" dropdown">
+          <li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-22">
+            <a title="Overview" href="https://www.ziopharm.com/about/overview/">Overview</a>
+          </li>
+          <li id="menu-item-59" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59">
+            <a title="Management Team" href="https://www.ziopharm.com/about/management-team/">Management Team</a>
+          </li>
+          <li id="menu-item-60" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-60">
+            <a title="Board of Directors" href="https://www.ziopharm.com/about/board-of-directors/">Board of Directors</a>
+          </li>
+          <li id="menu-item-58" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58">
+            <a title="Partnerships" href="https://www.ziopharm.com/about/partnerships/">Partnerships</a>
+          </li>
+        </ul>
+      </li>
+      <li id="menu-item-61" class="dropme">
+        <a title="News &amp; Publications" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">News &amp; Publications <span class="caret"></span></a>
+        <ul role="menu" class=" dropdown">
+          <li id="menu-item-62" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-62">
+            <a title="Press Releases" href="https://www.ziopharm.com/news-publications/press-releases/">Press Releases</a>
+          </li>
+          <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63">
+            <a title="Scientific and Medical Publications" href="https://www.ziopharm.com/news-publications/scientific-and-medical-publications/">Scientific and Medical Publications</a>
+          </li>
+          <li id="menu-item-64" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64">
+            <a title="Videos" href="https://www.ziopharm.com/news-publications/videos/">Videos</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="dropme">
+        <a href="/" class="active">Investors</a>
+          <div class="region region-ir-mobile">
+    
+
+                      <ul>
+                  <li>
+          <a href="/" target="" rel="" data-drupal-link-system-path="&lt;front&gt;">Investors Home</a>
+                  </li>
+              <li>
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+              <li>
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/14296">Stock Performance</a>
+                                    <ul>
+                  <li>
+          <a href="/stock-information" target="" rel="" data-drupal-link-system-path="node/14296">Stock Information</a>
+                  </li>
+              <li>
+          <a href="/stock-information/historic-stock-lookup" target="" rel="" data-drupal-link-system-path="node/5921">Historic Stock Lookup</a>
+                  </li>
+              <li>
+          <a href="/stock-information/investment-calculator" target="" rel="" data-drupal-link-system-path="node/5926">Investment Calculator</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">Financial Reports</a>
+                  </li>
+              <li>
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+              <li>
+          <a href="/events-presentations" target="" rel="" data-drupal-link-system-path="node/14331" class="is-active">Events &amp; Presentations</a>
+                  </li>
+              <li>
+          <a href="/corporate-governance/highlights" target="" rel="" data-drupal-link-system-path="node/14351">Corporate Governance</a>
+                                    <ul>
+                  <li>
+          <a href="http://www.ziopharm.com/about/medical-advisory-board" target="" rel="">Medical Advisory Board</a>
+                  </li>
+              <li>
+          <a href="http://www.ziopharm.com/about/board-of-directors" target="" rel="">Board of Directors</a>
+                  </li>
+              <li>
+          <a href="/corporate-governance/committee-composition" target="" rel="" data-drupal-link-system-path="node/5851">Committees &amp; Charters</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/investor-faqs" target="" rel="" data-drupal-link-system-path="node/5941">Investor FAQ</a>
+                  </li>
+              <li>
+          <a href="/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">Email Alerts</a>
+                  </li>
+          </ul>
+  
+
+
+
+
+  </div>
+
+      </li>
+
+    </ul>
+
+
+
+    </div>
+   <div class="content">
+      <div class="sub-menu hide-on-mobile fixed">
+         
+      </div>
+
+           <div class="section_banner" style="background-image:url(/sites/g/files/knoqqb17721/themes/site/nir_pid1624/client/images/section-banner-news-publications.jpg)">
+       <div class="section_banner_mask"></div>
+       <div class="section_banner_content_bg"></div>
+       <div class="section_banner_content">
+         <div class="container">
+           <div class="row">
+             <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+               <div class="section_banner_title_container">
+                   <div class="region region-ir-banner">
+    <div id="block-custombannerevent" class="block-content--nir-global-block block-content--nir-global-block--14521 block--block-contentdfcdde25-7c5d-4f63-9203-f9a75b0784fc block--block-contentdfcdde25-7c5d-4f63-9203-f9a75b0784fc--14331 block--ir-banner--block-content--dfcdde25-7c5d-4f63-9203-f9a75b0784fc block--ir-banner--block-content--dfcdde25-7c5d-4f63-9203-f9a75b0784fc--14331 block--18576238-e3de-4104-aa89-c97ce0ecfd4a block--18576238-e3de-4104-aa89-c97ce0ecfd4a--14331 block block-block-content block-block-contentdfcdde25-7c5d-4f63-9203-f9a75b0784fc">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="section-color grow" data-sect="dna-therapy">
+<div class="txt">
+<h2>Events &amp; Presentations</h2>
+</div>
+</div>
+</div>
+      
+</div>
+      
+  </div>
+
+  </div>
+
+
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+
+            <div class="dna-therapy-text">
+         <div id="ndq-content" class="ndq-index">
+           <div class="region region-content">
+    <div id="block-nir-pid1624-websitenoticeblock" class="block--website-notice-block block--website-notice-block--14331 block--content--website-notice-block block--content--website-notice-block--14331 block--ca44c02e-2652-47fe-9424-200f343cdf35 block--ca44c02e-2652-47fe-9424-200f343cdf35--14331 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1624-content" class="block--system-main-block block--system-main-block--14331 block--content--system-main-block block--content--system-main-block--14331 block--c9225b9a-fcb5-48f7-a852-1dfd0a2a20a7 block--c9225b9a-fcb5-48f7-a852-1dfd0a2a20a7--14331 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block-content--nir-lp-block block-content--nir-lp-block--15111 block--block-content3dad9ace-fc82-4fa8-95f9-88494ed87c31 block--block-content3dad9ace-fc82-4fa8-95f9-88494ed87c31--14331 block--contentmain--block-content--3dad9ace-fc82-4fa8-95f9-88494ed87c31 block--contentmain--block-content--3dad9ace-fc82-4fa8-95f9-88494ed87c31--14331 block--8a0bf14f-f568-452a-a59e-824ac93fab6d block--8a0bf14f-f568-452a-a59e-824ac93fab6d--14331 block block-block-content block-block-content3dad9ace-fc82-4fa8-95f9-88494ed87c31">
+  
+    
+      
+            <div class="field field--name-field-nir-lp-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-lp-block-body field--type-text-long field--label-hidden field__item"><p>   </p></div>
+      
+</div>
+      
+  </div>
+<div class="block--upcoming-events block--nir-events__widget block--nir-events__widget--14331 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--14331 block--d73e3d32-4e55-4e8d-80ad-0b6b69022704 block--d73e3d32-4e55-4e8d-80ad-0b6b69022704--14331 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      <h2>Upcoming Events</h2>
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              More events are coming soon.
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+
+  </div>
+<div class="block--past-events block--nir-events__widget block--nir-events__widget--14331 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--14331 block--c4dfdd22-874d-4f00-a77e-212d5c2d83fd block--c4dfdd22-874d-4f00-a77e-212d5c2d83fd--14331 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      <h2>Past Events</h2>
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+      	  <table class="nirtable views-table views-view-table cols-3 collapse-table">
+	    <thead>
+		  <tr>
+			<th id="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" scope="col">Date</th>
+			<th id="view-nothing-table-column" class="views-field views-field-nothing" scope="col">Event Details</th>  
+		  </tr>
+		</thead>
+		<tbody>
+        
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Jun 22, 2021<br />2:40 PM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Virtual Raymond James Human Health Innovations Conference</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://kvgo.com/rj-health/ziopharm-oncology-june-2021" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Jun 9, 2021
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Development of Sleeping Beauty Transposed TCR-T Cells for Adoptive Cell Therapy of Cancer</div>
+  </div>
+    </div>
+  
+  
+    
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/e0d2ed71-3067-427b-ae5f-80abe2041510" type="application/pdf" title="2021-06-09 FASEB ZIOP.pdf">View Presentation</a></span><span class="filesize"> 3.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Jun 4, 2021<br />1:00 PM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies Virtual Healthcare Conference</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/jeff174/register.aspx?conf=jeff174&amp;page=ziop&amp;url=https%3A//wsw.com/webcast/jeff174/ziop/1880334" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            May 19, 2021<br />9:00 AM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Annual Meeting of Stockholders </div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://events.q4inc.com/vsm/ZIOP/2021" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">The meeting will be held virtually. Shareholders and interested stakeholders may be able to attend the annual meeting online. Shareholders may submit questions during the meeting and vote shares electronically during the meeting by visiting <a href="https://events.q4inc.com/vsm/ZIOP/2021">www.virtualshareholdermeeting.com/ZIOP2021</a>.</div>
+          </div>
+
+    </div>
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/a710ed39-6347-4fd1-aeae-601247e8481f" type="application/pdf" title="SHM 2021.pdf">View Presentation</a></span><span class="filesize"> 387.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            May 6, 2021<br />4:30 PM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Ziopharm First Quarter 2021 Earnings Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://viavid.webcasts.com/starthere.jsp?ei=1450323&amp;tp_key=ed3e55416c" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/e7718327-fbe6-4391-9c59-d5683264feec" type="application/pdf" title="Q1 2021 Deck.pdf">View Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            May 6, 2021
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">University of Pennsylvania Cellicon Valley ’21 Two-Day Live Virtual Educational Symposium</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://www.med.upenn.edu/cellicon2021/?utm_source=vanity%20URL&amp;utm_medium=Referral&amp;utm_campaign=penn-medicine&amp;utm_content=redirect-pennmedicine-org-AbramsonCellicon21" target="_blank">Registration Link</a></div>
+  </div>
+    </div>
+  
+    
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Dr. Laurence Cooper, MD, PhD will be presenting. </div>
+          </div>
+
+    </div>
+    
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Apr 28, 2021
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Aldevron Breakthrough Speaker Event</div>
+  </div>
+    </div>
+  
+  
+    
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>Speaker: Dr. Laurence Cooper</p>
+
+<p><br />
+Pre-recorded session is posted on Aldevron’s website and can be accessed using this <a href="https://www.aldevron.com/about-us/news/aldevron-announces-virtual-breakthrough-speaker-series">link</a></p></div>
+          </div>
+
+    </div>
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/e026554d-45d3-49cd-9530-75b87a4a9256" type="application/pdf" title="L Cooper Aldevron April 2021 Slides.pdf">View Presentation</a></span><span class="filesize"> 3.8 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Apr 10, 2021<br />8:30 AM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">American Association of Cancer Research Poster Presentation</div>
+  </div>
+    </div>
+  
+  
+    
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">“Hotspot mutations in KRAS and TP53 targeted by TCR-T cells genetically modified with the Sleeping Beauty transposon/transposase system”
+<div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+<div class="field__item">
+<div class="file-link"><span class="file file--application-pdf file--mime-application-pdf"> <a href="https://ziopharm.gcs-web.com/static-files/9170ea81-072d-4a3b-8585-d8f0754fa617" title="2021_AACR_ZIOP_final.pdf" type="application/pdf; length=772687">View Presentation</a></span><span class="filesize"> 772.6 KB</span></div>
+</div>
+</div>
+<a href="https://www.abstractsonline.com/pp8/#!/9325/presentation/2617" target="_new">View Abstract</a></div>
+          </div>
+
+    </div>
+    
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Mar 11, 2021<br />11:00 AM EST
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">R&amp;D Day</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://globalmeet.webcasts.com/starthere.jsp?ei=1435876&amp;tp_key=d3d281d551" target="_blank">Replay</a></div>
+  </div>
+    </div>
+  
+    
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/a44e4529-5d8d-4a0c-9e21-f14dce121dfb" type="application/pdf" title="Resources Deck Only_ZIOP R_D Day.pdf">View Presentation</a></span><span class="filesize"> 89.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Feb 25, 2021<br />4:30 PM EST
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Ziopharm Oncology Fourth Quarter and Full Year 2020 Earnings Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://viavid.webcasts.com/starthere.jsp?ei=1423661&amp;tp_key=743313b797" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/99e462bc-26c8-48bd-9966-b8e62b7efcb2" type="application/pdf" title="PowerPoint Presentation v3.pdf.pdf">View Presentation</a></span><span class="filesize"> 1.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Jan 14, 2021<br />8:20 AM EST
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">39th Annual J.P. Morgan Healthcare Conference </div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://jpmorgan.metameetings.net/events/healthcare21/sessions/35401-ziopharm-oncology/webcast?gpu_only=true&amp;kiosk=true" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/ba254931-faec-4a4b-a321-416fb346bb9a" type="application/pdf" title="Ziopharm - JPM Presentation 2021 FINAL.pdf">View Presentation</a></span><span class="filesize"> 2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Jan 11, 2021<br />6:00 AM EST
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">H.C. Wainwright Bioconnect 2021 Conference</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://journey.ct.events/view/112ac4e7-21bd-4771-a359-59ad42e3864d" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Nov 19, 2020<br />1:45 PM EST
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies Virtual London Healthcare Conference</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/jeff141/ziop/1872450" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Nov 5, 2020<br />4:30 PM EST
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Ziopharm Third Quarter 2020 Earnings Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://public.viavid.com/index.php?id=142067" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/f6488d3e-71d8-478f-97ea-5b1bde69dcfb" type="application/pdf" title="ZIOP 3Q 2020 reference slides 110520 FINAL.pdf">View Presentation</a></span><span class="filesize"> 460.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Oct 5, 2020<br />12:30 PM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies Cell Therapy Virtual Summit</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/jeff146/ziop/1879020" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Sep 17, 2020<br />1:20 PM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Cantor Virtual Global Healthcare Conference</div>
+  </div>
+    </div>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Sep 16, 2020<br />9:00 AM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">H.C. Wainwright 22nd Annual Global Investment Conference </div>
+  </div>
+    </div>
+  
+  
+    
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/8f3ae82a-02fa-4755-a0ba-eca678f5c428" type="application/pdf" title="Ziopharm HCWainwright Sept 16 2020  091620 final.pdf">View Presentation</a></span><span class="filesize"> 999.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Aug 6, 2020<br />4:30 PM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Ziopharm Second Quarter 2020 Earnings Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://public.viavid.com/index.php?id=140649" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/ea48cf57-fe18-411f-9d05-052d50f2b49a" type="application/pdf" title="ZIOP 2Q 2020 reference slides 080620 FINAL v2.pdf">View Presentation</a></span><span class="filesize"> 383 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Jun 29, 2020<br />9:00 AM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Ziopharm Oncology Annual Meeting of Stockholders</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://central.virtualshareholdermeeting.com/vsm/web?pvskey=ZIOP2020" target="_blank">View Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Jun 17, 2020<br />12:00 PM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Raymond James Human Healthcare Innovation Conference</div>
+  </div>
+    </div>
+  
+  
+    
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Cell Therapy: Promise of the Next Generation<br />
+Panel Session hosted by analysts Dane Leone &amp; David Novak </div>
+          </div>
+
+    </div>
+    
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Jun 3, 2020<br />3:00 PM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Jefferies 2020 Healthcare Conference</div>
+  </div>
+    </div>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            May 14, 2020<br />5:00 PM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">BofA Securities Virtual Health Care Conference</div>
+  </div>
+    </div>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            May 7, 2020<br />4:30 PM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Ziopharm First Quarter 2020 Earnings Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://viavid.webcasts.com/starthere.jsp?ei=1302716&amp;tp_key=8206690be8" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/9a3d2969-0bb1-44c0-85ce-17fa09f7e59a" type="application/pdf" title="ZIOP 1Q 2020 reference slides 050720 FINAL.pdf">View Presentation</a></span><span class="filesize"> 174.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Mar 2, 2020<br />4:30 PM EST
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Ziopharm Fourth Quarter 2019 Earnings Call</div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/qaxb6kyh" target="_blank">Listen to Webcast</a></div>
+  </div>
+    </div>
+  
+    
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/842cc878-e507-4581-83f7-f8b17b0239d1" type="application/pdf" title="Ziopharm 4Q2019 reference slides 030220 final.pdf">View Presentation</a></span><span class="filesize"> 534.4 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+<tr class="ccbnBgTblEven">
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            Jan 16, 2020<br />12:30 PM EST
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item">Ziopharm Oncology at 38th Annual J.P. Morgan Healthcare Conference - Presentation</div>
+  </div>
+    </div>
+  
+  
+    
+    
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.ziopharm.com/static-files/397fa84c-f527-4147-a025-db0f4d065d52" type="application/pdf" title="Ziopharm JPM 2020 presentation Jan16 final.pdf">View Presentation</a></span><span class="filesize"> 1.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    
+  
+
+    </td>
+</tr>
+
+		</tbody>
+		</table>
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+         </div>
+         <div id="ndq-tools">
+            <ul>
+               <li>
+                  <a class="ndq-noTxtDec ndqicon-alerts" href="/email-alerts" title="Email Alerts Subscription" alt="Email Alerts Subscription"></a>
+                  <span class="ndq-tool-text"><a href="/email-alerts">Email Alerts Subscription</a></span>
+               </li>
+			   <li><a class="ndq-noTxtDec ndqicon-rss" href="/rss-news-feeds" rel="nofollow" alt="RSS News Feeds" title="RSS News Feeds"></a><span class="ndq-tool-text"><a href="/rss-news-feeds" rel="nofollow">RSS News Feeds</a></span></li>
+               <li><a class="ndq-noTxtDec ndqicon-print" href="javascript:window.print();" rel="nofollow" title="Print" alt="Print"></a><span class="ndq-tool-text"><a href="javascript:window.print();" rel="nofollow">Print</a></span></li>
+               <li><a class="ndq-open-dialog ndq-noTxtDec ndqicon-share" rel="nofollow" title="Share" alt="Share"></a><span class="ndq-tool-text"><a class="ndq-open-dialog" rel="nofollow">Share</a></span></li>
+            </ul>
+            <div id="output"></div>
+            <div class="ndq-dialog-overlay" style="display: none;">></div>
+            <div class="ndq-dialog" style="display: none;">
+               <a class="ndq-close-dialog ndqicon-close" title="Close"></a>
+               <br clear="all">
+               <ul id="ndq-share">
+                  <li><a class="ndqicon-fb" href="http://www.facebook.com/share.php?u=https://ir.ziopharm.com/events-presentations&amp;t=Events &amp; Presentations - ZIOPHARM Oncology, Inc." onclick="window.open('http://www.facebook.com/share.php?u=https://ir.ziopharm.com/events-presentations&amp;t=Events &amp; Presentations - ZIOPHARM Oncology, Inc.','Facebook','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Facebook" title="Facebook"><span class="hide-txt">Facebook</span></a></li>
+                  <li><a class="ndqicon-google" href="https://plus.google.com/share?url=https://ir.ziopharm.com/events-presentations&amp;title=Events &amp; Presentations - ZIOPHARM Oncology, Inc." onclick="window.open('https://plus.google.com/share?url=https://ir.ziopharm.com/events-presentations&amp;title=Events &amp; Presentations - ZIOPHARM Oncology, Inc.','GooglePlus','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Google" title="GooglePlus"><span class="hide-txt">Google</span></a></li>
+                  <li><a class="ndqicon-linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://ir.ziopharm.com/events-presentations&amp;title=Events &amp; Presentations - ZIOPHARM Oncology, Inc." onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url=https://ir.ziopharm.com/events-presentations&amp;title=Events &amp; Presentations - ZIOPHARM Oncology, Inc.','LinkedIn','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="LinkedIn" title="LinkedIn"><span class="hide-txt">LinkedIn</span></a></li>
+                  <li><a class="ndqicon-tw" href="http://twitter.com/home?status=Currently%20reading%20https://ir.ziopharm.com/events-presentations" onclick="window.open('http://twitter.com/home?status=Currently%20reading%20https://ir.ziopharm.com/events-presentations','Twitter','resizable=yes,scrollbars=yes,width=900,height=570'); return false;" alt="Twitter" title="Twitter"><span class="hide-txt">Twitter</span></a></li>
+                  <li><a class="ndqicon-rss" href="/rss-news-feeds"><span class="hide-txt">RSS</span></a></li>
+               </ul>
+            </div>
+         </div>
+      
+   </div>
+   </div>
+
+  <footer id="colophon" class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10">
+          <div class="footernav_container">
+            <p class="copyright">© 2021 Ziopharm Oncology, Inc.</p>
+            <div class="menu-footernav-container">
+              <ul id="menu-footernav" class="menu">
+                <li id="menu-item-73" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-73">
+                  <a href="https://www.ziopharm.com/privacy-policy/">Privacy Policy</a>
+                </li>
+                <li id="menu-item-74" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74">
+                  <a href="https://www.ziopharm.com/terms-and-conditions/">Terms and Conditions</a>
+                </li>
+                <li id="menu-item-72" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72">
+                  <a href="https://www.ziopharm.com/contact/">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          <div class="menu-social-media-container">
+            <ul id="menu-social-media" class="menu">
+              <li id="menu-item-98" class="iconfont_vimeo menu-item menu-item-type-custom menu-item-object-custom menu-item-98">
+                <a target="_blank" href="https://vimeo.com/">Vimeo</a>
+              </li>
+              <li id="menu-item-99" class="iconfont_twitter menu-item menu-item-type-custom menu-item-object-custom menu-item-99">
+                <a target="_blank" href="https://twitter.com/ziopharm">Twitter</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+   <!--
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+      -->
+<!--    <script src="assets/js/plugem.js"></script>
+   <script src="assets/js/mousewheel.js"></script>
+   <script src="assets/js/paper.js"></script>
+   <script src="assets/js/main.js"></script> -->
+   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+   <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+   </script>
+</div>
+
+
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb2494";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/14331","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1624\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid1624","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"05c21d543e7daa9d5ee88978a26e7f6c2ccf38cc229158ae0a72c8da69667755"}}</script>
+<script src="/sites/g/files/knoqqb17721/files/js/js_Xqp4CW71Q17nab-bqrNsCpfBB-AoGMjfmbAGi_UwG_c.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":826,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

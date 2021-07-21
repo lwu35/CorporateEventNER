@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<link rel="canonical" href="https://ir.aultglobal.com/events-and-presentations/" />
+<meta name="referrer" content="no-referrer" />
+<meta property="og:site_name" content="Ault Global Holdings, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.aultglobal.com/events-and-presentations" />
+<meta property="og:title" content="Upcoming and Past Events | Ault Global Holdings, Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about Ault Global Holdings, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb25771/files/cropped-AultGlobal-Favicon-4-min-32x32.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://ir.aultglobal.com/events-and-presentations" />
+<link rel="revision" href="https://ir.aultglobal.com/events-and-presentations" />
+
+    <title>Upcoming and Past Events | Ault Global Holdings, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb25771/files/css/css_w5uwuaEHMC9bSP8WfARp9ZhoueTvvxceydRRR7hhmEE.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb25771/files/css/css_x5AO6IHELnwCatDFQqDV6VNiUEdG0KzI_ZSGcevFWX4.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb25771/files/css/css_47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb25771/files/css/css_gRTZ-yo6qATSiMArZFPPfKcK3mB3RpRLfcAhih5TiAo.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5821 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="main-outercon">
+    <div id="site-content" class="content-area">
+        <header class="header-outercon">
+            <div class="search-outercont">
+                <div class="row">
+                    <div class="medium-12 columns">
+                        
+
+                    </div>
+                </div>
+            </div>
+            <div class="header-top-block">
+                <div class="row">
+                    <div class="medium-12 columns">
+
+                        <div id="block-gpaboveheaderlinks" class="block-content--nir-global-block block-content--nir-global-block--6616 block--block-content66c8e933-561d-4932-8e6b-2423521566f5 block--block-content66c8e933-561d-4932-8e6b-2423521566f5--5821 block--above-headerlinks--block-content--66c8e933-561d-4932-8e6b-2423521566f5 block--above-headerlinks--block-content--66c8e933-561d-4932-8e6b-2423521566f5--5821 block--0ae53fbc-74ad-40a6-8e7e-a40667694acb block--0ae53fbc-74ad-40a6-8e7e-a40667694acb--5821 block block-block-content block-block-content66c8e933-561d-4932-8e6b-2423521566f5">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="leftlink-block">
+<ul><li><a href="https://www.aultglobal.com/">AULT GLOBAL HOLDINGS, INC</a></li>
+	<li class="hide-for-small-only"><a href="https://www.nyse.com/quote/XASE:DPW">NYSE AMERICAN: DPW</a></li>
+</ul></div>
+
+<div class="rightlink-block">
+<ul><li class="hide-for-small-only"><a href="/">INVESTOR RELATIONS</a></li>
+</ul></div>
+</div>
+      
+</div>
+      
+  </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="header-nav-block">
+                <div class="row">
+                    <div class="medium-12 columns">
+                        <div class="logo-outercont"><a href="https://www.aultglobal.com/"><img src="/sites/g/files/knoqqb25771/themes/site/nir_pid2320/dist/images/2021logo.png" alt="logo" /></a></div>
+                        <div class="navigation-iouter">
+                            <div class="menu-trigger show-for-small-only"><a href="#" class="normal-nav">MENU<i class="fa fa-bars"></i></a><a href="#" class="open-nav">Close<i class="fa fa-times"></i></a></div>
+                            <div class="mobile-nav-blk">
+
+                                
+
+<nav role="navigation" aria-labelledby="block-clientlinks-menu" id="block-clientlinks" class="block--system-menu-blockclient-links block--system-menu-blockclient-links--10211 block--header--system-menu-block--client-links block--header--system-menu-block--client-links--10211 block--dce8278a-2302-42cc-a7ea-31a8f687df0f block--dce8278a-2302-42cc-a7ea-31a8f687df0f--10211 block block-menu navigation block-system-menublock menu--client-links">
+                        
+    <h2 class="visually-hidden" id="block-clientlinks-menu">Client Links</h2>
+    
+
+                              <ul data-block-uuid="dce8278a-2302-42cc-a7ea-31a8f687df0f" class="menu-main-menu">
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page ">
+          <a href="https://www.aultglobal.com/about/">About</a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page ">
+          <a href="https://www.aultglobal.com/governance/">Governance</a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page ">
+          <a href="/" data-drupal-link-system-path="&lt;front&gt;">Investor Relations</a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page ">
+          <a href="https://www.aultglobal.com/investor-calls/">Investor Calls</a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page ">
+          <a href="https://www.aultglobal.com/contact-us/">Contact Us</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+                                <div id="block-gpdrawerlinks" class="block-content--nir-global-block block-content--nir-global-block--6621 block--block-content2b3044aa-aa47-49d9-94a6-fd7841a30da7 block--block-content2b3044aa-aa47-49d9-94a6-fd7841a30da7--5821 block--mobile-hiddenmenu--block-content--2b3044aa-aa47-49d9-94a6-fd7841a30da7 block--mobile-hiddenmenu--block-content--2b3044aa-aa47-49d9-94a6-fd7841a30da7--5821 block--49bf7a53-66cb-4652-9e8f-a62903c31cc0 block--49bf7a53-66cb-4652-9e8f-a62903c31cc0--5821 block block-block-content block-block-content2b3044aa-aa47-49d9-94a6-fd7841a30da7">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="mobi-buttons show-for-small-only"><a class="default-btn nav-btn" href="/shareholder-services/email-alerts">EMAIL NEWS SIGNUP</a> <a class="default-btn nav-btn" href="/">INVESTOR RELATIONS</a></div>
+</div>
+      
+</div>
+      
+  </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </header>
+        <section class="main-banner-blk inner-banner">
+            <div class="image-outerblk"><img src="/sites/g/files/knoqqb25771/themes/site/nir_pid2320/dist/images/holdings-banner.jpg" alt="banner" /></div>
+            <div class="banner-contentblk">
+                <div class="container">
+                    <div class="row">
+                        <div class="medium-12 columns">
+                            <div class="inner-blk">
+                                <h2>Investor Relations</h2></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="main-content">
+            <div class="row">
+                <div class="medium-3 columns">
+                    <div class="left-navigation">
+                        <div class="navigation-inner">
+                            <nav class="nav-secondary">
+                                
+
+<nav role="navigation" aria-labelledby="block-nir-pid2320-investorrelations-menu" id="block-nir-pid2320-investorrelations" class="block--system-menu-blockir block--system-menu-blockir--5821 block--sidebar-first--system-menu-block--ir block--sidebar-first--system-menu-block--ir--5821 block--89f270c5-60fc-464f-a159-e4ffed5f6f41 block--89f270c5-60fc-464f-a159-e4ffed5f6f41--5821 block block-menu navigation block-system-menublock menu--ir">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid2320-investorrelations-menu">Investor Relations</h2>
+    
+
+                
+
+
+
+
+
+<ul class="">
+    
+
+                            
+                                                            <li>
+                            <a href="/" > Investor Overview</a>
+                        </li>
+                    
+
+                                            
+                                                            <li>
+                            <a href="/stock-information/stock-quote-chart" > Stock Information</a>
+                        </li>
+                    
+
+                                            
+                                                            <li>
+                            <a href="/events-and-presentations"  class="active-trail active"> Upcoming and Past Events</a>
+                        </li>
+                    
+
+                                            
+                                                            <li>
+                            <a href="/financial-information/sec-filings" > SEC Filings</a>
+                        </li>
+                    
+
+                                            
+                                                            <li>
+                            <a href="/news-releases" > News Releases</a>
+                        </li>
+                    
+
+                                            
+                                                            <li>
+                            <a href="/shareholder-services/email-alerts" > Email Alerts</a>
+                        </li>
+                    
+
+                            
+        </ul>
+
+
+        
+        
+
+
+
+    </nav>
+
+
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="medium-8 columns">
+                    <div class="right-content">
+                        <div class="single-article-section investment" id="mtix-inter">
+                        <div id="ndq-content" class="container content ndq-5821 inner-pages">
+                          <div class="region region-content">
+    <div id="block-nir-pid2320-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5821 block--content--website-notice-block block--content--website-notice-block--5821 block--77279cac-a163-480a-b104-df70c2e708f9 block--77279cac-a163-480a-b104-df70c2e708f9--5821 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid2320-content" class="block--system-main-block block--system-main-block--5821 block--content--system-main-block block--content--system-main-block--5821 block--52c0dbe4-0f96-46d0-a0a8-1d0212dbedbd block--52c0dbe4-0f96-46d0-a0a8-1d0212dbedbd--5821 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Upcoming and Past Events
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--df271641-19ec-4fa2-996e-2ac498e41a88 block--df271641-19ec-4fa2-996e-2ac498e41a88--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Upcoming Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              There are no upcoming events scheduled at this time. 
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block-content--nir-global-block block-content--nir-global-block--6641 block--block-content88637381-fb4f-4c4a-aede-ea9acb79933c block--block-content88637381-fb4f-4c4a-aede-ea9acb79933c--5821 block--contentmain--block-content--88637381-fb4f-4c4a-aede-ea9acb79933c block--contentmain--block-content--88637381-fb4f-4c4a-aede-ea9acb79933c--5821 block--4bcff0af-67d1-4ba5-bbb8-5f93ce2681ea block--4bcff0af-67d1-4ba5-bbb8-5f93ce2681ea--5821 block block-block-content block-block-content88637381-fb4f-4c4a-aede-ea9acb79933c">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><br /></div>
+      
+</div>
+      
+  </div>
+<div class="block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--e3f24f60-78ed-45df-9b8e-582b56eca811 block--e3f24f60-78ed-45df-9b8e-582b56eca811--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Past Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/ault-global-holdings-inc-16th-annual-ld-micro-invitational" hreflang="en">Ault Global Holdings, Inc at 16th Annual LD Micro Invitational</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jun 10, 2021 at 9:00 AM PDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://ldmicrojune2021.mysequire.com/" target="_blank">Click Here to Register</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.aultglobal.com/static-files/8bf5e73e-9029-46b6-874b-057b1f29ed2f" type="application/pdf" title="Ault Global Holdings - LD Micro Conference 06102021 Final.pdf">Ault Global Holdings, Inc. at the 16th Annual LD Micro Main Event</a></span><span class="filesize"> 1.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/ault-global-holdings-inc-first-quarter-financial-results-and-shareholder" hreflang="en">Ault Global Holdings, Inc  First Quarter Financial Results and Shareholder Webcast and Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            May 24, 2021 at 2:00 PM PDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://zoom.us/webinar/register/WN_rURgYihKRZmNYCMXYaD90Q" target="_blank">Click Here to Register</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/ault-global-holdings-inc-shareholder-webcast-and-conference" hreflang="en">Ault Global Holdings, Inc Shareholder Webcast and Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Apr 15, 2021 at 3:00 PM PDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://zoom.us/webinar/register/WN_Wbyy8ppvTtSpzRGRzsgd-w" target="_blank">Click Here to Register</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/dpw-holdings-13th-annual-ld-micro-main-event" hreflang="en">DPW Holdings at 13th Annual LD Micro Main Event </a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Dec 14, 2020 at 1:20 PM PST
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://ve.mysequire.com/" target="_blank">Click Here to Register</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/dpw-holdings-second-annual-investor-day-conference-and-webcast" hreflang="en">DPW Holdings Second Annual Investor Day Conference and Webcast</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Oct 8, 2020 at 10:00 AM PDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://zoom.us/webinar/register/WN_aDOw7sM-QDiZGspIXuqYow" target="_blank">Click Here to Register</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/dpw-holdings-ld-500-virtual-conference" hreflang="en">DPW Holdings at the LD 500 Virtual Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Sep 1, 2020 at 2:20 PM EDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://ld500.ldmicro.com/" target="_blank">Click Here to Register</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/dpw-holdings-coolisys-webinar-re-entry-ev-charging-market" hreflang="en">DPW Holdings’ Coolisys Webinar re: Entry into EV Charging Market</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Aug 4, 2020 at 2:00 PM PDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p><a href="https://youtu.be/AgQTS0ct1EU">Link to Completed Webinar Video</a></p></div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://zoom.us/webinar/register/WN_S58hTuYsSa24DC9JIibeOQ" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/final-order-approving-derivative-settlement-filed-july-16-2020" hreflang="en">Final Order Approving the Derivative Settlement Filed July 16, 2020</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jul 17, 2020
+      
+    </div>
+  
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.aultglobal.com/static-files/b294ca1f-de43-4601-9122-233cbbbb6675" type="application/pdf" title="DPW Holdings - Civil Minutes Approved  200716 Filed.pdf">DPW Holdings - Civil Minutes Approved  200716 Filed</a></span><span class="filesize"> 148.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.aultglobal.com/static-files/b7ddd4d9-a908-48b3-9b7c-1a456568b5da" type="application/pdf" title="DPW Holdings - Final Judgement  200716 Filed.pdf">DPW Holdings - Final Judgement  200716 Filed</a></span><span class="filesize"> 192 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/dpwholdings-inc-investor-conference-1" hreflang="en">DPWHoldings, Inc Investor Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Apr 30, 2020 at 9:00 AM PDT
+      
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://computershare.lumiagm.com/?fromUrl=245320744" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.aultglobal.com/static-files/163ac87d-6dc8-437e-929a-4af220224cbf" type="application/pdf" title="Form-8K.pdf">Form 8-K/A</a></span><span class="filesize"> 105 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/preliminary-order-approving-derivative-settlement" hreflang="en">Preliminary Order approving the derivative settlement </a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Apr 20, 2020
+      
+    </div>
+  
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+              <div class="nir-widget--event--section-title nir-widget--event--section-title--supporting-materials">
+          <label>Supporting Materials</label>
+        </div>
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.aultglobal.com/static-files/2373e8c1-b050-46fa-9194-42bdafde64d5" type="application/pdf" title="Notice and Stipulation.pdf">View Notice and Stipulation </a></span><span class="filesize"> 207.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.aultglobal.com/static-files/67cdcc90-d755-455d-bab0-362eca400b5e" type="application/pdf" title="DPW Stipulation of Settlement.pdf">DPW Stipulation of Settlement</a></span><span class="filesize"> 520.9 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+        <nav class="pager" role="navigation" aria-labelledby="pagination-heading">
+    <h4 id="pagination-heading" class="visually-hidden">Pagination</h4>
+    <ul class="pager__items js-pager__items">
+                                                        <li class="pager__item is-active">
+                                          <a href="?c=113943&amp;p=irol-calendar&amp;page=0%2C0" title="Current page">
+            <span class="visually-hidden">
+              Current page
+            </span>1</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?c=113943&amp;p=irol-calendar&amp;page=0%2C1" title="Go to page 2">
+            <span class="visually-hidden">
+              Page
+            </span>2</a>
+        </li>
+              <li class="pager__item">
+                                          <a href="?c=113943&amp;p=irol-calendar&amp;page=0%2C2" title="Go to page 3">
+            <span class="visually-hidden">
+              Page
+            </span>3</a>
+        </li>
+                                      <li class="pager__item pager__item--next">
+          <a href="?c=113943&amp;p=irol-calendar&amp;page=0%2C1" title="Go to next page" rel="next">
+            <span class="visually-hidden">Next page</span>
+            <span aria-hidden="true">next ›</span>
+          </a>
+        </li>
+                          <li class="pager__item pager__item--last">
+          <a href="?c=113943&amp;p=irol-calendar&amp;page=0%2C2" title="Go to last page">
+            <span class="visually-hidden">Last page</span>
+            <span aria-hidden="true">last »</span>
+          </a>
+        </li>
+          </ul>
+  </nav>
+
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+                                                </div>
+                        </div>
+                    </div>
+                    <img src="/sites/g/files/knoqqb25771/themes/site/nir_pid2320/dist/images/spacer.gif" width="1" height="70px" /></div>
+            </div>
+            <div class="row">
+                <div class="ndq-toolkit">
+                    
+
+<nav role="navigation" aria-labelledby="block-tools-menu" id="block-tools" class="block--system-menu-blocktools block--system-menu-blocktools--10211 block--toolkit--system-menu-block--tools block--toolkit--system-menu-block--tools--10211 block--43cdb3f0-2b98-43b0-8f3b-255b1d97dc4e block--43cdb3f0-2b98-43b0-8f3b-255b1d97dc4e--10211 block block-menu navigation block-system-menublock menu--tools">
+                        
+    <h2 class="visually-hidden" id="block-tools-menu">Tools</h2>
+    
+
+                        <ul class="clearfix ndq-toolkit shareholder">
+    
+                                                                                                                                
+            <li>
+                                
+                <a alt="Print"  class="tooltip" href=""><i  class="tooltip fa fa-print"></i><span class="tooltiptext">Print</span></a>
+                            </li>
+
+                                                                                                                                                                                                        
+            <li>
+                                
+                <a alt="Email Alerts"  class="tooltip" href="/shareholder-services/email-alerts"><i  class="tooltip fa fa-at"></i><span class="tooltiptext">Email Alerts</span></a>
+                            </li>
+
+                                                                                                                                                                                                        
+            <li>
+                                
+                <a alt="RSS News Feeds"  class="tooltip" href="/shareholder-services/rss-feeds"><i  class="tooltip fa fa-rss"></i><span class="tooltiptext">RSS News Feeds</span></a>
+                            </li>
+
+                                                                                    </ul>
+        
+
+
+    </nav>
+
+                </div>
+            </div>
+        </div>
+        <div class="footer-contact">
+            <div class="footer-title">
+                <div id="block-gpcontactsection" class="block-content--nir-global-block block-content--nir-global-block--6626 block--block-content7cf7e66c-7976-4ab1-b612-12dbe91af754 block--block-content7cf7e66c-7976-4ab1-b612-12dbe91af754--5821 block--contact-section--block-content--7cf7e66c-7976-4ab1-b612-12dbe91af754 block--contact-section--block-content--7cf7e66c-7976-4ab1-b612-12dbe91af754--5821 block--a2ac2cdc-912e-4634-b230-4767a427c5f1 block--a2ac2cdc-912e-4634-b230-4767a427c5f1--5821 block block-block-content block-block-content7cf7e66c-7976-4ab1-b612-12dbe91af754">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><h2>CONTACT US</h2>
+
+<h6>ABOUT INTEREST IN OUR HOLDINGS</h6>
+
+<div class="side-border-btn"><a class="default-btn white-btn" href="https://www.aultglobal.com/contact-us/">LET’S TALK</a></div>
+</div>
+      
+</div>
+      
+  </div>
+
+         </div>
+        <footer id="site-footer" class="footer-container">
+            <div class="footer-menu-container">
+                <div class="row">
+                    <div class="medium-12 columns">
+                        <div class="footer-menu-container-inner">
+                            <div class="footer-logo"><a href="https://www.aultglobal.com/">
+                                    <img src="/sites/g/files/knoqqb25771/themes/site/nir_pid2320/dist/images/2021logo.png" alt="footer logo" /></a></div>
+                            <div class="footer-menu hide-for-small-only">
+
+                                
+
+<nav role="navigation" aria-labelledby="block-clientlinks-2-menu" id="block-clientlinks-2" class="block--system-menu-blockclient-links block--system-menu-blockclient-links--10211 block--footer-links--system-menu-block--client-links block--footer-links--system-menu-block--client-links--10211 block--95ddf3a4-2e0c-48c0-a87d-d97ec1412386 block--95ddf3a4-2e0c-48c0-a87d-d97ec1412386--10211 block block-menu navigation block-system-menublock menu--client-links">
+                        
+    <h2 class="visually-hidden" id="block-clientlinks-2-menu">Client Links</h2>
+    
+
+                              <ul data-block-uuid="95ddf3a4-2e0c-48c0-a87d-d97ec1412386" class="menu-main-menu-1">
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.aultglobal.com/about/">About</a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.aultglobal.com/governance/">Governance</a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="/" data-drupal-link-system-path="&lt;front&gt;">Investor Relations</a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.aultglobal.com/investor-calls/">Investor Calls</a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://www.aultglobal.com/contact-us/">Contact Us</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="medium-12 columns">
+                        <div class="footer-bottom-inner">
+                            <div class="footer-bottom-left">
+                                &copy; 2021
+                                Ault Global Holdings, Inc.
+                                <span class="hide-for-small-only"></span>
+                            </div>
+                            <div class="footer-bottom-right hide-for-small-only">
+                                <ul>
+                                    <li><a href="/">INVESTOR RELATIONS </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+</div>
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgdigitalpower";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5821","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","currentQuery":{"c":"113943","p":"irol-calendar"}},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid2320\/client,nir_pid2320\/client-footer,nir_pid2320\/client-header,nir_pid2320\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid2320","theme_token":null},"ajaxTrustedUrl":[],"nir_pid2320":{"mynewsettings":{"themepath":"sites\/g\/files\/knoqqb25771\/themes\/site\/nir_pid2320"}},"user":{"uid":0,"permissionsHash":"e6725757fea9078b304adac8acfd7b9bb8d1b9985aa23c6357d3c3542dda6468"}}</script>
+<script src="/sites/g/files/knoqqb25771/files/js/js_RskRZKaP6yHwQTsD1K0aDDDcQH4_Uo_HnJY7QVfJLN8.js"></script>
+<script src="//use.typekit.net/cxr8xyn.js"></script>
+<script src="/sites/g/files/knoqqb25771/files/js/js_-L8ZpElxRaP9MPQs2sbICVo5AjtU0GS1EbrCMQiTBiI.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":599,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

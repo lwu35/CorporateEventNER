@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<link rel="canonical" href="https://ir.chiasma.com/investor-overview/" />
+<link rel="shortlink" href="http://ir.chiasma.com/" />
+<meta name="description" content="The Investor Relations website contains information about Chiasma, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta property="og:site_name" content="Chiasma, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.chiasma.com/investor-overview" />
+<meta property="og:title" content="Investor Overview | Chiasma, Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about Chiasma, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb51181/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://ir.chiasma.com/" />
+<link rel="revision" href="https://ir.chiasma.com/investor-overview" />
+
+    <title>Investor Overview | Chiasma, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51181/files/css/css_xlPnJptIC4BdD3T-gfH9N4SlWZCHxGNTtD6JVWqkd4w.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51181/files/css/css_BEz9yh0bLeK_dVaFmSX3XLR5s8QggVeA1xKYsqND6es.css" />
+<link rel="stylesheet" media="all" href="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+<link rel="stylesheet" media="all" href="//use.typekit.net/mtx5vtp.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Lato|Roboto:400,500&amp;display=swap" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb51181/files/css/css_Adh-c7tkSF1aBdX303-ifCnN3m0CItQE5R0iVjYDviA.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51181/files/css/css_o3aCFvU5R_C93OgWfl_cOJB-i4cg3a8H9vd53T1rsqE.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    <script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create", "UA-59445797-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+  </head>
+  <body class="body-sidebars-both nir-node nir-node--type-nir-landing-page nir-node--5806 path-frontpage page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <header class="zolo_header">
+    <div class="headercontent">
+        <div class="sticky_header_wrapper" style="height: 94px;">
+            <div class="sticky_header fadeInDown">
+                <div class="zolo-header_section2_background">
+                    <div class="zolo-container">
+                        <div class="headercontent_box">
+                            <!--Navigation Area Start-->
+                            <div class="header_element header_section_two">
+                                <div class="header_left">
+                                    <ul class="header_left_col">
+                                        <li class="zolo-small-menu"><span class="vertical_menu"><span class="zolo_small_bars"></span>
+                                                <p class="menu-text">MENU</p>
+                                            </span>
+                                            <div class="vertical_menu_area">
+                                                <div class="menu-main-container-box zolo-navigation">
+                                                    <ul id="primary" class="nav zolo-navbar-nav">
+                                                          <div class="region region-client-main-navigaiton">
+    
+
+
+                        
+    <h2 class="visually-hidden" id="block-clientmainmenu-menu">Client Main Menu</h2>
+    
+
+                                          <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://chiasma.com/"><span class="menu-text">Home</span></a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://chiasma.com/about-us/"><span class="menu-text">About Us</span></a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://chiasma.com/our-platform-technology/"><span class="menu-text">Our Platform Technology</span></a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://chiasma.com/products/"><span class="menu-text">Products</span></a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://chiasma.com/our-research/"><span class="menu-text">Our Research</span></a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://chiasma.com/patients-families/"><span class="menu-text">Patients &amp; Families</span></a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="/"><span class="menu-text">News And Investors</span></a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://chiasma.com/careers/"><span class="menu-text">Join Us</span></a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://chiasma.com/contact-us/"><span class="menu-text">Contact Us</span></a>
+                  </li>
+        
+
+
+    
+  </div>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="header_center">
+                                    <ul class="header_center_col">
+                                        <li class="">
+                                            <div class="logo-box"><a href="https://chiasma.com/"><img src="https://chiasma.com/wp-content/uploads/2020/01/Chiasma-Full-Color-Logo.png" srcset="https://chiasma.com/wp-content/uploads/2020/01/Chiasma-Full-Color-Logo.png 1x, https://chiasma.com/wp-content/uploads/2020/01/Chiasma-Full-Color-Logo.png 2x" alt="Chiasma" class="logo"></a></div>
+                                            <div class="logo-box sticky_logo"> <a href="https://chiasma.com/"><img src="https://chiasma.com/wp-content/uploads/2020/01/Chiasma-Full-Color-Logo.png" srcset="https://chiasma.com/wp-content/uploads/2020/01/Chiasma-Full-Color-Logo.png 1x, https://chiasma.com/wp-content/uploads/2020/01/Chiasma-Full-Color-Logo.png 2x" alt="Chiasma" class="logo"></a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="header_right">
+                                    <ul class="header_right_col">
+                                        <li class="zolo-search-menu">
+                                            <div class="zolo_navbar_search full_screen_search_but"><span class="nav_full_screen_search_but nav_search-icon"></span></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--Navigation Area End-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Navigation Area Start-->
+        <!--Navigation Area End-->
+    </div>
+</header>
+<div class="hero-area  homepage ">
+    <div class="overlay">
+        <div class="container pt-5">
+            <div class="row py-5">
+                <div class=" col-lg-7  pt-5 d-flex align-items-center">
+                    <h1 class="main-heading">
+                                                News And Investors
+                                            </h1>
+                </div>
+                                <div class="col-lg-5 pt-5">
+                    <div class="stock-wrapper p-4">
+                        <div id="block-stockquote-2" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5806 block--hero-area--market-data-block__stock-quote block--hero-area--market-data-block__stock-quote--5806 block--48fae220-d4f2-47a1-9390-a61d271ffe49 block--48fae220-d4f2-47a1-9390-a61d271ffe49--5806 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+    
+      <div class='stock-quote stock-quote__short'>
+    <div class="quote-wrapper">
+                                                                                            <div>
+                                <span class=" second "></span>
+            <span class=" third "></span>
+                </div>
+
+            </div>
+</div>
+  </div>
+<div id="block-stockinfoattributionthomsonreuters" class="block--attribution-block__stock-info-attribution__thomson-reuters block--attribution-block__stock-info-attribution__thomson-reuters--5806 block--hero-area--attribution-block__stock-info-attribution__thomson-reuters block--hero-area--attribution-block__stock-info-attribution__thomson-reuters--5806 block--9d00b2e8-6eb9-4f89-b63d-e2749dfe8e10 block--9d00b2e8-6eb9-4f89-b63d-e2749dfe8e10--5806 block block-nir-attribution-block block-attribution-block__stock-info-attribution__thomson-reuters">
+  
+    
+      <p>
+  Data Provided by Refinitiv. Minimum 15 minutes delayed.</p>
+
+  </div>
+<div id="block-widgetstockchart" class="block--nir-stock-chart block--nir-stock-chart--5806 block--hero-area--nir-stock-chart block--hero-area--nir-stock-chart--5806 block--0a1eb6d5-c81e-4e55-8dd3-25d4fe097aff block--0a1eb6d5-c81e-4e55-8dd3-25d4fe097aff--5806 block block-nir-stock-chart">
+  
+    
+      
+<img src="https://api.nasdaqomx.wallst.com/api/chart?display=mountain&symbol=CHMA.OQ-CHMA&scale=linear&duration=6mo&frequency=1dy&gridLine=h&bgColor=00aeef&lineColor=ffffff&fillcolor=ffffff|00aeef&width=560&height=440&bdr=2&amp;volume=0&amp;headerType=&amp;fontColor=ffffff&amp;lineSizePrimary=3" width="560" height="440" ></img>
+
+  </div>
+
+                    </div>
+                </div>
+                            </div>
+        </div>
+    </div>
+</div>
+<div class="investors-navigation">
+    <div class="container">
+   <nav class="navbar navbar-expand-xl navbar-light p-0 d-flex justify-content-start">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <span class="ir-button-text pl-3">Ir Menu</span>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul id="investor-navigation" class="navbar-nav mr-auto d-flex justify-content-between mr-0">
+    
+
+
+                        
+    <h2 class="visually-hidden" id="block-investorrelations-3-menu">Investor Relations</h2>
+    
+
+                                                                    <li class="nav-item">
+          
+                      <a href="/" target="" rel="" class="nav-item is-active" title="Main Investor Relations Page" data-drupal-link-system-path="&lt;front&gt;">IR Home</a>
+                                              </li>
+                                                  <li class="nav-item">
+          
+                      <a href="/news-releases" target="" rel="" class="nav-item" data-drupal-link-system-path="node/5816">News</a>
+                                              </li>
+                                                  <li class="nav-item">
+          
+                      <a href="/events-presentations" target="" rel="" class="nav-item" data-drupal-link-system-path="node/5826">Events &amp; Presentations</a>
+                                              </li>
+                                                <li class="sidebar-menu-item nav-item dropdown">
+          
+                    <a href="/corporate-governance/highlights" target="" rel="" class="sidebar-menu-item nav-item dropdown nav-link dropdown-toggle p-0" id="navbarDropdownMenuLink" data-toggle="dropdown" data-drupal-link-system-path="node/5836">Governance</a>
+                                               <div class="dropdown-menu p-0" aria-labelledby="navbarDropdownMenuLink">
+                                        
+                      <a href="/corporate-governance/highlights" target="" rel="" class="sidebar-menu-item dropdown-item p-3" data-drupal-link-system-path="node/5836">Highlights</a>
+                                                                              
+                      <a href="https://chiasma.com/about-us/#management" target="" rel="" class="sidebar-menu-item dropdown-item p-3">Management Team</a>
+                                                                              
+                      <a href="https://chiasma.com/about-us/#board" target="" rel="" class="sidebar-menu-item dropdown-item p-3">Board of Directors</a>
+                                                                              
+                      <a href="/corporate-governance/committee-composition" target="" rel="" class="sidebar-menu-item dropdown-item p-3" data-drupal-link-system-path="node/5851">Committee Composition</a>
+                                                          </div>
+    
+                                  </li>
+                                                <li class="sidebar-menu-item nav-item dropdown">
+          
+                    <a href="/stock-information/stock-quote" target="" rel="" class="sidebar-menu-item nav-item dropdown nav-link dropdown-toggle p-0" id="navbarDropdownMenuLink" data-toggle="dropdown" data-drupal-link-system-path="node/5911">Stock</a>
+                                               <div class="dropdown-menu p-0" aria-labelledby="navbarDropdownMenuLink">
+                                        
+                      <a href="/stock-information/stock-quote" target="" rel="" class="sidebar-menu-item dropdown-item p-3" data-drupal-link-system-path="node/5911">Stock Quote &amp; Chart</a>
+                                                                              
+                      <a href="/stock-information/historical-price-lookup" class="sidebar-menu-item dropdown-item p-3" data-drupal-link-system-path="node/5921">Historical Price Lookup</a>
+                                                                              
+                      <a href="/stock-information/analyst-coverage" class="sidebar-menu-item dropdown-item p-3" data-drupal-link-system-path="node/5896">Analyst Coverage</a>
+                                                          </div>
+    
+                                  </li>
+                                                <li class="sidebar-menu-item nav-item dropdown">
+          
+                    <a href="/financial-information/sec-filings" target="" rel="" class="sidebar-menu-item nav-item dropdown nav-link dropdown-toggle p-0" id="navbarDropdownMenuLink" data-toggle="dropdown" data-drupal-link-system-path="node/5876">Financials</a>
+                                               <div class="dropdown-menu p-0" aria-labelledby="navbarDropdownMenuLink">
+                                        
+                      <a href="/financial-information/sec-filings" class="sidebar-menu-item dropdown-item p-3" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                                                                              
+                      <a href="/financial-information/annual-reports" class="sidebar-menu-item dropdown-item p-3" data-drupal-link-system-path="node/5881">Annual Reports</a>
+                                                                              
+                      <a href="/proxy-statements" target="" rel="" class="sidebar-menu-item dropdown-item p-3" data-drupal-link-system-path="node/6951">Proxy Statements</a>
+                                                                              
+                      <a href="/financial-information/quarterly-results" class="sidebar-menu-item dropdown-item p-3" data-drupal-link-system-path="node/5986">Quarterly Results</a>
+                                                          </div>
+    
+                                  </li>
+                                                  <li class="nav-item">
+          
+                      <a href="/shareholder-services/investor-faqs" target="" rel="" class="nav-item" data-drupal-link-system-path="node/5941">FAQs</a>
+                                              </li>
+                                                <li class="sidebar-menu-item nav-item dropdown">
+          
+                    <a href="/shareholder-services/contact-ir" target="" rel="" class="sidebar-menu-item nav-item dropdown nav-link dropdown-toggle p-0" id="navbarDropdownMenuLink" data-toggle="dropdown" data-drupal-link-system-path="node/5981">Contact</a>
+                                               <div class="dropdown-menu p-0" aria-labelledby="navbarDropdownMenuLink">
+                                        
+                      <a href="/shareholder-services/contact-ir" target="" rel="" class="sidebar-menu-item dropdown-item p-3" data-drupal-link-system-path="node/5981">Contact Information</a>
+                                                                              
+                      <a href="/shareholder-services/document-request" target="" rel="" class="sidebar-menu-item dropdown-item p-3" data-drupal-link-system-path="node/5966">Information Requests</a>
+                                                          </div>
+    
+                                  </li>
+                        
+
+
+
+    
+    </ul>
+  </div>
+</nav>
+    </div>
+
+</div>
+<div class="search_overlay">
+    <span class="search_close_but"></span>
+    <div class="content_div full_screen_search">
+        <div class="zolo-container">
+            <form role="search" method="get" class="search-form" action="https://chiasma.com/">
+                <label>
+                    <span class="screen-reader-text">Search for:</span>
+                    <input type="search" class="search-field" placeholder="Search …" value="" name="s">
+                </label>
+                <input type="submit" class="search-submit" value="Search">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="clearfix" id="main">
+    <section id="content">
+        <div id="content-header">
+            
+        </div>
+                <div id="ndq-content" class="pt-5 pb-5">
+                    <div  class="row">
+                                                
+                        
+                              <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid2668-content" class="block--system-main-block block--system-main-block--5806 block--content--system-main-block block--content--system-main-block--5806 block--862d3bc0-9cc3-4d30-9208-b082ad6b85c6 block--862d3bc0-9cc3-4d30-9208-b082ad6b85c6--5806 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Investor Overview
+          </h1>
+    
+
+  <div>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12 radix-layouts-header">
+            <div class="panel-panel-inner">
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 radix-layouts-column1">
+            <div class="panel-panel-inner">
+                <div class="block-region-column1"><div class="block-content--nir-global-block block-content--nir-global-block--6041 block--block-content1419c3a5-2075-4cc7-a8d8-1c3262e5d81b block--block-content1419c3a5-2075-4cc7-a8d8-1c3262e5d81b--5806 block--column1--block-content--1419c3a5-2075-4cc7-a8d8-1c3262e5d81b block--column1--block-content--1419c3a5-2075-4cc7-a8d8-1c3262e5d81b--5806 block--35e8e5ee-859f-4573-b56e-53a2b957cffc block--35e8e5ee-859f-4573-b56e-53a2b957cffc--5806 block block-block-content block-block-content1419c3a5-2075-4cc7-a8d8-1c3262e5d81b">
+  
+      <h2>Corporate Profile</h2>
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><span class="ccbnTxt"></span>
+<p><span class="ccbnTxt">Chiasma develops and commercializes oral therapies utilizing its proprietary Transient Permeability Enhancer (TPE<sup>®</sup>) technology to reduce the burden of chronic injections for people with rare diseases. Chiasma’s proprietary TPE<sup>®</sup> technology is designed to convert select peptide based injectables into oral formulations. By leveraging this technology, patients may be alleviated of the burdens associated with chronic injectable therapies.<br /><br />
+Using its TPE<sup>®</sup> technology, Chiasma developed MYCAPSSA<sup>®</sup> (octreotide), a somatostatin analog indicated for long-term maintenance treatment in acromegaly patients who have responded to and tolerated treatment with octreotide or lanreotide.<br /><br />
+Chiasma is headquartered in the United States with a wholly-owned subsidiary in Israel. </span><br />
+ </p>
+<span class="ccbnTxt"> </span></div>
+      
+</div>
+      
+  </div>
+</div>
+            </div>
+        </div>
+        <div class="col-lg-4 radix-layouts-column2 pb-5">
+            <div class="panel-panel-inner">
+                <div class="block-region-column2"><div class="views-element-container block--views-blockwidget-bundled-content-block-1 block--views-blockwidget-bundled-content-block-1--5806 block--column2--views-block--widget-bundled-content-block-1 block--column2--views-block--widget-bundled-content-block-1--5806 block--a8f12cb6-1184-46df-97ed-77c577538037 block--a8f12cb6-1184-46df-97ed-77c577538037--5806 block block-views block-views-blockwidget-bundled-content-block-1">
+  
+      <h2>Latest Quarterly Earnings</h2>
+    
+  <a href="#" class="show-all">Show all</a>
+      <div data-block-uuid="a8f12cb6-1184-46df-97ed-77c577538037"><div class="acc-wrap view view-widget-bundled-content view-id-widget_bundled_content view-display-id-block_1 js-view-dom-id-19ecfc407b1162bf774f717d09bd97159b20e3cdd60cb1c66d66b41b1d3305a0">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-bundled-content-block-1" action="/" method="get" id="views-exposed-form-widget-bundled-content-block-1" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <div class="view-grouping">
+        <div class="row">
+        <div class="col-12 col-md-3">
+            <h2 class="pt-5">2021</h2>
+        </div>
+            <div class="col-12 col-md-9">
+		        <div class="view-grouping-content">  <div class="acc-title">Q1</div>
+  <div class="acc-body visually-hidden">
+          <div class="views-row ">
+      <div class="views-field views-field-field-nir-bundle-content"><div class="field-content"><div class="item-list"><ul><li><div class=" clearfix">
+  <div class="content">
+    
+  </div>
+</div>
+</li><li><div class=" clearfix">
+  <div class="content">
+    
+            <div class="field field--name-field-nir-content-ref field--type-entity-reference field--label-hidden field__item html-link"><a href="/sec-filings/sec-filing/10-q/0001564590-21-023643" hreflang="en">Form 10-Q</a></div>
+      
+  </div>
+</div>
+</li></ul></div></div></div>
+    </div>
+    </div>
+</div>
+		    </div>
+    </div>
+    </div>
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+
+
+
+                        
+    <h2 class="visually-hidden" id="-menu">View All (Quarterly)</h2>
+    
+
+                              <ul data-block-uuid="2e68b4af-b74b-49f8-acf5-f49735261db5" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/financial-information/quarterly-results" target="" rel="" class="wButton" data-drupal-link-system-path="node/5986">View All</a>
+                  </li>
+          </ul>
+  
+
+
+    </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 radix-layouts-middle">
+            <div class="panel-panel-inner">
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="events-news py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 radix-layouts-secondcolumn1 postion-relative">
+                <div class="panel-panel-inner">
+                    <div class="title-icon text-center pb-3"><i class="far fa-newspaper"></i></div>
+                    <div class="block-region-secondcolumn1"><div class="block--homepage-releases block--nir-news__widget block--nir-news__widget--5806 block--secondcolumn1--nir-news__widget block--secondcolumn1--nir-news__widget--5806 block--4a0dfa50-e595-4902-b584-7cfa504fd4d5 block--4a0dfa50-e595-4902-b584-7cfa504fd4d5--5806 block block-nir-news block-nir-news__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      News Releases
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-news--nir-widget-list node--type-nir-news node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widget--news--date-time">
+      Jun 28, 2021
+    </div>
+  
+            <div class="nir-widget--field nir-widget--news--headline">
+          <a href="/news-releases/news-release-details/chiasma-announces-submission-marketing-authorization-application" hreflang="en">Chiasma Announces Submission of Marketing Authorization Application for MYCAPSSA® to the European Medicines Agency</a>
+      </div>
+      
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-news--nir-widget-list node--type-nir-news node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widget--news--date-time">
+      May 27, 2021
+    </div>
+  
+            <div class="nir-widget--field nir-widget--news--headline">
+          <a href="/news-releases/news-release-details/chiasma-presents-positive-patient-reported-outcomes-data-its" hreflang="en">Chiasma Presents Positive Patient-Reported Outcomes Data from its MPOWERED™ Phase 3 Trial Comparing MYCAPSSA® to Long-Acting Injectables for the Maintenance Treatment of Adults with Acromegaly</a>
+      </div>
+      
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-news--nir-widget-list node--type-nir-news node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widget--news--date-time">
+      May 20, 2021
+    </div>
+  
+            <div class="nir-widget--field nir-widget--news--headline">
+          <a href="/news-releases/news-release-details/chiasma-present-encore-and-new-data-mpoweredtm-phase-3-trial" hreflang="en">Chiasma to Present Encore and New Data from MPOWERED™ Phase 3 Trial at Upcoming e-ECE and AACE Virtual Conferences</a>
+      </div>
+      
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+
+
+
+                        
+    <h2 class="visually-hidden" id="-menu">View All (News)</h2>
+    
+
+                              <ul data-block-uuid="10ca5d85-c5ee-45a3-aea6-4a359cf2b5dc" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/news-releases" target="" rel="" class="wButton" data-drupal-link-system-path="node/5816">View All</a>
+                  </li>
+          </ul>
+  
+
+
+    </div>
+                </div>
+            </div>
+            <div class="col-md-6 radix-layouts-secondcolumn2 pt-4 position-relative">
+                <div class="title-icon text-center pb-3"><i class="far fa-calendar-alt"></i></div>
+                <div class="panel-panel-inner">
+                    <div class="block-region-secondcolumn2"><div class="block--homepage-events block--nir-events__widget block--nir-events__widget--5806 block--secondcolumn2--nir-events__widget block--secondcolumn2--nir-events__widget--5806 block--91cd2cb2-e175-4f4b-8caf-c3df2b297e3c block--91cd2cb2-e175-4f4b-8caf-c3df2b297e3c--5806 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Upcoming Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              There are no events available at this time.
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+
+
+
+                        
+    <h2 class="visually-hidden" id="-menu">View All (Events)</h2>
+    
+
+                              <ul data-block-uuid="c6ca4531-474b-425e-9997-c62efa04a769" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/events-presentations" target="" rel="" class="wButton" data-drupal-link-system-path="node/5826">View All</a>
+                  </li>
+          </ul>
+  
+
+
+    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 radix-layouts-footer">
+            <div class="panel-panel-inner">
+                
+            </div>
+        </div>
+    </div>
+</div>
+  </div>
+</article>
+
+  </div>
+<div id="block-websitenoticeblock-2" class="block--website-notice-block block--website-notice-block--5806 block--content--website-notice-block block--content--website-notice-block--5806 block--3238bf30-4573-4f89-9b1e-e74853080a95 block--3238bf30-4573-4f89-9b1e-e74853080a95--5806 block block-nir-website-notices block-website-notice-block">
+  
+    
+          <div class="notification-modal" data-cookie-length="0" data-id="chiasma_disclaimer_for_ir_page_of_the_corporate_website" data-notification-type="notification"><p>You are about to review presentations, reports, filings, Q&amp;A and/or other materials regarding Chiasma, Inc. (NASDAQ: CHMA) that contain time-sensitive information. The information contained therein is only current as of the date thereof and may not be a complete listing of all documents filed with the Securities Exchange Commission, made public or provided to Chiasma shareholders.</p>
+
+<p>Chiasma expressly disclaims any obligation to review, update or correct these materials after the date thereof. Chiasma may update, amend, supplement or otherwise alter the information contained in any such materials by subsequent presentations, reports, filings, or other means without notice.</p>
+
+<p>Certain statements made on this web site or in materials accessed in or through the investor relations section of our web site are "forward-looking statements," which are subject to risks and uncertainties, and Chiasma's actual results may differ (possibly materially) from those indicated in such statements. A further list and description of these risks, uncertainties and other risks associated with an investment in Chiasma can be found in Chiasma's filings with the U.S. Securities and Exchange Commission, including its most recent Annual Report on Form 10-K and/or its most recent Quarterly Report on Form 10-Q.</p>
+
+<p>This website is not an offer or a solicitation to buy or sell securities. Please be aware that decisions regarding investments are the responsibility of users.&nbsp;&nbsp;Although this website includes information regarding pharmaceuticals (including products under development), the information is not intended as any advertisement and/or medical advice.</p>
+
+<p>This information is intended for communication with investors and should not be construed as marketing the use of any Chiasma products or product candidates.</p>
+
+<p>Information on this website may be revised without any prior notice.</p>
+</div>
+
+  </div>
+
+  </div>
+
+                  
+                                    </div>
+        </div>
+
+    </section>
+</div>
+</div>
+
+
+<div class="container py-4">
+    <div class="shareholder-tools">
+        
+
+
+                        
+    <h2 class="visually-hidden" id="block-shareholdertools-2-menu">Shareholder Tools</h2>
+    
+
+                              <ul data-block-uuid="30128eec-2e77-45ae-b84a-0819f4fede2a" class="menu side-menu">
+                  <div class="shareholder-item">
+        <li class="side-menu__item">
+          <a href="/rss-feeds" target="" rel="" class="ndqicon-rss" data-drupal-link-system-path="node/5951">RSS Feeds</a>
+                  </li>
+        <div class="shareholder-item-name">RSS Feeds</div>
+        </div>
+              <div class="shareholder-item">
+        <li class="side-menu__item">
+          <a href="/shareholder-services/email-alerts" target="" rel="" class="ndqicon-alerts" data-drupal-link-system-path="node/5946">E-mail Alerts</a>
+                  </li>
+        <div class="shareholder-item-name">E-mail Alerts</div>
+        </div>
+              <div class="shareholder-item">
+        <li class="side-menu__item">
+          <a href="" target="" rel="" class="ndqicon-print">Print Page</a>
+                  </li>
+        <div class="shareholder-item-name">Print Page</div>
+        </div>
+          </ul>
+  
+
+
+    
+    </div>
+</div>
+
+
+
+<a href="#" class="sticky_on_scroll_backtotop backtotop_style_square back-to-top" style="display: inline-block;"><i class="fa fa-angle-up"></i></a>
+<footer class="main-footer site-footer zolo_footer_area" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+    <div class="zolo_footer_container_area " id="none">
+        <div class="footer" data-parallax="">
+            <div class="footer-widgets footer_layout_columns_2">
+                <div class="zolo-container">
+                    <div class="zolo_footer_padding">
+                        <div class="zolo_footer_row">
+                            <div class="footercolumn footer_column3">
+                                <aside id="text-2" class="widget widget_text">
+                                    <div class="textwidget">
+                                        <p></p>
+                                        <center><img width="200" height="40" src="/sites/g/files/knoqqb51181/themes/site/nir_pid2668/dist/images/Chiasma-Logo-Blue-Mark-KO-Name.png" class="image wp-image-12  attachment-full size-full" alt="" style="max-width: 100%; height: auto;"></center>
+                                        <p></p>
+                                    </div>
+                                </aside>
+                            </div>
+                            <div class="footercolumn footer_column2_3">
+                                <aside id="nav_menu-2" class="widget widget_nav_menu">
+                                    <div class="menu-legal-footer-container">
+                                        
+
+
+                        
+    <h2 class="visually-hidden" id="block-clientfootermenu-menu">Client Footer Menu</h2>
+    
+
+                              <ul id="menu-legal-footer" class="menu">
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://chiasma.com/privacy-policy/" target="" rel="">Privacy Policy</a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://chiasma.com/privacy-shield-policy/" target="" rel="">Privacy Shield Policy</a>
+                  </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="https://chiasma.com/terms-of-use/" target="" rel="">Terms of Use</a>
+                  </li>
+          </ul>
+  
+
+
+
+
+
+    
+
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright_wrap">
+            <div class="copyright copyright_social_center">
+                <div class="zolo-container">
+                    <div class="zolo_copyright_padding">
+                        <div class="copyright_social">
+                            <div class="zolo-social ">
+                                <ul class="social-icon">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="copyright_text">
+                            ©2015-2021 Chiasma, Inc. All rights reserved. MYCAPSSA, CHIASMA, TPE and TPE logo are trademarks or registered trademarks of Chiasma Inc. </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb3160";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5806","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en","themeUrl":"sites\/g\/files\/knoqqb51181\/themes\/site\/nir_pid2668"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid2668\/override,nir_stock_chart\/nir_stock_chart.stockChartStyling,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid2668","theme_token":null},"ajaxTrustedUrl":{"\/investor-overview":true},"user":{"uid":0,"permissionsHash":"3214f37993b4321c2e6ac1f577d024ac5cbff3e7bc7505e232a06524969e1f72"}}</script>
+<script src="/sites/g/files/knoqqb51181/files/js/js_RskRZKaP6yHwQTsD1K0aDDDcQH4_Uo_HnJY7QVfJLN8.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="/sites/g/files/knoqqb51181/files/js/js_iPMr5tf-1zvHIfsHJvSPqzOk7Jpv25_99oeB5vLsJrc.js"></script>
+<script src="//kit.fontawesome.com/6c7b5b8de1.js"></script>
+<script src="/sites/g/files/knoqqb51181/files/js/js_Z-WSXdh4OUAmsbdhmm-c7bXmLP9FaUS5kriP_Ok2awo.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":349,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,2473 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"32397309"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta name="referrer" content="no-referrer" />
+<meta property="og:site_name" content="Baker Hughes" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investors.bakerhughes.com/events" />
+<meta property="og:title" content="Events | Baker Hughes" />
+<meta property="og:description" content="The Investor Relations website contains information about Baker Hughes&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb48381/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://investors.bakerhughes.com/events" />
+<link rel="canonical" href="https://investors.bakerhughes.com/events" />
+<link rel="shortlink" href="https://investors.bakerhughes.com/node/5821" />
+<link rel="revision" href="https://investors.bakerhughes.com/events" />
+
+    <title>Events | Baker Hughes</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb48381/files/css/css_w5uwuaEHMC9bSP8WfARp9ZhoueTvvxceydRRR7hhmEE.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb48381/files/css/css_c5Iz22NitkoSpaSgXPup33xnU52dhZjyCrHWooyWiPw.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb48381/files/css/css_fLFenkp2mzNWJyGOXLF3XdUXlnm-NzDR4rVDkJdV22k.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb48381/files/css/css_aDsFEV571UcJAiB5fCPzsTQlssdR1qAL45G9vtursbo.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NDV36D2');</script>
+<!-- End Google Tag Manager -->
+  
+                    <script>var w=window;if(w.performance||w.mozPerformance||w.msPerformance||w.webkitPerformance){var d=document;AKSB=w.AKSB||{},AKSB.q=AKSB.q||[],AKSB.mark=AKSB.mark||function(e,_){AKSB.q.push(["mark",e,_||(new Date).getTime()])},AKSB.measure=AKSB.measure||function(e,_,t){AKSB.q.push(["measure",e,_,t||(new Date).getTime()])},AKSB.done=AKSB.done||function(e){AKSB.q.push(["done",e])},AKSB.mark("firstbyte",(new Date).getTime()),AKSB.prof={custid:"543865",ustr:"",originlat:"0",clientrtt:"21",ghostip:"104.98.116.134",ipv6:false,pct:"10",clientip:"128.114.155.149",requestid:"3decc8a4",region:"35083",protocol:"",blver:14,akM:"",akN:"ae",akTT:"O",akTX:"1",akTI:"3decc8a4",ai:"505979",ra:"false",pmgn:"",pmgi:"",pmp:"",qc:""},function(e){var _=d.createElement("script");_.async="async",_.src=e;var t=d.getElementsByTagName("script"),t=t[t.length-1];t.parentNode.insertBefore(_,t)}(("https:"===d.location.protocol?"https:":"http:")+"//ds-aksb-a.akamaihd.net/aksb.min.js")}</script>
+                    </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5821 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="top-bar" id="investor-relations">
+  <div class="row">
+    <div class="top-bar-left">
+      <a href="https://www.bakerhughes.com/" target="_blank">
+       <img src="/sites/g/files/knoqqb48381/themes/site/nir_pid733/dist/images/logo.png" alt="Baker Hughes logo" />
+      </a>
+
+      <h1>Investor Center </h1>
+      
+    </div>
+
+    <div class="top-bar-right">
+      <div class="title-bar" data-responsive-toggle="ir-menu" data-hide-for="xlarge">
+        <button class="menu-icon" type="button" data-toggle></button>
+        <div class="title-bar-title">&nbsp;</div>
+      </div>
+      <div class="top-stock">
+                         <div class="region region-stock-quote">
+    <div id="block-stockquote-5" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5821 block--stock-quote--market-data-block__stock-quote block--stock-quote--market-data-block__stock-quote--5821 block--5a9bdf20-8ffc-483c-974b-9ab1833542ae block--5a9bdf20-8ffc-483c-974b-9ab1833542ae--5821 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+    
+      <div class='stock-quote stock-quote__short'>
+    <div class="quote-wrapper">
+                                              
+                                    <span class=""></span>
+            <span></span>
+            </div>
+</div>
+  </div>
+
+  </div>
+
+                  </div>
+      <div id="ir-menu">
+                    <div class="region region-topnav">
+    
+
+<nav role="navigation" aria-labelledby="block-investorrelations-2-menu" id="block-investorrelations-2" class="block--system-menu-blockir block--system-menu-blockir--5821 block--topnav--system-menu-block--ir block--topnav--system-menu-block--ir--5821 block--86e71c65-c137-4d89-8b08-7a0c15b79dda block--86e71c65-c137-4d89-8b08-7a0c15b79dda--5821 block block-menu navigation block-system-menublock menu--ir">
+                        
+    <h2 class="visually-hidden" id="block-investorrelations-2-menu">Investor Relations</h2>
+    
+
+                              <ul class="menu vertical large-horizontal large-text-left dropdown" data-responsive-menu="drilldown large-dropdown">
+    
+
+                      <li id="Home" class="                ">
+
+              <a href="/" target="" rel="" title="Main Investor Relations Page" data-drupal-link-system-path="&lt;front&gt;">Home</a>
+
+              
+
+              
+            </li>
+                      <li id="CompanyInformation" class="has-submenu                ">
+
+              <a href="" target="" rel="">Company Information</a>
+
+              
+
+                                            <ul class="submenu menu vertical" data-submenu data-responsive-menu="accordion">
+    
+
+                      <li id="CompanyProfile" class="                ">
+
+              <a href="https://www.bakerhughes.com/company/about-us" target="_blank" rel="">Company Profile</a>
+
+              
+
+              
+            </li>
+                      <li id="ManagementTeam" class="                ">
+
+              <a href="https://www.bakerhughes.com/company/about-us/company-leadership?team_list=46" target="_blank" rel="">Management Team</a>
+
+              
+
+              
+            </li>
+                      <li id="BoardofDirectors" class="                ">
+
+              <a href="https://www.bakerhughes.com/company/about-us/company-leadership?team_list=41" target="_blank" rel="">Board of Directors</a>
+
+              
+
+              
+            </li>
+                      <li id="CommitteeComposition" class="                ">
+
+              <a href="/corporate-governance/committee-composition" data-drupal-link-system-path="node/5851">Committee Composition</a>
+
+              
+
+              
+            </li>
+                      <li id="CorporateGovernance" class="                ">
+
+              <a href="/corporate-governance/documents-charters" target="" rel="" data-drupal-link-system-path="node/5836">Corporate Governance</a>
+
+              
+
+              
+            </li>
+                      <li id="CorporateResponsibility" class="                ">
+
+              <a href="https://www.bakerhughes.com/company/corporate-responsibility" target="_blank">Corporate Responsibility</a>
+
+              
+
+              
+            </li>
+          
+
+    
+    </ul>
+  
+              
+            </li>
+                      <li id="StockInformation" class="has-submenu                ">
+
+              <a href="" target="" rel="">Stock Information</a>
+
+              
+
+                                            <ul class="submenu menu vertical" data-submenu data-responsive-menu="accordion">
+    
+
+                      <li id="StockQuote&amp;Chart" class="                ">
+
+              <a href="/stock-information/stock-quote-chart" data-drupal-link-system-path="node/5911">Stock Quote &amp; Chart</a>
+
+              
+
+              
+            </li>
+                      <li id="HistoricPriceLookup" class="                ">
+
+              <a href="/stock-information/historic-price-lookup" data-drupal-link-system-path="node/5921">Historic Price Lookup</a>
+
+              
+
+              
+            </li>
+                      <li id="InvestmentCalculator" class="                ">
+
+              <a href="/stock-information/investment-calculator" data-drupal-link-system-path="node/5926">Investment Calculator</a>
+
+              
+
+              
+            </li>
+                      <li id="DividendHistory" class="                ">
+
+              <a href="/stock-information/dividends" target="" rel="" data-drupal-link-system-path="node/5931">Dividend History</a>
+
+              
+
+              
+            </li>
+          
+
+    
+    </ul>
+  
+              
+            </li>
+                      <li id="News&amp;Events" class="has-submenu                active">
+
+              <a href="" target="" rel="">News &amp; Events</a>
+
+              
+
+                                            <ul class="submenu menu vertical" data-submenu data-responsive-menu="accordion">
+    
+
+                      <li id="PressReleases" class="                ">
+
+              <a href="/press-releases" data-drupal-link-system-path="node/5816">Press Releases</a>
+
+              
+
+              
+            </li>
+                      <li id="Events" class="                active">
+
+              <a href="/events" target="" rel="" data-drupal-link-system-path="node/5821" class="is-active">Events</a>
+
+              
+
+              
+            </li>
+                      <li id="Presentations" class="                ">
+
+              <a href="/presentations" target="" rel="" data-drupal-link-system-path="node/5831">Presentations</a>
+
+              
+
+              
+            </li>
+                      <li id="OtherCompanyNews" class="                ">
+
+              <a href="https://www.bakerhughes.com/company/newsroom" target="_new" rel="">Other Company News</a>
+
+              
+
+              
+            </li>
+          
+
+    
+    </ul>
+  
+              
+            </li>
+                      <li id="FinancialInformation" class="has-submenu                ">
+
+              <a href="" target="" rel="">Financial Information</a>
+
+              
+
+                                            <ul class="submenu menu vertical" data-submenu data-responsive-menu="accordion">
+    
+
+                      <li id="SECFilings" class="                ">
+
+              <a href="/financial-information/sec-filings" data-drupal-link-system-path="node/6016">SEC Filings</a>
+
+              
+
+              
+            </li>
+                      <li id="AnnualReport&amp;ProxyStatement" class="                ">
+
+              <a href="/financial-information/annual-reports" data-drupal-link-system-path="node/5881">Annual Report &amp; Proxy Statement</a>
+
+              
+
+              
+            </li>
+                      <li id="QuarterlyResults" class="                ">
+
+              <a href="/financial-information/quarterly-results" data-drupal-link-system-path="node/5986">Quarterly Results</a>
+
+              
+
+              
+            </li>
+          
+
+    
+    </ul>
+  
+              
+            </li>
+                      <li id="ShareholderServices" class="has-submenu                ">
+
+              <a href="" target="" rel="">Shareholder Services</a>
+
+              
+
+                                            <ul class="submenu menu vertical" data-submenu data-responsive-menu="accordion">
+    
+
+                      <li id="Contacts" class="                ">
+
+              <a href="/contacts" target="" rel="" data-drupal-link-system-path="node/5981">Contacts</a>
+
+              
+
+              
+            </li>
+                      <li id="TransferAgent" class="                ">
+
+              <a href="/transfer-agent" data-drupal-link-system-path="node/6236">Transfer Agent</a>
+
+              
+
+              
+            </li>
+                      <li id="EmailAlerts" class="                ">
+
+              <a href="/shareholder-services/email-alerts" data-drupal-link-system-path="node/5946">Email Alerts</a>
+
+              
+
+              
+            </li>
+                      <li id="DocumentRequest" class="                ">
+
+              <a href="/shareholder-services/document-request" data-drupal-link-system-path="node/5966">Document Request</a>
+
+              
+
+              
+            </li>
+          
+
+    
+    </ul>
+  
+              
+            </li>
+          
+
+    
+    </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+              </div>
+    </div>
+  </div>
+</div>
+
+
+
+   <div class="ndq-interior banner">
+      <div class="row">
+        <div class="medium-12 large-12 columns">
+            <ul class="slides">
+                <li class="slide-item">
+                    
+                                                    <h1>Events</h1>
+                                            
+
+                </li>
+            </ul>
+        </div>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="large-12 columns">
+        <div id="ndq-content" class="ndq-5821">
+            <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid733-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5821 block--content--website-notice-block block--content--website-notice-block--5821 block--fa584e51-bd6f-45db-857d-691384476705 block--fa584e51-bd6f-45db-857d-691384476705--5821 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div id="block-nir-pid733-content" class="block--system-main-block block--system-main-block--5821 block--content--system-main-block block--content--system-main-block--5821 block--93488a55-d1f3-4b1d-8b6b-275cbc423ebd block--93488a55-d1f3-4b1d-8b6b-275cbc423ebd--5821 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--44feade8-4010-454d-8918-5f14a5c0e594 block--44feade8-4010-454d-8918-5f14a5c0e594--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Upcoming Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-second-quarter-2021-earnings-conference-call" hreflang="en">Baker Hughes Second Quarter 2021 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jul 21, 2021 at 8:30 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-announces-date-second-quarter-2021-earnings-release">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/scaxafmf" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--add-to-calendar clearfix">
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--outlook">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-outlook field__item"><a href="/node/25396/ics" class="add-outlook">Add to Outlook</a></div>
+  </div>
+      </div>
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--google">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-gcal field__item"><a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Baker%20Hughes%20-%20Baker%20Hughes%20Second%20Quarter%202021%20Earnings%20Conference%20Call&amp;dates=20210721T123000Z/20210721T123000Z&amp;details=Event%20Details%3A%20http%3A//investors.bakerhughes.com/events/event-details/baker-hughes-second-quarter-2021-earnings-conference-call%0A%0AWebcast%3A%20https%3A//edge.media-server.com/mmc/p/scaxafmf&amp;location=&amp;trp=false&amp;sprop=name%3A" class="add-gcal">Add to Google Calendar</a></div>
+  </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block-content--nir-global-block block-content--nir-global-block--23366 block--block-contentb8cc6e7c-bd6a-4ec2-89a0-4d0cf469ead0 block--block-contentb8cc6e7c-bd6a-4ec2-89a0-4d0cf469ead0--5821 block--contentmain--block-content--b8cc6e7c-bd6a-4ec2-89a0-4d0cf469ead0 block--contentmain--block-content--b8cc6e7c-bd6a-4ec2-89a0-4d0cf469ead0--5821 block--61e0c0c1-baa6-4b2c-82b0-158454b997c0 block--61e0c0c1-baa6-4b2c-82b0-158454b997c0--5821 block block-block-content block-block-contentb8cc6e7c-bd6a-4ec2-89a0-4d0cf469ead0">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><br clear="all" /><br clear="all" /></div>
+      
+</div>
+      
+  </div>
+<div class="block--nir-events__widget block--nir-events__widget--5821 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5821 block--e4f65b52-2ac5-4c65-863a-ffa6f5838b57 block--e4f65b52-2ac5-4c65-863a-ffa6f5838b57--5821 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Past Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-first-quarter-2021-earnings-conference-call" hreflang="en">Baker Hughes First Quarter 2021 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Apr 21, 2021 at 8:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/static-files/0ab6b5a3-c829-4301-85af-ea1014795069">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/qefyum6k" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/74c4958a-f61b-4e5c-8f15-9de7c806512d" type="application/pdf" title="Baker Hughes - 1Q21 Supplemental Financial Information - 4.21.21.pdf">First Quarter 2021 Supplemental Financial Information</a></span><span class="filesize"> 311.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/82f67baf-2b59-400d-ba65-ee4932fc0e6a" type="application/pdf" title="Baker Hughes 1Q&#039;21 - Earnings Call Prepared Remarks.pdf">First Quarter 2021 Earnings Conference Call Prepared Remarks</a></span><span class="filesize"> 390 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-fourth-quarter-and-full-year-2020-earnings-conference-call" hreflang="en">Baker Hughes Fourth Quarter and Full-Year 2020 Earnings Conference Call </a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jan 21, 2021 at 9:00 AM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-company-announces-fourth-quarter-and-total-year-0">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/bjpzo9tr" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/a5f32ba9-9e91-475d-a275-bc2e1af6e02f" type="application/pdf" title="Baker Hughes 4Q20 Earnings Call Prepared Remarks.pdf">Fourth Quarter and Full-Year 2020 Earnings Conference Call Prepared Remarks</a></span><span class="filesize"> 389.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-5th-annual-jp-morgan-energy-technology-tour" hreflang="en">Baker Hughes at the 5th Annual J.P. Morgan Energy Technology Tour</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Nov 10, 2020 at 8:00 AM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Rod Christie presented at the 5th Annual J.P. Morgan Energy Technology Tour</div>
+          </div>
+
+    </div>
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/01d3fa6e-715b-4840-abae-28b759e778a4" type="application/pdf" title="Baker Hughes - 5th Annual JPM Technology Tour - Nov 10 2020 - Presentation.pdf">5th Annual J.P. Morgan Energy Technology Tour 2020 Presentation</a></span><span class="filesize"> 3.5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-ext-document field--type-link field--label-hidden field__items">
+              <div class="field field--name-field-nir-ext-document field--type-link field--label-hidden field__item"><a href="https://youtu.be/fLSFOrtbrXY" target="_self">Click here for video replay</a></div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-third-quarter-2020-earnings-conference-call" hreflang="en">Baker Hughes Third Quarter 2020 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Oct 21, 2020 at 9:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-company-announces-third-quarter-2020-results">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/b52o5gq3" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/987f63c5-fdb3-420e-8259-f1b74ef3797e" type="application/pdf" title="Baker Hughes 3Q&#039;20 - Earnings Call Prepared Remarks.pdf">Third Quarter 2020 Earnings Conference Call Prepared Remarks</a></span><span class="filesize"> 569.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-bank-america-digital-energy-forum" hreflang="en">Baker Hughes at Bank of America Digital Energy Forum</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Sep 21, 2020 at 12:55 PM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Uwem Ukpong presented at the Bank of America Digital Energy Forum</div>
+          </div>
+
+    </div>
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/05fc66a4-785a-4ce9-9b38-d5ef5a5ec86c" type="application/pdf" title="Baker Hughes - BofA Digital Energy Forum - Sep 21 2020 - Presentation.pdf">Bank of America 2020 Digital Energy Forum Presentation</a></span><span class="filesize"> 2.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/f209684e-36ca-4967-840f-286d73459b55" type="application/pdf" title="Baker Hughes - BofA Digital Energy Forum - Sep 21 2020 - Presentation &amp; Script.pdf">Bank of America 2020 Digital Energy Forum Presentation &amp; Script</a></span><span class="filesize"> 905.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-barclays-ceo-energy-power-conference" hreflang="en">Baker Hughes at Barclays CEO Energy-Power Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Sep 8, 2020 at 11:45 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Lorenzo Simonelli to present at the Barclays CEO Energy-Power Conference</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://kvgo.com/barclays/baker-hughes-september-2020" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/33589d86-88d7-4a16-95a0-e8265da2b7c7" type="application/pdf" title="Baker Hughes - Barclays CEO Energy Conference - Sep 8 2020.pdf">2020 Barclays CEO Energy-Power Conference Presentation</a></span><span class="filesize"> 4.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/12e1d3cd-9647-47e8-a513-c26fefee64e6" type="application/pdf" title="Baker Hughes - Barclays CEO Energy Conference - Sep 8 2020 - Presentation &amp; Script.pdf">2020 Barclays CEO Energy-Power Conference Presentation &amp; Script</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-second-quarter-2020-earnings-conference-call" hreflang="en">Baker Hughes Second Quarter 2020 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jul 22, 2020 at 9:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-company-announces-second-quarter-2020-results">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/ggn7cjis" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/fdcf517f-a006-4bbd-9e5f-623630d41912" type="application/pdf" title="Baker Hughes 2Q&#039;20 - Earnings Call Prepared Remarks (1).pdf">Second Quarter 2020 Earnings Conference Call Prepared Remarks</a></span><span class="filesize"> 567.3 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-bernstein-strategic-decisions-conference-2020" hreflang="en">Baker Hughes at Bernstein Strategic Decisions Conference 2020</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            May 27, 2020 at 9:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Lorenzo Simonelli presented at the Bernstein Strategic Decisions Conference 2020</div>
+          </div>
+
+    </div>
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/6d2d5a6a-75e4-46f7-89a7-3bd3fa4ecdda" type="application/pdf" title="Baker Hughes - Bernstein Strategic Decisions Conference - May 27 2020 - Presentation.pdf">Bernstein Strategic Decisions Conference 2020 Presentation</a></span><span class="filesize"> 4.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/33f55372-f244-49bb-8a3b-2124a71df394" type="application/pdf" title="Baker Hughes - Bernstein Strategic Decisions Conference - May 27 2020 - Presentation &amp; Script.pdf">Bernstein Strategic Decisions Conference 2020 Presentation &amp; Script </a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-first-quarter-2020-earnings-conference-call" hreflang="en">Baker Hughes First Quarter 2020 Earnings Conference Call </a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Apr 22, 2020 at 9:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-company-announces-first-quarter-2020-results">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/uumrrzds" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/f3c499cf-6cc2-40ef-9936-ee6023b6c058" type="application/pdf" title="Baker Hughes 1Q&#039;20 - Earnings Call Prepared Remarks.pdf">First Quarter 2020 Earnings Conference Call Prepared Remarks</a></span><span class="filesize"> 221 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-fourth-quarter-and-full-year-2019-earnings-conference-call" hreflang="en">Baker Hughes Fourth Quarter and Total Year 2019 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jan 22, 2020 at 9:00 AM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-company-announces-fourth-quarter-and-total-year">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/cjrd8fg4" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/901b6914-eba9-4cf5-aab1-92e9fe443f24" type="application/pdf" title="Fourth Quarter and Total Year 2019 Earnings Conference Call Prepared Remarks.pdf">Fourth Quarter and Total Year 2019 Earnings Conference Call Prepared Remarks  </a></span><span class="filesize"> 220.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-third-quarter-2019-earnings-conference-call" hreflang="en">Baker Hughes Third Quarter 2019 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Oct 30, 2019 at 9:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-company-announces-third-quarter-2019-results">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/dery68np" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/ea5d24c4-e7dd-41e8-9907-d1d3a8698ab1" type="application/pdf" title="Baker Hughes 3Q&#039;19 - Earnings Call Prepared Remarks.pdf">Third Quarter 2019 Earnings Conference Call Prepared Remarks</a></span><span class="filesize"> 212.4 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-barclays-ceo-energy-power-conference-0" hreflang="en">Baker Hughes, a GE company at Barclays CEO Energy-Power Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Sep 3, 2019 at 11:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Lorenzo Simonelli presented at the Barclays CEO Energy-Power Conference</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://event.webcasts.com/starthere.jsp?ei=1257741&amp;tp_key=c6c416d7de&amp;tp_special=8" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/06a2c4ee-19c8-4500-800f-7a4e560beff3" type="application/pdf" title="BHGE - Barclays 2019 Sept 03 - Final.pdf">2019 Barclays CEO Energy-Power Conference Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/26819c20-bb3c-46db-b950-c627a8490b68" type="application/pdf" title="BHGE - Barclays 2019 CEO Energy Conference - Presentation &amp; Script.pdf">2019 Barclays CEO Energy-Power Conference Presentation &amp; Script</a></span><span class="filesize"> 975.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-second-quarter-2019-earnings-conference-call" hreflang="en">Baker Hughes, a GE company Second Quarter 2019 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jul 31, 2019 at 9:30 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-ge-company-announces-second-quarter-2019-results">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/szum3nwr" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/72ab5438-e5b2-481b-874e-dcd7f6e0cf46" type="application/pdf" title="2Q &#039;19 BHGE Earnings_July 31 2019.pdf">Baker Hughes, a GE company Second Quarter 2019 Presentation</a></span><span class="filesize"> 461.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-first-quarter-2019-earnings-conference-call-1" hreflang="en">Baker Hughes, a GE company First Quarter 2019 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Apr 30, 2019 at 9:30 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-ge-company-announces-first-quarter-2019-results">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/m6/p/kmwzcz7i" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/5afaa309-eeff-40d7-97f4-462d7a731ea1" type="application/pdf" title="1Q &#039;19 BHGE Earnings_April 30 2019.pdf">Baker Hughes, a GE company First Quarter 2019 Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-fourth-quarter-and-full-year-2018-earnings-conference" hreflang="en">Baker Hughes, a GE company Fourth Quarter and Full-Year 2018 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jan 31, 2019 at 8:30 AM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-ge-company-announces-fourth-quarter-and-total-0">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/m6/p/oc2wqbbv" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/83019b17-f0f2-472e-9870-d2b4d9dfd837" type="application/pdf" title="4Q &amp; TY &#039;18 BHGE Earnings_January 31 2019.pdf">Baker Hughes, a GE company Fourth Quarter 2018 Presentation</a></span><span class="filesize"> 1.5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-third-quarter-2018-earnings-conference-call" hreflang="en">Baker Hughes, a GE company Third Quarter 2018 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Oct 30, 2018 at 9:00 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-ge-company-announces-third-quarter-2018-results">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/m6/p/pdeiykcp" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/e47db1c5-70a1-4edd-8a7a-d97947811073" type="application/pdf" title="3Q 18 BHGE Earnings October 30 2018.pdf">Baker Hughes, a GE company Third Quarter 2018 Presentation</a></span><span class="filesize"> 844.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-barclays-ceo-energy-power-conference" hreflang="en">Baker Hughes, a GE company at Barclays CEO Energy-Power Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Sep 6, 2018 at 7:45 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>Lorenzo Simonelli presented at the Barclays CEO Energy-Power Conference</p></div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://cc.talkpoint.com/barc002/090418b_as/?entity=7_7RE26NL" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/55bf68ec-4ee9-4257-9e5c-f0a1e81d2864" type="application/pdf" title="2018 Barclays CEO Energy-Power Conference Presentation.pdf">2018 Barclays CEO Energy-Power Conference Presentation </a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/5c8b12c1-33db-4d2c-8d79-7559ea6f8f42" type="application/pdf" title="2018 Barclays CEO Energy-Power Conference Presentation and Script.pdf">2018 Barclays CEO Energy-Power Conference Presentation &amp; Script</a></span><span class="filesize"> 699.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-second-quarter-2018-earnings-conference-call" hreflang="en">Baker Hughes, a GE company Second Quarter 2018 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jul 20, 2018 at 9:30 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-ge-company-announces-second-quarter-2018-results">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/m6/p/7uffa7hu" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/8c097044-a2c0-4a2a-9dca-82f4f6bd0ab6" type="application/pdf" title="2Q 18 BHGE Earnings July 20 2018.pdf">Baker Hughes, a GE company Second Quarter 2018 Presentation</a></span><span class="filesize"> 740.3 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-annual-shareholders-meeting" hreflang="en">Baker Hughes, a GE company Annual Shareholders Meeting</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            May 11, 2018 at 10:00 AM EDT
+      
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list node--promoted">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-first-quarter-2018-earnings-conference-call" hreflang="en">Baker Hughes, a GE company First Quarter 2018 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Apr 20, 2018 at 9:30 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>For details, please view the <a href="/news-releases/news-release-details/baker-hughes-ge-company-announces-first-quarter-2018-results ">press release</a>.</p></div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/m6/p/okcqt7nj" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/1d03e135-93c8-440a-a9bb-b9b450fbc5a6" type="application/pdf" title="1Q_18 BHGE Earnings April 20 2018.pdf">Baker Hughes, a GE company First Quarter 2018 Presentation </a></span><span class="filesize"> 880.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-scotia-howard-weil-energy-conference" hreflang="en">Baker Hughes, a GE company at Scotia Howard Weil Energy Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Mar 26, 2018 at 5:10 PM EDT
+      
+    </div>
+  
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/f95e0de1-35a3-43b2-81c9-e6462adc026d" type="application/pdf" title="BHGE Scotia Howard Weil 2018_Presentation.pdf">Scotia Howard Weil 2018 Energy Conference</a></span><span class="filesize"> 2.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-audio-mpeg file--audio"> <a href="https://investors.bakerhughes.com/static-files/b4ce0c08-9593-40d0-a27a-f530f256c352" type="audio/mpeg" title="Scotia Howard Weil 2018 Energy Conference.mp3">Download audio replay</a></span><span class="filesize"> 25 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-fourth-quarter-and-full-year-2017-earnings-conference" hreflang="en">Baker Hughes, a GE company Fourth Quarter and Full-Year 2017 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jan 24, 2018 at 9:30 AM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">For details, please view the <a href="/news-releases/news-release-details/baker-hughes-ge-company-announces-fourth-quarter-and-total-year">press release</a>.</div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/m6/p/jn8n9x5m" target="_blank">Click Here for Webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/32f43a69-d4f1-4f9d-89cb-ba9a62f9dfce" type="application/pdf" title="4Q &amp; TY17 BHGE Earnings January 24 2018.PDF">Baker Hughes, a GE company Fourth Quarter 2017 Presentation</a></span><span class="filesize"> 1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-cowen-and-company-7th-annual-energy-natural-resources" hreflang="en">Baker Hughes, a GE company at Cowen and Company 7th Annual Energy &amp; Natural Resources Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Dec 4, 2017 at 9:05 AM EST
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>Brian Worrell, BHGE CFO, presents.</p></div>
+          </div>
+
+    </div>
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/00443932-9c82-4d20-9895-8668aba834d8" type="application/pdf" title="BHGE - Cowen Energy Conference - 12.04.2017.pdf">Cowen and Company 7th Annual Energy &amp; Natural Resources Conference </a></span><span class="filesize"> 2.5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-third-quarter-2017-earnings-conference-call" hreflang="en">Baker Hughes, a GE company Third Quarter 2017 Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Oct 20, 2017 at 9:30 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>For details, please view the <a href="/news-releases/news-release-details/baker-hughes-ge-company-announces-third-quarter-results">press release</a>.</p></div>
+          </div>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--webcast">
+      
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/m6/p/b2bzchbv" target="_blank">Click here for webcast</a></div>
+  </div>
+    </div>
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/280860ef-ec8d-4c5d-9186-6a09dd9cc2eb" type="application/pdf" title="3Q17 BHGE Earnings Presentation.pdf">Baker Hughes, a GE company Third Quarter 2017 Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-present-barclays-ceo-energy-power-conference" hreflang="en">Baker Hughes, a GE company at Barclays CEO Energy-Power Conference</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Sep 5, 2017 at 11:45 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>Lorenzo Simonelli presented at the Barclays CEO Energy-Power Conference</p></div>
+          </div>
+
+    </div>
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.bakerhughes.com/static-files/f25cfae3-6392-492d-ad84-65890c25deb8" type="application/pdf" title="BHGE_BARCLAYS_2017_SEPT_05.pdf">2017 Barclays CEO Energy-Power Conference Presentation</a></span><span class="filesize"> 4.8 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+    <div class="nir-widget--field nir-widget--event--group nir-widget--event--group--agenda">
+
+          <div class="nir-widget--event--section-title nir-widget--event--section-title--agenda">
+        <label>Agenda</label>
+      </div>
+    
+    
+            <div class="field field--name-field-nir-event-agenda field--type-text-long field--label-hidden field__item">Lorenzo Simonelli presented at the Barclays CEO Energy-Power Conference</div>
+      
+
+  </div>
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/baker-hughes-ge-company-release-baker-hughes-incorporateds-second-quarter-2017" hreflang="en">Baker Hughes, a GE company Released Baker Hughes Incorporated’s Second Quarter 2017 Earnings</a></div>
+  </div>
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--date">
+      
+      
+      
+            Jul 28, 2017 at 7:30 AM EDT
+      
+    </div>
+  
+      <div class="nir-widget--field nir-widget--event--summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p><br />
+For details, please view the <a href="/news-releases/news-release-details/baker-hughes-ge-company-announces-date-baker-hughes">press release</a>.</p></div>
+          </div>
+
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+        </div>
+      </div>
+   </div>
+
+
+
+
+<div class="expanded ndq-tools">
+    
+          
+
+<nav role="navigation" aria-labelledby="block-nir-pid733-tools-menu" id="block-nir-pid733-tools" class="block--system-menu-blocktools block--system-menu-blocktools--5821 block--tools--system-menu-block--tools block--tools--system-menu-block--tools--5821 block--2f96abfe-9f8e-4c04-be65-8d0fff081e47 block--2f96abfe-9f8e-4c04-be65-8d0fff081e47--5821 block block-menu navigation block-system-menublock menu--tools">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid733-tools-menu">Tools</h2>
+    
+
+                             <div class="row small-up-4 medium-up-4 large-up-4 ">
+    
+
+    <div class="column">
+        <a href="javascript:window.print();" target="_blank" rel="" class="ndq-tool-icon ndqicon-print" title="Print" aria-label="Print">Print</a>
+         <span class="tool-title" >Print</span>
+
+    </div>
+
+
+              <div class="column">
+
+           <a href="/shareholder-services/rss-feeds" class="ndq-tool-icon ndqicon-rss" title="RSS Feeds" aria-label="RSS Feeds">RSS Feeds</a>
+
+           <span class="tool-title" >RSS Feeds</span>
+
+           
+          
+                  </div>
+              <div class="column">
+
+           <a href="/shareholder-services/email-alerts" class="ndq-tool-icon ndqicon-alerts" title="Email Alerts" aria-label="Email Alerts">Email Alerts</a>
+
+           <span class="tool-title" >Email Alerts</span>
+
+           
+          
+                  </div>
+              <div class="column">
+
+           <a href="/contacts" class="ndq-tool-icon ndqicon-chair" title="Contact IR" aria-label="Contact IR">Contact IR</a>
+
+           <span class="tool-title" >Contact IR</span>
+
+           
+          
+                  </div>
+          </div>
+  
+
+
+    </nav>
+
+        
+
+</div>
+
+<footer>
+<div class="row">
+  <div class="expanded copyright">
+  
+  <div class="small-12 medium-6 columns">
+          <span class="footer-cr">© 2021 Baker Hughes</span>
+  </div>
+ 
+  </div>
+</div>
+</footer>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb2701";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5821","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid733\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid733","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"dbf69f331140f566f05679e3391a52ec55c7bd91b994774f2f3f3d3bb67106e4"}}</script>
+<script src="/sites/g/files/knoqqb48381/files/js/js_Fgim3RbX_Ut6x2-BuiJI3SDCZ5N7Iq7QQQrj7aIbtjo.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"32397309,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":2298,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>
