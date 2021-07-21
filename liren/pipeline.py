@@ -173,10 +173,11 @@ def get_page(url):
 
 
 def main():
+    #saved_page_list = read_pages()
 
     file_path = os.path.join('160_links_cleaned.csv')
     df = pd.read_csv(file_path, sep=',', engine='python')
-    urls = list(df['Link'])[:50]
+    urls = list(df['Link'])[:20]
     print(len(urls))
 
     nlp_spacy = spacy.load('en_core_web_lg')
@@ -213,7 +214,9 @@ def main():
     all_pages = []
 
     for url in urls:
+        # for url in saved_page_list:
         page = get_page(url)
+        #page = url
         company_name = extract_company(page, nlp_spacy, nlp_stanza)
         # print(company_name)
         page_date, page_time = extract_pages(
@@ -465,6 +468,21 @@ def gpt_output_text(page_list):
     table = {'pages': page_list}
     df = pd.DataFrame(table)
     df.to_csv('output_text.csv', index=False)
+
+
+def read_text_file(file_path):
+    with open(file_path, 'r', encoding="utf8") as f:
+        page = f.read()
+        return page
+
+
+def read_pages():
+    path = "20_pages"
+    page_list = []
+    for file in os.listdir(path):
+        file_path = os.path.join(path, file)
+        page_list.append(read_text_file(file_path))
+    return page_list
 
 
 if __name__ == '__main__':
