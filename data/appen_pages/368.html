@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# " class=" js" lang="en"><head>
+<!-- begin spin_special_output(head_start) -->
+<script type="text/javascript" src="js/jquery-webdriver.js" wd_script_id="jquery-webdriver.js"></script>
+<script type="text/javascript" src="js/webdriver.js" wd_script_id="webdriver.js"></script>
+<script type="text/javascript" src="js/wd_scriptloader.js" wd_script_id="wd_scriptloader.js"></script>
+<script type="text/javascript">webDriver.push_jQuery();</script>
+<script type="text/javascript" src="js/jquery-ui.js" wd_script_id="jquery-ui.js"></script>
+<script type="text/javascript" src="js/wd_resize.js" wd_script_id="wd_resize.js"></script>
+<link href="css/wd_modal.css" type="text/css" rel="stylesheet" wd_script_id="wd_modal.css">
+<link href="css/wd_wcag.css" type="text/css" rel="stylesheet" wd_script_id="wd_wcag.css">
+<script type="text/javascript" wd_script_id="wd_modal_script">
+(function($) {
+	webDriver.resizeModal = function() {
+		$(this).find(".wd_modal").wd_modal("resize");
+		return false;
+	}
+	
+	var modals = [];
+		
+	function _value(value, base) {
+		if (typeof value == "string" && value.indexOf("%") > 0) {
+			return  base * parseInt(value, 10) / 100;
+		} else {
+			return parseInt(value, 10);
+		}
+	}
+	
+	var wd_modal = function(element, options) {
+		this.init(element, options);
+	};
+	
+	wd_modal.prototype = {
+		init: function(element, options) {
+			var self = this;
+			
+			this.isOpen = false;
+			this.opener = null;
+			
+			this.$element = $(element);
+			this._options = {
+				autoOpen: false,
+				closeExisting: false,
+				closeOnEscape: true,
+				closeOnOverlayClick: true,
+				fadeDuration: null,
+				margin: "10%",
+				padding: 10
+			};
+			
+			this.options(options);
+			
+			this.$overlay = $("<div>").addClass("wd_modal-overlay").attr("wd_resize","resizeModal").appendTo($("body")).hide();
+			this.$outer = $("<div>").addClass("wd_modal-outer").appendTo(this.$overlay);
+			this.$inner = $("<div>").addClass("wd_modal-inner").appendTo(this.$outer).append(this.$element);
+			// Hack because I can't figure out where the extra few pixels at the bottom of the content are coming from
+			this.$inner.css("overflow-y", "hidden");
+			this.$close = $("<a class=\"wd_modal-close fa fa-times\" href=\"#close\" title=\"Close\"><span class=\"wd_sr-only\">Close Dialog<\/span><\/a>")
+					.on("click", function(event) {self.close(); event.preventDefault();})
+					.appendTo(this.$outer);
+			this.$element.addClass("wd_modal");
+			
+			if (this._options.autoOpen)
+				this.open(this._options.closeExisting);
+		},
+		
+		options: function(options) {
+			if (options) {
+				$.extend(this._options, options);
+
+				this._options.fadeDuration = parseInt(this._options.fadeDuration, 10);
+				if (isNaN(this._options.fadeDuration))
+					this._options.fadeDuration = false;
+				
+				if (!$.isArray(this._options.margin))
+					this._options.margin = [this._options.margin];
+				if (this._options.margin.length < 2)
+					this._options.margin[1] = this._options.margin[0];
+				if (this._options.margin.length < 3)
+					this._options.margin[2] = this._options.margin[0];
+				if (this._options.margin.length < 4)
+					this._options.margin[3] = this._options.margin[1];
+				
+				if (!$.isArray(this._options.padding))
+					this._options.padding = [this._options.padding];
+				if (this._options.padding.length < 2)
+					this._options.padding[1] = this._options.padding[0];
+				if (this._options.padding.length < 3)
+					this._options.padding[2] = this._options.padding[0];
+				if (this._options.padding.length < 4)
+					this._options.padding[3] = this._options.padding[1];
+			} else {
+				return this._options;
+			}
+		},
+		
+		reload: function(options) {
+			if (options) {
+				this.options(options);
+			}
+			
+			this.resize();
+		},
+		
+		open: function(closeExisting, now) {
+			if (this.isOpen)
+				return;
+			
+			var self = this;
+			var myCloseExisting = closeExisting;
+			
+			if (!this.opener)
+				this.opener = document.activeElement;
+
+			if (closeExisting && modals.length > 0) {
+				for (var i = modals.length - 1; i >= 0; --i)
+					modals[i].close(true, true);
+			}
+
+			this.$overlay.addClass("wd_modal-current");
+			$("body").append(this.$overlay);
+
+			if (!now && this._options.fadeDuration) {
+				this.$overlay.fadeIn(this._options.fadeDuration, function() {self.open(myCloseExisting, true);});
+			} else {
+				if (modals.length == 0) {
+					$("body").css("overflow","hidden");
+					$(document).on("keydown.wd_modal", function (event) {
+						var current = modals[modals.length - 1];
+						if ((event.which == 27 || event.keyCode == 27) && current._options.closeOnEscape) {
+							current.close();
+							event.stopImmediatePropagation();
+							event.preventDefault();
+						}
+					});
+				}
+
+				if (this._options.closeOnOverlayClick) {
+					this.$overlay.on("click.wd_modal", function (event) {
+						if (event.target == this) {
+							self.close();
+							event.preventDefault();
+						}
+					});
+				}
+
+				modals.push(this);
+				
+				this.$overlay.show();
+				
+				var $focus = this.$element.find(":focusable");
+				if ($focus.length > 0)
+					$focus[0].focus();
+				
+				this.isOpen = true;
+
+				this.$element.trigger("open");
+			}
+		},
+		
+		close: function(skipCurrent, now) {
+			if (!this.isOpen)
+				return;
+			
+			this.$element.trigger("beforeClose");
+			
+			// TODO: allow closing of lower modals
+			modals.pop();
+			
+			if (modals.length == 0) {
+				$("body").css("overflow","");
+				$(document).off("keydown.wd_modal");
+			}
+			
+			this.$overlay.off("click.wd_modal");
+			
+			if (this.opener) {
+				this.opener.focus();
+				this.opener = null;
+			}
+			
+			this.isOpen = false;
+			this.$overlay.removeClass("wd_modal-current").hide();
+			
+			if (!skipCurrent && modals.length > 0)
+				modals[modals.length-1].$overlay.addClass("wd_modal-current");
+			
+			this.$element.trigger("close");
+		},
+		
+		destroy: function() {
+			this.close(false, true);
+			$("body").append(this.$element);
+			this.$overlay.remove();
+		},
+		
+		resize: function() {
+			if (!this.isOpen)
+				return;
+			
+			var self = this;
+			var winWidth = $(window).width();
+			var winHeight = $(window).height();
+			
+			var margin = this._options.margin;
+			var padding = this._options.padding;
+			
+			var width = winWidth - _value(margin[1], winWidth) - _value(margin[3], winWidth) - _value(padding[1], winWidth) - _value(padding[1], winWidth);
+			var height = winHeight - _value(margin[0], winHeight) - _value(margin[2], winHeight) - _value(padding[0], winHeight) - _value(padding[2], winHeight);
+			
+			this.$inner.css("max-width", width);
+			this.$inner.css("max-height", height);
+			
+			$.each(["Top", "Right", "Bottom", "Left"], function(i, v) {
+				self.$outer.css("padding" + v, _value(padding[i])+"px");
+			});
+			
+			var fixed = this.$element.find("[wd_need_fixed_container]").is(":visible");
+			
+			this.$inner.css("width", width);
+			this.$inner.css("height", height);
+
+			webDriver.doResize(this.$inner);
+			
+			if (!fixed) {
+				this.$inner.css("width", "auto");
+				this.$inner.css("height", "auto");
+				if (this.$element.outerHeight() > height)
+					this.$inner.css("height", height);
+				if (this.$element.outerWidth() > width)
+					this.$inner.css("width", width);
+			}
+		}
+	};
+
+	$.fn.wd_modal = function(options) {
+		if (options == "exists") {
+			return !!$(this).data("wd_modal");
+		} else if (typeof options == "string") {
+            var instance = $(this).data("wd_modal");
+			if (!instance)
+				return null;
+			var args = Array.prototype.slice.call(arguments, 1);
+            return instance[options].apply(instance, args);
+        } else {
+            return this.each(function() {
+                var instance = $(this).data("wd_modal");
+                if (instance) {
+                    instance.reload(options);
+                } else {
+                    $(this).data("wd_modal", new wd_modal(this, options));
+                }
+            });
+        }
+    };
+})(webDriver.jQuery);
+</script>
+<script type="text/javascript" wd_script_id="events_tools_script">
+			function spin_event_popup(url) {
+				var $modal = webDriver.jQuery("#wd_event_modal");
+				if (url && $modal.length == 0) {
+					$modal = webDriver.jQuery('<div id="wd_event_modal">');
+					$modal.wd_modal({
+						autoOpen: false,
+					});
+				}
+
+				if (url) {
+					$modal.html("Loading...");
+					$modal.wd_modal("open");
+					if (/^https?:\/\//.test(url)) {
+						$modal.load(url, function() {webDriver.queueCallback(function() {$modal.wd_modal("resize");});});
+					} else {
+						$modal.html(url);
+						$modal.wd_modal("resize");
+					}
+				} else if ($modal.length > 0) {
+					$modal.wd_modal("close");
+				}
+			}
+		</script>
+<script type="text/javascript" wd_script_id="recaptcha2_script">
+			var recaptcha2_loaded = false;
+
+			function wd_recaptcha2_init() {
+				if (recaptcha2_loaded) {
+					$(".wd_recaptcha2_needed").each(function() {
+						grecaptcha.render(this, {"sitekey": "6LdDmR8TAAAAAJ72DH_RtavsrDUlu6g6lzvajKsK"});
+						$(this).removeClass("wd_recaptcha2_needed");
+					});
+				}
+			}
+
+			function on_recaptcha2_loaded() {
+				recaptcha2_loaded = true;
+				wd_recaptcha2_init();
+			}
+		</script>
+<style type="text/css" wd_script_id="recaptcha2_style">)
+			.g-recaptcha iframe {
+				vertical-align: bottom;
+			}
+		</style>
+<script type="text/javascript" wd_script_id="events_list_script">
+			(function($) {
+				var direction = "auto";
+				var category = "";
+				var start_date = false;
+				var limit_year = 2021;
+				var limit_month = 7;
+				var groups = [];
+
+				function load_events(clear) {
+					if (clear) {
+						$(".wd_events_list").empty();
+						$(".wd_events_none").hide();
+					}
+
+					$(".wd_events_more").hide();
+					$(".wd_events_error").hide();
+					$(".wd_events_loading").show();
+					$(".wd_events_past_summary").toggle(direction=="auto");
+
+					var limit_date;
+					if (limit_year == 2021 && limit_month == 7) {
+						limit_date = "2021-07-20";
+					} else if (direction != "past") {
+						limit_date = limit_year+"-"+limit_month+"-01";
+					} else {
+						var month = limit_month + 1;
+						if (month > 12) {
+							month -= 12;
+							limit_year += 1;
+						}
+						limit_date = limit_year+"-"+month+"-00";
+					}
+
+					var args = {
+						s: "19",
+						ajax: "ajax",
+						op: "list"
+					};
+					args.direction = (direction == "past") ? "past" : "future";
+					args.limit_date = limit_date;
+					if (start_date)
+						args.start_date = start_date;
+					if (category)
+						args.category = category;
+					for (var i = 0; i < groups.length; ++i) {
+						var group = groups[i];
+						args["group["+group.id+"]"] = group.val;
+					}
+
+					$.ajax({
+						url: "index.php",
+						data: args,
+						dataType: "json",
+						success: function(data) {
+							if (data.items.length > 0) {
+								if (direction == "auto")
+									direction = "future";
+
+								var $container = $(".wd_events_list");
+								for (var i = 0; i < data.items.length; ++i) {
+									var item = data.items[i];
+									if (item.type == "month") {
+										if ($("#"+item.id).length == 0)
+											$(".wd_events_list").append(item.content);
+										$container = $("#"+item.id).find(".wd_events_month_events");
+									} else {
+										if ($("#"+item.id).length == 0)
+											$container.append(item.content);
+									}
+								}
+
+								start_date = data.last_start;
+
+								if (data.more)
+									$(".wd_events_more").show();
+							} else if ($(".wd_events_list").children().length == 0) {
+								if (direction == "auto")
+									setTimeout(function () {set_direction("past", false);}, 10);
+								else
+									$(".wd_events_none").show();
+							}
+							
+							if (data.script) {
+								var $script = $(data.script);
+								webDriver.push_jQuery();
+								$script.appendTo($("head"));
+								webDriver.push_jQuery();
+							}
+						},
+						error: function(jqxhr, status, error) {
+							$(".wd_events_more").show();
+							$(".wd_events_error").show().text("Unable to load events ("+status+":"+error+")");
+						},
+						complete: function() {
+							$(".wd_events_loading").hide();
+						}
+					});
+				}
+
+				var month_names = {
+					 1: "January",
+					 2: "February",
+					 3: "March",
+					 4: "April",
+					 5: "May",
+					 6: "June",
+					 7: "July",
+					 8: "August",
+					 9: "September",
+					10: "October",
+					11: "November",
+					12: "December"
+				};
+
+				var prev_year = 0;
+				var prev_dir = "";
+				function update_events_inputs(reset) {
+					var new_dir = (direction == "past") ? "past" : "future";
+
+					if (new_dir != prev_dir) {
+						$(".wd_events_tab")
+							.removeClass("active")
+							.attr("aria-checked", "false")
+							.attr("tabindex", -1)
+						;
+						$(".wd_events_tab[data-direction="+new_dir+"]")
+							.addClass("active")
+							.attr("aria-checked", "true")
+							.attr("tabindex", 0)
+						;
+					}
+
+					if (new_dir != prev_dir) {
+						var min_year, max_year;
+						if (new_dir == "past") {
+							min_year = 2014;
+							max_year = 2021;
+						} else {
+							min_year = 2021;
+							max_year = 2021;
+						}
+
+						var $years = $("#wd_events_input_year");
+						var selected_year = Math.max(min_year, Math.min($years.val(), max_year));
+						$years.empty();
+						for (var year = min_year; year <= max_year; ++year) {
+							var $opt = $("<option></option>").attr("value", year).append(year);
+							$years.append($opt);
+						}
+						$years.val(selected_year);
+					}
+
+					var selected_year = $("#wd_events_input_year").val();
+					if (new_dir != prev_dir || (selected_year != prev_year && (selected_year == 2021 || prev_year == 2021))) {
+						var min_month, max_month;
+						if (selected_year != 2021) {
+							min_month = 1;
+							max_month = 12;
+						} else if (new_dir == "past") {
+							min_month = 1;
+							max_month = 7;
+						} else {
+							min_month = 7;
+							max_month = 12;
+						}
+
+						var $months = $("#wd_events_input_month");
+						var selected_month = Math.max(min_month, Math.min($months.val(), max_month));
+						$months.empty();
+						for (var month = min_month; month <= max_month; ++month) {
+							var $opt = $("<option></option>").attr("value", month).append(month_names[month]);
+							$months.append($opt);
+						}
+						$months.val(selected_month);
+					}
+
+					if (reset) {
+						$("#wd_events_input_year").val(limit_year);
+						$("#wd_events_input_month").val(limit_month);
+						$("#wd_events_input_category").val(category);
+						for (var i = 0; i < groups.length; ++i) {
+							var group = groups[i];
+							$("#wd_events_input_category_group_"+group.id).val(group.val);
+						}
+					}
+
+					prev_year = selected_year;
+					prev_dir = new_dir;
+				}
+
+				function set_direction(new_dir, update_hash) {
+					direction = new_dir;
+					limit_year = 2021;
+					limit_month = 7;
+					start_date = false;
+					update_events_inputs(true);
+					if (update_hash)
+						update_url_hash();
+					load_events(true);
+				}
+
+				var default_hash = "#auto:2021:7";
+				var prev_hash = false;
+				function hash_changed() {
+					var hash = window.location.hash;
+					if (!hash || hash == "#")
+						hash = default_hash;
+
+					if (hash == prev_hash) return;
+					prev_hash = hash;
+
+					hash = hash.substr(1);
+					var parts = hash.split(":");
+					direction = (parts.length > 0 && parts[0]) ? parts[0] : "auto";
+					limit_year = (parts.length > 1 && parts[1]) ? parseInt(parts[1]) : "2021";
+					limit_month = (parts.length > 2 && parts[2]) ? parseInt(parts[2]) : "7";
+					category = (parts.length > 3) ? parts[3] : "";
+					groups = [];
+					for (var i = 4; i < parts.length-1; i += 2)
+						groups.push({id:parseInt(parts[i]), val:parseInt(parts[i+1])});
+					start_date = false;
+
+					update_events_inputs(true);
+					load_events(true);
+				}
+
+				function update_url_hash() {
+					var hash = "#"+direction+":"+limit_year+":"+limit_month;
+					var group_hash = "";
+					for (var i = 0; i < groups.length; ++i) {
+						var group = groups[i];
+						group_hash += ":"+group.id+":"+group.val;
+					}
+					if (category || group_hash)
+						hash += ":"+category;
+					hash += group_hash;
+					prev_hash = hash;
+					window.location.hash = hash;
+				}
+
+				$(function() {
+					setTimeout(hash_changed, 10);
+
+					var liar = (navigator.userAgent.indexOf("MSIE") >= 0 && (!("documentMode" in document) || document.documentMode < 8));
+
+					if ("onhashchange" in window && !liar) {
+						window.onhashchange = function() {hash_changed();};
+					} else {
+						setInterval(hash_changed,200);
+					}
+
+					$(".wd_events_tab").on(
+						"click",
+						function(e) {
+							set_direction($(this).data("direction"), true);
+						}
+					);
+
+					$("#wd_events_input_year").on(
+						"change",
+						function(e) {
+							update_events_inputs();
+						}
+					);
+
+					$(".wd_events_input_go").on(
+						"click",
+						function(e) {
+							limit_year = parseInt($("#wd_events_input_year").val());
+							limit_month = parseInt($("#wd_events_input_month").val());
+							start_date = false;
+							category = $("#wd_events_input_category").val();
+							groups = [];
+							$(".wd_input_category_group").each(function() {
+								var group_val = $(this).val();
+								if (group_val) {
+									var group_id = this.id.replace("wd_events_input_category_group_", "");
+									groups.push({id:group_id, val:group_val});
+								}
+							});
+							update_url_hash();
+							load_events(true);
+						}
+					);
+
+					$(".wd_events_more").on(
+						"click",
+						function(e) {
+							load_events(false);
+						}
+					);
+				});
+			})(webDriver.jQuery);
+		</script>
+<script type="text/javascript" src="js/wd_wcag.js" wd_script_id="wd_wcag.js"></script>
+<style type="text/css" wd_script_id="template past_summary:events:site style">.wd_events_past_summary .wd_header {
+	margin: 10px 0 0 0;
+	padding: 5px 10px;
+	font-size: 125%;
+	font-weight: bold;
+	background: url("images/webdriver/events/tab_background.gif") repeat-x scroll 0 bottom #FFFFFF;
+	border: 1px solid #E1E1E1;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+.wd_events_past_summary .wd_event {
+	margin: 0 0 0.25em;
+}
+.wd_asset_type_link_list {
+	display: inline-block;
+	margin: 10px 0 0 0;
+	padding: 2px;
+}
+</style>
+<script type="text/javascript" wd_script_id="view_printable_script">
+	function view_printable() {
+		var loc = window.location;
+		var sep = (loc.search == "") ? "?" : "&";
+		var url = loc.protocol+"//"+loc.host+loc.pathname+loc.search+sep+"printable"+loc.hash;
+		window.open(url, "_blank", "");
+	}
+</script>
+<link href="thirdparty/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" wd_script_id="font-awesome.min.css">
+<style type="text/css" wd_script_id="toolbar_style">
+			div.wd_toolbar {
+				border-top: 1px solid #cccccc;
+				border-bottom: 1px solid #cccccc;
+				margin: 15px 0px 15px 0px;
+				padding: 5px;
+				line-height: 1;
+			}
+			div.wd_toolbar-page {
+				clear: both;
+			}
+			div.wd_toolbar ul.wd_tools {
+				display: inline-block;
+				width: 100%;
+				margin: 0;
+				padding: 5px 0;
+			}
+			div.wd_toolbar ul.wd_tools li.wd_tool {
+				display: block;
+				list-style-type: none;
+				margin-right: 5px;
+				padding: 0;
+				float: right;
+			}
+			span.wd_tool_icon > a:link,
+			span.wd_tool_icon > a:visited {
+				border-radius: 2px;
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 7px;
+				font-size: 16px;
+				line-height: 1;
+				text-align: center;
+				color: #ffffff;
+				background-color: #8d8d8d;
+			}
+			span.wd_tool_icon > a:hover {
+				color: #ffffff;
+				background-color: #666666;
+				text-decoration: none;
+			}
+			div.wd_toolbar ul.wd_tools li.wd_tool-addthis {
+				float: left;
+			}
+		</style>
+<style type="text/css" wd_script_id="template page:events:system style">
+.wd_events_inputs {
+	margin: 10px 0;
+	overflow: auto;
+}
+.wd_events_inputs select {
+	margin-right: 1ex;
+}
+ul.wd_events_tabs {
+	float: right;
+	overflow: hidden;
+	margin: 5px 0;
+	padding: 0px;
+}
+li.wd_events_tab {
+	float: left;
+	display: block;
+	margin: 0;
+	border: 1px solid #666666;
+	padding: 5px;
+	cursor: pointer;
+	border: 1px solid #E1E1E1;
+}
+.wd_events_tab_label {
+}
+.wd_events_tab_label.wd_events_tab_future {
+}
+.wd_events_tab_label.wd_events_tab_past {
+}
+li.wd_events_tab:first-child {
+	border-top-left-radius:4px;
+	border-bottom-left-radius:4px;
+	-webkit-border-top-left-radius:4px;
+	-webkit-border-bottom-left-radius:4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-bottomleft: 4px;
+}
+li.wd_events_tab:last-child {
+	border-top-right-radius:4px;
+	border-bottom-right-radius:4px;
+	-webkit-border-top-right-radius:4px;
+	-webkit-border-bottom-right-radius:4px;
+	-moz-border-radius-topright: 4px;
+	-moz-border-radius-bottomright: 4px;
+}
+li.wd_events_tab.active {
+	background: url("images/webdriver/events/tab_background.gif") repeat-x scroll 0 bottom #FFFFFF;
+	color: #333;
+	font-weight: bold;
+}
+.wd_events_more {
+	margin: 10px 0;
+	cursor: pointer;
+	padding: 0 0 0 20px;
+	border: none;
+}
+.wd_event {
+	margin: 15px 0 5px 0;
+	padding: 0;
+	overflow: auto;
+}
+.wd_events_list .wd_event {
+	padding-top: 24px;
+	background: transparent url(images/webdriver/events/shadow.png) center top / 100% 14px no-repeat;
+}
+.wd_events_list .wd_event:first-child {
+	padding-top: 10px;
+	background: none;
+}
+.wd_event_sidebar {
+	float: left;
+	margin: 0 1em 0 0;
+	padding: 0;
+	width: 250px;
+}
+.wd_events-detail .wd_event_sidebar {
+	padding-bottom: 24px;
+	background: transparent url(images/webdriver/events/shadow-narrow.png) center bottom / 100% 14px no-repeat;
+}
+.wd_event_sidebar_group {
+	margin: 2em 0 0 0;
+}
+.wd_event_sidebar_item {
+	margin: 0 0 5px 0;
+}
+@media(max-width:768px){
+	ul.wd_events_tabs {
+		float: none;
+	}
+}
+.wd_events_header_container {
+	border: 0px none;
+	margin: 0 0 5px 0;
+	padding: 0 0 14px;
+}
+.wd_events_month_header {
+	margin: 10px 0 0 0;
+	padding: 5px 10px;
+	font-size: 125%;
+	font-weight: bold;
+	background: url("images/webdriver/events/tab_background.gif") repeat-x scroll 0 bottom #FFFFFF;
+	border: 1px solid #E1E1E1;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+.wd_event {
+	margin: 15px 0 5px 0;
+	padding: 0;
+	overflow: auto;
+}
+.wd_events_list .wd_event {
+	padding-top: 24px;
+	background: transparent url(images/webdriver/events/shadow.png) center top / 100% 14px no-repeat;
+}
+.wd_events_list .wd_event:first-child {
+	padding-top: 10px;
+	background: none;
+}
+.wd_event_sidebar {
+	float: left;
+	margin: 0 1em 0 0;
+	padding: 0;
+	width: 250px;
+}
+.wd_event_sidebar_group {
+	margin: 2em 0 0 0;
+}
+.wd_event_sidebar_item {
+	margin: 0 0 5px 0;
+	padding: 0 0 0 0px;
+}
+.wd_event_sidebar .wd_event_location {
+}
+.wd_event_sidebar .wd_event_location_url {
+}
+@media(max-width:768px){
+	.wd_event_sidebar {
+		float: none;
+		width: auto;
+		max-width: none;
+	}
+}
+</style>
+<style type="text/css" wd_script_id="featureboxes_style">
+		.wd_featurebox_icon {
+			display: inline;
+		}
+		.wd_featurebox_icon img {
+			vertical-align: middle;
+		}
+		div.wd_featurebox_group div.wd_tabs_wrapper {
+			border: none;
+			border-bottom: 1px solid #E1E1E1;
+			padding: 0 0 5px 0;
+		}
+		div.wd_featurebox_group div.wd_featurebox {
+			border: none;
+			padding: 8px 0 0 0;
+		}
+		div.wd_featurebox_group li.wd_tab {
+			float: none;
+			color: #666666;
+		}
+		div.wd_featurebox_group li.wd_tab-active {
+			border: none;
+			background-color: transparent;
+			color: #000000;
+			font-weight: bold;
+		}
+		div.wd_featurebox_group li.wd_tab-inactive {
+			cursor: auto;
+		}
+	</style>
+<script type="text/javascript">webDriver.pop_jQuery();</script>
+<script type="text/javascript" wd_script_id="subscribe_featurebox_script">
+			(function($) {
+				webDriver.subscribeClose = function(data) {
+					$(".wd_subscribe_modal").wd_modal("close");
+				};
+			
+				webDriver.subscribeSubmit = function(form, id) {
+					var $modal = $(".wd_subscribe_modal");
+					if ($modal.length == 0) {
+						$modal = $('<div class="wd_subscribe_modal" style="display:none;"></div>');
+						$modal.wd_modal({
+							autoOpen: false,
+						});
+					}
+
+					var my_form = form;
+					var form_data = $(form).serializeArray();
+
+					$modal.html('<div class="wd_loading">Loading...</div>');
+					$modal.show();
+					$modal.wd_modal("open", true);
+
+					$modal.load(
+						"https://investors.globant.com/alerts?ajax=subscribe&id="+id,
+						form_data,
+						function() {
+							disable_submit(my_form, false);
+						}
+					);
+				};
+			})(webDriver.jQuery);
+		</script>
+<script type="text/javascript" src="js/wd_form.js" wd_script_id="wd_form.js"></script>
+<link href="css/wd_form.css" type="text/css" rel="stylesheet" wd_script_id="wd_form.css">
+
+<!-- end spin_special_output(head_start) -->
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+<script async="" src="js/analytics.js"></script>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-2720284-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+<meta name="title" content="About Us | Globant">
+<link rel="canonical" href="https://www.globant.com/about">
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)">
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=yes">
+<link rel="shortcut icon" href="https://www.globant.com/sites/default/files/FavIcon-Globantwebsite-2x.png" type="image/png" />
+<title>Globant Investor Relations - Events</title>
+
+ <meta name="keywords" content="" />
+ <meta name="description" content="" />
+ <meta name="twitter:card" content="summary" />
+ <meta property="og:site_name" content="Globant Investor Relations" />
+ <meta property="og:url" content="https://investors.globant.com/events" />
+<link href="https://fonts.googleapis.com/css?family=Heebo:300,400,500,700" rel="stylesheet">
+<link href="thirdparty/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" wd_script_id="font-awesome.min.css">
+
+<link rel="stylesheet" media="all" href="css/css_W2Pw4YkIEUK7LnQNq3WQ9ScqZDwIIhVA1dAGNngX6qo.css" />
+<link rel="stylesheet" media="all" href="css/css_uxiXVzMq9BKHKbFS4PrIjVJaHGM1PNpGZLCzPTdMxK4.css" />
+<link rel="stylesheet" media="all" href="//stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+<link rel="stylesheet" media="print" href="css/css_Y4H_4BqmgyCtG7E7YdseTs2qvy9C34c51kBamDdgark.css" />
+<link rel="stylesheet" media="all" href="css/css_4r1LnzzmKn-cdb7zUUw34mp1W7JrXPSNdu4DDHhinWc.css" />
+<link rel="stylesheet" media="all" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" />
+<link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+<link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
+<link rel="stylesheet" media="all" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v4.0.0/dist/bootstrap-float-label.min.css" />
+<link rel="stylesheet" media="all" href="css/css_Z8yrEyqntKwAn_brNcmNCeU_nfFLhDY2gOvAtNN93Yg.css?" />
+<link rel="stylesheet" media="all" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="css/wdcontent.css">
+<link rel="alternate" href="https://investors.globant.com/news?pagetemplate=rss" type="application/rss+xml" title="Globant Investor Relations">
+<!-- begin spin_special_output(head_end) -->
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=on_recaptcha2_loaded&render=explicit&hl=en-US" wd_script_id="api.js?onload=on_recaptcha2_loaded&render=explicit&hl=en-US"></script>
+<link rel="canonical" href="https://investors.globant.com/events" />
+<!-- end spin_special_output(head_end) -->
+</head>
+<body class="wd_pageid_19 is-ultimenu-canvas is-ultimenu-canvas--hover layout-no-sidebars path-frontpage">
+<a href="#main-content" class="visually-hidden focusable skip-link">
+Skip to main content
+</a>
+<div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div id="loading" style="display: none;">
+  <img id="loading-image" src="images/Loading-Globant.gif" alt="Loading..." width="200" height="200" />
+</div>
+<div id="page-wrapper">
+  <div id="page">
+    <header id="header" class="header" role="banner" aria-label="Site header">
+      
+        
+          
+        <nav class="navbar nav navbar-expand-xl navbar-light custom-class bg-white d-none">
+                              <div class="container">
+            <a href="https://www.globant.com/" class="navbar-brand">
+              <img class="logo" src="images/globant-logo-dark.svg" alt="Logo">
+                          </a>
+            <!--<li class="nav-item menu-item--expanded dropdown language-switch">
+              <a class="nav-link dropdown-toggle ENGLISH (US)" aria-expanded="false" aria-haspopup="true" data-drupal-link-system-path="language/en" visibility="visible">English(US)</a>
+              <div class="carrot">
+                <div class="over-carrot"></div>
+              </div>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item ln-en">
+                  <a href="https://www.globant.com/language/en" class="English (US)" data-drupal-link-system-path="language/en">English (US)</a>
+                </li>
+                <li class="dropdown-item ln-es">
+                  <a href=" https://www.globant.com/es/" class="Español" data-drupal-link-system-path="language/es">Español</a>
+                </li>
+                <li class="dropdown-item ln-pt">
+                  <a href="https://www.globant.com/pt-br/" class="Português" data-drupal-link-system-path="language/pt-br">Português</a>
+            </li>-->
+         </ul>
+            </li>
+              <button class="navbar-toggler navbar-toggler-right float-right" type="button" data-toggle="collapse" data-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                   <i class="fa fa-bars"></i>
+                </span>
+              </button>
+              <div class="collapse navbar-collapse" id="CollapsingNavbar">
+                  <div id="block-ultimenumainnavigation" class="block block-ultimenu block-ultimenu-blockultimenu-main">
+  
+    
+      <div class="content">
+      <ul id="ultimenu-main" data-ultimenu="main" data-ultiajax class="ultimenu ultimenu--hover ultimenu--main ultimenu--htb ultimenu--horizontal ultimenu--basic">
+    <li class="ultimenu__item uitem uitem--our-services has-ultimenu">
+        <a href="https://www.globant.com/our-services" title="" data-drupal-link-system-path="our-services" class="ultimenu__link"><small>Augmenting your company, your people, your future, through digital and cognitive transformation</small>Our Services<span class="caret" area-hidden="true"></span></a>
+        <section class="ultimenu__flyout">
+            <section class="ultimenu__region row region region-ultimenu-main-ca856cf6">
+                <div class="ultimenusub container ultimenusub--main-our-services">
+                    <ul class="clearfix nav navbar-nav row">
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/our-services#pillars-block-rombus" class="nav-link text-left Our Approach" data-drupal-link-system-path="our-services">Our Approach</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/our-services#our-service-studio-container" class="nav-link text-left Studios" data-drupal-link-system-path="our-services">Studios</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/our-services/augmented-accelerators" class="nav-link text-left Accelerators">Accelerators</a></li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </li>
+    <li class="ultimenu__item uitem uitem--our-work"><a href="https://www.globant.com/our-work" data-drupal-link-system-path="our-work" title="" class="ultimenu__link">Our Work</a></li>
+    <li class="ultimenu__item uitem uitem--stay-relevant has-ultimenu">
+        <a href="https://www.globant.com/stay-relevant" title="" data-drupal-link-system-path="stay-relevant" class="ultimenu__link"><small>We are a digitally native company where innovation, design and engineering meet scale.</small>Stay Relevant<span class="caret" area-hidden="true"></span></a>
+        <section class="ultimenu__flyout">
+            <section class="ultimenu__region row region region-ultimenu-main-5cb818b1">
+                <div class="ultimenusub container ultimenusub--main-stay-relevant">
+                    <ul class="clearfix nav navbar-nav row">
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://stayrelevant.globant.com/en/" class="nav-link text-left Blog" data-drupal-link-system-path="stay-relevant/blog">Blog</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/stay-relevant/insights" class="nav-link text-left Insights" data-drupal-link-system-path="stay-relevant/insights">Insights</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/stay-relevant/sentinel-report" class="nav-link text-left Sentinel Report" data-drupal-link-system-path="stay-relevant/sentinel-report">Sentinel Report</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/stay-relevant/events" class="nav-link text-left Events" data-drupal-link-system-path="stay-relevant/events">Events</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://converge.globant.com/" class="nav-link text-left Converge">Converge</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/stay-relevant/our-books" class="nav-link text-left Books" data-drupal-link-system-path="stay-relevant/our-books">Books</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/stay-relevant/partnerships" class="nav-link text-left Partnerships" data-drupal-link-system-path="stay-relevant/partnerships">Partnerships</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/stay-relevant/playground" class="nav-link text-left Playground" data-drupal-link-system-path="stay-relevant/playground">Playground</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/stay-relevant/podcast" class="nav-link text-left Podcasts" data-drupal-link-system-path="stay-relevant/playground">Podcasts</a></li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </li>
+    <li class="ultimenu__item uitem uitem--about has-ultimenu">
+        <a href="https://www.globant.com/about" title="" data-drupal-link-system-path="about" class="ultimenu__link"><small>We are transforming the world, one step at a time!</small>About<span class="caret" area-hidden="true"></span></a>
+        <section class="ultimenu__flyout">
+            <section class="ultimenu__region row region region-ultimenu-main-98c0abba">
+                <div class="ultimenusub container ultimenusub--main-about">
+                    <ul class="clearfix nav navbar-nav row">
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/about#our-history" class="nav-link text-left History" data-drupal-link-system-path="about">History</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/about/news" class="nav-link text-left News" data-drupal-link-system-path="about/news">News</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/about#management-team" class="nav-link text-left Management Team" data-drupal-link-system-path="about">Management Team</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/be-kind" title="Be kind" class="nav-link text-left Be Kind" data-drupal-link-system-path="be-kind">Be Kind</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/about#recognitions" class="nav-link text-left Recognitions" data-drupal-link-system-path="about">Recognitions</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globantventures.com/" class="nav-link text-left Globant Ventures">Globant Ventures</a></li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </li>
+    <li class="ultimenu__item uitem uitem--careers has-ultimenu">
+        <a href="https://www.globant.com/careers" title="" data-drupal-link-system-path="careers" class="ultimenu__link"><small>Build your Career at Globant</small>Careers<span class="caret" area-hidden="true"></span></a>
+        <section class="ultimenu__flyout">
+            <section class="ultimenu__region row region region-ultimenu-main-4ef1ed8f">
+                <div class="ultimenusub container ultimenusub--main-careers">
+                    <ul class="clearfix nav navbar-nav row">
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/careers#why-globant" class="nav-link text-left Why Globant?" data-drupal-link-system-path="careers">Why Globant?</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/careers#talent-manifesto" class="nav-link text-left Our Talent Manifesto" data-drupal-link-system-path="careers">Our Talent Manifesto</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://www.globant.com/careers#job-success-cases" class="nav-link text-left Career Success Stories" data-drupal-link-system-path="careers">Career Success Stories</a></li>
+                        <li class="nav-item col-md-4 col-lg-4 col-12 text-left pr-0 pl-0 pb-2 link-dropdown"><a href="https://alumni.globant.com/" title="Alumni" class="nav-link text-left Alumni">Alumni</a></li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </li>
+    <li class="ultimenu__item uitem uitem--investors"><a href="//investors.globant.com/" title="" class="ultimenu__link is-external">Investors</a></li>
+    <li class="ultimenu__item uitem uitem--contact-us"><a href="https://www.globant.com/contact" data-drupal-link-system-path="contact" title="" class="cta-contactus-menu">Contact Us</a></li>
+</ul>
+    </div>
+  </div>
+    
+
+    </div>
+            
+                      
+          </div> <!-- container -->
+          
+        </nav>
+          </header>
+				<div id="main-wrapper" class="layout-main-wrapper clearfix"><!-- Removed the container class-->
+					<div id="main">
+						<div class="row row-offcanvas row-offcanvas-left clearfix">
+							<main class="main-content col" id="content" role="main">
+							<div class="section">
+							<a id="main-content" tabindex="-1"></a>
+								<div class="block-region-top">
+
+									<div class="block block-block-content block-block-contentcd5b5b70-1510-410e-9939-34e11986ce9d clearfix block- approach" id="secondary-menu">
+										<div id="secondaryMenu" class="secondaryMenuContainer">
+										<ul class="secondary-nav"><li class="active"><a href="#introduction" data-drupal-link-system-path="&lt;front&gt;">Introduction</a></li><li class=""><a href="#our-history" data-drupal-link-system-path="&lt;front&gt;">Our History</a></li><li class=""><a href="#management-team" data-drupal-link-system-path="&lt;front&gt;">Management Team</a></li><li class=""><a href="#sustainability" data-drupal-link-system-path="&lt;front&gt;">Sustainability</a></li><li class=""><a href="#recognitions" data-drupal-link-system-path="&lt;front&gt;">Recognitions</a></li></ul>
+										</div>
+									</div>
+
+									<section class="block block-block-content wd_navwrapper">
+									<div class="header-wrapper">
+										<div class="main-title">
+										<h1>Investors</h1>
+										</div>
+
+										<div class="wd_mobiletitle">
+											<div class="wd_maintitle"><button id="wd_irmobilenav_button" type="button"><img src="images/arrow-down.svg" class="Path-2"></button></div>
+										</div>
+										<div class="wd_mobilenav"><ul class="wd_subnav">
+	<li>
+	<a href="https://investors.globant.com/index.php?s=45" target="_self" class="nav-link">Overview</a>
+	</li>
+		<li>
+	<a href="https://investors.globant.com/news" target="_self" class="nav-link">News</a>
+	</li>
+		<li class="active">
+	<a href="https://investors.globant.com/events" target="_self" class="nav-link">Events</a>
+	</li>
+		<li>
+	<a href="https://investors.globant.com/stock-data" target="_self" class="nav-link">Stock Data</a>
+	</li>
+		<li>
+	<a href="https://investors.globant.com/sec-filings" target="_self" class="nav-link">SEC Filings</a>
+	</li>
+		<li>
+	<a href="board-of-directors" target="_self" class="nav-link">Governance</a>
+	</li>
+		<li>
+	<a href="https://investors.globant.com/quarterly-earnings" target="_self" class="nav-link">Quarterly Earnings</a>
+	</li>
+	</ul>
+</div>
+
+										
+										<ul class="wd_mainnav">
+	<li>
+	<a href="https://investors.globant.com/index.php?s=45" target="_self" class="nav-link">Overview</a>
+	</li>
+	<li>
+	<a href="https://investors.globant.com/news" target="_self" class="nav-link">News</a>
+	</li>
+	<li class="active">
+	<a href="https://investors.globant.com/events" target="_self" class="nav-link">Events</a>
+	</li>
+	<li>
+	<a href="https://investors.globant.com/stock-data" target="_self" class="nav-link">Stock Data</a>
+	</li>
+	<li>
+	<a href="https://investors.globant.com/sec-filings" target="_self" class="nav-link">SEC Filings</a>
+	</li>
+	<li>
+	<a href="board-of-directors" target="_self" class="nav-link">Governance</a>
+	</li>
+	<li>
+	<a href="https://investors.globant.com/quarterly-earnings" target="_self" class="nav-link">Quarterly Earnings</a>
+	</li>
+</ul>
+									</div>
+									</section>
+
+									<div class="wd_subnav"></div>
+
+									
+									<div class="gray-wrapper">
+										<!----------ABOUT SECTION-------------->
+										
+																				<div class="section d-flex flex-column wd_container">
+										<div id="wd_printable_content"><p>Browse the calendar to view Investor related events and announcements.&nbsp; Webcasts and presentations that have been archived are available by viewing historical event details.</p>
+
+<div class="wd_events">
+
+<div class="wd_events_inputs">
+<select name="year" id="wd_events_input_year" title="Year">
+ <option value="2014">2014</option>
+ <option value="2015">2015</option>
+ <option value="2016">2016</option>
+ <option value="2017">2017</option>
+ <option value="2018">2018</option>
+ <option value="2019">2019</option>
+ <option value="2020">2020</option>
+ <option value="2021" selected>2021</option>
+</select>
+
+<select name="month" id="wd_events_input_month" title="Month">
+ <option value="1">January</option>
+ <option value="2">February</option>
+ <option value="3">March</option>
+ <option value="4">April</option>
+ <option value="5">May</option>
+ <option value="6">June</option>
+ <option value="7" selected>July</option>
+ <option value="8">August</option>
+ <option value="9">September</option>
+ <option value="10">October</option>
+ <option value="11">November</option>
+ <option value="12">December</option>
+</select>
+
+<select name="category" id="wd_events_input_category" title="Category">
+ <option value="">All Categories</option>
+ <option value="4">Financial Conferences</option>
+ <option value="2">Results Announcements</option>
+ <option value="1">Webcasts</option>
+</select>
+<button class="wd_events_input_go">GO</button><ul class="wd_events_tabs" role="radiogroup"><li class="wd_events_tab active" data-direction="future" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="0" role="radio" aria-checked="true"><span class="wd_events_tab_label wd_events_tab_future"><span class="fa fa-arrow-circle-right">&nbsp;</span>Upcoming Events</span></li><li class="wd_events_tab" data-direction="past" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false"><span class="wd_events_tab_label wd_events_tab_past"><span class="fa fa-arrow-circle-left">&nbsp;</span>Past Events</span></li></ul></div>
+<div class="wd_events_list"></div><div class="wd_events_none" style="display:none;">No events to display</div>
+<div class="wd_events_loading" style="display:none;">Loading Events...</div><div class="wd_events_error" style="display:none;"></div><button class="wd_events_more" style="display:none;"><span class="fa fa-chevron-circle-down">&nbsp;</span>Load More Events</button>
+<div class="wd_events_past_summary">
+
+
+
+<div class="wd_event_info">
+	<div class="wd_eventitem_info">
+	<div class="wd_title"><a href="https://investors.globant.com/events?item=126">Globant to participate at UBS BB Virtual Latam Conference</a></div>
+	
+	
+	
+	
+	<div class="wd_more"><a href="https://investors.globant.com/events?item=126">More</a></div>
+	</div>
+
+	<div class="wd_eventitem_timelocation">
+	<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Tuesday, June 22, 2021 -<br/>Wednesday, June 23, 2021</div>
+	
+	
+	
+	
+
+	
+	
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="wd_event_info">
+	<div class="wd_eventitem_info">
+	<div class="wd_title"><a href="https://investors.globant.com/events?item=124">Globant to participate at JP Morgan Annual Technology Conference</a></div>
+	
+	
+	
+	
+	<div class="wd_more"><a href="https://investors.globant.com/events?item=124">More</a></div>
+	</div>
+
+	<div class="wd_eventitem_timelocation">
+	<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Tuesday, June 8, 2021 -<br/>Thursday, June 10, 2021</div>
+	
+	
+	
+	
+
+	
+	
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="wd_event_info">
+	<div class="wd_eventitem_info">
+	<div class="wd_title"><a href="https://investors.globant.com/events?item=127">Globant to participate at BofA Emerging Markets Debt & Equity Conference</a></div>
+	
+	
+	
+	
+	<div class="wd_more"><a href="https://investors.globant.com/events?item=127">More</a></div>
+	</div>
+
+	<div class="wd_eventitem_timelocation">
+	<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Thursday, June 3, 2021 -<br/>Friday, June 4, 2021</div>
+	
+	
+	
+	
+
+	
+	
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="wd_event_info">
+	<div class="wd_eventitem_info">
+	<div class="wd_title"><a href="https://investors.globant.com/events?item=122">Globant to participate at William Blair Growth Stock Conference</a></div>
+	
+	
+	
+	
+	<div class="wd_more"><a href="https://investors.globant.com/events?item=122">More</a></div>
+	</div>
+
+	<div class="wd_eventitem_timelocation">
+	<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Tuesday, June 1, 2021 -<br/>Wednesday, June 2, 2021</div>
+	
+	
+	
+	
+
+	
+	
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="wd_event_info">
+	<div class="wd_eventitem_info">
+	<div class="wd_title"><a href="https://investors.globant.com/events?item=123">Globant to participate at Cowen's 49th Annual Technology Conference</a></div>
+	
+	
+	
+	
+	<div class="wd_more"><a href="https://investors.globant.com/events?item=123">More</a></div>
+	</div>
+
+	<div class="wd_eventitem_timelocation">
+	<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Tuesday, June 1, 2021 -<br/>Wednesday, June 2, 2021</div>
+	
+	
+	
+	
+
+	
+	
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="wd_event_info">
+	<div class="wd_eventitem_info">
+	<div class="wd_title"><a href="https://investors.globant.com/events?item=121">Globant to participate at Goldman Sachs Technology Conference</a></div>
+	
+	
+	
+	
+	<div class="wd_more"><a href="https://investors.globant.com/events?item=121">More</a></div>
+	</div>
+
+	<div class="wd_eventitem_timelocation">
+	<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Thursday, May 27, 2021 -<br/>Friday, May 28, 2021</div>
+	
+	
+	
+	
+
+	
+	
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="wd_event_info">
+	<div class="wd_eventitem_info">
+	<div class="wd_title"><a href="https://investors.globant.com/events?item=120">Globant to participate at JP Morgan Annual Technology and Media Conference</a></div>
+	
+	
+	
+	
+	<div class="wd_more"><a href="https://investors.globant.com/events?item=120">More</a></div>
+	</div>
+
+	<div class="wd_eventitem_timelocation">
+	<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Monday, May 24, 2021 -<br/>Wednesday, May 26, 2021</div>
+	
+	
+	
+	
+
+	
+	
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="wd_event_info">
+	<div class="wd_eventitem_info">
+	<div class="wd_title"><a href="https://investors.globant.com/events?item=119">Globant to participate at Needham Virtual Technology and Media Conference</a></div>
+	
+	
+	
+	
+	<div class="wd_more"><a href="https://investors.globant.com/events?item=119">More</a></div>
+	</div>
+
+	<div class="wd_eventitem_timelocation">
+	<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Monday, May 17, 2021 -<br/>Thursday, May 20, 2021</div>
+	
+	
+	
+	
+
+	
+	
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="wd_event_info">
+	<div class="wd_eventitem_info">
+	<div class="wd_title"><a href="https://investors.globant.com/events?item=128">Globant Q1 2021 Earnings Call</a></div>
+	<div class="wd_summary"><p>Video conference call</p></div>
+	
+	
+	
+	<div class="wd_more"><a href="https://investors.globant.com/events?item=128">More</a></div>
+	</div>
+
+	<div class="wd_eventitem_timelocation">
+	<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Thursday, May 13, 2021</div>
+	<div class="item_time wd_event_sidebar_item wd_event_time"><span class="fa fa-clock-o">&nbsp;</span>4:30pm - 5:30pm EDT</div>
+	
+	
+	
+
+	<div class="wd_event_sidebar_item wd_event_webcast"><a href="https://sqps.onstreamsecure.com/origin/multivu_archive/MNR/Globant_Globantearningcalls.mp4" target="_blank">Listen to the Webcast</a></div>
+	
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="wd_event_info">
+	<div class="wd_eventitem_info">
+	<div class="wd_title"><a href="https://investors.globant.com/events?item=117">Globant to participate at Susquehanna's Tenth Annual Technology Conference</a></div>
+	
+	
+	
+	
+	<div class="wd_more"><a href="https://investors.globant.com/events?item=117">More</a></div>
+	</div>
+
+	<div class="wd_eventitem_timelocation">
+	<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Tuesday, March 9, 2021 -<br/>Thursday, March 11, 2021</div>
+	
+	
+	
+	
+
+	
+	
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<div class="wd_toolbar wd_toolbar-main"><ul class="wd_tools"><li class="wd_tool wd_tool-print"><span class="wd_tool_icon"><a onclick="view_printable(); return false;" rel="nofollow" href="#print" title="print"><span class="fa fa-print"></span></a></span></li><li class="wd_tool wd_tool-email"><span class="wd_tool_icon"><a onclick="window.location.href = 'mailto:?subject=Globant%20Investor%20Relations%20-%20Events&amp;body='+encodeURIComponent(window.location.href);return false;" href="#email" title="email"><span class="fa fa-envelope"></span></a></span></li><li class="wd_tool wd_tool-rss"><span class="wd_tool_icon"><a href="https://investors.globant.com/rss?rsspage=19" title="rss"><span class="fa fa-rss"></span></a></span></li></ul></div>
+
+</div>
+</div>										
+										</div>
+										
+										<div class="section d-flex flex-column wd_container">
+																																																		</div>
+
+									</div><!-- /gray-wrapper -->
+								</div>
+							</div>
+							</main>
+						</div>
+
+						<div class="wd_featureboxes_buttons wd_featureboxes-horizontal">
+<div id="wd_featurebox-standard_12" class="wd_featurebox_container wd_featurebox-standard"><div class="wd_featurebox_title"></div><div class="wd_featurebox"><p><a href="image/Integrated_Report_2020.pdf" target="_blank">Annual Report</a></p>
+
+<p><a href="image/2021+-+Q1+Investor+Relations+Presentation+%282%29.pdf" target="_blank">Investor PPT</a></p>
+
+<p><a href="alerts">Email Alerts</a></p>
+
+<p><a href="faq">FAQs</a></p>
+
+<p><a href="contact">Contact Us</a></p>
+</div></div></div>
+
+						<section class="row region region-content-bottom" style="height: auto;">
+
+							<div id="block-footerblock2020" class="block block-block-content block-block-contentce9dffb3-2705-4ab1-9459-c53024349dde block-footer">
+
+								<div class="content">
+									<div class="footer-container row">
+										<div class="col-12 col-md-4 col-lg-3 col-xl-3 logo-cotainer">
+											<a href="https://www.globant.com/"> <img src="images/globant-light-bg-color.png" width="240" height="48" alt="Footer logo" typeof="foaf:Image">
+
+											</a>
+											<p class="rights-content mt-1 mt-lg-3">All rights reserved Globant 2020</p>
+										</div>
+										<div class="col-12 col-md-4 col-lg-2 col-xl-2 contact-us-cotainer">
+											<h4>Contact Us</h4>
+											<p class="email">Drop us a line</p>
+											<p class="email"><a class="footer_email" href="mailto:hi@globant.com">hi@globant.com</a></p>
+											<p class="number">
+												<a href="tel:+1 877 215 5230"></a><a href="tel:%2B18772155230">+1 877 215 5230</a></p>
+
+										</div>
+										<div class="col-12 col-md-4 col-lg-3 col-xl-3 row follow-us-cotainer">
+											<h4 class="col-12">Follow Us</h4>
+											<div class="Facebook-icon social-media col-6 col-md-6 col-lg-4 col-xl-4">
+												<a class="footer-social Facebook" href="https://www.facebook.com/Globant" id="Facebook" target="_blank" rel="noopener">
+													<span>Facebook</span>
+												</a>
+											</div>
+											<div class="Twitter-icon social-media col-6 col-md-6 col-lg-4 col-xl-4">
+												<a class="footer-social Twitter" href="https://twitter.com/globant" id="Twitter" target="_blank" rel="noopener">
+													<span>Twitter</span>
+												</a>
+											</div>
+											<div class="Youtube-icon social-media col-6 col-md-6 col-lg-4 col-xl-4">
+												<a class="footer-social Youtube" href="https://www.youtube.com/user/Globant" id="Youtube" target="_blank" rel="noopener">
+													<span>Youtube</span>
+												</a>
+											</div>
+											<div class="LinkedIn-icon social-media col-6 col-md-6 col-lg-4 col-xl-4">
+												<a class="footer-social LinkedIn" href="https://www.linkedin.com/company/globant/" id="LinkedIn" target="_blank" rel="noopener">
+													<span>LinkedIn</span>
+												</a>
+											</div>
+											<div class="Instagram-icon social-media col-6 col-md-6 col-lg-4 col-xl-4">
+												<a class="footer-social Instagram" href="https://www.instagram.com/globant/" id="Instagram" target="_blank" rel="noopener">
+													<span>Instagram</span>
+												</a>
+											</div>
+										</div>
+										<div class="col-12 col-md-7 offset-md-4 col-lg-4 offset-lg-0 col-xl-4 subscribe-cotainer d-flex">
+											<div class="ml-lg-auto subscribe-box">
+												<h4>Subscribe to receive our news, insights and invitations to events</h4>
+												<div class="wd_featureboxes_subscribe wd_featureboxes-vertical">
+<div id="wd_featurebox-subscribe_1" class="wd_featurebox_container wd_featurebox-subscribe"><div class="wd_featurebox_title"></div><div class="wd_featurebox"><div class="wd_subscribe_featurebox">
+ <form method="POST" class="wd_formbuilder" id="subscribe_form_1" name="formbuilderform" action="https://investors.globant.com/events?submitted=1" enctype="multipart/form-data" onsubmit="disable_submit(this, true);var ok = check_required_fields(this,[&quot;subscribe_1[email]&quot;],[&quot;subscribe_1[email]&quot;],&quot;#ff0000&quot;,&quot;This field is required&quot;,&quot;This field must contain a valid email address&quot;,&quot;Please fill in all required fields highlighted in red.&quot;,&quot;Please provide a valid email address.&quot;); if (!ok) {disable_submit(this,false); return false;} webDriver.subscribeSubmit(this,1); return false;">
+  <div class="wd_form_header">
+   <div class="wd_form_legend">
+* Required Fields
+   </div>
+  </div>
+   <div class="wd_form_field wd_form_field_pos_right">
+    <div class="wd_form_field_label">
+<label for="formbuilderform_subscribe_1[email]">*&nbsp;Email</label>
+    </div>
+    <div class="wd_form_field_input">
+     <input type="text" name="subscribe_1[email]" value="" size="16" id="formbuilderform_subscribe_1[email]" />
+    </div>
+   </div>
+  <div class="wd_form_footer">
+   <div class="wd_form_buttons">
+<input type="submit" class="wd_formbuilder_submit" name="Submit" value="Submit">
+   </div>
+  </div>
+ </form>
+</div></div></div></div>
+												<!-- <a id="webform-submission-subscribe-form-block-content-719-form-ajax-content" tabindex="-1" aria-hidden="true"></a>
+												<div id="webform-submission-subscribe-form-block-content-719-form-ajax" class="webform-ajax-form-wrapper" data-effect="fade" data-progress-type="throbber">
+													<div class="content">
+														<form class="webform-submission-form webform-submission-add-form webform-submission-subscribe-form-form webform-submission-subscribe-form-add-form webform-submission-subscribe-form-block_content-719-form webform-submission-subscribe-form-block_content-719-add-form js-webform-details-toggle webform-details-toggle" data-drupal-selector="webform-submission-subscribe-form-block-content-719-add-form" action="/" method="post" id="webform-submission-subscribe-form-block-content-719-add-form" accept-charset="UTF-8" data-drupal-form-fields="edit-email,edit-actions-submit">
+															<fieldset class="is-floating-label js-form-item js-form-type-email form-type-email js-form-item-email form-item-email form-group col-auto">
+																<input data-webform-required-error="Please enter your email ID" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*\.\w{2,}+$" data-webform-pattern-error="Please enter a valid email ID" data-drupal-selector="edit-email" type="email" id="edit-email" name="email" value="" size="60" maxlength="254" placeholder="Enter your email id" class="form-email required" required="required" aria-required="true">
+																<div class="email-custom-error d-none"></div>
+															</fieldset>
+															<div data-webform-states-no-clear="" data-drupal-selector="edit-actions" class="form-actions webform-actions js-form-wrapper form-group" id="edit-actions--2">
+																<button class="webform-button--submit button button--primary js-form-submit form-submit btn btn-primary" data-drupal-selector="edit-actions-submit" data-disable-refocus="true" type="submit" id="edit-actions-submit" name="op" value="Submit">Submit</button>
+
+															</div>
+															<input autocomplete="chrome-off-28451030" data-drupal-selector="form-xd-uzukgcpdjvtr9-woyots4jzqbbl3cvgwvfnlvzpo" type="hidden" name="form_build_id" value="form-xD-UzuKgcpDjvtR9-wOYOTs4jzqBbl3cvGWVFnlVzpo" class="form-control">
+															<input data-drupal-selector="edit-webform-submission-subscribe-form-block-content-719-add-form" type="hidden" name="form_id" value="webform_submission_subscribe_form_block_content_719_add_form" class="form-control">
+
+														</form>
+													</div>
+												</div> -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="clearfix block block- footer-class footer-menu-class" id="footer-id">
+								<!--  -->
+								<div class="footerContainer">
+									<div class="row footer-info">
+										<div class="footer-info-inner container row text-center col-sm-12 col-md-12 col-lg-12 col-xl-12">
+											<div class="col-sm-12 col-xl-2 col-lg-2 col-md-2 col-xs-12 col-12 Privacy-Policy  ">
+												<a href="https://www.globant.com/privacy-policy">Privacy Policy</a>
+											</div>
+											<div class="col-sm-12 col-xl-2 col-lg-2 col-md-2 col-xs-12 col-12 Terms-of-Service  ">
+												<a href="https://www.globant.com/terms-and-conditions">Terms of Service</a>
+											</div>
+											<div class="col-sm-12 col-xl-2 col-lg-2 col-md-2 col-xs-12 col-12 Site-Map  ">
+												<a href="https://www.globant.com/sitemap">Site Map</a>
+											</div>
+											<div class="col-sm-12 col-xl-2 col-lg-2 col-md-2 col-xs-12 col-12 Cookie-Policy  ">
+												<a href="https://www.globant.com/pt-br/pol%C3%ADtica-sobre-cookies">Cookie Policy</a>
+											</div>
+											<div class="col-sm-12 col-xl-2 col-lg-2 col-md-2 col-xs-12 col-12 Cookie-Preferences  cookie-preferences-popup">
+												<a href="">Cookie Preferences</a>
+											</div>
+											<div class="col-sm-12 col-xl-2 col-lg-2 col-md-2 col-xs-12 col-12 Vulnerability-Disclosure-Policy  ">
+												<a href="https://www.globant.com/vulnerability-disclosure-policy">Vulnerability Disclosure Policy</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
+<script type="text/javascript">
+function wrapItemLink(item,link) {
+	$(item).each(function(index) {
+		var itemLink = $(this).find(link + ' a').attr('href');
+		$(this).wrap('<a href="'+itemLink+'"></a>');
+	});
+}
+
+// function eventItems() {
+// 	if($('.wd_event .wd_title a').text() == '') {
+// 		setTimeout(eventItems,1000);
+// 	} else {
+// 		$('.wd_events_list .wd_event').each(function(){
+// 			var eventImage = $(this).find('.wd_image img').attr('src');
+// 			if(eventImage != undefined)
+// 				$(this).find('.wd_captioned_image').css('background-image','url('+eventImage+')');
+// 		});
+// 	}
+// }
+// eventItems();
+
+
+$(document).ready(function(){
+	$('.wd_subscribe_featurebox input[type="text"]').attr("placeholder", "Email Address");
+	$('<div class="form-actions webform-actions js-form-wrapper form-group"><button class="webform-button--submit button button--primary js-form-submit form-submit btn btn-primary" type="submit" name="submit" value="submit" id="edit-actions-submit">Submit</button></div>').insertAfter('.wd_subscribe_featurebox .wd_form_field_input:last');
+
+	$('.wd_maintitle').prepend($('.wd_mobilenav .wd_subnav li.active a').text());
+	$('.wd_mainsubtitle').prepend($('.wd_mobilesubnav li.subnav-item.active a').text());
+
+	wrapItemLink('.wd_newsfeed_releases .wd_item','.wd_title');
+
+	$('#wd_irmobilenav_button').click(function(){
+		$('.wd_mobilenav').toggleClass('active');
+	});
+	$('#wd_irmobilesubnav_button').click(function(){
+		$('.wd_mobilesubnav').toggleClass('active');
+	});
+
+	$('div.wd_featureboxes_twoup .wd_events-teaser .item').each(function(){
+		var eventLink = $(this).find('.item_name a').attr('href');
+		// var eventImage = $(this).find('.wd_imagetable img').attr('src');
+		// $(this).prepend('<div class="wd_event-teaser-image" style="background-image:url('+eventImage+')"></div>');
+		if ($(this).index()%2 == 0) {
+			$(this).prepend('<div class="wd_event-teaser-image" style="background-image:url(images/zoom-02.jpg)"></div>');
+		} else {
+			$(this).prepend('<div class="wd_event-teaser-image" style="background-image:url(images/zoom-05.jpg)"></div>');
+		}
+		$(this).append('<div class="wd_moreinfo"><a href="'+eventLink+'">MORE INFO</a></div>');
+		$(this).find('.item_date,.item_time').wrapAll('<div class="wd_eventdatetime"></div>');
+		$(this).find('.wd_eventdatetime').insertBefore($(this).find('.item_name'));
+		$(this).find('.wd_event_subscribe').appendTo($(this).find('.wd_eventdatetime'));
+		$(this).find('.wd_event_reminder').appendTo($(this).find('.wd_eventdatetime'));
+	});
+
+	
+	// Color News Category Links
+	$('.wd_newsfeed_releases .wd_category_link a').each(function(){
+		var linkSplits = $(this).attr('href').split('=');
+		if(linkSplits[1] == 1) $(this).css('color','purple');
+		if(linkSplits[1] == 2) $(this).css('color','#028484;');
+	});
+
+	// $('.wd_newsfeed_releases .wd_title').text(
+	// 	$('.wd_newsfeed_releases .wd_title').text().substr(0, 75)+'...'
+	// );
+
+	$('button.navbar-toggler').click(function(){
+		$(this).parent().toggleClass('wd_visibleoverflow');
+	});
+
+	// Sec Filings moving GLOB
+	$('.wd_ir_secfilings .wd_filer_label').insertAfter($('.wd_ir_secfilings .wd_selectors'));
+
+	//Quarterly Earnings 
+	//This is responsible for wrapping the attachment container and whatever "embed code" is place within in item as an additional attachment
+	$('.wd_pageid_126 .item').each(function() {
+		$(this).find('.wd_attachment').wrapAll('<div class="wd_attachment_container"></div>');
+	});
+	//This makes it so that way any earnings release item is clicked, the attchment information is shown or hidden
+	$('.wd_pageid_126 .item').click(function() {
+		$(this).find('.wd_attachment_container').slideToggle();
+		$(this).find('.item_name').toggleClass('opened');
+
+	});
+	//For the items on the webinars page this takes the images from each item and make it a background image
+	$('.wd_pageid_97 .item').each(function() {
+		var webinarImage = $(this).find('.wd_imagetable img').attr('src');
+		$(this).prepend('<div class="webinar_image_container" style="background-image: url('+ webinarImage+')"></div>');
+		$(this).find('.wd_imagetable').remove();
+	});
+
+	//This wraps the item name, attachment, and paragraphs within each item on the webinars page in order to make a border around all these elements.
+
+	$('.wd_pageid_97 .item').each(function() {
+		$(this).find('.item_name, .webinar_pink_date, .webinar_pink_button, .webinar_grey_date, .webinar_grey_button, .webinar_description, .wd_attachment').wrapAll('<div class="webinar_info_border"></div>');
+	});
+});
+</script>
+<button data-ultimenu-button="#ultimenu-main" class="button button--ultimenu" aria-label="Menu" value="Menu"><span class="bars">Menu</span></button>
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"front","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","ajaxPageState":{"libraries":"bootstrap_barrio\/global-styling,core\/html5shiv,extlink\/drupal.extlink,globant_corp_theme\/bootstrap_cdn,globant_corp_theme\/global-styling,globant_corp_theme\/webform,globant_custom_ai\/ai_ajax,system\/base,ultimenu\/ajax,ultimenu\/extras,ultimenu\/hamburger,ultimenu\/offcanvas.pushdown,ultimenu\/skin.basic,views\/views.module,webform\/webform.ajax,webform\/webform.dialog,webform\/webform.element.details.save,webform\/webform.element.details.toggle,webform\/webform.element.message,webform\/webform.form","theme":"globant_corp_theme","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true,"\/front?ajax_form=1":true},"webform":{"dialog":{"options":{"narrow":{"title":"Narrow","width":600},"normal":{"title":"Normal","width":800},"wide":{"title":"Wide","width":1000}},"entity_type":"page_variant","entity_id":"home_page-block_display-0"}},"data":{"extlink":{"extTarget":true,"extTargetNoOverride":false,"extNofollow":false,"extNoreferrer":false,"extFollowNoOverride":false,"extClass":"0","extLabel":"(link is external)","extImgClass":false,"extSubdomains":false,"extExclude":"","extInclude":"","extCssExclude":"","extCssExplicit":"","extAlert":false,"extAlertText":"This link will take you to an external web site. We are not responsible for their content.","mailtoClass":"0","mailtoLabel":"(link sends email)","extUseFontAwesome":false,"extIconPlacement":"append","extFaLinkClasses":"fa fa-external-link","extFaMailtoClasses":"fa fa-envelope-o","whitelistedDomains":[]}},"globant_custom_ai":{"ai_bot":{"welcome_message":"","example_questions":[""]}},"ultimenu":{"canvasOff":"#header","canvasOn":"#main-wrapper, .featured-top, .site-footer"},"gdprLibrary":{"is_front":"https:\/\/www.globant.com"},"ajax":{"edit-actions-submit":{"callback":"::submitAjaxForm","event":"click","effect":"fade","speed":500,"progress":{"type":"throbber","message":""},"disable-refocus":true,"url":"\/front?ajax_form=1","dialogType":"ajax","submit":{"_triggering_element_name":"op","_triggering_element_value":"Submit"}}},"user":{"uid":0,"permissionsHash":"c95eb9cd101dff21e2c81b54b25683c40817a7b94149589338963bfd80a1a614"}}</script>
+<script src="js/js_urZxr04h7uDHDNtWAg0iK2dcxfPF3LwBPzuQ0zmdogA.js"></script>
+<script src="js/js_9R4tuRnYMvSEp_LfY5RvvcdkPrbBaskh9LqrpTcONj8.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/js_f5bnlmyKMzbtW0IxWXGfPcj9vKZF0d6WWPZMnXLWkHg.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/7.0.6/jquery.mmenu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/7.0.6/wrappers/bootstrap/jquery.mmenu.bootstrap4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-scrollify@1.0.20/jquery.scrollify.js"></script>
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/plugins/forceDirected.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+<script src="js/js_XmTQMCNoVaAKSPdQ1DR-eKMwB48H_RlPhCLXvmkA_KM.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZvVwAPEZSD1U-fdM8KRQHmCZcQxRIoaA"></script>
+<script src="js/js_rSSRNx1KVyeM7dFCxcrJw-CO2UKE9nuRuyGipjbpP50.js"></script>
+
+
+
+<!-- <script src="js/jquery_002.js"></script>
+<script src="js/jquery_003.js"></script>
+<script src="js/slick.js"></script>
+<script src="js/jquery.js"></script> -->
+
+
+
+<!-- begin spin_special_output(body_end) -->
+<script wd_script_id="piwik_tracking_code"></script>
+<!-- Piwik Tracking Code -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+
+  _paq.push(["setCustomVariable", 1, "Content Type", "Events", "page"]);
+
+  _paq.push(["setCustomVariable", 3, "Navigation Page", "Events", "page"]);
+
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+  (function() {
+    var u="//stats.drivetheweb.com/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", 1856]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0];
+    g.type="text/javascript"; g.async=true; g.defer=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript>
+	<img src="https://stats.drivetheweb.com/piwik.php?idsite=1856&rec=1" style="border:0" alt="" />
+</noscript>
+<!-- End Piwik Tracking Code -->
+		
+<!-- end spin_special_output(body_end) -->
+</body>
+</html>

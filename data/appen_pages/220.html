@@ -1,0 +1,2097 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="TransEnterix, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ir.asensus.com/events-and-presentations" />
+<meta property="og:title" content="Events &amp; Presentations | TransEnterix, Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about TransEnterix, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb22996/files/favicon_1.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://ir.asensus.com/events-and-presentations" />
+<link rel="canonical" href="https://ir.asensus.com/events-and-presentations" />
+<link rel="shortlink" href="https://ir.asensus.com/node/5821" />
+<link rel="revision" href="https://ir.asensus.com/events-and-presentations" />
+
+    <title>Events &amp; Presentations | TransEnterix, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb22996/files/css/css_xlPnJptIC4BdD3T-gfH9N4SlWZCHxGNTtD6JVWqkd4w.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb22996/files/css/css_PaDspAzvNY_VnYbimXTYJfZWMoBLuUstHn6xC4acVFc.css" />
+<link rel="stylesheet" media="screen" href="/sites/g/files/knoqqb22996/files/css/css_FvqSYhg4H7D3w_ax-_uqK9Gcu_nHrNkKSvHi-kPr0nc.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb22996/files/css/css_0LQ9bW8cqbcAU4gyDJaivHzuio6QIs2hebcx5AQ6ICY.css" />
+<link rel="stylesheet" media="screen" href="/sites/g/files/knoqqb22996/files/css/css_ueTMO7UPQQ8HBcK-YtkbnhLzGAGfc1SKewYoWRMDWJc.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb22996/files/css/css_VLa-ndVyLuAPbxAIlRQvWv0JSGMn8P_E3hpmMV94YXY.css" />
+<link rel="stylesheet" media="all" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css?ver=2.2.2" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb22996/files/css/css_NjAVA4zB0tEYg2bj7h69m0fep7h0eKCZwQ5MMTcdJ50.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb22996/files/css/css_upa_9Z-iApZIM1Y_BwbkQ4n-V6KYpluLKyaU-6Dw16U.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb22996/files/css/css_uR7CBnjEs5VZNOTbN5egaIVEsuJ_uLDLaCxQpDsgq_0.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5821 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+<div class="site-container">
+    <section>
+        <h2 class="screen-reader-text">Skip links</h2>
+        <ul class="genesis-skip-link">
+            <li><a href="#genesis-content" class="screen-reader-shortcut"> Skip to content</a></li>
+            <li><a href="#genesis-footer-widgets" class="screen-reader-shortcut"> Skip to footer</a></li>
+        </ul>
+    </section>
+              <div id="header-region">
+            <div id="mobile-header"><a id="responsive-menu-button" href="#sidr-main"><i class="fa fa-bars"></i>&nbsp; Menu</a></div>
+              <div class="region region-header">
+    <div id="block-header" class="block-content--nir-pub-engine-block block--block-content3b98c137-b00b-4380-a010-26dd6843f3da block--block-content3b98c137-b00b-4380-a010-26dd6843f3da--13531 block--header--block-content--3b98c137-b00b-4380-a010-26dd6843f3da block--header--block-content--3b98c137-b00b-4380-a010-26dd6843f3da--13531 block--809ca149-c912-422c-8e5b-3ce3f3f99cab block--809ca149-c912-422c-8e5b-3ce3f3f99cab--13531 block block-block-content block-block-content3b98c137-b00b-4380-a010-26dd6843f3da">
+  
+    
+      
+            <div class="field field--name-field-pub-eng-content field--type-string-long field--label-hidden field__item"><div class="layout-container site-background">
+<header role="banner">
+    <div class="region region-header">
+        <div id="block-transenterix-branding" class="block block-system block-system-branding-block">
+            <a href="https://asensus.com/" title="Home" rel="home" class="site-logo">
+                <img src="https://asensus.com/themes/transenterix/logo.png" alt="Home">
+            </a>
+        </div>
+
+    </div>
+
+    <div class="mobile-menu-header mobile-only">
+        <button id="toggle-mobile-menu">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+        </button>
+        <a href="https://asensus.com/">
+            <img class="mobile-menu-header-logo" src="https://asensus.com/themes/transenterix/logo.png">
+            <img class="mobile-menu-header-logo-retina" src="https://asensus.com/themes/transenterix/logo.png">
+        </a>
+    </div>
+    <div class="region region-primary-menu">
+        <div class="mobile-menu-background"></div>
+        <nav role="navigation" aria-labelledby="block-mainnavigation-menu" id="block-mainnavigation"
+             class="block block-menu navigation menu--main">
+
+                <ul class="menu">
+                <li class="menu-item menu-item--expanded">
+                    <a href="https://asensus.com/about/our-history" title="About"
+                       data-drupal-link-system-path="node/31">About</a>
+                    <ul class="menu">
+                        <li class="menu-item">
+                            <a href="https://asensus.com/about/our-history" title="Our History"
+                               data-drupal-link-system-path="node/31">Our History</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://asensus.com/about/our-management-team"
+                               title="Our Management Team" data-drupal-link-system-path="node/32">Our Management Team</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://asensus.com/about/our-board-directors"
+                               title="Our Board of Directors" data-drupal-link-system-path="node/34">Our Board of Directors</a>
+                        </li>
+                    </ul>
+
+                </li>
+                <li class="menu-item">
+                    <a href="https://asensus.com/news-events" title="News &amp; Events"
+                       data-drupal-link-system-path="node/33">News &amp; Events</a>
+                </li>
+                <li class="menu-item menu-item--expanded">
+                    <a href="https://senhance.com/" title="Senhance Surgical System" target="_blank">Senhance Surgical System</a>
+                    <ul class="menu">
+                        <li class="menu-item">
+                            <a href="https://senhance.com/" title="Digital Laparoscopy" target="_blank">Digital Laparoscopy</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://www.senhance.com/us/laparoscopic-surgery-challenges"
+                               title="Laparoscopic Surgery Challenges" target="_blank">Laparoscopic Surgery Challenges</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://www.senhance.com/us/digital-laparoscopy"
+                               title="The Senhance Surgical System" target="_blank">The Senhance Surgical System</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://www.senhance.com/us/senhance-indication"
+                               title="Indications for Use" target="_blank">Indications for Use</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://www.senhance.com/us/resources" title="Resources" target="_blank">Resources</a>
+                        </li>
+                    </ul>
+
+                </li>
+                <li class="menu-item menu-item--expanded">
+                    <a href="http://ir.asensus.com/" title="Investors">Investors</a>
+                    <ul class="menu">
+                        <li class="menu-item">
+                            <a href="http://ir.asensus.com/" title="Overview">Overview</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="http://ir.asensus.com/releases.cfm" title="Press Releases">Press Releases</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="http://ir.asensus.com/events.cfm" title="Events &amp; Presentations">Events &amp; Presentations</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="http://ir.asensus.com/sec.cfm" title="SEC Filings">SEC Filings</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="http://ir.asensus.com/analysts.cfm" title="Analyst Coverage">Analyst Coverage</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="http://ir.asensus.com/stockquote.cfm" title="Stock Information">Stock Information</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="http://ir.asensus.com/stocklookup.cfm" title="Historic Stock Lookup">Historic Stock Lookup</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="http://ir.asensus.com/corporate-governance.cfm" title="Corporate Governance Documents">Corporate Governance Documents</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://ir.asensus.com/static-files/d6d14825-6082-4b1e-b6d3-780376e07173" title="2020 Annual Report">2020 Annual Report</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://ir.asensus.com/static-files/371c4345-f405-4353-8e23-8b18587d597f" title="2021 Proxy Statement">2021 Proxy Statement</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://ir.asensus.com/static-files/f386134b-a986-4da8-b7e7-81b37bba4889" title="2021 Additional Proxy Materials - June 3, 2021">2021 Additional Proxy Materials - June&nbsp;3,&nbsp;2021</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://ir.asensus.com/static-files/fd4461e8-a03a-49eb-a436-c00c7e7cd258" title="2021 Additional Proxy Materials - June 22, 2021">2021 Additional Proxy Materials - June&nbsp;22,&nbsp;2021</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="https://ir.asensus.com/static-files/e1618b99-9e3e-4b43-9a71-aade74005a4e" title="2021 Additional Proxy Materials - June 29, 2021">2021 Additional Proxy Materials - June&nbsp;29,&nbsp;2021</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="http://ir.asensus.com/alerts.cfm" title="Email Alerts">Email Alerts</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="http://ir.asensus.com/form-8947.cfm" title="Form 8947">Form 8947</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+
+
+        </nav>
+      <nav role="navigation" aria-labelledby="block-transenterix-secondarynavigation-menu" id="block-transenterix-secondarynavigation" class="block block-menu navigation menu--secondary-navigation">
+
+        <ul class="menu">
+          <div class="menu-item solid-blue-button">
+            <a href="https://asensus.com/contact" data-drupal-link-system-path="node/37">Contact</a>
+          </div>
+          <li class="menu-item">
+            <a href="https://asensus.com/careers" data-drupal-link-system-path="node/64">Careers</a>
+          </li>
+          <li class="menu-item">
+            <a href="https://asensus.com/media-kit" data-drupal-link-system-path="node/35">Media Kit</a>
+          </li>
+          <li class="menu-item">
+            <a href="https://asensus.com/sitemap" data-drupal-link-system-path="sitemap">Site Map</a>
+          </li>
+        </ul>
+
+      </nav>
+
+      <nav role="navigation" aria-labelledby="block-socialmedialinks-4-menu" id="block-socialmedialinks-4" class="block block-menu navigation menu--social-media-links">
+
+        <ul class="menu">
+          <li class="menu-item">
+            <i class="fab fa-twitter">
+              <a href="https://twitter.com/TransEnterix" title="Twitter" target="_blank"></a>
+            </i>
+          </li>
+          <li class="menu-item">
+            <i class="fab fa-linkedin-in">
+              <a href="https://www.linkedin.com/company/486080?trk=vsrp_companies_res_name&amp;trkInfo=VSRPsearchId%3A211659411455556806189%2CVSRPtargetId%3A486080%2CVSRPcmpt%3Aprimary" title="LinkedIn" target="_blank"></a>
+            </i>
+          </li>
+          <li class="menu-item">
+            <i class="fab fa-youtube">
+              <a href="https://www.youtube.com/channel/UCVpVRB5Zdp-b36huf5OTx1A" title="YouTube" target="_blank"></a>
+            </i>
+          </li>
+          <li class="menu-item">
+            <i class="fab fa-vimeo-v">
+              <a href="https://vimeo.com/user43974622" title="Vimeo" target="_blank"></a>
+            </i>
+          </li>
+        </ul>
+
+      </nav>
+
+    </div>
+
+</header>
+</div>
+<script src="//asensus.com/core/assets/vendor/jquery/jquery.min.js"></script>
+<script src="//asensus.com/core/assets/vendor/jquery-once/jquery.once.min.js"></script>
+<script src="//asensus.com/themes/senhance/assets/js/compiled/MobileMenu.js"></script>
+<script>
+    (function ($) {
+        $('.region-primary-menu nav > .menu > li.menu-item--expanded > a').once('mobile-menu--processed').on('click', function (e) {
+            if (window.matchMedia("(max-width: 767px)").matches) {
+                e.preventDefault();
+                var menu_item = $(this).parent();
+                menu_item.toggleClass('mobile-menu--open');
+            }
+        });
+    })(jQuery);
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://asensus.com/themes/transenterix/css/header_and_footer.css">
+</div>
+      
+  </div>
+
+  </div>
+
+        </div>
+    
+    <nav class="nav-secondary" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+    </nav>
+    <div class="site-inner">
+        <div class="content-sidebar-wrap">
+            <main class="content" id="genesis-content">
+                  <div class="region region-content">
+    <div id="block-nir-pid2110-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5821 block--content--website-notice-block block--content--website-notice-block--5821 block--cf35bc5f-57cc-4b23-bf34-c8a0a14f215d block--cf35bc5f-57cc-4b23-bf34-c8a0a14f215d--5821 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid2110-content" class="block--system-main-block block--system-main-block--5821 block--content--system-main-block block--content--system-main-block--5821 block--69c2a948-f52f-441d-9893-6cbe59048be6 block--69c2a948-f52f-441d-9893-6cbe59048be6--5821 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display sutro clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-header panel-panel">
+        <div >
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6 radix-layouts-column1 panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-column1"><div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--5821 block--column1--views-block--widget-events-table block--column1--views-block--widget-events-table--5821 block--3fcb5571-e79b-41ab-8422-d77c6e4575f9 block--3fcb5571-e79b-41ab-8422-d77c6e4575f9--5821 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Upcoming Events</h2>
+    
+      <div data-block-uuid="3fcb5571-e79b-41ab-8422-d77c6e4575f9"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-e47db5894719925928af2f87c17b8b7a898f69ba3ee1b1d0f68c41dd1f47d2d9">
+  
+    
+      
+      <div class="view-empty">
+      There are currently no events to display.
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="col-md-6 radix-layouts-column2 panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-column2"><div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--5821 block--column2--views-block--widget-events-table block--column2--views-block--widget-events-table--5821 block--f9251c07-30a1-4189-9be5-b2db95d177b5 block--f9251c07-30a1-4189-9be5-b2db95d177b5--5821 block block-views block-views-blockwidget-events-table">
+  
+      <h2> Featured Events</h2>
+    
+      <div data-block-uuid="f9251c07-30a1-4189-9be5-b2db95d177b5"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-b041be5e6bb47824555db9dfe85faca22ea405b57ae6162f0fa2b7f1eda2ed0b">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-events-table" action="/events-and-presentations" method="get" id="views-exposed-form-widget-events-table" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions--2"><input data-drupal-selector="edit-submit-widget-events-2" type="submit" id="edit-submit-widget-events--2" value="Filter" class="button js-form-submit form-submit" />
+<input data-drupal-selector="edit-reset" type="submit" id="edit-reset--2" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" scope="col"><a href="?promote=1&amp;sort_order=DESC&amp;order=field_nir_event_start_date&amp;sort=asc" title="sort by Date">Date</a></th>
+                                                  <th id="view-nothing-table-column" class="views-field views-field-nothing" scope="col">Event Details</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 23, 2021  11:00 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Investor Day 2021</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/1c9dd310-2ba8-47ac-838d-ad97bbcbc254" type="application/pdf" title="Investor Day Feb 23, 2021.pdf">View Presentation</a></span><span class="filesize"> 14.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        			<div class="additional-info"><span>View Additional Information</span>
+				<div class="nir-event-summary-event-details-summary additional-info-det" style="display:none;">
+
+                    
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><iframe allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" frameborder="0" height="360" src="https://player.vimeo.com/video/516796331" width="640"></iframe>
+<p><a href="https://vimeo.com/516796331">Investor Day Feb 23, 2021.mp4</a> from <a href="https://vimeo.com/user134490877">Asensus Surgical, Inc.</a> on <a href="https://vimeo.com">Vimeo</a>.</p></div>
+          </div>
+
+
+				</div>
+			</div>
+        
+	</div>
+</div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12 radix-layouts-footer panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-footer"><div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--5821 block--footer--views-block--widget-events-table block--footer--views-block--widget-events-table--5821 block--acf076cc-343d-4bab-8ce8-630f1203dfa7 block--acf076cc-343d-4bab-8ce8-630f1203dfa7--5821 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Archived Events</h2>
+    
+      <div data-block-uuid="acf076cc-343d-4bab-8ce8-630f1203dfa7"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-1d91e05ad64539242b8a9cb71c40c7102aa881c1a4ee714031379d3a8b433cfd">
+  
+    
+      
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date" scope="col"><a href="?field_nir_event_start_date_value_1=-8%20hours&amp;sort_order=DESC&amp;order=field_nir_event_start_date&amp;sort=asc" title="sort by Date">Date</a></th>
+                                                  <th id="view-nothing-table-column--2" class="views-field views-field-nothing" scope="col">Event Details</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jul 14, 2021  8:30 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Ladenburg Thalmann 2021 Virtual Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://wsw.com/webcast/ladenburg7/asxc/2417765" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/92d97cc7-73dd-4802-a0fa-6ada1f35b324" type="application/pdf" title="ASXC Ladenburg July 2021.pdf">View Presentation</a></span><span class="filesize"> 10.5 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            May 26, 2021  8:00 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Oppenheimer MedTech Tools &amp; Diagnostics Summit</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://wsw.com/webcast/oppenheimer13/asxc/2776480" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/321936cc-5f33-489f-b4b5-df712018d039" type="application/pdf" title="ASXC Oppenhiemer May 2021_Final.pdf">View Presentation</a></span><span class="filesize"> 2.9 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            May 11, 2021  4:30 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Asensus Surgical, Inc. First Quarter Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://public.viavid.com/index.php?id=144532" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Mar 11, 2021  4:30 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Asensus Surgical, Inc. Fourth Quarter and Fiscal Year 2020 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://public.viavid.com/index.php?id=143578" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Mar 9, 2021  7:00 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>H.C. Wainwright Virtual Global Life Sciences Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://journey.ct.events/view/98e1d88a-761f-49b6-b57d-0fe602157375" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/9d4302ee-64bb-413c-8147-5f32ac7cd6c3" type="application/pdf" title="TRXC Investor Presentation HCW Global Virtual LS Conference 3-2021 V2.pdf">View Presentation</a></span><span class="filesize"> 17 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 14, 2021  3:15 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>ICR Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://icrinc.touchcast.com/showtime/icr-conference/embed/92a9a8cc-cf56-c51b-d25e-e4959b97b8c2" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/32d437c9-45fd-47eb-ad6c-7914198a38de" type="application/pdf" title="Westwicke-ICR Jan 2021.pdf">View Presentation</a></span><span class="filesize"> 2.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 14, 2021  10:00 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>ICR Conference Panel: The Future of Digital Surgery</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://icrinc.zoom.us/webinar/register/WN_yxbW1bO9QDeD18t0E-D0mQ" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 11, 2021  6:00 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>H.C. Wainwright BioConnect 2021 Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://journey.ct.events/view/f1c0aa78-64e3-424a-9677-fe0347a87815" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/8d08384d-8f8d-4d0d-a9ab-3865f55978ab" type="application/pdf" title="TRXC Investor Presentation HCW Bioconnect 2021.pdf">View Presentation</a></span><span class="filesize"> 2.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 17, 2020  4:00 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Stifel 2020 Virtual Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://wsw.com/webcast/stifel27/trxc/2121808" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link node--promoted">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/f3b9ed2e-71d6-4dbe-a5f8-6fb9997ca050" type="application/pdf" title="TRXC Investor Presentation Stifel 2020 (3).pdf">View Presentation</a></span><span class="filesize"> 2.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 5, 2020  4:30 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Third Quarter 2020 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://public.viavid.com/index.php?id=142093" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Sep 15, 2020  3:00 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>H. C. Wainwright 22nd Annual Global Investment Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://wsw.com/webcast/hcw7/trxc/1629433" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/6ccb925d-a4d3-4a7d-817f-17501a66190b" type="application/pdf" title="TRXC HCW Investor Presentation.pdf">View Presentation</a></span><span class="filesize"> 1.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Aug 5, 2020  4:30 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Second Quarter 2020 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="http://public.viavid.com/index.php?id=140896" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            May 14, 2020  8:00 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix First Quarter 2020 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/hw4eidae" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Mar 16, 2020  4:30 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Fourth Quarter 2019 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/spz6z5w9" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 16, 2020  8:00 AM PST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>38th Annual J.P. Morgan Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://jpmorgan.metameetings.net/events/hc20/sessions/29885-transenterix-inc/webcast" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/4d969204-475a-43ac-b2a1-7426677a9503" type="application/pdf" title="JPM 2020 TRXC Presentation 1-16-2020 Final2.pdf">View Presentation</a></span><span class="filesize"> 2.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Dec 6, 2019  11:00 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Webcast - Surgeon Panel Discussion &amp; Senhance Technology Demonstration</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/22v3kxsv" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 12, 2019  4:30 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Third Quarter 2019 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/fhqpnp36" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/cd0217ea-170b-4594-a99f-7f49b97a723e" type="application/pdf" title="TRXC Q3 2019 Conference Call 11-12-2019.pdf">View Presentation</a></span><span class="filesize"> 2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Aug 7, 2019  4:30 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Second Quarter 2019 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/efeyumbj" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jun 19, 2019  9:10 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Raymond James Life Sciences and MedTech Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            May 21, 2019  10:30 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>2019 RBC Capital Markets Global Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://www.veracast.com/webcasts/rbc/healthcare2019/22314340938.cfm" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            May 9, 2019  4:30 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix First Quarter 2019 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Apr 4, 2019
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Global Experience and Advancements with the Senhance Surgical System and Digital Laparoscopy – International Surgeon Panel (audio and video included)</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://vimeo.com/385987008" target="_blank">Watch Video</a></div>
+    </div>
+
+			</div>
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 26, 2019  8:00 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Fourth Quarter 2018 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 7, 2019  3:00 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>37th Annual J. P. Morgan Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                      <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-audio-mpeg file--audio"> <a href="https://ir.asensus.com/static-files/e07c760b-e0d7-4f09-8290-1091b1f4d021" type="audio/mpeg" title="transenterix-inc (1).mp3">Listen to Recording</a></span><span class="filesize"> 12.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/cb7bc8f1-8f66-4924-80c7-9a766ee2015f" type="application/pdf" title="JPM 2019 Presentation Final V4.pdf">View Presentation</a></span><span class="filesize"> 3.8 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 14, 2018  12:30 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Stifel 2018 Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 8, 2018  4:30 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Third Quarter 2018 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Oct 2, 2018  9:00 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Ladenburg Thalmann 2018 Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Oct 1, 2018  5:15 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>2018 Cantor Fitzgerald Global Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Sep 24, 2018  8:00 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Acquisition of Medical Surgical Technologies Ltd.</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+        			<div class="nir-events-summary-event-details-webcast">
+                <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/m6/p/zss225e5" target="_blank">Listen to webcast</a></div>
+    </div>
+
+			</div>
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/system/files-encrypted/nasdaq_kms/assets/2018/09/23/21-47-27/TRXC%20Acquisition%20of%20MST%20Medical%20Surgery%20Technologies%209.24.18.pdf" type="application/pdf" title="TRXC Acquisition of MST Medical Surgery Technologies 9.24.18.pdf">View Presentation</a></span><span class="filesize"> 1.4 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Sep 6, 2018  3:05 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>13th Annual Wells Fargo Securities Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/78a3a8c1-2b49-4be3-bc92-5e6b8e130dce" type="application/pdf" title="TRXC Corporate Presentation Wells Fargo September 6, 2018.pdf">View Presentation</a></span><span class="filesize"> 47.3 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Aug 7, 2018  8:30 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Second Quarter 2018 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/05757239-9d83-4a46-8252-751cd1f243d6" type="application/pdf" title="TransEnterix Non-GAAP Q2 Earnings Release 8 6 18 - FINAL (post at 7am).pdf">TransEnterix 2018 Q2 Reconciliation of Non-GAAP Measures</a></span><span class="filesize"> 128.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            May 8, 2018  4:30 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix First Quarter 2018 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/0b9c0ea8-b17a-4aa7-8513-a2212191ce30" type="application/pdf" title="TransEnterix 2018 Q1 Reconciliation of Non-GAAP Measures.pdf">TransEnterix 2018 Q1 Reconciliation of Non-GAAP Measures</a></span><span class="filesize"> 112.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Mar 6, 2018  4:30 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Fourth Quarter 2017 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 21, 2018  2:05 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>RBC Capital Markets 2018 Global Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 14, 2018  1:30 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>LEERINK Partners 7th Annual Global Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jan 8, 2018  12:00 PM PST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>36th Annual J. P. Morgan Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/0b05b209-65a5-4f45-8c34-bf054058e232" type="application/pdf" title="CORRECTED_2018_JP_Morgan_final_1.6.compressed.pdf">View Presentation</a></span><span class="filesize"> 2.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 14, 2017  5:00 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Stifel 2017 Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                      <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-vnd-openxmlformats-officedocument-presentationml-slideshow file--general"> <a href="https://ir.asensus.com/static-files/76f7ef09-538c-4189-84b5-9f2a6ced1c18" type="application/vnd.openxmlformats-officedocument.presentationml.slideshow" title="2017-11-14_Stifel_FINAL_compressed.ppsx">Stifel 2017 Healthcare Conference presentation</a></span><span class="filesize"> 51 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/9f68e0c9-749d-4bc1-8e28-2701d96fbf74" type="application/pdf" title="2017-11-14_Stifel_FINAL.pdf">Stifel 2017 Healthcare Conference presentation (PDF)</a></span><span class="filesize"> 2.7 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 9, 2017  4:30 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Third Quarter 2017 Financial and Operating Results Conference Call.</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Oct 17, 2017  8:00 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>TransEnterix Investor Update Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Sep 27, 2017
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Ladenburg Thalmann 2017 Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                      <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/c3064e9b-7d6b-4382-9b6e-c584f4bc6139" type="application/pdf" title="2017-09-26_Ladenburg-Cantor.pdf">Ladenburg Thalmann Conference presentation</a></span><span class="filesize"> 3.8 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-vnd-openxmlformats-officedocument-presentationml-slideshow file--general"> <a href="https://ir.asensus.com/static-files/d60efe3f-b815-4658-85a0-ef343ef8ec2c" type="application/vnd.openxmlformats-officedocument.presentationml.slideshow" title="2017-09-26_Ladenburg-Cantor_2_.ppsx">Ladenburg Thalmann Conference presentation</a></span><span class="filesize"> 65 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        			<div class="additional-info"><span>View Additional Information</span>
+				<div class="nir-event-summary-event-details-summary additional-info-det" style="display:none;">
+
+                    
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>
+	Presentation material from the Ladenburg Thalmann 2017 Healthcare Conference. </p></div>
+          </div>
+
+
+				</div>
+			</div>
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Aug 2, 2017  4:30 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Second Quarter 2017 Financial and Operating  Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            May 10, 2017  4:30 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>First Quarter 2017 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Mar 7, 2017  8:00 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Cowen and Company 37th Annual Health Care Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                			<div class="nir-events-summary-event-details-supporting-materials">
+                    <h4>Supporting Materials</h4>
+  <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.asensus.com/static-files/0bb29878-0e9e-4ef6-b9e8-ef0b174ff099" type="application/pdf" title="TransEnterix_Corporate_Presentation_March_7_2017.pdf">View Presentation</a></span><span class="filesize"> 2.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+
+			</div>
+        
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Mar 6, 2017  4:30 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Fourth Quarter 2016 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 23, 2017  11:00 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>RBC Capital Markets Global Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 29, 2016  10:50 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>28th Annual Piper Jaffray Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 15, 2016  8:45 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Stifel 2016 Healthcare Conference</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column--2" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 9, 2016  4:30 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column--2" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+	<div class="nir-events-widget-event-details-title">
+        			<span>Third Quarter 2016 Financial and Operating Results Conference Call</span>
+        	</div>
+	<div class="nir-events-widget-event-details-expanded">
+        
+                
+        
+        
+	</div>
+</div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</div><!-- /.sutro -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+            </main>
+        </div>
+    </div>
+    
+       <footer class="site-footer site-container page page-id-2362 page-template page-template-page-about page-template-page-about-php logged-in admin-bar no-customize-support header-image full-width-content tx-banner tx-title team narrow-wrap narrow-wrap ir-page" itemscope="" itemtype="http://schema.org/WPFooter">
+ 
+               <div class="region region-footer">
+    <div id="block-footer" class="block-content--nir-pub-engine-block block--block-contentb0a3da65-f0c1-4b3f-a69f-b905f8078604 block--block-contentb0a3da65-f0c1-4b3f-a69f-b905f8078604--13531 block--footer--block-content--b0a3da65-f0c1-4b3f-a69f-b905f8078604 block--footer--block-content--b0a3da65-f0c1-4b3f-a69f-b905f8078604--13531 block--cadedb3e-b472-4933-87e2-4fc3287ed9bd block--cadedb3e-b472-4933-87e2-4fc3287ed9bd--13531 block block-block-content block-block-contentb0a3da65-f0c1-4b3f-a69f-b905f8078604">
+  
+    
+      
+            <div class="field field--name-field-pub-eng-content field--type-string-long field--label-hidden field__item"><footer role="contentinfo">
+    <div class="footer-container">
+        <div class="page-section-gradient page-section-top-gradient"></div>
+        <div class="region region-footer">
+            <div class="messages-block__wrapper">
+                <div class="messages-block__inner-wrapper">
+                    <div class="messages-block__content">
+
+                    </div>
+                </div>
+            </div>
+
+            <nav role="navigation" aria-labelledby="block-socialmedialinks-3-menu" id="block-socialmedialinks-3" class="contextual-region block block-menu navigation menu--social-media-links">
+
+              <ul class="menu">
+                <li class="menu-item">
+                  <i class="fab fa-twitter">
+                    <a href="https://twitter.com/TransEnterix" title="Twitter" target="_blank"></a>
+                  </i>
+                </li>
+                <li class="menu-item">
+                  <i class="fab fa-linkedin-in">
+                    <a href="https://www.linkedin.com/company/486080?trk=vsrp_companies_res_name&amp;trkInfo=VSRPsearchId%3A211659411455556806189%2CVSRPtargetId%3A486080%2CVSRPcmpt%3Aprimary" title="LinkedIn" target="_blank"></a>
+                  </i>
+                </li>
+                <li class="menu-item">
+                  <i class="fab fa-youtube">
+                    <a href="https://www.youtube.com/channel/UCVpVRB5Zdp-b36huf5OTx1A" title="YouTube" target="_blank"></a>
+                  </i>
+                </li>
+                <li class="menu-item">
+                  <i class="fab fa-vimeo-v">
+                    <a href="https://vimeo.com/user43974622" title="Vimeo" target="_blank"></a>
+                  </i>
+                </li>
+              </ul>
+
+
+                <!-- END OUTPUT from 'themes/senhance/templates/navigation/menu--social-media-links.html.twig' -->
+
+
+            </nav>
+
+            <nav role="navigation" aria-labelledby="block-transenterix-footer-menu"
+                 id="block-transenterix-footer" class="block block-menu navigation menu--footer">
+
+              <ul class="menu">
+                <li class="menu-item">
+                  <a href="https://asensus.com/privacy-policy" data-drupal-link-system-path="node/39">Privacy Policy</a>
+                </li>
+                <li class="menu-item">
+                  <a href="https://asensus.com/cookie-policy" data-drupal-link-system-path="node/40">Cookie Policy</a>
+                </li>
+                <li class="menu-item">
+                  <a href="https://asensus.com/social-media-policy" data-drupal-link-system-path="node/89">Social Media Policy</a>
+                </li>
+                <li class="menu-item">
+                  <a href="https://asensus.com/sitemap" data-drupal-link-system-path="sitemap">Site Map</a>
+                </li>
+                <li class="menu-item">
+                  <a href="https://www.senhance.com/us/senhance-indication">Indications for Use</a>
+                </li>
+                <li class="menu-item">
+                  <span>PPT-001-00000.007</span>
+                </li>
+              </ul>
+
+
+            </nav>
+            <div id="block-copyright"
+                 class="block block-block-content block-block-contenta41517b6-ceef-4d09-b7c3-ce6ecf55c997">
+
+
+                <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item">
+                  <p>&copy; 2021 Asensus Surgical US, Inc. All rights reserved. Senhance is a registered trademark of Asensus Surgical US, Inc. The fingerprint logo is a registered trademark of Asensus Surgical US, Inc.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</footer>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://asensus.com/themes/transenterix/css/header_and_footer.css">
+</div>
+      
+  </div>
+
+  </div>
+
+    </footer>
+    
+</div>
+
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgtransenterixinc";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5821","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid2110\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid2110","theme_token":null},"ajaxTrustedUrl":{"\/events-and-presentations":true},"user":{"uid":0,"permissionsHash":"a26ecde60e6216566a4625fd1f46d290c944be7c2377635f3cbc07f1938e0c12"}}</script>
+<script src="/sites/g/files/knoqqb22996/files/js/js_UvpjtrlXK6htzkqNuQBxr9we4xOYKvax0FZueCb4y_Y.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":727,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"39077635"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Clearway Energy, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://investor.clearwayenergy.com/events-and-presentations/presentations" />
+<meta property="og:title" content="Presentations and Webcasts | Clearway Energy, Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about Clearway Energy, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb8306/files/Clearway%20Energy_Favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="http://investor.clearwayenergy.com/events-and-presentations/presentations" />
+<link rel="canonical" href="http://investor.clearwayenergy.com/events-and-presentations/presentations" />
+<link rel="shortlink" href="http://investor.clearwayenergy.com/node/5831" />
+<link rel="revision" href="http://investor.clearwayenergy.com/events-and-presentations/presentations" />
+
+    <title>Presentations and Webcasts | Clearway Energy, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb8306/files/css/css_w5uwuaEHMC9bSP8WfARp9ZhoueTvvxceydRRR7hhmEE.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb8306/files/css/css_OrwT5SoAm14Thjz_WnA85KzSfypST8QSq9y-_tDWnag.css" />
+<link rel="stylesheet" media="all" href="//fast.fonts.net/cssapi/44808726-c5b5-4953-b5c7-82e817e56770.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb8306/files/css/css_nWqGNnvr3pZdIJ0yTtciz7Y_0abFFkS6wIOrmGlwmFU.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb8306/files/css/css_K-RK9ITQtlnQ9I-LS1vHDlJzIn782OXCKVAVCg0FHH4.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5831 page-node-5831 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div class="ndq-investors ndq-investors-info">
+	<div id="site-container">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+					<a class="navbar-brand" href="http://investor.clearwayenergy.com/"><img src="/sites/g/files/knoqqb8306/themes/site/nir_pid768/client/images/Clearway%20Energy_240.png" /></a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+				    
+    
+
+                        
+   
+    
+
+                              <ul class="nav navbar-nav">
+                  <li class="side-menu__item">
+          <a href="/about" data-drupal-link-system-path="node/9416">About</a>
+                                    <ul class="dropdown-menu">
+                  <li class="side-menu__item">
+          <a href="/about" data-drupal-link-system-path="node/9416">About</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://www.clearwayenergygroup.com/join-our-team/">Careers</a>
+                  </li>
+           </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/operations" data-drupal-link-system-path="node/9426">Operations</a>
+                                    <ul class="dropdown-menu">
+                  <li class="side-menu__item">
+          <a href="https://clearwayenergy.gcs-web.com/operations" target="" rel="">Operations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://clearwaycommunityenergy.com/">Thermal</a>
+                  </li>
+           </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance/highlights" data-drupal-link-system-path="node/5836">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">News</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="" target="" rel="">Investor Relations</a>
+                                    <ul class="dropdown-menu">
+                  <li class="side-menu__item">
+          <a href="/investor-relations" target="" rel="" data-drupal-link-system-path="node/9441">Overview</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-and-presentations/presentations" target="" rel="" data-drupal-link-system-path="node/5831" class="is-active">Presentations and Webcasts</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="" target="" rel="" class="arrow-right">Financial Information</a>
+                                    <ul class="dropdown-menu">
+                  <li class="side-menu__item">
+          <a href="/financial-information/sec-filings" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/dividend-history" target="" rel="" data-drupal-link-system-path="node/5931">Dividends and Splits</a>
+                  </li>
+           </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="#faq" target="" rel="" class="arrow-right ">FAQs</a>
+                                    <ul class="dropdown-menu">
+                  <li class="side-menu__item">
+          <a href="/nyld-stock-split-faq" target="" rel="" data-drupal-link-system-path="node/8756">Clearway Stock Split FAQs</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/investor-faqs" data-drupal-link-system-path="node/5941">Investor FAQs</a>
+                  </li>
+           </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="" target="" rel="" class="arrow-right ">Other</a>
+                                    <ul class="dropdown-menu">
+                  <li class="side-menu__item">
+          <a href="/stock-information/analyst-coverage" data-drupal-link-system-path="node/5896">Equity Analysts</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/stock-quote" data-drupal-link-system-path="node/5911">Stock Quote &amp; Chart</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/historical-price-lookup" data-drupal-link-system-path="node/5921">Historical Price Lookup</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/investment-calculator" data-drupal-link-system-path="node/5926">Investment Calculator</a>
+                  </li>
+           </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="http://investor.clearwayenergy.com/green-bonds" target="" rel="">ESG and Green Bonds</a>
+                  </li>
+           </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="http://investor.clearwayenergy.com/green-bonds">ESG</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/document-request" target="" rel="" data-drupal-link-system-path="node/5966">Contact</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://www.clearwayenergygroup.com/join-our-team/">Careers</a>
+                  </li>
+           </ul>
+  
+
+
+    
+
+  
+
+				</div>
+			</div>
+		</nav>
+		<div id="site-content" class="container-fluid">
+            <div id="header-static" class="jsresize">  <div class="region region-header-banner">
+    <div id="block-presentationsandwebcastsimg" class="block-content--nir-global-block block-content--nir-global-block--9551 block--block-content172619e7-9491-4fce-9154-ff987c3fd54b block--block-content172619e7-9491-4fce-9154-ff987c3fd54b--5831 block--header-banner--block-content--172619e7-9491-4fce-9154-ff987c3fd54b block--header-banner--block-content--172619e7-9491-4fce-9154-ff987c3fd54b--5831 block--96e8cf62-c3d3-4eb1-a8f4-cdd11758971c block--96e8cf62-c3d3-4eb1-a8f4-cdd11758971c--5831 block block-block-content block-block-content172619e7-9491-4fce-9154-ff987c3fd54b">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><img alt="presentations-header-01.jpg" data-entity-type="file" data-entity-uuid="896631b1-85e8-46f1-a0ca-5ddbc324585c" src="/system/files-encrypted/nasdaq_kms/inline-images/presentations-header-01.jpg" /></div>
+      
+</div>
+      
+  </div>
+
+  </div>
+</div>
+			 <div>
+									<div class="page-content home-layout">
+							
+						
+													<h1 class="page-title">Presentations and Webcasts</h1>
+														
+						  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid768-content" class="block--system-main-block block--system-main-block--5831 block--content--system-main-block block--content--system-main-block--5831 block--72697f9e-26cc-49e4-a4d6-263d3ea57289 block--72697f9e-26cc-49e4-a4d6-263d3ea57289--5831 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Presentations and Webcasts
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--webcast-event block--nir-events__widget block--nir-events__widget--5831 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5831 block--18177f5b-0443-4750-bb70-b2b248d9baf6 block--18177f5b-0443-4750-bb70-b2b248d9baf6--5831 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              <table border="0" width="100%" cellspacing="1" cellpadding="3">
+			<tbody>
+				
+
+<tr class="ccbnBgTxt">
+	<td width="100%" valign="top" class="ccbnBgTxt"> 
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q2-2021-clearway-energy-inc-earnings-conference-call" hreflang="en">Q2 2021 Clearway Energy, Inc. Earnings Conference Call</a></div>
+  </div>
+		<span class="ccbnTxt ndq-italic">  <span class="day-time">
+
+      
+  
+  
+            Tuesday, Aug 03 , 2021  8:00 AM EDT
+         </span>
+     <span class="noday">
+	      08/03/21 at 8:00 AM EDT
+    	 </span>
+</span>
+		<br><a class="btn btn-default btn-sm btn-wide" href="/events/event-details/q2-2021-clearway-energy-inc-earnings-conference-call" target="_self">Play</a></td>
+</tr>
+
+
+	   	  </tbody>
+	</table>
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--pastevents block--nir-events__widget block--nir-events__widget--5831 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5831 block--88cbf0f6-54b2-43ce-9e9e-2841c189810b block--88cbf0f6-54b2-43ce-9e9e-2841c189810b--5831 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+    <div class="nir-widget--content">
+          <div class="nir-widget--form">
+        <form data-drupal-selector="widget-form-base" action="/events-and-presentations/presentations" method="get" id="widget-form-base" accept-charset="UTF-8">
+  <div class="nir-widgets--field-container nir-widgets--field-container--yeartimezone js-form-wrapper form-wrapper" data-drupal-selector="edit-b20b0953-year" id="edit-b20b0953-year"><div class="two-col-field form-item js-form-item js-form-type-select form-type-select form-item-b20b0953-year-value js-form-item-b20b0953-year-value">
+      <label for="edit-b20b0953-year-value">Year</label>
+        <select data-drupal-selector="edit-b20b0953-year-value" id="edit-b20b0953-year-value" name="b20b0953_year[value]" class="form-select"><option value="_none">None</option><option value="2021" selected="selected">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option></select>
+        </div>
+</div>
+<input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Filter" class="button button--primary js-form-submit form-submit" />
+<input data-drupal-selector="edit-b20b0953-widget-id" type="hidden" name="b20b0953_widget_id" value="b20b0953" />
+<input autocomplete="off" data-drupal-selector="form-xfiat56bozvejs2gbyi6mykximllnvmimquovi-m4yw" type="hidden" name="form_build_id" value="form-xfIat56bOzVeJs2GBYI6mYKXImlLnvMImQuOvi-M4yw" />
+<input data-drupal-selector="edit-widget-form-base" type="hidden" name="form_id" value="widget_form_base" />
+
+</form>
+
+      </div>
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+        <div class="nir-widget--field nir-widget--event--date">
+        <span class="day-time">
+
+      
+  
+  
+            Tuesday, Aug 03 , 2021  8:00 AM EDT
+         </span>
+     <span class="noday">
+	      08/03/21 at 8:00 AM EDT
+    	 </span>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q2-2021-clearway-energy-inc-earnings-conference-call" hreflang="en">Q2 2021 Clearway Energy, Inc. Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+        <div class="nir-widget--field nir-widget--event--date">
+        <span class="day-time">
+
+      
+  
+  
+      
+      05/10/21
+
+         </span>
+     <span class="noday">
+	
+      05/10/21
+
+    	 </span>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/clearway-energy-inc-may-2021-investor-presentation" hreflang="en">Clearway Energy, Inc. May 2021 Investor Presentation</a></div>
+  </div>
+    </div>
+  
+  
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investor.clearwayenergy.com/static-files/4ea6c165-123e-4d4c-91f8-6c67c4be6adf" type="application/pdf" title="CWEN 2Q21 Investor Deck.pdf">Clearway Energy, Inc. May 2021 Investor Presentation</a></span><span class="filesize"> 923.3 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+        <div class="nir-widget--field nir-widget--event--date">
+        <span class="day-time">
+
+      
+  
+  
+            Thursday, May 06 , 2021  8:00 AM EDT
+         </span>
+     <span class="noday">
+	      05/06/21 at 8:00 AM EDT
+    	 </span>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q1-2021-clearway-energy-inc-earnings-conference-call" hreflang="en">Q1 2021 Clearway Energy, Inc. Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+  
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investor.clearwayenergy.com/static-files/d36c6fd3-1162-4e4e-b2c3-38582371552a" type="application/pdf" title="Clearway Energy, Inc Q1 2021vF.pdf">Clearway Energy, Inc. Reports First Quarter 2021 Financial Results</a></span><span class="filesize"> 548.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investor.clearwayenergy.com/static-files/7b12e9d0-8ee9-427e-94b0-63b4c7d0d4d1" type="application/pdf" title="CWEN 1Q21 Earnings Presentation vF2.pdf">Clearway Energy, Inc. First Quarter 2021 Earnings Presentation</a></span><span class="filesize"> 721.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list">
+
+        <div class="nir-widget--field nir-widget--event--date">
+        <span class="day-time">
+
+      
+  
+  
+            Monday, Mar 01 , 2021  8:00 AM EST
+         </span>
+     <span class="noday">
+	      03/01/21 at 8:00 AM EST
+    	 </span>
+
+    </div>
+  
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q4-2020-clearway-energy-inc-earnings-conference-call" hreflang="en">Q4 2020 Clearway Energy, Inc. Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+  
+
+  
+  
+  
+      <div class="nir-widget--field nir-widget--event--support-materials">
+
+      
+      
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investor.clearwayenergy.com/static-files/7d9fbe4d-ec77-4341-98a0-9f947fb76d2c" type="application/pdf" title="Clearway Energy, Inc Q4 2020 PRvf.pdf">Clearway Energy, Inc. Reports Fourth Quarter 2020 Financial Results</a></span><span class="filesize"> 1.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investor.clearwayenergy.com/static-files/9f1883a1-c744-4dfb-ae8c-626d6819dd5f" type="application/pdf" title="CWEN 4Q20 Earnings Presentation vf.pdf">Clearway Energy, Inc. Fourth Quarter 2020 Earnings Presentation</a></span><span class="filesize"> 812.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block-content--nir-lp-block block-content--nir-lp-block--9946 block--block-content1f86df79-d4c2-4cf0-a7f7-5359d901a880 block--block-content1f86df79-d4c2-4cf0-a7f7-5359d901a880--5831 block--contentmain--block-content--1f86df79-d4c2-4cf0-a7f7-5359d901a880 block--contentmain--block-content--1f86df79-d4c2-4cf0-a7f7-5359d901a880--5831 block--fb4eca2e-3f27-40a4-a28e-f2faa1714fab block--fb4eca2e-3f27-40a4-a28e-f2faa1714fab--5831 block block-block-content block-block-content1f86df79-d4c2-4cf0-a7f7-5359d901a880">
+  
+    
+      
+            <div class="field field--name-field-nir-lp-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-lp-block-body field--type-text-long field--label-hidden field__item"><p>This archived information is being provided as historical information only. In providing such historical information, we are not undertaking any duty to update the information. We have not reviewed the information to determine whether it remains accurate, and the information may have been superseded.</p>
+</div>
+      
+</div>
+      
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+					</div>
+				</div>
+				<div class="ndq-toolkit">
+						  <div class="region region-share-tool">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid768-tools-menu" id="block-nir-pid768-tools" class="block--system-menu-blocktools block--system-menu-blocktools--5816 block--share-tool--system-menu-block--tools block--share-tool--system-menu-block--tools--5816 block--5ca3168f-e330-4950-9874-18bc5444d03e block--5ca3168f-e330-4950-9874-18bc5444d03e--5816 block block-menu navigation block-system-menublock menu--tools">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid768-tools-menu">Tools</h2>
+    
+
+                              <ul data-block-uuid="5ca3168f-e330-4950-9874-18bc5444d03e" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="" target="" rel="" class="print">Print</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/rss-feeds" target="" rel="" class="rss" data-drupal-link-system-path="node/5951">RSS Feeds</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/email-alerts" target="" rel="" class="emailalerts" data-drupal-link-system-path="node/5946">Email Alerts</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+				</div>
+			</div>
+        
+    </div>
+	 <div id="site-footer">
+        <div class="container-fluid">
+              <div class="region region-disclaimers">
+    <div id="block-stockinfoattributionthomsonreuters-2" class="block--attribution-block__stock-info-attribution__thomson-reuters block--attribution-block__stock-info-attribution__thomson-reuters--5816 block--disclaimers--attribution-block__stock-info-attribution__thomson-reuters block--disclaimers--attribution-block__stock-info-attribution__thomson-reuters--5816 block--26b78ff9-38b2-48cf-8520-81a4f016e57f block--26b78ff9-38b2-48cf-8520-81a4f016e57f--5816 block block-nir-attribution-block block-attribution-block__stock-info-attribution__thomson-reuters">
+  
+    
+      <p>
+  Data Provided by Refinitiv. Minimum 15 minutes delayed.</p>
+
+  </div>
+
+  </div>
+
+            <p class="copyright">©2021 Clearway Energy Inc. All Rights Reserved.</p>
+        </div>
+    </div>
+
+</div>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb2417";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5831","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.filterform,nir_multimedia\/nir_multimedia,nir_pid768\/override,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid768","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"user":{"uid":0,"permissionsHash":"a681c1497de86832e00efdd307ef9367abddde2031c4e4a2b2308983613d318d"}}</script>
+<script src="/sites/g/files/knoqqb8306/files/js/js_RskRZKaP6yHwQTsD1K0aDDDcQH4_Uo_HnJY7QVfJLN8.js"></script>
+<script src="//fast.fonts.net/jsapi/758aaf8b-9e2a-41ce-87f8-c4b10cc3c22d.js"></script>
+<script src="/sites/g/files/knoqqb8306/files/js/js_ZfXhq09NWyScnUQqjt39H1lnPqn2Fq3R1h8h-V48bas.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"39077635,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":469,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

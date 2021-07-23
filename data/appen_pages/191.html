@@ -1,0 +1,3698 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://www-bench-com.sandbox.hs-sites.com/markets -->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+<!-- begin spin_special_output(head_start) -->
+<script type="text/javascript" src="js/jquery-webdriver.js" wd_script_id="jquery-webdriver.js"></script>
+<script type="text/javascript" src="js/webdriver.js" wd_script_id="webdriver.js"></script>
+<script type="text/javascript" wd_script_id="featurebox_financial_script">
+			var ir_featurebox = {
+				featureboxes: new Array,
+				ticker_data: new Array,
+
+				update: function(index, ticker, filer) {
+					var item_id = ticker || filer;
+					if (!this.featureboxes[index]) {
+						this.featureboxes[index] = {
+							ticker: ticker,
+							filer: filer,
+							chart: false,
+							size: false
+						};
+					}
+
+					if (!this.ticker_data[item_id])
+						this.ticker_data[item_id] = {};
+
+					if (ticker && webDriver.jQuery("#ir_featurebox_"+index+"-quote").length)
+						this.update_quote(index, ticker);
+
+					if (ticker && webDriver.jQuery("#ir_featurebox_"+index+"-chart").length)
+						this.update_chart(index, ticker);
+
+					if (ticker && webDriver.jQuery("#ir_featurebox_"+index+"-data").length)
+						this.update_data(index, ticker);
+
+					if (filer && webDriver.jQuery("#ir_featurebox_"+index+"-filings").length)
+						this.update_filings(index, filer);
+
+					if (webDriver.jQuery("#ir_featurebox_"+index+"-footer").length)
+						this.update_labels(index, ticker, filer);
+				},
+
+				update_labels: function(index, ticker, filer) {
+					var item_id = ticker || filer;
+					if (!this.ticker_data[item_id]["labels"]) {
+						webDriver.jQuery("#ir_featurebox_"+index+"-footer").html("");
+						webDriver.jQuery.getJSON(
+							"index.php",
+							{
+								ajax: "ir_featurebox",
+								ticker: ticker,
+								filer: filer,
+								data: "labels"
+							},
+							function(data) {
+								ir_featurebox.ticker_data[item_id]["labels"] = data;
+								ir_featurebox.update_labels(index, ticker, filer);
+							}
+						);
+					} else {
+						webDriver.jQuery("#ir_featurebox_"+index+"-footer").html(this.ticker_data[item_id]["labels"].footer);
+					}
+				}
+			};
+		</script>
+<style type="text/css" wd_script_id="ir_ticker_label_style">
+				div.wd_ticker_label {
+					text-align: right;
+					margin: 5px 0;
+				}
+				div.wd_ticker_label span.wd_exchange {
+					color: #999999;
+				}
+
+				div.wd_ticker_label span.wd_exchange:after {
+					content: ": ";
+				}
+			</style>
+<style type="text/css" wd_script_id="ir_featurebox_quote_style">
+				div.wd_quote-value {
+					margin: 5px 0 0 0;
+				}
+
+				div.wd_quote-price {
+					display: inline;
+					font-weight: bold;
+				}
+
+				div.wd_quote-change {
+					display: inline;
+					margin-left: 1ex;
+					padding-left: 15px;
+					font-weight: bold;
+				}
+
+				div.wd_quote-change:before {
+					content: "(";
+				}
+
+				div.wd_quote-change:after {
+					content: ")";
+				}
+
+				div.wd_quote-value-down div.wd_quote-change {
+					color: #cc0000;
+					background: url(images/webdriver/stockpricedown.gif) left center no-repeat;
+				}
+
+				div.wd_quote-value-up div.wd_quote-change {
+					color: #00cc00;
+					background: url(images/webdriver/stockpriceup.gif) left center no-repeat;
+				}
+			</style>
+<link href="css/wd_wcag.css" type="text/css" rel="stylesheet" wd_script_id="wd_wcag.css">
+<link href="thirdparty/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" wd_script_id="font-awesome.min.css">
+<script type="text/javascript" wd_script_id="ir_featurebox_quote_script">
+				ir_featurebox.update_quote = function(index, ticker) {
+					if (!this.ticker_data[ticker]["quote"]) {
+						webDriver.jQuery("#ir_featurebox_"+index+"-quote").html('<center><span class="wd_loading_rotate" ><span class="fa-spin fa-fw fa fa-circle-o-notch" style="font-size: 3em;"></span><span class="wd_sr-only">Loading...</span></span></center>');
+						webDriver.jQuery.get(
+							"index.php",
+							{
+								ajax: "ir_featurebox",
+								ticker: ticker,
+								data: "quote"
+							},
+							function(data) {
+								ir_featurebox.ticker_data[ticker]["quote"] = data;
+								ir_featurebox.update_quote(index, ticker);
+							}
+						);
+					} else {
+						webDriver.jQuery("#ir_featurebox_"+index+"-quote").html(this.ticker_data[ticker]["quote"]);
+					}
+				}
+			</script>
+<style type="text/css" wd_script_id="featurebox_financial_style">
+			div.wd_chart-quote-footer {
+				margin: 5px 0 0 0;
+				font-size: .75em;
+				color: #999999;
+			}
+		</style>
+<style type="text/css" wd_script_id="featureboxes_style">
+		.wd_featurebox_icon {
+			display: inline;
+		}
+		.wd_featurebox_icon img {
+			vertical-align: middle;
+		}
+		div.wd_featurebox_group div.wd_tabs_wrapper {
+			border: none;
+			border-bottom: 1px solid #E1E1E1;
+			padding: 0 0 5px 0;
+		}
+		div.wd_featurebox_group div.wd_featurebox {
+			border: none;
+			padding: 8px 0 0 0;
+		}
+		div.wd_featurebox_group li.wd_tab {
+			float: none;
+			color: #666666;
+		}
+		div.wd_featurebox_group li.wd_tab-active {
+			border: none;
+			background-color: transparent;
+			color: #000000;
+			font-weight: bold;
+		}
+		div.wd_featurebox_group li.wd_tab-inactive {
+			cursor: auto;
+		}
+	</style>
+<script type="text/javascript" src="js/wd_scriptloader.js" wd_script_id="wd_scriptloader.js"></script>
+<script type="text/javascript">webDriver.push_jQuery();</script>
+<script type="text/javascript" src="js/jquery-ui.js" wd_script_id="jquery-ui.js"></script>
+<script type="text/javascript" src="js/wd_resize.js" wd_script_id="wd_resize.js"></script>
+<link href="css/wd_modal.css" type="text/css" rel="stylesheet" wd_script_id="wd_modal.css">
+<script type="text/javascript" wd_script_id="wd_modal_script">
+(function($) {
+	webDriver.resizeModal = function() {
+		$(this).find(".wd_modal").wd_modal("resize");
+		return false;
+	}
+	
+	var modals = [];
+		
+	function _value(value, base) {
+		if (typeof value == "string" && value.indexOf("%") > 0) {
+			return  base * parseInt(value, 10) / 100;
+		} else {
+			return parseInt(value, 10);
+		}
+	}
+	
+	var wd_modal = function(element, options) {
+		this.init(element, options);
+	};
+	
+	wd_modal.prototype = {
+		init: function(element, options) {
+			var self = this;
+			
+			this.isOpen = false;
+			this.opener = null;
+			
+			this.$element = $(element);
+			this._options = {
+				autoOpen: false,
+				closeExisting: false,
+				closeOnEscape: true,
+				closeOnOverlayClick: true,
+				fadeDuration: null,
+				margin: "10%",
+				padding: 10
+			};
+			
+			this.options(options);
+			
+			this.$overlay = $("<div>").addClass("wd_modal-overlay").attr("wd_resize","resizeModal").appendTo($("body")).hide();
+			this.$outer = $("<div>").addClass("wd_modal-outer").appendTo(this.$overlay);
+			this.$inner = $("<div>").addClass("wd_modal-inner").appendTo(this.$outer).append(this.$element);
+			// Hack because I can't figure out where the extra few pixels at the bottom of the content are coming from
+			this.$inner.css("overflow-y", "hidden");
+			this.$close = $("<a class=\"wd_modal-close fa fa-times\" href=\"#close\" title=\"Close\"><span class=\"wd_sr-only\">Close Dialog<\/span><\/a>")
+					.on("click", function(event) {self.close(); event.preventDefault();})
+					.appendTo(this.$outer);
+			this.$element.addClass("wd_modal");
+			
+			if (this._options.autoOpen)
+				this.open(this._options.closeExisting);
+		},
+		
+		options: function(options) {
+			if (options) {
+				$.extend(this._options, options);
+
+				this._options.fadeDuration = parseInt(this._options.fadeDuration, 10);
+				if (isNaN(this._options.fadeDuration))
+					this._options.fadeDuration = false;
+				
+				if (!$.isArray(this._options.margin))
+					this._options.margin = [this._options.margin];
+				if (this._options.margin.length < 2)
+					this._options.margin[1] = this._options.margin[0];
+				if (this._options.margin.length < 3)
+					this._options.margin[2] = this._options.margin[0];
+				if (this._options.margin.length < 4)
+					this._options.margin[3] = this._options.margin[1];
+				
+				if (!$.isArray(this._options.padding))
+					this._options.padding = [this._options.padding];
+				if (this._options.padding.length < 2)
+					this._options.padding[1] = this._options.padding[0];
+				if (this._options.padding.length < 3)
+					this._options.padding[2] = this._options.padding[0];
+				if (this._options.padding.length < 4)
+					this._options.padding[3] = this._options.padding[1];
+			} else {
+				return this._options;
+			}
+		},
+		
+		reload: function(options) {
+			if (options) {
+				this.options(options);
+			}
+			
+			this.resize();
+		},
+		
+		open: function(closeExisting, now) {
+			if (this.isOpen)
+				return;
+			
+			var self = this;
+			var myCloseExisting = closeExisting;
+			
+			if (!this.opener)
+				this.opener = document.activeElement;
+
+			if (closeExisting && modals.length > 0) {
+				for (var i = modals.length - 1; i >= 0; --i)
+					modals[i].close(true, true);
+			}
+
+			this.$overlay.addClass("wd_modal-current");
+			$("body").append(this.$overlay);
+
+			if (!now && this._options.fadeDuration) {
+				this.$overlay.fadeIn(this._options.fadeDuration, function() {self.open(myCloseExisting, true);});
+			} else {
+				if (modals.length == 0) {
+					$("body").css("overflow","hidden");
+					$(document).on("keydown.wd_modal", function (event) {
+						var current = modals[modals.length - 1];
+						if ((event.which == 27 || event.keyCode == 27) && current._options.closeOnEscape) {
+							current.close();
+							event.stopImmediatePropagation();
+							event.preventDefault();
+						}
+					});
+				}
+
+				if (this._options.closeOnOverlayClick) {
+					this.$overlay.on("click.wd_modal", function (event) {
+						if (event.target == this) {
+							self.close();
+							event.preventDefault();
+						}
+					});
+				}
+
+				modals.push(this);
+				
+				this.$overlay.show();
+				
+				var $focus = this.$element.find(":focusable");
+				if ($focus.length > 0)
+					$focus[0].focus();
+				
+				this.isOpen = true;
+
+				this.$element.trigger("open");
+			}
+		},
+		
+		close: function(skipCurrent, now) {
+			if (!this.isOpen)
+				return;
+			
+			this.$element.trigger("beforeClose");
+			
+			// TODO: allow closing of lower modals
+			modals.pop();
+			
+			if (modals.length == 0) {
+				$("body").css("overflow","");
+				$(document).off("keydown.wd_modal");
+			}
+			
+			this.$overlay.off("click.wd_modal");
+			
+			if (this.opener) {
+				this.opener.focus();
+				this.opener = null;
+			}
+			
+			this.isOpen = false;
+			this.$overlay.removeClass("wd_modal-current").hide();
+			
+			if (!skipCurrent && modals.length > 0)
+				modals[modals.length-1].$overlay.addClass("wd_modal-current");
+			
+			this.$element.trigger("close");
+		},
+		
+		destroy: function() {
+			this.close(false, true);
+			$("body").append(this.$element);
+			this.$overlay.remove();
+		},
+		
+		resize: function() {
+			if (!this.isOpen)
+				return;
+			
+			var self = this;
+			var winWidth = $(window).width();
+			var winHeight = $(window).height();
+			
+			var margin = this._options.margin;
+			var padding = this._options.padding;
+			
+			var width = winWidth - _value(margin[1], winWidth) - _value(margin[3], winWidth) - _value(padding[1], winWidth) - _value(padding[1], winWidth);
+			var height = winHeight - _value(margin[0], winHeight) - _value(margin[2], winHeight) - _value(padding[0], winHeight) - _value(padding[2], winHeight);
+			
+			this.$inner.css("max-width", width);
+			this.$inner.css("max-height", height);
+			
+			$.each(["Top", "Right", "Bottom", "Left"], function(i, v) {
+				self.$outer.css("padding" + v, _value(padding[i])+"px");
+			});
+			
+			var fixed = this.$element.find("[wd_need_fixed_container]").is(":visible");
+			
+			this.$inner.css("width", width);
+			this.$inner.css("height", height);
+
+			webDriver.doResize(this.$inner);
+			
+			if (!fixed) {
+				this.$inner.css("width", "auto");
+				this.$inner.css("height", "auto");
+				if (this.$element.outerHeight() > height)
+					this.$inner.css("height", height);
+				if (this.$element.outerWidth() > width)
+					this.$inner.css("width", width);
+			}
+		}
+	};
+
+	$.fn.wd_modal = function(options) {
+		if (options == "exists") {
+			return !!$(this).data("wd_modal");
+		} else if (typeof options == "string") {
+            var instance = $(this).data("wd_modal");
+			if (!instance)
+				return null;
+			var args = Array.prototype.slice.call(arguments, 1);
+            return instance[options].apply(instance, args);
+        } else {
+            return this.each(function() {
+                var instance = $(this).data("wd_modal");
+                if (instance) {
+                    instance.reload(options);
+                } else {
+                    $(this).data("wd_modal", new wd_modal(this, options));
+                }
+            });
+        }
+    };
+})(webDriver.jQuery);
+</script>
+<script type="text/javascript" wd_script_id="events_tools_script">
+			function spin_event_popup(url) {
+				var $modal = webDriver.jQuery("#wd_event_modal");
+				if (url && $modal.length == 0) {
+					$modal = webDriver.jQuery('<div id="wd_event_modal">');
+					$modal.wd_modal({
+						autoOpen: false,
+					});
+				}
+
+				if (url) {
+					$modal.html("Loading...");
+					$modal.wd_modal("open");
+					if (/^https?:\/\//.test(url)) {
+						$modal.load(url, function() {webDriver.queueCallback(function() {$modal.wd_modal("resize");});});
+					} else {
+						$modal.html(url);
+						$modal.wd_modal("resize");
+					}
+				} else if ($modal.length > 0) {
+					$modal.wd_modal("close");
+				}
+			}
+		</script>
+<script type="text/javascript" wd_script_id="recaptcha2_script">
+			var recaptcha2_loaded = false;
+
+			function wd_recaptcha2_init() {
+				if (recaptcha2_loaded) {
+					$(".wd_recaptcha2_needed").each(function() {
+						grecaptcha.render(this, {"sitekey": "6LdDmR8TAAAAAJ72DH_RtavsrDUlu6g6lzvajKsK"});
+						$(this).removeClass("wd_recaptcha2_needed");
+					});
+				}
+			}
+
+			function on_recaptcha2_loaded() {
+				recaptcha2_loaded = true;
+				wd_recaptcha2_init();
+			}
+		</script>
+<style type="text/css" wd_script_id="recaptcha2_style">)
+			.g-recaptcha iframe {
+				vertical-align: bottom;
+			}
+		</style>
+<script type="text/javascript" wd_script_id="events_list_script">
+			(function($) {
+				var direction = "auto";
+				var category = "";
+				var start_date = false;
+				var limit_year = 2021;
+				var limit_month = 7;
+				var groups = [];
+
+				function load_events(clear) {
+					if (clear) {
+						$(".wd_events_list").empty();
+						$(".wd_events_none").hide();
+					}
+
+					$(".wd_events_more").hide();
+					$(".wd_events_error").hide();
+					$(".wd_events_loading").show();
+					$(".wd_events_past_summary").toggle(direction=="auto");
+
+					var limit_date;
+					if (limit_year == 2021 && limit_month == 7) {
+						limit_date = "2021-07-20";
+					} else if (direction != "past") {
+						limit_date = limit_year+"-"+limit_month+"-01";
+					} else {
+						var month = limit_month + 1;
+						if (month > 12) {
+							month -= 12;
+							limit_year += 1;
+						}
+						limit_date = limit_year+"-"+month+"-00";
+					}
+
+					var args = {
+						s: "19",
+						ajax: "ajax",
+						op: "list"
+					};
+					args.direction = (direction == "past") ? "past" : "future";
+					args.limit_date = limit_date;
+					if (start_date)
+						args.start_date = start_date;
+					if (category)
+						args.category = category;
+					for (var i = 0; i < groups.length; ++i) {
+						var group = groups[i];
+						args["group["+group.id+"]"] = group.val;
+					}
+
+					$.ajax({
+						url: "index.php",
+						data: args,
+						dataType: "json",
+						success: function(data) {
+							if (data.items.length > 0) {
+								if (direction == "auto")
+									direction = "future";
+
+								var $container = $(".wd_events_list");
+								for (var i = 0; i < data.items.length; ++i) {
+									var item = data.items[i];
+									if (item.type == "month") {
+										if ($("#"+item.id).length == 0)
+											$(".wd_events_list").append(item.content);
+										$container = $("#"+item.id).find(".wd_events_month_events");
+									} else {
+										if ($("#"+item.id).length == 0)
+											$container.append(item.content);
+									}
+								}
+
+								start_date = data.last_start;
+
+								if (data.more)
+									$(".wd_events_more").show();
+							} else if ($(".wd_events_list").children().length == 0) {
+								if (direction == "auto")
+									setTimeout(function () {set_direction("past", false);}, 10);
+								else
+									$(".wd_events_none").show();
+							}
+							
+							if (data.script) {
+								var $script = $(data.script);
+								webDriver.push_jQuery();
+								$script.appendTo($("head"));
+								webDriver.push_jQuery();
+							}
+						},
+						error: function(jqxhr, status, error) {
+							$(".wd_events_more").show();
+							$(".wd_events_error").show().text("Unable to load events ("+status+":"+error+")");
+						},
+						complete: function() {
+							$(".wd_events_loading").hide();
+						}
+					});
+				}
+
+				var month_names = {
+					 1: "January",
+					 2: "February",
+					 3: "March",
+					 4: "April",
+					 5: "May",
+					 6: "June",
+					 7: "July",
+					 8: "August",
+					 9: "September",
+					10: "October",
+					11: "November",
+					12: "December"
+				};
+
+				var prev_year = 0;
+				var prev_dir = "";
+				function update_events_inputs(reset) {
+					var new_dir = (direction == "past") ? "past" : "future";
+
+					if (new_dir != prev_dir) {
+						$(".wd_events_tab")
+							.removeClass("active")
+							.attr("aria-checked", "false")
+							.attr("tabindex", -1)
+						;
+						$(".wd_events_tab[data-direction="+new_dir+"]")
+							.addClass("active")
+							.attr("aria-checked", "true")
+							.attr("tabindex", 0)
+						;
+					}
+
+					if (new_dir != prev_dir) {
+						var min_year, max_year;
+						if (new_dir == "past") {
+							min_year = 2018;
+							max_year = 2021;
+						} else {
+							min_year = 2021;
+							max_year = 2021;
+						}
+
+						var $years = $("#wd_events_input_year");
+						var selected_year = Math.max(min_year, Math.min($years.val(), max_year));
+						$years.empty();
+						for (var year = min_year; year <= max_year; ++year) {
+							var $opt = $("<option></option>").attr("value", year).append(year);
+							$years.append($opt);
+						}
+						$years.val(selected_year);
+					}
+
+					var selected_year = $("#wd_events_input_year").val();
+					if (new_dir != prev_dir || (selected_year != prev_year && (selected_year == 2021 || prev_year == 2021))) {
+						var min_month, max_month;
+						if (selected_year != 2021) {
+							min_month = 1;
+							max_month = 12;
+						} else if (new_dir == "past") {
+							min_month = 1;
+							max_month = 7;
+						} else {
+							min_month = 7;
+							max_month = 12;
+						}
+
+						var $months = $("#wd_events_input_month");
+						var selected_month = Math.max(min_month, Math.min($months.val(), max_month));
+						$months.empty();
+						for (var month = min_month; month <= max_month; ++month) {
+							var $opt = $("<option></option>").attr("value", month).append(month_names[month]);
+							$months.append($opt);
+						}
+						$months.val(selected_month);
+					}
+
+					if (reset) {
+						$("#wd_events_input_year").val(limit_year);
+						$("#wd_events_input_month").val(limit_month);
+						$("#wd_events_input_category").val(category);
+						for (var i = 0; i < groups.length; ++i) {
+							var group = groups[i];
+							$("#wd_events_input_category_group_"+group.id).val(group.val);
+						}
+					}
+
+					prev_year = selected_year;
+					prev_dir = new_dir;
+				}
+
+				function set_direction(new_dir, update_hash) {
+					direction = new_dir;
+					limit_year = 2021;
+					limit_month = 7;
+					start_date = false;
+					update_events_inputs(true);
+					if (update_hash)
+						update_url_hash();
+					load_events(true);
+				}
+
+				var default_hash = "#auto:2021:7";
+				var prev_hash = false;
+				function hash_changed() {
+					var hash = window.location.hash;
+					if (!hash || hash == "#")
+						hash = default_hash;
+
+					if (hash == prev_hash) return;
+					prev_hash = hash;
+
+					hash = hash.substr(1);
+					var parts = hash.split(":");
+					direction = (parts.length > 0 && parts[0]) ? parts[0] : "auto";
+					limit_year = (parts.length > 1 && parts[1]) ? parseInt(parts[1]) : "2021";
+					limit_month = (parts.length > 2 && parts[2]) ? parseInt(parts[2]) : "7";
+					category = (parts.length > 3) ? parts[3] : "";
+					groups = [];
+					for (var i = 4; i < parts.length-1; i += 2)
+						groups.push({id:parseInt(parts[i]), val:parseInt(parts[i+1])});
+					start_date = false;
+
+					update_events_inputs(true);
+					load_events(true);
+				}
+
+				function update_url_hash() {
+					var hash = "#"+direction+":"+limit_year+":"+limit_month;
+					var group_hash = "";
+					for (var i = 0; i < groups.length; ++i) {
+						var group = groups[i];
+						group_hash += ":"+group.id+":"+group.val;
+					}
+					if (category || group_hash)
+						hash += ":"+category;
+					hash += group_hash;
+					prev_hash = hash;
+					window.location.hash = hash;
+				}
+
+				$(function() {
+					setTimeout(hash_changed, 10);
+
+					var liar = (navigator.userAgent.indexOf("MSIE") >= 0 && (!("documentMode" in document) || document.documentMode < 8));
+
+					if ("onhashchange" in window && !liar) {
+						window.onhashchange = function() {hash_changed();};
+					} else {
+						setInterval(hash_changed,200);
+					}
+
+					$(".wd_events_tab").on(
+						"click",
+						function(e) {
+							set_direction($(this).data("direction"), true);
+						}
+					);
+
+					$("#wd_events_input_year").on(
+						"change",
+						function(e) {
+							update_events_inputs();
+						}
+					);
+
+					$(".wd_events_input_go").on(
+						"click",
+						function(e) {
+							limit_year = parseInt($("#wd_events_input_year").val());
+							limit_month = parseInt($("#wd_events_input_month").val());
+							start_date = false;
+							category = $("#wd_events_input_category").val();
+							groups = [];
+							$(".wd_input_category_group").each(function() {
+								var group_val = $(this).val();
+								if (group_val) {
+									var group_id = this.id.replace("wd_events_input_category_group_", "");
+									groups.push({id:group_id, val:group_val});
+								}
+							});
+							update_url_hash();
+							load_events(true);
+						}
+					);
+
+					$(".wd_events_more").on(
+						"click",
+						function(e) {
+							load_events(false);
+						}
+					);
+				});
+			})(webDriver.jQuery);
+		</script>
+<script type="text/javascript" src="js/wd_wcag.js" wd_script_id="wd_wcag.js"></script>
+<style type="text/css" wd_script_id="template past_summary:events:system style">
+.wd_events_past_summary .wd_header {
+	margin: 10px 0 0 0;
+	padding: 5px 10px;
+	font-size: 125%;
+	font-weight: bold;
+	background: url("images/webdriver/events/tab_background.gif") repeat-x scroll 0 bottom #FFFFFF;
+	border: 1px solid #E1E1E1;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+.wd_events_past_summary .wd_event {
+	margin: 0 0 0.25em;
+}
+.wd_asset_type_link_list {
+	display: inline-block;
+	margin: 10px 0 0 0;
+	padding: 2px;
+}
+</style>
+<script type="text/javascript" wd_script_id="view_printable_script">
+	function view_printable() {
+		var loc = window.location;
+		var sep = (loc.search == "") ? "?" : "&";
+		var url = loc.protocol+"//"+loc.host+loc.pathname+loc.search+sep+"printable"+loc.hash;
+		window.open(url, "_blank", "");
+	}
+</script>
+<style type="text/css" wd_script_id="toolbar_style">
+			div.wd_toolbar {
+				border-top: 1px solid #cccccc;
+				border-bottom: 1px solid #cccccc;
+				margin: 15px 0px 15px 0px;
+				padding: 5px;
+				line-height: 1;
+			}
+			div.wd_toolbar-page {
+				clear: both;
+			}
+			div.wd_toolbar ul.wd_tools {
+				display: inline-block;
+				width: 100%;
+				margin: 0;
+				padding: 5px 0;
+			}
+			div.wd_toolbar ul.wd_tools li.wd_tool {
+				display: block;
+				list-style-type: none;
+				margin-right: 5px;
+				padding: 0;
+				float: right;
+			}
+			span.wd_tool_icon > a:link,
+			span.wd_tool_icon > a:visited {
+				border-radius: 2px;
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 7px;
+				font-size: 16px;
+				line-height: 1;
+				text-align: center;
+				color: #ffffff;
+				background-color: #8d8d8d;
+			}
+			span.wd_tool_icon > a:hover {
+				color: #ffffff;
+				background-color: #666666;
+				text-decoration: none;
+			}
+			div.wd_toolbar ul.wd_tools li.wd_tool-addthis {
+				float: left;
+			}
+		</style>
+<style type="text/css" wd_script_id="template page:events:system style">
+.wd_events_inputs {
+	margin: 10px 0;
+	overflow: auto;
+}
+.wd_events_inputs select {
+	margin-right: 1ex;
+}
+ul.wd_events_tabs {
+	float: right;
+	overflow: hidden;
+	margin: 5px 0;
+	padding: 0px;
+}
+li.wd_events_tab {
+	float: left;
+	display: block;
+	margin: 0;
+	border: 1px solid #666666;
+	padding: 5px;
+	cursor: pointer;
+	border: 1px solid #E1E1E1;
+}
+.wd_events_tab_label {
+}
+.wd_events_tab_label.wd_events_tab_future {
+}
+.wd_events_tab_label.wd_events_tab_past {
+}
+li.wd_events_tab:first-child {
+	border-top-left-radius:4px;
+	border-bottom-left-radius:4px;
+	-webkit-border-top-left-radius:4px;
+	-webkit-border-bottom-left-radius:4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-bottomleft: 4px;
+}
+li.wd_events_tab:last-child {
+	border-top-right-radius:4px;
+	border-bottom-right-radius:4px;
+	-webkit-border-top-right-radius:4px;
+	-webkit-border-bottom-right-radius:4px;
+	-moz-border-radius-topright: 4px;
+	-moz-border-radius-bottomright: 4px;
+}
+li.wd_events_tab.active {
+	background: url("images/webdriver/events/tab_background.gif") repeat-x scroll 0 bottom #FFFFFF;
+	color: #333;
+	font-weight: bold;
+}
+.wd_events_more {
+	margin: 10px 0;
+	cursor: pointer;
+	padding: 0 0 0 20px;
+	border: none;
+}
+.wd_event {
+	margin: 15px 0 5px 0;
+	padding: 0;
+	overflow: auto;
+}
+.wd_events_list .wd_event {
+	padding-top: 24px;
+	background: transparent url(images/webdriver/events/shadow.png) center top / 100% 14px no-repeat;
+}
+.wd_events_list .wd_event:first-child {
+	padding-top: 10px;
+	background: none;
+}
+.wd_event_sidebar {
+	float: left;
+	margin: 0 1em 0 0;
+	padding: 0;
+	width: 250px;
+}
+.wd_events-detail .wd_event_sidebar {
+	padding-bottom: 24px;
+	background: transparent url(images/webdriver/events/shadow-narrow.png) center bottom / 100% 14px no-repeat;
+}
+.wd_event_sidebar_group {
+	margin: 2em 0 0 0;
+}
+.wd_event_sidebar_item {
+	margin: 0 0 5px 0;
+}
+@media(max-width:768px){
+	ul.wd_events_tabs {
+		float: none;
+	}
+}
+.wd_events_header_container {
+	border: 0px none;
+	margin: 0 0 5px 0;
+	padding: 0 0 14px;
+}
+.wd_events_month_header {
+	margin: 10px 0 0 0;
+	padding: 5px 10px;
+	font-size: 125%;
+	font-weight: bold;
+	background: url("images/webdriver/events/tab_background.gif") repeat-x scroll 0 bottom #FFFFFF;
+	border: 1px solid #E1E1E1;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+.wd_event {
+	margin: 15px 0 5px 0;
+	padding: 0;
+	overflow: auto;
+}
+.wd_events_list .wd_event {
+	padding-top: 24px;
+	background: transparent url(images/webdriver/events/shadow.png) center top / 100% 14px no-repeat;
+}
+.wd_events_list .wd_event:first-child {
+	padding-top: 10px;
+	background: none;
+}
+.wd_event_sidebar {
+	float: left;
+	margin: 0 1em 0 0;
+	padding: 0;
+	width: 250px;
+}
+.wd_event_sidebar_group {
+	margin: 2em 0 0 0;
+}
+.wd_event_sidebar_item {
+	margin: 0 0 5px 0;
+	padding: 0 0 0 0px;
+}
+.wd_event_sidebar .wd_event_location {
+}
+.wd_event_sidebar .wd_event_location_url {
+}
+@media(max-width:768px){
+	.wd_event_sidebar {
+		float: none;
+		width: auto;
+		max-width: none;
+	}
+}
+</style>
+<script type="text/javascript">webDriver.pop_jQuery();</script>
+<script type="text/javascript" wd_script_id="subscribe_featurebox_script">
+			(function($) {
+				webDriver.subscribeClose = function(data) {
+					$(".wd_subscribe_modal").wd_modal("close");
+				};
+			
+				webDriver.subscribeSubmit = function(form, id) {
+					var $modal = $(".wd_subscribe_modal");
+					if ($modal.length == 0) {
+						$modal = $('<div class="wd_subscribe_modal" style="display:none;"></div>');
+						$modal.wd_modal({
+							autoOpen: false,
+						});
+					}
+
+					var my_form = form;
+					var form_data = $(form).serializeArray();
+
+					$modal.html('<div class="wd_loading">Loading...</div>');
+					$modal.show();
+					$modal.wd_modal("open", true);
+
+					$modal.load(
+						"https://ir.bench.com/index.php?s=147&ajax=subscribe&id="+id,
+						form_data,
+						function() {
+							disable_submit(my_form, false);
+						}
+					);
+				};
+			})(webDriver.jQuery);
+		</script>
+<script type="text/javascript" src="js/wd_form.js" wd_script_id="wd_form.js"></script>
+<link href="css/wd_form.css" type="text/css" rel="stylesheet" wd_script_id="wd_form.css">
+
+<!-- end spin_special_output(head_start) -->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+.hs-cta-wrapper p,
+.hs-cta-wrapper div {
+	margin: 0;
+	padding: 0;
+}
+a#cta_button_4349773_0ca7ac81-6b56-485f-8d08-176276f1a35e {
+	cursor: pointer;
+}
+a#cta_button_4349773_0ca7ac81-6b56-485f-8d08-176276f1a35e:hover {}
+a#cta_button_4349773_0ca7ac81-6b56-485f-8d08-176276f1a35e:active,
+#cta_button_4349773_0ca7ac81-6b56-485f-8d08-176276f1a35e:active:hover {}
+.cta-button {
+	margin: 0;
+	padding: 10px 70px 10px 25px;
+	border: 1px solid #005587;
+	min-width: 220px;
+	background: #FFFFFF;
+	overflow: inherit;
+	text-align: center;
+	box-sizing: border-box !important;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	line-height: 24px;
+	z-index: 5;
+	display: inline-block;
+	color: #777777;
+	font-size: 13px;
+	position: relative;
+	text-decoration: none;
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	-ms-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+.cta-button:before {
+	content: "\f105";
+	background-color: #FFFFFF;
+	color: #777777;
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	-ms-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+	left: auto;
+	right: 0;
+	width: 43px;
+	height: 100%;
+	line-height: 43px;
+	position: absolute;
+	top: 0;
+	text-align: center;
+	font-family: 'FontAwesome';
+	border-left: 1px solid rgba(200, 200, 200, 0.25);
+}
+.cta-button:hover {
+	border-color: #FFFFFF;
+	background: #46c0e0;
+	color: #FFFFFF;
+}
+.cta-button:hover:before {
+	width: 45px;
+	background: #46c0e0;
+	border-left: 1px solid rgba(255, 255, 255, 0.20);
+	color: #FFFFFF;
+}
+</style>
+<script async="" src="./js/async-ads.js"></script>
+<link rel="shortcut icon" href="https://cdn2.hubspot.net/hubfs/4349773/benchmark-favicon3.png">
+<!-- <script src="./js/4349773.js" type="text/javascript" id="hs-analytics"></script> -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Benchmark Electronics | Investor Relations - Investor Events</title>
+
+ <meta name="keywords" content="" />
+ <meta name="description" content="" />
+ <meta name="twitter:card" content="summary" />
+ <meta property="og:site_name" content="Benchmark Electronics | Investor Relations" />
+ <meta property="og:url" content="https://ir.bench.com/Investor-Events" />
+<script async="" src="./js/analytics.js"></script>
+<script src="./js/jquery-1.11.2.js"></script>
+<script>
+hsjQuery = window['jQuery'];
+</script>
+<link href="./css/public_common.css" rel="stylesheet">
+<!--  Added by GoogleAnalytics integration -->
+<script>
+	(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function() {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+	ga('create', 'UA-27906197-1', 'auto');
+	ga('send', 'pageview');
+</script>
+<!-- /Added by GoogleAnalytics integration -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@media (min-width: 900px) {
+	.row-fluid .mainmenu .hs-menu-wrapper ul li.active-branch a {
+		color: #ffffff !important;
+		border-bottom: 1px solid #ffffff;
+	}
+	.row-fluid .mainmenu .hs-menu-wrapper>ul>li:hover>a {
+		color: #00659f !important;
+	}
+	.row-fluid .top.fixed .mainmenu .hs-menu-wrapper>ul>li.active-branch>a {
+		color: #00659f !important;
+	}
+	.row-fluid .top.fixed .row-fluid .mainmenu .hs-menu-wrapper>ul>li:hover>a {
+		color: #FFFFFF !important;
+	}
+}
+</style>
+<meta http-equiv="content-language" content="en">
+
+<style type="text/css">
+.fancybox-margin {
+	margin-right: 15px;
+}
+</style>
+<script src="./js/jsapi" type="text/javascript"></script>
+<script type="text/javascript" async="" src="./js/cta-loaded.js"></script>
+<link type="text/css" href="./css/default+en.css" rel="stylesheet">
+<link type="text/css" href="./css/default.css" rel="stylesheet">
+<style type="text/css" id="hs-form-style039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242">
+.fn-date-picker.pika-single {
+	z-index: 9999;
+	display: block;
+	position: relative;
+	color: #333;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-bottom-color: #bbb;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	*zoom: 1
+}
+.fn-date-picker.pika-single.is-hidden {
+	display: none
+}
+.fn-date-picker.pika-single.is-bound {
+	position: absolute;
+	box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.5)
+}
+.fn-date-picker.pika-single:before,
+.fn-date-picker.pika-single:after {
+	content: " ";
+	display: table
+}
+.fn-date-picker.pika-single:after {
+	clear: both
+}
+.fn-date-picker .pika-lendar {
+	float: left;
+	width: 240px;
+	margin: 8px
+}
+.fn-date-picker .pika-title {
+	position: relative;
+	text-align: center
+}
+.fn-date-picker .pika-title select {
+	cursor: pointer;
+	position: absolute;
+	z-index: 9998;
+	margin: 0;
+	left: 0;
+	top: 5px;
+	filter: alpha(opacity=0);
+	opacity: 0
+}
+.fn-date-picker .pika-label {
+	display: inline-block;
+	*display: inline;
+	position: relative;
+	z-index: 9999;
+	overflow: hidden;
+	margin: 0;
+	padding: 5px 3px;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: bold;
+	background-color: #fff
+}
+.fn-date-picker .pika-prev,
+.fn-date-picker .pika-next {
+	display: block;
+	cursor: pointer;
+	position: relative;
+	outline: none;
+	border: 0;
+	padding: 0;
+	width: 20px;
+	height: 30px;
+	text-indent: 20px;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: transparent;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 75% 75%;
+	opacity: 0.5;
+	*position: absolute;
+	*top: 0
+}
+.fn-date-picker .pika-prev:hover,
+.fn-date-picker .pika-next:hover {
+	opacity: 1
+}
+.fn-date-picker .pika-prev.is-disabled,
+.fn-date-picker .pika-next.is-disabled {
+	cursor: default;
+	opacity: 0.2
+}
+.fn-date-picker .pika-prev,
+.fn-date-picker .is-rtl .pika-next {
+	float: left;
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAAUklEQVR42u3VMQoAIBADQf8Pgj+OD9hG2CtONJB2ymQkKe0HbwAP0xucDiQWARITIDEBEnMgMQ8S8+AqBIl6kKgHiXqQqAeJepBo/z38J/U0uAHlaBkBl9I4GwAAAABJRU5ErkJggg==");
+	*left: 0
+}
+.fn-date-picker .pika-next,
+.fn-date-picker .is-rtl .pika-prev {
+	float: right;
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAAU0lEQVR42u3VOwoAMAgE0dwfAnNjU26bYkBCFGwfiL9VVWoO+BJ4Gf3gtsEKKoFBNTCoCAYVwaAiGNQGMUHMkjGbgjk2mIONuXo0nC8XnCf1JXgArVIZAQh5TKYAAAAASUVORK5CYII=");
+	*right: 0
+}
+.fn-date-picker .pika-select {
+	display: inline-block;
+	*display: inline
+}
+.fn-date-picker .pika-table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: 0
+}
+.fn-date-picker .pika-table th,
+.fn-date-picker .pika-table td {
+	width: 14.28571%;
+	padding: 0
+}
+.fn-date-picker .pika-table th {
+	color: #999;
+	font-size: 12px;
+	line-height: 25px;
+	font-weight: bold;
+	text-align: center
+}
+.fn-date-picker .pika-table abbr {
+	border-bottom: none;
+	cursor: help
+}
+.fn-date-picker .pika-button {
+	cursor: pointer;
+	display: block;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	outline: none;
+	border: 0;
+	margin: 0;
+	width: 100%;
+	padding: 5px;
+	color: #666;
+	font-size: 12px;
+	line-height: 15px;
+	text-align: right;
+	background: #f5f5f5
+}
+.fn-date-picker .pika-button:hover {
+	color: #fff !important;
+	background: #ff8000 !important;
+	box-shadow: none !important;
+	border-radius: 3px !important
+}
+.fn-date-picker .is-today .pika-button {
+	color: #3af;
+	font-weight: bold
+}
+.fn-date-picker .is-selected .pika-button {
+	color: #fff;
+	font-weight: bold;
+	background: #3af;
+	box-shadow: inset 0 1px 3px #178fe5;
+	border-radius: 3px
+}
+.fn-date-picker .is-disabled .pika-button {
+	pointer-events: none;
+	cursor: default;
+	color: #999;
+	opacity: 0.3
+}
+.fn-date-picker .pika-week {
+	font-size: 11px;
+	color: #999
+}
+.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242 fieldset {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	max-width: 500px
+}
+.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242 fieldset.form-columns-1 .hs-input {
+	width: 95%
+}
+.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242 fieldset.form-columns-1 .input {
+	margin-right: 8px
+}
+.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242 fieldset.form-columns-1 input[type="checkbox"],
+.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242 fieldset.form-columns-1 input[type="radio"] {
+	width: auto
+}
+.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242 fieldset.form-columns-2 .hs-form-field {
+	width: 50%;
+	float: left
+}
+.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242 fieldset.form-columns-2 .input {
+	margin-right: 8px
+}
+.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242 fieldset.form-columns-3 .hs-form-field {
+	width: 32.7%;
+	float: left
+}
+.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242 fieldset.form-columns-3 .input {
+	margin-right: 8px
+}
+.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242 label.hs-hidden {
+	visibility: hidden
+}
+.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242 .hs-field-desc {
+	width: 100%
+}
+.hsformerror {
+	margin: 0 0 2px;
+	padding: 2px 6px;
+	height: auto;
+	background-color: #fdd2d0;
+	font-size: 11px;
+	border: 1px solid #fcb3af;
+	padding: 4px 16px 4px 10px;
+	color: #000;
+	display: none;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fefefe), color-stop(100%, #fdd2d0));
+	background-image: -webkit-linear-gradient(#fefefe, #fdd2d0);
+	background-image: -moz-linear-gradient(#fefefe, #fdd2d0);
+	background-image: -o-linear-gradient(#fefefe, #fdd2d0);
+	background-image: linear-gradient(#fefefe, #fdd2d0);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 0 6px #ddd;
+	-moz-box-shadow: 0 0 6px #ddd;
+	box-shadow: 0 0 6px #ddd;
+	z-index: 99999
+}
+.hsformerror em {
+	border: 10px solid;
+	border-color: #fdd2d0 transparent transparent;
+	bottom: -17px;
+	display: block;
+	height: 0;
+	left: 60px;
+	position: absolute;
+	width: 0
+}
+.hsformerror p {
+	font-family: Lucida Grande, Lucida Sans Unicode, bitstream vera sans, trebuchet ms, verdana, sans-serif;
+	margin: 0;
+	float: left;
+	margin-right: 8px
+}
+.hsformerror:hover {
+	cursor: default
+}
+.hsformerror .close-form-error {
+	float: right;
+	display: inline;
+	top: 3px;
+	position: absolute;
+	font-family: Verdana !important;
+	color: #b17c79 !important;
+	cursor: pointer !important;
+	font-size: 11px !important;
+	font-weight: normal !important
+}
+.hsformerror .close-form-error:hover {
+	color: #cc8884
+}
+@media (max-width: 400px),
+(min-device-width: 320px) and (max-device-width: 480px) {
+	form.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242:not(.hs-video-form) .form-columns-2 .hs-form-field,
+	form.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242:not(.hs-video-form) .form-columns-3 .hs-form-field {
+		float: none;
+		width: 100%
+	}
+	form.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242:not(.hs-video-form) .form-columns-2 .hs-form-field .hs-input,
+	form.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242:not(.hs-video-form) .form-columns-3 .hs-form-field .hs-input {
+		width: 95%
+	}
+	form.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242:not(.hs-video-form) .form-columns-2 .hs-form-field input[type="checkbox"],
+	form.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242:not(.hs-video-form) .form-columns-2 .hs-form-field input[type="radio"],
+	form.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242:not(.hs-video-form) .form-columns-3 .hs-form-field input[type="checkbox"],
+	form.hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242:not(.hs-video-form) .form-columns-3 .hs-form-field input[type="radio"] {
+		width: auto
+	}
+}
+.legal-consent-container .field.hs-form-field {
+	margin-bottom: 8px
+}
+.legal-consent-container .hs-field-desc.checkbox-desc {
+	margin: -12px 0 0 21px
+}
+.legal-consent-container .hs-form-booleancheckbox-display p {
+	margin: 0;
+	display: inline-block
+}
+.legal-consent-container .hs-error-msgs label {
+	color: #f2545b
+}
+.legal-consent-container~.hs_recaptcha {
+	margin-top: 18px
+}
+.cookie-reset-container {
+	font-size: 14px;
+	margin-bottom: 10px;
+	text-align: right
+}
+#hs-outer-captcha-target,
+#hs-outer-captcha-target * {
+	display: none;
+	height: 0;
+	width: 0
+}
+.hubspot-link__container {
+	font-size: 14px;
+	padding-bottom: 40px;
+	position: relative;
+	color: #9fa0a2;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+.hubspot-link-text {
+	color: #00a4bd;
+	font-weight: 400
+}
+.hubspot-link__container.sproket {
+	color: #9fa0a2
+}
+.hubspot-link {
+	text-decoration: none;
+	color: #9fa0a2
+}
+.hubspot-link:hover {
+	text-decoration: underline;
+	color: #00a4bd
+}
+.hubspot-link__icon {
+	margin-bottom: -1px;
+	margin-right: 5px
+}
+.hubspot-link__container.sproket .hubspot-link__icon {
+	width: 30px;
+	margin-right: 0px;
+	float: left;
+	margin-top: -10px;
+	margin-left: -5px
+}
+</style>
+<style type="text/css">
+.gsc-control-cse {
+	font-family: arial, sans-serif
+}
+.gsc-control-cse .gsc-table-result {
+	font-family: arial, sans-serif
+}
+.gsc-control-cse {
+	border-color: #FFFFFF;
+	background-color: #FFFFFF
+}
+input.gsc-input,
+.gsc-input-box,
+.gsc-input-box-hover,
+.gsc-input-box-focus {
+	border-color: #D9D9D9
+}
+.gsc-search-button-v2,
+.gsc-search-button-v2:hover,
+.gsc-search-button-v2:focus {
+	border-color: #666666;
+	background-color: #CECECE;
+	background-image: none;
+	filter: none
+}
+.gsc-search-button-v2 svg {
+	fill: #FFFFFF
+}
+.gsc-tabHeader.gsc-tabhInactive {
+	border-color: #E9E9E9;
+	background-color: #E9E9E9
+}
+.gsc-tabHeader.gsc-tabhActive {
+	border-color: #FF9900;
+	border-bottom-color: #FFFFFF;
+	background-color: #FFFFFF
+}
+.gsc-tabsArea {
+	border-color: #FF9900
+}
+.gsc-webResult.gsc-result,
+.gsc-results .gsc-imageResult {
+	border-color: #FFFFFF;
+	background-color: #FFFFFF
+}
+.gsc-webResult.gsc-result:hover,
+.gsc-imageResult:hover {
+	border-color: #FFFFFF;
+	background-color: #FFFFFF
+}
+.gs-webResult.gs-result a.gs-title:link,
+.gs-webResult.gs-result a.gs-title:link b,
+.gs-imageResult a.gs-title:link,
+.gs-imageResult a.gs-title:link b {
+	color: #0000CC
+}
+.gs-webResult.gs-result a.gs-title:visited,
+.gs-webResult.gs-result a.gs-title:visited b,
+.gs-imageResult a.gs-title:visited,
+.gs-imageResult a.gs-title:visited b {
+	color: #0000CC
+}
+.gs-webResult.gs-result a.gs-title:hover,
+.gs-webResult.gs-result a.gs-title:hover b,
+.gs-imageResult a.gs-title:hover,
+.gs-imageResult a.gs-title:hover b {
+	color: #0000CC
+}
+.gs-webResult.gs-result a.gs-title:active,
+.gs-webResult.gs-result a.gs-title:active b,
+.gs-imageResult a.gs-title:active,
+.gs-imageResult a.gs-title:active b {
+	color: #0000CC
+}
+.gsc-cursor-page {
+	color: #0000CC
+}
+a.gsc-trailing-more-results:link {
+	color: #0000CC
+}
+.gs-webResult .gs-snippet,
+.gs-imageResult .gs-snippet,
+.gs-fileFormatType {
+	color: #000000
+}
+.gs-webResult div.gs-visibleUrl,
+.gs-imageResult div.gs-visibleUrl {
+	color: #008000
+}
+.gs-webResult div.gs-visibleUrl-short {
+	color: #008000
+}
+.gs-webResult div.gs-visibleUrl-short {
+	display: none
+}
+.gs-webResult div.gs-visibleUrl-long {
+	display: block
+}
+.gs-promotion div.gs-visibleUrl-short {
+	display: none
+}
+.gs-promotion div.gs-visibleUrl-long {
+	display: block
+}
+.gsc-cursor-box {
+	border-color: #FFFFFF
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-page {
+	border-color: #E9E9E9;
+	background-color: #FFFFFF;
+	color: #0000CC
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+	border-color: #FF9900;
+	background-color: #FFFFFF;
+	color: #0000CC
+}
+.gsc-webResult.gsc-result.gsc-promotion {
+	border-color: #336699;
+	background-color: #FFFFFF
+}
+.gsc-completion-title {
+	color: #0000CC
+}
+.gsc-completion-snippet {
+	color: #000000
+}
+.gs-promotion a.gs-title:link,
+.gs-promotion a.gs-title:link *,
+.gs-promotion .gs-snippet a:link {
+	color: #0000CC
+}
+.gs-promotion a.gs-title:visited,
+.gs-promotion a.gs-title:visited *,
+.gs-promotion .gs-snippet a:visited {
+	color: #0000CC
+}
+.gs-promotion a.gs-title:hover,
+.gs-promotion a.gs-title:hover *,
+.gs-promotion .gs-snippet a:hover {
+	color: #0000CC
+}
+.gs-promotion a.gs-title:active,
+.gs-promotion a.gs-title:active *,
+.gs-promotion .gs-snippet a:active {
+	color: #0000CC
+}
+.gs-promotion .gs-snippet,
+.gs-promotion .gs-title .gs-promotion-title-right,
+.gs-promotion .gs-title .gs-promotion-title-right * {
+	color: #000000
+}
+.gs-promotion .gs-visibleUrl,
+.gs-promotion .gs-visibleUrl-short {
+	color: #008000
+}
+.gcsc-find-more-on-google {
+	color: #0000CC
+}
+.gcsc-find-more-on-google-magnifier {
+	fill: #0000CC
+}
+</style>
+<style type="text/css">
+.gscb_a {
+	display: inline-block;
+	font: 27px/13px arial, sans-serif
+}
+.gsst_a .gscb_a {
+	color: #a1b9ed;
+	cursor: pointer
+}
+.gsst_a:hover .gscb_a,
+.gsst_a:focus .gscb_a {
+	color: #36c
+}
+.gsst_a {
+	display: inline-block
+}
+.gsst_a {
+	cursor: pointer;
+	padding: 0 4px
+}
+.gsst_a:hover {
+	text-decoration: none !important
+}
+.gsst_b {
+	font-size: 16px;
+	padding: 0 2px;
+	position: relative;
+	user-select: none;
+	-webkit-user-select: none;
+	white-space: nowrap
+}
+.gsst_e {
+	opacity: 0.55;
+}
+.gsst_a:hover .gsst_e,
+.gsst_a:focus .gsst_e {
+	opacity: 0.72;
+}
+.gsst_a:active .gsst_e {
+	opacity: 1;
+}
+.gsst_f {
+	background: white;
+	text-align: left
+}
+.gsst_g {
+	background-color: white;
+	border: 1px solid #ccc;
+	border-top-color: #d9d9d9;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	margin: -1px -3px;
+	padding: 0 6px
+}
+.gsst_h {
+	background-color: white;
+	height: 1px;
+	margin-bottom: -1px;
+	position: relative;
+	top: -1px
+}
+.gsib_a {
+	width: 100%;
+	padding: 4px 6px 0
+}
+.gsib_a,
+.gsib_b {
+	vertical-align: top
+}
+.gssb_c {
+	border: 0;
+	position: absolute;
+	z-index: 989
+}
+.gssb_e {
+	border: 1px solid #ccc;
+	border-top-color: #d9d9d9;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	cursor: default
+}
+.gssb_f {
+	visibility: hidden;
+	white-space: nowrap
+}
+.gssb_k {
+	border: 0;
+	display: block;
+	position: absolute;
+	top: 0;
+	z-index: 988
+}
+.gsdd_a {
+	border: none !important
+}
+.gsq_a {
+	padding: 0
+}
+.gsq_a {
+	padding: 0
+}
+.gscsep_a {
+	display: none
+}
+.gssb_a {
+	padding: 0 7px
+}
+.gssb_a,
+.gssb_a td {
+	white-space: nowrap;
+	overflow: hidden;
+	line-height: 22px
+}
+#gssb_b {
+	font-size: 11px;
+	color: #36c;
+	text-decoration: none
+}
+#gssb_b:hover {
+	font-size: 11px;
+	color: #36c;
+	text-decoration: underline
+}
+.gssb_g {
+	text-align: center;
+	padding: 8px 0 7px;
+	position: relative
+}
+.gssb_h {
+	font-size: 15px;
+	height: 28px;
+	margin: 0.2em;
+	-webkit-appearance: button
+}
+.gssb_i {
+	background: #eee
+}
+.gss_ifl {
+	visibility: hidden;
+	padding-left: 5px
+}
+.gssb_i .gss_ifl {
+	visibility: visible
+}
+a.gssb_j {
+	font-size: 13px;
+	color: #36c;
+	text-decoration: none;
+	line-height: 100%
+}
+a.gssb_j:hover {
+	text-decoration: underline
+}
+.gssb_l {
+	height: 1px;
+	background-color: #e5e5e5
+}
+.gssb_m {
+	color: #000;
+	background: #fff
+}
+.gsfe_a {
+	border: 1px solid #b9b9b9;
+	border-top-color: #a0a0a0;
+	box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.gsfe_b {
+	border: 1px solid #4d90fe;
+	outline: none;
+	box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+.gssb_a {
+	padding: 0 9px
+}
+.gsib_a {
+	padding-right: 8px;
+	padding-left: 8px
+}
+.gsst_a {
+	padding-top: 5.5px
+}
+.gssb_e {
+	border: 0
+}
+.gssb_l {
+	margin: 5px 0
+}
+input.gsc-input::-webkit-input-placeholder {
+	font-size: 14px
+}
+input.gsc-input:-moz-placeholder {
+	font-size: 14px
+}
+input.gsc-input::-moz-placeholder {
+	font-size: 14px
+}
+input.gsc-input:-ms-input-placeholder {
+	font-size: 14px
+}
+input.gsc-input:focus::-webkit-input-placeholder {
+	color: transparent
+}
+input.gsc-input:focus:-moz-placeholder {
+	color: transparent
+}
+input.gsc-input:focus::-moz-placeholder {
+	color: transparent
+}
+input.gsc-input:focus:-ms-input-placeholder {
+	color: transparent
+}
+.gssb_c .gsc-completion-container {
+	position: static
+}
+.gssb_c {
+	z-index: 5000
+}
+.gsc-completion-container table {
+	background: transparent;
+	font-size: inherit;
+	font-family: inherit
+}
+.gssb_c>tbody>tr,
+.gssb_c>tbody>tr>td,
+.gssb_d,
+.gssb_d>tbody>tr,
+.gssb_d>tbody>tr>td,
+.gssb_e,
+.gssb_e>tbody>tr,
+.gssb_e>tbody>tr>td {
+	padding: 0;
+	margin: 0;
+	border: 0
+}
+.gssb_a table,
+.gssb_a table tr,
+.gssb_a table tr td {
+	padding: 0;
+	margin: 0;
+	border: 0
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<link href="./css/layout.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/KALAHARI_Theme_2017.css">
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="js/slick.js" type="text/javascript"></script>
+<script src="js/script.js" type="text/javascript"></script>
+<script type='text/javascript'>
+window.__lo_site_id = 205662;
+(function() {
+    var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+    wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+})();
+</script>
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+        
+        if (window.matchMedia("(min-width: 992px)").matches) {
+
+            $('.header_section .main-navigation > ul > li:first-child > .sub-menu > li').wrapAll('<div class="menuwrap"></div>');
+            $('.menu_ctabox1').insertBefore('.header_section .main-navigation > ul > li:first-child > .sub-menu .menuwrap');
+
+            $('.header_section .main-navigation > ul > li:nth-child(4) > .sub-menu > li').wrapAll('<div class="menuwrap"></div>');
+            $('.menu_ctabox2').insertBefore('.header_section .main-navigation > ul > li:nth-child(4) > .sub-menu .menuwrap');      
+
+            $('.header_section .main-navigation > ul > li:nth-child(5) > .sub-menu > li').wrapAll('<div class="menuwrap"></div>');
+            $('.menu_ctabox3').insertBefore('.header_section .main-navigation > ul > li:nth-child(5) > .sub-menu .menuwrap');      
+
+            $('.header_section .main-navigation > ul > li:nth-child(6) > .sub-menu > li').wrapAll('<div class="menuwrap"></div>');
+            $('.menu_ctabox4').insertBefore('.header_section .main-navigation > ul > li:nth-child(6) > .sub-menu .menuwrap');      
+
+            $('.header_section .main-navigation > ul > li:nth-child(2) > a + .sub-menu > li').wrapAll('<div class="menutitle menutitle1"></div>');
+            $('<div class="menutabs menutabs1"></div>').insertAfter('.header_section .main-navigation ul li:nth-child(2) > .sub-menu .menutitle1');
+            $('.header_section .main-navigation ul li:nth-child(2) .menutitle1 li .sub-menu').appendTo('.menutabs');
+
+            $('.main-navigation ul li .sub-menu .menutitle1 li').each(function(i,val){
+             $(this).attr('data-menu','menutab'+i);
+            });
+
+            $('.main-navigation ul li .sub-menu .menutabs1 ul.sub-menu').each(function(i,val){
+             $(this).attr('data-menu','menutab'+i);
+            });
+
+            $('.main-navigation ul li .sub-menu .menutitle1 li:first-child').addClass('active');
+            $('.main-navigation ul li .sub-menu .menutabs1 ul.sub-menu:first-child').addClass('active');
+            $(".main-navigation ul li .sub-menu .menutitle1 li").hover(function(){
+                var index = $(this).attr('data-menu');
+                $('.menutabs1 ul.sub-menu[data-menu='+index+']').addClass('active');
+                $('.menutabs1 ul.sub-menu[data-menu!='+index+']').removeClass('active');
+                $('.main-navigation ul li .sub-menu .menutitle1 li').not(this).removeClass('active');
+                $(this).addClass('active');
+            });
+
+           
+            $('.header_section .main-navigation > ul > li:nth-child(3) > a + .sub-menu > li').wrapAll('<div class="menutitle menutitle2"></div>');
+            $('<div class="menutabs menutabs2"></div>').insertAfter('.header_section .main-navigation ul li:nth-child(3) > .sub-menu .menutitle2');
+            $('.header_section .main-navigation ul li:nth-child(3) .menutitle2 > li > .sub-menu').appendTo('.menutabs2');
+            
+            $('.main-navigation ul li .sub-menu .menutitle2 li').each(function(i,val){
+             $(this).attr('data-menu','menutabtd'+i);
+            });
+
+            $('.main-navigation ul li .sub-menu .menutabs2 > ul.sub-menu').each(function(i,val){
+             $(this).attr('data-menu','menutabtd'+i);
+            }); 
+
+            $('.main-navigation ul li .sub-menu .menutitle2 li:first-child').addClass('active');
+            $('.main-navigation ul li .sub-menu .menutabs2 ul.sub-menu:first-child').addClass('active');
+            $(".main-navigation ul li .sub-menu .menutitle2 li").hover(function(){
+                var index = $(this).attr('data-menu');
+                $('.menutabs2 ul.sub-menu[data-menu='+index+']').addClass('active');
+                $('.menutabs2 ul.sub-menu[data-menu!='+index+']').removeClass('active');
+                $('.main-navigation ul li .sub-menu .menutitle2 li').not(this).removeClass('active');
+                $(this).addClass('active');
+            });
+            
+            $('.menucontent_area1').appendTo('.header_section .main-navigation ul li:nth-child(3) .sub-menu .menutabs2 .sub-menu:nth-child(3)');
+            $('.menucontent_area2').appendTo('.header_section .main-navigation ul li:nth-child(3) .sub-menu .menutabs2 .sub-menu:nth-child(4)');
+            $('.menucontent_area3').appendTo('.header_section .main-navigation ul li:nth-child(3) .sub-menu .menutabs2 .sub-menu:nth-child(5)'); 
+
+            $('.header_section .main-navigation ul li:nth-child(3) > a + .sub-menu > div').wrapAll('<div class="menuwrap_cover fl100"></div>');
+            $('.menusub_strip').insertAfter('.menuwrap_cover');
+            
+            $('.menusub_strip .menustrip').each(function(i,val){
+             $(this).attr('data-menu','menutabtd'+i);
+            }); 
+
+            $('.menusub_strip .menustrip:first-child').addClass('active');
+            $(".main-navigation ul li .sub-menu .menutitle2 li").hover(function(){
+                var index = $(this).attr('data-menu');
+                $('.menusub_strip .menustrip[data-menu='+index+']').addClass('active');
+                $('.menusub_strip .menustrip[data-menu!='+index+']').removeClass('active');
+                $('.main-navigation ul li .sub-menu .menutitle2 li').not(this).removeClass('active');
+                $(this).addClass('active');
+            });
+
+            $('.search_btn').click(function(event) {
+             event.stopPropagation();
+             $('body').addClass('search_open');
+            });
+
+            $('.search_input').click(function(e) {
+             e.stopPropagation(); 
+            });
+
+            $("body").click(function() {
+             $('body').removeClass('search_open');
+            });
+        }
+       
+        if (window.matchMedia("(max-width: 991px)").matches) {
+            
+            $('.main-navigation').before('<a class="mobile-trigger"><i></i></a>');
+            $('.main-navigation li ul.sub-menu').before('<a class="child-triggerm"><span></span></a>');
+          
+
+             
+            $('.header_section .search_box').insertAfter('.header_section .main-navigation > ul');
+            $('.menu_ctabox1').insertBefore('.header_section .main-navigation > ul > li:first-child > .sub-menu li:first-child');
+            $('.menu_ctabox2').insertBefore('.header_section .main-navigation > ul > li:nth-child(4) > .sub-menu li:first-child');      
+            $('.menu_ctabox3').insertBefore('.header_section .main-navigation > ul > li:nth-child(5) > .sub-menu > li:first-child');      
+            $('.menu_ctabox4').insertBefore('.header_section .main-navigation > ul > li:nth-child(6) > .sub-menu li:first-child');   
+
+        }
+
+        //These are event handlers, don't need to be inside matchMedia
+
+            $('a.mobile-trigger').click(function () {
+                $(this).next('.main-navigation').slideToggle(250);
+                $('body').toggleClass('mobile-open');
+                $('a.child-triggerm').removeClass('child-open');
+                $('.sub-menu').slideUp(250);
+                return false;
+            });
+            
+            $('.main-navigation a.child-triggerm').click(function () {
+                $(this).parent().siblings('li').find('a.child-triggerm').removeClass('child-open');
+                $(this).parent().siblings('li').find('.sub-menu').slideUp(250);
+                $(this).parent().siblings('li').removeClass('child_open');
+                $(this).next('.sub-menu').slideToggle(250);
+                $(this).next('.sub-menu').children('li').find('.sub-menu').slideUp(250);
+                $(this).next('.sub-menu').children('li').find('a.child-triggerm').removeClass('child-open');
+                $(this).toggleClass('child-open');
+                $(this).parent().toggleClass('child_open');
+                return false;
+            });
+ 
+    });
+
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="css/wdcontent.css">
+<link rel="stylesheet" type="text/css" href="css/wd_media_query.css">
+
+<link rel="stylesheet" type="text/css" href="css/wd_nav_resp.css">
+
+<!-- begin spin_special_output(head_end) -->
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=on_recaptcha2_loaded&render=explicit&hl=en-US" wd_script_id="api.js?onload=on_recaptcha2_loaded&render=explicit&hl=en-US"></script>
+<link rel="canonical" href="https://ir.bench.com/Investor-Events" />
+<!-- end spin_special_output(head_end) -->
+</head>
+<body class="wd_pageid_19 appear-animate   hs-content-id-6132431548 hs-site-page page " style="">
+<header class="header_section fl100" style="z-index: 50;">
+  
+   <div class="header_main fl100">
+         
+         <div class="logo">
+             <a href="https://www.bench.com/"><img src="images/logo.png" alt=""></a>
+         </div>
+
+        <div class="mainmenu">
+            <nav class="main-navigation">
+                <ul>
+                <li><a href="https://www.bench.com/benchmark-markets">Markets</a>
+
+                <ul class="sub-menu">
+                  <li><a href="https://www.bench.com/aerospace">Commercial Aerospace</a></li>
+                  <li><a href="https://www.bench.com/computing">Complex Industrial</a></li>
+                  <li><a href="https://www.bench.com/industrial">Computing & Data Center</a></li>
+                  <li><a href="https://www.bench.com/defense">Defense</a></li>
+                  <li><a href="https://www.bench.com/medical-technologies">Medical</a></li>
+                  <li><a href="https://www.bench.com/nextgen-telco">NextGen Telco</a></li>
+                  <li><a href="https://www.bench.com/semi-cap">Semi-Cap Equipment</a></li>
+                </ul>
+
+                </li>
+                <li><a href="https://www.bench.com/capabilities">Capabilities</a>
+                    <ul class="sub-menu">
+                      
+                      <li>
+                        <a href="https://www.bench.com/innovation-centers">Innovation Capabilities</a>
+                        <ul class="sub-menu">
+                            <li><a href="https://www.bench.com/iot-solutions">Connected Devices</a></li>
+                            <li><a href="https://www.bench.com/secure/capabilities/innovation-capabilities/defense-systems">Defense Systems</a></li>
+                            <li><a href="https://www.bench.com/ic-embedded-electronics" >Embedded Electronics</a></li>
+                            <li><a href="https://www.bench.com/fiber-optics">Fiber Optics </a></li>
+                            <li><a href="https://www.bench.com/fluid-management">Fluid Management</a></li>
+                            <li><a href="https://www.bench.com/free-space-optics">Free Space Optics</a></li>
+                            <li><a href="https://www.bench.com/lark/high-speed-circuit-design">High Speed &amp; RF circuits</a></li>
+                            <li><a href="https://www.bench.com/ic-human-machine-integration">Human/Machine Integration</a></li>
+                            <li><a href="https://www.bench.com/optical-imaging">Imaging</a></li>
+                            <li><a href="https://www.bench.com/ic-mechatronics">Mechatronics &amp; Robotics</a></li>
+                            <li><a href="https://www.bench.com/miniaturization-micro-e">Miniaturization</a></li>
+                            <li><a href="https://www.bench.com/photonics">Photonics</a></li>
+                            <li><a href="https://www.bench.com/power-conversion">Power Management</a></li>
+                            <li><a href="https://www.bench.com/secure/capabilities/innovation-capabilities/ruggedization">Ruggedization</a></li>
+                            <li><a href="https://www.bench.com/space">Space systems</a></li>
+                        </ul>
+                      </li>
+
+                      <li>
+                        <a href="https://www.bench.com/engineering-capabilities">Engineering Capabilities </a>
+                            <ul class="sub-menu">
+                                <li><a href="https://www.bench.com/product-design-launch"> Product design &amp; launch</a></li>
+                                <li><a href="https://www.bench.com/rapid-prototyping"> Rapid Prototyping</a></li>
+                                <li><a href="https://www.bench.com/electrical-design"> Electrical design</a></li>
+                                <li><a href="https://www.bench.com/electro-mechanical-design"> Electro-mechanical design</a></li>
+                                <li><a href="https://www.bench.com/optical-design"> Electro-optical design</a></li>
+                                <li><a href="https://www.bench.com/industrial-design"> Industrial design</a></li>
+                                <li><a href="https://www.bench.com/mechanical-design"> Mechanical design</a></li>
+                                <li><a href="https://www.bench.com/pcb-layout"> PCB layout</a></li>
+                                <li><a href="https://www.bench.com/software-design"> Software engineering</a></li>
+                                <li><a href="https://www.bench.com/design-for-excellence"> Design for Excellence</a></li>
+                                <li><a href="https://www.bench.com/test-automation-design"> Automation &amp; test design</a></li>
+                            </ul>
+                      </li>
+
+                      <li>
+                        <a href="https://www.bench.com/expert-manufacturing-services"> Advanced Manufacturing</a>
+                        <ul class="sub-menu">
+                            <li><a href="https://www.bench.com/lark/high-speed-circuit-fabrication">Circuit Fabrication</a></li>
+                            <li><a href="https://www.bench.com/precision-technologies">Mechanical &amp; Precision Machining</a></li>
+                            <li><a href="https://www.bench.com/mechatronics">Mechatronics</a></li>
+                            <li><a href="https://www.bench.com/microelectronics">Microelectronics</a></li>
+                            <li><a href="https://www.bench.com/pcb-assembly">PCB Assembly &amp; SMT</a></li>
+                            <li><a href="https://www.bench.com/system-build">System build</a></li>
+                            <li><a href="https://www.bench.com/test-automation-design">Test</a></li>
+                        </ul>
+                      </li>
+
+                      <li>
+                        <a href="https://www.bench.com/lifecycle-management"> Lifecycle Management</a>
+                        <ul class="sub-menu">
+                            <li><a href="https://www.bench.com/product-design-launch">Product design &amp; launch</a></li>
+                            <li><a href="https://www.bench.com/new-product-introduction">New Product Introduction</a></li>
+                            <li><a href="https://www.bench.com/supply-chain-management">Supply Chain Management</a></li>
+                            <li><a href="https://www.bench.com/after-market-solutions">After market solutions</a></li>
+                        </ul>   
+                      </li>
+
+                    </ul>
+                </li>
+                
+                <li><a href="https://www.bench.com/technology-solutions">Technology Solutions</a>
+                    <ul class="sub-menu">
+                      
+                      <li>
+                        <a href="https://www.bench.com/lark"> Lark Technology</a>
+                        <ul class="sub-menu">
+                            <li><a href="https://www.bench.com/lark/high-speed-circuit-design">High Performance Circuits</a>
+                                <ul class="sub-menu">
+                                    <li><a href="https://www.bench.com/lark/3-5g-high-frequency-design-and-testing">RF design</a></li>
+                                    <li><a href="https://www.bench.com/lark/miniaturization-and-packaging">Miniaturization</a></li>
+                                    <li><a href="https://www.bench.com/lark/embedded-components">Embedded components</a></li>
+                                    <li><a href="https://www.bench.com/lark/thermal-management-and-cooling">Thermal management</a></li>
+                                    <li><a href="https://www.bench.com/lark/cryogenic-materials-parts-and-processes">Cryogenic computing</a></li>
+                                    <li><a href="https://www.bench.com/lark/high-performance-substrate-materials">Sustrate Materials</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="https://www.bench.com/lark/smt-micro-electronics-assembly-and-packaging" >Integration and Test</a>
+                                <ul class="sub-menu">
+                                    <li><a href="https://www.bench.com/lark/microelectronics-assembly"> Microelectronics</a></li>
+                                    <li><a href="https://www.bench.com/lark/mixed-and-hybrid-assembly"> Mixed &amp; Hybrid</a></li>
+                                    <li><a href="https://www.bench.com/pcb-assembly">SMT</a></li>
+                                    <li><a href="https://www.bench.com/lark/millimeter-wave-mmw-testing">Functional Test</a></li>
+                                </ul> 
+                            </li>
+                            <li style="padding-right: 0 !important; width: 40% !important;"><a style="text-align: center;" href="https://www.bench.com/lark/rf-components-solutions">RF components &amp; solutions</a>
+                                <ul class="sub-menu">
+                                    <li style="width: 50%;"><a href="https://www.bench.com/lark/tunable-filters">Tunable Filters</a></li>
+                                    <li style="width: 50%;"><a href="https://www.bench.com/lark/multiplexers">Multiplexers</a></li>
+                                    <li style="width: 50%;"><a href="https://www.bench.com/lark/multifunction-assemblies">Multifunction Assemblies</a></li>
+                                    <li style="width: 50%;"><a href="https://www.bench.com/lark/amplifiers">Amplifiers</a></li>
+                                    <li style="width: 50%;"><a href="https://www.bench.com/lark/high-power-products">High Power Products</a></li>
+                                    <li style="width: 50%;"><a href="https://www.bench.com/lark/online-filter-design-tools">Filter Design Tool</a></li>
+                                    <li style="width: 50%;"><a href="https://www.bench.com/lark/rf-components-support"> Customer Support</a></li>
+                                    <li style="width: 50%;"><a href="https://www.bench.com/lark/switch-filter-banks">Switch Filter Banks</a></li>
+                                    <li style="width: 50%;"><a href="https://www.bench.com/lark/bandpass-highpass-and-lowpass-filters">Bandpass, Highpass, & Lowpass Filters</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                      </li>
+
+                       <li>
+                        <a href="https://www.bench.com/secure"> Secure Technology</a>
+                        <ul class="sub-menu">
+                            <li><a href="https://www.bench.com/secure/capabilities/innovation-capabilities/defense-systems"> System-Enabling Solutions</a>
+                                <ul class="sub-menu">
+                                    <li><a href="https://www.bench.com/secure/capabilities/engineering-capabilities/product-design-launch">Product Design &amp; Launch</a></li>
+                                    <li><a href="https://www.bench.com/secure/capabilities/innovation-capabilities/system-integration">Sub-System integration</a></li>
+                                    <li><a href="https://www.bench.com/secure/retrofitting">Retrofitting</a></li>
+                                    <li><a href="https://www.bench.com/secure/capabilities/engineering-capabilities/product-re-design-optimization">Re-design &amp; optimization</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="https://www.bench.com/secure/capabilities/engineering-capabilities"> Engineering Capabilities</a>
+                                <ul class="sub-menu">
+                                    <li><a href="https://www.bench.com/secure/cots-integration">COTS Integration</a></li>
+                                    <li><a href="https://www.bench.com/secure/capabilities/innovation-capabilities/data-over-power">Data over power</a></li>
+                                    <li><a href="https://www.bench.com/secure/design-to-spec">Design to Spec</a></li>
+                                    <li><a href="https://www.bench.com/secure/capabilities/engineering-capabilities/design-modeling">Design Modeling</a></li>
+                                    <li><a href="https://www.bench.com/secure/capabilities/innovation-capabilities/electro-optical-engineering"> Electro-optical design</a></li>
+                                    <li><a href="https://www.bench.com/secure/human-machine-interface"> Human-machine integration</a></li>
+                                </ul> 
+                            </li>
+                            <li><a> Technology Platforms</a>
+                                <ul class="sub-menu">
+                                    <li><a href="https://www.bench.com/secure/technology-solutions/integrated-surveillance-solution"> Integrated Surveillance Solution</a></li>
+                                    <li><a href="https://www.bench.com/secure/technology-solutions/ruggedized-imaging-systems"> Ruggedized Imaging Systems</a></li>
+                                    <li><a href="https://www.bench.com/secure/technology-solutions/ruggedized-compute"> Ruggedized Compute</a></li>
+                                    <li><a href="https://www.bench.com/secure/technology-solutions/training-range-monitoring-systems"> Tranining Range Monitoring Systems</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="https://www.bench.com/secure/capabilities/manufacturing-capabilities"> Manufacturing Capbilities</a>
+                                <ul class="sub-menu"> 
+                                    <li><a href="https://www.bench.com/secure/system-build">System build</a></li>
+                                    <li><a href="https://www.bench.com/pcb-assembly">PCB Assembly &amp; SMT</a></li>
+                                    <li><a href="https://www.bench.com/secure/mechatronics"> Mechatronics</a></li>
+                                    <li><a href="https://www.bench.com/secure/capabilities/manufacturing-capabilities/information-assurance-manufacturing"> Information Assurance Manufacturing</a></li>
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                      </li>
+
+                      <li>
+                        <a href="https://www.bench.com/precision-technologies">Precision Technology </a>
+                        <ul class="sub-menu">
+                             
+                        </ul>
+                      </li>
+
+                      <li>
+                        <a href="https://www.bench.com/iot-solutions">Connected Technology</a>
+                        <ul class="sub-menu">
+                             
+                        </ul>
+                      </li>
+
+                      <li>
+                           <a href="https://www.bench.com/advance-technology">Advanced Technology </a>
+                         <ul class="sub-menu">
+                             
+                        </ul>
+                      </li>
+
+                    </ul>
+                </li>
+                
+                <li><a href="https://www.bench.com/about-us">About</a>
+                    <ul class="sub-menu">
+                      <li><a href="https://www.bench.com/our-history">Our History</a></li>
+                      <li><a href="https://www.bench.com/worldwide-locations">Locations</a></li>
+                      <li><a href="https://www.bench.com/leadership-team">Leadership Team</a></li>
+                      <li><a href="https://www.bench.com/board-of-directors">Board of Directors</a></li>
+                      <li><a href="https://www.bench.com/certifications-registrations">Certifications &amp; Registrations</a></li>
+                      <li><a href="https://www.bench.com/sustainability">Sustainability</a></li>
+                      <li><a href="https://www.bench.com/supply-chain">Suppliers</a></li>
+                      <li><a href="https://www.bench.com/benchmark-resources">Resources</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="https://ir.bench.com/Investor-Relations ">Investors</a>
+                 
+                        <ul class="sub-menu">
+		<li><a href="https://ir.bench.com/Financial-Reporting" target="_self" role="menuitem">Financial Reporting</a><ul class="sub-menu">
+			<li><a href="https://ir.bench.com/Quarterly-Results" target="_self" role="menuitem">Quarterly Results</a></li>
+			<li><a href="https://ir.bench.com/Annual-Report" target="_self" role="menuitem">Annual Report </a></li>
+			<li><a href="image/Benchmark-Proxy-2021.pdf" target="_blank" role="menuitem">Proxy Statement</a></li>
+			<li><a href="https://ir.bench.com/SEC-Filings" target="_self" role="menuitem">SEC Filings</a></li>
+</ul>
+</li>
+		<li><a href="https://ir.bench.com/Stock-Information" target="_self" role="menuitem">Stock Information</a><ul class="sub-menu">
+			<li><a href="https://ir.bench.com/Interactive-Chart" target="_self" role="menuitem">Interactive Chart</a></li>
+			<li><a href="https://ir.bench.com/Historical-Stock-Price" target="_self" role="menuitem">Historical Stock Price</a></li>
+			<li><a href="https://ir.bench.com/key-ratios" target="_self" role="menuitem">Key Ratios</a></li>
+			<li><a href="https://ir.bench.com/Analyst-Coverage" target="_self" role="menuitem">Analyst Coverage</a></li>
+</ul>
+</li>
+		<li><a href="https://ir.bench.com/Corporate-Governance" target="_self" role="menuitem">Corporate Governance</a><ul class="sub-menu">
+			<li><a href="https://www.bench.com/leadership-team" target="_self" role="menuitem">Leadership Team</a></li>
+			<li><a href="https://www.bench.com/board-of-directors" target="_self" role="menuitem">Board Of Directors</a></li>
+			<li><a href="Corporate-Governance" target="_self" role="menuitem">Committee Charters </a></li>
+			<li><a href="Corporate-Governance" target="_self" role="menuitem">Code Of Conduct</a></li>
+			<li><a href="Corporate-Governance" target="_self" role="menuitem">Corp Gov Guidelines</a></li>
+</ul>
+</li>
+		<li><a href="https://ir.bench.com/News-Releases" target="_self" role="menuitem">News Releases</a></li>
+		<li><a href="https://ir.bench.com/Investor-Events" target="_self" role="menuitem">Investor Events</a></li>
+		<li><a href="https://ir.bench.com/Investor-FAQs" target="_self" role="menuitem">Investor FAQs</a></li>
+		<li><a href="https://www.bench.com/sustainability" target="_blank" role="menuitem">Sustainability</a></li>
+	</ul>
+                </li>
+
+                <li><a href="https://www.bench.com/contact">Connect</a>
+                 
+                     <ul class="sub-menu">
+                          <li><a href="https://www.bench.com/contact">Contact Us</a></li>
+                          <li><a href="https://www.bench.com/setting-the-benchmark">Benchmark Blog</a></li>
+                          <li><a href="https://www.bench.com/bench_news">In The News</a></li>
+                          <li><a href="https://www.bench.com/technology-events">Events</a></li>
+                          <li><a href="https://www.bench.com/careers" target="_blank">Careers </a></li>
+                          <li><a href="https://time2.bench.com/" target="_blank">Customers</a></li>
+                        </ul>
+                </li>
+                <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.bench.com/careers" role="menuitem">Careers</a></li>
+                </ul>
+            </nav>
+
+            <div class="menu_ctabox menu_ctabox1">
+                <h3>Benchmark Markets</h3>
+                <div class="ctabox_text fl100">
+                    Engineering, manufacturing, and technology solutions for markets that demand high-reliability.
+                </div>
+                <div class="ctabox_btn fl100">
+                    <a href="https://www.bench.com/benchmark-markets">Learn More</a>
+                </div>
+            </div>
+
+            <div class="menu_ctabox menu_ctabox2">
+                <h3>About</h3>
+                <div class="ctabox_text fl100">
+                    Our vision is to positively impact lives by solving complex challenges with our customers, creating innovative products that no one imagined were possible.
+                </div>
+                <div class="ctabox_btn fl100">
+                    <a href="https://www.bench.com/about-us">Learn More</a>
+                </div>
+            </div>
+
+
+            <div class="menu_ctabox menu_ctabox3">
+                <h3>Investors</h3>
+                <div class="ctabox_text fl100">
+                    Bridging the gap between innovation and marketability
+                </div>
+                <div class="ctabox_btn fl100">
+                    <a href="http://bench.investorroom.com/Investor-Relations">Learn More</a>
+                </div>
+            </div>
+
+            <div class="menu_ctabox menu_ctabox4">
+                <h3>Connect</h3>
+                <div class="ctabox_text fl100">
+                    Your full solution partner of choice
+                </div>
+                <div class="ctabox_btn fl100">
+                    <a href="https://www.bench.com/contac">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="menucontent_area menucontent_area1 fl100">
+                <div class="menucontent_left">
+                    <h3> Precision Technology  </h3>
+                    <div class="menucontent_text fl100">From analytics to prototypes, precision engineering to production, assembly to supply chain management, our global team provides premier experience and complex  </div>
+                    <div class="menucontent_btn fl100">
+                       <a href="https://www.bench.com/precision-technologies">Learn More</a>
+                    </div>
+                </div>
+                <div class="menucontent_right" style="background:url('./images/menuimg1.png') no-repeat center center;"></div>
+            </div>
+
+            <div class="menucontent_area menucontent_area2 fl100">
+                <div class="menucontent_left">
+                    <h3> Connected Device Technology</h3>
+                    <div class="menucontent_text fl100">A flexible development team for connected devices that collect relevant, reliable data for smart city, medical, and complex industrial applications.</div>
+                    <div class="menucontent_btn fl100">
+                       <a href="https://www.bench.com/iot-solutions">Learn More</a>
+                    </div>
+                </div>
+                <div class="menucontent_right" style="background:url('./images/menuimg1.png') no-repeat center center;"></div>
+            </div>
+
+            <div class="menucontent_area menucontent_area3 fl100">
+                <div class="menucontent_left">
+                    <h3> Advanced Technology</h3>
+                    <div class="menucontent_text fl100">From analytics to prototypes, precision engineering to production, assembly to supply chain management, our global team provides premier experience and complex</div>
+                    <div class="menucontent_btn fl100">
+                       <a href="https://www.bench.com/precision-technologies">Learn More</a>
+                    </div>
+                </div>
+                <div class="menucontent_right" style="background:url('./images/menuimg1.png') no-repeat center center;"></div>
+            </div>
+         
+             <div class="menusub_strip fl100">
+                <div class="menustrip"><strong> Lark Technology</strong>Discover a different type of magic <a href="https://www.bench.com/lark/rf-components-solutions">Buy Now</a></div>
+                <div class="menustrip"><strong> Secure Technology</strong>Secure lab tested technology, with battle-tested durability</div>
+                <div class="menustrip"><strong> Precision Technology</strong>Hone in on agility and accuracy</div>
+                <div class="menustrip"><strong> Connected Technology</strong>Develop custom connected devices</div>
+                <div class="menustrip"><strong> Advanced Technology</strong>Access tomorrow's technology today</div>
+            </div>
+
+        </div>
+        
+
+        <div class="search_box">
+            <span class="search_btn"><i class="fa fa-search" aria-hidden="true"></i></span>
+            <div class="search_input">
+                <form>
+                    <input type="text" placeholder="Custom Search">
+                    <div class="submit_btn">
+                        <button type="submit" value="Submit" class="hs-button primary search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+        
+
+   </div>
+
+</header><!-- /header -->
+
+	<div class="body-container-wrapper">
+		<div class="body-container container-fluid">
+
+			<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+				<div class="row-fluid ">
+					<div class="span12 widget-span widget-type-cell heronew-section bgimg-main" style="background-image: url(&quot;https://cdn2.hubspot.net/hub/4349773/hubfs/benchmark.jpg?width=1680&amp;name=benchmark.jpg&quot;);" data-widget-type="cell" data-x="0" data-w="12">
+
+						<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+							<div class="row-fluid ">
+								<div class="span12 widget-span widget-type-linked_image bg-img" style="" data-widget-type="linked_image" data-x="0" data-w="12">
+									<div class="cell-wrapper layout-widget-wrapper">
+										<span id="hs_cos_wrapper_module_1484311885745677" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"><img src="./images/benchmark.jpg" class="hs-image-widget " style="width:1680px;border-width:0px;border:0px;" width="1680" alt="benchmark.jpg" title="benchmark.jpg"></span></div>
+									<!--end layout-widget-wrapper -->
+								</div>
+								<!--end widget-span -->
+							</div>
+							<!--end row-->
+						</div>
+						<!--end row-wrapper -->
+
+						<div class="row-fluid-wrapper row-depth-1 row-number-3 ">
+							<div class="row-fluid ">
+								<div class="span12 widget-span widget-type-cell wrapper" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+									<div class="row-fluid-wrapper row-depth-1 row-number-4 ">
+										<div class="row-fluid ">
+											<div class="span12 widget-span widget-type-cell heronew-content text-center text-uppercase" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+												<div class="row-fluid-wrapper row-depth-1 row-number-5 ">
+													<div class="row-fluid ">
+														<div class="span12 widget-span widget-type-header " style="" data-widget-type="header" data-x="0" data-w="12">
+															<div class="cell-wrapper layout-widget-wrapper">
+																<span id="hs_cos_wrapper_module_14843094259921192" class="wd_main_header hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_header" style="" data-hs-cos-general-type="widget" data-hs-cos-type="header">
+																	<h1>Investor Events</h1>
+
+																	
+
+																				<div class="wd_featureboxes_top wd_featureboxes-horizontal">
+<div id="wd_featurebox-financial_3" class="wd_featurebox_container wd_featurebox-financial"><div class="wd_featurebox_title"></div><div class="wd_featurebox"><div class="wd_ticker_label"><span class="wd_exchange">NYSE</span><span class="wd_symbol">BHE</span></div><div class="wd_quote-container" id="ir_featurebox_3-quote"></div><div class="wd_chart-quote-footer" id="ir_featurebox_3-footer"></div><script type="text/javascript">webDriver.jQuery(function() {ir_featurebox.update(3, "BHE", false);});</script></div></div></div>
+
+																	
+																</span>
+															</div>
+															<!--end layout-widget-wrapper -->
+														</div>
+														<!--end widget-span -->
+													</div>
+													<!--end row-->
+												</div>
+												<!--end row-wrapper -->
+
+											</div>
+											<!--end widget-span -->
+										</div>
+										<!--end row-->
+									</div>
+									<!--end row-wrapper -->
+
+									<div class="row-fluid-wrapper row-depth-1 row-number-6 ">
+										<div class="row-fluid ">
+											<div class="animate-in" data-anim-delay="600" data-anim-type="tada">
+												<div class="span12 widget-span widget-type-text top-scroll background-white" style="" data-widget-type="text" data-x="0" data-w="12">
+													<div class="cell-wrapper layout-widget-wrapper">
+														<span id="hs_cos_wrapper_module_1490266891143865" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="text"><i class="fa fa-angle-double-down" aria-hidden="true"></i></span></div>
+													<!--end layout-widget-wrapper -->
+												</div>
+												<!--end widget-span -->
+											</div>
+										</div>
+										<!--end row-->
+									</div>
+									<!--end row-wrapper -->
+
+								</div>
+								<!--end widget-span -->
+							</div>
+							<!--end row-->
+						</div>
+						<!--end row-wrapper -->
+
+					</div>
+					<!--end widget-span -->
+				</div>
+				<!--end row-->
+			</div>
+			<!--end row-wrapper -->
+
+
+		<!-- add Desktop NAV HERE -->
+		<!-- WD Navigation -->
+
+		<section id="wd_desktop_menu" class="wd_nav_sec">
+			
+
+			<div class="row-fluid">
+					<div class="wrapper">
+						<div class="row">
+							<div class="col-md-12">
+								<nav class="wd_nav_wrap">
+									<ul class="wd_nav">
+
+
+
+<li class="dropdown"><a href="https://ir.bench.com/Financial-Reporting" target="_self">Financial Reporting</a>
+	<ul class="wd_subnav">
+
+
+	<li><a href="https://ir.bench.com/Quarterly-Results" target="_self">Quarterly Results</a></li>
+
+
+
+
+	<li><a href="https://ir.bench.com/Annual-Report" target="_self">Annual Report </a></li>
+
+
+
+
+	<li><a href="image/Benchmark-Proxy-2021.pdf" target="_blank">Proxy Statement</a></li>
+
+
+
+
+	<li><a href="https://ir.bench.com/SEC-Filings" target="_self">SEC Filings</a></li>
+
+
+</ul>
+
+
+</li>
+
+
+
+
+<li class="dropdown"><a href="https://ir.bench.com/Stock-Information" target="_self">Stock Information</a>
+	<ul class="wd_subnav">
+
+
+	<li><a href="https://ir.bench.com/Interactive-Chart" target="_self">Interactive Chart</a></li>
+
+
+
+
+	<li><a href="https://ir.bench.com/Historical-Stock-Price" target="_self">Historical Stock Price</a></li>
+
+
+
+
+	<li><a href="https://ir.bench.com/key-ratios" target="_self">Key Ratios</a></li>
+
+
+
+
+	<li><a href="https://ir.bench.com/Analyst-Coverage" target="_self">Analyst Coverage</a></li>
+
+
+</ul>
+
+
+</li>
+
+
+
+
+<li class="dropdown"><a href="https://ir.bench.com/Corporate-Governance" target="_self">Corporate Governance</a>
+	<ul class="wd_subnav">
+
+
+	<li><a href="https://www.bench.com/leadership-team" target="_self">Leadership Team</a></li>
+
+
+
+
+	<li><a href="https://www.bench.com/board-of-directors" target="_self">Board Of Directors</a></li>
+
+
+
+
+	<li><a href="Corporate-Governance" target="_self">Committee Charters </a></li>
+
+
+
+
+	<li><a href="Corporate-Governance" target="_self">Code Of Conduct</a></li>
+
+
+
+
+	<li><a href="Corporate-Governance" target="_self">Corp Gov Guidelines</a></li>
+
+
+</ul>
+
+
+</li>
+
+
+
+
+<li class=""><a href="https://ir.bench.com/News-Releases" target="_self">News Releases</a>
+	</li>
+
+
+
+
+<li class=" active"><a href="https://ir.bench.com/Investor-Events" target="_self">Investor Events</a>
+	</li>
+
+
+
+
+
+<li class=""><a href="https://ir.bench.com/Investor-FAQs" target="_self">Investor FAQs</a>
+	</li>
+
+
+
+
+<li class=""><a href="https://www.bench.com/sustainability" target="_blank">Sustainability</a>
+	</li>
+
+
+</ul>
+
+
+								</nav>
+							</div>
+						</div>
+					</div>
+			</div>
+
+		</section>
+
+ 
+		<section class="wd_mob_menu_wrapper">
+			<div class="row-fluid">
+			<div class="wrapper">
+				<div class="row">
+					<div class="col-md-12">
+						<header class="wd_mob_toggle_wrap">
+							<h4>Investor Menu</h4>
+							<button class="wd_mob_toggle">              
+							  <i class="wd_arrowdown"></i>
+							</button>
+						</header>
+
+						<nav class="wd_mob_menu" id="wd_mob_main_meni">
+							<ul class="dl-menu dl-menuopen wd_mob_level_1">
+ <li class="inner_menu"><a href="https://ir.bench.com/Financial-Reporting" target="_self">Financial Reporting</a>
+
+ 	<ul class="dl-submenu wd_mob_level_2">
+	
+<li class=""><a href="https://ir.bench.com/Quarterly-Results" target="_self">Quarterly Results</a>
+  
+  	
+</li>
+<li class=""><a href="https://ir.bench.com/Annual-Report" target="_self">Annual Report </a>
+  
+  	
+</li>
+<li class=""><a href="image/Benchmark-Proxy-2021.pdf" target="_blank">Proxy Statement</a>
+  
+  	
+</li>
+<li class=""><a href="https://ir.bench.com/SEC-Filings" target="_self">SEC Filings</a>
+  
+  	
+</li>
+</ul>
+</li>
+ <li class="inner_menu"><a href="https://ir.bench.com/Stock-Information" target="_self">Stock Information</a>
+
+ 	<ul class="dl-submenu wd_mob_level_2">
+	
+<li class=""><a href="https://ir.bench.com/Interactive-Chart" target="_self">Interactive Chart</a>
+  
+  	
+</li>
+<li class=""><a href="https://ir.bench.com/Historical-Stock-Price" target="_self">Historical Stock Price</a>
+  
+  	
+</li>
+<li class=""><a href="https://ir.bench.com/key-ratios" target="_self">Key Ratios</a>
+  
+  	
+</li>
+<li class=""><a href="https://ir.bench.com/Analyst-Coverage" target="_self">Analyst Coverage</a>
+  
+  	
+</li>
+</ul>
+</li>
+ <li class="inner_menu"><a href="https://ir.bench.com/Corporate-Governance" target="_self">Corporate Governance</a>
+
+ 	<ul class="dl-submenu wd_mob_level_2">
+	
+<li class=""><a href="https://www.bench.com/leadership-team" target="_self">Leadership Team</a>
+  
+  	
+</li>
+<li class=""><a href="https://www.bench.com/board-of-directors" target="_self">Board Of Directors</a>
+  
+  	
+</li>
+<li class=""><a href="Corporate-Governance" target="_self">Committee Charters </a>
+  
+  	
+</li>
+<li class=""><a href="Corporate-Governance" target="_self">Code Of Conduct</a>
+  
+  	
+</li>
+<li class=""><a href="Corporate-Governance" target="_self">Corp Gov Guidelines</a>
+  
+  	
+</li>
+</ul>
+</li>
+ <li class=""><a href="https://ir.bench.com/News-Releases" target="_self">News Releases</a>
+
+ 	</li>
+<li class="active "><a href="https://ir.bench.com/Investor-Events" target="_self">Investor Events</a>
+
+	
+</li>
+ <li class=""><a href="https://ir.bench.com/Investor-FAQs" target="_self">Investor FAQs</a>
+
+ 	</li>
+ <li class=""><a href="https://www.bench.com/sustainability" target="_blank">Sustainability</a>
+
+ 	</li>
+</ul>
+						</nav>
+
+					</div>
+				</div>
+			</div>
+			</div>
+		</section>
+
+
+
+			<div class="row-fluid-wrapper row-depth-1 row-number-7 ">
+				<div class="row-fluid ">
+					<div class="span12 widget-span widget-type-cell ourservice-section ourservice-section1 text-center stop-scroll" id="content" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+							<!-- BEGIN CONTENT-WRAPPER -->  
+							<div class="wd_content-wrapper">
+							
+								<!-- BEGIN CONTENT -->  
+								<div class="wd_content">
+									<div class="span12 widget-span widget-type-cell wrapper" style="" data-widget-type="cell" data-x="0" data-w="12">
+										<div id="wd_printable_content"><h1 class="page_header">Investor Events</h1>
+
+<div class="wd_events">
+
+<div class="wd_events_inputs">
+<select name="year" id="wd_events_input_year" title="Year">
+ <option value="2018">2018</option>
+ <option value="2019">2019</option>
+ <option value="2020">2020</option>
+ <option value="2021" selected>2021</option>
+</select>
+
+<select name="month" id="wd_events_input_month" title="Month">
+ <option value="1">January</option>
+ <option value="2">February</option>
+ <option value="3">March</option>
+ <option value="4">April</option>
+ <option value="5">May</option>
+ <option value="6">June</option>
+ <option value="7" selected>July</option>
+ <option value="8">August</option>
+ <option value="9">September</option>
+ <option value="10">October</option>
+ <option value="11">November</option>
+ <option value="12">December</option>
+</select>
+<button class="wd_events_input_go">GO</button><ul class="wd_events_tabs" role="radiogroup"><li class="wd_events_tab active" data-direction="future" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="0" role="radio" aria-checked="true"><span class="wd_events_tab_label wd_events_tab_future"><span class="fa fa-arrow-circle-right">&nbsp;</span>Upcoming Events</span></li><li class="wd_events_tab" data-direction="past" onkeydown="webDriver.WCAG_Keypress(this, event);" tabindex="-1" role="radio" aria-checked="false"><span class="wd_events_tab_label wd_events_tab_past"><span class="fa fa-arrow-circle-left">&nbsp;</span>Past Events</span></li></ul></div>
+<div class="wd_events_list"></div><div class="wd_events_none" style="display:none;">No events to display</div>
+<div class="wd_events_loading" style="display:none;">Loading Events...</div><div class="wd_events_error" style="display:none;"></div><button class="wd_events_more" style="display:none;"><span class="fa fa-chevron-circle-down">&nbsp;</span>Load More Events</button>
+<div class="wd_events_past_summary"><div class="wd_events_header_container">
+	<div class="wd_header">Past Events</div>
+</div>
+
+	<div class="item wd_event">
+		<div class="wd_event_sidebar">
+			<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Wednesday, June 9, 2021</div>
+		</div>
+		<div class="wd_event_info">
+			<div class="wd_title"><a href="https://ir.bench.com/Investor-Events?item=31">Stifel 2021 Virtual Cross Sector Insight Conference</a></div>
+			
+		</div>
+	</div>
+
+	<div class="item wd_event">
+		<div class="wd_event_sidebar">
+			<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Tuesday, May 18, 2021</div>
+		</div>
+		<div class="wd_event_info">
+			<div class="wd_title"><a href="https://ir.bench.com/Investor-Events?item=30">16th Annual Needham Virtual Technology & Media Conference</a></div>
+			
+		</div>
+	</div>
+
+	<div class="item wd_event">
+		<div class="wd_event_sidebar">
+			<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Wednesday, April 28, 2021</div>
+		</div>
+		<div class="wd_event_info">
+			<div class="wd_title"><a href="https://ir.bench.com/Investor-Events?item=32">Benchmark Electronics, Inc. First Quarter 2021 Earnings Call</a></div>
+			
+		</div>
+	</div>
+
+	<div class="item wd_event">
+		<div class="wd_event_sidebar">
+			<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Thursday, March 25, 2021</div>
+		</div>
+		<div class="wd_event_info">
+			<div class="wd_title"><a href="https://ir.bench.com/Investor-Events?item=29">Sidoti & Company Spring Investor Conference</a></div>
+			
+		</div>
+	</div>
+
+	<div class="item wd_event">
+		<div class="wd_event_sidebar">
+			<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Thursday, February 4, 2021</div>
+		</div>
+		<div class="wd_event_info">
+			<div class="wd_title"><a href="https://ir.bench.com/Investor-Events?item=28">Benchmark Electronics, Inc. Fourth Quarter 2020 Earnings Call</a></div>
+			
+		</div>
+	</div>
+
+	<div class="item wd_event">
+		<div class="wd_event_sidebar">
+			<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Wednesday, January 13, 2021</div>
+		</div>
+		<div class="wd_event_info">
+			<div class="wd_title"><a href="https://ir.bench.com/Investor-Events?item=26">Annual Needham Virtual Growth Conference</a></div>
+			
+		</div>
+	</div>
+
+	<div class="item wd_event">
+		<div class="wd_event_sidebar">
+			<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Tuesday, December 8, 2020</div>
+		</div>
+		<div class="wd_event_info">
+			<div class="wd_title"><a href="https://ir.bench.com/Investor-Events?item=25">Raymond James Technology Investors Conference</a></div>
+			
+		</div>
+	</div>
+
+	<div class="item wd_event">
+		<div class="wd_event_sidebar">
+			<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Thursday, November 19, 2020</div>
+		</div>
+		<div class="wd_event_info">
+			<div class="wd_title"><a href="https://ir.bench.com/Investor-Events?item=24">NYSE Industrials Investor Access Day</a></div>
+			
+		</div>
+	</div>
+
+	<div class="item wd_event">
+		<div class="wd_event_sidebar">
+			<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Wednesday, October 28, 2020</div>
+		</div>
+		<div class="wd_event_info">
+			<div class="wd_title"><a href="https://ir.bench.com/Investor-Events?item=23">Benchmark Electronics, Inc. Third Quarter 2020 Earnings Call</a></div>
+			
+		</div>
+	</div>
+
+	<div class="item wd_event">
+		<div class="wd_event_sidebar">
+			<div class="item_date wd_event_sidebar_item wd_event_date"><span class="fa fa-calendar">&nbsp;</span>Wednesday, September 23, 2020</div>
+		</div>
+		<div class="wd_event_info">
+			<div class="wd_title"><a href="https://ir.bench.com/Investor-Events?item=21">Sidoti 2020 Fall Conference</a></div>
+			
+		</div>
+	</div>
+
+</div>
+<div class="wd_toolbar wd_toolbar-main"><ul class="wd_tools"><li class="wd_tool wd_tool-print"><span class="wd_tool_icon"><a onclick="view_printable(); return false;" rel="nofollow" href="#print" title="print"><span class="fa fa-print"></span></a></span></li><li class="wd_tool wd_tool-email"><span class="wd_tool_icon"><a onclick="window.location.href = 'mailto:?subject=Benchmark%20Electronics%20%7C%20Investor%20Relations%20-%20Investor%20Events&amp;body='+encodeURIComponent(window.location.href);return false;" href="#email" title="email"><span class="fa fa-envelope"></span></a></span></li><li class="wd_tool wd_tool-rss"><span class="wd_tool_icon"><a href="https://ir.bench.com/index.php?s=95&amp;rsspage=19" title="rss"><span class="fa fa-rss"></span></a></span></li></ul></div>
+
+</div>
+</div>									</div>
+									<div class="wd_featureboxes_bottom_alternating wd_featureboxes-vertical">
+<div id="wd_featurebox-subscribe_1" class="wd_featurebox_container wd_featurebox-subscribe"><div class="wd_featurebox_title">Connect with Us</div><div class="wd_featurebox"><div class="wd_subscribe_featurebox"><div class="wd_intro"><p><strong>CONTACTS</strong></p>
+
+<p>Please direct investor queries to:</p>
+
+<p><a href="mailto:Lisa.Weeks@bench.com">Lisa.Weeks@bench.com</a></p>
+
+<p>&nbsp;</p>
+
+<p><strong>GET INVESTOR ALERTS</strong></p>
+</div>
+ <form method="POST" class="wd_formbuilder" id="subscribe_form_1" name="formbuilderform" action="https://ir.bench.com/Investor-Events?submitted=1" enctype="multipart/form-data" onsubmit="disable_submit(this, true);var ok = check_required_fields(this,[&quot;subscribe_1[email]&quot;],[&quot;subscribe_1[email]&quot;],&quot;#ff0000&quot;,&quot;This field is required&quot;,&quot;This field must contain a valid email address&quot;,&quot;Please fill in all required fields highlighted in red.&quot;,&quot;Please provide a valid email address.&quot;); if (!ok) {disable_submit(this,false); return false;} webDriver.subscribeSubmit(this,1); return false;">
+  <div class="wd_form_header">
+   <div class="wd_form_legend">
+* Required Fields
+   </div>
+  </div>
+   <div class="wd_form_field wd_form_field_pos_right">
+    <div class="wd_form_field_label">
+<label for="formbuilderform_subscribe_1[email]">*&nbsp;Email</label>
+    </div>
+    <div class="wd_form_field_input">
+     <input type="text" name="subscribe_1[email]" value="" size="16" id="formbuilderform_subscribe_1[email]" />
+    </div>
+   </div>
+  <div class="wd_form_footer">
+   <div class="wd_form_buttons">
+<input type="submit" class="wd_formbuilder_submit" name="Submit" value="Submit">
+   </div>
+  </div>
+ </form>
+</div></div></div></div>
+								</div>
+								<!-- END CONTENT -->
+
+							 
+							</div>
+							<!-- END CONTENT-WRAPPER -->     
+
+					</div>
+					<!--end widget-span -->
+				</div>
+				<!--end row-->
+			</div>
+			<!--end row-wrapper -->
+		</div>
+		<!--end body -->
+	</div>
+	<!--end body wrapper -->
+
+	<div class="footer-container-wrapper">
+		<div class="footer-container container-fluid">
+
+			<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+				<div class="row-fluid ">
+					<div class="span12 widget-span widget-type-global_group " style="" data-widget-type="global_group" data-x="0" data-w="12">
+						<!-- start coded_template: id:6056660792 path:generated_global_groups/6056660791.html -->
+						<div class="" data-global-widget-path="generated_global_groups/6056660791.html">
+							<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+								<div class="row-fluid ">
+									<div class="span12 widget-span widget-type-cell footer" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+										<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+											<div class="row-fluid ">
+												<div class="span12 widget-span widget-type-cell wrapper" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+													<div class="row-fluid-wrapper row-depth-1 row-number-3  ">
+														<div class="row-fluid ">
+															<div class="span3 widget-span widget-type-cell footer-block sameheight" style="height: 448px;" data-widget-type="cell" data-x="0" data-w="3">
+
+																<div class="row-fluid-wrapper row-depth-1 row-number-4 ">
+																	<div class="row-fluid ">
+																		<div class="span12 widget-span widget-type-linked_image footer-logo mgtop35" style="" data-widget-type="linked_image" data-x="0" data-w="12">
+																			<div class="cell-wrapper layout-widget-wrapper">
+																				<span id="hs_cos_wrapper_module_1484308376687993" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"><img src="./images/Benchmark_R_1CWhite.png" class="hs-image-widget " style="width:2000px;border-width:0px;border:0px;" width="2000" alt="Benchmark_R_1CWhite" title="Benchmark_R_1CWhite"></span></div>
+																			<!--end layout-widget-wrapper -->
+																		</div>
+																		<!--end widget-span -->
+																	</div>
+																	<!--end row-->
+																</div>
+																<!--end row-wrapper -->
+
+																<div class="row-fluid-wrapper row-depth-1 row-number-5 ">
+																	<div class="row-fluid ">
+																		<div class="span12 widget-span widget-type-rich_text footer-content" style="" data-widget-type="rich_text" data-x="0" data-w="12">
+																			<div class="cell-wrapper layout-widget-wrapper">
+																			<span id="hs_cos_wrapper_module_1484307444012532" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><span>Our mission is to be our customers’ trusted partner; providing comprehensive solutions across the entire product lifecycle; leading through our </span>innovative technology and engineering design<span>&nbsp;services; leveraging our optimized global&nbsp;</span>supply chain<span>; and delivering world-class</span> manufacturing services<span>.</span></span>
+																			</div>
+																			<!--end layout-widget-wrapper -->
+																		</div>
+																		<!--end widget-span -->
+																	</div>
+																	<!--end row-->
+																</div>
+																<!--end row-wrapper -->
+
+																<div class="row-fluid-wrapper row-depth-1 row-number-6 ">
+																	<div class="row-fluid ">
+																		<div class="span12 widget-span widget-type-raw_html footer-icon" style="" data-widget-type="raw_html" data-x="0" data-w="12">
+																			<div class="cell-wrapper layout-widget-wrapper">
+																				<span id="hs_cos_wrapper_module_1484307732307574" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_raw_html" style="" data-hs-cos-general-type="widget" data-hs-cos-type="raw_html"><ul>
+<li><a href="https://www.linkedin.com/company/benchelec/"></a></li>
+<li><a href="https://www.facebook.com/BenchBHE/"></a></li>
+<li><a href="https://twitter.com/BenchElec"></a></li>
+</ul></span>
+																			</div>
+																			<!--end layout-widget-wrapper -->
+																		</div>
+																		<!--end widget-span -->
+																	</div>
+																	<!--end row-->
+																</div>
+																<!--end row-wrapper -->
+
+															</div>
+															<!--end widget-span -->
+															<div class="span3 widget-span widget-type-cell footer-block sameheight" style="height: 448px;" data-widget-type="cell" data-x="3" data-w="3">
+
+																<div class="row-fluid-wrapper row-depth-1 row-number-7 ">
+																	<div class="row-fluid ">
+																		<div class="span12 widget-span widget-type-header footer-header" style="" data-widget-type="header" data-x="0" data-w="12">
+																			<div class="cell-wrapper layout-widget-wrapper">
+																				<span id="hs_cos_wrapper_module_1484307730537572" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_header" style="" data-hs-cos-general-type="widget" data-hs-cos-type="header"><h3>Navigate</h3></span></div>
+																			<!--end layout-widget-wrapper -->
+																		</div>
+																		<!--end widget-span -->
+																	</div>
+																	<!--end row-->
+																</div>
+																<!--end row-wrapper -->
+
+																<div class="row-fluid-wrapper row-depth-1 row-number-8 ">
+																	<div class="row-fluid ">
+																		<div class="span12 widget-span widget-type-simple_menu footer-menu" style="" data-widget-type="simple_menu" data-x="0" data-w="12">
+																			<div class="cell-wrapper layout-widget-wrapper">
+																				<span id="hs_cos_wrapper_module_1484307748585585" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_module_1484307748585585" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" aria-label="Navigation Menu">
+																					<ul>
+																					  <li class="hs-menu-item hs-menu-depth-1"><a href="https://www.bench.com/setting-the-benchmark" role="menuitem" target="_self">Blog</a></li>
+																					  <li class="hs-menu-item hs-menu-depth-1"><a href="https://www.bench.com/benchmark-markets" role="menuitem" target="_self">Markets</a></li>
+																					  <li class="hs-menu-item hs-menu-depth-1"><a href="https://www.bench.com/capabilities" role="menuitem" target="_self">Capabilities</a></li>
+																					  <li class="hs-menu-item hs-menu-depth-1"><a href="https://www.bench.com/technology-solutions" role="menuitem" target="_self">Solutions</a></li>
+																					  <li class="hs-menu-item hs-menu-depth-1"><a href="https://www.bench.com/about-us" role="menuitem" target="_self">About</a></li>
+																					  <li class="hs-menu-item hs-menu-depth-1"><a href="http://bench.investorroom.com/Investor-Relations" role="menuitem" target="_self">Investors</a></li>
+																					  <li class="hs-menu-item hs-menu-depth-1"><a href="https://www.bench.com/contact" role="menuitem" target="_self">Connect</a></li>
+																					  <li class="hs-menu-item hs-menu-depth-1"><a href="https://www.bench.com/events" role="menuitem" target="_self">Events</a></li>
+																					  <li class="hs-menu-item hs-menu-depth-1"><a href="https://www.bench.com/sitemap" role="menuitem" target="_self">Sitemap</a></li>
+																					  <li class="hs-menu-item hs-menu-depth-1"><a href="https://www.bench.com/careers" role="menuitem" target="_blank">Careers</a></li>
+																					  <li class="hs-menu-item hs-menu-depth-1"><a href="http://bench.investorroom.com/News-Releases" role="menuitem" target="_self">News Releases</a></li>
+																					 </ul>
+																				</div></span>
+																			</div>
+																			<!--end layout-widget-wrapper -->
+																		</div>
+																		<!--end widget-span -->
+																	</div>
+																	<!--end row-->
+																</div>
+																<!--end row-wrapper -->
+
+															</div>
+															<!--end widget-span -->
+															<div class="span3 widget-span widget-type-cell footer-block sameheight" style="height: 448px;" data-widget-type="cell" data-x="6" data-w="3">
+
+																<div class="row-fluid-wrapper row-depth-1 row-number-9 ">
+																	<div class="row-fluid ">
+																		<div class="span12 widget-span widget-type-header footer-header" style="" data-widget-type="header" data-x="0" data-w="12">
+																			<div class="cell-wrapper layout-widget-wrapper">
+																				<span id="hs_cos_wrapper_module_1484307729858571" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_header" style="" data-hs-cos-general-type="widget" data-hs-cos-type="header"><h3>Subscribe to the Benchmark blog</h3></span></div>
+																			<!--end layout-widget-wrapper -->
+																		</div>
+																		<!--end widget-span -->
+																	</div>
+																	<!--end row-->
+																</div>
+																<!--end row-wrapper -->
+
+																<div class="row-fluid-wrapper row-depth-1 row-number-10 ">
+																	<div class="row-fluid ">
+																		<div class="span12 widget-span widget-type-blog_subscribe footer-subscribe" style="" data-widget-type="blog_subscribe" data-x="0" data-w="12">
+																			<div class="cell-wrapper layout-widget-wrapper">
+																				<span id="hs_cos_wrapper_module_1484307953054837" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_blog_subscribe" style="" data-hs-cos-general-type="widget" data-hs-cos-type="blog_subscribe"><h3 id="hs_cos_wrapper_module_1484307953054837_title" class="hs_cos_wrapper form-title" data-hs-cos-general-type="widget_field" data-hs-cos-type="text">Subscribe to Email Updates</h3>
+
+<div id="hs_form_target_module_1484307953054837_4534"><form novalidate="" accept-charset="UTF-8" action="https://www-bench-com.sandbox.hs-sites.com/_hcms/forms/submissions/v3/public/submit/formsnext/multipart/4349773/039ad9df-ce36-4ef1-83aa-55fa5bd642ca" enctype="multipart/form-data" id="hsForm_039ad9df-ce36-4ef1-83aa-55fa5bd642ca_4534" method="POST" class="hs-form stacked hs-form-private hs-form-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_704deeda-a7b3-4f5e-8e4e-952237992242" data-form-id="039ad9df-ce36-4ef1-83aa-55fa5bd642ca" data-portal-id="4349773" target="target_iframe_039ad9df-ce36-4ef1-83aa-55fa5bd642ca_4534" data-reactid=".hbspt-forms-0"><div class="hs_email hs-email hs-fieldtype-text field hs-form-field" data-reactid=".hbspt-forms-0.1:$0"><label id="label-email-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_4534" class="" placeholder="Enter your Email" for="email-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_4534" data-reactid=".hbspt-forms-0.1:$0.0"><span data-reactid=".hbspt-forms-0.1:$0.0.0">Email</span>
+																				<span
+																					class="hs-form-required" data-reactid=".hbspt-forms-0.1:$0.0.1">*</span>
+																					</label>
+																					<legend class="hs-field-desc" style="display:none;" data-reactid=".hbspt-forms-0.1:$0.1"></legend>
+																					<div class="input" data-reactid=".hbspt-forms-0.1:$0.$email"><input id="email-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_4534" class="hs-input" type="email" name="email" required="" placeholder="" value="" autocomplete="email" data-reactid=".hbspt-forms-0.1:$0.$email.0"></div>
+																			</div>
+																			<div class="hs_blog_benchmark_news_5781110808_subscription hs-blog_benchmark_news_5781110808_subscription hs-fieldtype-radio field hs-form-field" style="display:none;" data-reactid=".hbspt-forms-0.1:$1"><label id="label-blog_benchmark_news_5781110808_subscription-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_4534" class="" placeholder="Enter your Notification Frequency" for="blog_benchmark_news_5781110808_subscription-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_4534"
+																					data-reactid=".hbspt-forms-0.1:$1.0"><span data-reactid=".hbspt-forms-0.1:$1.0.0">Notification Frequency</span></label>
+																				<legend class="hs-field-desc" style="display:none;" data-reactid=".hbspt-forms-0.1:$1.1"></legend>
+																				<div class="input" data-reactid=".hbspt-forms-0.1:$1.$blog_benchmark_news_5781110808_subscription"><input name="blog_benchmark_news_5781110808_subscription" class="hs-input" type="hidden" value="" data-reactid=".hbspt-forms-0.1:$1.$blog_benchmark_news_5781110808_subscription.0"></div>
+																			</div>
+																			<div class="hs_lifecyclestage hs-lifecyclestage hs-fieldtype-radio field hs-form-field" style="display:none;" data-reactid=".hbspt-forms-0.1:$2"><label id="label-lifecyclestage-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_4534" class="" placeholder="Enter your Lifecycle Stage" for="lifecyclestage-039ad9df-ce36-4ef1-83aa-55fa5bd642ca_4534" data-reactid=".hbspt-forms-0.1:$2.0"><span data-reactid=".hbspt-forms-0.1:$2.0.0">Lifecycle Stage</span></label>
+																				<legend
+																					class="hs-field-desc" style="display:none;" data-reactid=".hbspt-forms-0.1:$2.1"></legend>
+																					<div class="input" data-reactid=".hbspt-forms-0.1:$2.$lifecyclestage"><input name="lifecyclestage" class="hs-input" type="hidden" value="subscriber" data-reactid=".hbspt-forms-0.1:$2.$lifecyclestage.0"></div>
+																			</div><noscript data-reactid=".hbspt-forms-0.2"></noscript>
+																			<div class="hs_submit hs-submit" data-reactid=".hbspt-forms-0.5">
+																				<div class="hs-field-desc" style="display:none;" data-reactid=".hbspt-forms-0.5.0"></div>
+																				<div class="actions" data-reactid=".hbspt-forms-0.5.1"><input type="submit" value="Subscribe" class="hs-button primary large" data-reactid=".hbspt-forms-0.5.1.0"></div>
+																			</div><noscript data-reactid=".hbspt-forms-0.6"></noscript><input name="hs_context" type="hidden" value="{&quot;rumScriptExecuteTime&quot;:5355.70000000007,&quot;rumServiceResponseTime&quot;:5526.100000002771,&quot;rumFormRenderTime&quot;:0.8000000088941306,&quot;rumTotalRenderTime&quot;:5527.700000006007,&quot;rumTotalRequestTime&quot;:168.3000000048196,&quot;pageUrl&quot;:&quot;https://www-bench-com.sandbox.hs-sites.com/markets&quot;,&quot;pageTitle&quot;:&quot;Markets | Benchmark Electronics&quot;,&quot;source&quot;:&quot;FormsNext-static-3.114&quot;,&quot;timestamp&quot;:1543510115628,&quot;userAgent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36&quot;,&quot;referrer&quot;:&quot;https://dvcotechnology.basecamphq.com/projects/14350317-prn-benchmark-electronics/milestones/59888597/comments&quot;,&quot;originalEmbedContext&quot;:{&quot;formsBaseUrl&quot;:&quot;/_hcms/forms/&quot;,&quot;portalId&quot;:&quot;4349773&quot;,&quot;formId&quot;:&quot;039ad9df-ce36-4ef1-83aa-55fa5bd642ca&quot;,&quot;formInstanceId&quot;:&quot;4534&quot;,&quot;pageId&quot;:&quot;6132431548&quot;,&quot;pageName&quot;:&quot;Markets | Benchmark Electronics&quot;,&quot;contentType&quot;:&quot;site-page&quot;,&quot;inlineMessage&quot;:true,&quot;target&quot;:&quot;#hs_form_target_module_1484307953054837_4534&quot;,&quot;formData&quot;:{&quot;cssClass&quot;:&quot;hs-form stacked&quot;}},&quot;pageId&quot;:&quot;6132431548&quot;,&quot;pageName&quot;:&quot;Markets | Benchmark Electronics&quot;,&quot;formInstanceId&quot;:&quot;4534&quot;,&quot;formTarget&quot;:&quot;#hs_form_target_module_1484307953054837_4534&quot;,&quot;correlationId&quot;:&quot;686d6d5f-aa34-4f22-9ae5-d1d21d8ab320&quot;,&quot;contentType&quot;:&quot;site-page&quot;}"
+																				data-reactid=".hbspt-forms-0.7"><iframe name="target_iframe_039ad9df-ce36-4ef1-83aa-55fa5bd642ca_4534" style="display:none;" data-reactid=".hbspt-forms-0.8" kwframeid="1" src="./js/saved_resource.html"></iframe></form>
+																		</div>
+
+
+
+																		</span>
+																	</div>
+																	<!--end layout-widget-wrapper -->
+																</div>
+																<!--end widget-span -->
+															</div>
+															<!--end row-->
+														</div>
+														<!--end row-wrapper -->
+
+													</div>
+													<!--end widget-span -->
+													<div class="span3 widget-span widget-type-cell footer-recent sameheight" style="height: 448px;" data-widget-type="cell" data-x="9" data-w="3">
+
+														
+
+														<div class="row-fluid-wrapper row-depth-1 row-number-12 ">
+															<div class="row-fluid ">
+																<div class="span12 widget-span widget-type-raw_jinja footer-blog" style="" data-widget-type="raw_jinja" data-x="0" data-w="12">
+
+																	<div class="wd_featureboxes_footer_rss_feed wd_featureboxes-vertical">
+<div id="wd_featurebox-rss_2" class="wd_featurebox_container wd_featurebox-rss"><div class="wd_featurebox_title">Blog</div><div class="wd_featurebox">
+				<script language="javascript">
+					var featurebox_rss_ids = new Array();
+					var featurebox_rss_old_onload = window.onload;
+
+					function featurebox_rss_schedule() {
+						if (typeof featurebox_rss_old_onload == "function")
+								featurebox_rss_old_onload();
+
+						for (var i = 0; i < featurebox_rss_ids.length; i++)
+							featurebox_rss_request(i, featurebox_rss_ids[i]);
+					}
+
+					window.onload = featurebox_rss_schedule;
+
+					function featurebox_rss_update(request, index, id) {
+						// ready state and "OK" status
+						if (request.readyState == 4 && request.status == 200) {
+							var rss_html = request.responseText;
+							var rss_div = document.getElementById("featurebox_rss_" + index);
+							if (rss_div)
+								rss_div.innerHTML = rss_html;
+						}
+					}
+
+					function featurebox_rss_request(index, id) {
+						var request;
+
+						if (window.XMLHttpRequest) {
+							request = new XMLHttpRequest();
+							if (request.overrideMimeType)
+								request.overrideMimeType("text/xml");
+						} else if (window.ActiveXObject) {
+							request = new ActiveXObject("Microsoft.XMLHTTP");
+						}
+
+						if (!request)
+							return;
+
+						var url = "index.php?ajax=featureboxes_rss_ajax&ITEM="+id;
+
+						request.onreadystatechange = function (){featurebox_rss_update(request,index,id);};
+						request.open("GET", url, true);
+						request.send(null);
+					}
+
+				</script>
+			
+			<div id="featurebox_rss_0">
+				Loading...
+			</div>
+			<script language="javascript">
+				featurebox_rss_ids[0] = 2;
+			</script>
+		</div></div></div>
+
+													
+
+																</div>
+																<!--end widget-span -->
+
+															</div>
+															<!--end row-->
+														</div>
+														<!--end row-wrapper -->
+
+													</div>
+													<!--end widget-span -->
+												</div>
+												<!--end row-->
+											</div>
+											<!--end row-wrapper -->
+
+										</div>
+										<!--end widget-span -->
+									</div>
+									<!--end row-->
+								</div>
+								<!--end row-wrapper -->
+
+							</div>
+							<!--end widget-span -->
+						</div>
+						<!--end row-->
+					</div>
+					<!--end row-wrapper -->
+
+					<div class="row-fluid-wrapper row-depth-1 row-number-13 ">
+						<div class="row-fluid ">
+							<div class="span12 widget-span widget-type-cell footer-bottom" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+								<div class="row-fluid-wrapper row-depth-1 row-number-14 ">
+									<div class="row-fluid ">
+										<div class="span12 widget-span widget-type-cell wrapper" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+											<div class="row-fluid-wrapper row-depth-1 row-number-15 ">
+												<div class="row-fluid ">
+													<div class="span6 widget-span widget-type-text footer-copyright" style="" data-widget-type="text" data-x="0" data-w="6">
+														<div class="cell-wrapper layout-widget-wrapper">
+															<span id="hs_cos_wrapper_module_1484308155363871" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="text">© Copyright 2021 | All Rights Reserved.</span></div>
+														<!--end layout-widget-wrapper -->
+													</div>
+													<!--end widget-span -->
+													<div class="span6 widget-span widget-type-simple_menu footer-menuB text-bold" style="" data-widget-type="simple_menu" data-x="6" data-w="6">
+														<div class="cell-wrapper layout-widget-wrapper">
+															<span id="hs_cos_wrapper_module_1484308159370877" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_module_1484308159370877" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="" aria-label="Navigation Menu">
+ <ul>
+	<li class="hs-menu-item hs-menu-depth-1"><a href="https://www.bench.com/privacy-statement" role="menuitem" target="_self">Privacy Statement</a></li>
+	<li class="hs-menu-item hs-menu-depth-1"><a href="https://www.bench.com/california-act" role="menuitem" target="_self">California Act</a></li>
+	<li class="hs-menu-item hs-menu-depth-1"><a href="https://bench.investorroom.com/safe-harbor-statement" role="menuitem" target="_self">Safe Harbor Statement</a></li>
+ </ul>
+</div></span>
+														</div>
+														<!--end layout-widget-wrapper -->
+													</div>
+													<!--end widget-span -->
+												</div>
+												<!--end row-->
+											</div>
+											<!--end row-wrapper -->
+
+										</div>
+										<!--end widget-span -->
+									</div>
+									<!--end row-->
+								</div>
+								<!--end row-wrapper -->
+
+							</div>
+							<!--end widget-span -->
+						</div>
+						<!--end row-->
+					</div>
+					<!--end row-wrapper -->
+
+					<div class="row-fluid-wrapper row-depth-1 row-number-16 ">
+						<div class="row-fluid ">
+							<div class="span12 widget-span widget-type-text back-to-top" style="" data-widget-type="text" data-x="0" data-w="12">
+								<div class="cell-wrapper layout-widget-wrapper">
+									<span id="hs_cos_wrapper_module_1491559244913779" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="text"><i class="fa fa-angle-double-up" aria-hidden="true"></i></span></div>
+								<!--end layout-widget-wrapper -->
+							</div>
+							<!--end widget-span -->
+						</div>
+						<!--end row-->
+					</div>
+					<!--end row-wrapper -->
+
+					<div class="row-fluid-wrapper row-depth-1 row-number-17 ">
+						<div class="row-fluid ">
+							<div class="span12 widget-span widget-type-global_widget " style="" data-widget-type="global_widget" data-x="0" data-w="12">
+								<div class="cell-wrapper layout-widget-wrapper">
+									<span id="hs_cos_wrapper_KALAHARI_THEME_Global_JS_Do_not_Delete_it" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_raw_html" style="" data-hs-cos-general-type="widget" data-hs-cos-type="raw_html" data-global-widget-id="6056881360"><link type="text/css" rel="stylesheet" href="./css/animate.css">
+<link type="text/css" rel="https://cdn2.hubspot.net/hubfs/177047/KALAHARI_Theme_2017/CSS/jquery.fancybox.css">
+<script src="./js/slick.js" type="text/javascript"></script>
+<script src="./js/CountUp.js" type="text/javascript"></script>
+<script src="./js/jquery.appear.js" type="text/javascript"></script>
+<script src="./js/KALAHARI_Theme_2017.min.js" type="text/javascript"></script>
+<script src="./js/animations.min.js" type="text/javascript"></script>
+<script src="./js/jquery.fancybox.js" type="text/javascript"></script></span></div>
+								<!--end layout-widget-wrapper -->
+							</div>
+							<!--end widget-span -->
+						</div>
+						<!--end row-->
+					</div>
+					<!--end row-wrapper -->
+				</div>
+				<!-- end coded_template: id:6056660792 path:generated_global_groups/6056660791.html -->
+
+			</div>
+			<!--end widget-span -->
+		</div>
+		<!--end row-->
+	</div>
+	<!--end row-wrapper -->
+
+	</div>
+	<!--end footer -->
+	</div>
+	<!--end footer wrapper -->
+	
+	<script src="./js/project.js"></script>
+	<script>
+		if (typeof hsVars !== 'undefined') {
+			hsVars['language'] = 'en';
+		}
+	</script>
+
+	<script src="./js/project(1).js"></script>
+
+	<!--[if lte IE 8]>
+		<script charset="utf-8" src="https://js.hsforms.net/forms/v2-legacy.js"></script>
+		<![endif]-->
+
+	<script src="./js/v2.js"></script>
+
+	<!-- Start of HubSpot Analytics Code -->
+	<!-- <script type="text/javascript">
+		var _hsq = _hsq || [];
+		_hsq.push(["setContentType", "standard-page"]);
+		_hsq.push(["setCanonicalUrl", "http:\/\/www-bench-com.sandbox.hs-sites.com\/markets"]);
+		_hsq.push(["setPageId", "6132431548"]);
+		_hsq.push(["setContentMetadata", {
+			"contentPageId": 6132431548,
+			"legacyPageId": "6132431548",
+			"contentFolderId": null,
+			"contentGroupId": null,
+			"abTestId": null,
+			"languageVariantId": 6132431548,
+			"languageCode": "en"
+		}]);
+	</script>
+	<script type="text/javascript" id="hs-script-loader" async="" defer="" src="./js/4349773(1).js"></script> -->
+	<!-- End of HubSpot Analytics Code -->
+
+	<!-- Generated by the HubSpot Template Builder - template version 1.03 -->
+
+	<!-- end coded_template: id:6056660833 path:generated_layouts/6056660832.html -->
+	<table cellspacing="0" cellpadding="0" class="gstl_50 gssb_c" style="width: 77px; display: none; top: 67px; position: absolute; left: 1145px;">
+		<tbody>
+			<tr>
+				<td class="gssb_f"></td>
+				<td class="gssb_e" style="width: 100%;"></td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript">
+
+$(document).ready(function(){
+
+	// CONVERT IMAGE INTO BACKGROUND IMAGE
+	$('.wd_featureboxes_right .wd_featurebox img').hide();
+	$('.wd_featureboxes_right .wd_featurebox').each(function(){
+		var img = $(this).find('img').attr('src');
+
+		$(this).css({
+			'background-image':'url('+img+')',
+			'filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+img+'", sizingMethod="scale")',
+			'-ms-filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+img+'", sizingMethod="scale")'});
+	})
+
+	// IF NO THUMBNAIL IN RELEASE
+	$('.wd_newsfeed_releases .wd_item_list .wd_item, .wd_newsfeed_releases-teaser .item').each(function(){
+		if($(this).find('.wd_thumbnail').length){}else{
+			var $link = $(this).find('.wd_item_wrapper .wd_title a').attr('href');
+			var $text = $(this).find('.wd_item_wrapper .wd_title a').text();
+			var image = new Array ();
+			image[0] = "images/fillers/building-blu.jpg";
+			image[1] = "images/fillers/Data-center-blu.jpg";
+			image[2] = "images/fillers/smart-city-blu.jpg";
+			image[3] = "images/fillers/Stock-market-blu.jpg";
+			var size = image.length
+			var x = Math.floor(size*Math.random())
+			$(this).prepend('<div class="wd_thumbnail"><a href="'+$link+'"><img alt="'+$text+'" src="'+image[x]+'" border="0"></a></div>')
+		};
+	});
+
+	// NEWSFEED THUMBNAILS
+	$('.wd_newsfeed_releases .wd_item').each(function(){
+		var nfrThumb = $(this).find('.wd_thumbnail a img').attr('src');
+		nfrThumb.replace('thumbnail=144', '');
+		//$(this).find('.wd_thumbnail').css('background-image','url('+nfrThumb+')');
+	});
+
+	$('#wd_featurebox-teaser_2 .item .wd_thumbnail a img').each(function(){
+		 this.src = this.src.replace('thumbnail=144', '');
+	 });
+	// CONVERT THUMBNAIL IMAGE INTO BACKGROUND IMAGE
+	$('#wd_featurebox-teaser_2 .item .wd_thumbnail a img').hide();
+	$('#wd_featurebox-teaser_2 .item .wd_thumbnail').each(function(){
+		var img = $(this).find('img').attr('src');
+
+		$(this).css({'height':'20em',
+			'background-size':'cover',
+			'background-image':'url('+img+')',
+			'background-position':'center',
+			'filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+img+'", sizingMethod="scale")',
+			'-ms-filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+img+'", sizingMethod="scale")'});
+	})
+
+	$('.wd_newsfeed_releases-teaser .item').each(function () {
+		var href = $(this).find('.wd_title a').attr('href');
+		$(this).append('<p class="more"><a href="'+href+'">Read More</a></p>');
+	});
+
+	$('#wd_featurebox-teaser_4').each(function () {
+		$(this).append('<p class="more"><a href="index.php?s=19">See All</a></p>');
+	});
+	// FINANCIAL DIV MODIFICATIONS
+	// ADD DIVS
+	
+	// $('.wd_featureboxes_left.wd_featureboxes-vertical #wd_featurebox-standard_7 table img').hide();
+	// $('.wd_featureboxes_left.wd_featureboxes-vertical').each(function(){
+	//   var img = $(this).find('#wd_featurebox-standard_7 table img').attr('src');
+
+	//   $(this).find('.right_section').css({'height':'45em',
+	//     'background-size':'cover',
+	//     'background-image':'url('+img+')',
+	//     'background-position':'center',
+	//     'filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+img+'", sizingMethod="scale")',
+	//     '-ms-filter': 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="'+img+'", sizingMethod="scale")'});
+	// })
+
+	$('.wd_featureboxes_left.wd_featureboxes-vertical').append('<div class="left_section"><div class="align-content"></div></div>');
+	$('.wd_featureboxes_left.wd_featureboxes-vertical').append('<div class="right_section" />');  
+
+	$('.wd_featureboxes_left.wd_featureboxes-vertical #wd_featurebox-teaser_4, .wd_featureboxes_left.wd_featureboxes-vertical #wd_featurebox-standard_7').each(function () {
+		$(this).appendTo('.wd_featureboxes_left.wd_featureboxes-vertical .left_section .align-content');
+	});
+
+	$('.wd_featureboxes_left.wd_featureboxes-vertical #wd_featurebox-standard_10').each(function () {
+		$(this).appendTo('.wd_featureboxes_left.wd_featureboxes-vertical .left_section .align-content');
+	});
+
+	
+	
+	// MOVE SUBSCRIBE FB
+	// $('body').each(function(){
+	// 	var subscribeFb = $(this).find('#wd_featurebox-subscribe_1');
+	// 	$(subscribeFb).insertBefore('.footer-container-wrapper');
+	//  });
+	// $('#wd_featurebox-subscribe_1').each(function(){
+	// 	$(this).wrapInner('<div class="subscribe_inner" />')
+	// });
+	$('#wd_featurebox-subscribe_1 .wd_form_field_input input').attr('placeholder', 'Email');
+
+	
+	
+	// $('.wd_events_tabs').unwrap();
+	$('.wd_events select#wd_events_input_year, .wd_events select#wd_events_input_month, .wd_events button.wd_events_input_go').wrapAll('<div class="input_container" />');
+
+	var attch_url = $('.wd_pageid_64 .wd_featureboxes_middle .wd_attachment a').attr('href');
+	$('.wd_pageid_64 .wd_featureboxes_middle .wd_imagetable img').wrap('<a href="'+attch_url+'"></a>')
+	$('.wd_pageid_64 .wd_featureboxes_middle').insertAfter('#wd_printable_content > h3');
+
+	//Quarterly reports collapsibles
+	//hide Them, or hide class through css 
+	$('.wd_pageid_64 .wd_category_items').hide();
+
+		//Click action on title
+	$(".wd_pageid_64 .wd_category .wd_category_info").on('click',function(e){
+		$(this).toggleClass('active');
+		$(this).nextAll('.wd_category_items').slideToggle('fast');
+	});   
+
+	//  KEY RATIOS PAGE
+	$('.wd_ratios_footer').prepend('Information Provided By Quote Media <br />');
+
+
+	//.wd_pageid_117
+
+	 
+
+//wd_attachment POLYFILL
+	/*switch 117 > 129*/
+
+	//ID = 117 Is the test page
+	if($('.wd_pageid_129, .wd_pageid_117').length > 0){
+
+		$('.wd_category_items .item .wd_attachment').each(function(){
+
+        var link_url = $(this).find('.wd_attachment_info a').attr('href');
+
+        var file_size = $(this).find('.wd_attachment_size').text();
+
+        //pdf check regex
+        var regex = /\.pdf[?]?[a-z0-9]*$/gm;
+
+
+        //icon class
+        var link_class= "";
+        if(regex.test(link_url)){
+            link_class = 'wd_pdf_icon';
+        }
+
+        $(this).before('<div class="wd_attach_pollyf '+link_class+'"><a href="'+link_url+'"><img src="images/webdriver/fileicons/16/pdf.gif" border="0" align="left" hspace="5" alt="Download PDF"> Download '+file_size+'</a></div>');
+
+
+
+       			$(this).remove();
+    	})
+
+    	 $('.item .wd_imagetable').each(function(){
+
+	    	var img_url = $(this).find('img').attr('src'),
+	    		link_url = $(this).find('a').attr('href'),
+	    		rend_html = '';
+
+	    	if(link_url){
+	    		rend_html = '<picture class="wd_image_tbl_pollyf"><a href="'+link_url+'"><img src="'+img_url+'" /></a></picture>';
+	    	}else{
+	    		rend_html = '<picture class="wd_image_tbl_pollyf"><img src="'+img_url+'" /></picture>';
+	    	}
+
+	    	$(this).before(rend_html)
+	    		   .remove();
+
+	   })
+
+
+      $('.wd_category_items .item').each(function(){
+
+      		$(this).find('.item_name').prependTo(this);
+
+      		var url = $(this).find('.wd_attach_pollyf a').attr('href');
+
+      		$(this).find('.item_name, picture.wd_image_tbl_pollyf').wrapInner('<a href="'+url+'" />');
+
+      })	
+
+
+
+	} //Analyst  Reports
+
+	//Callout feature box
+	$('.wd_featureboxes_top_callout .wd_featurebox_title, .wd_featureboxes_bottom_alternating .wd_featurebox_title').wrapInner('<h2></h2>');
+
+	/* Home Page Feature Boxes*/
+
+	//HTML restructuring
+	// $('.wd_featureboxes_top_alternating .wd_featurebox_container, .wd_featureboxes_top_presents .wd_featurebox_container').each(function(){
+	// 	$(this).prepend('<div class="wd_presents_fb_img" />');
+	// 	var fb_img_div = $(this).find('.wd_presents_fb_img');
+	// 	$(this).find('.wd_imagetable').prependTo(fb_img_div);
+	// 	fb_img_div.nextAll().wrapAll('<div class="wd_presents_fb_content" />');
+	// });
+
+	$('.wd_featureboxes_top_alternating .wd_featurebox_container, .wd_featureboxes_top_presents .wd_featurebox_container').each(function(){
+		$(this).prepend('<div class="wd_alternating_fb_img" />');
+		var fb_img_div = $(this).find('.wd_alternating_fb_img');
+		$(this).find('.wd_imagetable').prependTo(fb_img_div);
+		fb_img_div.nextAll().wrapAll('<div class="wd_alternating_fb_content" />');
+		$('.wd_alternating_fb_img').each(function() {
+			var fb_img_url = $(this).find('img').attr('src');
+			if(typeof fb_img_url != 'undefined') {
+				$(this).attr('style', 'background-image:url("'+fb_img_url+'")');
+			}
+		});
+	});
+
+	$('.wd_featureboxes_resources').prepend('<div class="wd_resources_header">Resources</div>');
+	$('.wd_resources_header').nextAll().wrapAll('<div class="wd_resources_wrapper" />');
+
+
+	// if( $('.wd_featureboxes_top_presents .wd_imagetable')[0]){
+
+
+
+	// //Image polyfill
+	// $('.wd_imagetable').each(function(){
+
+	//     	var img_url = $(this).find('img').attr('src'),
+	//     		link_url = $(this).find('a').attr('href'),
+	//     		rend_html = '';
+
+	//     	if(link_url){
+	//     		rend_html = '<picture class="wd_image_tbl_pollyf" style="background-image: url('+img_url+')"><a href="'+link_url+'"><span class="wd_tile_tile"></span></a></picture>';
+	//     	}
+
+	//     	$(this).before(rend_html)
+	//     		   .remove();
+
+	//    })
+
+
+
+	// //HTML restructuring
+	// $('.wd_featureboxes_top_presents .wd_featurebox_container').each(function(){
+
+	// 		   $(this).wrapInner('<div class="__inner" />')
+
+
+	// 		   //Check to see if they are the right tile
+	// 		   if($(this).find('.wd_image_tbl_pollyf')[0]){
+
+	// 		   			$(this).addClass('wd_tile');
+
+	// 					var tile_title = $(this).find('.wd_featurebox > p').text();
+
+	// 				   $(this).find('.wd_image_tbl_pollyf > a .wd_tile_tile').text(tile_title);
+
+	// 				   $(this).find('.wd_image_tbl_pollyf > a').prepend('<div class="icon"><img src="https://www.bench.com/hubfs/download-white.png" alt="download_icon"></div>');
+
+	// 				   $(this).find('.wd_attachment').remove();
+	// 				   $(this).find('.wd_featurebox > p').remove();
+
+	// 		   }
+
+	// });
+
+
+	// $('.wd_featureboxes_top_presents').show().addClass('wd_fadein');
+
+
+	// }
+
+
+
+});
+</script>
+
+
+
+		<!-- WD CONTENT SCRIPTS -->
+		<script type="text/javascript" src="js/wd_scripts.js"></script>
+
+
+
+
+<!-- begin spin_special_output(body_end) -->
+<script wd_script_id="piwik_tracking_code"></script>
+<!-- Piwik Tracking Code -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+
+  _paq.push(["setCustomVariable", 1, "Content Type", "Events", "page"]);
+
+  _paq.push(["setCustomVariable", 3, "Navigation Page", "Investor Events", "page"]);
+
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+  (function() {
+    var u="//stats.drivetheweb.com/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", 5238]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0];
+    g.type="text/javascript"; g.async=true; g.defer=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript>
+	<img src="https://stats.drivetheweb.com/piwik.php?idsite=5238&rec=1" style="border:0" alt="" />
+</noscript>
+<!-- End Piwik Tracking Code -->
+		
+<!-- end spin_special_output(body_end) -->
+</body>
+</html>

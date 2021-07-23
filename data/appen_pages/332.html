@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"32397309"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<link rel="canonical" href="https://investors.parker.com/presentations-webcasts/webcasts/" />
+<meta property="og:site_name" content="Parker Hannifin Corporation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investors.parker.com/presentations-webcasts/webcasts" />
+<meta property="og:title" content="Webcasts - Parker Hannifin Corporation" />
+<meta property="og:description" content="The Investor Relations website contains information about Parker Hannifin Corporation&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb26441/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://investors.parker.com/presentations-webcasts/webcasts" />
+<link rel="revision" href="https://investors.parker.com/presentations-webcasts/webcasts" />
+
+    <title>Webcasts - Parker Hannifin Corporation</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/files/css/css_w5uwuaEHMC9bSP8WfARp9ZhoueTvvxceydRRR7hhmEE.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/files/css/css_Pf8RcTh-uuSLaq6XeaNUzA87SwRU0q3aoJfh6qEszGA.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/css/custom-styles.css?qw0d9k" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/files/css/css_qPMft_1TBVySUMR2EffyANRseDId4XUDLjijVFbMnG0.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/css/vendor_css/font-awesome.min.css?qw0d9k" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/css/bootstrap.css?qw0d9k" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/css/style.css?qw0d9k" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/css/investors.css?qw0d9k" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/css/vendor_css/flexslider.css?qw0d9k" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/css/vendor_css/slick.css?qw0d9k" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/css/jquery.socialfeed.css?qw0d9k" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/css/magnific-popup.css?qw0d9k" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/css/custom-sec-styles.css?qw0d9k" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/css/ndq-style.css?qw0d9k" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/css/ndq-icons.css?qw0d9k" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/css/ndq-toolbar.css?qw0d9k" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/css/ndq-print.css?qw0d9k" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5826 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div class="wrapper">
+	<header>
+		<div class="container">
+			
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><nav class="global-block-content navbar navbar-default nav-bg" role="navigation"><div class="navbar-header"><a class="navbar-brand logo hidden-lg" href="http://www.parker.com/" title="Parker"><span style="display: none !important;"> </span></a>
+<div class="pull-right"><button class="navbar-toggle pull-right navheaderButton" type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar white"></span> <span class="icon-bar white"></span> <span class="icon-bar white"></span> <span class="txt_menu">Menu</span></button><a class="btn hidden-lg padding0 search_btn" data-target=".bs-search-collapse" data-toggle="collapse" href="#" title="Search"><span class="glyphicon glyphicon-search_icon"></span> </a></div>
+</div>
+</nav></div>
+      
+
+      
+<div class="custom-header-search logo_section clearfix bs-search-collapse">
+  <a class="navbar-brand logo visible-lg" href="http://www.parker.com/" title="Parker"><span style="display: none !important;">&nbsp;</span></a>
+  <span class="triangle"></span>
+  <div class="advanced-search-container pull-right">
+    <div class="input-group">
+              <form data-block-uuid="00d3dee1-61ec-4520-8844-1561718cf43b" action="/search" method="get" accept-charset="UTF-8">
+  <div class="js-form-item form-item js-form-type-search form-item-query js-form-item-query form-no-label">
+        <input type="search" name="query" size="60" maxlength="128" placeholder="Search for Investor Information" class="form-search required" required="required" aria-required="true" />
+
+        </div>
+<input type="submit" name="op" value="Search" class="button button--primary js-form-submit form-submit" />
+
+</form>
+
+          </div>
+  </div>
+</div>
+
+
+
+
+			<nav class="navbar navbar-default nav_primary" role="navigation">
+				
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><ul class="global-block-content nav navbar-nav border_color"><li class="dropdown"><a href="http://ph.parker.com/us/en/products" title="Products">Products <span class="caret"></span></a>
+    <div aria-labelledby="menu1" class="dropdown-menu" id="product-flyout" role="menu">
+    <div class="row">
+    <ul class="col-md-4"><li><a href="http://ph.parker.com/us/en/aerospace-systems-and-technologies">Aerospace Systems and Technologies</a></li>
+        <li><a href="http://ph.parker.com/us/en/air-preparation-frl-and-dryers">Air Preparation (FRL) and Dryers</a></li>
+        <li><a href="http://ph.parker.com/us/en/cylinders-and-actuators">Cylinders and Actuators</a></li>
+        <li><a href="http://ph.parker.com/us/en/emi-shielding">EMI Shielding</a></li>
+        <li><a href="http://ph.parker.com/us/en/filters-separators-purifiers">Filters, Separators, Purifiers</a></li>
+        <li><a href="http://ph.parker.com/us/en/fittings-quick-couplings">Fittings and Quick Couplings</a></li>
+        <li><a href="http://ph.parker.com/us/en/gas-generators">Gas Generators</a></li>
+        <li><a href="http://ph.parker.com/us/en/hose-piping-tubing-and-t-slot-framing">Hose, Piping, Tubing and T-slot Framing </a></li>
+    </ul><ul class="col-md-4"><li><a href="http://ph.parker.com/us/en/medical-and-dental-equipment">Medical and Dental Equipment</a></li>
+        <li><a href="http://ph.parker.com/us/en/motors-drives-and-controllers">Motors, Drives and Controllers</a></li>
+        <li><a href="http://ph.parker.com/us/en/power-take-offs-and-drive-systems">Power Take Offs and Drive Systems</a></li>
+        <li><a href="http://ph.parker.com/us/en/pumps">Pumps</a></li>
+        <li><a href="http://ph.parker.com/us/en/refrigeration-and-air-conditioning">Refrigeration and Air Conditioning</a></li>
+        <li><a href="http://ph.parker.com/us/en/regulators-and-flow-control">Regulators, Flow Control and Measurement</a></li>
+    </ul><ul class="col-md-4"><li><a href="http://ph.parker.com/us/en/seals-and-o-rings">Seals and O-Rings</a></li>
+        <li><a href="http://ph.parker.com/us/en/thermal-and-power-management">Thermal and Power Management</a></li>
+        <li><a href="http://ph.parker.com/us/en/valves">Valves</a></li>
+        <li><a href="http://www.parker.com/portal/site/PARKER/menuitem.17c8315d31f057bc86a6c3544256d1ca/?vgnextoid=964bec5d6f0b2610VgnVCM100000e6651dacRCRD&amp;vgnextchannel=9f45216358d55510VgnVCM100000e6651dacRCRD&amp;vgnextfmt=EN&amp;vgnextcat=Parker Tracking System">PTS</a></li>
+    </ul></div>
+    </div>
+    </li>
+    <li><a href="http://www.parker.com/portal/site/PARKER/menuitem.02acfb1a93839962c264ddc7427ad1ca/?vgnextoid=0f6ad490a512b310VgnVCM10000014a71dacRCRD&amp;vgnextfmt=default" title="Support">Support</a></li>
+    <li><a href="http://www.parker.com/portal/site/PARKER/menuitem.f8ba1d72adca86ed4d1f2e9876108a0c/?vgnextoid=0f3880961f66e010VgnVCM1000000308a8c0RCRD&amp;vgnextfmt=default" id="division-tab" title="Divisions">Divisions</a></li>
+    <li><a href="http://www.parker.com/portal/site/PARKER/menuitem.cdedc496e1b883138c23b35b8320d1ca/?vgnextoid=2c68b34395d2b210VgnVCM10000032a71dacRCRD&amp;vgnextfmt=default" title="Where to Buy">Where to Buy</a></li>
+    <li><a href="http://www.parker.com/portal/site/PARKER/menuitem.e631b67dc0285c0566b049e1237ad1ca/?vgnextoid=243880961f66e010VgnVCM1000000308a8c0RCRD&amp;vgnextfmt=default" title="Careers">Careers</a></li>
+    <li><a href="http://www.parker.com/portal/site/PARKER/menuitem.f830ba32f37af5fe2c5c8810427ad1ca/?vgnextoid=7de94bad565e4310VgnVCM10000014a71dacRCRD&amp;vgnextfmt=default" title="About Parker">About Parker</a></li>
+</ul></div>
+      
+
+      
+
+				
+        <ul class="nav navbar-nav off-header-lg blue_Color">
+                      <li  class="text-primary">
+          <a target="" href="http://www.parker.com/" title="Home">Home</a>
+        </li>
+                      <li >
+          <a target="" href="/investors" title="Investors">Investors</a>
+        </li>
+                      <li >
+          <a target="" href="http://www.parker.com/portal/site/PARKER/menuitem.e2f2dfced453a3eb30291f89237ad1ca/?vgnextoid=ef73ec35df463110VgnVCM100000c9040d0aRCRD&amp;vgnextfmt=default&amp;type=Landing" title="Contact Parker">Contact Parker</a>
+        </li>
+                      <li >
+          <a target="" href="http://ph.parker.com/us/en/Login?myAcctMain=1" title="Sign in / Register">Sign in / Register</a>
+        </li>
+          </ul>
+  
+
+
+
+			</nav>
+		</div>
+	</header>
+	<div class="container"></div>
+
+	<div class="outerDiv">
+		<div class="container aboutus_header">
+			            <ol class="breadcrumb breadcrumb_whitex breadcrumb-nofloat">
+          <li >
+                  <a href="http://www.parker.com/" title="Home">Home</a>
+              </li>
+          <li >
+                  <a href="/" title="Investors">Investors</a>
+              </li>
+          <li >
+                  <a href="/presentations-webcasts" title="Presentations webcasts">Presentations webcasts</a>
+              </li>
+          <li class="active">
+                  Webcasts
+              </li>
+          <li >
+                  Webcasts
+              </li>
+        </ol>
+  
+  
+			
+			
+		</div>
+	</div>
+
+	<div class="container about-subpage-container">
+				
+<div class="row hidden-lg">
+  <div class="col-md-3 col-sm-12">
+    <div id="leftRailMenu" class="lrm-menuwrapper">
+      <button class="lrm-trigger hidden-lg">Open Menu</button>
+
+                                                               <ul id="leftRailMenuList" class="lrm-menu">
+                                                                                            <li  class="levelOneNoChildren main-landing-link-list-item hidden-lg">
+                    <a target="" href="/investors">Investors</a>
+                  </li>
+                                                                                                                <li  class="levelOneWithChildren">
+                    <a target="" class="lrd-toggle" href="#">Financial Information</a>
+                                                                             <ul class="lrm-submenu lrd-inner">
+                                                                                                <li  class="levelTwoNoChildren">
+                      <a target="" href="/financial-information/annual-reports">Annual Reports/Proxy Statements</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/financial-information/order-rates">Order Rates</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/financial-information/financial-data">Financial Data</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                              <li  class="levelOneWithChildren">
+                    <a target="" class="lrd-toggle" href="#">Stock Information</a>
+                                                                             <ul class="lrm-submenu lrd-inner">
+                                                                                                <li  class="levelTwoNoChildren">
+                      <a target="" href="/stock-information/stock-chart">Stock Chart</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/stock-information/historical-price-lookup">Historical Price Lookup</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/stock-information/investment-calculator">Investment Calculator</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/stock-information/trading-statistics">Trading Statistics</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/stock-information/dividend-history">Dividend History</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                              <li  class="levelOneWithChildren">
+                    <a target="" class="lrd-toggle" href="#">Financial News</a>
+                                                                             <ul class="lrm-submenu lrd-inner">
+                                                                                                <li  class="levelTwoNoChildren">
+                      <a target="" href="/financial-news/financial-news-releases">Financial News Releases</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/financial-news/earnings-news-releases">Earnings News Releases</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                              <li  class="levelOneWithChildren active-levelOneWithChildren lrd-open">
+                    <a target="" class="lrd-toggle" href="#">Presentations &amp; Webcasts</a>
+                                                                             <ul class="lrm-submenu lrd-inner">
+                                                                                                <li  class="levelTwoNoChildren active-levelTwoNoChildren">
+                      <a target="" href="/presentations-webcasts/webcasts">Webcasts</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/2020-ir-day">Investor Meeting 2020</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/presentations-webcasts/presentations">Presentations</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="_blank" href="/static-files/941217ff-c52f-47e7-9ce9-575618ee96e7">Non-GAAP Disclosure</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                              <li  class="levelOneWithChildren">
+                    <a target="" class="lrd-toggle" href="#">SEC Filings</a>
+                                                                             <ul class="lrm-submenu lrd-inner">
+                                                                                                <li  class="levelTwoNoChildren">
+                      <a target="" href="/sec-filings?field_nir_sec_form_group_target_id%5B0%5D=471&amp;field_nir_sec_date_filed_value=&amp;items_per_page=10#views-exposed-form-widget-sec-filings-table">Annual Filings</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/sec-filings?field_nir_sec_form_group_target_id%5B0%5D=496&amp;field_nir_sec_date_filed_value=&amp;items_per_page=10#views-exposed-form-widget-sec-filings-table">Quarterly Filings</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/sec-filings?field_nir_sec_form_group_target_id%5B0%5D=491&amp;field_nir_sec_date_filed_value=&amp;items_per_page=10#views-exposed-form-widget-sec-filings-table">Proxy Filings</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="_blank" href="/static-files/370a2920-131b-4d0e-a940-6737063ccb4e">Form SD</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                              <li  class="levelOneWithChildren">
+                    <a target="" class="lrd-toggle" href="#">Analyst Information</a>
+                                                                             <ul class="lrm-submenu lrd-inner">
+                                                                                                <li  class="levelTwoNoChildren">
+                      <a target="" href="/analyst-information/analyst-coverage">Analyst Coverage</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/analyst-information/earnings-estimates">Earnings Estimates</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                              <li  class="levelOneWithChildren">
+                    <a target="" class="lrd-toggle" href="#">Corporate Governance</a>
+                                                                             <ul class="lrm-submenu lrd-inner">
+                                                                                                <li  class="levelTwoNoChildren">
+                      <a target="" href="/corporate-governance/introduction">Introduction</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="https://www.parker.com/portal/site/PARKER/menuitem.f830ba32f37af5fe2c5c8810427ad1ca/?vgnextoid=7de94bad565e4310VgnVCM10000014a71dacRCRD&amp;vgnextfmt=EN&amp;requestedci=c4d628ff08ee8610VgnVCM100000e6651dacRCRD&amp;vgnextcat=Parker%20Leadership">Corporate Management</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/corporate-governance/board-of-directors">Board of Directors</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/corporate-governance/committee-composition">Committee Composition</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/corporate-governance/sustainability-report">Sustainability Report</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                                                                              <li  class="levelOneWithChildren">
+                    <a target="" class="lrd-toggle" href="#">Shareholder Information</a>
+                                                                             <ul class="lrm-submenu lrd-inner">
+                                                                                                <li  class="levelTwoNoChildren">
+                      <a target="" href="/shareholder-information/information-request">Information Request</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/shareholder-information/contact-information">Contact Information</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="_blank" href="/static-files/02ef8da6-007c-41f5-b2e3-d45f12d8c857">Dividend Reinvestment Plan</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="_blank" href="http://www.shareowneronline.com/">Equiniti Trust Company</a>
+                    </li>
+                                                                                                                  <li  class="levelTwoNoChildren">
+                      <a target="" href="/shareholder-information/faqs">FAQs</a>
+                    </li>
+                                                    </ul>
+              
+                  </li>
+                                                    </ul>
+              
+
+      
+    </div>
+  </div>
+</div>
+
+		<div class="row">
+							<div class="custom-left-rail-grid-width">
+					<div class="sidebar-nav-title hidden-sm hidden-xs">
+						<h2>
+							<a href="/">Investors</a>
+						</h2>
+					</div>
+					<div id="left-rail-desktop-nav-container"></div>
+				</div>
+						<div class="custom-content-grid-width ndq-content ndq-5826">
+													<div class="info_section">
+						<div class="row">
+							<div class="col-md-12">
+								<h1 class="invst-head">
+																		  Webcasts
+																	</h1>
+								
+								  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid2360-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--bea2999c-d988-42b2-8d2a-31fbafbdf3a8 block--bea2999c-d988-42b2-8d2a-31fbafbdf3a8--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+  <div>
+    
+  <div class="mb40">
+    <div class="block-region-contentmain"><div class="block--webcast block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--6e2f74ea-c04c-469d-a543-c0054df06308 block--6e2f74ea-c04c-469d-a543-c0054df06308--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              <table class="nirtable collapse-table">
+          <thead>
+            <tr>
+              <th scope="col" class="views-field-field-nir-date">Date</th>
+              <th scope="col">Title</th>
+              <th scope="col" class="views-field-field-nir-document"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+  <td class="views-field-field-nir-date">
+            05/26/2021
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/wolfe-research-global-transportation-and-industrials-conference" hreflang="en">Wolfe Research Global Transportation and Industrials Conference</a></div>
+  </div>
+      </td>
+  <td class="views-field-field-nir-document wp-webcast-link">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://register.gotowebinar.com/register/5168686929228992526" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </td>
+</tr>
+<tr>
+  <td class="views-field-field-nir-date">
+            05/11/2021
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/goldman-sachs-industrials-and-materials-conference" hreflang="en">Goldman Sachs Industrials and Materials Conference</a></div>
+  </div>
+      </td>
+  <td class="views-field-field-nir-document wp-webcast-link">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://kvgo.com/gs-industrial-material/parker-hannifin-corporation-may-2021" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </td>
+</tr>
+<tr>
+  <td class="views-field-field-nir-date">
+            04/29/2021
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/fy21-q3-earnings-release-webcast" hreflang="en">FY21 Q3 Earnings Release &amp; Webcast</a></div>
+  </div>
+      </td>
+  <td class="views-field-field-nir-document wp-webcast-link">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/cerpw2km" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </td>
+</tr>
+<tr>
+  <td class="views-field-field-nir-date">
+            03/16/2021
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/bofa-securities-global-industrials-conference" hreflang="en">BofA Securities Global Industrials Conference</a></div>
+  </div>
+      </td>
+  <td class="views-field-field-nir-document wp-webcast-link">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="http://www.veracast.com/webcasts/bofa/industrials2021/idLK784x.cfm" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </td>
+</tr>
+<tr>
+  <td class="views-field-field-nir-date">
+            03/02/2021
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/13th-annual-evercore-isi-industrial-conference" hreflang="en">13th Annual Evercore ISI Industrial Conference</a></div>
+  </div>
+      </td>
+  <td class="views-field-field-nir-document wp-webcast-link">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://wsw.com/webcast/evercore13/ph/1968840" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </td>
+</tr>
+<tr>
+  <td class="views-field-field-nir-date">
+            02/16/2021
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/barclays-industrial-select-conference" hreflang="en">Barclays Industrial Select Conference</a></div>
+  </div>
+      </td>
+  <td class="views-field-field-nir-document wp-webcast-link">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://kvgo.com/barclays/parker-hannifin-2021" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </td>
+</tr>
+<tr>
+  <td class="views-field-field-nir-date">
+            02/04/2021
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/fy21-q2-earnings-release-webcast" hreflang="en">FY21 Q2 Earnings Release &amp; Webcast</a></div>
+  </div>
+      </td>
+  <td class="views-field-field-nir-document wp-webcast-link">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/y28c34wi" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </td>
+</tr>
+<tr>
+  <td class="views-field-field-nir-date">
+            11/11/2020
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/robert-w-baird-industrial-conference" hreflang="en">Robert W. Baird Industrial Conference</a></div>
+  </div>
+      </td>
+  <td class="views-field-field-nir-document wp-webcast-link">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://kvgo.com/baird-global-industrials/parker-hannifin-november-2020" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </td>
+</tr>
+<tr>
+  <td class="views-field-field-nir-date">
+            11/05/2020
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/fy21-q1-earnings-release-webcast" hreflang="en">FY21 Q1 Earnings Release &amp; Webcast</a></div>
+  </div>
+      </td>
+  <td class="views-field-field-nir-document wp-webcast-link">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/535n3sn8" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </td>
+</tr>
+<tr>
+  <td class="views-field-field-nir-date">
+            10/28/2020
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/2020-annual-meeting-shareholders" hreflang="en">2020 Annual Meeting of Shareholders</a></div>
+  </div>
+      </td>
+  <td class="views-field-field-nir-document wp-webcast-link">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://www.virtualshareholdermeeting.com/PH2020" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </td>
+</tr>
+<tr>
+  <td class="views-field-field-nir-date">
+            08/06/2020
+
+      </td>
+  <td>
+          
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/fy20-q4-earnings-release-webcast" hreflang="en">FY20 Q4 Earnings Release &amp; Webcast</a></div>
+  </div>
+      </td>
+  <td class="views-field-field-nir-document wp-webcast-link">
+          
+<div class="field-nir-event-url">
+      <div class="normal-webcast-link field__item"><a href="https://edge.media-server.com/mmc/p/n83xcoz8" target="_blank">Click Here for Webcast</a></div>
+  </div>
+      </td>
+</tr>
+
+          </tbody>
+        </table>
+          </div>
+          </div>
+</div>
+  </div>
+</div>
+  </div>
+<!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+							</div>
+						</div>
+					</div>
+								
+<div class="info_section border-yellow toolkit" id="follow">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <h1>IR Toolkit</h1>
+      </div>
+      <div class="col-md-8">
+
+                                        <p class="ndq-toolkit">
+            
+              <a class="t-print" href="javascript:window.print();" rel="nofollow" title="Print Page" alt="Print Page">
+                <span>Print Page</span>
+              </a>
+
+              <a class="t-email" href="#" onclick="window.location='mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' + encodeURIComponent(window.location.href); return false;" rel="nofollow" title="Email Page" alt="Email Page">
+                <span>Email Page</span>
+              </a>
+
+                              
+                <a  class="t-rss" href="/rss-feeds" title="RSS Feeds" alt="RSS Feeds">
+                  <span>RSS Feeds</span>
+                </a>
+
+                              
+                <a  class="t-contacts" href="/shareholder-information/contact-information" title="Contact Info" alt="Contact Info">
+                  <span>Contact Info</span>
+                </a>
+
+                              
+                <a  class="t-alerts" href="/email-alerts" title="Email Alerts" alt="Email Alerts">
+                  <span>Email Alerts</span>
+                </a>
+
+              
+            </p>
+                  
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+				
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="global-block-content info_section border-yellow" id="follow">
+<div class="row">
+<div class="col-md-12">
+<div class="col-md-4">
+<h1>Follow Us</h1>
+</div>
+
+<div class="col-md-4"><span class="font-style-brown">Follow Parker Hannifin on social media:</span></div>
+
+<div class="col-md-4"><a href="http://parker.com/social"><img alt="Follow Parker Hannifin on social media" src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/images/group_01.png" /></a></div>
+</div>
+</div>
+</div>
+</div>
+      
+
+      
+
+			</div>
+		</div>
+	</div>
+	<div class="mobile-absolute-alpha-division">
+		<ul id="mobile-alpha-division-nav" class="mobile-absolute-alpha-list"></ul>
+	</div>
+	<div class="mobile-absolute-alpha-country">
+		<ul id="mobile-alpha-country-nav" class="mobile-absolute-alpha-list"></ul>
+	</div>
+	<div class="mobile-absolute-alpha-brand">
+		<ul id="mobile-alpha-brand-nav" class="mobile-absolute-alpha-list"></ul>
+	</div>
+	<footer>
+		<div class="container">
+			
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><section class="global-block-content footer_teasers_wrapper"><div aria-multiselectable="true" class="row panel-group" id="accordion" role="tablist">
+<div class="col-sm-3 panel panel-default">
+<div class="panel-heading" id="headingOne" role="tab">
+<h4 class="panel-title"><a aria-controls="collapseOne" aria-expanded="true" class="collapsed" href="#collapseOne" title="Parker Hannifin">Parker Hannifin <span class="glyphicon pull-right glyphicon-plus visible-xs"></span> </a></h4>
+</div>
+
+<div aria-labelledby="headingOne" class="panel-collapse" id="collapseOne" role="tabpanel">
+<div class="panel-body">
+<ul class="list-unstyled list-collapse"><li><a href="http://www.parker.com/portal/site/PARKER/menuitem.005db0d83405a82228323e10237ad1ca/?vgnextoid=991880961f66e010VgnVCM1000000308a8c0RCRD&amp;vgnextfmt=EN">Products</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.f830ba32f37af5fe2c5c8810427ad1ca/?vgnextoid=7de94bad565e4310VgnVCM10000014a71dacRCRD&amp;vgnextfmt=EN">About Parker</a></li>
+	<li><a href="/">Investors</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.c7aa7c198ba66c9a5829dd92427ad1ca/?vgnextoid=8fefc710fda1d310VgnVCM100000200c1dacRCRD&amp;vgnextfmt=EN">Community</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.e631b67dc0285c0566b049e1237ad1ca/?vgnextoid=243880961f66e010VgnVCM1000000308a8c0RCRD&amp;vgnextfmt=EN">Careers</a></li>
+</ul></div>
+</div>
+</div>
+
+<div class="col-sm-3 panel panel-default">
+<div class="panel-heading" id="headingThree" role="tab">
+<h4 class="panel-title"><a aria-controls="collapseThree" aria-expanded="false" class="collapsed" href="#collapseThree" title="Global Operations">Global Operations <span class="glyphicon pull-right glyphicon-plus visible-xs"></span> </a></h4>
+</div>
+
+<div aria-labelledby="headingThree" class="panel-collapse" id="collapseThree" role="tabpanel">
+<div class="panel-body">
+<ul class="list-unstyled list-collapse"><li><a href="http://www.parker.com/portal/site/PARKER/menuitem.f8ba1d72adca86ed4d1f2e9876108a0c/?vgnextoid=0f3880961f66e010VgnVCM1000000308a8c0RCRD&amp;vgnextfmt=default">Divisions</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.f8ba1d72adca86ed4d1f2e9876108a0c/?vgnextoid=0f3880961f66e010VgnVCM1000000308a8c0RCRD&amp;vgnextfmt=EN&amp;radiobutton=countries">Sales Companies</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.0b23c5347871c8a9ae472677427ad1ca/?vgnextoid=87495672481c7310VgnVCM10000023cc1dacRCRD&amp;vgnextfmt=default">Worldwide Locations</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.cdedc496e1b883138c23b35b8320d1ca/?vgnextoid=2c68b34395d2b210VgnVCM10000032a71dacRCRD&amp;vgnextfmt=default">Distribution Network</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.e9f8726d34453d3680684c0a8320d1ca/?vgnextoid=165a4dd53480d210VgnVCM10000048021dacRCRD&amp;vgnextfmt=default">ParkerStore™ Network</a></li>
+</ul></div>
+</div>
+</div>
+
+<div class="col-sm-3 panel panel-default">
+<div class="panel-heading" id="headingTwo" role="tab">
+<h4 class="panel-title"><a aria-controls="collapseTwo" aria-expanded="false" class="collapsed" href="#collapseTwo" title="Company Information">Company Information <span class="glyphicon pull-right glyphicon-plus visible-xs"></span> </a></h4>
+</div>
+
+<div aria-labelledby="headingTwo" class="panel-collapse" id="collapseTwo" role="tabpanel">
+<div class="panel-body">
+<ul class="list-unstyled list-collapse"><li><a href="http://www.parker.com/portal/site/PARKER/menuitem.f830ba32f37af5fe2c5c8810427ad1ca/?vgnextoid=9383fbdc71fd7310VgnVCM100000200c1dacRCRD&amp;vgnextfmt=EN">Newsroom</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.c9e5838e8a4c0934704b7b10237ad1ca/?selectCategory=news-events&amp;vgnextfmt=EN&amp;vgnextoid=941b13fc0fa14110VgnVCM10000032a71dacRCRD&amp;searchbox=*&amp;siteSectionEN_fq=p1611390703&amp;newsEventsTypeEN_fq=p67338874&amp;eventDisplayStart_dt=%5B*%20TO%20NOW%5D&amp;eventDisplayEnd_dt=%5BNOW-1DAY%20TO%20*%5D&amp;sort=eventStart_dt%20asc&amp;isNewsEvent=Y">Event Calendar</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.f830ba32f37af5fe2c5c8810427ad1ca/?vgnextoid=9030c9ca3d256310VgnVCM10000023cc1dacRCRD&amp;vgnextfmt=EN">Working with Parker</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.f8ba1d72adca86ed4d1f2e9876108a0c/?vgnextoid=0f3880961f66e010VgnVCM1000000308a8c0RCRD&amp;vgnextfmt=EN&amp;radiobutton=brand">Product Brands</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.f830ba32f37af5fe2c5c8810427ad1ca/?vgnextoid=9a888803c4627310VgnVCM10000023cc1dacRCRD&amp;vgnextfmt=EN">History</a></li>
+</ul></div>
+</div>
+</div>
+
+<div class="col-sm-3 panel panel-default">
+<div class="panel-heading" id="headingFour" role="tab">
+<h4 class="panel-title"><a aria-controls="collapseFour" aria-expanded="false" class="collapsed" href="#collapseFour" title="Global Support Center">Global Support Center <span class="glyphicon pull-right glyphicon-plus visible-xs"></span> </a></h4>
+</div>
+
+<div aria-labelledby="headingFour" class="panel-collapse" id="collapseFour" role="tabpanel">
+<div class="panel-body">
+<ul class="list-unstyled list-collapse"><li><a href="http://www.parker.com/portal/site/PARKER/menuitem.02acfb1a93839962c264ddc7427ad1ca/?vgnextoid=0f6ad490a512b310VgnVCM10000014a71dacRCRD&amp;vgnextfmt=EN">Support</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.d349a5f4b59aa1707dbb3e10237ad1ca/?vgnextoid=b3fcefd602ef2110VgnVCM100000c9040d0aRCRD&amp;vgnextfmt=EN">CAD</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.cdedc496e1b883138c23b35b8320d1ca/?vgnextoid=2c68b34395d2b210VgnVCM10000032a71dacRCRD&amp;vgnextfmt=EN">Where to Buy</a></li>
+	<li><a href="http://www.parker.com/portal/site/PARKER/menuitem.e2f2dfced453a3eb30291f89237ad1ca/?vgnextoid=ef73ec35df463110VgnVCM100000c9040d0aRCRD&amp;vgnextfmt=default&amp;type=Landing">Contact Parker</a></li>
+</ul></div>
+</div>
+</div>
+</div>
+</section></div>
+      
+
+      
+
+			<section class="copyright">
+				
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="global-block-content imgdiv"><img alt="Engineering Your Success" src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/images/Engg.png" /></div>
+</div>
+      
+
+      
+
+				<div class="row">
+					<div class="col-lg-6">
+						
+        <ul class="list-inline align">
+              <li>
+          <a target="" href="http://www.parker.com/portal/site/PARKER/menuitem.119cd4d9c745dfceed0ea786237ad1ca/?vgnextoid=277d3fadf2ed3110VgnVCM10000032a71dacRCRD&amp;vgnextchannel=277d3fadf2ed3110VgnVCM10000032a71dacRCRD&amp;vgnextfmt=EN" title="Site Map">Site Map</a>
+        </li>
+              <li>
+          <a target="" href="http://www.parker.com/portal/site/PARKER/menuitem.c9e55a6ea039d4fdfd40eae8237ad1ca/?vgnextoid=f65d904cf58b2110VgnVCM100000c9040d0aRCRD&amp;vgnextchannel=f65d904cf58b2110VgnVCM100000c9040d0aRCRD&amp;vgnextfmt=EN" title="Safety">Safety</a>
+        </li>
+              <li>
+          <a target="" href="http://www.parker.com/portal/site/PARKER/menuitem.4450f18f18c082cdfd40eae8237ad1ca/?vgnextoid=760b904cf58b2110VgnVCM100000c9040d0aRCRD&amp;vgnextchannel=760b904cf58b2110VgnVCM100000c9040d0aRCRD&amp;vgnextfmt=EN" title="Privacy Policies">Privacy Policies</a>
+        </li>
+              <li>
+          <a target="" href="http://www.parker.com/portal/site/PARKER/menuitem.c17ed99692643c6315731910237ad1ca/?vgnextoid=0d7d36c1a6383510VgnVCM100000e6651dacRCRD&amp;vgnextchannel=0d7d36c1a6383510VgnVCM100000e6651dacRCRD&amp;vgnextfmt=EN" title="Terms &amp; Conditions">Terms &amp; Conditions</a>
+        </li>
+          </ul>
+  
+
+
+
+              
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><h6 class="global-block-content copyrights">© Parker Hannifin Corp <script>
+<!--//--><![CDATA[// ><!--
+document.write((new Date()).getFullYear());
+//--><!]]>
+</script></h6>
+</div>
+      
+
+      
+
+					</div>
+				</div>
+			</section>
+		</div>
+	</footer>
+	<div class="back_searchdiv" data-target=".bs-search-collapse" data-toggle="collapse"></div>
+</div>
+<div class="mobileNavBackdrop"></div>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb1693";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid2360\/client,nir_pid2360\/override,nir_pid2360\/vendor,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid2360","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"c5fa33aafd8c1d9f7dccb3d7f540a3ceafd5ae613891f93f80b11b984f2a32ce"}}</script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/modernizr.custom.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/jquery-1.11.1.min.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/bootstrap.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/jquery.bootstrap-responsive-tabs.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/jquery.flexslider.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/slick.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/bootstrap-tabcollapse.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/jquery-ui.min.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/leftRailMenu.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/headMenu.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/leftRailDesktop.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/custom.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/jquery.magnific-popup.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/inline-lightbox.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/client/js/inline.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/files/js/js_RskRZKaP6yHwQTsD1K0aDDDcQH4_Uo_HnJY7QVfJLN8.js"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/js/ndq-theme.js?v=9.1.9"></script>
+<script src="/sites/g/files/knoqqb26441/themes/site/nir_pid2360/vendor/js/jquery.matchHeight.min.js?qw0d9k"></script>
+<script src="/sites/g/files/knoqqb26441/files/js/js_iMIa-3vMO29nb-FpLuCHGti_jcjhPllentHtJW2eElo.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"32397309,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGl2ChNQaX1dXhZsdVVTVBANQXhVVkUvWV9bYUcABHhUXlFAFlxQRFpHFkwLVlhdUwhxUlNQRhY=","queueTime":0,"applicationTime":433,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"39077635"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Everspin Technologies Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investor.everspin.com/calendar-events" />
+<meta property="og:title" content="Calendar of Events | Everspin Technologies Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about Everspin Technologies Inc. &#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb21841/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://investor.everspin.com/calendar-events" />
+<link rel="canonical" href="https://investor.everspin.com/calendar-events" />
+<link rel="shortlink" href="https://investor.everspin.com/node/5826" />
+<link rel="revision" href="https://investor.everspin.com/calendar-events" />
+
+    <title>Calendar of Events | Everspin Technologies Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb21841/files/css/css_xlPnJptIC4BdD3T-gfH9N4SlWZCHxGNTtD6JVWqkd4w.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb21841/files/css/css_4oWi0h4xzru_U7boLAGhahfBBpKeAb7QqPlplR3czkA.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb21841/files/css/css_wdzQLcYTTTWeyzqE7GVMrKhT7ORZWxWbVqaRBoIu-6s.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    <script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create", "UA-26074507-1", {"cookieDomain":"auto"});ga("set", "page", location.pathname + location.search + location.hash);ga("send", "pageview");</script>
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5826 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+<div class="html not-front not-logged-in one-sidebar sidebar-first page-node page-node- page-node-297 node-type-page navbar-is-static-top">
+    <div id="skip-link"><a href="#main-content" class="element-invisible element-focusable">Skip to main content</a></div>
+    <header id="navbar" role="banner" class="navbar navbar-static-top navbar-default">
+        <div class="container">
+            <div class="navbar-header"><a class="logo navbar-btn pull-left" href="https://www.everspin.com/" title="Home"><img src="/sites/g/files/knoqqb21841/themes/site/nir_pid1995/client/images/Everspinlogo.png" alt="Home" /></a><button type="button" class="navbar-toggle"
+                    data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
+            <div class="navbar-collapse collapse">
+                <nav role="navigation">
+                    <div class="region region-navigation">
+                        <section id="block-search-form" class="block block-search menu-right site-search-input clearfix">
+                            <form class="google-cse form-search content-search form-searchbbbb" placeholder="Enter Keyword" action="https://www.everspin.com/search/node" method="post" id="search-block-form" accept-charset="UTF-8">
+                                <div>
+                                    <div>
+                                        <h2 class="element-invisible">Search form</h2>
+                                        <div class="input-group"><input title="" placeholder="Enter Keyword" size="15" class="form-control form-text form-search" type="search" id="edit-search-block-form--2" name="search_block_form" value="" maxlength="128" /><span class="input-group-btn"><button type="submit" class="btn btn-primary"><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                            </span>
+                                        </div>
+                                        <div class="form-actions form-wrapper form-group" id="edit-actions"><button class="element-invisible btn btn-primary form-submit" id="edit-submit" name="op" value="Search" type="submit">Search</button></div><input type="hidden" name="form_build_id" value="form-oOBZ0VnOdv2Dz-UmuiDsMfWVu_L8nV3ZKJU59eTUy1o"
+                                        /><input type="hidden" name="form_id" value="search_block_form" /></div>
+                                </div>
+                            </form>
+                        </section>
+                        <section id="block-menu-menu-everspin-top" class="block block-menu menu-right clearfix">
+                            <ul class="menu nav navbar-nav navbar-right othertopnav">
+                                <li class="first expanded active-trail"><a href="https://www.everspin.com/abouteverspin" title="" class="active-trail"><span>About Everspin</span></a></li>
+                                <li class="leaf"><a href="/"><span>Investors</span></a></li>
+                                <li class="leaf"><a href="https://www.everspin.com/career-opportunities"><span>Careers</span></a></li>
+                                <li class="collapsed"><a href="https://www.everspin.com/pub"><span>Press</span></a></li>
+                                <li class="last leaf"><a href="http://sales.everspin.com/client.php" title="sales login"><span><span class="fa fa-lock"></span> Sales Login</span></a></li>
+                            </ul>
+                        </section>
+                    </div>
+                    <ul class="menu nav yamm navbar-nav navbar-left">
+                        <li class="first collapsed dropdown"><a href="https://www.everspin.com/" title="" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><span>Products</span></a><span class="under"
+                        style="width: 73px; left: 10.25px;"></span>
+                            <ul class="dropdown-menu" style="left: 10.25px;right: inherit;">
+                                <li>
+									<div class="yamm-content">
+										<div class="row">
+											<div class="mega-menu-side col-md-12">
+												<div class="col-sm-3">
+													<h4>Toggle MRAM</h4>
+													<ul>
+														<li><a href="https://www.everspin.com/toggle-mram-technology">Toggle MRAM Technology</a></li>
+														<li><a href="https://www.everspin.com/parallel-interface-mram">Parallel Products</a></li>
+														<li><a href="https://www.everspin.com/serial-peripheral-interface">Serial Products</a></li>
+														<li><a href="https://www.everspin.com/part-search"> FRAM-nvSRAM-SRAM Cross Reference Guide</a></li>
+													</ul>
+												</div>
+												<div class="col-sm-3">
+													<h4>Spin-transfer Torque MRAM</h4>
+													<ul>
+														<li><a href="https://www.everspin.com/spin-transfer-torque-mram-technology">Spin-transfer Torque MRAM Technology</a></li>
+														<li><a href="https://www.everspin.com/stt-mram-products">ST-DDR Products</a></li>
+													</ul>
+												</div>
+												<div class="col-sm-3">
+													<h4>Everspin Patents</h4><ul>
+													<li><a href="https://www.everspin.com/patents">Everspin Intellectual Property</a></li>
+													</ul>
+												</div>
+																							</div>
+										</div>
+									</div>
+								</li>
+                            </ul>
+                        </li>
+                        <li class="collapsed dropdown"><a href="https://www.everspin.com/" title="Applications" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><span>Applications &amp; Case Studies</span></a><span class="under" style="width: 208px;left: 12.703px;"></span>
+                            <ul class="dropdown-menu application" style="left:12.703px;">
+                                <li>
+									<div class="yamm-content">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="col-md-12">
+													<h4>Applications &amp; Case Studies</h4></div>
+											</div>
+											<div class="mega-menu-side col-md-12">
+												<div class="col-sm-4">
+													<ul>
+														<li><a href="https://www.everspin.com/aerospace">Aerospace</a></li>
+														<li><a href="https://www.everspin.com/automotive">Automotive</a></li>
+														<li><a href="https://www.everspin.com/storage-solutions">Storage Solutions</a></li>
+														<li><a href="https://www.everspin.com/factory-automation">Factory Automation</a></li>
+													</ul>
+												</div>
+												<div class="col-sm-4">
+													<ul>
+														<li><a href="https://www.everspin.com/internet-things">Internet of Things</a></li>
+														<li><a href="https://www.everspin.com/smart-energy">Smart Energy</a></li>
+													</ul>
+												</div>
+												<div class="col-sm-4">
+													<ul>
+														<li><a href="https://www.everspin.com/medical">Medical</a></li>
+														<li><a href="https://www.everspin.com/raid">RAID</a></li>
+														<li><a href="https://www.everspin.com/industrial">Industrial</a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+                            </ul>
+                        </li>
+                        <li class="collapsed dropdown"><a href="https://www.everspin.com/" title="Quality" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><span>Quality &amp; Reliability</span></a><span class="under" style="width: 198px; left: 11.719px;"></span>
+                            <ul class="dropdown-menu third" style="left: 11.719px; right: inherit;">
+                                <li>
+									<div class="yamm-content">
+										<div class="row">
+											<div class="mega-menu-side col-md-8">
+												<div class="col-sm-6">
+													<h4>Quality Program</h4><ul>
+													<li><a href="https://www.everspin.com/everspins-quality-policy">Quality Policy</a></li>
+													<li><a href="https://www.everspin.com/certifications">ISO Certifications</a></li>
+													<li><a href="https://www.everspin.com/rohsreach-compliance-statements">RoHS/REACH</a></li>
+													<li><a href="https://www.everspin.com/eicc-and-other-environmental-information">EICC / GeSI and Other Docs</a></li>
+													<li><a href="https://www.everspin.com/product-discontinuance-policy">Product Discontinuance Policy</a></li>
+													</ul>
+													</div>
+												
+											</div>
+										<div class="mega-content-side col-md-4">
+          	            <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h4>By Request</h4>
+										<ul><li>Qualification Reports</li>
+										<li>Reliability Reports</li>
+										<li>IPC1752 Documents</li>
+										<li>QC Flow Documents</li>
+										</ul><p class="cta"><a href="https://www.everspin.com/info/request-document" target="_top">Submit Document Request</a></p>
+										<h4>Technical Papers Published by Everspin</h4>
+										<p class="cta"><a href="https://www.everspin.com/technical-papers">Browse Technical Papers</a></p></div></div></div>          </div>
+										</div>
+									</div>
+								</li>
+                            </ul>
+                        </li>
+                        <li class="leaf dropdown"><a href="https://www.everspin.com/" title="Buy" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><span>Buy or Sample</span></a><span class="under" style="width: 108px; left: 12.844px;"></span>
+                            <ul class="dropdown-menu" style="right: 9px;">
+                                <li>
+									<div class="yamm-content">
+										<div class="row">
+											<div class="mega-menu-side col-md-7">
+												<div class="col-sm-6">
+													<h4>Contact Sales</h4>
+													<ul>
+														<li><a href="https://www.everspin.com/sales/na">United States, Canada &amp; Mexico</a></li>
+														<li><a href="https://www.everspin.com/sales/ap">Asia Pacific</a></li>
+														<li><a href="https://www.everspin.com/sales/sa">South America</a></li>
+														<li><a href="https://www.everspin.com/sales/jp">Japan</a></li>
+														<li><a href="https://www.everspin.com/sales/eu">Europe, Middle East &amp; Africa</a></li>
+													</ul>
+												</div>
+												<div class="col-sm-6">
+													<h4>Buy Now from Worldwide Distributors</h4>
+													<ul>
+														<li><a href="https://www.arrow.com/en/products/search?prodline=NVRAM&amp;filters=Manufacturer_name:Everspin%20Technologies%3B">Arrow</a></li>
+														<li><a href="http://www.digikey.com/product-search/en?site=us&amp;lang=en&amp;v=819&amp;WT.z_supplier_id=819&amp;WT.z_page_type=SP&amp;WT.z_page_sub_type=SS&amp;WT.z_oss_type=View%20All&amp;chp=0">DigiKey</a></li>
+														<li><a href="http://www.futureelectronics.com/en/Search.aspx?dsNav=Ro:0,Nea:True,N:4294926986-587">Future</a></li>
+														<li><a href="http://www.mouser.com/everspin-technologies/_/N-488zw?P=1yzs0cd">Mouser</a></li>
+														<li><a href="https://www.everspin.com/micross-die-sales-landing-page">Die Sales</a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="mega-content-side col-md-5">
+												<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+													<div class="field-items">
+														<div class="field-item even" property="content:encoded">
+															<h4>Request a Sample or More Information</h4>
+															<p class="cta"><a href="https://www.everspin.com/samplerequest">Request a Sample</a></p>
+															<p class="cta"><a href="https://www.everspin.com/info/product-inquiry">Product Inquiry</a></p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+                            </ul>
+                        </li>
+                        <li class="last collapsed dropdown"><a href="https://www.everspin.com/" title="" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><span>Support</span></a><span class="under" style="width: 63px; left:14.688px;"></span>
+                            <ul class="dropdown-menu" style="right: 7.313px;width:400px">
+                                <li>
+									<div class="yamm-content">
+										<div class="row">
+											<div class="mega-menu-side col-md-12">
+												<div class="col-sm-12">
+													<ul>
+														<li><a href="https://www.everspin.com/sales">Representatives and Distributors Worldwide</a></li>
+														<li><a href="https://www.everspin.com/info/information-request">General Information Request</a></li>
+														<li><a href="https://www.everspin.com/documentation-finder">Documentation Search</a></li>
+														<li><a href="https://www.everspin.com/AppNotes">Application Notes</a></li>
+														<li><a href="https://www.everspin.com/partners">Partners</a></li>
+														<li><a href="https://www.everspin.com/frequently-asked-questions">Frequently Asked Questions</a></li>
+														<li><a href="https://www.everspin.com/contact-us-everspin-technologies">Contact Everspin</a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="main-container container">
+        <header role="banner" id="page-header"></header>
+        <div class="row">
+            <div class="everspin-title">
+                <ol class="breadcrumb">
+									  <div class="region region-breadcrumb">
+    <div id="block-nir-pid1995-breadcrumbs" class="block--system-breadcrumb-block block--system-breadcrumb-block--5826 block--breadcrumb--system-breadcrumb-block block--breadcrumb--system-breadcrumb-block--5826 block--77f81a11-d6ed-4c1c-90dd-3530070dbd5e block--77f81a11-d6ed-4c1c-90dd-3530070dbd5e--5826 block block-system block-system-breadcrumb-block">
+  
+    
+      <li><a href="https://www.everspin.com/">Home</a></li>
+   
+                           <li><a href="/">Investor Relations</a></li>&nbsp;
+            
+                        <li class='breadcrumb-last'>Calendar of Events</li>
+            
+         
+  </div>
+
+  </div>
+
+				                </ol>
+                <h1 class="page-header">Calendar of Events</h1>
+            </div>
+        </div>
+        <div class="row">
+            <aside class="first-sidebar" role="complementary">
+                <div class="region region-sidebar-first">
+                    <section id="block-menu-block-4" class="block block-menu-block clearfix">
+                        <h2 class="block-title">Investor Relations</h2>
+                        <div class="menu-block-wrapper menu-block-4 menu-name-menu-everspin-top parent-mlid-371 menu-level-1">
+                            <ul class="menu nav  ">
+                                 
+    
+
+
+                        
+    
+    
+
+                              <ul data-block-uuid="50ea6044-efbc-453d-9c2f-9df4417e8e9e" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/" target="" rel="" title="Main Investor Relations Page" data-drupal-link-system-path="&lt;front&gt;">Overview</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/press-releases" target="" rel="" title="Everspin Press Releases" data-drupal-link-system-path="node/5816">News</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/calendar-events" target="" rel="" title="Calendar of Events" data-drupal-link-system-path="node/5826">Events &amp; Webcasts</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/investor-presentations" target="" rel="" data-drupal-link-system-path="node/5831">Investor Presentation</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/annual-reports" target="" rel="" title="Financial Reports" data-drupal-link-system-path="node/5881">Financial Information</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/quarterly-results" target="" rel="" title="Quarterly Results" data-drupal-link-system-path="node/7271">Quarterly Results</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/sec-filings" target="" rel="" title="SEC Filings" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/stock-quote" target="" rel="" title="Stock Information" data-drupal-link-system-path="node/5911">Stock Information</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/stock-information/analyst-coverage" target="" rel="" title="Analyst Coverage" data-drupal-link-system-path="node/5896">Analyst Coverage</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://www.everspin.com/board-of-directors" target="_blank" rel="" title="Corporate Governance">Corporate Governance</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="https://www.everspin.com/executive-management-and-board" target="_blank" rel="" title="Management">Management</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://www.everspin.com/board-of-directors" target="_blank" rel="" title="Board of Directors">Board of Directors</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/governance-documents" target="" rel="" title="Governance Documents" data-drupal-link-system-path="node/6116">Governance Documents</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance/committee-composition" target="" rel="" title="Committee Composition" data-drupal-link-system-path="node/5851">Committee Composition</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/information-request" target="" rel="" title="Contact Us" data-drupal-link-system-path="node/7291">Contact Investor Relations</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/e-mail-alerts" target="" rel="" title="E-mail Alerts" data-drupal-link-system-path="node/5946">E-mail Alerts</a>
+                  </li>
+          </ul>
+  
+                  </li>
+          </ul>
+  
+
+
+    
+
+  
+
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </aside>
+            <section class="evermain-9"><a id="main-content"></a>
+                <div class="region region-content">
+                    <section id="block-system-main" class="block block-system clearfix">
+                        <article id="node-297" class="node node-page clearfix" about="/our-company" typeof="foaf:Document">
+                            <header><span property="dc:title" content="Our Company" class="rdf-meta element-hidden"></span></header>
+                            <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                                <div class="field-items">
+                                    <div class="field-item even" property="content:encoded">
+                                        <div>
+                                            <div class="ccbnContent">
+                                                  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1995-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--c2182a4a-8395-4da9-a917-730d9c6a3772 block--c2182a4a-8395-4da9-a917-730d9c6a3772--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Calendar of Events
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--5826 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--5826 block--cdbb167d-9943-44e5-ad46-7aea5bf476a5 block--cdbb167d-9943-44e5-ad46-7aea5bf476a5--5826 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Upcoming Events</h2>
+    
+      <div data-block-uuid="cdbb167d-9943-44e5-ad46-7aea5bf476a5"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-af90c1adb15102d7abcceb9925e20923c2a79fa422d1ba987b035ff7ae02bc11">
+  
+    
+      
+      <div class="view-empty">
+      There are currently no events to display.
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+<div class="block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--dcb84b5b-7571-4771-a1ee-953c7cdaa0c8 block--dcb84b5b-7571-4771-a1ee-953c7cdaa0c8--5826 block block-nir-events block-nir-events__widget">
+  
+    
+          <div class="nir-widget--label">
+      Past Events
+    </div>
+  <table class="nirtable" width="100%" border="0" cellspacing="1" cellpadding="3">
+    <thead>
+    <tr class="heading"><th>Date</th><th>Event Details </th></tr></thead>
+    <tbody class='Events_table'>
+
+            
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    May.06, 2021 <BR /> 5:30 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-first-quarter-financial-results-conference-call" hreflang="en">Everspin Technologies&#039; First Quarter Financial Results Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  		  <tr class="ccbnEventDetailsTr">
+			   <td valign="top" align="left"><span class="ccbnTblTxt">Supporting&nbsp;<br>Materials:&nbsp;</span></td>
+			   <td align="left" class="ccbnField-SupportingMaterials" valign="top">
+				  
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.everspin.com/static-files/f727e0bc-3334-46d2-a8c3-e28e270cef77" type="application/pdf" title="2021-May-06-MRAM.OQ-139871405668-Transcript.pdf">1Q 2021 Financial Results Conference Call Transcript</a></span><span class="filesize"> 51.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+				</td>
+			</tr>
+				   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Feb.25, 2021 <BR /> 5:00 PM EST
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-fourth-quarter-and-fiscal-2020-financial-results" hreflang="en">Everspin Technologies’ Fourth Quarter and Fiscal 2020 Financial Results Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  		  <tr class="ccbnEventDetailsTr">
+			   <td valign="top" align="left"><span class="ccbnTblTxt">Supporting&nbsp;<br>Materials:&nbsp;</span></td>
+			   <td align="left" class="ccbnField-SupportingMaterials" valign="top">
+				  
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.everspin.com/static-files/86735a4e-c48e-4608-a63a-5c34be6607e6" type="application/pdf" title="2021-Feb-25-MRAM.OQ-138448054987-Transcript.pdf">4Q 2020 Financial Results Conference Call Transcript	</a></span><span class="filesize"> 71.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+				</td>
+			</tr>
+				   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Jan.11, 2021
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-23rd-annual-needham-virtual-growth-conference" hreflang="en">Everspin at the 23rd Annual Needham Virtual Growth Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Dec.16, 2020
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-12th-annual-virtual-ceo-summit" hreflang="en">Everspin at the 12th Annual Virtual CEO Summit</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Description: </span></td>
+			 <td align="left" class="ccbnField-Description" valign="top">
+				<span class="ccbnTblTxt">
+				   <p>
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Webcast link to follow</div>
+          </div>
+</p>
+				</span>
+			 </td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Dec.15, 2020
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-oppenheimer-5g-summit-revolution-begins-conference" hreflang="en">Everspin at the Oppenheimer 5G Summit: The Revolution Begins Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Description: </span></td>
+			 <td align="left" class="ccbnField-Description" valign="top">
+				<span class="ccbnTblTxt">
+				   <p>
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Webcast link to follow</div>
+          </div>
+</p>
+				</span>
+			 </td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Nov.05, 2020 <BR /> 5:00 PM EST
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-third-quarter-2020-financial-results-conference-call" hreflang="en">Everspin Technologies’ Third Quarter 2020 Financial Results Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  		  <tr class="ccbnEventDetailsTr">
+			   <td valign="top" align="left"><span class="ccbnTblTxt">Supporting&nbsp;<br>Materials:&nbsp;</span></td>
+			   <td align="left" class="ccbnField-SupportingMaterials" valign="top">
+				  
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.everspin.com/static-files/e3b4390c-25fb-4788-9cf4-e20227511902" type="application/pdf" title="2020-Nov-05-MRAM.OQ-140660647863-Transcript.pdf">3Q 2020 Financial Results Conference Call Transcript</a></span><span class="filesize"> 92.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+				</td>
+			</tr>
+				   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Aug.06, 2020 <BR /> 5:00 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-second-quarter-2020-financial-results-conference-call" hreflang="en">Everspin Technologies’ Second Quarter 2020 Financial Results Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  		  <tr class="ccbnEventDetailsTr">
+			   <td valign="top" align="left"><span class="ccbnTblTxt">Supporting&nbsp;<br>Materials:&nbsp;</span></td>
+			   <td align="left" class="ccbnField-SupportingMaterials" valign="top">
+				  
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.everspin.com/static-files/4d032433-308a-446e-9e0c-5b18cda63e3e" type="application/pdf" title="MRAM-2Q 2020 Earnings Transcript.pdf">2Q 2020 Financial Results Conference Call Transcript</a></span><span class="filesize"> 153.9 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+				</td>
+			</tr>
+				   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    May.27, 2020
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-craig-hallum-virtual-institutional-investor-conference" hreflang="en">Everspin at the Craig-Hallum Virtual Institutional Investor Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    May.12, 2020
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-oppenheimer-5th-annual-emerging-growth-conference" hreflang="en">Everspin at the Oppenheimer 5th Annual Emerging Growth Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    May.07, 2020 <BR /> 5:00 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-first-quarter-2020-financial-results-conference-call" hreflang="en">Everspin Technologies’ First Quarter 2020 Financial Results Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  		  <tr class="ccbnEventDetailsTr">
+			   <td valign="top" align="left"><span class="ccbnTblTxt">Supporting&nbsp;<br>Materials:&nbsp;</span></td>
+			   <td align="left" class="ccbnField-SupportingMaterials" valign="top">
+				  
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.everspin.com/static-files/7135c707-6350-4f30-81d3-16f69e66d369" type="application/pdf" title="2020-May-08-MRAM.OQ-139642309735-Transcript.pdf">1Q 2020 Financial Results Conference Call Transcript	</a></span><span class="filesize"> 66.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+				</td>
+			</tr>
+				   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Mar.12, 2020 <BR /> 5:00 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-fourth-quarter-and-fiscal-2019-financial-results" hreflang="en">Everspin Technologies&#039; Fourth Quarter and Fiscal 2019 Financial Results Conference Call </a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  		  <tr class="ccbnEventDetailsTr">
+			   <td valign="top" align="left"><span class="ccbnTblTxt">Supporting&nbsp;<br>Materials:&nbsp;</span></td>
+			   <td align="left" class="ccbnField-SupportingMaterials" valign="top">
+				  
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.everspin.com/static-files/9023d45e-2588-43d5-9e66-2909b7ddb5f3" type="application/pdf" title="MRAM-4Q and F2019 Earnings Webcast Transcript-March 12 2020.pdf">4Q 2019 Financial Results Conference Call Transcript</a></span><span class="filesize"> 157.8 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+				</td>
+			</tr>
+				   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Jan.14, 2020 <BR /> 10:00 AM EST
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-needham-growth-conference" hreflang="en">Everspin at the 22nd Annual Needham Growth Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Dec.04, 2019
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-benchmark-discovery-one-one-conference" hreflang="en">Everspin at Benchmark Discovery One-on-One Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+			 <td valign="top" align="left" class="ccbnField-Location">
+				 <div class="nir-widget--field nir-widget--event--location-notes">
+
+								  <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+					<label>Location</label>
+				  </div>
+				
+				<div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">New York Athletic Club, NYC</div>
+    </div>
+
+				
+				
+
+				
+			  </div>
+		  </td>
+		</tr>
+		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Nov.07, 2019 <BR /> 5:00 PM EST
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-third-quarter-2019-financial-results-conference-call" hreflang="en">Everspin Technologies’ Third Quarter 2019 Financial Results Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Aug.28, 2019
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-jefferies-semiconductor-hardware-and-communications-infrastructure" hreflang="en">Everspin at Jefferies Semiconductor, Hardware and Communications Infrastructure Summit</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+			 <td valign="top" align="left" class="ccbnField-Location">
+				 <div class="nir-widget--field nir-widget--event--location-notes">
+
+								  <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+					<label>Location</label>
+				  </div>
+				
+				<div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Ritz-Carlton Hotel, Chicago</div>
+    </div>
+
+				
+				
+
+				
+			  </div>
+		  </td>
+		</tr>
+		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Aug.07, 2019 <BR /> 5:00 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-second-quarter-2019-financial-results-conference-call" hreflang="en">Everspin Technologies’ Second Quarter 2019 Financial Results Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    May.29, 2019 <BR /> 9:40 AM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-cowen-technology-media-telecom-conference-0" hreflang="en">Everspin at Cowen Technology, Media &amp; Telecom Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    May.22, 2019 <BR /> 8:00 AM PDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-b-riley-fbr-institutional-investor-conference" hreflang="en">Everspin Technologies, Inc. at B. Riley FBR Institutional Investor Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+			 <td valign="top" align="left" class="ccbnField-Location">
+				 <div class="nir-widget--field nir-widget--event--location-notes">
+
+								  <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+					<label>Location</label>
+				  </div>
+				
+				<div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">at the Beverly Hilton Hotel</div>
+    </div>
+
+				<div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="address-line1"> 9876 Wilshire Blvd</span><br>
+<span class="locality">Beverly Hills</span>, <span class="administrative-area">CA</span> <span class="postal-code">90210</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+				
+
+				
+			  </div>
+		  </td>
+		</tr>
+		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    May.08, 2019 <BR /> 5:00 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspins-first-quarter-2019-financial-results-conference-call" hreflang="en">Everspin’s First Quarter 2019 Financial Results Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Mar.14, 2019 <BR /> 5:00 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspins-fourth-quarter-and-fiscal-year-2018-financial-results-conference" hreflang="en">Everspin’s Fourth Quarter and Fiscal Year 2018 Financial Results Conference Call </a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+                        
+                            Jan.15, 2019 from 1:30 PM to 2:10 PM EST
+          </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-incat-21st-annual-needham-growth-conference" hreflang="en">Everspin Technologies, Inc.at 21st Annual Needham Growth Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Nov.15, 2018 <BR /> 12:00 PM EST
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-craig-hallum-alpha-select-conference" hreflang="en">Everspin Technologies, Inc. at the Craig-Hallum Alpha Select Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+			 <td valign="top" align="left" class="ccbnField-Location">
+				 <div class="nir-widget--field nir-widget--event--location-notes">
+
+								  <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+					<label>Location</label>
+				  </div>
+				
+				<div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Sheraton Times Square Hotel, NYC</div>
+    </div>
+
+				<div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="country">United States</span></p></div>
+    </div>
+
+				
+
+				
+			  </div>
+		  </td>
+		</tr>
+		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Nov.13, 2018 <BR /> 12:00 PM EST
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-needham-networking-communications-security" hreflang="en">Everspin Technologies, Inc. at the Needham Networking, Communications &amp; Security Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+			 <td valign="top" align="left" class="ccbnField-Location">
+				 <div class="nir-widget--field nir-widget--event--location-notes">
+
+								  <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+					<label>Location</label>
+				  </div>
+				
+				<div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Millennium Broadway Hotel, NYC</div>
+    </div>
+
+				<div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="country">United States</span></p></div>
+    </div>
+
+				
+
+				
+			  </div>
+		  </td>
+		</tr>
+		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Nov.08, 2018 <BR /> 5:00 PM EST
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspins-third-quarter-2018-financial-results-conference-call" hreflang="en">Everspin’s Third Quarter 2018 Financial Results Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Aug.28, 2018 <BR /> 12:00 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-jefferies-semiconductor-hardware-and-communications" hreflang="en">Everspin Technologies, Inc. at the Jefferies Semiconductor, Hardware and Communications Infrastructure Summit</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+			 <td valign="top" align="left" class="ccbnField-Location">
+				 <div class="nir-widget--field nir-widget--event--location-notes">
+
+								  <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+					<label>Location</label>
+				  </div>
+				
+				<div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Ritz Carlton Hotel in Chicago, IL.</div>
+    </div>
+
+				<div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="country">United States</span></p></div>
+    </div>
+
+				
+
+				
+			  </div>
+		  </td>
+		</tr>
+		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Aug.08, 2018 <BR /> 5:00 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspins-second-quarter-2018-financial-results-conference-call" hreflang="en">Everspin’s Second Quarter 2018 Financial Results Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Jun.12, 2018 <BR /> 8:35 AM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-stifel-cross-sector-insight-conference" hreflang="en">Everspin Technologies, Inc. at at the Stifel Cross Sector Insight Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+			 <td valign="top" align="left" class="ccbnField-Location">
+				 <div class="nir-widget--field nir-widget--event--location-notes">
+
+								  <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+					<label>Location</label>
+				  </div>
+				
+				<div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item"> InterContinental Hotel in Boston, MA</div>
+    </div>
+
+				
+				
+
+				
+			  </div>
+		  </td>
+		</tr>
+		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    May.31, 2018 <BR /> 12:00 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-cowen-tmt-conference" hreflang="en">Everspin Technologies, Inc. at the Cowen TMT Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+			 <td valign="top" align="left" class="ccbnField-Location">
+				 <div class="nir-widget--field nir-widget--event--location-notes">
+
+								  <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+					<label>Location</label>
+				  </div>
+				
+				<div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Lotte New York Palace Hotel</div>
+    </div>
+
+				
+				
+
+				
+			  </div>
+		  </td>
+		</tr>
+		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    May.09, 2018 <BR /> 2:00 PM PDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspins-first-quarter-2018-financial-results-conference-call" hreflang="en">Everspin’s First Quarter 2018 Financial Results Conference Call  </a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Mar.15, 2018 <BR /> 5:00 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspins-fourth-quarter-and-fiscal-year-2017-financial-results-conference" hreflang="en">Everspin’s Fourth Quarter and Fiscal Year 2017 Financial Results Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+                        
+                            Jan.18, 2018 from 12:50 PM to 12:50 PM EST
+          </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-needham-companys-20th-annual-growth-conference" hreflang="en">Everspin Technologies, Inc. at Needham &amp; Company’s 20th Annual Growth Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+                        
+                            Nov.13, 2017 from 4:30 PM to 4:30 PM EST
+          </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q3-2017-everspin-technologies-inc-financial-results-conference-call" hreflang="en">Q3 2017 Everspin Technologies, Inc. Financial Results Conference Call   </a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+                        
+                            Sep.06, 2017 from 12:00 PM to 12:00 PM EDT
+          </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/roth-datacenter-and-intelligent-infrastructure-corporate-access-day" hreflang="en">ROTH Datacenter and Intelligent Infrastructure Corporate Access Day</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Description: </span></td>
+			 <td align="left" class="ccbnField-Description" valign="top">
+				<span class="ccbnTblTxt">
+				   <p>
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item"><p>Supplemental information: No webcast. Investors interested in this event should contact their Roth sales rep to request a meeting with Everspin.</p></div>
+          </div>
+</p>
+				</span>
+			 </td>
+		  </tr>
+		  		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+			 <td valign="top" align="left" class="ccbnField-Location">
+				 <div class="nir-widget--field nir-widget--event--location-notes">
+
+								  <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+					<label>Location</label>
+				  </div>
+				
+				
+				<div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">San Francisco, CA</span>,<br>
+<span class="country">United States</span></p></div>
+    </div>
+
+				
+
+				
+			  </div>
+		  </td>
+		</tr>
+		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Aug.10, 2017 <BR /> 2:00 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-37th-annual-canaccord-genuity-growth-conference" hreflang="en">Everspin Technologies, Inc. at 37th Annual Canaccord Genuity Growth Conference </a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+                        
+                            Aug.10, 2017 from 8:00 AM to 8:00 AM EDT
+          </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q2-2017-everspin-technologies-inc-financial-results-conference-call" hreflang="en">Q2 2017 Everspin Technologies, Inc. Financial Results Conference Call </a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+                        
+                            Jun.06, 2017 from 4:00 PM to 4:00 PM EDT
+          </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-needhams-inaugural-automotive-tech-day-panel" hreflang="en">Everspin Technologies, Inc. at Needham’s Inaugural Automotive Tech Day (Panel Discussion)  </a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Description: </span></td>
+			 <td align="left" class="ccbnField-Description" valign="top">
+				<span class="ccbnTblTxt">
+				   <p>
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Everspin will participate in a Panel Discussion: ADAS Level Progression and Types of Active Safety, moderated by Rajvindra Gill, Needham’s Semiconductor Analyst.<br /><br />
+To access the panel discussion at 4:00 p.m. ET, click <a href="http://wsw.com/webcast/needham82/panel4/">here</a>.</div>
+          </div>
+</p>
+				</span>
+			 </td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Jun.06, 2017 <BR /> 1:50 PM EDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-needhams-inaugural-automotive-tech-day-everspin" hreflang="en">Everspin Technologies, Inc. at Needham’s Inaugural Automotive Tech Day (Everspin Company Presentation)   </a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Description: </span></td>
+			 <td align="left" class="ccbnField-Description" valign="top">
+				<span class="ccbnTblTxt">
+				   <p>
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Starting at 1:10 p.m. ET Everspin will be one of four companies presenting during a session on "Connectivity, Mapping and Security." During Everspin's portion of the four companies presenting (which is scheduled to start at 1:50 p.m. ET) Everspin will discuss how Everspin and MRAM participate in the automotive market. Following Everspin's 10-minute presentation, there will be a 10-minute Q&amp;A session.<br /><br />
+To access Everspin's presentation and Q&amp;A at 1:50 p.m., ET click <a href="http://wsw.com/webcast/needham82/panel2/">here</a>.</div>
+          </div>
+</p>
+				</span>
+			 </td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Jun.05, 2017 <BR /> 9:45 AM PDT
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-stifel-2017-technology-internet-media-conference" hreflang="en">Everspin Technologies, Inc. at Stifel 2017 Technology, Internet &amp; Media Conference </a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+                        
+                            May.18, 2017 from 10:00 AM to 10:00 AM PDT
+          </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/2017-annual-meeting-stockholders" hreflang="en">2017 Annual Meeting of Stockholders </a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  <tr class="ccbnEventDetailsTr">
+			 <td valign="top" align="left"><span class="ccbnTblTxt">Location: </span></td>
+			 <td valign="top" align="left" class="ccbnField-Location">
+				 <div class="nir-widget--field nir-widget--event--location-notes">
+
+								  <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+					<label>Location</label>
+				  </div>
+				
+				<div class="field field--name-field-nir-event-loc-name field--type-string field--label-above">
+        <div class="field__item">Everspin Technologies, Inc.&amp;#8217;s Corporate Headquarters</div>
+    </div>
+
+				<div class="field field--name-field-nir-event-loc-address field--type-address field--label-above">
+        <div class="field__item"><p class="address" translate="no"><span class="locality">Chandler, Arizona</span>, <span class="postal-code">85224</span><br>
+<span class="country">United States</span></p></div>
+    </div>
+
+				
+
+				
+			  </div>
+		  </td>
+		</tr>
+		  		  		  <tr class="ccbnEventDetailsTr">
+			   <td valign="top" align="left"><span class="ccbnTblTxt">Supporting&nbsp;<br>Materials:&nbsp;</span></td>
+			   <td align="left" class="ccbnField-SupportingMaterials" valign="top">
+				  
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.everspin.com/static-files/4f417472-97fd-4d55-9388-1e65a262f84e" type="application/pdf" title="EverspinTechnologiesInc.pdf">Definitive Additional Materials</a></span><span class="filesize"> 532 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.everspin.com/static-files/301c1dad-03d3-43de-b946-c67e48df565f" type="application/pdf" title="DP EverspinTechnologies Inc.pdf">Definitive Proxy Statement</a></span><span class="filesize"> 748.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+				</td>
+			</tr>
+				   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+                        
+                            May.12, 2017 from 8:00 AM to 8:00 AM EDT
+          </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q1-2017-everspin-technologies-inc-financial-results-conference-call" hreflang="en">Q1 2017 Everspin Technologies, Inc. Financial Results Conference Call   </a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+                        
+                            Mar.13, 2017 from 4:00 PM to 4:00 PM PDT
+          </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-29th-annual-roth-conference" hreflang="en">Everspin Technologies, Inc. at 29th Annual ROTH Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  		  <tr class="ccbnEventDetailsTr">
+			   <td valign="top" align="left"><span class="ccbnTblTxt">Supporting&nbsp;<br>Materials:&nbsp;</span></td>
+			   <td align="left" class="ccbnField-SupportingMaterials" valign="top">
+				  
+<div class="field-nir-event-assets-ref">
+      <div class="nir-widgets--file-list--hide-filesize field__items">
+              <div>
+                <div>
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+  </div>
+</article>
+</div>
+                        </div>
+          </div>
+  </div>
+				</td>
+			</tr>
+				   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+                        
+                            Mar.10, 2017 from 8:00 AM to 8:00 AM EST
+          </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q4-2016-everspin-technologies-inc-financial-results-conference-call" hreflang="en">Q4 2016 Everspin Technologies, Inc. Financial Results Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Jan.11, 2017 <BR /> 11:20 AM EST
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/everspin-technologies-inc-19th-annual-needham-growth-conference" hreflang="en">Everspin Technologies, Inc. at 19th Annual Needham Growth Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+            
+                                    Nov.16, 2016 <BR /> 8:40 AM EST
+            </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/7th-annual-craig-hallum-alpha-select-conference" hreflang="en">7th Annual Craig-Hallum Alpha Select Conference</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+
+<tr>
+  <td data-before="Date">  <span class="date2">
+                        
+                            Nov.14, 2016 from 5:00 PM to 5:00 PM EST
+          </span>
+  </td>
+  <td data-before="Event Details">
+	  <table border="0" width="100%" cellspacing="1" cellpadding="3" class="ccbnEventContent">
+	   <tbody>
+		  <tr class="ccbnBgTblOdd">
+			 <td colspan="2" class="ccbnField-Title"><span class="ccbnTblTxtBold"><strong>
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q3-2016-everspin-technologies-inc-financial-results-conference-call" hreflang="en">Q3 2016 Everspin Technologies, Inc. Financial Results  Conference Call</a></div>
+  </div></strong></span></td>
+		  </tr>
+		  		  		  	   </tbody>
+</table>
+  </td>
+
+
+</tr>
+    
+
+    </tbody>
+</table>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+											</div>
+                                <div class="ccbnTool ccbnToolHorizontal">
+                                    <ul>
+                                          <div class="region region-footer">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid1995-shareholdertools-menu" id="block-nir-pid1995-shareholdertools" class="block--system-menu-blocktools block--system-menu-blocktools--5826 block--footer--system-menu-block--tools block--footer--system-menu-block--tools--5826 block--ce3df4b4-9d32-4cf7-a2a1-51e5a362f317 block--ce3df4b4-9d32-4cf7-a2a1-51e5a362f317--5826 block block-menu navigation block-system-menublock menu--tools">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1995-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                              <ul data-block-uuid="ce3df4b4-9d32-4cf7-a2a1-51e5a362f317" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="" target="" rel="" class="icon-print" title="Print Page">Print Page</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/rss-feeds" target="" rel="" class="icon-rss" title="RSS Feeds" data-drupal-link-system-path="node/5951">RSS </a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/e-mail-alerts" target="" rel="" class="icon-email" title="E-mail Alerts" data-drupal-link-system-path="node/5946">E-mail Alerts</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+                                    </ul>
+                                </div>
+                            </div>
+                </div>
+        </div>
+    </div>
+    <footer></footer>
+    </article>
+    </section>
+    </div>
+    </section>
+    </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="region region-footer">
+                <section id="block-bean-footer-sign-up-for-product-annou" class="block block-bean clearfix">
+                    <div class="entity entity-bean bean-general-content-block clearfix" about="/block/footer-sign-up-for-product-annou" typeof="">
+                        <div class="content">
+                            <div class="field field-name-field-block-content field-type-text-long field-label-hidden">
+                                <div class="field-items">
+                                    <div class="field-item even">
+                                        <h4><a href="http://eepurl.com/C_x-f">Sign Up for Product Announcements</a></h4>
+                                        <p>Sign up to receive product updates and other information</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="block-bean-footer-provide-feedback" class="block block-bean clearfix">
+                    <div class="entity entity-bean bean-general-content-block clearfix" about="/block/footer-provide-feedback" typeof="">
+                        <div class="content">
+                            <div class="field field-name-field-block-content field-type-text-long field-label-hidden">
+                                <div class="field-items">
+                                    <div class="field-item even">
+                                        <h4><a href="https://www.everspin.com/info/tell-us-how-we-can-improve" target="_top">Provide Feedback</a></h4>
+                                        <p>Please let us know what we can improve</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="block-bean-footer-contact-us" class="block block-bean clearfix">
+                    <div class="entity entity-bean bean-general-content-block clearfix" about="/block/footer-contact-us" typeof="">
+                        <div class="content">
+                            <div class="field field-name-field-block-content field-type-text-long field-label-hidden">
+                                <div class="field-items">
+                                    <div class="field-item even">
+                                        <div class="footer-block">
+                                            <h4><a href="https://www.everspin.com/contact-us-everspin-technologies">Contact Us</a></h4>
+                                            <ul>
+                                                <li><a href="https://www.everspin.com/sales">Find a Sales Representative</a></li>
+                                                <li><a href="https://www.everspin.com/info/information-request" target="_top">General Inquiry</a></li>
+                                                <li><a href="https://www.everspin.com/samplerequest">Request a Sample</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="block-bean-footer-investor-relations" class="block block-bean clearfix">
+                    <div class="entity entity-bean bean-general-content-block clearfix" about="/block/footer-investor-relations" typeof="">
+                        <div class="content">
+                            <div class="field field-name-field-block-content field-type-text-long field-label-hidden">
+                                <div class="field-items">
+                                    <div class="field-item even">
+                                        <h4><a href="">Investor Relations</a></h4>
+                                        <p>Information for current and prospective investors</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="block-bean-footer-copyright" class="block block-bean copyright clearfix">
+                    <div class="entity entity-bean bean-general-content-block clearfix" about="/block/footer-copyright" typeof="">
+                        <div class="content">
+                            <div class="field field-name-field-block-content field-type-text-long field-label-hidden">
+                                <div class="field-items">
+                                    <div class="field-item even">
+                                        <p style="text-align: center;">Copyright © 2021 Everspin Technologies Inc. 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </footer>
+</div>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb3074";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","currentQuery":{"c":"254442","p":"irol-calendar"}},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1995\/override,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid1995","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"7fb8e93fd0bcf4993f84f9edfb569d32c0053419c6669de2ec8a268c5b20f110"}}</script>
+<script src="/sites/g/files/knoqqb21841/files/js/js_tdnETQeARvxlBu5r07huVNjA8Hax-hPoI3DkBFZg4lM.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"39077635,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":1142,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

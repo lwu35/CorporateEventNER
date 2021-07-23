@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta name="referrer" content="no-referrer" />
+<meta property="og:site_name" content="EchoStar Corporation" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Events &amp; Presentations | EchoStar Corporation" />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb4741/files/favicons.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://ir.echostar.com/events-and-presentations" />
+<link rel="canonical" href="https://ir.echostar.com/events-and-presentations" />
+<link rel="shortlink" href="https://ir.echostar.com/node/5821" />
+<link rel="revision" href="https://ir.echostar.com/events-and-presentations" />
+
+    <title>Events &amp; Presentations | EchoStar Corporation</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb4741/files/css/css_xlPnJptIC4BdD3T-gfH9N4SlWZCHxGNTtD6JVWqkd4w.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb4741/files/css/css_hxLlX3D8RY_sFe6v-ECqsBvKRdkSe3OCsswdzAQXmG8.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb4741/files/css/css_b5LlLAFI1HKW75O8YI7f8stfj7OaHivIS9v30ubAGeA.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic:latin" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb4741/files/css/css_qfj8-2j9RhNdgKc-94CaRdpJC_6iFYTYjK4FZop8vqo.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-90357753-1', 'auto');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5821 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+        
+
+<div class="fixed">
+  <nav class="top-bar " data-topbar role="navigation">
+
+              <div class="region region-header-logo">
+    
+
+<nav role="navigation" aria-labelledby="block-logo-menu" id="block-logo" class="block--system-menu-blocklogo block--system-menu-blocklogo--5816 block--header-logo--system-menu-block--logo block--header-logo--system-menu-block--logo--5816 block--4fec0de0-cdbc-4982-990e-ec544463ede0 block--4fec0de0-cdbc-4982-990e-ec544463ede0--5816 block block-menu navigation block-system-menublock menu--logo">
+                        
+    <h2 class="visually-hidden" id="block-logo-menu">Logo</h2>
+    
+
+                        
+          <ul class="title-area">
+    
+              <li class="name">
+           <h1> <a id="page_layout_0_LogoLink" href="http://www.echostar.com/"><img src="https://ir.echostar.com/sites/g/files/knoqqb4741/files/alerts_logos/logo_0_0.png" alt="Echostar logo" width="150" height="35"></a></h1>
+                  </li>
+      
+
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+    
+          <section class="top-bar-section">           
+          <div class="region region-header-nav">
+    
+
+<nav role="navigation" aria-labelledby="block-topnav-menu" id="block-topnav" class="block--system-menu-blockir block--system-menu-blockir--5821 block--header-nav--system-menu-block--ir block--header-nav--system-menu-block--ir--5821 block--3ba1f8dd-bba6-4890-b6ca-a6d4bee33485 block--3ba1f8dd-bba6-4890-b6ca-a6d4bee33485--5821 block block-menu navigation block-system-menublock menu--ir">
+                        
+    <h2 class="visually-hidden" id="block-topnav-menu">Top Nav</h2>
+    
+
+                              <ul data-block-uuid="3ba1f8dd-bba6-4890-b6ca-a6d4bee33485" class="right">
+    
+      
+                  <li class="has-dropdown not-click">            
+        
+          <a href="http://www.echostar.com/Solutions/SatelliteServices.aspx">Solutions</a>
+                                    <ul class="dropdown">
+        <li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
+    
+      
+                  <li>
+        
+          <a href="http://www.echostar.com/Solutions/SatelliteServices.aspx">ECHOSTAR SATELLITE SERVICES</a>
+                  </li>
+      
+                  <li>
+        
+          <a href="http://www.echostar.com/Solutions/Hughes.aspx">Hughes Network Systems</a>
+                  </li>
+      
+    </ul>
+  
+                  </li>
+      
+                  <li class="has-dropdown not-click">            
+        
+          <a href="http://www.echostar.com/Company/AboutEchostar.aspx">Company</a>
+                                    <ul class="dropdown">
+        <li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
+    
+      
+                  <li>
+        
+          <a href="http://www.echostar.com/Company/AboutEchostar.aspx">About EchoStar</a>
+                  </li>
+      
+                  <li>
+        
+          <a href="http://www.echostar.com/Company/ExecutiveLeadership.aspx">Leadership Team</a>
+                  </li>
+      
+                  <li>
+        
+          <a href="http://www.echostar.com/Company/Locations.aspx">Locations</a>
+                  </li>
+      
+    </ul>
+  
+                  </li>
+      
+                  <li class="has-dropdown not-click">            
+        
+          <a href="/investors" title="Main Investor Relations Page" data-drupal-link-system-path="node/5806">Investors</a>
+                                    <ul class="dropdown">
+        <li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
+    
+      
+                  <li>
+        
+          <a href="/press-releases" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+      
+                  <li>
+        
+          <a href="/events-and-presentations" data-drupal-link-system-path="node/5821" class="is-active">Events &amp; Presentations</a>
+                  </li>
+      
+                  <li>
+        
+          <a href="/corporate-governance" data-drupal-link-system-path="node/5836">Corporate Governance</a>
+                  </li>
+      
+                  <li>
+        
+          <a href="/financial-information" data-drupal-link-system-path="node/5871">Financial Information</a>
+                  </li>
+      
+                  <li>
+        
+          <a href="/stock-information" data-drupal-link-system-path="node/5916">Stock Information</a>
+                  </li>
+      
+                  <li>
+        
+          <a href="/investor-faqs" data-drupal-link-system-path="node/5941">Investor FAQs</a>
+                  </li>
+      
+                  <li>
+        
+          <a href="/contact-us" data-drupal-link-system-path="node/5981">Contact Us</a>
+                  </li>
+      
+    </ul>
+  
+                  </li>
+      
+                  <li class="has-dropdown not-click">            
+        
+          <a href="http://www.echostar.com/Press/Newsandmedia.aspx">Press</a>
+                  </li>
+      
+                  <li class="has-dropdown not-click">            
+        
+          <a href="http://www.echostarcareers.com/">Careers</a>
+                  </li>
+      
+    </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+      </section>
+    
+    </nav>
+</div>
+
+
+<main>
+
+          <div id='ir-hero' class="content-page-header full-width">
+        <div class="row">
+          <div class="small-12 medium-12  end columns">
+            <h1 class="white semi-bold">ECHOSTAR</h1>
+            <h1 class="red semi-bold">
+                                    Events & Presentations
+                            </h1>
+          </div>
+        </div>
+      </div>
+    
+
+  
+
+  <div class="full-row white-row medium-pad" style="padding-bottom: 0px;">
+    <div id='main-section' class="row">
+
+      <div id="ndq-content" class="ndq-5821">
+            <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid342-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5821 block--content--website-notice-block block--content--website-notice-block--5821 block--2a12e096-d285-462f-9776-6256c816423a block--2a12e096-d285-462f-9776-6256c816423a--5821 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div id="block-nir-pid342-content" class="block--system-main-block block--system-main-block--5821 block--content--system-main-block block--content--system-main-block--5821 block--ff798dcd-281d-47b5-a0f5-aeb148cc5c2d block--ff798dcd-281d-47b5-a0f5-aeb148cc5c2d--5821 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events &amp; Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="views-element-container block--views-blockwidget-assets-widget-assets-table block--views-blockwidget-assets-widget-assets-table--5821 block--contentmain--views-block--widget-assets-widget-assets-table block--contentmain--views-block--widget-assets-widget-assets-table--5821 block--db485dfb-794f-4815-86cf-82aedc2693b0 block--db485dfb-794f-4815-86cf-82aedc2693b0--5821 block block-views block-views-blockwidget-assets-widget-assets-table">
+  
+      <h2>Presentations</h2>
+    
+      <div data-block-uuid="db485dfb-794f-4815-86cf-82aedc2693b0"><div class="view view-widget-assets view-id-widget_assets view-display-id-widget_assets_table js-view-dom-id-7a3cf2ec7b5881f75160b65cd981d978b18903e7498b24677831bfdeb5211203">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-assets-widget-assets-table" action="/events-and-presentations" method="get" id="views-exposed-form-widget-assets-widget-assets-table" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit-widget-assets" type="submit" id="edit-submit-widget-assets" value="Filter" class="button js-form-submit form-submit" />
+<input data-drupal-selector="edit-reset" type="submit" id="edit-reset" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 striped-odd collapse-table">
+        <thead>
+      <tr>
+                                                  <th id="view-field-nir-document-table-column" class="views-field views-field-field-nir-document" scope="col">Documents</th>
+                                                  <th id="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date" scope="col">Date</th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.echostar.com/static-files/428084ad-0268-4429-90fc-0b0c76a86572" type="application/pdf" title="EchoStar Investor Overview - Q1-21 Final (v4).pdf">EchoStar Investor Overview</a></span><span class="filesize"> 3.4 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2021-05-06T12:00:00Z" timezone="America/New_York" class="datetime">May 6, 2021</time>
+          </td>
+              </tr>
+          <tr>
+                                                                                        <td headers="view-field-nir-document-table-column" class="views-field views-field-field-nir-document"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://ir.echostar.com/static-files/8e53ce1f-26e6-4f11-bc34-e0e982c8dfbd" type="application/pdf" title="EchoStar Supplemental Information - Post BSS transaction continuing operations.pdf">EchoStar Supplemental Information – Post BSS transaction continuing operations</a></span><span class="filesize"> 270.4 KB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>          </td>
+                                                                                        <td headers="view-field-nir-asset-date-table-column" class="views-field views-field-field-nir-asset-date"><time datetime="2020-02-20T12:00:00Z" timezone="America/New_York" class="datetime">February 20, 2020</time>
+          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-events-block-1 block--views-blockwidget-events-block-1--5821 block--contentmain--views-block--widget-events-block-1 block--contentmain--views-block--widget-events-block-1--5821 block--c9b967ef-8a4c-4801-9e6c-e58891ce8b96 block--c9b967ef-8a4c-4801-9e6c-e58891ce8b96--5821 block block-views block-views-blockwidget-events-block-1">
+  
+      <h2>Upcoming Events</h2>
+    
+      <div data-block-uuid="c9b967ef-8a4c-4801-9e6c-e58891ce8b96"><div class="view view-widget-events view-id-widget_events view-display-id-block_1 js-view-dom-id-7c7c22620a21d957192145184c8a8310ea35b3fd80c3efacd233b0708bd9b264">
+  
+    
+      
+      <div class="view-empty">
+      There are currently no events to display.
+    </div>
+  
+  
+        </div>
+</div>
+
+  </div>
+<div class="views-element-container block--views-blockwidget-events-block-1 block--views-blockwidget-events-block-1--5821 block--contentmain--views-block--widget-events-block-1 block--contentmain--views-block--widget-events-block-1--5821 block--65dfa632-c76c-45c0-9999-177ac9c5d80a block--65dfa632-c76c-45c0-9999-177ac9c5d80a--5821 block block-views block-views-blockwidget-events-block-1">
+  
+      <h2>Past Events</h2>
+    
+      <div data-block-uuid="65dfa632-c76c-45c0-9999-177ac9c5d80a"><div class="view view-widget-events view-id-widget_events view-display-id-block_1 js-view-dom-id-c77c6158cde35185b31d4d83c7c8df39f0177135e509fc284f9928c2bcc6a81d">
+  
+    
+      
+      <div class="view-content">
+      <div class="item-list">
+  
+    <ul id="events" class="small-block-grid-1 medium-block-grid-2">
+
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q1-2021-echostar-corporation-earnings"><h3>Q1 2021 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            May 6, 2021 at 11:00 AM EDT
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      <div>
+        <div class="webcast-link"><a href="https://edge.media-server.com/mmc/p/okjfoqxw" target="_blank">Click here for webcast</a></div>
+    </div>
+
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q4-2020-echostar-corporation-earnings"><h3>Q4 2020 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            February 23, 2021 at 11:00 AM EST
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q3-2020-echostar-corporation-earnings"><h3>Q3 2020 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            November 5, 2020 at 11:00 AM EST
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q2-2020-echostar-corporation-earnings"><h3>Q2 2020 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            August 6, 2020 at 11:00 AM EDT
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q1-2020-echostar-corporation-earnings"><h3>Q1 2020 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            May 7, 2020 at 11:00 AM EDT
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q4-2019-echostar-corporation-earnings"><h3>Q4 2019 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            February 20, 2020 at 11:00 AM EST
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q3-2019-echostar-corporation-earnings"><h3>Q3 2019 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            November 7, 2019 at 11:00 AM EST
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q2-2019-echostar-corporation-earnings"><h3>Q2 2019 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            August 8, 2019 at 11:00 AM EDT
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q1-2019-echostar-corporation-earnings"><h3>Q1 2019 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            May 8, 2019 at 11:00 AM EDT
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q4-2018-echostar-corporation-earnings"><h3>Q4 2018 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            February 21, 2019 at 11:00 AM EST
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q3-2018-echostar-corporation-earnings"><h3>Q3 2018 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            November 8, 2018 at 11:00 AM EST
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q2-2018-echostar-corporation-earnings"><h3>Q2 2018 EchoStar Corporation Earnings </h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            August 7, 2018 at 11:00 AM EDT
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q1-2018-echostar-corporation-earnings"><h3>Q1 2018 EchoStar Corporation Earnings </h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            May 10, 2018 at 11:00 AM EDT
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q4-2017-echostar-corporation-earnings"><h3>Q4 2017 EchoStar Corporation Earnings </h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            February 22, 2018 at 11:00 AM EST
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q3-2017-echostar-corporation-earnings"><h3>Q3 2017 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            November 8, 2017 at 11:00 AM EST
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+              <li>
+          <div class="event-wrap">
+            
+<article role="article" class="node node--nir-event--nir-unordered-list node--type-nir-event node--view-mode-nir-unordered-list">
+
+  
+  
+
+          <a href="/events/event-details/q2-2017-echostar-corporation-earnings"><h3>Q2 2017 EchoStar Corporation Earnings</h3></a>
+        
+
+    <div class="ndq-date">
+      
+      
+            August 9, 2017 at 11:00 AM EDT
+      </div>  
+
+      
+
+    <div class="two-col-half">
+      
+          </div>
+
+    <div class="full-width">
+      
+      
+
+                                </div>
+
+  </article>
+
+          </div>
+        </li>
+      
+    </ul>
+
+</div>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+         
+                  </div> 
+
+    </div>
+  </div>
+
+
+
+
+
+      
+    <div id='ir-tools' class="full-width red-row medium-pad">
+      <div class="row">
+            <div class="region region-toolbar">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid342-shareholdertools-menu" id="block-nir-pid342-shareholdertools" class="block--system-menu-blockshareholder-tools block--system-menu-blockshareholder-tools--5816 block--toolbar--system-menu-block--shareholder-tools block--toolbar--system-menu-block--shareholder-tools--5816 block--0b3d97a4-c375-45e8-b9a9-a18852a2801a block--0b3d97a4-c375-45e8-b9a9-a18852a2801a--5816 block block-menu navigation block-system-menublock menu--shareholder-tools">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid342-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                              <div id="irToolbar" class="irToolbar">
+    
+      
+     
+              
+        
+          <a href="/email-alerts" title="Email Alerts" alt="Email Alerts">
+            <div  class="ndqicon-alerts" style="opacity: 1;">
+              <strong style="opacity: 0;">Email Alerts</strong>
+            </div>
+          </a>
+
+                  
+              
+        
+          <a href="/download-library" title="Download Library" alt="Download Library">
+            <div  class="ndqicon-downloads-1" style="opacity: 1;">
+              <strong style="opacity: 0;">Download Library</strong>
+            </div>
+          </a>
+
+                  
+              
+        
+          <a href="/rss-news-feeds" title="RSS News Feeds" alt="RSS News Feeds">
+            <div  class="ndqicon-rss" style="opacity: 1;">
+              <strong style="opacity: 0;">RSS News Feeds</strong>
+            </div>
+          </a>
+
+                  
+      
+      
+      <a href="/search" rel="nofollow" title="Search" alt="Search">
+        <div class="ndqicon-search" style="opacity: 1;">
+          <strong style="opacity: 0;">Search</strong>
+        </div>
+      </a>
+      
+    </div>
+  
+
+
+    </nav>
+
+  </div>
+
+      </div>
+    </div>
+   
+</main>
+
+
+
+<div class="full-width site-footer">
+           
+     <footer class="footer">
+        <div class="row medium-pad">
+            <div class="large-8 medium-8 small-6 columns " style="position: relative; z-index: 1;">
+                
+                  <div class="region region-footer-nav">
+    
+
+<nav role="navigation" aria-labelledby="block-footernav-menu" id="block-footernav" class="block--system-menu-blockfooter-nav block--system-menu-blockfooter-nav--5816 block--footer-nav--system-menu-block--footer-nav block--footer-nav--system-menu-block--footer-nav--5816 block--6bfb47f3-b974-436e-a76b-fca208a8d4d1 block--6bfb47f3-b974-436e-a76b-fca208a8d4d1--5816 block block-menu navigation block-system-menublock menu--footer-nav">
+                        
+    <h2 class="visually-hidden" id="block-footernav-menu">Footer Nav</h2>
+    
+
+                  
+            <ul data-block-uuid="6bfb47f3-b974-436e-a76b-fca208a8d4d1" class="inline-list">
+    
+              
+
+                    
+              
+              <li>
+                <p class="footer-text">Solutions</p>          
+            
+          
+                                  
+            <ul class="no-bullet">
+    
+              
+
+                      <li>
+              <a href="http://www.echostar.com/solutions/satelliteservices.aspx">EchoStar Satellite Services</a>
+            </li>
+          
+                    
+                                              
+        
+              
+
+                      <li>
+              <a href="http://www.echostar.com/solutions/hughes.aspx">Hughes Network Systems</a>
+            </li>
+          
+                    
+                                              
+        
+      
+    </ul>
+  
+          
+                          
+                </li>        
+                                      
+        
+              
+
+                    
+              
+              <li>
+                <p class="footer-text">Company</p>          
+            
+          
+                                  
+            <ul class="no-bullet">
+    
+              
+
+                      <li>
+              <a href="http://www.echostar.com/company/aboutechostar.aspx">About EchoStar</a>
+            </li>
+          
+                    
+                                              
+        
+              
+
+                      <li>
+              <a href="http://www.echostar.com/company/executiveleadership.aspx">Leadership Team</a>
+            </li>
+          
+                    
+                                              
+        
+              
+
+                      <li>
+              <a href="http://www.echostar.com/company/locations.aspx">Locations</a>
+            </li>
+          
+                    
+                                              
+        
+      
+    </ul>
+  
+          
+                          
+                </li>        
+                                      
+        
+              
+
+                    
+              
+              <li>
+                <p class="footer-text">Press</p>          
+            
+          
+                                  
+            <ul class="no-bullet">
+    
+              
+
+                      <li>
+              <a href="http://www.echostar.com/press/newsandmedia.aspx">News &amp; Media</a>
+            </li>
+          
+                    
+                                              
+        
+              
+
+                      <li>
+              <a href="http://www.echostar.com/press/events.aspx">Events</a>
+            </li>
+          
+                    
+                                              
+        
+      
+    </ul>
+  
+          
+                          
+                </li>        
+                                      
+        
+              
+
+                    
+                          <div class="footer-text"><a class="footer-text" href="http://www.echostar.com/contactus.aspx">Contact</a></div>
+            
+          
+                    
+                                                                              
+        
+              
+
+                    
+                          <div class="footer-text"><a class="footer-text" href="http://www.echostar.com/privacypolicy.aspx">Privacy Policy</a></div>
+            
+          
+                    
+                                                                              
+        
+      
+    </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+                          </div>
+            <div class="large-4 medium-4 small-6 columns text-right" style="position: relative; z-index: 1;">
+                <p class="footer-text">&copy; 2021 EchoStar Corporation</p>
+                <br />
+                <a href="http://www.facebook.com/EchoStar" target="_blank"><i class="fi-social-facebook"></i><span class="sr-only">Facebook</span></a>
+                <a href="http://twitter.com/#!/echostar" target="_blank" ><i class="fi-social-twitter"></i><span class="sr-only">Twitter</span></a>
+                <a href="http://www.linkedin.com/company/echostar-corporation" target="_blank"><i class="fi-social-linkedin"></i><span class="sr-only">Linkedin</span></a>
+                <a href="http://www.youtube.com/user/EchoStarSTUDIO" target="_blank"><i class="fi-social-youtube"></i><span class="sr-only">Youtube</span></a>
+
+            </div>
+        </div>
+
+    </footer>
+    <div id="triangle-box-1"></div>
+    <div id="triangle-box-2"></div>
+</div>
+
+
+
+
+
+
+
+  </div>
+
+    
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5821","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid342\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid342","theme_token":null},"ajaxTrustedUrl":{"\/events-and-presentations":true},"user":{"uid":0,"permissionsHash":"108ead46e2ce89f2f4b022f74a1a2197d2110aecfef2ab1d5f10c702e9250fa0"}}</script>
+<script src="/sites/g/files/knoqqb4741/files/js/js_jAf9P4R0K7bpo4NpnqQvLK2f-MGpbRwV6cJui-QDjZw.js"></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":354,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"32397309"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta name="referrer" content="no-referrer" />
+<meta property="og:site_name" content="James River Group Holdings" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Investor Presentations | James River Group Holdings" />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb2601/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="http://investors.jrgh.net/events-and-presentations/presentations" />
+<link rel="canonical" href="http://investors.jrgh.net/events-and-presentations/presentations" />
+<link rel="shortlink" href="http://investors.jrgh.net/node/5831" />
+<link rel="revision" href="http://investors.jrgh.net/events-and-presentations/presentations" />
+
+    <title>Investor Presentations &gt; Investor Relations &gt; James River Group Holdings</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb2601/files/css/css_xlPnJptIC4BdD3T-gfH9N4SlWZCHxGNTtD6JVWqkd4w.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb2601/files/css/css_s52_XKRuGiVHQEiWjXjuzsZi0MF4KcqhMkAYFnJERdk.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Noto+Sans" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb2601/files/css/css_MV8xr3JhZQe7L2rMQegDQmxhhmDjKMZAIN6t7ars9Mw.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb2601/files/css/css_47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+<script src="/sites/g/files/knoqqb2601/files/js/js_8BBxBKDN-BdWhYiRpEgbcCqGOEjFMMCfWgYT83-YU_Y.js"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5831 page-node-5831">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+      <div id="ControlPanelWrapper"></div>
+  <div id="skin_wrapper" class="">
+    <header id="HeaderThree">
+      <section class="skin_top">
+        <div class="skin_width clearafter">
+          <div class="user_bar clearafter">
+            <div class="language_position">
+              <div class="language-object"></div>
+            </div>
+            <div class="user_style"></div>
+          </div>
+          <div class="header_companies">
+            <a href="http://www.jrgh.net/">James River Group Holdings</a>
+            <a href="http://www.jrgre.bm/">JRG Reinsurance Company Ltd.</a>
+            <a href="http://www.jamesriverins.com/">James River Insurance Company</a>
+            <a href="http://www.fallslakeins.com/">Falls Lake Insurance Companies</a>
+          </div>
+        </div>
+      </section>
+      <section id="HeaderThreeMain">
+        <div class="header_main">
+          <div class="skin_width clearafter">
+            <div class="logo_style">
+              <div class="site_logo">
+                <a id="dnn_Header3_dnnLOGO_hypLogo" title="James River Group Holdings" href="http://www.jrgh.net/">
+                  <img id="dnn_Header3_dnnLOGO_imgLogo" src="/sites/g/files/knoqqb2601/themes/site/nir_pid194/src/img/jrgh-logo.jpg" alt="James River Group Holdings" />
+                </a>
+              </div>
+              <div class="mobile_nav">
+                <a href="#" class="menuclick">
+                  <img alt="Menu" class="click_img" src="/sites/g/files/knoqqb2601/themes/site/nir_pid194/src/img/blank.gif" />
+                </a>
+              </div>
+            </div>
+                        <nav class="menu_box">
+              <div id="standardMenu">
+                <!-- Header Here -->
+                  <div class="region region-header">
+    
+
+<nav role="navigation" aria-labelledby="block-irnav-menu" id="block-irnav" class="block--system-menu-blockir-nav block--system-menu-blockir-nav--5831 block--header--system-menu-block--ir-nav block--header--system-menu-block--ir-nav--5831 block--71bb6f13-a9ac-4f6c-a9a3-8b5619daa843 block--71bb6f13-a9ac-4f6c-a9a3-8b5619daa843--5831 block block-menu navigation block-system-menublock menu--ir-nav">
+                        
+    <h2 class="visually-hidden" id="block-irnav-menu">IR Nav</h2>
+    
+
+                              <ul data-block-uuid="71bb6f13-a9ac-4f6c-a9a3-8b5619daa843" class="rootMenu">
+    
+                                                              <li class="item haschild child-1">
+                          <a href="http://www.jrgh.net/Our-Segments">
+                <span>Our Segments<i class="navarrow"></i></span>
+              </a>
+              <div class="subMenu">
+                  <div class="subMenu_arrow">
+                  </div>
+                                <ul>
+    
+                                  
+          <li class="item child-1"><a href="http://www.jamesriverins.com/"><span>Excess and Surplus Lines</span></a></li>
+                                          
+          <li class="item child-2"><a href="http://www.fallslakeins.com/"><span>Specialty Admitted Insurance</span></a></li>
+                                          
+          <li class="item child-3"><a href="http://www.jrgre.bm/"><span>Casualty Reinsurance</span></a></li>
+                  </ul>
+  
+              </div>
+            </li>
+                                                    
+          <li class="item child-2"><a href="http://www.jrgh.net/Directors-Officers"><span>Directors &amp; Officers</span></a></li>
+                                                                      <li class="item haschild selected breadcrumb child-3">
+                          <a href="/">
+                <span>Investor Relations<i class="navarrow"></i></span>
+              </a>
+              <div class="subMenu">
+                  <div class="subMenu_arrow">
+                  </div>
+                                <ul>
+    
+                                    <li class="item haschild child-1">
+              <a href="/news-releases"><span>News &amp; Events<i class="subarrow"></i></span></a>
+                       
+            <ul class="level1">
+    
+                                  
+          <li class="item child-1"><a href="/news-releases"><span>Press Releases</span></a></li>
+                                          
+          <li class="item child-2"><a href="/event-calendar"><span>Event Calendar</span></a></li>
+                  </ul>
+  
+            </li>
+                                                      <li class="item haschild child-2">
+              <a href="/stock-information/stock-quote-chart"><span>Stock Information<i class="subarrow"></i></span></a>
+                       
+            <ul class="level1">
+    
+                                  
+          <li class="item child-1"><a href="/stock-information/stock-quote-chart"><span>Stock Quote &amp;  Chart</span></a></li>
+                                          
+          <li class="item child-2"><a href="/stock-information/historic-price-lookup"><span>Historic Stock Lookup</span></a></li>
+                                          
+          <li class="item child-3"><a href="/stock-information/investment-calculator"><span>Investment Calculator</span></a></li>
+                                          
+          <li class="item child-4"><a href="/stock-information/dividends-splits"><span>Dividends</span></a></li>
+                                          
+          <li class="item child-5"><a href="/financial-information/analyst-coverage"><span>Analyst Coverage</span></a></li>
+                  </ul>
+  
+            </li>
+                                                    
+          <li class="item child-3"><a href="/sec-filings"><span>SEC Filings</span></a></li>
+                                          
+          <li class="item child-4"><a href="/events-and-presentations/presentations"><span>Investor Presentations</span></a></li>
+                                            <li class="item haschild child-5">
+              <a href="/corporate-governance/governance-overview"><span>Corporate Governance<i class="subarrow"></i></span></a>
+                       
+            <ul class="level1">
+    
+                                  
+          <li class="item child-1"><a href="/corporate-governance/committee-composition"><span>Committee Composition</span></a></li>
+                  </ul>
+  
+            </li>
+                                                    
+          <li class="item child-6"><a href="/tax-information"><span>Tax Information</span></a></li>
+                                          
+          <li class="item child-7"><a href="/investor-contacts"><span>Investor Contacts</span></a></li>
+                  </ul>
+  
+              </div>
+            </li>
+                                                    
+          <li class="item child-4"><a href="http://www.jrgh.net/Contact"><span>Contact</span></a></li>
+                  </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+              </div>
+            </nav>
+                     </div>
+        </div>
+      </section>
+    </header>
+
+    <div class="skin_main">
+
+            <section class="page_name">
+        <div class="skin_width pagename_style clearafter">
+                                            <div class="region region-page-title">
+    <div id="block-pagetitle" class="block--page-title-block block--page-title-block--5831 block--page-title--page-title-block block--page-title--page-title-block--5831 block--189861ca-e7e6-408a-b75d-f72e7ba2a8b7 block--189861ca-e7e6-408a-b75d-f72e7ba2a8b7--5831 block block-core block-page-title-block">
+  
+    
+      
+  <h1>Investor Presentations</h1>
+
+
+  </div>
+
+  </div>
+
+                                </div>
+      </section>
+            <div class="skin_width">
+        <div class="skin_content">
+          <div class="row dnnpane">
+            <div id="dnn_ContentPane" class="content_grid12 col-md-12 irContent">
+              <div class="dnnpane">
+                  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid194-content" class="block--system-main-block block--system-main-block--5831 block--content--system-main-block block--content--system-main-block--5831 block--f9009138-8144-4d36-9a35-2713facd2193 block--f9009138-8144-4d36-9a35-2713facd2193--5831 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="views-element-container block--views-blockwidget-assets-widget-assets-ul block--views-blockwidget-assets-widget-assets-ul--5831 block--contentmain--views-block--widget-assets-widget-assets-ul block--contentmain--views-block--widget-assets-widget-assets-ul--5831 block--4fec00cf-2eea-4c6e-8a28-3455baa85466 block--4fec00cf-2eea-4c6e-8a28-3455baa85466--5831 block block-views block-views-blockwidget-assets-widget-assets-ul">
+  
+    
+      <div data-block-uuid="4fec00cf-2eea-4c6e-8a28-3455baa85466"><div class="view view-widget-assets view-id-widget_assets view-display-id-widget_assets_ul js-view-dom-id-e49f66c12c85f1c7b26b2c4e137c04f805079ddf58002a2dae5096cd1794b9fc">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-assets-widget-assets-ul" action="/events-and-presentations/presentations" method="get" id="views-exposed-form-widget-assets-widget-assets-ul" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-reset" type="submit" id="edit-reset" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <div class="nir-widget-presentations nir-presentations">
+  <table class="nir-presentations-table ndq-table">
+    <thead>
+      <tr>
+        <th class="header-date">Date</th>
+        <th class="header-title">Title</th>
+      </tr>
+    </thead>
+    <tbody>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2021-05-11T12:00:00Z" timezone="America/New_York" class="datetime">May 11, 2021</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/6cbd926d-7b76-466c-8d9e-4d44dc42cdbd" type="application/pdf" title="First Quarter 2021.pdf">First Quarter 2021</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2021-02-26T12:00:00Z" timezone="America/New_York" class="datetime">February 26, 2021</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/bfe7d5db-2f4a-46eb-8e0d-effe44e04531" type="application/pdf" title="JRVR_Q4 2020_Deck vF.pdf">Fourth Quarter 2020</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2020-11-10T12:00:00Z" timezone="America/New_York" class="datetime">November 10, 2020</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/5d856d7e-e1e1-498f-b1a5-1d4189d9dac6" type="application/pdf" title="JRVR_Q3 2020_Deck vF.pdf">Third Quarter 2020</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2020-08-07T12:00:00Z" timezone="America/New_York" class="datetime">August 7, 2020</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/a20d4742-74d4-4732-a3dc-a435c9a24345" type="application/pdf" title="JRVR_Q2 2020_Deck vF.pdf">Second Quarter 2020</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2020-05-07T12:00:00Z" timezone="America/New_York" class="datetime">May 7, 2020</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/eaef9a92-d3b6-487c-9f4a-34c572cbdeac" type="application/pdf" title="JRVR_Q1 2020_Deck vF.pdf">First Quarter 2020</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2020-03-03T12:00:00Z" timezone="America/New_York" class="datetime">March 3, 2020</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/4e6d3643-dd2a-46c1-a71a-c462a538ff56" type="application/pdf" title="JRVR_Q4 2019_Deck_Final.pdf">Fourth Quarter 2019</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2019-11-12T12:00:00Z" timezone="America/New_York" class="datetime">November 12, 2019</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/1bdc7141-912a-4cd5-b678-f954c20669ab" type="application/pdf" title="JRVR_Q3 2019_Deck_2019 vF2.pdf">Third Quarter 2019</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2019-08-13T12:00:00Z" timezone="America/New_York" class="datetime">August 13, 2019</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/97c2ef90-dde0-4613-9ff3-bbf2a99f16e2" type="application/pdf" title="JRVR_Q2 2019_Deck_2019 v9.pdf">Second Quarter 2019</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2019-05-13T12:00:00Z" timezone="America/New_York" class="datetime">May 13, 2019</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/3467f6f6-7042-421c-bdf1-cf988ba94616" type="application/pdf" title="JRVR_Q1 2019_Deck_2019 v11.pdf">First Quarter 2019</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2019-02-22T12:00:00Z" timezone="America/New_York" class="datetime">February 22, 2019</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/33dd1595-f57d-433b-9741-7740da7689f4" type="application/pdf" title="JRVR_Q4 2018_Deck_2018 v7.pdf">Fourth Quarter 2018</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2018-11-16T12:00:00Z" timezone="America/New_York" class="datetime">November 16, 2018</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/0b2bf32b-f4c7-4036-bc6b-1657cdfcfe30" type="application/pdf" title="JRVR_Q3 2018_Deck_20181112 FINAL.pdf">Third Quarter 2018</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2018-08-17T12:00:00Z" timezone="America/New_York" class="datetime">August 17, 2018</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/efb344d2-bd87-4df0-a43c-1e679f614e67" type="application/pdf" title="JRVR_Q2 2018_Deck_20180731 v6.pdf">Second Quarter 2018</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2018-05-11T12:00:00Z" timezone="America/New_York" class="datetime">May 11, 2018</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/2436319d-6d88-4051-bda3-1e241f47ad3a" type="application/pdf" title="JRVR_Q1 2018_Deck_20180511.pdf">First Quarter 2018</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2018-02-23T12:00:00Z" timezone="America/New_York" class="datetime">February 23, 2018</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/8435e07b-4803-4823-899d-004dd4b2c8a3" type="application/pdf" title="JRVR_Q4 2017_Deck_20180223 v7 10K.PDF">Fourth Quarter 2017</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2017-11-06T12:00:00Z" timezone="America/New_York" class="datetime">November 6, 2017</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/53c437af-3b68-4708-94cd-9fd54078fdd2" type="application/pdf" title="JRVR_Q3 2017_Deck_20171106 v1.pdf">Third Quarter 2017</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2017-08-08T12:00:00Z" timezone="America/New_York" class="datetime">August 8, 2017</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/01e6eb63-a6a7-4026-80e3-87774cfda569" type="application/pdf" title="JRVR_Q2 2017_Deck_ v5.pdf">Second Quarter 2017</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2017-05-11T12:00:00Z" timezone="America/New_York" class="datetime">May 11, 2017</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/8d874280-81e6-449a-b3e8-6ba7e2df6e20" type="application/pdf" title="JRVR_Q1 2017_Deck_FINAL.pdf">First Quarter 2017</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2017-03-03T12:00:00Z" timezone="America/New_York" class="datetime">March 3, 2017</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/342bc75f-5698-46f9-9838-40449302484b" type="application/pdf" title="JRVR_Q4 2016_Deck February 27 2017 v5.pdf">Fourth Quarter 2016</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+              <tr>
+          <td>
+  <div class="asset-date">
+    
+
+  <span  class="field__item"><time datetime="2017-02-03T12:00:00Z" timezone="America/New_York" class="datetime">February 3, 2017</time>
+</span>
+
+  </div>
+</td>
+<td>
+  <div class="nir-docs">
+    
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.jrgh.net/static-files/c68302e3-2329-4105-92f6-a20a13278026" type="application/pdf" title="JRVR_Q3 2016_Deck_January 31, 2017.pdf">Third Quarter 2016</a></span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</td>
+
+        </tr>
+          </tbody>
+  </table>
+</div>
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+<div id="block-nir-pid194-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5831 block--content--website-notice-block block--content--website-notice-block--5831 block--f1a99fcf-7877-4cf8-8610-aa32944c4831 block--f1a99fcf-7877-4cf8-8610-aa32944c4831--5831 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+
+  </div>
+
+                <!-- Content Here -->
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="skin_footer">
+            <section class="footer_top">
+        <div class="skin_width">
+          <div class="footerpane_style">
+            <div class="row dnnpane">
+              <div id="dnn_FooterGrid12" class="footer_grid12 col-md-12 ">
+                <div class="ir-toolkit">
+                  <!-- Toolkit Here -->
+                    <div class="region region-toolkit">
+    
+
+<nav role="navigation" aria-labelledby="block-toolkit-menu" id="block-toolkit" class="block--system-menu-blocktoolkit block--system-menu-blocktoolkit--5806 block--toolkit--system-menu-block--toolkit block--toolkit--system-menu-block--toolkit--5806 block--035e31a2-c62f-4d36-a4e5-ee832c052b66 block--035e31a2-c62f-4d36-a4e5-ee832c052b66--5806 block block-menu navigation block-system-menublock menu--toolkit">
+                        
+    <h2 class="visually-hidden" id="block-toolkit-menu">Toolkit</h2>
+    
+
+                              <ul data-block-uuid="035e31a2-c62f-4d36-a4e5-ee832c052b66" class="menu side-menu">
+                          <li>
+          <a href="" title="Print Page" class="ndq-toolkit-links ndqicon-print">Print Page</a>
+                  </li>
+                      <li>
+          <a href="/shareholder-services/rss-feeds" title="RSS Feeds" class="ndq-toolkit-links ndqicon-rss" data-drupal-link-system-path="node/5951">RSS Feeds</a>
+                  </li>
+                      <li>
+          <a href="/shareholder-services/email-alerts" title="Email Alerts" class="ndq-toolkit-links ndqicon-alerts" data-drupal-link-system-path="node/5946">Email Alerts</a>
+                  </li>
+                      <li>
+          <a href="/investor-contacts" class="ndq-toolkit-links ndqicon-contacts" data-drupal-link-system-path="node/7081">IR Contacts</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+            <footer class="footer_bottom">
+        <div class="skin_width clearafter">
+          <div class="footer_left">
+            <span id="dnn_dnnCOPYRIGHT_lblCopyright" class="Footer">Copyright 2021 by James River Group Holdings</span>
+            |
+            <a id="dnn_dnnPRIVACY_hypPrivacy" class="Footer" rel="nofollow" href="http://www.jrgh.net/Privacy">Privacy Statement</a>
+            |
+            <a id="dnn_dnnTERMS_hypTerms" class="Footer" rel="nofollow" href="http://www.jrgh.net/Terms">Terms Of Use</a>
+          </div>
+          <div class="footer_right">
+            <div id="dnn_Socialpane" class="socialpane DNNEmptyPane"></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <a href="#top" id="top-link" title="Top"></a>
+  </div>
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgjamesrivergroupholdingsltd";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5831","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid194\/client,nir_pid194\/js-footer,nir_pid194\/js-header,nir_pid194\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid194","theme_token":null},"ajaxTrustedUrl":{"\/events-and-presentations\/presentations":true},"user":{"uid":0,"permissionsHash":"d7c230ac849c3b55df1bebd19d291ce1e32b04afe5f24923781db9c185f3c25e"}}</script>
+<script src="/sites/g/files/knoqqb2601/files/js/js_EnXKXnJH5GMKhgvYFbieeQ0e79YyIj-_Ng8JcB_A4Rc.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"32397309,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":393,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

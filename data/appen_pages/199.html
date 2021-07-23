@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"39077635"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Blackbaud" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investor.blackbaud.com/events-and-presentations/upcoming-events" />
+<meta property="og:title" content="Events | Blackbaud" />
+<meta property="og:description" content="The Investor Relations website contains information about Blackbaud&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb10896/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://investor.blackbaud.com/events-and-presentations/upcoming-events" />
+<link rel="canonical" href="https://investor.blackbaud.com/events-and-presentations/upcoming-events" />
+<link rel="shortlink" href="https://investor.blackbaud.com/node/5826" />
+<link rel="revision" href="https://investor.blackbaud.com/events-and-presentations/upcoming-events" />
+
+    <title>Events | Blackbaud</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb10896/files/css/css_w5uwuaEHMC9bSP8WfARp9ZhoueTvvxceydRRR7hhmEE.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb10896/files/css/css_EuEJ6Yw-FxKY0es1V6P8uFqrDjY3amh3Cb_Stl5i9eE.css" />
+<link rel="stylesheet" media="all" href="//fast.fonts.net/cssapi/79005470-8898-463b-9eb7-7d9819c28bcf.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb10896/files/css/css_Sd7vGFawyYyKzHEyjZq_65JbX7lBz-htTYLZKYKDxkc.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb10896/files/css/css__QRACsMgz7dMcxAqoAa1kYAMSl17ZIH_P4_RcICFpoU.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    <script type="text/javascript">
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MDFH237');
+</script>
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5826 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+<div class="off-canvas-wrapper">
+	<div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+		<div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas="" data-position="left">
+			<div class="row column"><span class="logo show-for-large"><br /><a href="https://www.blackbaud.com/"><img src="/sites/g/files/knoqqb10896/themes/site/nir_pid1016/client/images/bb-logo.svg" data-svg-fallback="/sites/g/files/knoqqb10896/themes/site/nir_pid1016/client/images/bb-logo.png" /><h3 class="text-center"></h3></a><br /></span>
+				<div class="row side-nav">
+					<div class="medium-8 medium-centered columns">
+                          
+    
+
+
+                        
+    <h2 class="visually-hidden" id="block-nir-pid1016-investorrelations-menu">Investor Relations</h2>
+    
+
+                              <ul class="vertical accordion-menu menu" data-accordion-menu="">
+                  <li>
+          <a href="/" title="Main Investor Relations Page" data-drupal-link-system-path="&lt;front&gt;">Investor Overview</a>
+                  </li>
+              <li>
+          <a href="/news-releases" target="" rel="" class="news_events" data-drupal-link-system-path="node/5816">News &amp; Events</a>
+                                    <ul class="menu vertical sublevel-1">
+                  <li>
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">News Releases</a>
+                  </li>
+              <li>
+          <a href="/events-and-presentations/upcoming-events" data-drupal-link-system-path="node/5826">Upcoming Events</a>
+                  </li>
+              <li>
+          <a href="/events-and-presentations/past-events" data-drupal-link-system-path="node/6031">Past Events</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/financial-information/sec-filings" target="" rel="" class="financials" data-drupal-link-system-path="node/5876">Financials</a>
+                                    <ul class="menu vertical sublevel-1">
+                  <li>
+          <a href="/financial-information/sec-filings" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+              <li>
+          <a href="/financial-information/annual-reports" data-drupal-link-system-path="node/5881">Annual Reports</a>
+                  </li>
+              <li>
+          <a href="/annual-meeting-materials" target="" rel="" data-drupal-link-system-path="node/17646">Annual Meeting Materials</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li>
+          <a href="/corporate-governance/highlights" data-drupal-link-system-path="node/5836">Corporate Governance</a>
+                  </li>
+              <li>
+          <a href="/stock-information/stock-quote" data-drupal-link-system-path="node/5911">Stock Information</a>
+                  </li>
+              <li>
+          <a href="/stock-information/analyst-coverage" data-drupal-link-system-path="node/5896">Analyst Coverage</a>
+                  </li>
+              <li>
+          <a href="https://www.blackbaud.com/social-responsibility-report-2020" target="_blank">Social Responsibility</a>
+                  </li>
+              <li>
+          <a href="/shareholder-services/investor-faqs" target="" rel="" data-drupal-link-system-path="node/5941">Investor Resources</a>
+                                    <ul class="menu vertical sublevel-1">
+                  <li>
+          <a href="/shareholder-services/contact-ir" target="" rel="" data-drupal-link-system-path="node/5981">Investor Contact</a>
+                  </li>
+              <li>
+          <a href="/shareholder-services/email-alerts" data-drupal-link-system-path="node/5946">Email Alerts</a>
+                  </li>
+              <li>
+          <a href="/shareholder-services/investor-faqs" target="" rel="" data-drupal-link-system-path="node/5941">FAQs</a>
+                  </li>
+          </ul>
+  
+                  </li>
+          </ul>
+  
+
+
+    
+  
+
+					</div>
+				</div>
+			</div>
+			<div class="stock text-center">
+                  <div class="region region-sidebar-stock">
+    <div id="block-nir-pid1016-stockquote" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5826 block--sidebar-stock--market-data-block__stock-quote block--sidebar-stock--market-data-block__stock-quote--5826 block--c7789036-23b8-4e4f-ba8c-149fc52351bd block--c7789036-23b8-4e4f-ba8c-149fc52351bd--5826 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+    
+      <div class='stock-quote stock-quote__short'>
+    <div class="quote-wrapper">
+                                                                						<h5 class="text-center">
+	<div class="box-stock-exchange">
+		<span>
+		 			<br /> (Common Stock)
+		</span>
+	</div>
+			</h5>
+            </div>
+</div>
+  </div>
+<div id="block-widgetstockchart-2" class="block--nir-stock-chart block--nir-stock-chart--5826 block--sidebar-stock--nir-stock-chart block--sidebar-stock--nir-stock-chart--5826 block--a29cbfa1-bdd5-40aa-ba34-f9ce872f3f3d block--a29cbfa1-bdd5-40aa-ba34-f9ce872f3f3d--5826 block block-nir-stock-chart">
+  
+    
+      
+<img src="https://api.nasdaqomx.wallst.com/api/chart?display=mountain&symbol=BLKB&scale=linear&duration=3mo&frequency=1dy&gridLine=b&bgColor=ffffff&lineColor=666666&fillcolor=ffffff|ffffff&width=200&height=120&&amp;volume=0" width="200" height="120" ></img>
+
+  </div>
+<div id="block-nir-pid1016-stockquote-2" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5826 block--sidebar-stock--market-data-block__stock-quote block--sidebar-stock--market-data-block__stock-quote--5826 block--4184b8be-a568-4502-a60c-3754c5f1c456 block--4184b8be-a568-4502-a60c-3754c5f1c456--5826 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+    
+      <div class='quote-wrap user-toggle-off stock-quote__featured'>
+  <div class="quote-wrapper">
+                            <div class="stock-quote" data-exchange="">
+			
+		<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tbody>
+		<tr class="ccbnOutline">
+			<td valign="top">
+				<table border="0" cellspacing="1" cellpadding="3" width="100%" class="stock-quote">
+					<tbody>
+						<tr class="ccbnBgTblTxt">
+							<td valign="top" nowrap="nowrap" class="ccbnBgTblLabelLeft">
+								<span class="ccbnTblLabelLeft">Price</span>
+							</td>
+							<td valign="top" nowrap="nowrap" width="100%" class="ccbnBgPrice">
+								<span class="ccbnPrice"></span>
+							</td>
+						</tr>
+						<tr class="ccbnBgTblTxt">
+							<td valign="top" nowrap="nowrap" class="ccbnBgTblLabelLeft">
+								<span class="ccbnTblLabelLeft">Change</span>
+								<span class="ccbnTblLabelLeft"> (%)</span>
+							</td>
+							<td nowrap="nowrap">
+									<span class=""></span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p class="ndq-disclaimer"></p>
+	<p class="disclaimer"></p>
+    </div>
+    </div>
+</div>
+
+  </div>
+<div id="block-nir-pid1016-stockinfoattributionthomsonreuters" class="block--attribution-block__stock-info-attribution__thomson-reuters block--attribution-block__stock-info-attribution__thomson-reuters--5826 block--sidebar-stock--attribution-block__stock-info-attribution__thomson-reuters block--sidebar-stock--attribution-block__stock-info-attribution__thomson-reuters--5826 block--35c68c21-67dc-46ed-89c0-a6e91bd1e465 block--35c68c21-67dc-46ed-89c0-a6e91bd1e465--5826 block block-nir-attribution-block block-attribution-block__stock-info-attribution__thomson-reuters">
+  
+    
+      <p>
+  Data Provided by Refinitiv. Minimum 15 minutes delayed.</p>
+
+  </div>
+
+  </div>
+
+			</div>
+		</div>
+		<div class="off-canvas-content" id="skip-to-content" data-off-canvas-content="">
+			<div class="title-bar hide-for-large">
+				<div class="title-bar-left">
+					<button class="menu-icon" type="button" data-open="my-info" aria-label="Menu button"></button><span class="title-bar-title"></span></div><span class="logo"><a href="#"><div class="text-center"><img src="/sites/g/files/knoqqb10896/themes/site/nir_pid1016/client/images/bb-logo.svg" data-svg-fallback="/sites/g/files/knoqqb10896/themes/site/nir_pid1016/client/images/bb-logo.png" width="200" /></div><h3 class="text-center logo"></h3></a></span></div>
+            			<div class="callout primary page-title-interior">
+				<div class="row column">
+                    
+						<h1>
+                                                            Events
+                            </h1>
+
+                    				</div>
+			</div>
+            			<div class="row">
+                				<div class="large-12 columns"><div class="ndq-content ">                          <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1016-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--3996ab1a-ce04-4245-b806-23cb047a000b block--3996ab1a-ce04-4245-b806-23cb047a000b--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Events
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--upcoming-events block--nir-events__widget block--nir-events__widget--5826 block--contentmain--nir-events__widget block--contentmain--nir-events__widget--5826 block--d01d573f-05d9-4e1f-a3ca-f54d67dea364 block--d01d573f-05d9-4e1f-a3ca-f54d67dea364--5826 block block-nir-events block-nir-events__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Upcoming Webcasts &amp; Events
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+      	  <table class="nirtable views-table views-view-table cols-3 collapse-table">
+	    <thead>
+		  <tr>
+			<th id="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date" scope="col">Date</th>
+			<th id="view-nothing-table-column" class="views-field views-field-nothing" scope="col">Title</th> 
+			<th>Remind Me</th>			
+		  </tr>
+		</thead>
+		<tbody>
+        
+<tr>
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            08/04/21  8:00 AM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/q2-2021-blackbaud-earnings-conference-call" hreflang="en">Q2 2021 Blackbaud Earnings Conference Call</a></div>
+  </div>
+    </div>
+  
+  
+    
+      <div class="nir-widget--field nir-widget--event--summary">
+      <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+        <label>Description:</label>
+      </div>
+      <div>
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Live Dial-In: 1-877-407-3088</div>
+          </div>
+
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  
+    
+   </td>
+   <td valign="top">
+         <div class="nir-widget--field nir-widget--event--add-to-calendar clearfix">
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--outlook">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-outlook field__item"><a href="/node/20031/ics" class="add-outlook">Add to Outlook</a></div>
+  </div>
+      </div>
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--google">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-gcal field__item"><a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Blackbaud%20-%20Q2%202021%20Blackbaud%20Earnings%20Conference%20Call&amp;dates=20210804T120000Z/20210804T120000Z&amp;details=Event%20Details%3A%20http%3A//investor.blackbaud.com/events/event-details/q2-2021-blackbaud-earnings-conference-call%0A%0AWebcast%3A%20https%3A//edge.media-server.com/mmc/p/938kvt3v&amp;location=&amp;trp=false&amp;sprop=name%3A" class="add-gcal">Add to Google Calendar</a></div>
+  </div>
+      </div>
+    </div>
+     </td>
+</tr>
+
+<tr>
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            08/11/21  2:05 PM EDT
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/oppenheimer-24th-annual-technology-internet-communications-conference" hreflang="en">Oppenheimer 24th Annual Technology, Internet &amp; Communications Conference</a></div>
+  </div>
+    </div>
+  
+  
+    
+      <div class="nir-widget--field nir-widget--event--summary">
+      <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+        <label>Description:</label>
+      </div>
+      <div>
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Hosting 1x1 meetings with presentation at 2:05pm ET</div>
+          </div>
+
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  
+    
+   </td>
+   <td valign="top">
+         <div class="nir-widget--field nir-widget--event--add-to-calendar clearfix">
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--outlook">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-outlook field__item"><a href="/node/20066/ics" class="add-outlook">Add to Outlook</a></div>
+  </div>
+      </div>
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--google">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-gcal field__item"><a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Blackbaud%20-%20Oppenheimer%2024th%20Annual%20Technology%2C%20Internet%20&amp;Communications_Conference=&amp;dates=20210811T180500Z/20210811T180500Z&amp;details=Event%20Details%3A%20http%3A//investor.blackbaud.com/events/event-details/oppenheimer-24th-annual-technology-internet-communications-conference%0A%0AWebcast%3A%20https%3A//lark.twst.com/pay/webcasting/oppenheimer15/cart/show.html%3F&amp;location=&amp;trp=false&amp;sprop=name%3A" class="add-gcal">Add to Google Calendar</a></div>
+  </div>
+      </div>
+    </div>
+     </td>
+</tr>
+
+<tr>
+   <td valign="top"><span class="ccbnTblEven">
+      
+      
+            09/14/21 
+      </span></td>
+   <td valign="top">
+      
+      <div class="nir-widget--field nir-widgets--event--title">
+      
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/jefferies-virtual-software-conference" hreflang="en">Jefferies Virtual Software Conference</a></div>
+  </div>
+    </div>
+  
+  
+    
+      <div class="nir-widget--field nir-widget--event--summary">
+      <div class="nir-widget--event--section-title nir-widget--event--section-title--location">
+        <label>Description:</label>
+      </div>
+      <div>
+        
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">Hosting 1x1 meetings</div>
+          </div>
+
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  
+    
+   </td>
+   <td valign="top">
+         <div class="nir-widget--field nir-widget--event--add-to-calendar clearfix">
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--outlook">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-outlook field__item"><a href="/node/20071/ics" class="add-outlook">Add to Outlook</a></div>
+  </div>
+      </div>
+      <div class="nir-widget--field nir-widget--event--add-to-calendar--google">
+        
+<div class="field-nir-event-add-calender">
+      <div class="add-gcal field__item"><a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=Blackbaud%20-%20Jefferies%20Virtual%20Software%20Conference&amp;dates=20210914T040000Z/20210914T040000Z&amp;details=Event%20Details%3A%20http%3A//investor.blackbaud.com/events/event-details/jefferies-virtual-software-conference&amp;location=&amp;trp=false&amp;sprop=name%3A" class="add-gcal">Add to Google Calendar</a></div>
+  </div>
+      </div>
+    </div>
+     </td>
+</tr>
+
+		</tbody>
+		</table>
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+                                                </div></div>			</div>
+            
+			<footer>
+				<div class="column footer-sitemap">
+					<div class="row small-up-1 medium-up-4 large-up-4 flexy">
+						<div class="small-6 large-3 columns">
+							<p class="lead"><a href="/shareholder-services/contact-ir">Investor Contact</a></p>
+							<div class="footer-info">
+								<p><span class="footer-contact">Steve Hufford</span>
+									<br /> Director, Investor Relations
+									<br /><a href="mailto:IR@blackbaud.com">IR@blackbaud.com</a>
+									
+								</p>
+							</div>
+						</div>
+						<div class="small-6 large-3 columns">
+							<p class="lead"><a href="https://www.blackbaud.com/" target="_blank">Blackbaud.com</a></p>
+							<ul class="menu vertical">
+								<li><a href="https://www.blackbaud.com/who-we-serve" target="_blank">Who We Serve</a></li>
+								<li><a href="https://www.blackbaud.com/solutions" target="_blank">Nonprofit Solutions </a></li>
+								<li><a href="https://www.blackbaud.com/industry-insights" target="_blank">Industry Insights</a></li>
+								<li><a href="https://www.blackbaud.com/training-support" target="_blank">Training and Support</a></li>
+								<li><a href="https://www.blackbaud.com/partners/organizations" target="_blank">Partners</a></li>
+								<li><a href="https://www.blackbaud.com/company/" target="_blank">Company</a></li>
+							</ul>
+						</div>
+						<div class="small-6 large-3 columns">
+							<p class="lead">Blackbaud Overview</p>
+							<div class="footer-info">
+                                  <div class="region region-footer">
+    <div id="block-footerblackbaudoverviewcontent" class="block-content--nir-global-block block-content--nir-global-block--17731 block--block-content9c956019-b1fc-4c19-a709-8b4bbb153fdc block--block-content9c956019-b1fc-4c19-a709-8b4bbb153fdc--5826 block--footer--block-content--9c956019-b1fc-4c19-a709-8b4bbb153fdc block--footer--block-content--9c956019-b1fc-4c19-a709-8b4bbb153fdc--5826 block--5bbfdec2-aa39-4e86-8b9b-de19eba1ce96 block--5bbfdec2-aa39-4e86-8b9b-de19eba1ce96--5826 block block-block-content block-block-content9c956019-b1fc-4c19-a709-8b4bbb153fdc">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><p>Blackbaud (NASDAQ: BLKB) is the world’s leading cloud software company powering social good.Serving the entire social good community—nonprofits, foundations, corporations, education institutions, and individual change agents...</p>
+<a class="small button hollow light" href="https://www.blackbaud.com/newsroom/media-kit" target="_blank">Read more</a></div>
+      
+</div>
+      
+  </div>
+
+  </div>
+</div>
+						</div>
+						<div class="small-6 large-3 columns">
+							<p class="lead">Social</p>
+                              <div class="region region-footer-alerts">
+    <div id="block-eventdetailsemailalertscontent-2" class="block-content--nir-global-block block-content--nir-global-block--17681 block--block-contentb20e6226-1f2a-42a1-8277-d642bb93f649 block--block-contentb20e6226-1f2a-42a1-8277-d642bb93f649--5826 block--footer-alerts--block-content--b20e6226-1f2a-42a1-8277-d642bb93f649 block--footer-alerts--block-content--b20e6226-1f2a-42a1-8277-d642bb93f649--5826 block--7fd1cd48-fca4-48cd-b0bf-b7c87aca7e36 block--7fd1cd48-fca4-48cd-b0bf-b7c87aca7e36--5826 block block-block-content block-block-contentb20e6226-1f2a-42a1-8277-d642bb93f649">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><table border="0" cellpadding="3" cellspacing="1" style="width:100%"><tbody><tr class="ccbnBgTtl"><td nowrap="nowrap"><span class="ccbnTxtBold"> Receive Email Alerts<img alt="email alert icon" data-entity-type="file" data-entity-uuid="52f34668-03b4-4e5b-a648-59b90afcd57d" src="/system/files-encrypted/nasdaq_kms/inline-images/icon_emailAlert.gif" /></span></td>
+		</tr><tr class="ccbnBgTxt"><td style="vertical-align:top"><span class="ccbnTxt">Alerts are emailed to you whenever certain new company information is posted to this site.<br /><a class="ccbnLnk" href="/shareholder-services/email-alerts" id="" name="">Sign-up Now!</a></span></td>
+		</tr></tbody></table></div>
+      
+</div>
+      
+  </div>
+
+  </div>
+
+							<ul class="menu vertical social">
+								<li><a target="_blank" href="https://www.facebook.com/blackbaud" class="facebook" aria-label="facebook"><span class="fa-stack"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span></a><a target="_blank" href="https://twitter.com/blackbaud" class="twitter" aria-label="twitter"><span class="fa-stack"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span></a><a target="_blank" href="https://www.linkedin.com/company/blackbaud" class="linkedin" aria-label="linkedin"><span class="fa-stack"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-linkedin fa-stack-1x fa-inverse"></i></span></a><a target="_blank" href="https://www.youtube.com/user/blackbaudinc" class="youtube" aria-label="youtube"><span class="fa-stack"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-youtube fa-stack-1x fa-inverse"></i></span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="column primary footer-global">
+					<div class="row">
+						<div class="medium-12 columns">
+							<ul class="menu float-right">
+								<li class="menu-text"><span class="copyright">Copyright © 2021</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<div class="js-off-canvas-exit"></div>
+	</div>
+</div>
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb987";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","currentQuery":{"c":"176673","p":"irol-calendar"}},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid1016\/override,nir_stock_chart\/nir_stock_chart.stockChartStyling,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid1016","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"70e03177df9750b6595e3d4554511fa32b6c925f12ca516a6c66d1b2558bb579"}}</script>
+<script src="/sites/g/files/knoqqb10896/files/js/js_VDedobr3-S37mVbitxw6ZhHqGOfHGBHUXirIb36YrCE.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"39077635,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":306,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

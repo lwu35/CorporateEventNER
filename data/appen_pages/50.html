@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"39077635"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta name="referrer" content="no-referrer" />
+<meta property="og:site_name" content="Lantheus Holdings, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Presentations | Lantheus Holdings, Inc." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb3631/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://investor.lantheus.com/presentations" />
+<link rel="canonical" href="https://investor.lantheus.com/presentations" />
+<link rel="shortlink" href="https://investor.lantheus.com/node/5831" />
+<link rel="revision" href="https://investor.lantheus.com/presentations" />
+
+    <title>Presentations | Investor Relations | Lantheus Holdings, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb3631/files/css/css_xlPnJptIC4BdD3T-gfH9N4SlWZCHxGNTtD6JVWqkd4w.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb3631/files/css/css_rAgBBCQ30iidLpiEiNJwnUQtnM822pCNihD3jyLnabM.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb3631/files/css/css_uR7CBnjEs5VZNOTbN5egaIVEsuJ_uLDLaCxQpDsgq_0.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    
+  </head>
+  <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5831 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<header class="site-head">
+   <div class="inner clearfix">
+      <a class="logo" href="https://www.lantheus.com/"><img src="/sites/g/files/knoqqb3631/themes/site/nir_pid246/client/images/logo-lantheus.png" alt="" data-fallback="https://www.lantheus.com/lantheus_logo.png"></a>
+      <div class="utilities">
+         <form role="search" method="get" class="search-form btn gray" action="https://www.lantheus.com/"><input type="text" value="" name="s" class="search-input"><input type="submit" class="search-btn" value=""></form>
+         <menu class="utilities-menu clearfix">
+            <li id="menu-item-436" class="full-width btn menu-item menu-item-type-post_type menu-item-object-page menu-item-436"><a href="https://www.lantheus.com/careers/contact-us/">Contact Us</a></li>
+            <li id="menu-item-437" class="btn menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-401 current_page_item menu-item-437 active"><a href="/investor-relations">Investors</a></li>
+            <li id="menu-item-438" class="btn menu-item menu-item-type-post_type menu-item-object-page menu-item-438"><a href="https://www.lantheus.com/media/">Media</a></li>
+            <li id="menu-item-539" class="btn menu-item menu-item-type-post_type menu-item-object-page menu-item-539"><a href="https://www.lantheus.com/careers/">Careers</a></li>
+         </menu>
+      </div>
+      <nav class="main-menu-container">
+         <form role="search" method="get" class="search-form btn gray" action="https://www.lantheus.com/"><input type="text" value="" name="s" class="search-input"><input type="submit" class="search-btn" value=""></form>
+         <menu class="main-menu clearfix"><li id="menu-item-306" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-parent menu-item-306">
+                              <a href="https://www.lantheus.com/about-us/">About Us</a>
+                              <ul class="sub-menu">
+                                 <li id="menu-item-3450" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3450">
+                                    <a href="https://www.lantheus.com/about-us/covid-19/">COVID-19</a>
+                                 </li>
+                                 <li id="menu-item-1710" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1710">
+                                    <a href="https://www.lantheus.com/about-us/overview/">See the Difference</a>
+                                 </li>
+                                 <li id="menu-item-310" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-310">
+                                    <a href="https://www.lantheus.com/about-us/leadership/">Leadership</a>
+                                 </li>
+                                 <li id="menu-item-3520" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3520">
+                                    <a href="https://www.lantheus.com/about-us/board-of-directors/">Board of Directors</a>
+                                 </li>
+                                 <li id="menu-item-2786" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2786">
+                                    <a href="https://www.lantheus.com/about-us/history/">History</a>
+                                 </li>
+                                 <li id="menu-item-2654" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2654">
+                                    <a href="https://www.lantheus.com/about-us/grants/">Grants</a>
+                                 </li>
+                                 <li id="menu-item-324" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-324">
+                                    <a href="https://www.lantheus.com/about-us/locations/">Locations</a>
+                                 </li>
+                              </ul>
+                           </li>
+                           <li id="menu-item-332" class="products-menu menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-parent menu-item-332">
+                              <a href="https://www.lantheus.com/products/">Products</a>
+                              <ul class="sub-menu" style="height: 376px;">
+                                 <li id="menu-item-1709" class="three-column menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-parent menu-item-1709">
+                                    <a href="https://www.lantheus.com/products/overview/">Overview</a>
+                                    <span class="column-title">Overview</span>
+                                    <div class="split-list listContainer1">
+                                       <ul class="sub-menu listCol1">
+                                          <li id="menu-item-336" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-parent menu-item-336">
+                                             <a href="https://www.lantheus.com/products/overview/definity-3/">DEFINITY
+                                                <sup>®</sup>
+                                             </a>
+                                             <ul class="sub-menu">
+                                                <li id="menu-item-750" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-750">
+                                                   <a href="https://www.lantheus.com/products/overview/definity-3/vialmix/">VIALMIX
+                                                      <sup>®</sup>
+                                                   </a>
+                                                </li>
+                                                <li id="menu-item-749" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-749">
+                                                   <a href="https://www.lantheus.com/products/overview/definity-3/pinsync/">PINSYNC
+                                                      <sup>®</sup>
+                                                   </a>
+                                                </li>
+                                             </ul>
+                                          </li>
+					  <li id="menu-item-3698" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3698">
+					  	<a href="https://www.lantheus.com/products/overview/pylarify-2/">PYLARIFY</a>
+					  </li>
+                                          <li id="menu-item-338" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-338">
+                                             <a href="https://www.lantheus.com/products/overview/technelite/">TechneLite
+                                                <sup>®</sup>
+                                             </a>
+                                          </li>
+                                          <li id="menu-item-340" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-parent menu-item-340">
+                                             <a href="https://www.lantheus.com/products/overview/xenon/">Xenon-133</a>
+                                             <ul class="sub-menu">
+                                                <li id="menu-item-2919" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2919">
+                                                   <a href="https://www.lantheus.com/products/overview/xenon/calidosetm-dispenser-system/">Calidose™ Dispenser System</a>
+                                                </li>
+                                             </ul>
+                                          </li>
+                                       </ul>
+                                       <ul class="listCol2 sub-menu">
+                                          <li id="menu-item-3477" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3477">
+                                             <a href="https://www.lantheus.com/products/overview/azedra/">AZEDRA
+                                                <sup>®</sup>
+                                             </a>
+                                          </li>
+					  <li id="menu-item-342" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-342">
+                                             <a href="https://www.lantheus.com/products/overview/neurolite/">NEUROLITE
+                                                <sup>®</sup>
+                                             </a>
+                                          </li>
+                                          <li id="menu-item-348" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-348">
+                                             <a href="https://www.lantheus.com/products/overview/thallium/">Thallium-201</a>
+                                          </li>
+                                          <li id="menu-item-352" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-352">
+                                             <a href="https://www.lantheus.com/products/overview/quadramet/">QUADRAMET
+                                                <sup>®</sup>
+                                             </a>
+                                          </li>
+                                       </ul>
+                                       <ul class="listCol3 sub-menu last">
+                                          <li id="menu-item-344" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-344">
+                                             <a href="https://www.lantheus.com/products/overview/cardiolite/">Cardiolite
+                                                <sup>®</sup>
+                                             </a>
+                                          </li>
+					  <li id="menu-item-346" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-346">
+                                             <a href="https://www.lantheus.com/products/overview/gallium/">Gallium-67</a>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </li>
+                                 <li id="menu-item-312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312">
+                                    <a href="https://www.lantheus.com/products/manufacturing-supply-chain/">Manufacturing &amp; Supply&nbsp;Chain</a>
+                                 </li>
+                                 <li id="menu-item-356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-parent menu-item-356">
+                                    <a href="https://www.lantheus.com/products/customer-service/">Customer Service</a>
+                                    <span class="column-title">Customer Service</span>
+                                    <ul class="sub-menu">
+                                       <li id="menu-item-366" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-366">
+                                          <a href="https://www.lantheus.com/products/customer-service/faqs/">FAQs</a>
+                                       </li>
+                                       <li id="menu-item-2499" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2499">
+                                          <a target="_blank" rel="noopener noreferrer" href="https://www.lantheus.com//assets/Standard-Conditions-of-Sale.pdf">Standard Conditions of Sale</a>
+                                       </li>
+                                       <li id="menu-item-372" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-372">
+                                          <a href="https://www.lantheus.com/products/customer-service/reimbursement/">Reimbursement</a>
+                                       </li>
+                                    </ul>
+                                 </li>
+                                 <li id="menu-item-3338" class="hide-child menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-parent menu-item-3338">
+                                    <a href="https://www.lantheus.com/radiochemical-products/">Radiochemical Products</a>
+                                    <span class="column-title">Radiochemical Products</span>
+                                    <ul class="sub-menu">
+                                       <li id="menu-item-3339" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3339">
+                                          <a href="https://www.lantheus.com/products/overview/cobalt-57/">Cobalt-57</a>
+                                       </li>
+                                       <li id="menu-item-3340" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3340">
+                                          <a href="https://www.lantheus.com/products/overview/lead-203/">Lead-203</a>
+                                       </li>
+                                       <li id="menu-item-3351" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3351">
+                                          <a href="https://www.lantheus.com/products/overview/gallium-67/">Gallium-67</a>
+                                       </li>
+                                       <li id="menu-item-3352" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3352">
+                                          <a href="https://www.lantheus.com/products/overview/xe-133/">Xenon-133</a>
+                                       </li>
+                                    </ul>
+                                 </li>
+                                 <li id="menu-item-3379" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3379">
+                                    <a href="https://www.lantheus.com/patent-information/">Patent Information</a>
+                                 </li>
+                              </ul>
+                           </li>
+         <li id="menu-item-374" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-parent menu-item-374"><a href="https://www.lantheus.com/pipeline/">Pipeline</a>
+         <ul class="sub-menu">
+            <li id="menu-item-3386" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3386"><a href="https://www.lantheus.com/pipeline/new-product-development/">Pipeline Overview</a></li>
+	    <li id="menu-item-3631" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3631"><a href="https://www.lantheus.com/pipeline/clinical-trials/">Clinical Trials</a></li>
+         </ul>
+         </li>
+         <li id="menu-item-3506" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-parent menu-item-3506"><a href="https://www.lantheus.com/business-development/">Business Development</a>
+   <ul class="sub-menu">
+      <li id="menu-item-3507" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3507"><a href="https://www.lantheus.com/business-development/business-development/">Business Development</a></li>
+   </ul>
+   </li>
+         <li id="menu-item-388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-parent menu-item-388 menu-item-last"><a href="https://www.lantheus.com/art-of-imaging/">Art of Imaging</a>
+         <ul class="sub-menu">
+            <li id="menu-item-390" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-390"><a href="https://www.lantheus.com/art-of-imaging/overview/">Overview</a></li>
+            <li id="menu-item-643" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-643"><a href="https://www.lantheus.com/art-of-imaging/history-of-innovation/">History of Innovation</a></li>
+            <li id="menu-item-644" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-644"><a href="https://www.lantheus.com/art-of-imaging/medical-imaging-101/">Medical Imaging 101</a></li>
+            <li id="menu-item-646" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-646"><a href="https://www.lantheus.com/art-of-imaging/echocardiography/">Echocardiography</a></li>
+            <li id="menu-item-645" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-645"><a href="https://www.lantheus.com/art-of-imaging/nuclear-imaging/">Nuclear Imaging</a></li>
+         </ul>
+         </li>
+         </menu>
+         <div class="mobile-utilities">
+            <menu class="utilities-menu clearfix">
+               <li class="full-width btn menu-item menu-item-type-post_type menu-item-object-page menu-item-436"><a href="https://www.lantheus.com/careers/contact-us/">Contact Us</a></li>
+               <li class="btn menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-401 current_page_item menu-item-437 active"><a href="/investor-relations">Investors</a></li>
+               <li class="btn menu-item menu-item-type-post_type menu-item-object-page menu-item-438"><a href="https://www.lantheus.com/media/">Media</a></li>
+               <li class="btn menu-item menu-item-type-post_type menu-item-object-page menu-item-539"><a href="https://www.lantheus.com/careers/">Careers</a></li>
+            </menu>
+         </div>
+      </nav>
+      <div class="mob-menu">
+         <div></div>
+      </div>
+   </div>
+</header>
+
+
+<section class="masthead"><div class="inner"><h2 class="masthead-title hide-text">Investor Relations</h2></div></section>
+
+<div class="main-wrapper">
+  <div id="content-main-wrapper">
+	<div class="sidebar-first-region">
+				  <aside class="sidebar-first sidebars" id="sidebar-first">
+			    <div class="region region-sidebar-first">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid246-investorrelations-menu" id="block-nir-pid246-investorrelations" class="block--system-menu-blockir block--system-menu-blockir--5831 block--sidebar-first--system-menu-block--ir block--sidebar-first--system-menu-block--ir--5831 block--11a8051a-4a8c-4df1-8990-b88779e5dcbc block--11a8051a-4a8c-4df1-8990-b88779e5dcbc--5831 block block-menu navigation block-system-menublock menu--ir">
+            
+    <h2 id="block-nir-pid246-investorrelations-menu">Investor Relations</h2>
+    
+
+                              <ul data-block-uuid="11a8051a-4a8c-4df1-8990-b88779e5dcbc" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/investor-relations" target="" rel="" data-drupal-link-system-path="node/5806">Investor Overview</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-profile" title="Corporate Profile" data-drupal-link-system-path="node/5811">Corporate Profile</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/press-releases" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/sec-filings" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/supplemental-financial-information" target="" rel="" data-drupal-link-system-path="node/10416">Supplemental Financial Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance" data-drupal-link-system-path="node/5836">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://www.lantheus.com/about-us/board-of-directors/">Board of Directors</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance/committee-composition" data-drupal-link-system-path="node/5851">Committee Composition</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information" data-drupal-link-system-path="node/5916">Stock Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/calendar-of-events/upcoming-events" data-drupal-link-system-path="node/5826">Calendar of Events</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/presentations" data-drupal-link-system-path="node/5831" class="is-active">Presentations</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/information-requests" data-drupal-link-system-path="node/5966">Information Requests</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/faq" data-drupal-link-system-path="node/5941">FAQ</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/ir-contact" data-drupal-link-system-path="node/5981">IR Contact </a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+
+<nav role="navigation" aria-labelledby="block-shareholdertools-menu" id="block-shareholdertools" class="block--system-menu-blocktools block--system-menu-blocktools--5876 block--sidebar-first--system-menu-block--tools block--sidebar-first--system-menu-block--tools--5876 block--5bd68854-3383-4a2f-88b7-7567139f64ca block--5bd68854-3383-4a2f-88b7-7567139f64ca--5876 block block-menu navigation block-system-menublock menu--tools">
+            
+    <h2 id="block-shareholdertools-menu">Investor Toolkit</h2>
+    
+
+                              <ul data-block-uuid="5bd68854-3383-4a2f-88b7-7567139f64ca" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="">Print Page</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/index.php/rss-feeds" data-drupal-link-system-path="node/5951">RSS Feeds</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/index.php/email-alerts" data-drupal-link-system-path="node/5946">E-mail Alerts</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+		  </aside>
+			</div>
+	
+	<div class="main-content">
+		<div id="content-header">
+
+        
+
+      </div>
+
+      <div id="content-area" class="editor-styles">  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid246-content" class="block--system-main-block block--system-main-block--5831 block--content--system-main-block block--content--system-main-block--5831 block--104223c2-3cc1-4d20-8381-b1ecd6ad5a47 block--104223c2-3cc1-4d20-8381-b1ecd6ad5a47--5831 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="views-element-container block--views-blockwidget-assets-widget-assets-table block--views-blockwidget-assets-widget-assets-table--5831 block--contentmain--views-block--widget-assets-widget-assets-table block--contentmain--views-block--widget-assets-widget-assets-table--5831 block--6ec570bf-849e-4de3-94be-129251e309a3 block--6ec570bf-849e-4de3-94be-129251e309a3--5831 block block-views block-views-blockwidget-assets-widget-assets-table">
+  
+    
+      <div data-block-uuid="6ec570bf-849e-4de3-94be-129251e309a3"><div class="view view-widget-assets view-id-widget_assets view-display-id-widget_assets_table js-view-dom-id-268694e10d9506f846cfb3a5da244acf249997364873aded5ceeb2b00925c6f8">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-widget-assets-widget-assets-table" action="/presentations" method="get" id="views-exposed-form-widget-assets-widget-assets-table" accept-charset="UTF-8">
+  <div class="form--inline clearfix">
+  <div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-reset" type="submit" id="edit-reset" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      
+<table width="100%" border="0" cellspacing="1" cellpadding="3" class="nirtable ann_report_assets">
+    <thead>
+        <tr class="ccbnBgTblTtl">
+            <th width="10%">Date</th>
+            <th>Title</th>
+        </tr>
+	</thead>
+	<tbody>
+                      <tr>
+              			  			  
+				<td headers="view-field-nir-asset-date-table-column"><time datetime="2021-06-02T12:00:00Z" timezone="America/New_York" class="datetime">06/02/21</time>
+				</td>	
+			
+				
+							
+            			  	
+			
+				
+							<td headers="view-field-nir-document-table-column"><div class="item-list"><ul><li>
+  <div class="field field--name-field-nir-document field--type-file field--label-above">
+    <div class="field__label">Add Files</div>
+          <div class='field__items'>
+              <div class="field__item">
+          <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investor.lantheus.com/static-files/883d5daa-d57a-4257-8394-0dba1fdbefc8" type="application/pdf" title="Lantheus_FINAL_06.02.2021.pdf">Investor Presentation</a></span><span class="filesize"> 3.7 MB</span>
+</div>
+
+      </div>
+              </div>
+      </div>
+</li></ul></div>				</td>				
+            		    </tbody>
+</table>
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+</div>
+	  
+	</div>
+	<div class="clearfix"></div>
+</div>	
+</div>
+
+
+
+<footer class="site-footer"><div class="inner clearfix"><div class="footer-top-group"><ul class="social-container clearfix"><li><a class="fa li" target="_blank" href="https://www.linkedin.com/company/lantheus-medical-imaging"></a></li></ul><nav class="footer-menu-container clearfix">
+   <menu class="footer-menu clearfix"><li id="menu-item-442" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-442"><a href="https://www.lantheus.com/contact-us/">Contact Us</a></li>
+   <li id="menu-item-1064" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1064"><a href="https://www.lantheus.com/privacy-policy/">Privacy Policy</a></li>
+   <li id="menu-item-1063" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1063"><a href="https://www.lantheus.com/legal-notice/">Legal Notice</a></li>
+   <li id="menu-item-1062" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1062"><a href="https://www.lantheus.com/compliance/">Compliance</a></li>
+   <li id="menu-item-2495" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2495"><a href="https://www.lantheus.com/suppliersvendors/">Suppliers/Vendors</a></li>
+   </menu>
+</nav></div><p style="text-align: center;">
+                    © 2021 Lantheus Medical Imaging, Inc. All rights reserved.
+                    <br>
+                    Intended for U.S. Residents only.
+                </p><p style="text-align: center;">
+                    331 Treble Cove Road, N. Billerica, MA 01862 Telephone:
+                    <a href="tel:1-800-362-2668" target="_blank">1-800-362-2668</a></p><p style="text-align: center;">
+                    Use of the information on this site is subject to the terms of our
+                    <a href="https://www.lantheus.com/legal-notice/">Legal Notice</a>
+                    and
+                    <a href="https://www.lantheus.com/privacy-policy/">Privacy Policy</a>
+                    .
+                </p></div></footer>
+
+
+
+
+
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb3439";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5831","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid246\/override,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid246","theme_token":null},"ajaxTrustedUrl":{"\/presentations":true},"user":{"uid":0,"permissionsHash":"80f3c970eadb62283bbf42ed3eec917615229737e1182b01d1909f50da6622b1"}}</script>
+<script src="/sites/g/files/knoqqb3631/files/js/js_jYsVH3WFxQQGcX5FEKlyuta22V8qVtmOClZpvxyp0ks.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"39077635,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":166,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

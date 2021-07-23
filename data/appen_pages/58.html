@@ -1,0 +1,448 @@
+ <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"35893545"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(6),c=e(7),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(8);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(5),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,y=["click","keydown","mousedown","pointerdown","touchstart"];y.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],4:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],5:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],6:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],7:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],8:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?f(e,c,o):o()}function n(n,r,i,o){if(!p.aborted||o){e&&e(n,r,i);for(var a=t(i),c=v(n),f=c.length,u=0;u<f;u++)c[u].apply(a,r);var d=s[w[n]];return d&&d.push([b,n,r,a]),a}}function l(e,t){h[e]=v(e).concat(t)}function m(e,t){var n=h[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return h[e]||[]}function g(e){return d[e]=d[e]||i(n)}function y(e,t){u(e,function(e,n){t=t||"feature",w[n]=t,t in s||(s[t]=[])})}var h={},w={},b={on:l,addEventListener:l,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:y,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(p.aborted=!0,s=p.backlog={})}var c="nr@context",f=e("gos"),u=e(6),s={},d={},p=t.exports=i();p.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=b.info=NREUM.info,t=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+b.offset],null,"api"),c("timing",["load",n]);var r=p.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===p.readyState&&o()}function o(){c("mark",["domContent",a()+b.offset],null,"api")}var a=e(2),c=e("handle"),f=e(6),u=e("ee"),s=e(4),d=window,p=d.document,l="addEventListener",m="attachEvent",v=d.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:v,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1184.min.js"},w=v&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),b=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:w,userAgent:s};e(1),e(3),p[l]?(p[l]("DOMContentLoaded",o,!1),d[l]("load",r,!1)):(p[m]("onreadystatechange",i),d[m]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0},{}],"wrap-function":[function(e,t,n){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(7),a="nr@original",c=Object.prototype.hasOwnProperty,f=!1;t.exports=function(e,t){function n(e,t,n,i){function nrWrapper(){var r,a,c,f;try{a=this,r=o(arguments),c="function"==typeof n?n(r,a):n||{}}catch(u){p([u,"",[r,a,i],c])}s(t+"start",[r,a,i],c);try{return f=e.apply(a,r)}catch(d){throw s(t+"err",[r,a,d],c),d}finally{s(t+"end",[r,a,f],c)}}return r(e)?e:(t||(t=""),nrWrapper[a]=e,d(e,nrWrapper),nrWrapper)}function u(e,t,i,o){i||(i="");var a,c,f,u="-"===i.charAt(0);for(f=0;f<t.length;f++)c=t[f],a=e[c],r(a)||(e[c]=n(a,u?c+i:i,o,c))}function s(n,r,i){if(!f||t){var o=f;f=!0;try{e.emit(n,r,i,t)}catch(a){p([a,n,r,i])}f=o}}function d(e,t){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(e);return n.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(r){p([r])}for(var i in e)c.call(e,i)&&(t[i]=e[i]);return t}function p(t){try{e.emit("internal-error",t)}catch(n){}}return e||(e=i),n.inPlace=u,n.flag=a,n}},{}]},{},["loader"]);</script>
+<link rel="shortlink" href="http://ir.navios-containers.com/" />
+<meta property="og:site_name" content="Navios Maritime Containers L.P." />
+<link rel="canonical" href="https://ir.navios-containers.com/investor-relations/" />
+<meta property="og:type" content="website" />
+<meta name="description" content="The Investor Relations website contains information about Navios Maritime Containers L.P.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta property="og:url" content="https://ir.navios-containers.com/investor-relations" />
+<meta property="og:title" content="Investor Relations | Navios Maritime Containers L.P." />
+<meta name="referrer" content="no-referrer" />
+<meta property="og:description" content="The Investor Relations website contains information about Navios Maritime Containers L.P.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb31581/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://ir.navios-containers.com/investor-relations" />
+<link rel="revision" href="https://ir.navios-containers.com/investor-relations" />
+
+    <title>Investor Relations | Navios Maritime Partners L.P.</title>
+
+
+    <!--
+     <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31581/files/css/css_NRmgfE7PDqMPimvCjz666hBep0GsMON9xUAojqIOMJw.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31581/files/css/css_hnJXcrUN7tf5c8TGBJyhu4cv_WUwQGXxfatQ-tMjABU.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb31581/files/css/css_0n_9KvkH0hyUGeFtNvf9lkL4iqk34o4qoRPiSiSW7ak.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31581/files/css/css_DclSO-PNfIbfU2hH4Sz00Chp0yJOGZb_PvxEZ4KrJjE.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Lato:400,400italic,700,300italic" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/css/font-awesome.min.css?qlcyvs" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/css/ndq-icons.css?qlcyvs" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/css/foundation.css?qlcyvs" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/css/owl.carousel.css?qlcyvs" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31581/files/css/css_4A98WODcKIiX-2f81E_wFyoGAkQwBVxiptkc7k8WMpg.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/css/theme-bar-01.css?qlcyvs" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31581/themes/site/nir_pid2738/css/gcs-theme-overwrite.css?qlcyvs" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31581/themes/site/nir_pid2738/css/client-overwrite.css?qlcyvs" />
+-->
+
+ <link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=Lato:400,400italic,700,300italic" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic" />
+<link rel="stylesheet" media="all" 
+  href="https://ir.navios-containers.com/sites/g/files/knoqqb31581/files/css/css_NRmgfE7PDqMPimvCjz666hBep0GsMON9xUAojqIOMJw.css" />
+<link rel="stylesheet" media="all" 
+href="https://ir.navios-containers.com/sites/g/files/knoqqb31581/files/css/css_hnJXcrUN7tf5c8TGBJyhu4cv_WUwQGXxfatQ-tMjABU.css" />
+<link rel="stylesheet" media="print" 
+href="https://ir.navios-containers.com/sites/g/files/knoqqb31581/files/css/css_0n_9KvkH0hyUGeFtNvf9lkL4iqk34o4qoRPiSiSW7ak.css" />
+
+<link rel="stylesheet" media="all" href="https://ir.navios-containers.com/sites/g/files/knoqqb31581/files/css/css_DclSO-PNfIbfU2hH4Sz00Chp0yJOGZb_PvxEZ4KrJjE.css" />
+
+<!--<link rel="stylesheet" media="all" href="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/css/font-awesome.min.css?qlcyvs" />-->
+
+<link href="http://http://navios-mlp.irwebpage.com/new/css/fontawesome/css/all.css" />
+
+<link href="http://http://navios-mlp.irwebpage.com/new/css/ndq-icons.css?qlcyvs" />
+
+
+
+<link rel="stylesheet" media="all" href="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/css/ndq-icons.css?qlcyvs" />
+<link rel="stylesheet" media="all" href="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/css/foundation.css?qlcyvs" />
+
+<link rel="stylesheet" media="all" href="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/css/owl.carousel.css?qlcyvs" />
+<link rel="stylesheet" media="all" href="https://ir.navios-containers.com/sites/g/files/knoqqb31581/files/css/css_4A98WODcKIiX-2f81E_wFyoGAkQwBVxiptkc7k8WMpg.css" />
+<link rel="stylesheet" media="all" href="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/css/theme-bar-01.css?qlcyvs" />
+<link rel="stylesheet" media="all" href="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/css/gcs-theme-overwrite.css?qlcyvs" />
+<link rel="stylesheet" media="all" href="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/css/client-overwrite.css?qlcyvs" />
+
+   
+<!--[if lte IE 8]>
+<script src="/sites/g/files/knoqqb31581/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+
+https://ir.navios-containers.com/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1
+
+<![endif]-->
+<script src="https://ir.navios-containers.com/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+    
+  
+                    <script>var w=window;if(w.performance||w.mozPerformance||w.msPerformance||w.webkitPerformance){var d=document;AKSB=w.AKSB||{},AKSB.q=AKSB.q||[],AKSB.mark=AKSB.mark||function(e,_){AKSB.q.push(["mark",e,_||(new Date).getTime()])},AKSB.measure=AKSB.measure||function(e,_,t){AKSB.q.push(["measure",e,_,t||(new Date).getTime()])},AKSB.done=AKSB.done||function(e){AKSB.q.push(["done",e])},AKSB.mark("firstbyte",(new Date).getTime()),AKSB.prof={custid:"543865",ustr:"",originlat:"0",clientrtt:"110",ghostip:"200.136.36.89",ipv6:false,pct:"10",clientip:"190.40.199.225",requestid:"e53414da",region:"32190",protocol:"",blver:14,akM:"dsca",akN:"ae",akTT:"O",akTX:"1",akTI:"e53414da",ai:"417031",ra:"false",pmgn:"",pmgi:"",pmp:"",qc:""},function(e){var _=d.createElement("script");_.async="async",_.src=e;var t=d.getElementsByTagName("script"),t=t[t.length-1];t.parentNode.insertBefore(_,t)}(("https:"===d.location.protocol?"https:":"http:")+"//ds-aksb-a.akamaihd.net/aksb.min.js")}</script>
+  </head>
+ <body class="body-sidebars-first nir-node nir-node--type-nir-landing-page nir-node--5806 path-frontpage page-node-type-nir-landing-page">
+ <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+   <header role="banner">
+    <div class="top-bar sticky is-at-top is-stuck">
+        <div class="row">
+            <div class="top-bar-left"> <a href="https://www.navios-mlp.com/home.asp">
+              <img src="http://navios-mlp.irwebpage.com/img/navios_maritime_partners_blue.jpg" alt="logo" height=100px/></a> 
+            </div>
+ <div class="top-bar-right">
+   <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+   <button class="menu-icon" type="button" aria-label="Open Search" data-toggle></button>
+   </div>
+<!-- this is the magic 
+<style>
+ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}-->
+</style>
+
+<!-- Latest compiled and minified CSS 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+
+<!-- jQuery library 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+
+<!-- Popper JS 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>-->
+
+<!-- Latest compiled JavaScript 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+
+
+<div class="" id="main-menu" >
+<ul class="menu vertical medium-horizontal medium-text-center expanded" data-responsive-menu="drilldown medium-dropdown">
+
+<li >
+  <a href="http://navios-mlp.irwebpage.com/ir.html">Investors</a>
+</li>
+
+<li class="has-submenu">
+  <a href="#" onclick="return false;">News & Events</a>
+<ul class="submenu menu vertical" data-submenu>
+<li ><a href="/news.html">Press Releases</a></li>
+<li><a href="/events.html">Events and Presentations</a></li>
+</ul></li>
+
+  <li class="has-submenu">
+  <a href="#" onclick="return false;">Stock Information</a>
+<ul class="submenu menu vertical" data-submenu>
+<!--<li class="side-menu__item">
+  <a href="https://www.nyse.com/quote/XNYS:NMM">Stock Quote & Chart NYSE</a></li>-->
+<li ><a href="/stock&price.html">Stock Quote & Chart</a></li>
+<!--<li class="side-menu__item">
+  <a href="https://www.nyse.com/quote/XNYS:NMM">Historical Price NYSE</a></li>-->
+<li ><a href="/historical-price.html">Historical Price</a></li>
+<li ><a href="/dividend.html">Dividend History</a></li>
+</ul></li>
+
+<li class="has-submenu">
+<a href="#" onclick="return false;">Financial Information</a>
+<ul class="submenu menu vertical" data-submenu>
+<li ><a href="/sec.html">SEC Filings</a></li>
+<li ><a href="/analyst_coverage.html">Analyst Coverage</a></li>
+<!--<li class="side-menu__item"><a href="/reports.html">Quarterly & Annual Reports</a></li>-->
+<li ><a href="/tax_treatment.html">Unit Distribution Tax Treatment</a></li>
+</ul></li>
+
+<li class="has-submenu">
+  <a href="#" onclick="return false;">Governance</a>  
+<ul class="submenu menu vertical" data-submenu>
+<li ><a href="/governance-overview.html">Governance Overview</a></li>
+<li ><a href="/bod.html">Board &amp; Management</a></li>
+<li ><a href="/committee-composition.html">Committee Composition</a></li>
+<li ><a href="../files/Code_of_Ethics.pdf">Code of Ethics</a></li>
+</ul></li>
+
+<li class="has-submenu">
+  <a href="#" onclick="return false;">Investor Resources</a>
+<ul class="submenu menu vertical" data-submenu>
+<li><a href="/contact-ir.html">Contact IR</a></li>
+<li> <a href="/email-alerts.html">Email Alerts</a></li>
+</ul></li>
+</ul>
+</div> 
+</div>
+</div>
+</div>
+</header>
+<div class="banner " id="skip-to-content">
+<div class="row"><!-- 1664x815-->
+	<style type="text/css">
+		.banner {
+	background-image: url("http://navios-mlp.irwebpage.com/new/img/navios1664x815.jpg");
+    background-position-x: center;
+    background-position-y: center;
+    background-size: cover;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+		}
+	</style>
+<h1>Event Calendar</h1>
+<div class="region region-banner-contents">
+    <div id="block-gpbannercontents" class="block-content--nir-global-block block-content--nir-global-block--6416 block--block-content85b54a93-c928-42ab-961f-98ac862b7b6a block--block-content85b54a93-c928-42ab-961f-98ac862b7b6a--5806 block--banner-contents--block-content--85b54a93-c928-42ab-961f-98ac862b7b6a block--banner-contents--block-content--85b54a93-c928-42ab-961f-98ac862b7b6a--5806 block--e5ddc72e-e989-46c7-836d-4cb075c70176 block--e5ddc72e-e989-46c7-836d-4cb075c70176--5806 block block-block-content block-block-content85b54a93-c928-42ab-961f-98ac862b7b6a">      
+    <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+        <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"></div>       
+    </div>      
+    </div>
+</div>
+</div>
+</div>
+<div id="ndq-content" class="row wrap ndq-5806">
+<title>Investor Relations | Navios Maritime Partners L.P.</title>
+<!-- content starts here -->
+<P><STRONG>Event Calendar</STRONG>
+
+<article role="article" class="clearfix node node--nir-event--nir-widget-list node--type-nir-event node--view-mode-nir-widget-list node--promoted">  
+<div class="nir-widget--field nir-widget--event--date">Thursday, April 29, 2021 at 8:30 am ET</div>
+<div class="nir-widget--field nir-widgets--event--title">      
+<div class="field-nir-event-title">
+     <div class="field__item">
+      <a href="https://event.on24.com/eventRegistration/EventLobbyServlet?target=reg30.jsp&referrer=&eventid=3140657&sessionid=1&key=71E007FB5B672405A4FE90A0CA06C811&regTag=&V2=false&sourcepage=register" hreflang="en">Navios Maritime Partners First Quarter 2021 Earnings Conference Call<br>
+</a>
+     </div>
+</div>
+</div>
+<a href="https://event.on24.com/eventRegistration/EventLobbyServlet?target=reg30.jsp&referrer=&eventid=3140657&sessionid=1&key=71E007FB5B672405A4FE90A0CA06C811&regTag=&V2=false&sourcepage=register" target="_blank"><img src="img/webcast.png" alt="Webcast" style="width:13px; height:16px;" border="0"  />  Click Here for Webcast</a><br>
+
+
+<a href="..//files/NMM Q1 2021 earnings presentation.pdf"><img src="img/acrobat.png" alt="Printer Friendly Version" style="width:13px; height:16px;" border="0"  />  Earnings Presentation</a>
+
+<!--
+
+WEDNESDAY 24th MARCH 2021<br>
+
+Fourth Quarter and Year Ended December 31, 2020 Results, Conference Call and WebcastWebcast <br>
+X Click Here for Webcast<br>
+X Printer Friendly Version Earnings Presentation<br>
+-->
+
+
+
+
+<!-- <br><br>&nbsp;&nbsp;<strong><b>Past Events</b></strong><br> -->
+<div class="nir-widget--content">
+        <div class="nir-widget--list">
+   <br><br><br><br><br><br></div></div>
+
+</div> <!-- ndq-content -->
+<div class="row wrap">
+<div class="row">
+<div class="medium-4 column">
+<div class="region region-featured-footer-one">
+    <div id="block-gpcontactform" class="block-content--nir-global-block block-content--nir-global-block--6216 block--block-content437244ee-0e6c-4d69-8bb8-b47c074f2a47 block--block-content437244ee-0e6c-4d69-8bb8-b47c074f2a47--5806 block--featured-footer-one--block-content--437244ee-0e6c-4d69-8bb8-b47c074f2a47 block--featured-footer-one--block-content--437244ee-0e6c-4d69-8bb8-b47c074f2a47--5806 block--1f398d0c-8f54-4f98-ae0a-404b5c0c197b block--1f398d0c-8f54-4f98-ae0a-404b5c0c197b--5806 block block-block-content block-block-content437244ee-0e6c-4d69-8bb8-b47c074f2a47">
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><form action="/shareholder-services/email-alerts" class="ndq-footer-alerts"><h3>Request Email Alerts</h3> <input aria-label="Request Email Alerts" id="control_AlertEmail" name="name" placeholder="Email Address" type="text" value="" /><button aria-label="submit form" type="submit">Submit</button></form>
+            </div>
+            </div>
+    </div>
+</div>
+</div>
+
+<div class="medium-2 column">            </div>
+
+<div class="medium-6 column ndq-border-med ndq-stock-chart">
+<div class="region region-featured-footer-two">
+<div id="block-gpcontactinfo" class="block-content--nir-global-block block-content--nir-global-block--6226 block--block-content99715469-c144-494e-8fdd-6bb856ca388e block--block-content99715469-c144-494e-8fdd-6bb856ca388e--5806 block--featured-footer-two--block-content--99715469-c144-494e-8fdd-6bb856ca388e block--featured-footer-two--block-content--99715469-c144-494e-8fdd-6bb856ca388e--5806 block--3e45907a-a9a2-4eac-981b-279358a85e40 block--3e45907a-a9a2-4eac-981b-279358a85e40--5806 block block-block-content block-block-content99715469-c144-494e-8fdd-6bb856ca388e">
+  
+    
+      
+<div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item"> <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><h3>Contact Information</h3>
+
+<b>Primary IR Contact</b><br>
+Navios Maritime Partners L.P.<br>
+Phone: 212-906-8645<br>
+Email: <a href="mailto:Investors@navios-mlp.com" class="thisLink">Investors@navios-mlp.com</a>
+<br><br>
+Nicolas Bornozis<br>
+President<br>
+Capital Link, Inc.<br>
+Phone: 212-661-7566<br>
+<a href="mailto:naviospartners@capitallink.com" class="thisLink">Contact Investor Relations</a>
+<br><br>
+<b>Transfer Agent</b><br>
+Continental Stock Transfer<br>
+& Trust Company<br>
+17 Battery Place<br>
+New York, NY 10004<br>
+Phone: 212-509-4000<br>
+<br><br><br><br>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- *********************** -->
+<div class="column large secondary ndq-tools" role="complementary">
+<div class="region region-shareholder-toolbar">
+<nav role="navigation" aria-labelledby="block-tools-menu" id="block-tools" class="block--system-menu-blocktools block--system-menu-blocktools--5821 block--shareholder-toolbar--system-menu-block--tools block--shareholder-toolbar--system-menu-block--tools--5821 block--c2603536-47e7-40ed-b77a-af56398a9fad block--c2603536-47e7-40ed-b77a-af56398a9fad--5821 block block-menu navigation block-system-menublock menu--tools">
+<h2 class="visually-hidden" id="block-tools-menu">Tools</h2>
+<div class="row"> 
+
+<style>
+  
+span.fas {
+  display: inline-block;
+  border-radius: 60px;
+  box-shadow: 0px 0px 2px #888;
+  padding: 0.5em 0.6em;
+  background: #666;
+  color: #fff;
+  /*
+  height: 60px;
+  width: 60px;
+  */
+
+}
+
+</style>
+ <div class="column small-4 medium-3">
+    <a onclick="window.print();" title="Print Page"><span class="fas fa-print fa-2x"></span></a>
+</div>
+<div class="column small-4 medium-3">        
+    <a href="/email-alerts.html" title="Email Alerts"><span class="fas fa-envelope fa-2x"></span></a>
+</div>
+<div class="column small-4 medium-3">
+    <a href="/contact-ir.html" title="IR Contacts"><span class="fas fa-comment fa-2x"></span></a>
+</div>
+<div class="column small-4 medium-3">        
+    <a href="/rss-feeds.html" title="RSS Feeds"><span class="fas fa-rss fa-2x"></span></a>
+</div>
+       <!--<div class="column small-4 medium-3"> <a  class="ndq-tool-icon ndqicon-print print-page ndq-tool-icon ndqicon-print print-page print-page" href="/print-page.html" title="Print Page" aria-label="Print Page"></a></div>
+
+
+        <div class="column small-4 medium-3"> <a  class="ndq-tool-icon ndqicon-mail-1 ndqicon-alerts" href="/email-alerts.html" title="Email Alerts" aria-label="Email Alerts"></a></div>
+
+        <div class="column small-4 medium-3"> <a  class="ndq-tool-icon ndqicon-feedback-1" href="/contact-ir.html" title="IR Contacts" aria-label="IR Contacts"></a></div> 
+
+        <div class="column small-4 medium-3"> <a  class="ndq-tool-icon ndqicon-rss" href="/rss-feeds.html" title="RSS Feeds" aria-label="RSS Feeds"></a></div>
+        -->
+</div> <!-- class="row" -->
+</nav>
+</div>
+</div>
+<!-- *********************** -->
+
+
+</div><footer role="contentinfo">
+        <div class="column footer-sitemap">
+        <div class="row small-up-2 medium-up-4 large-up-4">
+            
+
+<nav role="navigation" aria-labelledby="block-clientfooterlinks-menu" id="block-clientfooterlinks" class="block--system-menu-blockclient-footer-links block--system-menu-blockclient-footer-links--5821 block--footer--system-menu-block--client-footer-links block--footer--system-menu-block--client-footer-links--5821 block--620e385d-42e6-4514-a429-3bb5dc0ac5af block--620e385d-42e6-4514-a429-3bb5dc0ac5af--5821 block block-menu navigation block-system-menublock menu--client-footer-links column">
+                        
+    <p class="visually-hidden" id="block-clientfooterlinks-menu" class="lead">Contact Information</p>
+    
+
+                              <ul data-block-uuid="620e385d-42e6-4514-a429-3bb5dc0ac5af" class="menu vertical">
+                  <li class="side-menu__item">
+          <a href="https://www.navios-acquisition.com/ " target="_blank" rel="">Navios Maritime Acquisition Corporation </a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://www.navios.com/ " target="_blank" rel="">Navios Maritime Holdings Inc. </a>
+                  </li>
+
+          <!--    <li class="side-menu__item">
+          <a href="https://www.navios-containers.com/home.asp " target="_blank" rel="">Navios Maritime Containers L.P. </a>
+                  </li>-->
+              <li class="side-menu__item">
+          <a href="https://www.navioslogistics.com/" target="_blank" rel="">Navios South American Logistics Inc. </a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="https://www.naviostankers-management.com/" target="_blank" rel="">Navios Tankers Management Inc. </a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+        </div>
+    </div>
+        <div class="column primary footer-global">
+        <div class="row">
+                        <div class="medium-6 columns">
+                  <div class="region region-footer-bottom">
+    
+
+<nav role="navigation" aria-labelledby="block-footerbottom-menu" id="block-footerbottom" class="block--system-menu-blockfooter-bottom block--system-menu-blockfooter-bottom--5821 block--footer-bottom--system-menu-block--footer-bottom block--footer-bottom--system-menu-block--footer-bottom--5821 block--548f4d47-9000-4204-932b-f7110a52fa20 block--548f4d47-9000-4204-932b-f7110a52fa20--5821 block block-menu navigation block-system-menublock menu--footer-bottom">
+                        
+    <h2 class="visually-hidden" id="block-footerbottom-menu">Footer Bottom</h2>
+    
+
+                              <ul data-block-uuid="548f4d47-9000-4204-932b-f7110a52fa20" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="http://www.navios.com/images/website_Privacy_Policy.pdf" target="" rel=""> Website Privacy Policy</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+            </div>
+                        <div class="medium-6 columns">
+                <ul class="menu float-right">
+                    <li class="menu-text">  All rights reserved © 2021 Navios Maritime Partners L.P.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+  <script src="https://kit.fontawesome.com/d49af268f2.js" crossorigin="anonymous"></script>
+</body><!--  scripts from scripts.html -->
+
+<script type="text/javascript">var s_CCSWebHostingAccount = "trcgnavioscontainers";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5806","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,core\/html5shiv,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid2738\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid2738","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"645eba46b5867680be0768da439dec87a6ced452450e88ec202b03d3100836f0"}}
+</script>
+
+
+<span style="color:lightgrey">Event Calendar</span><script src="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/js/jquery-2.1.4.min.js?qlcyvs"></script><!-- this is the jquery script - keep an eye on this
+
+<script src="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/js/jquery-2.1.4.min.js?qlcyvs"></script>
+
+-->
+
+
+<script src="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/js/owl.carousel.js?qlcyvs"></script>
+
+<script src="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/js/gcs-functions.js?qlcyvs"></script>
+
+<script src="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/js/foundation.min.js?qlcyvs"></script>
+
+<script src="https://ir.navios-containers.com/sites/g/files/knoqqb31581/themes/site/nir_pid2738/dist/js/gcs-calls.js?qlcyvs"></script>
+
+<script src="https://ir.navios-containers.com/sites/g/files/knoqqb31581/files/js/js_tluIWMkX1Pt2lvHg3ouh5m5SeWunVIY9x7mhKqY3l6k.js"></script>
+
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99230341-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"35893545,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":512,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}
+</script>
+
+  	<script src="https://kit.fontawesome.com/d49af268f2.js" crossorigin="anonymous"></script>
+ 
+
+ 

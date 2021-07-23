@@ -12,7 +12,7 @@ from dateparser.search import search_dates
 from sklearn.metrics import accuracy_score, classification_report, f1_score
 
 
-NUM_EX = 50
+NUM_EX = 20
 
 
 def main():

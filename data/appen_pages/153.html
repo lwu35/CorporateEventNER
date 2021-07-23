@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"32397309"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<link rel="canonical" href="http://investors.nninc.com/presentations/" />
+<meta property="og:site_name" content="NN, Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://investors.nninc.com/presentations" />
+<meta property="og:title" content="Presentations | NN, Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about NN, Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb30136/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="http://investors.nninc.com/presentations" />
+<link rel="revision" href="http://investors.nninc.com/presentations" />
+
+    <title>Presentations | NN, Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb30136/files/css/css_w5uwuaEHMC9bSP8WfARp9ZhoueTvvxceydRRR7hhmEE.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb30136/files/css/css_U8mnTmbzgZNPss1kgztDblD4BfIFwjpi7clS2ipTJO8.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Open+Sans:400%7CSource+Sans+Pro&amp;amp;subset=latin,latin" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb30136/files/css/css_IEYI2YJZobdgkE746yNlFBVkNdWYyALc2zpMA8GjZCs.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb30136/files/css/css_uR7CBnjEs5VZNOTbN5egaIVEsuJ_uLDLaCxQpDsgq_0.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    <script type="text/javascript">
+var _ss = _ss || [];
+_ss.push(['_setDomain', 'https://koi-KY8ZQPDA.sharpspring.com/net']);
+_ss.push(['_setAccount', 'KOI-1CEJ4UL0U']);
+_ss.push(['_trackPageView']);
+(function() {
+    var ss = document.createElement('script');
+    ss.type = 'text/javascript'; ss.async = true;
+ 
+    ss.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'koi-KY8ZQPDA.sharpspring.com/client/ss.js?ver=1.1.1';
+    var scr = document.getElementsByTagName('script')[0];
+    scr.parentNode.insertBefore(ss, scr);
+})();
+</script>  
+  </head>
+  <body class="body-sidebars-last nir-node nir-node--type-nir-landing-page nir-node--5831 path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+ 
+<div class="page page-id-569 page-parent page-template page-template-template-rightsidebar page-template-template-rightsidebar-php custom-background wpb-js-composer js-comp-ver-4.4.2 vc_responsive" style="position: relative; min-height: 100%; top: 0px;">
+<div id="mboxScriptContainer" style="display:none;visibility:hidden;"></div>
+<div class="pace-overlay"></div>
+<div class="top-bar">
+    <div class="container">
+        <div class="top top-left">
+            <div id="text-6" class="sidebar-widget text-left small-screen-center widget_text">
+                <div class="textwidget"><i class="fa fa-phone"></i> &nbsp; 980-264-4312</div>
+            </div>
+            <div class="sidebar-widget text-left small-screen-center widget_wp-stock-static-widget-pro">
+                <div class="static-stocks-container">  <div class="region region-stock-header">
+    <div id="block-nir-pid2633-stockquote" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5941 block--stock-header--market-data-block__stock-quote block--stock-header--market-data-block__stock-quote--5941 block--ee6e10d6-617c-4e90-82a5-3b25c4689feb block--ee6e10d6-617c-4e90-82a5-3b25c4689feb--5941 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+    
+      <div class='stock-quote stock-quote__short'>
+    <div class="quote-wrapper">
+                                                                
+
+            <ul class="static-stocks">
+                <li><strong>NN, Inc.                                            </strong>
+                    <span>
+                    <span class="hide-me">
+                                            </span>
+                                            </span>
+                    <span class="">
+                                            </span>
+                </li>
+            </ul>
+
+            
+            </div>
+</div>
+
+  </div>
+
+  </div>
+
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="top top-right">
+            <div id="oxywidgetsocial-2" class="sidebar-widget text-right small-screen-center widget_social">
+                <ul class="unstyled inline social-icons social-simple social-normal">
+                    <li><a target="_blank" data-iconcolor="#5FB0D5" href="https://www.linkedin.com/company/nn-inc-"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+            <div id="glt_widget-7" class="sidebar-widget text-right small-screen-center widget_glt_widget">
+                <h3 class="sidebar-header">Translate:</h3>
+                <div id="flags">
+                    <ul id="sortable" class="ui-sortable">
+                        <li id="Chinese(Simplified)"><a title="Chinese(Simplified)" class="notranslate flag zh-CN"><img class="flagimg" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/Chinese(Simplified).png" height="16" width="16" alt="Chinese(Simplified)"></a></li>
+                        <li id="English"><a title="English" class="notranslate flag en"><img class="flagimg" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/United-States.png" height="16" width="16" alt="English"></a></li>
+                        <li id="French"><a title="French" class="notranslate flag fr"><img class="flagimg" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/French.png" height="16" width="16" alt="French"></a></li>
+                        <li id="German"><a title="German" class="notranslate flag de"><img class="flagimg" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/German.png" height="16" width="16" alt="German"></a></li>
+                        <li id="Polish"><a title="Polish" class="notranslate flag pl"><img class="flagimg" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/Polish.png" height="16" width="16" alt="Polish"></a></li>
+                        <li id="Spanish"><a title="Spanish" class="notranslate flag es"><img class="flagimg" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/Spanish.png" height="16" width="16" alt="Spanish"></a></li>
+                    </ul>
+                </div>
+                <div id="language" class="auto-language-translation" style="height:30px">
+                    <div id="language_inner" style="height:30px">
+                        <div class="switcher notranslate">
+                            <div class="selected"><a class="notranslate" title="English" href="#"><span class="flag"><img class="flagimg flagselect" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/United-States.png" alt="English" height="16" width="16"></span>English</a></div>
+                            <div class="option"><a class="notranslate nturl zh-CN"><span class="flag"><img class="flagimg flagselect" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/Chinese(Simplified).png" alt="Chinese(Simplified)" height="16" width="16"></span>
+                                    Chinese(Simplified)
+                                </a><a class="notranslate nturl nl"><span class="flag"><img class="flagimg flagselect" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/Dutch.png" alt="Dutch" height="16" width="16"></span>
+                                    Dutch
+                                </a><a class="notranslate nturl en"><span class="flag"><img class="flagimg flagselect" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/United-States.png" alt="English" height="16" width="16"></span>
+                                    English
+                                </a><a class="notranslate nturl fr"><span class="flag"><img class="flagimg flagselect" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/French.png" alt="French" height="16" width="16"></span>
+                                    French
+                                </a><a class="notranslate nturl de"><span class="flag"><img class="flagimg flagselect" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/German.png" alt="German" height="16" width="16"></span>
+                                    German
+                                </a><a class="notranslate nturl ja"><span class="flag"><img class="flagimg flagselect" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/Japanese.png" alt="Japanese" height="16" width="16"></span>
+                                    Japanese
+                                </a><a class="notranslate nturl pl"><span class="flag"><img class="flagimg flagselect" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/Polish.png" alt="Polish" height="16" width="16"></span>
+                                    Polish
+                                </a><a class="notranslate nturl pt"><span class="flag"><img class="flagimg flagselect" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/Portuguese.png" alt="Portuguese" height="16" width="16"></span>
+                                    Portuguese
+                                </a><a class="notranslate nturl es"><span class="flag"><img class="flagimg flagselect" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/Spanish.png" alt="Spanish" height="16" width="16"></span>
+                                    Spanish
+                                </a></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding-top:8px" dir="ltr" class="elegant-display skiptranslate goog-te-gadget">
+                    <div id=":0.targetLanguag"></div>
+                    Powered by
+                    <span style="white-space:nowrap"><a class="goog-logo-link" href="https://translate.google.com" target="_blank"><img src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/google_logo_41.png" style="padding-right: 3px" height="13px" width="37px">Translate</a></span></div>
+                <div style="clear:both"></div>
+                <div id="google_language_translator">
+                    <div class="skiptranslate goog-te-gadget" dir="ltr" style="">
+                        <div id=":0.targetLanguage"><select class="goog-te-combo" aria-label="Language Translate Widget"><option value="">Select Language</option><option value="zh-CN">Chinese (Simplified)</option><option value="nl">Dutch</option><option value="fr">French</option><option value="de">German</option><option value="ja">Japanese</option><option value="pl">Polish</option><option value="pt">Portuguese</option><option value="es">Spanish</option></select></div>Powered by <span style="white-space:nowrap"><a class="goog-logo-link" href="https://translate.google.com" target="_blank"><img src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/googlelogo_color_42x16dp.png" width="37px" height="14px" style="padding-right: 3px" alt="Google Translate">Translate</a></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sticky-wrapper">
+    <div id="masthead" class="menu navbar navbar-static-top header-logo-left-menu-right oxy-mega-menu navbar-sticky text-none" role="banner">
+        <div class="container">
+            <div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".main-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="http://www.nninc.com/" class="navbar-brand"><img src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/nn-logo.png" alt="NN, Inc."></a></div>
+            <div class="nav-container">
+                <nav class="collapse navbar-collapse main-navbar logo-navbar navbar-right" role="navigation">
+                    <div class="menu-container">
+                        <ul id="menu-nn-main-mega" class="nav navbar-nav">
+                            <li id="menu-item-809" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-174 current_page_item menu-item-809 active active"><a href="http://www.nninc.com/">Home</a></li>
+                            <li id="menu-item-1031" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1031 dropdown"><a href="http://www.nninc.com/businessgroups/" class="dropdown-toggle">Business Groups</a>
+                                <ul role="menu" class="dropdown-menu dropdown-menu-left">
+                                    <li id="menu-item-2767" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown-submenu menu-item-2767 dropdown"><a href="http://www.nninc.com/life-sciences/">Life Sciences</a>
+                                        <ul role="menu" class="dropdown-menu dropdown-menu-left">
+                                            <li id="menu-item-2758" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2758"><a href="http://www.bridgemedica.com/">Bridgemedica</a></li>
+                                            <li id="menu-item-2737" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2737"><a href="http://www.pepbe-st.com/">BE-ST</a></li>
+                                            <li id="menu-item-2739" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2739"><a href="http://www.pepctplastics.com/">Connecticut Plastics</a></li>
+                                            <li id="menu-item-2738" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2738"><a href="http://www.peplacey.com/">Lacey</a></li>
+                                            <li id="menu-item-2742" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2742"><a href="http://www.pepmicropep.com/">microPEP</a></li>
+                                            <li id="menu-item-2822" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2822"><a href="http://www.pep-corp.com/">Precision Engineered Products</a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-2768" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown-submenu menu-item-2768 dropdown"><a href="http://www.nninc.com/mobile-solutions/">Mobile Solutions</a>
+                                        <ul role="menu" class="dropdown-menu dropdown-menu-left">
+                                            <li id="menu-item-2821" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2821"><a href="http://www.autocam.com/">Autocam</a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="menu-item-2770" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown-submenu menu-item-2770 dropdown"><a href="http://www.nninc.com/power-solutions/">Power Solutions</a>
+                                        <ul role="menu" class="dropdown-menu dropdown-menu-left">
+                                            <li id="menu-item-2740" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2740"><a href="http://www.pepbrainin.com/">Brainin</a></li>
+                                            <li id="menu-item-2741" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2741"><a href="http://www.pepgenmetal.com/">General Metal Finishing</a></li>
+                                            <li id="menu-item-2760" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2760"><a href="http://www.howestemco.com/">Howes Temco</a></li>
+                                            <li id="menu-item-2744" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2744"><a href="http://www.peppolymet.com/">Polymet</a></li>
+                                            <li id="menu-item-2761" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2761"><a href="http://www.premco.net/">Premco</a></li>
+                                            <li id="menu-item-2762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2762"><a href="http://www.profiles-inc.com/">Profiles</a></li>
+                                            <li id="menu-item-2823" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2823"><a href="http://www.pep-corp.com/">Precision Engineered Products</a></li>
+                                            <li id="menu-item-2743" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2743"><a href="http://www.pepwauconda.com/">Wauconda</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-843 dropdown"><a href="http://www.nninc.com/market-solutions/" class="dropdown-toggle">Market Solutions</a>
+                                <ul role="menu" class="dropdown-menu dropdown-menu-left">
+                                    <li id="menu-item-1554" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1554"><a href="http://www.nninc.com/market-solutions#aerospace">Aerospace</a></li>
+                                    <li id="menu-item-1556" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1556"><a href="http://www.nninc.com/market-solutions#automotive">Automotive</a></li>
+                                    <li id="menu-item-1557" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1557"><a href="http://www.nninc.com/market-solutions#electrical">Electrical</a></li>
+                                    <li id="menu-item-1558" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1558"><a href="http://www.nninc.com/market-solutions#industrial">Industrial</a></li>
+                                    <li id="menu-item-1559" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1559"><a href="http://www.nninc.com/market-solutions#medical">Medical</a></li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-831 dropdown"><a href="http://www.nninc.com/about/" class="dropdown-toggle">About</a>
+                                <ul role="menu" class="dropdown-menu dropdown-menu-left">
+                                    <li id="menu-item-837" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-837"><a href="http://www.nninc.com/about/timeline/">History</a></li>
+                                    <li id="menu-item-1666" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1666"><a href="http://www.nninc.com/about/locations/">Locations</a></li>
+                                    <li id="menu-item-1666" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1666"><a href="http://www.nninc.com/about/leadership/">Leadership</a></li>
+                                    <li id="menu-item-836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-836"><a href="http://www.nninc.com/level-3/">Level 3</a></li>
+                                    <li id="menu-item-1422" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1422"><a href="http://www.nninc.com/privacy-policy/">Privacy Policy</a></li>
+                                    <li id="menu-item-833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-833"><a href="http://www.nninc.com/code-of-ethics/">Code of Ethics</a></li>
+                                    <li id="menu-item-1423" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1423"><a href="http://www.nninc.com/legal-information/">Legal Information</a></li>
+                                </ul>
+                            </li>
+                            <li id="menu-item-1577" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1577 dropdown investorMenu"><a href="/" class="dropdown-toggle">Investor Relations</a>  <div class="region region-header">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid2633-headerirmenu-menu" id="block-nir-pid2633-headerirmenu" class="block--system-menu-blockheader-ir-menu block--system-menu-blockheader-ir-menu--5831 block--header--system-menu-block--header-ir-menu block--header--system-menu-block--header-ir-menu--5831 block--1f5ef6f2-e02b-4f86-ad86-5102461d974e block--1f5ef6f2-e02b-4f86-ad86-5102461d974e--5831 block block-menu navigation block-system-menublock menu--header-ir-menu">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid2633-headerirmenu-menu">Header ir menu</h2>
+    
+
+                              <ul data-block-uuid="1f5ef6f2-e02b-4f86-ad86-5102461d974e" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">News &amp; Events</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">News Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/event-calendar" target="" rel="" data-drupal-link-system-path="node/5826">Event Calendar</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/presentations" target="" rel="" data-drupal-link-system-path="node/5831">Presentations</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/stock-quote" target="" rel="" data-drupal-link-system-path="node/5911">Stock Information</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/stock-information/stock-quote" target="" rel="" data-drupal-link-system-path="node/5911">Stock Quote &amp; Chart</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/historical-price-lookup" target="" rel="" data-drupal-link-system-path="node/5921">Historical Price Lookup</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/investment-calculator" target="" rel="" data-drupal-link-system-path="node/5926">Investment Calculator</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/institutional-ownership" target="" rel="" data-drupal-link-system-path="node/5901">Ownership Profile</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/dividend-history" target="" rel="" data-drupal-link-system-path="node/5931">Dividends / Split History</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">Financial Information</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/annual-reports" target="" rel="" data-drupal-link-system-path="node/5881">Annual Reports &amp; Proxy Statements</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/quarterly-results" target="" rel="" data-drupal-link-system-path="node/5986">Latest Financial Results</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/committee-details/documents-charters" target="" rel="" data-drupal-link-system-path="node/12831">Corporate Governance</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/committee-details/documents-charters" target="" rel="" data-drupal-link-system-path="node/12831">Documents &amp; Charters</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance/leadership" target="" rel="" data-drupal-link-system-path="node/5841">Leadership</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance/director" target="" rel="" data-drupal-link-system-path="node/5846">Board of Directors</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance/committee-composition" target="" rel="" data-drupal-link-system-path="node/5851">Committee Composition</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/investor-faqs" target="" rel="" data-drupal-link-system-path="node/5941">Shareholder Services</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/investor-faqs" target="" rel="" data-drupal-link-system-path="node/5941">Investor FAQs</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/contact-ir" target="" rel="" data-drupal-link-system-path="node/5981">Information Request</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+</li>
+                            <li id="menu-item-920" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-920"><a href="http://www.nninc.com/careers/">Careers</a></li>
+                            <li id="menu-item-1483" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1483 dropdown"><a href="http://www.nninc.com/contact/" class="dropdown-toggle">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu-sidebar">
+                        <div id="search-6" class="sidebar-widget  widget_search">
+                            <form role="search" method="get" id="searchform" action="https://www.nninc.com/">
+                                <div class="input-group"><input type="text" value="" name="s" id="s" class="form-control" placeholder="Search"><span class="input-group-btn"><button class="btn btn-primary" type="submit" id="searchsubmit" value="Search"><i class="fa fa-search"></i></button></span></div>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content" role="main">
+    <section class="section">
+        <div class="container">
+            <div class="row element-top-50 element-bottom-50">
+                <div class="col-md-9">
+                    <article id="post-569" class="post-569 page type-page status-publish hentry">
+                        <div></div>
+                        <section class="section  text-normal section-text-no-shadow section-inner-no-shadow section-normal section-opaque" data-label="">
+                            <div class="background-overlay grid-overlay-0 " style="background-color: rgba(0,0,0,0);"></div>
+                            <div class="container container-vertical-default">
+                                <div class="row vertical-default">
+                                    <div class="col-md-12  text-default small-screen-default">
+                                                                                <h1 class="text-left  element-top-10 element-bottom-20 text-normal normal default" data-os-animation="none" data-os-animation-delay="0s">Presentations</h1>
+                                        <div class="col-text-1 text-normal  element-top-20 element-bottom-20 ndq-content" data-os-animation="none" data-os-animation-delay="0s">  <div class="region region-content">
+    <div id="block-websitenoticeblock-2" class="block--website-notice-block block--website-notice-block--5831 block--content--website-notice-block block--content--website-notice-block--5831 block--fa3e00b4-3807-47ef-9d07-a9d9fb45e52b block--fa3e00b4-3807-47ef-9d07-a9d9fb45e52b--5831 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid2633-content" class="block--system-main-block block--system-main-block--5831 block--content--system-main-block block--content--system-main-block--5831 block--cf1fe33a-7f4f-407b-8a73-f511ed1c3b29 block--cf1fe33a-7f4f-407b-8a73-f511ed1c3b29--5831 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Presentations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain"><div class="block--asset-table-two block--nir-assets__widget block--nir-assets__widget--5831 block--contentmain--nir-assets__widget block--contentmain--nir-assets__widget--5831 block--e329d606-dfe3-430a-a462-09be96bffcbb block--e329d606-dfe3-430a-a462-09be96bffcbb--5831 block block-nir-assets block-nir-assets__widget">
+  
+    
+      <div class="nir-widget">
+    <div class="nir-widget--content">
+          <div class="nir-widget--form">
+        <form data-drupal-selector="widget-form-base" action="/presentations?c=110673&amp;p=irol-presentations" method="get" id="widget-form-base" accept-charset="UTF-8">
+  <div class="nir-widgets--field-container nir-widgets--field-container--year js-form-wrapper form-wrapper" data-drupal-selector="edit-aec50a03-year" id="edit-aec50a03-year"><div class="two-col-field form-item js-form-item js-form-type-select form-type-select form-item-aec50a03-year-value js-form-item-aec50a03-year-value">
+      <label for="edit-aec50a03-year-value">Year</label>
+        <select data-drupal-selector="edit-aec50a03-year-value" id="edit-aec50a03-year-value" name="aec50a03_year[value]" class="form-select"><option value="_none">None</option><option value="2021" selected="selected">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option></select>
+        </div>
+</div>
+<input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Filter" class="button button--primary js-form-submit form-submit" />
+<input data-drupal-selector="edit-aec50a03-widget-id" type="hidden" name="aec50a03_widget_id" value="aec50a03" />
+<input autocomplete="off" data-drupal-selector="form-ao3rkg47gbelqmplftumdsmpew55xvnbjhendszgola" type="hidden" name="form_build_id" value="form-AO3RKg47gbelqMPlFtuMdsmpEW55xVnBJhendszgoLA" />
+<input data-drupal-selector="edit-widget-form-base" type="hidden" name="form_id" value="widget_form_base" />
+
+</form>
+
+      </div>
+        <div class="nir-widget--list">
+                <table width="100%" border="0" cellspacing="1" cellpadding="3" class="nirtable">
+              <thead>
+              <tr class="ccbnBgTblTtl">
+                  <th valign="top"><span class="ccbnTblTtl">Date</span></th>
+                  <th valign="top"><span class="ccbnTblTtl">Title</span></th>
+              </tr>
+              </thead>
+              <tbody>
+              
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+  <tr>
+<td>
+  
+  
+      <div class="nir-widget--field nir-widget--asset--date">
+      
+<div class="field-nir-asset-date">
+      <div class="field__item">May 07, 2021</div>
+  </div>
+    </div>
+  </td>
+<td>
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.nninc.com/static-files/70cc7b2f-353c-4d3f-9ced-2679c7e35669" type="application/pdf" title="Q1 2021 Earnings Presentation.pdf">Q1 2021 Earnings Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  </td>
+</tr>
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+  <tr>
+<td>
+  
+  
+      <div class="nir-widget--field nir-widget--asset--date">
+      
+<div class="field-nir-asset-date">
+      <div class="field__item">Apr 07, 2021</div>
+  </div>
+    </div>
+  </td>
+<td>
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.nninc.com/static-files/b600054d-541c-4040-ada5-17d064092261" type="application/pdf" title="NN Inc Investor Presentation.pdf">NN Inc Investor Presentation</a></span><span class="filesize"> 3.6 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  </td>
+</tr>
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+  <tr>
+<td>
+  
+  
+      <div class="nir-widget--field nir-widget--asset--date">
+      
+<div class="field-nir-asset-date">
+      <div class="field__item">Mar 11, 2021</div>
+  </div>
+    </div>
+  </td>
+<td>
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="http://investors.nninc.com/static-files/74b97e34-06e9-44c6-8d82-d1fba64568cf" type="application/pdf" title="Q4 2020 Earnings Presentation.pdf">Q4 2020 Earnings Presentation</a></span><span class="filesize"> 1.1 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  </td>
+</tr>
+</article>
+
+              </tbody>
+          </table>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+                                            <p class="toolkit">
+                                                  <div class="region region-footer">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid2633-shareholdertools-menu" id="block-nir-pid2633-shareholdertools" class="block--system-menu-blocktools block--system-menu-blocktools--5941 block--footer--system-menu-block--tools block--footer--system-menu-block--tools--5941 block--875096e9-aa64-42a2-a498-f75a56d11e9e block--875096e9-aa64-42a2-a498-f75a56d11e9e--5941 block block-menu navigation block-system-menublock menu--tools">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid2633-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                              <ul data-block-uuid="875096e9-aa64-42a2-a498-f75a56d11e9e" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="" target="" rel="" class="t-print">Print Page</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/rss-feeds" target="" rel="" class="t-rss" data-drupal-link-system-path="node/5951">RSS Feeds</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/email-alerts" target="" rel="" class="t-alerts" data-drupal-link-system-path="node/5946">Email Alerts</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+                </div>
+                <div class="col-md-3 sidebar">
+                    <div id="widget_sp_image-11" class="sidebar-widget  widget_sp_image"><img width="300" height="43" alt="" class="attachment-full" style="max-width: 100%;" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/inspired-by-innovation-300.png"></div>
+                    <div id="nav_menu-11" class="sidebar-widget widget_nav_menu">
+                        <div class="menu-sidebar-investor-relations-container">  <div class="region region-sidebar-last">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid2633-investorrelations-menu" id="block-nir-pid2633-investorrelations" class="block--system-menu-blockir block--system-menu-blockir--5831 block--sidebar-last--system-menu-block--ir block--sidebar-last--system-menu-block--ir--5831 block--984282b5-8649-4493-8a54-9233e4a17ea7 block--984282b5-8649-4493-8a54-9233e4a17ea7--5831 block block-menu navigation block-system-menublock menu--ir">
+            
+    <h2 id="block-nir-pid2633-investorrelations-menu">Investor Relations</h2>
+    
+
+                              <ul data-block-uuid="984282b5-8649-4493-8a54-9233e4a17ea7" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/" target="" rel="" title="Main Investor Relations Page" data-drupal-link-system-path="&lt;front&gt;">Investor Relations Home</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">News &amp; Events</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/press-releases" target="" rel="" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/event-calendar" target="" rel="" data-drupal-link-system-path="node/5826">Event Calendar</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/presentations" target="" rel="" data-drupal-link-system-path="node/5831">Presentations</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/stock-quote" target="" rel="" data-drupal-link-system-path="node/5911">Stock Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">Financial Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/committee-details/documents-charters" target="" rel="" data-drupal-link-system-path="node/12831">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/investor-faqs" target="" rel="" data-drupal-link-system-path="node/5941">Shareholder Services</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/contact-ir" target="" rel="" data-drupal-link-system-path="node/5981">Investor Inquiries</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+</div>
+                    </div>
+                    <div id="search-10" class="sidebar-widget  widget_search">
+                        <form role="search" method="get" id="searchform" action="https://www.nninc.com/">
+                            <div class="input-group"><input type="text" value="" name="s" id="s" class="form-control" placeholder="Search"><span class="input-group-btn"><button class="btn btn-primary" type="submit" id="searchsubmit" value="Search"><i class="fa fa-search"></i></button></span></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer" role="contentinfo">
+        <section class="section">
+            <div class="container">
+                <div class="row element-top-10 element-bottom-10 footer-columns-2">
+                    <div class="col-sm-6">
+                        <div id="text-8" class="sidebar-widget  widget_text">
+                            <div class="textwidget">
+                                <div align="left">NN, Inc. • 6210 Ardrey Kell Road • Charlotte, NC 28277 • 980-264-4312</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6"></div>
+                </div>
+            </div>
+        </section>
+        <section class="section subfooter">
+            <div class="container">
+                <div class="row element-top-10 element-bottom-10 footer-columns-2">
+                    <div class="col-sm-6">
+                        <div id="text-4" class="sidebar-widget  widget_text">
+                            <div class="textwidget">© 2021. NN, Inc. All Rights Reserved.</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="nav_menu-6" class="sidebar-widget  widget_nav_menu">
+                            <div class="menu-subfooter-container">
+                                <ul id="menu-subfooter" class="menu">
+                                    <li id="menu-item-1300" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1300"><a href="http://www.nninc.com/about/locations/">Locations</a></li>
+                                    <li id="menu-item-921" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-921"><a href="http://www.nninc.com/careers/">Careers</a></li>
+                                    <li id="menu-item-1482" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1482"><a href="http://www.nninc.com/contact/">Contact</a></li>
+                                    <li id="menu-item-1323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1323"><a href="http://www.nninc.com/request-for-contact/">Request a Quote</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+</div><a href="javascript:void(0)" class="go-top go-top-circle" style="bottom: 12px; opacity: 1;"><i class="fa fa-angle-up"></i></a>
+<div id="flags" style="display:none">
+    <ul id="sortable" class="ui-sortable">
+        <li id="Chinese(Simplified)"><a title="Chinese(Simplified)" class="notranslate flag zh-CN"><img class="flagimg" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/Chinese(Simplified).png" height="16" width="16" alt="Chinese(Simplified)"></a></li>
+        <li id="English"><a title="English" class="notranslate flag en"><img class="flagimg" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/United-States.png" height="16" width="16" alt="English"></a></li>
+        <li id="French"><a title="French" class="notranslate flag fr"><img class="flagimg" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/French.png" height="16" width="16" alt="French"></a></li>
+        <li id="German"><a title="German" class="notranslate flag de"><img class="flagimg" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/German.png" height="16" width="16" alt="German"></a></li>
+        <li id="Polish"><a title="Polish" class="notranslate flag pl"><img class="flagimg" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/Polish.png" height="16" width="16" alt="Polish"></a></li>
+        <li id="Spanish"><a title="Spanish" class="notranslate flag es"><img class="flagimg" src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/Spanish.png" height="16" width="16" alt="Spanish"></a></li>
+    </ul>
+</div>
+<div id="glt-footer"></div>
+<div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div>
+<div id="goog-gt-tt" class="skiptranslate" dir="ltr">
+    <div style="padding: 8px;">
+        <div>
+            <div class="logo"><img src="/sites/g/files/knoqqb30136/themes/site/nir_pid2633/client/images/translate_24dp.png" width="20" height="20" alt="Google Translate"></div>
+        </div>
+    </div>
+    <div class="top" style="padding: 8px; float: left; width: 100%;">
+        <h1 class="title gray">Original text</h1>
+    </div>
+    <div class="middle" style="padding: 8px;">
+        <div class="original-text"></div>
+    </div>
+    <div class="bottom" style="padding: 8px;">
+        <div class="activity-links"><span class="activity-link">Contribute a better translation</span><span class="activity-link"></span></div>
+        <div class="started-activity-container">
+            <hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;">
+            <div class="activity-root"></div>
+        </div>
+    </div>
+    <div class="status-message" style="display: none;"></div>
+</div>
+<div id="lightbox" class="lightbox" style="display: none;">
+    <div class="lb-outerContainer">
+        <div class="lb-container"><img class="lb-image" src="">
+            <div class="lb-nav"><a class="lb-prev" href=""></a><a class="lb-next" href=""></a></div>
+            <div class="lb-loader"><a class="lb-cancel"></a></div>
+        </div>
+    </div>
+    <div class="lb-dataContainer">
+        <div class="lb-data">
+            <div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div>
+            <div class="lb-closeContainer"><a class="lb-close"></a></div>
+        </div>
+    </div>
+</div>
+<div class="goog-te-spinner-pos">
+    <div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div>
+</div>
+</div>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb3176";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5831","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","currentQuery":{"c":"110673","p":"irol-presentations"}},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.filterform,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid2633\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid2633","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true},"user":{"uid":0,"permissionsHash":"d9dfc3f67f7a14dbb988b6afdd7593ba5b244978ee2cd141974523dc9b2258ed"}}</script>
+<script src="/sites/g/files/knoqqb30136/files/js/js_xa7rFPan5WwPhFieatvQNtDXIjdd188TckQLYb5QwNo.js"></script>
+<script src="//translate.google.com/translate_a/element.js?cb=GoogleLanguageTranslatorInit"></script>
+<script src="/sites/g/files/knoqqb30136/files/js/js_aLQMBpym7UNOLrxoUlGnqTJrN8GLJejNUlY78aJ7bt4.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"32397309,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":267,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"450819440"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<link rel="canonical" href="https://suncommunities.gcs-web.com/investor-overview/" />
+<link rel="shortlink" href="http://suncommunities.gcs-web.com/" />
+<meta name="description" content="The Investor Relations website contains information about Sun Communities &#039;s business for stockholders, potential investors, and financial analysts." />
+<meta property="og:site_name" content="Sun Communities" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://suncommunities.gcs-web.com/investor-overview" />
+<meta property="og:title" content="Investor Relations | Sun Communities" />
+<meta property="og:description" content="The Investor Relations website contains information about Sun Communities &#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="alternate" hreflang="en" href="https://suncommunities.gcs-web.com/" />
+<link rel="revision" href="https://suncommunities.gcs-web.com/investor-overview" />
+
+    <title>Investor Relations | Sun Communities</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31731/files/css/css_w5uwuaEHMC9bSP8WfARp9ZhoueTvvxceydRRR7hhmEE.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31731/files/css/css_kAktUW-gbgRAAJmHQjeyHqSpw3nrMXPeMk9vD0_3nP0.css" />
+<link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Montserrat:400,700" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31731/files/css/css_Sxl_5esAHLBIb2xK-bTs_IKw64cyKWJ41DxSQZ4UEcU.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb31731/files/css/css_DZZc24NwkbhozeeiYo05TgntyQ5eX2fb-lIoozMd0js.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb31731/files/css/css_-QKRnWQHaVfOLJjqHenmdpUadd84XYKB01J6qCbcfbM.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    <!-- Google Tag Manager -->
+                    <script>(function (w, d, s, l, i) {
+                    w[l] = w[l] || [];
+                    w[l].push({'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'});
+                    var f = d.getElementsByTagName(s)[0],
+                            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                    j.async = true;
+                    j.src =
+                            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                    f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-MB6CW7');</script>
+            <!-- End Google Tag Manager -->
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5806 path-frontpage page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div id="mboxScriptContainer" style="display:none;visibility:hidden;"></div>
+<div id="NDQ-content" class="container">
+<h1 class="commonClass">Investor Relations</h1>
+        	  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid2752-content" class="block--system-main-block block--system-main-block--5806 block--content--system-main-block block--content--system-main-block--5806 block--2c017434-5951-473e-8de6-72af5ea442ad block--2c017434-5951-473e-8de6-72af5ea442ad--5806 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Investor Relations
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display sutro clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-header panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-header"><div class="block-content--nir-lp-block block-content--nir-lp-block--10296 block--block-contente62998fa-ce8c-4cb1-ba8e-8ca3542775a0 block--block-contente62998fa-ce8c-4cb1-ba8e-8ca3542775a0--5806 block--header--block-content--e62998fa-ce8c-4cb1-ba8e-8ca3542775a0 block--header--block-content--e62998fa-ce8c-4cb1-ba8e-8ca3542775a0--5806 block--42a2e16a-00ab-4b1c-ba9b-db2daf509ea0 block--42a2e16a-00ab-4b1c-ba9b-db2daf509ea0--5806 block block-block-content block-block-contente62998fa-ce8c-4cb1-ba8e-8ca3542775a0">
+  
+      <h2>Company Profile</h2>
+    
+      
+            <div class="field field--name-field-nir-lp-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-lp-block-body field--type-text-long field--label-hidden field__item"><p><span class="ccbnTxt">As of March 31, 2021, the company owned, operated, or had an interest in 562 developed MH, RV and marina properties comprising over 151,600 developed sites and nearly 38,800 wet slips and dry storage spaces in 39 states and Ontario, Canada</span></p>
+
+<p>Established in 1975, Sun Communities became a publicly owned corporation in December, 1993. The company is a fully integrated real estate investment trust (REIT) listed on the New York Stock Exchange under the symbol: SUI.</p>
+
+<p>Sun Communities has twice been honored by the Manufactured Housing Institute as winner of the "Community Operator of the Year" award. The award is emblematic of Sun Communities' focus on professional management at the community level.</p>
+
+<p> </p>
+</div>
+      
+</div>
+      
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6 radix-layouts-column1 panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-column1"><div class="block--assets-list block--nir-assets__widget block--nir-assets__widget--5806 block--column1--nir-assets__widget block--column1--nir-assets__widget--5806 block--591634be-3673-4122-a4a0-f373e17e37d1 block--591634be-3673-4122-a4a0-f373e17e37d1--5806 block block-nir-assets block-nir-assets__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+        Featured Report
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://suncommunities.gcs-web.com/static-files/fa56f76b-beeb-4c40-bd34-927ff3848360" type="application/pdf" title="SUI_Exhibit_991_Press_Release_and_Supplemental_Package_2021_3_31.pdf">Supplemental Data March 31, 2021</a></span><span class="filesize"> 7.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://suncommunities.gcs-web.com/static-files/15e6fc72-373b-4678-adb1-30a092c488d4" type="application/pdf" title="SUI Summary of 2021 Reporting Changes.pdf">2021 Summary of Reporting Changes</a></span><span class="filesize"> 80.1 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block--assets-list block--nir-assets__widget block--nir-assets__widget--5806 block--column1--nir-assets__widget block--column1--nir-assets__widget--5806 block--c2dffb79-8b49-4f44-a13c-45098a6c2882 block--c2dffb79-8b49-4f44-a13c-45098a6c2882--5806 block block-nir-assets block-nir-assets__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      Featured Presentation
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+              
+<article role="article" class="clearfix node node--nir-asset--nir-widget-list node--type-nir-asset node--view-mode-nir-widget-list">
+
+  
+  
+  
+  
+  
+  
+  
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://suncommunities.gcs-web.com/static-files/dba1c62d-a416-4039-bfaf-8c91fee71999" type="application/pdf" title="SUI_1Q2021_Investor_Presentation.pdf">Investor Presentation – June 2021</a></span><span class="filesize"> 5.2 MB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</article>
+
+          </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="col-md-6 radix-layouts-column2 panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-column2"><div data-storage-id="node:5806:full:29841" data-uuid="32201c9c-4617-4d28-b3ba-3cb745ed641d" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5806 block--column2--market-data-block__stock-quote block--column2--market-data-block__stock-quote--5806 block--32201c9c-4617-4d28-b3ba-3cb745ed641d block--32201c9c-4617-4d28-b3ba-3cb745ed641d--5806 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+      <h2>Stock Quote</h2>
+    
+      
+<div class='quote-wrap user-toggle-on long-quote '>
+  <div class="quote-wrapper">
+      <select>
+              <option value=""></option>
+          </select>
+                            <div class="stock-quote" data-exchange="">
+		<table border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tbody>
+				<tr class="ccbnOutline">
+					<td valign="top">
+						<table border="0" cellspacing="1" cellpadding="3" width="100%">
+							<tbody>
+								<tr class="ccbnBgTblTxt">
+									<td valign="top" nowrap="nowrap" class="ccbnBgTblLabelLeft"><span class="ccbnTblLabelLeft">Exchange</span></td>
+									<td valign="top" nowrap="nowrap"><span class="ccbnTblTxt"></span><span class="ccbnTblTxt"> ()</span></td>
+								</tr>
+								<tr class="ccbnBgTblTxt">
+									<td valign="top" nowrap="nowrap" class="ccbnBgTblLabelLeft"><span class="ccbnTblLabelLeft">Price</span></td>
+									<td valign="top" nowrap="nowrap" width="100%" class="ccbnBgPrice"><span class="ccbnPrice"></span></td>
+								</tr>
+								<tr class="ccbnBgTblTxt">
+									<td valign="top" nowrap="nowrap" class="ccbnBgTblLabelLeft"><span class="ccbnTblLabelLeft">Change</span><span class="ccbnTblLabelLeft"> (%)</span></td>
+									<td nowrap="nowrap"><span class=""></span><span class="">&nbsp;(%)</span></td>
+								</tr>
+								<tr class="ccbnBgTblTxt">
+									<td valign="top" nowrap="nowrap" class="ccbnBgTblLabelLeft"><span class="ccbnTblLabelLeft">Volume</span></td>
+									<td nowrap="nowrap"><span class="ccbnTblTxt"></span></td>
+								</tr>
+								<tr class="ccbnBgTblSubTxt">
+									<td colspan="2"><span class="ccbnTblSubTxt">Data as of </span></td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+    </div>
+      </div>
+</div>
+
+  </div>
+<div class="block--attribution-block__stock-info-attribution__thomson-reuters block--attribution-block__stock-info-attribution__thomson-reuters--5806 block--column2--attribution-block__stock-info-attribution__thomson-reuters block--column2--attribution-block__stock-info-attribution__thomson-reuters--5806 block--f379fbeb-4490-48e2-82c2-e856dcd28f28 block--f379fbeb-4490-48e2-82c2-e856dcd28f28--5806 block block-nir-attribution-block block-attribution-block__stock-info-attribution__thomson-reuters">
+  
+    
+      <p>
+  Data Provided by Refinitiv. Minimum 15 minutes delayed.</p>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12 radix-layouts-footer panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-footer"><div class="block--news-table block--nir-news__widget block--nir-news__widget--5806 block--footer--nir-news__widget block--footer--nir-news__widget--5806 block--dd418e15-e161-45c3-a108-33bcf66dcc42 block--dd418e15-e161-45c3-a108-33bcf66dcc42--5806 block block-nir-news block-nir-news__widget">
+  
+    
+      <div class="nir-widget">
+      <div class="nir-widget--label">
+      <span class="ccbnTtl">  Recent News</span>
+    </div>
+    <div class="nir-widget--content">
+        <div class="nir-widget--list">
+      		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr class="ccbnBgTblTtl">
+					<th class="ccbnTblTtlDate" valign="top"><span class="ccbnTblTtlDate">Date</span></td>
+					<th class="ccbnTblTtl" valign="top"><span class="ccbnTblTtl">Title</span></td>
+					<th class="ccbnTblTtlPrint" valign="top"><span class="ccbnTblTtlPrint">&nbsp;</span></td>
+				</tr>
+			</thead>				
+			<tbody>
+				
+<tr>
+<td valign="top" nowrap="nowrap">
+      <div class="nir-widget--field nir-widget--news--date-time">
+      06/17/21
+    </div>
+  </td>
+
+<td valign="top">
+  
+            <div class="nir-widget--field nir-widget--news--headline">
+          <a href="/news-releases/news-release-details/sun-communities-inc-prices-600-million-senior-notes" hreflang="en">Sun Communities, Inc. Prices $600 Million of Senior Notes</a>
+      </div>
+      
+  
+  
+  
+  
+    
+  </td>
+<td>
+	<span class="ccbnTblOdd">
+		<a class="ccbnTblLnk"  href="/news-releases/news-release-details/sun-communities-inc-prices-600-million-senior-notes">
+			<img src="/sites/g/files/knoqqb31731/themes/site/nir_pid2752/client/images/printer.gif" alt="Printer Friendly Version" width="13" height="16" style="max-width:none;" border="0">
+		</a>
+	</span>
+</td>
+</tr>
+<tr>
+<td valign="top" nowrap="nowrap">
+      <div class="nir-widget--field nir-widget--news--date-time">
+      06/14/21
+    </div>
+  </td>
+
+<td valign="top">
+  
+            <div class="nir-widget--field nir-widget--news--headline">
+          <a href="/news-releases/news-release-details/sun-communities-inc-receives-investment-grade-ratings-sp-and" hreflang="en">Sun Communities, Inc. Receives Investment Grade Ratings from S&amp;P and Moody&#039;s</a>
+      </div>
+      
+  
+  
+  
+  
+    
+  </td>
+<td>
+	<span class="ccbnTblOdd">
+		<a class="ccbnTblLnk"  href="/news-releases/news-release-details/sun-communities-inc-receives-investment-grade-ratings-sp-and">
+			<img src="/sites/g/files/knoqqb31731/themes/site/nir_pid2752/client/images/printer.gif" alt="Printer Friendly Version" width="13" height="16" style="max-width:none;" border="0">
+		</a>
+	</span>
+</td>
+</tr>
+<tr>
+<td valign="top" nowrap="nowrap">
+      <div class="nir-widget--field nir-widget--news--date-time">
+      06/07/21
+    </div>
+  </td>
+
+<td valign="top">
+  
+            <div class="nir-widget--field nir-widget--news--headline">
+          <a href="/news-releases/news-release-details/sun-communities-inc-present-nareits-reitweek-2021-investor" hreflang="en">Sun Communities, Inc. to Present at Nareit’s REITweek 2021 Investor Conference</a>
+      </div>
+      
+  
+  
+  
+  
+    
+  </td>
+<td>
+	<span class="ccbnTblOdd">
+		<a class="ccbnTblLnk"  href="/news-releases/news-release-details/sun-communities-inc-present-nareits-reitweek-2021-investor">
+			<img src="/sites/g/files/knoqqb31731/themes/site/nir_pid2752/client/images/printer.gif" alt="Printer Friendly Version" width="13" height="16" style="max-width:none;" border="0">
+		</a>
+	</span>
+</td>
+</tr>
+<tr>
+<td valign="top" nowrap="nowrap">
+      <div class="nir-widget--field nir-widget--news--date-time">
+      06/01/21
+    </div>
+  </td>
+
+<td valign="top">
+  
+            <div class="nir-widget--field nir-widget--news--headline">
+          <a href="/news-releases/news-release-details/sun-communities-inc-announces-dates-second-quarter-2021-earnings" hreflang="en">Sun Communities, Inc. Announces Dates for Second Quarter 2021 Earnings Release and Conference Call</a>
+      </div>
+      
+  
+  
+  
+  
+    
+  </td>
+<td>
+	<span class="ccbnTblOdd">
+		<a class="ccbnTblLnk"  href="/news-releases/news-release-details/sun-communities-inc-announces-dates-second-quarter-2021-earnings">
+			<img src="/sites/g/files/knoqqb31731/themes/site/nir_pid2752/client/images/printer.gif" alt="Printer Friendly Version" width="13" height="16" style="max-width:none;" border="0">
+		</a>
+	</span>
+</td>
+</tr>
+			</tbody>
+		</table>
+	  		
+    </div>
+    <div class="nir-widget--pager">
+      
+    </div>
+    <div class="nir-widget--total-results">
+      
+    </div>
+  </div>
+</div>
+  </div>
+<div class="block-content--nir-lp-block block-content--nir-lp-block--12686 block--block-content57f1b866-ea26-40d4-9308-e5c42162543b block--block-content57f1b866-ea26-40d4-9308-e5c42162543b--5806 block--footer--block-content--57f1b866-ea26-40d4-9308-e5c42162543b block--footer--block-content--57f1b866-ea26-40d4-9308-e5c42162543b--5806 block--3a2164bf-17fb-4010-9f25-cfa0bd3d447c block--3a2164bf-17fb-4010-9f25-cfa0bd3d447c--5806 block block-block-content block-block-content57f1b866-ea26-40d4-9308-e5c42162543b">
+  
+      <h2>Contact Information</h2>
+    
+      
+            <div class="field field--name-field-nir-lp-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-lp-block-body field--type-text-long field--label-hidden field__item"><div class="wrapper vc_row wpb_row vc_inner vc_row-fluid ndq-contact " style="">
+<div class="wpb_column vc_column_container vc_col-sm-4 ">
+<table><tbody><tr><td><span class="ccbnTxtBold">Corporate Headquarters</span><br /><span class="ccbnTxt">Sun Communities, Inc.<br />
+			27777 Franklin Rd., Suite 200<br />
+			Southfield, Michigan 48034<br /><span class="ccbnLabel">Phone:</span> (248) 208-2500 </span></td>
+		</tr></tbody></table></div>
+
+<div class="wpb_column vc_column_container vc_col-sm-4 ">
+<table border="0" cellpadding="3" cellspacing="1" width="100%"><tbody><tr class="ccbnBgTtl"><td><span class="ccbnTxtBold">Transfer Agent</span></td>
+		</tr><tr class="ccbnBgTxt"><td valign="top"><span class="ccbnTxt">Computershare Trust Company, N. A.</span><br /><span class="ccbnTxt">P.O. Box 43010</span><br /><span class="ccbnTxt">Providence, RI 02940</span><br /><span class="ccbnLabel">Phone: </span><span class="ccbnTxt">1-800-426-5523</span></td>
+		</tr></tbody></table></div>
+
+<div class="wpb_column vc_column_container vc_col-sm-4 ">
+<table border="0" cellpadding="3" cellspacing="1" width="100%"><tbody><tr class="ccbnBgTtl"><td><span class="ccbnTxtBold">Accountants</span></td>
+		</tr><tr class="ccbnBgTxt"><td valign="top"><span class="ccbnTxt">Grant Thornton</span><br /><span class="ccbnTxt">27777 Franklin Rd, Suite 800</span><br /><span class="ccbnTxt">Southfield, MI 48034</span></td>
+		</tr></tbody></table></div>
+</div>
+
+<div class="wrapper vc_row wpb_row vc_inner vc_row-fluid " style="">
+<div class="wpb_column vc_column_container vc_col-sm-4 ">
+<table><tbody><tr><td><span class="ccbnTxtBold">Regional Offices</span><br /><span class="ccbnTxt">Ft. Myers, Florida<br />
+			Indianapolis, Indiana<br />
+			Austin, Texas</span></td>
+		</tr></tbody></table></div>
+
+<div class="wpb_column vc_column_container vc_col-sm-4 ">
+<table border="0" cellpadding="3" cellspacing="1" width="100%"><tbody><tr class="ccbnBgTtl"><td><span class="ccbnTxtBold">Primary IR Contact</span></td>
+		</tr><tr class="ccbnBgTxt"><td valign="top"><span class="ccbnTxt">Investor Relations</span><br /><span class="ccbnLabel">Phone: </span><span class="ccbnTxt">(248) 208-2500<br /><a href="mailto:investorrelations@suncommunities.com">investorrelations@suncommunities.com</a></span></td>
+		</tr></tbody></table></div>
+</div>
+</div>
+      
+</div>
+      
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</div><!-- /.sutro -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+			
+	<div class="ir-toolkit">
+		  <div class="region region-footer">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid2752-shareholdertools-menu" id="block-nir-pid2752-shareholdertools" class="block--system-menu-blocktools block--system-menu-blocktools--13781 block--footer--system-menu-block--tools block--footer--system-menu-block--tools--13781 block--d2ddb1d2-224f-4fa3-914e-635ba8f937cb block--d2ddb1d2-224f-4fa3-914e-635ba8f937cb--13781 block block-menu navigation block-system-menublock menu--tools">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid2752-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                              <ul data-block-uuid="d2ddb1d2-224f-4fa3-914e-635ba8f937cb" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="" target="" rel="" class="print">Print Page</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/rss-feeds" target="" rel="" class="#" data-drupal-link-system-path="node/5951">RSS Feeds</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/email-alerts" target="" rel="" class="emailalerts" data-drupal-link-system-path="node/5946">E-mail Alerts</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/contact-ir" target="" rel="" class="contacts" data-drupal-link-system-path="node/5981">IR Contacts</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+	</div>
+</div>
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb89";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5806","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en","currentQuery":{"c":"111013","p":"irol-irhome"}},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid2752\/override,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid2752","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"67d56f17c622decdc21ea2182bf40430d05864f918ddf519f17393576db12115"}}</script>
+<script src="/sites/g/files/knoqqb31731/files/js/js_DBZmEA6mYAFU1--JAuALK0bfEaqgtfLorlWPqojYZXg.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MB6CW7"
+                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"450819440,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":355,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

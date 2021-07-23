@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"32397309"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<link rel="canonical" href="http://investors.rtx.com/" />
+<link rel="shortlink" href="http://investors.rtx.com/" />
+<meta name="referrer" content="no-referrer" />
+<meta name="description" content="The Investor Relations website contains information about Raytheon Technologies Corporation&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta property="og:site_name" content="Raytheon Technologies Corporation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investors.rtx.com/investor-relations" />
+<meta property="og:title" content="Investor Relations | Raytheon Technologies Corporation" />
+<meta property="og:description" content="The Investor Relations website contains information about Raytheon Technologies Corporation&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb51176/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://investors.rtx.com/" />
+<link rel="revision" href="https://investors.rtx.com/investor-relations" />
+
+    <title>Investor Relations | Raytheon Technologies Corporation</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51176/files/css/css_w5uwuaEHMC9bSP8WfARp9ZhoueTvvxceydRRR7hhmEE.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb51176/files/css/css_u2tOq1zmJltpEeTVzIcyFU5L_oQNJRO6EIyX5ZEsm9g.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb51176/files/css/css_ChDiPPZEPxyY93l2gJQnSRGa1_xr89xCifBPgtVvilc.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KTM8HMD');</script>
+<!-- End Google Tag Manager -->
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--5806 path-frontpage page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTM8HMD" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+  <div class="component content c--bu-bar">
+    <div class="component-content">
+              <input type="checkbox" id="bu-bar--nav-toggle" class="c--bu-bar--nav-toggle hidden">
+                    <label for="bu-bar--nav-toggle" id="bu-bar-label-toggle"  class="c--bu-bar--nav-label hidden">
+                        Raytheon Technologies
+                        <svg id="bu-bar-icon-toggle" class="c--bu-bar--nav-label-icon hidden" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 10 10">
+                            <path d="M4.583 4.583H0v.834h4.583V10h.834V5.417H10v-.834H5.417V0h-.834z"/>
+                        </svg>
+                    </label>
+
+
+        <div class="component link-list c--bu-bar--nav cv--bu-bar-nav">
+          <div class="component-content">
+            
+
+                              <ul>
+                          <li class="item0 odd first active">
+          <a href="https://rtx.com" target="" rel="">Raytheon Technologies</a>
+                  </li>
+                      <li class="item1">
+          <a href="https://collinsaerospace.com" target="" rel="">Collins Aerospace</a>
+                  </li>
+                      <li class="item2">
+          <a href="https://prattwhitney.com" target="" rel="">Pratt &amp; Whitney</a>
+                  </li>
+                      <li class="item3">
+          <a href="https://raytheonintelligenceandspace.com" target="" rel="">Raytheon Intelligence &amp; Space</a>
+                  </li>
+                      <li class="item4 last">
+          <a href="https://raytheonmissilesanddefense.com/" target="" rel="">Raytheon Missiles &amp; Defense</a>
+                  </li>
+          </ul>
+  
+
+
+    
+          </div>
+        </div>
+                    <div class="component simple-stock-quote c--bu-bar--quote cv--bu-bar-quote">
+          <div class="component-content initialized" data-stock-quote-url="https://stockfeed.rtxapps.com/api/getbysymbol/rtx" data-stock-quote-symbol="RTX">
+            <a class="c--bu-bar--quote-link" href="/stock-information/">
+              <span class="name field-stock-symbol-name">RTX</span>
+              <span data-stock-direction="up" class="stock-up"></span>
+              <span data-stock-numbers="" class="price"><span class="c--bu-bar--stock-change"></span></span>
+            </a>
+                      </div>
+        </div>
+            <script type="text/template"id="bu-bar--styles">
+
+.c--bu-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    width: 100%;
+    color: #cacaca;
+    background-color: #525252;
+    padding: 0 0 0 30px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-weight: 500;
+    font-size: 10px;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.c--bu-bar>.component-content {
+    position: relative;
+}
+
+.c--bu-bar--nav h3 {
+    display: none;
+}
+
+.c--bu-bar--nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.c--bu-bar--nav ul>li {
+    padding: 5px 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+.c--bu-bar--nav ul>li+li {
+    margin-left: 20px;
+}
+
+.c--bu-bar--nav ul>li a.active {
+    font-weight: bold;
+}
+
+.c--bu-bar--nav ul>li a.active,
+.c--bu-bar--nav ul>li a.active:hover {
+    color: #fff;
+}
+
+.c--bu-bar--nav a {
+    color: inherit;
+    line-height: 1.8;
+    text-decoration: none;
+    -webkit-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    transition: all 0.25s;
+}
+
+.c--bu-bar--nav a:hover,
+.c--bu-bar--nav a:focus,
+.c--bu-bar--nav a:active {
+    color: #fff;
+}
+
+.c--bu-bar--nav a:active,
+.c--bu-bar--quote-link:active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.c--bu-bar--nav-toggle {
+    position: absolute;
+    visibility: hidden;
+}
+
+.c--bu-bar--nav-label {
+    display: none;
+    line-height: 1.8;
+    padding: 5px 0;
+    -webkit-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    transition: all 0.25s;
+}
+
+.c--bu-bar--nav-label .c--bu-bar--nav-label-icon {
+    position: relative;
+    left: 0.4em;
+    top: 0.1em;
+    fill: #fff;
+    -webkit-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    transition: all 0.25s;
+}
+
+.c--bu-bar--nav-label:hover {
+    color: #EB1C32;
+}
+
+.c--bu-bar--nav-label:hover .c--bu-bar--nav-label-icon {
+    fill: #EB1C32;
+}
+
+.c--bu-bar--nav-label:active {
+    color: #ce1226;
+}
+
+.c--bu-bar--nav-label:active .c--bu-bar--nav-label-icon {
+    fill: #ce1226;
+}
+
+.c--bu-bar--nav-toggle:checked+.c--bu-bar--nav-label>.c--bu-bar--nav-label-icon {
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
+    transform-origin: center;
+}
+
+.c--bu-bar--quote {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    color: inherit;
+    text-decoration: none;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: color 0.25s;
+    -o-transition: color 0.25s;
+    transition: color 0.25s;
+}
+
+a.c--bu-bar--quote-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.c--bu-bar--stock-change:before {
+    content: "|";
+    margin-left: 0.15em;
+    margin-right: 0.5em;
+    position: relative;
+    top: -0.1em;
+}
+
+.c--bu-bar--quote-link:hover,
+.c--bu-bar--quote-link:active,
+.c--bu-bar--quote-link:focus {
+    color: #fff;
+}
+
+@media (max-width: 1023px) {
+
+    .c--bu-bar.opened .c--bu-bar--nav-label:hover,
+    .c--bu-bar.opened .c--bu-bar--nav-label,
+    .c--bu-bar.opened .c--bu-bar--nav-label:hover .c--bu-bar--nav-label-icon,
+    .c--bu-bar.opened .c--bu-bar--nav-label .c--bu-bar--nav-label-icon {
+        color: #ce1226;
+        fill: #ce1226;
+    }
+
+    .c--bu-bar--nav-label:hover .c--bu-bar--nav-label-icon {
+        -webkit-transition: color 0s, -webkit-transform .25s;
+        transition: color 0s, -webkit-transform .25s;
+        -o-transition: color 0s, transform .25s;
+        transition: color 0s, transform .25s;
+        transition: color 0s, transform .25s, -webkit-transform .25s;
+    }
+
+    .c--bu-bar--nav-label:hover {
+        color: inherit
+    }
+
+    .c--bu-bar--nav-label:hover .c--bu-bar--nav-label-icon {
+        fill: #fff;
+    }
+
+    .c--bu-bar {
+        padding-left: 20px;
+        padding-right: 0;
+        -o-transition: margin-top 0.25s;
+        transition: margin-top 0.25s;
+        -webkit-transition: margin-top 0.25s;
+    }
+
+    body[data-navigation-is-expanded="true"] .c--bu-bar {
+        margin-top: -31px;
+    }
+
+    .c--bu-bar--nav-label {
+        display: block;
+    }
+
+    .c--bu-bar--nav {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .c--bu-bar--nav-toggle:checked~.c--bu-bar--nav {
+        max-height: 1000px;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+    .c--bu-bar--nav ul {
+        display: block;
+    }
+
+    .c--bu-bar--nav ul>li {
+        display: block;
+        margin-top: 4px;
+    }
+
+    .c--bu-bar--nav ul>li:last-child {
+        margin-bottom: 10px;
+    }
+
+    .c--bu-bar--nav ul>li+li {
+        margin-left: 0;
+    }
+
+    .c--bu-bar--quote {
+        top: 8px;
+        right: 20px;
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
+    }
+}
+
+/* header updates */
+.ut-header {
+    top: 28px;
+    -webkit-transition: top 0.25s;
+    -o-transition: top 0.25s;
+    transition: top 0.25s;
+}
+
+@media (max-width: 1023px) {
+    .c--bu-bar.opened {
+        z-index: 4;
+    }
+
+    body[data-navigation-is-expanded="true"] .ut-header {
+        top: 0;
+    }
+}
+
+</script>
+<script type="text/javascript">
+
+(function () {
+  
+
+    if ( typeof NodeList.prototype.forEach === "function" ) return false;
+    NodeList.prototype.forEach = Array.prototype.forEach;
+})();
+    var bu = {};
+        bu.currentUrl = document.location.hostname;
+        bu.styles = document.getElementById("bu-bar--styles").innerText;
+        
+        bu.el = {};
+        bu.el.navLinks = document.querySelectorAll(".c--bu-bar--nav a");
+        bu.el.toggle = document.getElementById("bu-bar--nav-toggle");
+        bu.el.bar = document.querySelector(".c--bu-bar");
+        bu.el.wrapper = document.getElementById("wrapper");
+        bu.el.header = document.getElementById("header");
+        
+        bu.is = {};
+        
+
+    bu.appendStyles = function() {
+        var css = document.createElement("style");
+        
+        css.type = "text/css";
+        
+        if (css.styleSheet) {
+            css.styleSheet.cssText = bu.styles;
+        } else {
+            css.appendChild(document.createTextNode(bu.styles));
+        }
+        
+        document.getElementsByTagName("head")[0].appendChild(css);
+        return bu;
+    };
+
+    bu.findCurrentItem = function(){
+        Array.prototype.forEach.call(bu.el.navLinks, function (link) {
+            var linkHref = link.getAttribute("href").toLowerCase().replace(/(^\w+:|^)\/\//, '');
+            var isHref = linkHref == bu.currentUrl;
+            var domainString = link.dataset.domains || "";
+            var isInDomains = false;
+            
+            if (domainString.length > 0) {
+                var domains = domainString.split(',') || [];
+                var hostNames = domains.map(function(domain){
+                    return domain.toLowerCase().trim().replace(/(^\w+:|^)\/\//, '');
+                });
+                isInDomains = hostNames.indexOf(bu.currentUrl) >= 0;
+            }
+            
+            if (isHref || isInDomains) {
+                bu.markCurrentItem(link);
+            }
+        });
+    };
+
+    bu.markCurrentItem = function(link){
+        link.classList.add("active");
+        return bu;
+    };
+    
+    bu.hideBar = function(){
+        bu.el.bar.setAttribute("style", "display: none");
+        return bu;
+    };
+    
+    bu.showBar = function(){
+        bu.el.bar.removeAttribute("style");
+        return bu;
+    };
+    
+    bu.collapse = function(){        
+        bu.el.toggle.checked = false;
+        bu.el.bar.classList.remove("opened");
+    };
+    
+    bu.handle = {};
+    
+    bu.handle.toggle = function(){
+        if (bu.el.toggle.checked) {
+            bu.el.bar.classList.add("opened");
+        } else {
+            bu.el.bar.classList.remove("opened");
+        }
+    };
+    
+    
+    bu.handle.resize = function(){
+        var isExpanded = document.querySelector("body").dataset.navigationIsExpanded === "true";
+        var isMobile = window.outerWidth < 1023;
+        var isExpandedBU = bu.el.toggle.checked;
+
+        if (isExpandedBU) {
+            bu.collapse();
+        }
+    };
+    
+
+    bu.handle.load = function() {
+    
+        bu.is.hamburger = document.querySelector(".ut-header--hamburger") !== null;
+        bu.is.header = bu.el.header !== null;
+        bu.is.wrapper = bu.el.wrapper !== null;
+
+        if (bu.is.hamburger) {
+            bu.el.hamburger = document.querySelector(".ut-header--hamburger");
+            bu.el.hamburger.addEventListener("click", bu.handle.resize);
+        }
+        
+        bu
+        .appendStyles()
+        .showBar()
+        .findCurrentItem();
+
+        document.querySelector("body").dataset.buBarReady = "true";
+    };
+
+    bu.init = function(){
+        bu.hideBar();
+        
+        window.addEventListener("load", bu.handle.load);
+        window.addEventListener("resize", bu.handle.resize);
+        window.addEventListener('unload', bu.collapse);
+        
+        bu.el.toggle.addEventListener("change", bu.handle.toggle);
+    };
+    
+    bu.init();
+    
+/////////////////////////////////
+
+
+if (!String.prototype.endsWith) {
+    String.prototype.endsWith = function(searchString, position) {
+        var subjectString = this.toString();
+        if (typeof position !== "number" || !isFinite(position) || Math.floor(position) !== position || position > subjectString.length) {
+            position = subjectString.length;
+        }
+        position -= searchString.length;
+        var lastIndex = subjectString.indexOf(searchString, position);
+        return lastIndex !== -1 && lastIndex === position;
+    };
+}
+
+// Stock quote javascript
+
+    var stockQuoteConstants = Object.freeze({
+        get_allComponents_selector : "[data-stock-quote-url][data-stock-quote-symbol]",
+    });
+
+    var populateDataToStockQuoteComponents = function() {
+
+        var stockQuotesDictionary = {};
+        var stockQuoteComponents = document.querySelectorAll(stockQuoteConstants.get_allComponents_selector);
+        
+        for (var i = 0; i < stockQuoteComponents.length; ++i) {
+            var quote = {};
+            
+            quote.component = stockQuoteComponents[i];
+            quote.url = quote.component.getAttribute("data-stock-quote-url");
+            quote.symbol = quote.component.getAttribute("data-stock-quote-symbol");
+            
+            if (quote.url !== "" && quote.symbol !== "") {
+
+                // check URL first
+                if (stockQuotesDictionary[quote.url] === undefined){
+
+                    var temp = {};
+                    temp[quote.symbol] = [quote.component];
+                    stockQuotesDictionary[quote.url] = (temp);
+                } else {
+                    // check symbol
+                    if (stockQuotesDictionary[quote.url][quote.symbol] === undefined){
+                        stockQuotesDictionary[quote.url][quote.symbol] = [quote.component];
+                    } else {
+                        stockQuotesDictionary[quote.url][quote.symbol].push(quote.component);
+                    }
+                }
+            }
+        }
+
+        for (var stockUrl in stockQuotesDictionary){
+            var symbols = stockQuotesDictionary[stockUrl];
+            
+            if (symbols !== undefined){
+                var request = new XMLHttpRequest();
+                var requestCallback = function (obj) {
+                    var response = JSON.parse(obj.responseText);
+                    var isError = response["error"] !== null;
+                    var isData = response["data"] !== undefined && response["data"].length > 0;
+                    if (!isError && isData) {
+                        pushStockInformationToComponents(stockQuotesDictionary[obj.stockUrl], response["data"]);
+                    }
+                }
+                request.stockUrl = stockUrl;
+                request.open("GET", stockUrl, true);
+                request.setRequestHeader("Content-Type", "application/json");
+                request.onreadystatechange = function(){
+                    if (this.readyState == 4 && this.status == 200) {
+                        requestCallback(this);
+                    }
+                };
+                request.send();
+            }
+        }
+    }
+
+    var pushStockInformationToComponents = function(symbols, stockData) {
+        for (var stockSymbol in symbols){
+            var components = symbols[stockSymbol];
+
+            var symbolDataArr = stockData.filter(function( obj ) {
+                return obj["symbol"] === stockSymbol;
+            });
+
+            if (symbolDataArr.length > 0 && components.length > 0){
+                var symbolData = symbolDataArr[0];
+
+                // make the incoming datetime str UTC
+                var dateStr = symbolData["date"];
+                if (!dateStr.endsWith("Z")){
+                    dateStr += "Z"
+                }
+
+                var stockData =
+                {
+                    exchange: symbolData["exchange"],
+                    change: symbolData["changeNumber"],
+                    pchange: symbolData["changePercent"],
+                    lastPrice: symbolData["lastTrade"],
+                    yearHigh: symbolData["52WeekHigh"],
+                    yearLow: symbolData["52WeekLow"],
+                    volume: symbolData["volume"],
+                    asofdatetime: new Date(dateStr)
+                };
+
+                stockData["direction"] = (stockData.change >= 0 ? "up" : "down");
+                stockData["sign"] = (stockData.change >= 0 ? "+" : "");
+                stockData["lastPriceCorrected"] = parseFloat(stockData.lastPrice).toFixed(2);
+                stockData["numbers"] = stockData.lastPriceCorrected + ' <span class="c--bu-bar--stock-change">' + stockData.sign + parseFloat(stockData.change).toFixed(2) + '</span>';
+                stockData["changePchange"] = stockData.sign + parseFloat(stockData.change).toFixed(2) + " (" + parseFloat(stockData.pchange).toFixed(2).replace("-", "") + "%)";
+
+                components.forEach(function(component, i, arr) {
+                    updateComponentWithStockData(component, stockData);
+                });
+            }
+        }
+    }
+
+    var updateComponentWithStockData = function(component, stockData) {
+        
+        var field = {};
+        
+        field.data = [
+            {
+                name: "direction",
+                type: "data-attr",              
+                value: stockData.direction
+            },
+            {
+                name:"lastprice",
+                type: "text",
+                value: stockData.lastPriceCorrected
+            },
+            {
+                name: "change-pchange",
+                type: "text",
+                value: stockData.changePchange
+            },
+            {
+                name: "year-high",
+                type: "text",
+                value: parseFloat(stockData.yearHigh).toFixed(2)
+            },
+            {
+                name: "year-low",
+                type: "text",
+                value: parseFloat(stockData.yearLow).toFixed(2)
+            },
+            {
+                name: "volume",
+                type: "text",
+                value: numberWithCommas(stockData.volume)
+            },
+            {
+                name: "numbers",
+                type: "html",
+                value: stockData.numbers
+            }
+        ];
+        
+        field.setValue = function(name, type, value){
+            if (field[name] !== null) {
+                switch(type) {
+                    case "data-attr":
+                        field[name].setAttribute("data-stock-" + name, value);
+                        break;
+                    case "text":
+                        field[name].textContent = value;
+                        break;
+                    case "html":
+                        field[name].innerHTML = value;
+                        break;
+                }
+            }
+        }
+        
+        field.data.forEach(function(item, index, dataItems){
+            field[item.name] = component.querySelector("[data-stock-"+item.name+"]");
+            field.setValue(item.name, item.type, item.value);
+        });
+        
+        field.date = component.querySelector("[data-stock-asofdatetime][data-datetime-format]");
+        
+        if (field.date !== null){
+            field.setValue("date", "text", moment.utc(stockData.asofdatetime).format(field.date.getAttribute("data-datetime-format")));
+        }
+        
+        component.classList.add("initialized");
+    }
+
+    var numberWithCommas = function(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+  
+    
+    window.addEventListener("load", populateDataToStockQuoteComponents);
+  document.getElementById('bu-bar--nav-toggle').classList.remove("hidden");
+    document.getElementById('bu-bar-label-toggle').classList.remove("hidden");
+ if( document.getElementById('bu-bar-icon-toggle').classList !=undefined){
+document.getElementById('bu-bar-icon-toggle').classList.remove("hidden");
+}
+
+
+</script>    </div>
+  </div>
+
+<header class="header">
+  <div class="header__bar">
+    <div class="header__links">
+      <a href="https://rtx.com" class="header__logo">
+        <img src="/sites/g/files/knoqqb51176/themes/site/nir_pid2040/dist/img/rtx_logo.png" />
+      </a>
+      <span class="header__separator"></span>
+      <a href="/" class="header__link">Investors</a>
+    </div>
+
+
+    <div class="header__search-container">
+      <div id="block-search-2">
+        <form class="header__search" data-redirecturl="https://www.rtx.com/search-results#utc-search-page_Search%20Date=&amp;utc-search-page_e=0&amp;utc-search-page_q=">
+          <button class="header__search-icon" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+              <path fill="none" fill-rule="evenodd" stroke="#CE1126" d="M7.125 1.571C10.188 1.571 12.667 4 12.667 7c0 3-2.48 5.429-5.542 5.429C4.062 12.429 1.583 10 1.583 7c0-3 2.48-5.429 5.542-5.429m0 11.429a6.218 6.218 0 0 0 3.967-1.429l3.5 3.429h.233l.175-.171v-.23l-3.47-3.428C12.58 10.086 13.25 8.63 13.25 7c0-3.314-2.742-6-6.125-6S1 3.686 1 7s2.742 6 6.125 6"/>
+            </svg>
+          </button>
+          <input class="form-search required" type="text" placeholder="What can we help you find?" id="searchBar" autocomplete="off">
+          <button class="header__search-submit" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7" height="11" viewBox="0 0 7 11">
+              <path fill="#CE1123" d="M0 0l6.417 5.5L0 11z"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+
+    <div class="header__actions">
+      <button class="header__search-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+          <path fill="none" fill-rule="evenodd" stroke="#CE1126" d="M7.125 1.571C10.188 1.571 12.667 4 12.667 7c0 3-2.48 5.429-5.542 5.429C4.062 12.429 1.583 10 1.583 7c0-3 2.48-5.429 5.542-5.429m0 11.429a6.218 6.218 0 0 0 3.967-1.429l3.5 3.429h.233l.175-.171v-.23l-3.47-3.428C12.58 10.086 13.25 8.63 13.25 7c0-3.314-2.742-6-6.125-6S1 3.686 1 7s2.742 6 6.125 6"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+          <path fill="#CE1126" fill-rule="nonzero" d="M7 5.94L1.166.105l-1.06 1.06L5.939 7 .106 12.834l1.06 1.06L7 8.061l5.834 5.833 1.06-1.06L8.061 7l5.833-5.834-1.06-1.06z"/>
+        </svg>
+      </button>
+
+      <button type="button" class="menu-button">
+        <span class="menu-button__lines"></span>
+        <span class="a11y">Toggle main menu</span>
+      </button>
+    </div>
+  </div>
+
+      <nav class="header__nav">
+      
+
+                              <ul>
+                  
+
+        <li class="header__nav-item">
+                      <a href="/events-and-presentations" target="" rel="" data-drupal-link-system-path="node/5821">Events &amp; Presentations</a>
+                            </li>
+              
+
+        <li class="header__nav-item">
+                      <button class="header__nav-item-toggle financial-information">
+              <span>Financial Information</span>
+            </button>
+                                              <ul class="header__nav-subitem">
+                  
+
+        <li>
+                      <a href="/financial-information/sec-filings" target="" rel="" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                            </li>
+              
+
+        <li>
+                      <a href="/financial-information/annual-reports" target="" rel="" data-drupal-link-system-path="node/5881">Reports &amp; Proxy Statements</a>
+                            </li>
+              
+
+        <li>
+                      <a href="https://rtx.com/news/financial-news" target="_blank" rel="">Financial News</a>
+                            </li>
+          </ul>
+  
+                  </li>
+              
+
+        <li class="header__nav-item">
+                      <button class="header__nav-item-toggle stock-information">
+              <span>Stock Information</span>
+            </button>
+                                              <ul class="header__nav-subitem">
+                  
+
+        <li>
+                      <a href="/stock-information/historic-stock-lookup" target="" rel="" data-drupal-link-system-path="node/5921">Historical Price Lookup</a>
+                            </li>
+              
+
+        <li>
+                      <a href="/stock-information/investment-calculator" target="" rel="" data-drupal-link-system-path="node/5926">Investment Calculator</a>
+                            </li>
+              
+
+        <li>
+                      <a href="/stock-information/stock-splits" target="" rel="" data-drupal-link-system-path="node/23726">Stock Splits</a>
+                            </li>
+              
+
+        <li>
+                      <a href="/stock-information/dividends-splits" target="" rel="" data-drupal-link-system-path="node/5931">Dividends</a>
+                            </li>
+              
+
+        <li>
+                      <a href="/stock-information/analyst-coverage" target="" rel="" data-drupal-link-system-path="node/5896">Analyst Coverage</a>
+                            </li>
+          </ul>
+  
+                  </li>
+              
+
+        <li class="header__nav-item">
+                      <button class="header__nav-item-toggle governance">
+              <span>Governance</span>
+            </button>
+                                              <ul class="header__nav-subitem">
+                  
+
+        <li>
+                      <a href="/esg-investors" data-drupal-link-system-path="node/23736">ESG Information and Resources</a>
+                            </li>
+              
+
+        <li>
+                      <a href="https://rtx.com/our-company/corporate-governance" target="_blank" rel="">Corporate Governance</a>
+                            </li>
+              
+
+        <li>
+                      <a href="/shareowner-services/annual-meeting" data-drupal-link-system-path="node/5956">Annual Meeting</a>
+                            </li>
+          </ul>
+  
+                  </li>
+              
+
+        <li class="header__nav-item">
+                      <button class="header__nav-item-toggle shareowner-services">
+              <span>Shareowner Services</span>
+            </button>
+                                              <ul class="header__nav-subitem">
+                  
+
+        <li>
+                      <a href="/shareowner-services" data-drupal-link-system-path="node/23746">Shareowner Services</a>
+                            </li>
+              
+
+        <li>
+                      <a href="/shareowner-services/annual-meeting" data-drupal-link-system-path="node/5956">Annual Meeting</a>
+                            </li>
+              
+
+        <li>
+                      <a href="/annual-meeting-qa" data-drupal-link-system-path="node/29041">Annual Meeting Q&amp;A</a>
+                            </li>
+          </ul>
+  
+                  </li>
+          </ul>
+  
+
+
+    
+    </nav>
+  </header>
+<main id="main-content">
+  
+  <section class="hero">
+    <div>
+      <div class="hero__slider">
+        <div class="hero__image" style="background-image:url('/sites/g/files/knoqqb51176/themes/site/nir_pid2040/dist/img/hero/hero_0.jpg')"></div>
+        <div class="hero__image" style="background-image:url('/sites/g/files/knoqqb51176/themes/site/nir_pid2040/dist/img/hero/hero_1.jpg')"></div>
+        <div class="hero__image" style="background-image:url('/sites/g/files/knoqqb51176/themes/site/nir_pid2040/dist/img/hero/hero_2.jpg')"></div>
+        <div class="hero__image" style="background-image:url('/sites/g/files/knoqqb51176/themes/site/nir_pid2040/dist/img/hero/hero_3.jpg')"></div>
+      </div>
+
+      <div class="wrapper hero__title">
+        <h1>Investor Relations</h1>
+      </div>
+    </div>
+          <div class="hero__data">
+          <div class="region region-hero-quote">
+    <div id="block-stockquote-4" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5806 block--hero-quote--market-data-block__stock-quote block--hero-quote--market-data-block__stock-quote--5806 block--d33e1e43-f9f4-4759-ae75-f8d29d083f59 block--d33e1e43-f9f4-4759-ae75-f8d29d083f59--5806 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+    
+      <div class='stock-quote stock-quote__short'>
+    <div class="quote-wrapper">
+                                                                                
+
+
+            <time class="visible-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                    <g fill="#FFF" fill-rule="nonzero">
+                        <path d="M6 .096C2.688.096 0 2.748 0 6s2.688 5.904 6 5.904S12 9.252 12 6 9.312.096 6 .096zM.708 6C.708 3.144 3.084.804 6 .804S11.292 3.132 11.292 6 8.916 11.196 6 11.196.708 8.856.708 6z" />
+                        <path d="M10.284 6a.361.361 0 0 0-.36-.36H6.36V2.7A.361.361 0 0 0 6 2.34a.354.354 0 0 0-.36.36V6c0 .192.156.36.36.36h3.936a.359.359 0 0 0 .348-.36z" />
+                    </g>
+                </svg> 10:40 AM EDT
+            </time>
+            <div class="stock__quote">
+                <span> </span>
+                <span class="stock__change "></span>
+                <a href="/stock-information" class="button button--small">Stock Chart
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7" height="11" viewBox="0 0 7 11">
+                        <path fill="#CE1123" d="M0 0l6.417 5.5L0 11z" />
+                    </svg>
+                </a>
+            </div>
+
+            </div>
+</div>
+  </div>
+
+  </div>
+
+      </div>
+      </section>
+
+      <nav class="navbar visible-lg">
+      <div id="block-nir-pid2040-breadcrumbs" class="block--system-breadcrumb-block block--system-breadcrumb-block--5806 block--breadcrumb--system-breadcrumb-block block--breadcrumb--system-breadcrumb-block--5806 block--7a9173ef-3ff6-43d1-b73b-817901de91aa block--7a9173ef-3ff6-43d1-b73b-817901de91aa--5806 block block-system block-system-breadcrumb-block">
+  
+    
+      
+
+  <ul class="breadcrumb">
+    <li>
+      <a href="#">RTX.com</a>
+    </li>
+    <li>
+      <a href="/">Investors</a>
+    </li>
+                                                      </ul>
+
+  </div>
+
+      <div class="sharebar">
+  <button class="sharebar__open js-sharebar-toggle">
+    <span>Share</span>
+  </button>
+
+  <ul class="sharebar__links">
+    <li>
+      <a class="js-share" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Finvestors.rtx.com%2Finvestor-relations&title=Raytheon Technologies Corporation - Investor Relations"
+         onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Finvestors.rtx.com%2Finvestor-relations&title=Raytheon Technologies Corporation - Investor Relations','LinkedIn','resizable=yes,scrollbars=yes,width=900,height=570'); return false;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="24" viewBox="0 0 448 512"><path fill="#464648" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+        <span class="a11y">LinkedIn</span>
+      </a>
+    </li>
+    <li>
+      <a class="js-share" href="http://twitter.com/intent/tweet?status=Raytheon Technologies Corporation - Investor Relations+https%3A%2F%2Finvestors.rtx.com%2Finvestor-relations"
+         onclick="window.open('http://twitter.com/intent/tweet?status=Raytheon Technologies Corporation - Investor Relations+https%3A%2F%2Finvestors.rtx.com%2Finvestor-relations','Twitter','resizable=yes,scrollbars=yes,width=900,height=570'); return false;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="19" viewBox="0 0 24 19">
+          <path fill="#464648" fill-rule="evenodd" d="M23.231 2.489c-.817.356-1.725.624-2.634.713.909-.535 1.635-1.427 1.999-2.496a8.803 8.803 0 0 1-2.907 1.07C18.872.883 17.691.348 16.33.348c-2.543 0-4.632 2.05-4.632 4.546 0 .357 0 .714.09 1.07A12.942 12.942 0 0 1 2.343 1.24c-.363.624-.636 1.427-.636 2.23 0 1.604.818 2.941 1.998 3.743-.726 0-1.453-.267-2.089-.535v.09c0 2.14 1.544 4.011 3.724 4.457-.363.09-.817.178-1.18.178-.273 0-.546 0-.909-.089.545 1.783 2.27 3.12 4.269 3.12-1.544 1.16-3.542 1.961-5.722 1.961-.363 0-.727 0-1.09-.089 1.998 1.248 4.45 2.05 7.084 2.05 8.447 0 13.079-6.864 13.079-12.836v-.535c.999-.803 1.726-1.516 2.361-2.496" />
+        </svg>
+        <span class="a11y">Twitter</span>
+      </a>
+    </li>
+    <li>
+      <a class="js-share" href="http://www.facebook.com/share.php?u=https%3A%2F%2Finvestors.rtx.com%2Finvestor-relations&t=Raytheon Technologies Corporation - Investor Relations"
+         onclick="window.open('http://www.facebook.com/share.php?u=https%3A%2F%2Finvestors.rtx.com%2Finvestor-relations&t=Raytheon Technologies Corporation - Investor Relations','Facebook','resizable=yes,scrollbars=yes,width=900,height=570'); return false;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21">
+          <path fill="#464648" fill-rule="evenodd" d="M18.783.962H1.909c-.578 0-1.047.481-1.047 1.075v17.335c0 .594.469 1.075 1.047 1.075h9.084v-7.546H8.521v-2.94h2.472V7.79c0-2.516 1.497-3.886 3.682-3.886 1.047 0 1.947.08 2.209.116v2.63h-1.516c-1.188 0-1.419.58-1.419 1.432v1.878h2.835l-.369 2.94H13.95v7.546h4.834c.578 0 1.047-.481 1.047-1.075V2.037c0-.594-.469-1.075-1.047-1.075" />
+        </svg>
+        <span class="a11y">Facebook</span>
+      </a>
+    </li>
+    <li>
+      <a class="" href="mailto:?subject=Raytheon Technologies Corporation - Investor Relations&Body=https%3A%2F%2Finvestors.rtx.com%2Finvestor-relations">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="14" viewBox="0 0 22 14">
+          <path fill="#464648" fill-rule="nonzero" d="M.254 0C.112 0 0 .12 0 .27v.79l11 7.968L22 1.06V.27c0-.15-.112-.27-.254-.27H.254zM0 2.381v11.35c0 .149.112.269.254.269h21.492c.142 0 .254-.12.254-.27V2.382L11.303 10.13a.512.512 0 0 1-.606 0L0 2.38z" />
+        </svg>
+        <span class="a11y">Email</span>
+      </a>
+    </li>
+    <li>
+      <button class="sharebar__close js-sharebar-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="27" viewBox="0 0 27 27">
+          <rect fill="#ce1126" id="close_a" width="27" height="27" rx="13.5" />
+          <path fill="#fff" transform="rotate(45 -.328 19.228)" d="M5.85 0v4.95h4.95v.9H5.85v4.95h-.9V5.85H0v-.9h4.95V0h.9z" />
+        </svg>
+        <span class="a11y">Close</span>
+      </button>
+    </li>
+  </ul>
+</div>
+    </nav>
+  
+    <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid2040-websitenoticeblock" class="block--website-notice-block block--website-notice-block--5806 block--content--website-notice-block block--content--website-notice-block--5806 block--f2985661-10c1-44dd-9dac-9a7df85af342 block--f2985661-10c1-44dd-9dac-9a7df85af342--5806 block block-nir-website-notices block-website-notice-block">
+  
+    
+      
+  </div>
+<div id="block-nir-pid2040-content" class="block--system-main-block block--system-main-block--5806 block--content--system-main-block block--content--system-main-block--5806 block--e5fbb6e0-c953-4092-bcd8-a01ea060179b block--e5fbb6e0-c953-4092-bcd8-a01ea060179b--5806 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Investor Relations
+          </h1>
+    
+
+  <div>
+    
+
+<section class="wrapper lg-spacer-bottom">
+  <div class="flex-lg flex--sm-bleed flex--center-v">
+    <div class="event">
+      <div class="block-region-header"><div class="block--next-event block--nir-events__widget block--nir-events__widget--5806 block--header--nir-events__widget block--header--nir-events__widget--5806 block--17e911e4-251c-4e64-bdc1-fadf9352392b block--17e911e4-251c-4e64-bdc1-fadf9352392b--5806 block block-nir-events block-nir-events__widget">
+  
+    
+      <ul>
+            <li class="event__item">
+            <span class="event__label">Upcoming Events</span>
+            
+
+
+
+
+
+
+      <h5 class="event__title">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/second-quarter-2021-earnings-conference-call" hreflang="en">Second Quarter 2021 Earnings Conference Call</a></div>
+  </div></h5>
+        <time>
+      
+      
+      
+            July 27, 2021, at 8:30 AM EDT
+      
+    </time>
+        <a class="button button--small" href="/events-and-presentations">
+      See All Events
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7" height="11" viewBox="0 0 7 11">
+        <path fill="#CE1123" d="M0 0l6.417 5.5L0 11z"></path>
+      </svg>
+    </a>
+  
+
+
+        </li>
+    </ul>
+
+
+  </div>
+<div class="block--latest-webcast block--nir-events__widget block--nir-events__widget--5806 block--header--nir-events__widget block--header--nir-events__widget--5806 block--570f25d4-d95a-4842-b672-1d0e7b3cd4e4 block--570f25d4-d95a-4842-b672-1d0e7b3cd4e4--5806 block block-nir-events block-nir-events__widget">
+  
+    
+      <ul>
+            <li class="event__item">
+            <span class="event__label">Latest Webcast</span>
+            
+
+
+
+
+
+
+      <h5 class="event__title">
+<div class="field-nir-event-title">
+      <div class="field__item"><a href="/events/event-details/raytheon-technologies-ubs-global-industrials-and-transportation-virtual" hreflang="en">Raytheon Technologies at the UBS Global Industrials and Transportation Virtual Conference’</a></div>
+  </div></h5>
+        <time>
+      
+      
+      
+            June 8, 2021, at 10:00 AM EDT
+      
+    </time>
+                <a class="button button--small" href="https://event.webcasts.com/starthere.jsp?ei=1466935&amp;tp_key=07ea462b72">
+      Click Here for Webcast
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="7" height="11" viewBox="0 0 7 11">
+        <path fill="#CE1123" d="M0 0l6.417 5.5L0 11z"></path>
+      </svg>
+    </a>
+        
+
+        </li>
+    </ul>
+
+
+  </div>
+</div>
+    </div>
+    <div class="cta">
+      <div class="block-region-column1"><div class="block-content--nir-lp-block block-content--nir-lp-block--23666 block--block-content478a85f6-a3c9-476f-9423-8b44149f77be block--block-content478a85f6-a3c9-476f-9423-8b44149f77be--5806 block--column1--block-content--478a85f6-a3c9-476f-9423-8b44149f77be block--column1--block-content--478a85f6-a3c9-476f-9423-8b44149f77be--5806 block--b9697158-cc63-458f-af5c-ff5d7eabda92 block--b9697158-cc63-458f-af5c-ff5d7eabda92--5806 block block-block-content block-block-content478a85f6-a3c9-476f-9423-8b44149f77be">
+  
+    
+      
+            <div class="field field--name-field-nir-lp-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-lp-block-body field--type-text-long field--label-hidden field__item"><div class="cta__content">
+<p>Raytheon Technologies creates long-term shareowner value by focusing on opportunities that drive profitable growth. We are continuously improving in all that we do.</p>
+
+<p><a class="button" href="https://rtx.com/Our-Company/our-leadership">Leadership <svg height="11" viewbox="0 0 7 11" width="7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M0 0l6.417 5.5L0 11z" fill="#CE1123"></path></svg></a> <a class="button" href="http://rtx.com/our-company/corporate-governance">Board of Directors <svg height="11" viewbox="0 0 7 11" width="7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M0 0l6.417 5.5L0 11z" fill="#CE1123"></path></svg></a></p>
+</div>
+</div>
+      
+</div>
+      
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+<section class="wrapper quicklinks">
+  <div class="block-region-column2">
+
+                              <ul data-block-uuid="dd3dcedd-fb20-43c1-85f1-6c0680ec4457" class="row" id="overview-links">
+                  <li class="col-6 col-lg-4">
+          <a href="/events-and-presentations" target="" rel="" class="calendar" data-drupal-link-system-path="node/5821"> Events &amp; Presentations</a>
+                  </li>
+              <li class="col-6 col-lg-4">
+          <a href="https://rtx.com/news/financial-news" target="_blank" rel="" class="news">Financial News</a>
+                  </li>
+              <li class="col-6 col-lg-4">
+          <a href="/shareowner-services/merger-related-resources" target="" rel="" class="doc" data-drupal-link-system-path="node/23801">Merger Resources</a>
+                  </li>
+              <li class="col-6 col-lg-4">
+          <a href="/financial-information/sec-filings" target="" rel="" class="pdf" data-drupal-link-system-path="node/5876">SEC Filings</a>
+                  </li>
+              <li class="col-6 col-lg-4">
+          <a href="/financial-information/annual-reports" target="" rel="" class="pdf" data-drupal-link-system-path="node/5881">Reports &amp; Proxy Statements</a>
+                  </li>
+              <li class="col-6 col-lg-4">
+          <a href="https://rtx.com/our-company/corporate-governance" target="_blank" rel="" class="corpgov">Corporate Governance</a>
+                  </li>
+          </ul>
+  
+
+
+    </div>
+</section>
+<section class="ftdocuments">
+  <div class="wrapper">
+    <div class="ftdocuments__header col-lg-7">
+      <div class="ftdocuments__image" style="background-image:url('sites/g/files/knoqqb51176/themes/site/nir_pid2040/dist/img/IR_featured_documents.jpg')"></div>
+      <h3 class="ftdocuments__title">Featured Documents</h3>
+    </div>
+    <div class="col-lg-5">
+      <div class="block-region-footer"><div class="block--featured-documents block--nir-assets__widget block--nir-assets__widget--5806 block--footer--nir-assets__widget block--footer--nir-assets__widget--5806 block--918c52fa-c19c-4cc9-a87f-f30a207de9ab block--918c52fa-c19c-4cc9-a87f-f30a207de9ab--5806 block block-nir-assets block-nir-assets__widget">
+  
+    
+          <ul>
+        
+
+
+
+
+
+<li>
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.rtx.com/static-files/61726231-8878-4ec3-93f9-8c1b3073121e" type="application/pdf" title="RTX Press Release_Jun Dividend_FINAL.pdf">Raytheon Technologies Board of Directors Declares Quarterly Cash Dividend</a></span><span class="filesize"> 84.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</li>
+
+
+
+
+
+
+
+<li>
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.rtx.com/static-files/da879575-4143-414e-9375-438e20f71ed0" type="application/pdf" title="Bond Exchange FMV Disclosure - Final.pdf">Raytheon Technologies Corporation - Exchange Offer, June 10, 2020</a></span><span class="filesize"> 188.5 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</li>
+
+
+
+
+
+
+
+<li>
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.rtx.com/static-files/8908d69f-5a39-4719-b8d2-945ec00907d1" type="application/pdf" title="RTX - Early Tender Results PR (Approved Final).pdf">Raytheon Technologies announces early tender results and receipt of requisite consents to amend outstanding notes and related indentures of Goodrich Corporation, Raytheon Company and Rockwell Collins, Inc.</a></span><span class="filesize"> 82 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</li>
+
+
+
+
+
+
+
+<li>
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.rtx.com/static-files/1d0010bd-9a41-4be8-b797-0048967463ae" type="application/pdf" title="RTX Press Release__Merger Closing_4.2.2020 FINAL.pdf">United Technologies and Raytheon Complete Merger of Equals Transaction</a></span><span class="filesize"> 161.6 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</li>
+
+
+
+
+
+
+
+<li>
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.rtx.com/static-files/72417fe4-a1ea-41a1-9f38-63ac04082ec5" type="application/pdf" title="FAQs About the Exchange of Shares of Raytheon Company Common Stock.pdf">About the Exchange of Shares of Raytheon Company Common Stock</a></span><span class="filesize"> 193.7 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</li>
+
+
+
+
+
+
+
+<li>
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.rtx.com/static-files/2d479c0a-d3a6-4088-b53e-94903db21198" type="application/pdf" title="IRS Form 8937 for United Technologies Corporation Common Stock.pdf">IRS Form 8937 for United Technologies Corporation</a></span><span class="filesize"> 643 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</li>
+
+
+
+
+
+
+
+<li>
+
+      <div class="nir-widget--field nir-widget--asset--list-of-files">
+      
+<div class="field-nir-document">
+      <div class="nir-widgets--file-list--hide-filesize field__item">
+<article role="article" class="node node--nir-asset--asset-link node--type-nir-asset node--view-mode-asset-link">
+  <div class="node__content">
+    
+      <div class="field field--name-field-nir-document field--type-file field--label-hidden field__items">
+              <div class="field__item">
+            <div class="file-link">
+  <span class="file file--mime-application-pdf file--application-pdf"> <a href="https://investors.rtx.com/static-files/4085ba22-0f57-4885-8e24-fa5ec337bc20" type="application/pdf" title="IRS Form 8937 for Raytheon Company Common Stock.pdf">IRS Form 8937 for Raytheon Company </a></span><span class="filesize"> 628.2 KB</span>
+</div>
+
+        </div>
+          </div>
+  
+  </div>
+</article>
+</div>
+  </div>
+    </div>
+  
+</li>
+
+
+    </ul>
+
+
+
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+
+
+  <footer class="footer">
+          
+
+    <div class="footer__bar">
+    <div class="wrapper">
+        <h4 id="block-investorinquiries-menu">Investor Inquiries</h4>
+                                  <ul id="investor-inquiries">
+                  <li>
+          <a href="tel:781-522-5123" target="" rel="" class="phone">(781) 522-5123</a>
+                  </li>
+              <li>
+          <a href="mailto:investors@rtx.com" target="" rel="" class="envelope">Email Us</a>
+                  </li>
+              <li>
+          <a href="/shareowner-services/email-alerts" target="" rel="" class="bell" data-drupal-link-system-path="node/5946">Subscribe to Email Alerts</a>
+                  </li>
+          </ul>
+  
+
+
+            </div>
+</div>
+
+<div id="block-gbfootertransferagent" class="block-content--nir-global-block block-content--nir-global-block--28846 block--block-content3667e75e-6c49-4b60-bf87-1cb8772ece2b block--block-content3667e75e-6c49-4b60-bf87-1cb8772ece2b--5806 block--investor-inquiries--block-content--3667e75e-6c49-4b60-bf87-1cb8772ece2b block--investor-inquiries--block-content--3667e75e-6c49-4b60-bf87-1cb8772ece2b--5806 block--fc44ee24-ddb4-4ca5-a98e-0e8827278100 block--fc44ee24-ddb4-4ca5-a98e-0e8827278100--5806 block block-block-content block-block-content3667e75e-6c49-4b60-bf87-1cb8772ece2b">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><style type="text/css">
+<!--/*--><![CDATA[/* ><!--*/
+
+<!--/*--><![CDATA[/* ><!--*/
+#foottransferagent {width: 100%;
+    padding: 0;
+    background: #464648;
+    color: #fff;
+    font-size: 17px;
+    line-height: 1.29;
+    letter-spacing: -.11px;
+    margin-top: -40px;
+    margin-bottom:0;}
+#foottransferagent a {color:#fff;text-decoration:underline;}
+
+/*--><!]]]]><![CDATA[>*/
+
+/*--><!]]>*/
+</style><div class="footer__bar" style="margin-top:-30px;">
+<div class="wrapper">
+<div id="foottransferagent">For Information on Personal Shares | Contact our Transfer Agent – <a href="/shareowner-services/transfer-agent">Click Here </a></div>
+</div>
+</div></div>
+      
+</div>
+      
+  </div>
+
+        <div class="wrapper">
+      <div class="flex flex--space-between flex--align-top">
+        <a href="https://rtx.com">
+          <img class="footer__logo" src="/sites/g/files/knoqqb51176/themes/site/nir_pid2040/dist/img/rtx_logo.png" />
+        </a>
+        <button class="button button--small button--arrow-up js--scrolltop">Back to top</button>
+      </div>
+              
+
+                              <ul data-block-uuid="d0760145-3d74-4489-8ef9-98c8307908f0" class="footer__links row">
+                                          <li class="col-12 col-lg-3">
+            <a href="https://collinsaerospace.com" target="" rel="">Collins Aerospace</a>
+                      </li>
+                                <li class="col-12 col-lg-3">
+            <a href="https://prattwhitney.com" target="" rel="">Pratt &amp; Whitney</a>
+                      </li>
+                                <li class="col-12 col-lg-3">
+            <a href="https://raytheonintelligenceandspace.com" target="" rel="">Raytheon Intelligence &amp; Space</a>
+                      </li>
+                                <li class="col-12 col-lg-3">
+            <a href="https://raytheonmissilesanddefense.com/" target="" rel="">Raytheon Missiles &amp; Defense</a>
+                      </li>
+                  </ul>
+  
+
+
+    
+      
+      <div class="footer__info">
+        <p>Copyright © 2021 Raytheon Technologies Corporation</p>
+                  
+
+                              <ul>
+                  <li>
+          <a href="https://rtx.com/accessibility-statement" target="_blank" rel="">Accessibility</a>
+                  </li>
+              <li>
+          <a href="/investor-sitemap" target="" rel="" data-drupal-link-system-path="node/25116">Investors Sitemap</a>
+                  </li>
+              <li>
+          <a href="https://rtx.com/terms-of-use" target="_blank" rel="">Terms of Use</a>
+                  </li>
+              <li>
+          <a href="https://rtx.com/privacy" target="_blank" rel="">Privacy</a>
+                  </li>
+          </ul>
+  
+
+
+    
+              </div>
+    </div>
+  </footer>
+</main>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgunitedtechnologies";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5806","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en","themeUrl":"sites\/g\/files\/knoqqb51176\/themes\/site\/nir_pid2040"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/node,nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid2040\/override,nir_website_notices\/nir_website_notices.notices,radix_layouts\/radix_layouts,system\/base","theme":"nir_pid2040","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"2f72a079ee3721b697cf36ff2134a99d2fd5014d6c65a5dc0c232dbad0ebac11"}}</script>
+<script src="/sites/g/files/knoqqb51176/files/js/js_M5eNN2X3k-c8LIjLgt6ljlLO0d1xbzax9tOpNmoyKss.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"32397309,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":689,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

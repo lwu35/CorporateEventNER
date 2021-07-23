@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"39077635"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="IROBOT CORPORATION" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://investor.irobot.com/events-and-presentations/upcoming-events" />
+<meta property="og:title" content="Calendar of Events | IROBOT CORPORATION" />
+<meta property="og:description" content="The Investor Relations website contains information about IROBOT CORPORATION &#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=0.4" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb9276/files/16x16.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://investor.irobot.com/events-and-presentations/upcoming-events" />
+<link rel="canonical" href="https://investor.irobot.com/events-and-presentations/upcoming-events" />
+<link rel="shortlink" href="https://investor.irobot.com/node/5826" />
+<link rel="revision" href="https://investor.irobot.com/events-and-presentations/upcoming-events" />
+
+    <title>Calendar of Events | IROBOT CORPORATION</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb9276/files/css/css_xlPnJptIC4BdD3T-gfH9N4SlWZCHxGNTtD6JVWqkd4w.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb9276/files/css/css_-po-PXM-6QSVme2y8GumiSwqdQ6tBiGHS-opgs6y4fc.css" />
+<link rel="stylesheet" media="all" href="//composer.irobot.com/Presentation/maestro/css/headerfooter.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb9276/files/css/css_R34P0XqQB2zXEPOSDorUwC-gvMdZ4s5uVPQcEoDMa3w.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb9276/files/css/css_1lZ4mpa8co3eA6_exb-x5-jHHMFFC2RVeRi_aedRRFM.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    <script src="https://consent.trustarc.com/notice?domain=irobot.com&c=teconsent&js=nj¬iceType=bb>m=1&text=true"></script>
+  </head>
+  <body class="body-sidebars-last nir-node nir-node--type-nir-landing-page nir-node--5826 page-node-5826 node_type_nir_landing_page path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+
+
+
+
+<div class="page-header">
+    <div class="o-header-placeholder">
+        <div class="o-header__container">
+            <div class="o-header__leftheader">
+                    <a href="/">
+                        <img src="//www.irobot.com/-/media/images/features/navigation/irobot-logo.ashx?h=44&la=en&w=44" alt="iRobot Logo" width="44" height="44">
+                    </a>
+            </div>
+        </div>
+    </div>
+    <style type='text/css'>
+    .o-header-placeholder {
+        border-bottom: 7px solid #64a70b;
+        width: 100%;
+        background: #fff;
+    }
+
+    .o-header-placeholder .o-header__container {
+        width: calc(100% - 338px);
+        background: white;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 23px 169px;
+    }
+    @media screen and (max-width: 1024px) {
+        .o-header-placeholder .o-header__leftheader {
+            margin: 0 auto;
+            justify-content: space-between;
+            align-items: center;
+        }
+       .o-header-placeholder .o-header__container {
+            padding: 10px;
+            width:100%;
+        }
+    }
+    </style>
+</div>
+
+
+<div id="main_body">
+    <div class="ccbn-aside">
+          <div class="region region-sidebar-last">
+    
+
+<nav role="navigation" aria-labelledby="block-nir-pid860-navmenu-menu" id="block-nir-pid860-navmenu" class="block--system-menu-blocknavmenu block--system-menu-blocknavmenu--5826 block--sidebar-last--system-menu-block--navmenu block--sidebar-last--system-menu-block--navmenu--5826 block--30bfd4b8-8f40-41de-8b1b-1968e9bf45b0 block--30bfd4b8-8f40-41de-8b1b-1968e9bf45b0--5826 block block-menu navigation block-system-menublock menu--navmenu">
+                        
+    <h2 class="visually-hidden" id="block-nir-pid860-navmenu-menu">navmenu</h2>
+    
+
+                              <ul data-block-uuid="30bfd4b8-8f40-41de-8b1b-1968e9bf45b0" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/corporate-profile" data-drupal-link-system-path="node/5811">Company Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">News &amp; Events</a>
+                                    <ul class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/news-releases" target="" rel="" data-drupal-link-system-path="node/5816">Press Releases</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-and-presentations/upcoming-events" data-drupal-link-system-path="node/5826" class="is-active">Calendar of Events</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/annual-meeting" target="" rel="" data-drupal-link-system-path="node/5956">Annual Meeting &amp; Related Materials</a>
+                  </li>
+          </ul>
+  
+                  </li>
+              <li class="side-menu__item">
+          <a href="/financial-information/annual-reports" data-drupal-link-system-path="node/5881">Financial Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/stock-information/stock-quote" data-drupal-link-system-path="node/5911">Stock Information</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/corporate-governance/highlights" data-drupal-link-system-path="node/5836">Corporate Governance</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/email-alerts" data-drupal-link-system-path="node/5946">Investor Services</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-and-presentations/presentations" data-drupal-link-system-path="node/5831">Investor Presentations</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+<div id="block-stockquote" class="block--market-data-block__stock-quote block--market-data-block__stock-quote--5826 block--sidebar-last--market-data-block__stock-quote block--sidebar-last--market-data-block__stock-quote--5826 block--895e38c0-dc5b-40c4-82b9-3499915b4b95 block--895e38c0-dc5b-40c4-82b9-3499915b4b95--5826 block block-nir-market-data-block block-market-data-block__stock-quote">
+  
+      <h2>Stock Quote</h2>
+    
+      <div class='quote-wrap user-toggle-off stock-quote__featured'>
+  <div class="quote-wrapper">
+                        	<div class="table-container">
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tbody>
+            <tr class="ccbnOutline">
+                <td valign="top" style="padding: 0px;">
+                    <table border="0" cellspacing="1" cellpadding="3" width="100%" class="stock-quote">
+                        
+                        <tbody>
+                            <tr class="ccbnBgTblTtl">
+                                <td colspan="2" style="padding: 3px;"><span class="ccbnTblTtl">
+			    <input type="hidden" name="control_Symbol" value="03NA000000IRBT"> (Common Stock)			  </span></td>
+                            </tr>
+                            <tr class="ccbnBgTblTxt">
+                                <td valign="top" nowrap="nowrap" class="ccbnBgTblLabelLeft" style="padding: 3px;"><span class="ccbnTblLabelLeft">Exchange</span></td>
+                                <td valign="top" nowrap="nowrap" style="padding: 3px;"><span class="ccbnTblTxt">&nbsp;</span><span class="ccbnTblTxt">(US Dollar)</span></td>
+                            </tr>
+                            <tr class="ccbnBgTblTxt">
+                                <td valign="top" nowrap="nowrap" class="ccbnBgTblLabelLeft" style="padding: 3px;"><span class="ccbnTblLabelLeft">Price</span></td>
+                                <td valign="top" nowrap="nowrap" width="100%" class="ccbnBgPrice" style="padding: 3px;"><span class="ccbnPrice"></span></td>
+                            </tr>
+                            <tr class="ccbnBgTblTxt">
+                                <td valign="top" nowrap="nowrap" class="ccbnBgTblLabelLeft" style="padding: 3px;"><span class="ccbnTblLabelLeft">Change</span><span class="ccbnTblLabelLeft"> (%)</span></td>
+                                <td nowrap="nowrap" style="padding: 3px;"><span class=""></span><span class="">&nbsp;</span></td>
+                            </tr>
+                            <tr class="ccbnBgTblTxt">
+                                <td valign="top" nowrap="nowrap" class="ccbnBgTblLabelLeft" style="padding: 3px;"><span class="ccbnTblLabelLeft">Volume</span></td>
+                                <td nowrap="nowrap" style="padding: 3px;"><span class="ccbnTblTxt"></span></td>
+                            </tr>
+                            <tr class="ccbnBgTblSubTxt">
+                                <td colspan="2" style="padding: 3px;"><span class="ccbnTblSubTxt">Data as of <br></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    </div>
+</div>
+
+
+
+
+  </div>
+<div id="block-stockinfoattributionthomsonreuters" class="block--attribution-block__stock-info-attribution__thomson-reuters block--attribution-block__stock-info-attribution__thomson-reuters--5826 block--sidebar-last--attribution-block__stock-info-attribution__thomson-reuters block--sidebar-last--attribution-block__stock-info-attribution__thomson-reuters--5826 block--d0742cb8-a345-419d-a44b-0f3ad2cb69a3 block--d0742cb8-a345-419d-a44b-0f3ad2cb69a3--5826 block block-nir-attribution-block block-attribution-block__stock-info-attribution__thomson-reuters">
+  
+    
+      <p>
+  Data Provided by Refinitiv. Minimum 15 minutes delayed.</p>
+
+  </div>
+<div id="block-nir-pid860-sidebargp" class="block-content--nir-global-block block-content--nir-global-block--14966 block--block-contentd4e92981-21df-4c44-8dc9-b1b7a7f74e11 block--block-contentd4e92981-21df-4c44-8dc9-b1b7a7f74e11--5826 block--sidebar-last--block-content--d4e92981-21df-4c44-8dc9-b1b7a7f74e11 block--sidebar-last--block-content--d4e92981-21df-4c44-8dc9-b1b7a7f74e11--5826 block--758a47f7-ba46-459d-8406-acf9e28e14c1 block--758a47f7-ba46-459d-8406-acf9e28e14c1--5826 block block-block-content block-block-contentd4e92981-21df-4c44-8dc9-b1b7a7f74e11">
+  
+    
+      
+            <div class="field field--name-field-nir-global-block-node field--type-entity-reference field--label-hidden field__item">  
+            <div class="clearfix text-formatted field field--name-field-nir-global-block-body field--type-text-long field--label-hidden field__item"><div class="ccbn-aside-box">
+<h3>Investor Toolkit</h3>
+
+<div class="ccbnToolkit">
+<table border="0" cellpadding="3" cellspacing="1" width="100%"><tbody><tr class="ccbnBgLnk"><td style="padding: 3px;" width="100%"><span class="ccbnLnk"><a class="ccbnLnk" href="#" onclick="window.print();">Print Page</a></span></td>
+		</tr><tr class="ccbnBgLnk"><td style="padding: 3px;" width="100%"><span class="ccbnLnk"><a class="ccbnLnk" href="/rss-feeds">RSS Feeds</a></span></td>
+		</tr><tr class="ccbnBgLnk"><td style="padding: 3px;" width="100%"><span class="ccbnLnk"><a class="ccbnLnk" href="/shareholder-services/email-alerts">E-mail Alerts</a></span></td>
+		</tr><tr class="ccbnBgLnk"><td style="padding: 3px;" width="100%"><span class="ccbnLnk"><a class="ccbnLnk" href="/shareholder-services/contact-ir" name="" id="">IR Contacts</a></span></td>
+		</tr></tbody></table></div>
+</div>
+</div>
+      
+</div>
+      
+  </div>
+
+  </div>
+
+    </div>
+    <div class="trContent ccbnContent">
+          <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid860-content" class="block--system-main-block block--system-main-block--5826 block--content--system-main-block block--content--system-main-block--5826 block--5609231b-1e86-49e2-b7bd-c53abc9e6e2a block--5609231b-1e86-49e2-b7bd-c53abc9e6e2a--5826 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Calendar of Events
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain">
+
+<nav role="navigation" aria-labelledby="-menu" class="block--system-menu-blockevents-and-presentations block--system-menu-blockevents-and-presentations--5826 block--contentmain--system-menu-block--events-and-presentations block--contentmain--system-menu-block--events-and-presentations--5826 block--81098be6-d94f-48ac-8062-9dcf615ac348 block--81098be6-d94f-48ac-8062-9dcf615ac348--5826 block block-menu navigation block-system-menublock menu--events-and-presentations">
+                        
+    <h2 class="visually-hidden" id="-menu">Events and Presentations</h2>
+    
+
+                              <ul data-block-uuid="81098be6-d94f-48ac-8062-9dcf615ac348" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/events-and-presentations/upcoming-events" data-drupal-link-system-path="node/5826" class="is-active">Upcoming Events</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-and-presentations/past-events" title="Past Events" data-drupal-link-system-path="node/6031">Past Events</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+<div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--5826 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--5826 block--a6b701bb-ad5f-4b08-bd13-f8e4d9945f02 block--a6b701bb-ad5f-4b08-bd13-f8e4d9945f02--5826 block block-views block-views-blockwidget-events-table">
+  
+      <h2>Upcoming Events</h2>
+    
+      <div data-block-uuid="a6b701bb-ad5f-4b08-bd13-f8e4d9945f02"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-2c048578fa8b798aeb7b7daa8208662caee8d34ffec6fac12f963503eabc88f2">
+  
+    
+      
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 collapse-table">
+    <thead>
+  <tr>
+  <th>Date</th>
+  <th>Title</th>
+  </tr>
+  </thead>
+  <tbody>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+
+      07/28/21
+              </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+  <div class="nir-events-widget-event-details-title">
+          <a href="/events/event-details/q2-2021-irobot-corp-financial-results-press-release"><h3>Q2 2021 iRobot Corp Financial Results Press Release</h3></a>
+      </div>
+       
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+
+      07/29/21 8:30 am EDT
+              </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <a href="/events/event-details/q2-2021-irobot-corp-financial-results-conference-call"><h3>Q2 2021 iRobot Corp Financial Results Conference Call</h3></a>
+      </div>
+       
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+
+      08/09/21
+              </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <a href="/events/event-details/irobot-corp-needham-virtual-industrial-technologies-1x1-conference"><h3>iRobot Corp. at Needham Virtual Industrial Technologies 1x1 Conference</h3></a>
+      </div>
+       <div class="nir-event-summary-event-details-summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">This is a one-on-one only conference. There will not be a general presentation or fireside chat. </div>
+          </div>
+
+    </div>
+        
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+
+      10/27/21
+              </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details summary-empty">
+  <div class="nir-events-widget-event-details-title">
+          <a href="/events/event-details/q3-2021-irobot-corp-financial-results-press-release-tentative"><h3>Q3 2021 iRobot Corp Financial Results Press Release (tentative)</h3></a>
+      </div>
+       
+  </div>          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+
+
+
+      10/28/21 8:30 am EDT
+              </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<div class="nir-events-widget-event-details">
+  <div class="nir-events-widget-event-details-title">
+          <a href="/events/event-details/q3-2021-irobot-corp-financial-results-conference-call-tentative"><h3>Q3 2021 iRobot Corp Financial Results Conference Call </h3></a>
+      </div>
+       <div class="nir-event-summary-event-details-summary">
+      
+  <div class="field field--name-field-nir-event-summary field--type-text-long field--label-above">
+              <div class="field__item">This tentative date will be confirmed publicly. Stay tuned. </div>
+          </div>
+
+    </div>
+        
+  </div>          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+
+    </div>
+    <div class="ccbn-clear"></div>
+</div>
+
+
+
+
+<div class="communityFooterBG">
+    <div class="communityFooter">
+        <div class="left">
+            <div class="newsletterSignup">
+                <iframe src="https://homesupport.irobot.com/ci/documents/detail/2/dw_email_signup_EN?country=US&amp;source=brand-site" width="500" height="70" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+        <div class="right">
+            <div class="socialIcons">
+                <div class="icons">
+                    <ul class="nav nav-list nav-list--lvl1">
+                        <li class="nav-item nav-item--lvl1 icon fb nodropdown">
+                            <a class="nav-link nav-link--lvl1" href="https://www.facebook.com/irobot/" target="_blank"></a>
+                        </li>
+                        <li class="nav-item nav-item--lvl1 icon twitter nodropdown">
+                            <a class="nav-link nav-link--lvl1" href="https://twitter.com/iRobot" target="_blank"></a>
+                        </li>
+                        <li class="nav-item nav-item--lvl1 icon youtube nodropdown">
+                            <a class="nav-link nav-link--lvl1" href="https://www.youtube.com/user/irobot" target="_blank"></a>
+                        </li>
+                        <li class="nav-item nav-item--lvl1 icon linkedin nodropdown">
+                            <a class="nav-link nav-link--lvl1" href="https://www.linkedin.com/company/irobot" target="_blank"></a>
+                        </li>
+                        <li class="nav-item nav-item--lvl1 icon instagram nodropdown">
+                            <a class="nav-link nav-link--lvl1" href="http://instagram.com/irobot" target="_blank"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="page-footer">
+    <div class="o-header-placeholder">
+        <div class="o-header__container">
+            <div class="o-header__leftheader">
+                    <a href="/">
+                        <img src="//www.irobot.com/-/media/images/features/navigation/irobot-logo.ashx?h=44&la=en&w=44" alt="iRobot Logo" width="44" height="44">
+                    </a>
+            </div>
+        </div>
+    </div>
+    <style type='text/css'>
+    .o-header-placeholder {
+        border-bottom: 7px solid #64a70b;
+        width: 100%;
+        background: #fff;
+    }
+
+    .o-header-placeholder .o-header__container {
+        width: calc(100% - 338px);
+        background: white;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 23px 169px;
+    }
+    @media screen and (max-width: 1024px) {
+        .o-header-placeholder .o-header__leftheader {
+            margin: 0 auto;
+            justify-content: space-between;
+            align-items: center;
+        }
+       .o-header-placeholder .o-header__container {
+            padding: 10px;
+            width:100%;
+        }
+    }
+    </style>
+</div>
+
+
+
+
+
+
+
+<div class="page-copyright"><div class="copyright">© 2021 iRobot Corporation. All Rights Reserved.</div></div>
+
+
+<div id="consent_blackbar" class="o-cookiebanner"></div><div id="teconsent" class="o-cookiebanner"></div>
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "TRCGCLIENTWEB1405";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/5826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_market_data_block\/nir_market_data_block.command,nir_market_data_block\/nir_market_data_block.stockQuote,nir_multimedia\/nir_multimedia,nir_pid860\/override,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid860","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"2d080f1c6d0b440ca01abf9747d2a47d2e5cfb9525bda19fa4a3b68154d9c7f5"}}</script>
+<script src="/sites/g/files/knoqqb9276/files/js/js_RskRZKaP6yHwQTsD1K0aDDDcQH4_Uo_HnJY7QVfJLN8.js"></script>
+<script src="//www.irobot.com/bundle/beacon"></script>
+<script src="//composer.irobot.com/Presentation/maestro/js/index.js"></script>
+<script src="/sites/g/files/knoqqb9276/files/js/js_T2y-JsU2xQzQuzU8MtL_ofWWQgTiKWZ0d9kXEXPtUqA.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"39077635,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":298,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

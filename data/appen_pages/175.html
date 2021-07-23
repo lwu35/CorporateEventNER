@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"761e715901",applicationID:"93485548"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta property="og:site_name" content="Lennox International Inc." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lennoxinternational.gcs-web.com/events-and-presentations/past-events" />
+<meta property="og:title" content="Past Event Calendar | Lennox International Inc." />
+<meta property="og:description" content="The Investor Relations website contains information about Lennox International Inc.&#039;s business for stockholders, potential investors, and financial analysts." />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=0.4" />
+<link rel="shortcut icon" href="/sites/g/files/knoqqb12141/files/favicon%20%282%29.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://lennoxinternational.gcs-web.com/events-and-presentations/past-events" />
+<link rel="canonical" href="https://lennoxinternational.gcs-web.com/events-and-presentations/past-events" />
+<link rel="shortlink" href="https://lennoxinternational.gcs-web.com/node/6031" />
+<link rel="revision" href="https://lennoxinternational.gcs-web.com/events-and-presentations/past-events" />
+
+    <title>Past Event Calendar | Lennox International Inc.</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/knoqqb12141/files/css/css_xlPnJptIC4BdD3T-gfH9N4SlWZCHxGNTtD6JVWqkd4w.css" />
+<link rel="stylesheet" media="all" href="/sites/g/files/knoqqb12141/files/css/css_ja0giWyQAAJZB0W9PLuDPViDD-gqNQ22asul8ZszqVQ.css" />
+<link rel="stylesheet" media="print" href="/sites/g/files/knoqqb12141/files/css/css_uR7CBnjEs5VZNOTbN5egaIVEsuJ_uLDLaCxQpDsgq_0.css" />
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.8.0"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.8.0"></script>
+
+    
+  </head>
+  <body class="body-sidebars-none nir-node nir-node--type-nir-landing-page nir-node--6031 page-node-6031 node_type_nir_landing_page path-node page-node-type-nir-landing-page">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <header id="nir-header">
+  <div class="container">
+      </div>
+</header>
+
+<div class="clearfix" id="main">
+  <div class="container">
+    
+    <section id="content">
+      <div id="content-header">
+
+        
+
+      </div>
+
+      <div id="content-area">  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-nir-pid1128-content" class="block--system-main-block block--system-main-block--6031 block--content--system-main-block block--content--system-main-block--6031 block--a760c24b-c848-4908-be1f-d3948d60791f block--a760c24b-c848-4908-be1f-d3948d60791f--6031 block block-system block-system-main-block">
+  
+    
+      <article class="node node--type-nir_landing_page node--view-mode-full clearfix">
+  
+      <h1>
+              Past Event Calendar
+          </h1>
+    
+
+  <div>
+    
+<div  class="panel-display boxton clearfix">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 radix-layouts-content panel-panel">
+        <div  class="panel-panel-inner">
+          <div class="block-region-contentmain">
+
+<nav role="navigation" aria-labelledby="-menu" class="block--system-menu-blockevents-and-presentations block--system-menu-blockevents-and-presentations--6031 block--contentmain--system-menu-block--events-and-presentations block--contentmain--system-menu-block--events-and-presentations--6031 block--d68bec9f-b31b-488c-aed9-25bf7317a23c block--d68bec9f-b31b-488c-aed9-25bf7317a23c--6031 block block-menu navigation block-system-menublock menu--events-and-presentations">
+                        
+    <h2 class="visually-hidden" id="-menu">Events and Presentations</h2>
+    
+
+                              <ul data-block-uuid="d68bec9f-b31b-488c-aed9-25bf7317a23c" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="/events-and-presentations/upcoming-events" data-drupal-link-system-path="node/5826">Upcoming Events</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/events-and-presentations/past-events" title="Past Events" data-drupal-link-system-path="node/6031" class="is-active">Past Events</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+<div class="views-element-container block--views-blockwidget-events-table block--views-blockwidget-events-table--6031 block--contentmain--views-block--widget-events-table block--contentmain--views-block--widget-events-table--6031 block--1a48a5e2-7813-498e-8d86-4e9054c49fb6 block--1a48a5e2-7813-498e-8d86-4e9054c49fb6--6031 block block-views block-views-blockwidget-events-table">
+  
+    
+      <div data-block-uuid="1a48a5e2-7813-498e-8d86-4e9054c49fb6"><div class="view view-widget-events view-id-widget_events view-display-id-table js-view-dom-id-c6ec70ad1ed32f72476f66f5020ba906dc966641513f1a8615c0312477d8ac12">
+  
+    
+      
+      <div class="view-content">
+      <table class="nirtable views-table views-view-table cols-2 collapse-table">
+        <thead>
+      <tr>
+        
+                    <th class="ccbnTblTtl" width="25%">Date</th>
+          <th class="ccbnTblTtl">Title</th>
+      </tr>
+    </thead>
+    <tbody>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jun 3, 2021
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/lennox-international-keybanc-capital-markets-industrials-basic-materials-0"><h3>Lennox International at KeyBanc Capital Markets Industrials &amp; Basic Materials Conference</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Jun 1, 2021 at 10:40 AM CDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/lennox-international-william-blair-41st-annual-growth-stock-conference"><h3>Lennox International at William Blair 41st Annual Growth Stock Conference</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            May 11, 2021 at 12:10 PM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/lennox-international-goldman-sachs-industrials-materials-conference-2021"><h3>Lennox International at Goldman Sachs Industrials &amp; Materials Conference 2021</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Apr 26, 2021 at 8:30 AM CDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/q1-2021-lennox-international-earnings-conference-call"><h3>Q1 2021 Lennox International Earnings Conference Call</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 24, 2021 at 10:30 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/lennox-international-baird-2021-sustainability-conference"><h3>Lennox International at Baird 2021 Sustainability Conference</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+            
+              Feb 16, 2021 at 12:00 AM EST to Feb 16, 2021 at 1:30 PM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/lennox-international-barclays-industrial-select-conference-3"><h3>Lennox International at Barclays Industrial Select Conference</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 9, 2021 at 10:10 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/lennox-international-cowen-42nd-annual-aerospacedefense-industrials-conference"><h3>Lennox International at Cowen 42nd Annual Aerospace/Defense &amp; Industrials Conference</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Feb 2, 2021 at 8:30 AM CST
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/q4-2020-lennox-international-earnings-conference-call"><h3>Q4 2020 Lennox International Earnings Conference Call</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Dec 16, 2020 at 9:00 AM CST
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/lennox-international-2020-investment-community-meeting"><h3>Lennox International 2020 Investment Community Meeting</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 19, 2020 at 10:00 AM EST
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/lennox-international-stephens-annual-investment-conference"><h3>Lennox International at Stephens Annual Investment Conference</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Nov 12, 2020
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/lennox-international-baird-2020-global-industrial-conference"><h3>Lennox International at  Baird 2020 Global Industrial Conference</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Oct 19, 2020 at 8:30 AM CDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/q3-2020-lennox-international-earnings-conference-call"><h3>Q3 2020 Lennox International Earnings Conference Call</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+          <tr class="node--type-nir-event">
+                                                                                        <td headers="view-field-nir-event-start-date-table-column" class="views-field views-field-field-nir-event-start-date">
+<a href="#" class="summary-toggle nir-events-table-widget-summary-toggle-date"><span>Summary Toggle</span></a>
+      
+      
+            Sep 15, 2020 at 11:15 AM EDT
+                </td>
+                                                                                        <td headers="view-nothing-table-column" class="views-field views-field-nothing">
+<table border="0" width="100%" cellspacing="1" cellpadding="3">
+   <tbody>
+      <tr class="ccbnBgTblEven">
+         <td colspan="2"><span class="ccbnTblTxtBold"><a href="/events/event-details/lennox-international-morgan-stanley-8th-annual-laguna-conference"><h3>Lennox International at Morgan Stanley 8th Annual Laguna Conference</h3></a></span></td>
+      </tr>
+	  	     </tbody>
+</table>
+          </td>
+              </tr>
+      </tbody>
+</table>
+
+    </div>
+  
+  
+          <div class="view-footer">
+          
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.boxton -->
+
+  </div>
+</article>
+
+  </div>
+
+  </div>
+</div>
+    </section>
+
+    
+  </div>
+</div>
+
+  <footer id="nir-footer">
+    <div class="container">
+        <div class="region region-footer">
+    
+
+<nav role="navigation" aria-labelledby="block-shareholdertools-menu" id="block-shareholdertools" class="block--system-menu-blocktools block--system-menu-blocktools--6031 block--footer--system-menu-block--tools block--footer--system-menu-block--tools--6031 block--43af67bb-49be-4528-a37e-af7333fa8aa5 block--43af67bb-49be-4528-a37e-af7333fa8aa5--6031 block block-menu navigation block-system-menublock menu--tools">
+                        
+    <h2 class="visually-hidden" id="block-shareholdertools-menu">Shareholder Tools</h2>
+    
+
+                              <ul data-block-uuid="43af67bb-49be-4528-a37e-af7333fa8aa5" class="menu side-menu">
+                  <li class="side-menu__item">
+          <a href="" target="" rel="">Print Page</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="/shareholder-services/email-alerts" target="" rel="" data-drupal-link-system-path="node/5946">E-mail Alerts</a>
+                  </li>
+              <li class="side-menu__item">
+          <a href="http://lennoxinternational.com/investorcontact.html" target="" rel="">IR Contacts</a>
+                  </li>
+          </ul>
+  
+
+
+    </nav>
+
+  </div>
+
+    </div>
+  </footer>
+
+  </div>
+
+    
+          <script type="text/javascript">var s_CCSWebHostingAccount = "trcgclientweb1464";</script>
+        <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/6031","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"nir_analytics\/nir_analytics.adobe_launch,nir_analytics\/nir_analytics.adobe_prod,nir_base\/lib,nir_base\/nir_icons,nir_base\/nir_toolbar,nir_base\/sidr,nir_ckeditor_datatables\/datatables,nir_multimedia\/nir_multimedia,nir_pid1128\/override,radix_layouts\/radix_layouts,system\/base,views\/views.module","theme":"nir_pid1128","theme_token":null},"ajaxTrustedUrl":[],"user":{"uid":0,"permissionsHash":"1a62d68516e7a2b74a8d92425b2b84347cab92e632a67e288bb2c803dd52478d"}}</script>
+<script src="/sites/g/files/knoqqb12141/files/js/js_K9nbmhaRNC_GFuHWi7qVplTMIuZhGkUT_m4-Y2Ijf7w.js"></script>
+<script src="//assets.adobedtm.com/898335afd880/c52ee8aa1e90/launch-5ef258dce664.min.js" async></script>
+
+    
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"761e715901","applicationID":"93485548,24276188","transactionName":"ZlVXYRcAW0ZRW0QKX18fdFYRCFpbH3xCFkBQXGlbCgVQaXNXXhdCXlxZUBc9e1pUXWYKVUZzWlsRE1pZXF1CTg5HWVBC","queueTime":0,"applicationTime":241,"atts":"ShJUF18aSEg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>
