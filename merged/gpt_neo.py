@@ -59,8 +59,11 @@ def gpt_predicts(raw_event_text,happy_gen):
         # print(max_tag + '\n')
     return tags
 
-def main():
+
+if __name__ == "__main__":
     happy_gen = gpt_train('gpt_train.txt')
+    happy_gen.save("model/")
+    
     with open('gpt_test.txt', 'r', encoding='utf-8') as f:
         raw_event_text = []
         lines = f.readlines()
