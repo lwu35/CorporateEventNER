@@ -80,8 +80,8 @@ class ParserModel(torch.nn.Module):
 event_tags = ['Shareholder Meeting','None/Other','Earnings Release','Conference','Conference','Earnings Call','Shareholder Meeting','Conference','Conference','Shareholder Meeting',
 'Shareholder Meeting','Conference','Earnings Call','Earnings Call','Earnings Call','Earnings Release','Conference','Earnings Call','Earnings Release','Earnings Call','Earnings Release',
 'Earnings Release','Earnings Call','Earnings Release','Earnings Release','Shareholder Meeting','Earnings Release','Earnings Release','Earnings Call','Earnings Call','Earnings Call',
-'Earnings Release','Earnings Call','Earnings Call','None/Other','Earnings Call','Earnings Release','Conference','Earnings Call','Earnings Release','Shareholder Meeting','Earnings Release','Conference',
-'Earnings Call','Earnings Call','Earnings Call','Merger/Acquisition','Earnings Call','Earnings Call','Earnings Call','Earnings Call','Earnings Release','Earnings Release']
+'Earnings Release','Earnings Call','None/Other','Earnings Call','Earnings Release','Earnings Call','Conference','Earnings Call','Earnings Release','Shareholder Meeting','Earnings Release','Conference',
+'Earnings Call','Earnings Call','Earnings Release','Merger/Acquisition','Earnings Call','Earnings Call','Earnings Call','Earnings Call','Earnings Call','Earnings Release']
 
 
 raw_event_text = [["2021 Astronics Corporation Annual Meeting of Shareholders May 25, 2021 • 10:00am EDT Orlando, Florida"],
@@ -281,11 +281,16 @@ id2intent = {id:intent for intent,id in intent2id.items()}
 # Load pre-trained model tokenzier (vocab)
 tokenizer = BertTokenizerFast.from_pretrained('bert-base-uncased', do_lower_case=True)
 
+split_text = []
+for sent in raw_event_text:
+    split_text.append(' '.join(sent).split())
 
+
+#print(split_text)
 # 4. pads to longest sequence, truncates to maximum allowed length by model, 
 # Gives encodings, token type_ids -> https://huggingface.co/transformers/glossary.html#token-type-ids 
 # and offset_mappings
-train_encodings = tokenizer(raw_event_text, return_offsets_mapping=True,is_split_into_words=True, padding=True, truncation=True)
+train_encodings = tokenizer(split_text, return_offsets_mapping=True,is_split_into_words=True, padding=True, truncation=True)
 
 
 
@@ -349,15 +354,17 @@ for epoch in tqdm(range(16)):
         print(intent_loss)
         intent_loss.backward() #need to retain_graph  when working with multiple losses
         optim.step()
-model.eval()
+#print(model.eval())
 #run predictions on new dataset currently running on training set
 
 
-
+split_text_eval = []
+for sent in raw_event_text_eval:
+    split_text_eval.append(' '.join(sent).split())
 
 eval_intent_labels =  encode_intents(event_tags_eval, intent2id)
 
-eval_encodings = tokenizer(raw_event_text_eval, return_offsets_mapping=True,is_split_into_words=True, padding=True, truncation=True)
+eval_encodings = tokenizer(split_text_eval, return_offsets_mapping=True,is_split_into_words=True, padding=True, truncation=True)
 
 eval_dataset = EventDataset(eval_encodings, eval_intent_labels)
 
