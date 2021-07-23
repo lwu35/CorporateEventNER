@@ -31,7 +31,8 @@ def main():
     url_ids = list(df['url_id'])
 
     nlp_spacy = spacy.load('en_core_web_lg')
-    nlp_stanza = stanza.Pipeline('en', processors='tokenize,ner')
+    # nlp_stanza = stanza.Pipeline('en', processors='tokenize,ner')
+    nlp_stanza = 'NOPE'
 
     # add custom entity to spacy
     ruler = EntityRuler(nlp_spacy, overwrite_ents=True)
@@ -103,19 +104,21 @@ def extract_company(url, nlp_spacy, nlp_stanza):
             spans = re.split("\B\W+\B", title)
             spans = [i for i in spans if i]
 
-            company_name = ''
+            company_name = 'NONE'
 
             for span in spans:
                 # Augmented spacy
-                # doc = nlp_spacy(span.strip().lower())
-                # for ent in doc.ents:
-                #     print('\t(Spacy)', ent.text, ':', ent.label_)
+                doc = nlp_spacy(span.strip().lower())
+                for ent in doc.ents:
+                    # print('\t(Spacy)', ent.text, ':', ent.label_)
+                    if ent.label_ == 'ORG':
+                        company_name = ent.text
 
                 # stanza (stanford ner)
-                doc = nlp_stanza(span.strip())
-                for ent in doc.entities:
-                    # print(f'\t(stanza) {ent.text} : {ent.type}')
-                    company_name = ent.text
+                # doc = nlp_stanza(span.strip())
+                # for ent in doc.entities:
+                #     # print(f'\t(stanza) {ent.text} : {ent.type}')
+                #     company_name = ent.text
 
             company_name = company_name.replace(",", "")
             return company_name
@@ -140,15 +143,15 @@ def get_date_time(raw_event_text, nlp_spacy, nlp_stanza):
         if ent.label_ == 'DATE':
             spacy_date = ent.text
 
-    doc = nlp_stanza(raw_event_text)
-    for ent in doc.entities:
-        # print(f'\t(stanza) {ent.text}\t{ent.type}')
-        if ent.type == 'TIME':
-            stanza_time = ent.text
-        if ent.type == 'DATE':
-            stanza_date = ent.text
+    # doc = nlp_stanza(raw_event_text)
+    # for ent in doc.entities:
+    #     # print(f'\t(stanza) {ent.text}\t{ent.type}')
+    #     if ent.type == 'TIME':
+    #         stanza_time = ent.text
+    #     if ent.type == 'DATE':
+    #         stanza_date = ent.text
 
-    return spacy_date, stanza_time
+    return spacy_date, spacy_time
 
 
 def get_fp(raw_event_text, nlp_spacy):
@@ -175,11 +178,11 @@ def get_company(raw_event_text, nlp_spacy, nlp_stanza):
         if ent.label_ == 'ORG':
             spacy_company = ent.text
 
-    doc = nlp_stanza(raw_event_text)
-    for ent in doc.entities:
-        # print(f'\t(stanza) {ent.text}\t{ent.type}')
-        if ent.type == 'ORG':
-            stanza_company = ent.text
+    # doc = nlp_stanza(raw_event_text)
+    # for ent in doc.entities:
+    #     # print(f'\t(stanza) {ent.text}\t{ent.type}')
+    #     if ent.type == 'ORG':
+    #         stanza_company = ent.text
 
     return spacy_company
 
