@@ -6,7 +6,7 @@ from fuzzywuzzy import fuzz
 # Input: training file name
 # Output: fine-tuned model
 def gpt_train(train_file):
-    happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-1.3B")
+    happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-125M")
     args = GENTrainArgs(num_train_epochs=3)
     happy_gen.train(train_file, args=args)
     return happy_gen
