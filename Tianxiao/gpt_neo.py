@@ -3,13 +3,6 @@ from happytransformer import GENTrainArgs
 from happytransformer import GENSettings
 from fuzzywuzzy import fuzz
 
-# Input: training file name
-# Output: fine-tuned model
-def gpt_train(train_file):
-    happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-125M")
-    args = GENTrainArgs(num_train_epochs=3)
-    happy_gen.train(train_file, args=args)
-    return happy_gen
 
 # Input: text content (string)
 # Output: event tag
@@ -60,11 +53,22 @@ def gpt_predicts(raw_event_text,happy_gen):
     return tags
 
 if __name__ == "__main__":
-    happy_gen = gpt_train('gpt_train.txt')
+    happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-1.3B")
+#     args = GENTrainArgs(num_train_epochs=3)
+    with open('gpt_train.txt', 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+        for i in range(50):
+            with open('gpt_train'+str(i)+'.txt', 'w', encoding='utf-8') as f1:
+                f1.writelines(lines[i*3])
+                f1.writelines(lines[i*3+1])
+    for i in range(50):
+        train_file = 'gpt_train'+str(i)+'.txt'
+        happy_gen.train(train_file)
+    happy_gen.save("model/")
+    
     with open('gpt_test.txt', 'r', encoding='utf-8') as f:
         raw_event_text = []
         lines = f.readlines()
         for i in lines:
             raw_event_text.append([i.replace('\n', '')])
     print(gpt_predicts(raw_event_text,happy_gen))
-
