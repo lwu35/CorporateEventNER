@@ -50,7 +50,7 @@ for i in range(nums):
     ids.append(i+1)
 
 
-dict = {'id': ids, 'event_text': please_select_the_event_type_gold, 'url': url, 'url_id': url_id, 'company': copy_the_company_name_from_the_text_gold, 'fiscal_year': select_fiscal_year_gold, 'fiscal_period': select_the_fiscal_period_check_as_many_as_it_applies_gold, 'event_type': please_select_the_event_type_gold, 'date': enter_date_here_mmddyyyy_gold, 'time': enter_time_here_hhmm_pmam_gold, 'timezone': select_timezone_gold}  
+dict = {'id': id, 'event_text': event_text, 'url': url, 'url_id': url_id, 'company': copy_the_company_name_from_the_text_gold, 'fiscal_year': select_fiscal_year_gold, 'fiscal_period': select_the_fiscal_period_check_as_many_as_it_applies_gold, 'event_type': please_select_the_event_type_gold, 'date': enter_date_here_mmddyyyy_gold, 'time': enter_time_here_hhmm_pmam_gold, 'timezone': select_timezone_gold}  
 
 df = pd.DataFrame(dict)
 
