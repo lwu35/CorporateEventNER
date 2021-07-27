@@ -86,38 +86,37 @@ def checker(gold_df, pred_df):
         if pred_fiscal_year[i] == gold_fiscal_year[i]:
             count_fiscal_year.append(gold_fiscal_year[i])
         else:
-            count_fiscal_year.append('WRONG')
+            count_fiscal_year.append(pred_fiscal_year[i])
 
         # fiscal period comparison *INPROGRESS - NEEDS TO BE STANDARDIZED
         if pred_fiscal_period[i] == gold_fiscal_period[i]:
             count_fiscal_period.append(gold_fiscal_period[i])
         else:
-            count_fiscal_period.append('WRONG')
+            count_fiscal_period.append(pred_fiscal_period[i])
 
         # event type comparison
         if pred_event_type[i] == gold_event_type[i]:
             count_event_type.append(gold_event_type[i])
         else:
-            count_event_type.append('WRONG')
+            count_event_type.append(pred_event_type[i])
 
         # date comparison
         if pred_date[i] == gold_date[i]:
             count_date.append(gold_date[i])
         else:
-            count_date.append(datetime.date(
-                1000, 10, 10).strftime("%b %d, %Y"))
+            count_date.append(pred_date[i])
 
         # time comparison
         if pred_time[i] == gold_time[i]:
             count_time.append(gold_time[i])
         else:
-            count_time.append(datetime.time(0, 0, 30).strftime("%H:%M:%S"))
+            count_time.append(pred_time[i])
 
         # timezone comparison *INPROGRESS - NEEDS TO BE STANDARDIZED
         if pred_timezone[i] == gold_timezone[i]:
             count_timezone.append(gold_timezone[i])
         else:
-            count_timezone.append('WRONG')
+            count_timezone.append(pred_timezone[i])
 
     # print(classification_report(gold_company, count_company))
     # print(classification_report(gold_date, count_date))

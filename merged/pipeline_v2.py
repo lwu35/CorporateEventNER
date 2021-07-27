@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
 
 from gpt_neo import gpt_predict
-from bert_event_type import bert_predict
+from bert_event_type import bert_predict, bert_init
 from happytransformer import HappyGeneration
 
 import ssl
@@ -61,6 +61,7 @@ def main():
     all_fp = []
     all_types_bert = []
     all_types_gpt = []
+    all_types_regex = []
     all_timezones = []
 
     # doc = nlp_spacy(
@@ -70,6 +71,8 @@ def main():
 
     # GPT-NEO Model, event type
     happy_gen = HappyGeneration(load_path="model-gpt/")
+
+    model, intent2id, id2intent, tokenizer = bert_init()
 
     for i in range(len(urls)):
         # print(event_texts[i])
@@ -81,7 +84,9 @@ def main():
             text_timezone = get_timezone(event_texts[i])
         text_fp = get_fp(event_texts[i], nlp_spacy)
         event_type_gpt = gpt_predict(event_texts[i], happy_gen)
-        event_type_bert = bert_predict(event_texts[i])
+        event_type_bert = bert_predict(
+            event_texts[i], model, intent2id, id2intent, tokenizer)
+        event_type_regex = get_regex_event_type(event_texts[i])
 
         all_names.append(company_name)
         all_fy.append('NONE')
@@ -91,12 +96,15 @@ def main():
         all_timezones.append(text_timezone)
         all_types_bert.append(event_type_bert)
         all_types_gpt.append(event_type_gpt)
+        all_types_regex.append(event_type_regex)
 
     save_to_csv('gpt_predictions.csv', event_ids, event_texts, urls, url_ids, all_names, all_fy, all_fp, all_types_gpt,
                 all_dates, all_times, all_timezones)
 
     save_to_csv('bert_predictions.csv', event_ids, event_texts, urls, url_ids, all_names, all_fy, all_fp, all_types_bert,
                 all_dates, all_times, all_timezones)
+    save_to_csv('regex_predictions.csv', event_ids, event_texts, urls, url_ids,
+                all_names, all_fy, all_fp, all_types_regex, all_dates, all_times, all_timezones)
 
 
 def extract_company(url, nlp_spacy, nlp_stanza):
@@ -261,6 +269,23 @@ def save_to_csv(file_name, event_ids, event_texts, url_list, url_ids, name_list,
              'fiscal_period': fp_list, 'event_type': types_list, 'date': date_list, 'time': time_list, 'timezone': timezone_list}
     df = pd.DataFrame(table)
     df.to_csv(file_name, index=False)
+
+
+def get_regex_event_type(sent):
+    if 'merger' in sent or 'acquisition' in sent:
+        return 'Merger/Acquisition'
+    elif ('earnings' in sent or ('financial' in sent and 'results' in sent)) and ('call' in sent or 'calls' in sent):
+        return 'Earnings Call'
+    elif 'earnings' in sent or ('financial' in sent and 'results' in sent):
+        return 'Earnings Release'
+    elif 'stockholders' in sent or 'shareholders' in sent or 'investor' in sent or 'shareholder' in sent:
+        return 'Shareholder Meeting'
+    elif 'conference' in sent and 'earnings' not in sent or 'summit' in sent:
+        return 'Conference'
+    elif 'guidance' in sent:
+        return 'Guidance'
+    else:
+        return 'None/Other'
 
 
 if __name__ == '__main__':

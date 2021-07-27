@@ -73,8 +73,8 @@ class EventDataset(torch.utils.data.Dataset):
         return len(self.intent_labels)
 
 
-def bert_predict(raw_event_text):
-    raw_event_text = [raw_event_text]
+def bert_init():
+
     intent_vocab = ['Sales Results', 'Guidance', 'Shareholder Meeting', 'None/Other',
                     'Earnings Release', 'Merger/Acquisition', 'Conference', 'Earnings Call']
 
@@ -97,6 +97,12 @@ def bert_predict(raw_event_text):
                         )
 
     model.load_state_dict(torch.load('model-bert/model.pth'))
+
+    return model, intent2id, id2intent, tokenizer
+
+
+def bert_predict(raw_event_text, model, intent2id, id2intent, tokenizer):
+    raw_event_text = [raw_event_text]
 
     eval_intent_labels = encode_intents(['None/Other'], intent2id)
 
