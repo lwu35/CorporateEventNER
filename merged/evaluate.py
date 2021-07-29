@@ -9,7 +9,10 @@ import datetime
 from date_extractor import extract_dates
 from dateparser.search import search_dates
 
-from sklearn.metrics import accuracy_score, classification_report, f1_score
+from sklearn.metrics import accuracy_score, classification_report, f1_score, precision_score, recall_score, confusion_matrix
+
+import warnings
+warnings.filterwarnings("ignore")
 
 
 def main():
@@ -61,11 +64,24 @@ def checker(gold_df, pred_df):
     count_time = []
     count_timezone = []
 
+    gold_count_company = []
+    gold_count_fiscal_year = []
+    gold_count_fiscal_period = []
+    gold_count_event_type = []
+    gold_count_date = []
+    gold_count_time = []
+    gold_count_timezone = []
+
     # fix issues like this: 'Apr\xa029,\xa02021'
     pred_date = date_space_checker(pred_date)
 
+    # Normalize fields
+    gold_fiscal_period, pred_fiscal_period = fiscal_period_converter(
+        gold_fiscal_period, pred_fiscal_period)
     gold_date, pred_date = date_converter(gold_date, pred_date)
     gold_time, pred_time = time_converter(gold_time, pred_time)
+    gold_timezone, pred_timezone = timezone_converter(
+        gold_timezone, pred_timezone)
 
     for i in range(len(gold_event_id)):
         if gold_event_id[i] != pred_event_id[i]:
@@ -73,71 +89,88 @@ def checker(gold_df, pred_df):
             break
 
         # company comparison
-        p_ratio = fuzz.partial_ratio(
-            pred_company[i].lower(), gold_company[i].lower())
-        ts_ratio = fuzz.token_set_ratio(pred_company[i], gold_company[i])
+        if gold_company[i] != 'NONE' or pred_company[i] != 'NONE':
+            p_ratio = fuzz.partial_ratio(
+                pred_company[i].lower(), gold_company[i].lower())
+            ts_ratio = fuzz.token_set_ratio(pred_company[i], gold_company[i])
 
-        if p_ratio >= 90 or ts_ratio >= 90:
-            count_company.append(gold_company[i])
-        else:
-            count_company.append('WRONG')
+            if p_ratio >= 90 or ts_ratio >= 90:
+                count_company.append(gold_company[i])
+            else:
+                count_company.append('WRONG')
+            gold_count_company.append(gold_company[i])
 
         # fiscal year comparison
-        if pred_fiscal_year[i] == gold_fiscal_year[i]:
-            count_fiscal_year.append(gold_fiscal_year[i])
-        else:
-            count_fiscal_year.append(pred_fiscal_year[i])
+        if gold_fiscal_year[i] != 'NONE' or pred_fiscal_year[i] != 'NONE':
+            if pred_fiscal_year[i] == gold_fiscal_year[i]:
+                count_fiscal_year.append(gold_fiscal_year[i])
+            else:
+                count_fiscal_year.append(pred_fiscal_year[i])
+            gold_count_fiscal_year.append(gold_fiscal_year[i])
 
-        # fiscal period comparison *INPROGRESS - NEEDS TO BE STANDARDIZED
-        if pred_fiscal_period[i] == gold_fiscal_period[i]:
-            count_fiscal_period.append(gold_fiscal_period[i])
-        else:
-            count_fiscal_period.append(pred_fiscal_period[i])
+        # fiscal period comparison
+        if gold_fiscal_period[i] != 'NONE' or pred_fiscal_period[i] != 'NONE':
+            if pred_fiscal_period[i] == gold_fiscal_period[i]:
+                count_fiscal_period.append(gold_fiscal_period[i])
+            else:
+                count_fiscal_period.append(pred_fiscal_period[i])
+            gold_count_fiscal_period.append(gold_fiscal_period[i])
 
         # event type comparison
-        if pred_event_type[i] == gold_event_type[i]:
-            count_event_type.append(gold_event_type[i])
-        else:
-            count_event_type.append(pred_event_type[i])
+        if gold_event_type[i] != 'NONE' or pred_event_type[i] != 'NONE':
+            if pred_event_type[i] == gold_event_type[i]:
+                count_event_type.append(gold_event_type[i])
+            else:
+                count_event_type.append(pred_event_type[i])
+            gold_count_event_type.append(gold_event_type[i])
 
         # date comparison
-        if pred_date[i] == gold_date[i]:
-            count_date.append(gold_date[i])
-        else:
-            count_date.append(pred_date[i])
+        if gold_date[i] != 'NONE' or pred_date[i] != 'NONE':
+            if pred_date[i] == gold_date[i]:
+                count_date.append(gold_date[i])
+            else:
+                count_date.append(pred_date[i])
+            gold_count_date.append(gold_date[i])
 
         # time comparison
-        if pred_time[i] == gold_time[i]:
-            count_time.append(gold_time[i])
-        else:
-            count_time.append(pred_time[i])
+        if gold_time[i] != 'NONE' or pred_time[i] != 'NONE':
+            if pred_time[i] == gold_time[i]:
+                count_time.append(gold_time[i])
+            else:
+                count_time.append(pred_time[i])
+            gold_count_time.append(gold_time[i])
 
-        # timezone comparison *INPROGRESS - NEEDS TO BE STANDARDIZED
-        if pred_timezone[i] == gold_timezone[i]:
-            count_timezone.append(gold_timezone[i])
-        else:
-            count_timezone.append(pred_timezone[i])
+        # timezone comparison
+        if gold_timezone[i] != 'NONE' or pred_timezone[i] != 'NONE':
+            if pred_timezone[i] == gold_timezone[i]:
+                count_timezone.append(gold_timezone[i])
+            else:
+                count_timezone.append(pred_timezone[i])
+            gold_count_timezone.append(gold_timezone[i])
 
-    # print(classification_report(gold_company, count_company))
-    # print(classification_report(gold_date, count_date))
-    # print(classification_report(gold_time, count_time))
-    # print('Company Acc:', gold_company, count_company)
-    # print('Date Acc:', gold_date, count_date)
-    # print('Time Acc:', gold_time, count_time)
+    print_score('Company', gold_count_company, count_company)
+    print_score('Fiscal Year', gold_count_fiscal_year, count_fiscal_year)
+    print_score('Fiscal Period', gold_count_fiscal_period, count_fiscal_period)
+    print_score('Event Type', gold_count_event_type, count_event_type)
+    print_score('Date', gold_count_date, count_date)
+    print_score('Time', gold_count_time, count_time)
+    print_score('Timezone', gold_count_timezone, count_timezone)
 
-    print('Company Acc:', round(accuracy_score(gold_company, count_company), 3))
-    print('Fiscal Year Acc:', round(accuracy_score(
-        gold_fiscal_year, count_fiscal_year), 3))
-    print('Fiscal Period Acc:', round(accuracy_score(
-        gold_fiscal_period, count_fiscal_period), 3))
-    print('Event Type Acc:', round(accuracy_score(
-        gold_event_type, count_event_type), 3))
-    print('Date Acc:', round(accuracy_score(gold_date, count_date), 3))
-    # print('Date Acc:', f1_score(gold_date, count_date, average='micro'))
-    print('Time Acc:', round(accuracy_score(gold_time, count_time), 3))
-    print('Timezone Acc:', round(accuracy_score(gold_timezone, count_timezone), 3))
+    # print(confusion_matrix(gold_count_date, count_date))
+    print(classification_report(gold_count_fiscal_period, count_fiscal_period))
 
     return 0
+
+
+def print_score(field, gold_count, count):
+    if field == 'Time' or field == 'Date':
+        print(f'{field} \t\t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
+            gold_count, count), 3), f'\tF1:', round(f1_score(
+                gold_count, count, average='macro'), 3))
+    else:
+        print(f'{field} \t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
+            gold_count, count), 3), f'\tF1:', round(f1_score(
+                gold_count, count, average='macro'), 3))
 
 
 def date_converter(gold_dates, pred_dates):
@@ -175,6 +208,61 @@ def time_converter(gold_times, pred_times):
 
         converted_gold.append(cur_gold_time.strftime("%H:%M:%S"))
         converted_pred.append(cur_pred_time.strftime("%H:%M:%S"))
+
+    return converted_gold, converted_pred
+
+
+def fiscal_period_converter(gold_fiscal_period, pred_fiscal_period):
+    converted_gold = []
+    converted_pred = []
+
+    fp_mapping = {
+        'q1': 'Q1', '1q': 'Q1', 'quarter 1': 'Q1', 'first quarter': 'Q1',
+        'q2': 'Q2', '2q': 'Q2', 'quarter 2': 'Q2', 'second quarter': 'Q2',
+        'q3': 'Q3', '3q': 'Q3', 'quarter 3': 'Q3', 'third quarter': 'Q3',
+        'q4': 'Q4', '4q': 'Q4', 'quarter 4': 'Q4', 'fourth quarter': 'Q4',
+        'full year': 'Y', 'annual': 'Y', 'full': 'Y', 'yearly': 'Y', 'y': 'Y',
+        'first half': 'S1', 'semi annual 1': 'S1', 'semi-annual 1': 'S1', 'first semi-annual': 'S1', 'first semi annual': 'S1',
+        'second half': 'S2', 'semi annual 2': 'S2', 'semi-annual 2': 'S2', 'second semi-annual': 'S2', 'second semi annual': 'S2',
+        'none': 'NONE'
+    }
+    for i in range(len(gold_fiscal_period)):
+        cur_gold_fiscal_period = gold_fiscal_period[i].lower().strip()
+        cur_pred_fiscal_period = pred_fiscal_period[i].lower().strip()
+
+        if cur_gold_fiscal_period in fp_mapping:
+            cur_gold_fiscal_period = fp_mapping[cur_gold_fiscal_period]
+        if cur_pred_fiscal_period in fp_mapping:
+            cur_pred_fiscal_period = fp_mapping[cur_pred_fiscal_period]
+
+        converted_gold.append(cur_gold_fiscal_period)
+        converted_pred.append(cur_pred_fiscal_period)
+
+    return converted_gold, converted_pred
+
+
+def timezone_converter(gold_timezone, pred_timezone):
+    converted_gold = []
+    converted_pred = []
+
+    timezone_mapping = {
+        'PDT': 'PST', 'PT': 'PST',
+        'MDT': 'MST', 'MT': 'MST',
+        'CDT': 'CST', 'CT': 'CST',
+        'EDT': 'EST', 'ET': 'EST',
+        'none': 'NONE'
+    }
+    for i in range(len(gold_timezone)):
+        cur_gold_timezone = gold_timezone[i].upper().strip()
+        cur_pred_timezone = pred_timezone[i].upper().strip()
+
+        if cur_gold_timezone in timezone_mapping:
+            cur_gold_timezone = timezone_mapping[cur_gold_timezone]
+        if cur_pred_timezone in timezone_mapping:
+            cur_pred_timezone = timezone_mapping[cur_pred_timezone]
+
+        converted_gold.append(cur_gold_timezone)
+        converted_pred.append(cur_pred_timezone)
 
     return converted_gold, converted_pred
 

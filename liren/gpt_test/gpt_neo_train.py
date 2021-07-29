@@ -11,7 +11,9 @@ args = GENTrainArgs(num_train_epochs=10)
 happy_gen.train("train.txt", args=args)
 
 prompt = 'May 2, 2021 PROS Announces Virtual Investment Conference Schedule for May 2020.'
-question = ' the <EVENT_DATE> is '
+question = 'The <EVENT_DATE> is asdlkjas;lkjlakds'
+
+
 args = GENSettings(min_length=2, temperature=0.9, max_length=7)
 result = happy_gen.generate_text(
     prompt + question, args=args)

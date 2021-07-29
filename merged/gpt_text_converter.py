@@ -27,7 +27,6 @@ with open('gpt_train.txt', 'w') as f:
         if version == 1:
             f.write(f'{event_text}.\n')
             f.write(f'The <{tag.upper()}> is {labels[i]}.\n')
-            f.write(f'\n')
         if version == 2:
             f.write(f'Text:{event_text}.\n')
             f.write(f'Type:{labels[i]}.\n')

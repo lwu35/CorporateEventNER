@@ -1,82 +1,48 @@
 from happytransformer import GENTrainArgs
 from happytransformer import GENSettings
 from happytransformer import HappyGeneration
+import re
+
+FILE_NAME = 'train.txt'
+# GPT_MODEL = "EleutherAI/gpt-neo-125M"
+GPT_MODEL = "EleutherAI/gpt-neo-1.3B"
 
 
-happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-125M")
-# happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-1.3B")
+def prime_gpt(file_name, model_name):
 
-prompt = 'May 18, 2021 PROS and Diggintravel Redefine the End-to-End Travel Experience.'
-question = ' the date is May 18, 2021'
-args = GENSettings(min_length=3, temperature=0.9, max_length=10)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
+    prompt = []
+    context = []
 
-prompt = '02.17.2021 1:30 PM PST Shockwave Medical, Inc. Q4 2020 Earnings Conference Call.'
-question = ' the date is 02.17.2021'
-args = GENSettings(min_length=3, temperature=0.9, max_length=10)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
+    with open(file_name) as f:
+        lines = f.readlines()
 
-prompt = '2019 Q2 Financial Results Conference Call Presentation August 7, 2019.'
-question = ' the date is August 7, 2019'
-args = GENSettings(min_length=3, temperature=0.9, max_length=10)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
+    for i, line in enumerate(lines):
+        line = line.encode("ascii", "ignore")
+        line = line.decode()
+        line = re.sub(' +', ' ', line)
+        if i % 2 == 0:
+            context.append(line)
+        else:
+            prompt.append(line)
 
-prompt = 'June 30, 2021 PROS to Help Drive Hawaiian Airlines’ Revenue Growth Strategy.'
-question = ' the date is June 30, 2021'
-args = GENSettings(min_length=3, temperature=0.9, max_length=10)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
+    happy_gen = HappyGeneration("GPT-NEO", model_name)
 
-prompt = '2020 Annual Meeting of Stockholders JUN 10, 2020 • 8:30AM CDT.'
-question = ' the date is JUN 10, 2020'
-args = GENSettings(min_length=3, temperature=0.9, max_length=10)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
+    # Prime training examples
+    for i in range(len(context)):
+        args = GENSettings(min_length=2, temperature=0.9, max_length=7)
+        result = happy_gen.generate_text(context[i] + prompt[i], args=args)
 
+    question = f"{prompt[0].split(' is ')[0]} is "
+    return happy_gen, question
+
+
+def predict(raw_event_text, happy_gen, question):
+    args = GENSettings(min_length=2, temperature=0.9, max_length=7)
+    result = happy_gen.generate_text(
+        raw_event_text + question, args=args)
+    print(result.text)
+
+
+happy_gen, question = prime_gpt(FILE_NAME, GPT_MODEL)
 prompt = 'May 24, 2021 Martin Marietta Announces Acquisition of Lehigh Hanson’s West Region Business MLM Acquisition Announcement MLM Acquisition Supplemental Information.'
-question = ' the date is May 24, 2021'
-args = GENSettings(min_length=3, temperature=0.9, max_length=10)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
-
-prompt = 'Mar 4, 2021 at 05:00 PM EST Turtle Beach Fourth Quarter and Full Year 2020 Conference Call  Listen to Webcast Supporting Materials  Q4 Earnings Presentation.'
-question = ' the date is Mar 4, 2021'
-args = GENSettings(min_length=3, temperature=0.9, max_length=10)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
-
-prompt = 'May 11, 2021 PROS Announces Virtual Investment Conference Schedule for May 2021.'
-question = ' the date is May 11, 2021'
-args = GENSettings(min_length=3, temperature=0.9, max_length=10)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
-
-prompt = 'Apr 29, 2021 at 9:00 AM CDT 2021 Annual Meeting of Stockholders Click here for live webcast of Annual Meeting\nEvent Password: KMB2021 Inspection of Stockholder List.'
-question = ' the date is Apr 29, 2021'
-args = GENSettings(min_length=3, temperature=0.9, max_length=10)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
-
-prompt = 'June 15, 2021 11:55 AM ET Credit Suisse 23rd Annual Communications Conference.'
-question = ' the date is June 15, 2021'
-args = GENSettings(min_length=3, temperature=0.9, max_length=10)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
-
-prompt = 'Citi 2021 Global Energy and Utilities Virtual Conference MAY 12, 2021 • 12:50PM EDT.'
-question = ' the date is MAY 12, 2021'
-args = GENSettings(min_length=3, temperature=0.9, max_length=10)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
-
-# prompt = 'June 2, 2021 PROS Announces Virtual Investment Conference Schedule for June 2021.'
-# question = ' the date is '
-prompt = 'May 24, 2021 Martin Marietta Announces Acquisition of Lehigh Hanson’s West Region Business MLM Acquisition Announcement MLM Acquisition Supplemental Information.'
-question = ' the date is '
-args = GENSettings(min_length=3, temperature=0.9, max_length=5)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
-print(result.text)
+predict(prompt, happy_gen, question)

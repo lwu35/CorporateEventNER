@@ -73,7 +73,7 @@ class EventDataset(torch.utils.data.Dataset):
         return len(self.intent_labels)
 
 
-def bert_init():
+def bert_init(dropout_value, saved_model):
 
     intent_vocab = ['Sales Results', 'Guidance', 'Shareholder Meeting', 'None/Other',
                     'Earnings Release', 'Merger/Acquisition', 'Conference', 'Earnings Call']
@@ -88,7 +88,7 @@ def bert_init():
     tokenizer = BertTokenizerFast.from_pretrained(
         'bert-base-uncased', do_lower_case=True)
 
-    dropout = 0.2
+    dropout = dropout_value
     num_intent_labels = len(intent_vocab)
 
     model = ParserModel(model_name_or_path='bert-base-uncased',
@@ -96,7 +96,7 @@ def bert_init():
                         num_intent_labels=num_intent_labels,
                         )
 
-    model.load_state_dict(torch.load('model-bert/model.pth'))
+    model.load_state_dict(torch.load(saved_model))
 
     return model, intent2id, id2intent, tokenizer
 
