@@ -7,6 +7,12 @@ from transformers import BertModel, BertTokenizerFast
 import numpy as np
 
 
+config = configparser.ConfigParser()
+config.read('configg.ini')
+
+
+seed = config['bert_model']['random_seed']
+seed = int(seed)
 np.random.seed(123)
 torch.manual_seed(123)
 torch.cuda.manual_seed(123)
