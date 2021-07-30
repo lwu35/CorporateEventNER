@@ -5,7 +5,7 @@ from torch.nn import Dropout
 from torch.utils.data import DataLoader
 from transformers import BertModel, BertTokenizerFast
 import numpy as np
-
+import configparser
 
 config = configparser.ConfigParser()
 config.read('configg.ini')

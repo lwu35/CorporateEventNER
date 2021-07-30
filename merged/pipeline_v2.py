@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-
+import configparser
 import stanza
 from gpt_neo import gpt_predict
 from bert_event_type import bert_predict, bert_init
@@ -11,16 +11,23 @@ from ner_helper import get_date_time_timezone, get_fp, get_fy, extract_company, 
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
-INPUT_FILE = 'job2_gold.csv'
 
-BERT_MODEL_PATH_EVENT_TYPE = 'model-bert/model.pth'
-BERT_DROPOUT = 0.2
-BERT_OUTPUT = 'bert_predictions.csv'
+config = configparser.ConfigParser()
+config.read('configg.ini')
 
-GPT_MODEL_PATH_EVENT_TYPE = "model-gpt/"
-GPT_OUTPUT = 'gpt_predictions.csv'
 
-REGEX_OUTPUT = 'regex_predictions.csv'
+INPUT_FILE = config['pipeline']['INPUT_FILE']
+
+BERT_MODEL_PATH_EVENT_TYPE = config['pipeline']['model_path_bert']
+dropout = config['bert_model']['dropout']
+dropout = float(dropout)
+BERT_DROPOUT = dropout
+BERT_OUTPUT = config['pipeline']['bert_predictions']
+
+GPT_MODEL_PATH_EVENT_TYPE = config['pipeline']['GPT_MODEL_PATH_EVENT_TYPE']
+GPT_OUTPUT = config['pipeline']['GPT_OUTPUT']
+
+REGEX_OUTPUT = config['pipeline']['REGEX_OUTPUT']
 
 
 def main():

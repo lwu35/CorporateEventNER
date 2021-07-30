@@ -3,9 +3,9 @@ import os
 import sys
 from tqdm.auto import tqdm
 from fuzzywuzzy import fuzz
-
+import configparser
 import datetime
-
+import logging
 from date_extractor import extract_dates
 from dateparser.search import search_dates
 
@@ -14,17 +14,31 @@ from sklearn.metrics import accuracy_score, classification_report, f1_score, pre
 import warnings
 warnings.filterwarnings("ignore")
 
+config = configparser.ConfigParser()
+config.read('configg.ini')
+
+log_file = open('eval_output.txt', 'w')
 
 def main():
 
     if len(sys.argv) == 3:
         print(f'Comparing {sys.argv[1]} and {sys.argv[2]}')
+        print(f'Comparing {sys.argv[1]} and {sys.argv[2]}',file = log_file)
         gold_file = sys.argv[1]
         pred_file = sys.argv[2]
     else:
         print('Comparing default files:')
-        gold_file = 'job2_gold.csv'
-        pred_file = 'bert_predictions.csv'
+        print('Comparing default files:',file = log_file)
+        gold_file = config['pipeline']['INPUT_FILE']
+        et_model = config['pipeline']['event_type_model']
+        print('Using', et_model, 'for event type prediction')
+        print('Using', et_model, 'for event type prediction',file = log_file)
+        if et_model == 'bert':
+            pred_file = config['pipeline']['bert_predictions']
+        elif et_model == 'gpt':
+            pred_file = config['pipeline']['GPT_OUTPUT']
+        else:
+            pred_file = config['pipeline']['REGEX_OUTPUT']
 
     file_path = os.path.join(gold_file)
     gold_df = pd.read_csv(file_path, sep=',', engine='python')
@@ -86,6 +100,7 @@ def checker(gold_df, pred_df):
     for i in range(len(gold_event_id)):
         if gold_event_id[i] != pred_event_id[i]:
             print('EVENT ID MISMATCH')
+            print('EVENT ID MISMATCH', file = log_file)
             break
 
         # company comparison
@@ -158,7 +173,7 @@ def checker(gold_df, pred_df):
 
     # print(confusion_matrix(gold_count_date, count_date))
     print(classification_report(gold_count_fiscal_period, count_fiscal_period))
-
+    print(classification_report(gold_count_fiscal_period, count_fiscal_period),file = log_file)
     return 0
 
 
@@ -167,10 +182,16 @@ def print_score(field, gold_count, count):
         print(f'{field} \t\t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
             gold_count, count), 3), f'\tF1:', round(f1_score(
                 gold_count, count, average='macro'), 3))
+        print(f'{field} \t\t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
+            gold_count, count), 3), f'\tF1:', round(f1_score(
+                gold_count, count, average='macro'), 3),file = log_file)
     else:
         print(f'{field} \t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
             gold_count, count), 3), f'\tF1:', round(f1_score(
                 gold_count, count, average='macro'), 3))
+        print(f'{field} \t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
+            gold_count, count), 3), f'\tF1:', round(f1_score(
+                gold_count, count, average='macro'), 3),file = log_file)
 
 
 def date_converter(gold_dates, pred_dates):

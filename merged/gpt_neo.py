@@ -2,12 +2,16 @@ from happytransformer import HappyGeneration
 from happytransformer import GENTrainArgs
 from happytransformer import GENSettings
 from fuzzywuzzy import fuzz
+import configparser
+
 
 # Input: training file name
 # Output: fine-tuned model
 def gpt_train(train_file):
-    happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-125M")
-    args = GENTrainArgs(num_train_epochs=3)
+    gpt_type = config['gpt_model']['model']
+    happy_gen = HappyGeneration("GPT-NEO", gpt_type)
+    epochs = config['gpt_model']['epochs']
+    args = GENTrainArgs(num_train_epochs=int(epochs))
     happy_gen.train(train_file, args=args)
     return happy_gen
 
@@ -17,8 +21,8 @@ def gpt_predict(text,happy_gen):
     tags_vocab = ['Other', 'Earnings Release', 'Earnings Call', 'Shareholder Meeting', 'Sales Results', 'Guidance', 'Conference', 'Merger/Acquisition']
     test1 = "Text: " + text + "\n"
     question = 'Type:'
-    top_k_sampling_settings = GENSettings(no_repeat_ngram_size=2,
-                                          do_sample=True, early_stopping=False, top_k=5, temperature=0.7)
+    top_k_sampling_settings = GENSettings(no_repeat_ngram_size=int(config['gpt_model']['no_repeat_ngram_size']),
+                                          do_sample=config['gpt_model']['do_sample'], early_stopping=config['gpt_model']['early_stopping'], top_k=int(config['gpt_model']['top_k']), temperature=float(config['gpt_model']['temperature']))
     result = happy_gen.generate_text(
         test1 + question, args=top_k_sampling_settings)
 
