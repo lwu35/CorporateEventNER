@@ -1,7 +1,7 @@
 import csv
 import pandas as pd
 
-df = pd.read_csv('p1_appen.csv')
+df = pd.read_csv('agg_116.csv')
 
 
 please_select_the_event_type_gold = df['please_select_the_event_type_gold'].tolist()
@@ -54,4 +54,4 @@ for i in range(nums):
 dict = {'id': id, 'event_text': event_text, 'url': url, 'url_id': url_id, 'company': copy_the_company_name_from_the_text, 'fiscal_year': select_fiscal_year, 'fiscal_period': select_the_fiscal_period_check_as_many_as_it_applies, 'event_type': please_select_the_event_type, 'date': enter_date_here_mmddyyyy, 'time': enter_time_here_hhmm_pmam, 'timezone': select_timezone}  
 df = pd.DataFrame(dict)
 
-df.to_csv('cleaned_appen_p1.csv')
+df.to_csv('cleaned_appen_116.csv')
