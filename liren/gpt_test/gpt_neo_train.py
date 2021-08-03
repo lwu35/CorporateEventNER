@@ -1,27 +1,44 @@
+import re
+
 from happytransformer import HappyGeneration
 from happytransformer import GENTrainArgs
 from happytransformer import GENSettings
 
+
 '''https://colab.research.google.com/drive/1Bg3hnPOoypUi9gi1wWa2c0Voux-rPqq9?usp=sharing#scrollTo=6LAVUXMfonCz'''
+
+TRAIN_FILE = "gpt_train.txt"
+TEST_FILE = "gpt_test.txt"
 
 happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-125M")
 # happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-1.3B")
 
-args = GENTrainArgs(num_train_epochs=10)
-happy_gen.train("train.txt", args=args)
+args = GENTrainArgs(num_train_epochs=3)
+happy_gen.train(TRAIN_FILE, args=args)
 
-prompt = 'May 2, 2021 PROS Announces Virtual Investment Conference Schedule for May 2020.'
-question = 'The <EVENT_DATE> is asdlkjas;lkjlakds'
+prompt = []
+context = []
+predicted = []
 
+with open(TEST_FILE) as f:
+    lines = f.readlines()
 
-args = GENSettings(min_length=2, temperature=0.9, max_length=7)
-result = happy_gen.generate_text(
-    prompt + question, args=args)
-print(result.text)
+for i, line in enumerate(lines):
+    line = line.encode("ascii", "ignore")
+    line = line.decode()
+    line = re.sub(' +', ' ', line)
+    if i % 2 == 0:
+        context.append(line)
+    else:
+        prompt.append(line)
 
-# prompt = 'May 24, 2021 Martin Marietta Announces Acquisition of Lehigh Hanson’s West Region Business MLM Acquisition Announcement MLM Acquisition Supplemental Information'
-# question = ' the date is '
-# args = GENSettings(min_length=3, temperature=0.9, max_length=10)
-# result = happy_gen.generate_text(
-#     prompt + question, args=args)
-# print(result.text)
+question = f"{prompt[0].split(' is ')[0]} is "
+
+# Prime training examples
+for i in range(len(context)):
+    args = GENSettings(min_length=2, temperature=0.9, max_length=7)
+    result = happy_gen.generate_text(context[i] + question, args=args)
+    print(result.text)
+    predicted.append(result.text)
+
+print(predicted)
