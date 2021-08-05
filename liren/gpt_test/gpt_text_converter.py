@@ -16,16 +16,16 @@ def space_checker(input_list):
 
 input_file_name = 'appen_train.csv'
 output_file_name = 'gpt_train.txt'
-tag = 'company'
+tag = 'date'
 version = 1
-lower = False
+lower = True
 
 
 def write_file(input_file_name, output_file_name, tag, version, lower):
     file_path = os.path.join(input_file_name)
     df = pd.read_csv(file_path, sep=',', engine='python')
     event_texts = space_checker(list(df['event_text']))
-    labels = space_checker(list(df[tag]))
+    labels = list(df[tag])
 
     with open(output_file_name, 'w') as f:
         for i in range(len(event_texts)):
@@ -33,7 +33,9 @@ def write_file(input_file_name, output_file_name, tag, version, lower):
             event_text = event_text.decode()
             event_text = event_text.strip()
             event_text = re.sub("\s\s+", " ", event_text)
-            label = labels[i].encode("ascii", "ignore")
+            label = str(labels[i])
+
+            label = label.encode("ascii", "ignore")
             label = label.decode()
             if lower:
                 event_text = event_text.lower()

@@ -3,7 +3,8 @@ from happytransformer import GENSettings
 from happytransformer import HappyGeneration
 import re
 
-FILE_NAME = 'train.txt'
+TRAIN_FILE = "gpt_train.txt"
+TEST_FILE = "gpt_test.txt"
 # GPT_MODEL = "EleutherAI/gpt-neo-125M"
 GPT_MODEL = "EleutherAI/gpt-neo-1.3B"
 
@@ -43,6 +44,14 @@ def predict(raw_event_text, happy_gen, question):
     print(result.text)
 
 
-happy_gen, question = prime_gpt(FILE_NAME, GPT_MODEL)
-prompt = 'May 24, 2021 Martin Marietta Announces Acquisition of Lehigh Hanson’s West Region Business MLM Acquisition Announcement MLM Acquisition Supplemental Information.'
-predict(prompt, happy_gen, question)
+happy_gen, question = prime_gpt(TRAIN_FILE, GPT_MODEL)
+
+with open(TEST_FILE) as f:
+    lines = f.readlines()
+
+for i, line in enumerate(lines):
+    line = line.encode("ascii", "ignore")
+    line = line.decode()
+    line = re.sub(' +', ' ', line)
+    if i % 2 == 0:
+        predict(line, happy_gen, question)

@@ -32,7 +32,10 @@ for i, line in enumerate(lines):
     else:
         prompt.append(line)
 
-question = f"{prompt[0].split(' is ')[0]} is "
+temp_prompt = prompt[0]
+parse_prompt = temp_prompt.split(' is ')
+question = parse_prompt[0] + " is "
+question = f"{parse_prompt[0]} is "
 
 # Prime training examples
 for i in range(len(context)):
