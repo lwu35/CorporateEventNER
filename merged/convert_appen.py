@@ -25,14 +25,14 @@ please_select_the_event_type = df['please_select_the_event_type'].str.replace('_
 copy_the_company_name_from_the_text = df['copy_the_company_name_from_the_text'].astype(str).str.replace('\n', ' ').tolist()
 
 
-select_the_fiscal_period_check_as_many_as_it_applies= df['select_the_fiscal_period_check_as_many_as_it_applies'].astype(str).str.replace('\n', ' ').str.replace('None/Other', 'NONE').str.replace('Quarter 1/Q1', 'Q1').str.replace('Quarter 2/Q2', 'Q2').str.replace('Quarter 3/Q3', 'Q3').str.replace('Quarter 4/Q4', 'Q4').tolist()
+select_the_fiscal_period_check_as_many_as_it_applies= df['select_the_fiscal_period_check_as_many_as_it_applies'].astype(str).str.replace('\n', ' ').str.replace('None/Other', 'NONE').str.replace('Quarter 1/Q1', 'Q1').str.replace('Quarter 2/Q2', 'Q2').str.replace('Quarter 3/Q3', 'Q3').str.replace('Quarter 4/Q4', 'Q4').str.replace('Annual/Yearly', 'Y').tolist()
 
 
 select_fiscal_year = df['select_fiscal_year'].str.replace('\n', ' ').str.replace('None', 'NONE').tolist()
 
 enter_date_here_mmddyyyy = df['enter_date_here_mmddyyyy'].tolist()
 
-enter_time_here_hhmm_pmam = df['enter_time_here_hhmm_pmam'].astype(str).str.replace('None', 'NONE').tolist()
+enter_time_here_hhmm_pmam = df['enter_time_here_hhmm_pmam'].astype(str).str.replace('nan', 'NONE').tolist()
 
 select_timezone = df['select_timezone'].str.replace('None', 'NONE').str.replace('EDT/EST/ET', 'ET').str.replace('CDT/CST/CT', 'CDT').str.replace('MDT/MST/MT', 'MDT').str.replace('PDT/PST/PT', 'PDT').str.replace('Other', 'OTHER').tolist()
 
