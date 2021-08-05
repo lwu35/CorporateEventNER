@@ -10,21 +10,43 @@ from date_extractor import extract_dates
 from dateparser.search import search_dates
 
 from sklearn.metrics import accuracy_score, classification_report, f1_score, precision_score, recall_score, confusion_matrix
-
+import configparser
 import warnings
 warnings.filterwarnings("ignore")
 
+
+config = configparser.ConfigParser()
+config.read('configg.ini')
+
+log_file = open('eval_output.txt', 'w')
+log_file_diff_company_name = open('diff_company.txt', 'w')
+log_file_diff_f_y = open('diff_f_y.txt', 'w')
+log_file_diff_f_p = open('diff_f_p.txt', 'w')
+log_file_diff_e_t = open('diff_e_t.txt', 'w')
+log_file_diff_d = open('diff_d.txt', 'w')
+log_file_diff_t = open('diff_t.txt', 'w')
+log_file_diff_t_z = open('diff_t_z.txt', 'w')
 
 def main():
 
     if len(sys.argv) == 3:
         print(f'Comparing {sys.argv[1]} and {sys.argv[2]}')
+        print(f'Comparing {sys.argv[1]} and {sys.argv[2]}',file = log_file)
         gold_file = sys.argv[1]
         pred_file = sys.argv[2]
     else:
         print('Comparing default files:')
-        gold_file = 'job2_gold.csv'
-        pred_file = 'bert_predictions.csv'
+        print('Comparing default files:',file = log_file)
+        gold_file = config['pipeline']['INPUT_FILE']
+        et_model = config['pipeline']['event_type_model']
+        print('Using', et_model, 'for event type prediction')
+        print('Using', et_model, 'for event type prediction',file = log_file)
+        if et_model == 'bert':
+            pred_file = config['pipeline']['bert_predictions']
+        elif et_model == 'gpt':
+            pred_file = config['pipeline']['GPT_OUTPUT']
+        else:
+            pred_file = config['pipeline']['REGEX_OUTPUT']
 
     file_path = os.path.join(gold_file)
     gold_df = pd.read_csv(file_path, sep=',', engine='python')
@@ -88,6 +110,7 @@ def full_fields(gold_df, pred_df):
             cur_pred_all.append(gold_company[i])
         else:
             cur_pred_all.append('WRONG')
+            print(i, pred_company[i], gold_company[i], file = log_file_diff_company_name, sep=',')
 
         cur_count_all.append(gold_company[i])
 
@@ -96,6 +119,7 @@ def full_fields(gold_df, pred_df):
             cur_pred_all.append(gold_fiscal_year[i])
         else:
             cur_pred_all.append(pred_fiscal_year[i])
+            print(i, pred_fiscal_year[i], gold_fiscal_year[i], file = log_file_diff_f_y, sep=',')
         cur_count_all.append(gold_fiscal_year[i])
 
         # fiscal period comparison
@@ -103,6 +127,7 @@ def full_fields(gold_df, pred_df):
             cur_pred_all.append(gold_fiscal_period[i])
         else:
             cur_pred_all.append(pred_fiscal_period[i])
+            print(i, pred_fiscal_period[i], gold_fiscal_period[i], file = log_file_diff_f_p, sep=',')
         cur_count_all.append(gold_fiscal_period[i])
 
         # event type comparison
@@ -110,6 +135,7 @@ def full_fields(gold_df, pred_df):
             cur_pred_all.append(gold_event_type[i])
         else:
             cur_pred_all.append(pred_event_type[i])
+            print(i, pred_event_type[i], gold_event_type[i], file = log_file_diff_e_t, sep=',')
         cur_count_all.append(gold_event_type[i])
 
         # date comparison
@@ -117,6 +143,7 @@ def full_fields(gold_df, pred_df):
             cur_pred_all.append(gold_date[i])
         else:
             cur_pred_all.append(pred_date[i])
+            print(i, pred_date[i], gold_date[i], file = log_file_diff_d, sep=',')
         cur_count_all.append(gold_date[i])
 
         # time comparison
@@ -124,6 +151,7 @@ def full_fields(gold_df, pred_df):
             cur_pred_all.append(gold_time[i])
         else:
             cur_pred_all.append(pred_time[i])
+            print(i, pred_time[i], gold_time[i], file = log_file_diff_t, sep=',')
         cur_count_all.append(gold_time[i])
 
         # timezone comparison
@@ -131,6 +159,7 @@ def full_fields(gold_df, pred_df):
             cur_pred_all.append(gold_timezone[i])
         else:
             cur_pred_all.append(pred_timezone[i])
+            print(i, pred_timezone[i], gold_timezone[i], file = log_file_diff_t_z, sep=',')
         cur_count_all.append(gold_timezone[i])
 
         count_all.append(str(tuple(cur_count_all)))
@@ -192,6 +221,7 @@ def single_fields(gold_df, pred_df):
     for i in range(len(gold_event_id)):
         if gold_event_id[i] != pred_event_id[i]:
             print('EVENT ID MISMATCH')
+            print('EVENT ID MISMATCH', file = log_file)
             break
 
         # company comparison
@@ -273,10 +303,16 @@ def print_score(field, gold_count, count):
         print(f'{field} \t\t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
             gold_count, count), 3), f'\tF1:', round(f1_score(
                 gold_count, count, average='macro'), 3))
+        print(f'{field} \t\t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
+            gold_count, count), 3), f'\tF1:', round(f1_score(
+                gold_count, count, average='macro'), 3),file = log_file)
     else:
         print(f'{field} \t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
             gold_count, count), 3), f'\tF1:', round(f1_score(
                 gold_count, count, average='macro'), 3))
+        print(f'{field} \t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
+            gold_count, count), 3), f'\tF1:', round(f1_score(
+                gold_count, count, average='macro'), 3),file = log_file)
 
 
 def date_converter(gold_dates, pred_dates):
