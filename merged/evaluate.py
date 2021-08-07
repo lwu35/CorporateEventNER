@@ -108,58 +108,65 @@ def full_fields(gold_df, pred_df):
 
         if p_ratio >= 90 or ts_ratio >= 90:
             cur_pred_all.append(gold_company[i])
+            print(i, pred_company[i], gold_company[i], 'right', file = log_file_diff_company_name, sep=',')
         else:
             cur_pred_all.append('WRONG')
-            print(i, pred_company[i], gold_company[i], file = log_file_diff_company_name, sep=',')
+            print(i, pred_company[i], gold_company[i], 'wrong', file = log_file_diff_company_name, sep=',')
 
         cur_count_all.append(gold_company[i])
 
         # fiscal year comparison
         if pred_fiscal_year[i] == gold_fiscal_year[i]:
             cur_pred_all.append(gold_fiscal_year[i])
+            print(i, pred_fiscal_year[i], gold_fiscal_year[i], 'right', file = log_file_diff_f_y, sep=',')
         else:
             cur_pred_all.append(pred_fiscal_year[i])
-            print(i, pred_fiscal_year[i], gold_fiscal_year[i], file = log_file_diff_f_y, sep=',')
+            print(i, pred_fiscal_year[i], gold_fiscal_year[i], 'wrong', file = log_file_diff_f_y, sep=',')
         cur_count_all.append(gold_fiscal_year[i])
 
         # fiscal period comparison
         if pred_fiscal_period[i] == gold_fiscal_period[i]:
             cur_pred_all.append(gold_fiscal_period[i])
+            print(i, pred_fiscal_period[i], gold_fiscal_period[i], 'right', file = log_file_diff_f_p, sep=',')
         else:
             cur_pred_all.append(pred_fiscal_period[i])
-            print(i, pred_fiscal_period[i], gold_fiscal_period[i], file = log_file_diff_f_p, sep=',')
+            print(i, pred_fiscal_period[i], gold_fiscal_period[i], 'wrong', file = log_file_diff_f_p, sep=',')
         cur_count_all.append(gold_fiscal_period[i])
 
         # event type comparison
         if pred_event_type[i] == gold_event_type[i]:
             cur_pred_all.append(gold_event_type[i])
+            print(i, pred_event_type[i], gold_event_type[i], 'right', file = log_file_diff_e_t, sep=',')
         else:
             cur_pred_all.append(pred_event_type[i])
-            print(i, pred_event_type[i], gold_event_type[i], file = log_file_diff_e_t, sep=',')
+            print(i, pred_event_type[i], gold_event_type[i], 'wrong', file = log_file_diff_e_t, sep=',')
         cur_count_all.append(gold_event_type[i])
 
         # date comparison
         if pred_date[i] == gold_date[i]:
             cur_pred_all.append(gold_date[i])
+            print(i, pred_date[i], gold_date[i], 'right',file = log_file_diff_d, sep=',')
         else:
             cur_pred_all.append(pred_date[i])
-            print(i, pred_date[i], gold_date[i], file = log_file_diff_d, sep=',')
+            print(i, pred_date[i], gold_date[i], 'wrong',file = log_file_diff_d, sep=',')
         cur_count_all.append(gold_date[i])
 
         # time comparison
         if pred_time[i] == gold_time[i]:
             cur_pred_all.append(gold_time[i])
+            print(i, pred_time[i], gold_time[i], 'right', file = log_file_diff_t, sep=',')
         else:
             cur_pred_all.append(pred_time[i])
-            print(i, pred_time[i], gold_time[i], file = log_file_diff_t, sep=',')
+            print(i, pred_time[i], gold_time[i], 'wrong', file = log_file_diff_t, sep=',')
         cur_count_all.append(gold_time[i])
 
         # timezone comparison
         if pred_timezone[i] == gold_timezone[i]:
             cur_pred_all.append(gold_timezone[i])
+            print(i, pred_timezone[i], gold_timezone[i], 'right', file = log_file_diff_t_z, sep=',')
         else:
             cur_pred_all.append(pred_timezone[i])
-            print(i, pred_timezone[i], gold_timezone[i], file = log_file_diff_t_z, sep=',')
+            print(i, pred_timezone[i], gold_timezone[i], 'wrong', file = log_file_diff_t_z, sep=',')
         cur_count_all.append(gold_timezone[i])
 
         count_all.append(str(tuple(cur_count_all)))
