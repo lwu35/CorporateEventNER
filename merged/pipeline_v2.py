@@ -9,6 +9,7 @@ from happytransformer import HappyGeneration
 
 from ner_helper import get_date_time_timezone, get_fp, get_fy, extract_company, get_company, spacy_init, get_regex_event_type
 
+
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -61,22 +62,53 @@ def main():
     all_timezones = []
 
     for i in range(len(urls)):
+        used_text = []
         # print(event_texts[i])
-        company_name = extract_company(urls[i], nlp_stanza)
-        # company_name = get_company(event_texts[i], nlp_spacy, nlp_stanza)
-        text_date, text_time, text_timezone = get_date_time_timezone(
-            event_texts[i], nlp_stanza)
+        try:
+            company_name = extract_company(urls[i], nlp_stanza)
+        except:
+            company_name = 'NONE'
 
-        text_fp = get_fp(event_texts[i], nlp_spacy)
+        try:
+            text_date, text_time, text_timezone = get_date_time_timezone(
+                event_texts[i], nlp_stanza)
+        except:
+            text_date, text_time, text_timezone = 'NONE'
 
-        event_type_gpt = gpt_predict(event_texts[i], happy_gen)
+        try:
+            text_fp = get_fp(event_texts[i], nlp_spacy)
+        except:
+            text_fp = 'NONE'
 
-        event_type_bert = bert_predict(
-            event_texts[i], model, intent2id, id2intent, tokenizer)
+        try:
+            event_type_gpt = gpt_predict(event_texts[i], happy_gen)
+        except:
+            event_type_gpt = 'NONE'
 
-        event_type_regex = get_regex_event_type(event_texts[i])
+        try:
+            event_type_bert = bert_predict(
+                event_texts[i], model, intent2id, id2intent, tokenizer)
+        except:
+            event_type_bert = 'NONE'
 
-        text_fy = get_fy(event_texts[i], text_date)
+        try:
+            event_type_regex = get_regex_event_type(event_texts[i].lower())
+        except:
+            event_type_regex = 'NONE'
+
+        try:
+            text_fy = get_fy(event_texts[i], text_date)
+        except:
+            text_fy = 'NONE'
+
+        # used_text.append(text_date)
+        # used_text.append(text_time)
+        # used_text.append(text_timezone)
+        # used_text.append(text_fp)
+        # used_text.append(event_type_regex)
+        # used_text.append(text_fy)
+        # company_name = get_company(
+        #     event_texts[i], nlp_spacy, nlp_stanza, used_text)
 
         all_names.append(company_name)
         all_fy.append(text_fy)

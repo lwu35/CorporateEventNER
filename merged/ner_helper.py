@@ -100,7 +100,7 @@ def get_date_time_timezone(raw_event_text, nlp_stanza):
     if len(stanza_timezone) == 0:
         stanza_timezone = get_timezone(raw_event_text)
 
-    return best_date(stanza_date), strip_time_zone(stanza_time[0].lower()), stanza_timezone
+    return best_date(stanza_date), time_converter(strip_time_zone(stanza_time[0].lower())), stanza_timezone
 
 
 def get_fp(raw_event_text, nlp_spacy):
@@ -134,23 +134,25 @@ def get_timezone(raw_event_text):
     return regex_timezone.upper()
 
 
-def get_company(raw_event_text, nlp_spacy, nlp_stanza):
+def get_company(raw_event_text, nlp_spacy, nlp_stanza, used_tokens):
     stanza_company = 'NONE'
     spacy_company = 'NONE'
-
+    for span in used_tokens:
+        raw_event_text = raw_event_text.replace(span, '')
+    print(raw_event_text)
     doc = nlp_spacy(raw_event_text)
     for ent in doc.ents:
         # print('\t(Spacy) <ENT>:', ent.text, '<Label>:', ent.label_)
         if ent.label_ == 'ORG':
             spacy_company = ent.text
 
-    # doc = nlp_stanza(raw_event_text)
-    # for ent in doc.entities:
-    #     # print(f'\t(stanza) {ent.text}\t{ent.type}')
-    #     if ent.type == 'ORG':
-    #         stanza_company = ent.text
+    doc = nlp_stanza(raw_event_text)
+    for ent in doc.entities:
+        # print(f'\t(stanza) {ent.text}\t{ent.type}')
+        if ent.type == 'ORG':
+            stanza_company = ent.text
 
-    return spacy_company
+    return stanza_company
 
 
 def best_date(date_list):
@@ -195,3 +197,17 @@ def get_regex_event_type(sent):
         return 'Guidance'
     else:
         return 'None/Other'
+
+
+def time_converter(str_time):
+    if str(str_time) != 'NONE':
+        if 'PM' in str_time:
+            parse = str_time.split(':')
+            hour = int(parse[0]) + 12
+            new_time = str(hour) + ":" + parse[1]
+            new_time = new_time.replace('PM', '')
+            return new_time
+        else:
+            new_time = str_time.replace('AM', '')
+            return new_time
+    return 'NONE'

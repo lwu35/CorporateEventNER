@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import re
+import numpy as np
 
 
 def space_checker(input_list):
@@ -17,14 +18,27 @@ def space_checker(input_list):
 input_file_name = 'appen_train.csv'
 output_file_name = 'gpt_train.txt'
 tag = 'date'
-version = 1
-lower = True
+version = 3
+lower = False
+
+
+def date_converter(date_type, str_date):
+    if str(str_date) != 'NONE' and str(str_date) != 'none':
+        months = {'01': 'Jan', '02': 'Feb', '03': 'Mar', '04': 'Apr', '05': 'May', '06': 'Jun',
+                  '07': 'Jul', '08': 'Aug', '09': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dec'}
+        if date_type == 'month':
+            num = str_date.split('/')[0]
+            return months[num]
+        elif date_type == 'day':
+            return str_date.split('/')[1]
+    return 'NONE'
 
 
 def write_file(input_file_name, output_file_name, tag, version, lower):
     file_path = os.path.join(input_file_name)
     df = pd.read_csv(file_path, sep=',', engine='python')
     event_texts = space_checker(list(df['event_text']))
+    df = df.fillna('NONE')
     labels = list(df[tag])
 
     with open(output_file_name, 'w') as f:
@@ -48,6 +62,10 @@ def write_file(input_file_name, output_file_name, tag, version, lower):
                 f.write(f'Text:{event_text}.\n')
                 f.write(f'Type:{label}.\n')
                 f.write(f'\n')
+            if version == 3:
+                f.write(f'{event_text}.\n')
+                date_label = date_converter('month', label)
+                f.write(f'The <MONTH> is {date_label}.\n')
     return 0
 
 

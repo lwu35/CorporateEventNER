@@ -18,29 +18,30 @@ warnings.filterwarnings("ignore")
 config = configparser.ConfigParser()
 config.read('configg.ini')
 
-log_file = open('eval_output.txt', 'w')
-log_file_diff_company_name = open('diff_company.txt', 'w')
-log_file_diff_f_y = open('diff_f_y.txt', 'w')
-log_file_diff_f_p = open('diff_f_p.txt', 'w')
-log_file_diff_e_t = open('diff_e_t.txt', 'w')
-log_file_diff_d = open('diff_d.txt', 'w')
-log_file_diff_t = open('diff_t.txt', 'w')
-log_file_diff_t_z = open('diff_t_z.txt', 'w')
+log_file = open('analysis\eval_output.txt', 'w')
+log_file_diff_company_name = open('analysis\diff_company.txt', 'w')
+log_file_diff_f_y = open('analysis\diff_f_y.txt', 'w')
+log_file_diff_f_p = open('analysis\diff_f_p.txt', 'w')
+log_file_diff_e_t = open('analysis\diff_e_t.txt', 'w')
+log_file_diff_d = open('analysis\diff_d.txt', 'w')
+log_file_diff_t = open('analysis\diff_t.txt', 'w')
+log_file_diff_t_z = open('analysis\diff_t_z.txt', 'w')
+
 
 def main():
 
     if len(sys.argv) == 3:
         print(f'Comparing {sys.argv[1]} and {sys.argv[2]}')
-        print(f'Comparing {sys.argv[1]} and {sys.argv[2]}',file = log_file)
+        print(f'Comparing {sys.argv[1]} and {sys.argv[2]}', file=log_file)
         gold_file = sys.argv[1]
         pred_file = sys.argv[2]
     else:
         print('Comparing default files:')
-        print('Comparing default files:',file = log_file)
+        print('Comparing default files:', file=log_file)
         gold_file = config['pipeline']['INPUT_FILE']
         et_model = config['pipeline']['event_type_model']
         print('Using', et_model, 'for event type prediction')
-        print('Using', et_model, 'for event type prediction',file = log_file)
+        print('Using', et_model, 'for event type prediction', file=log_file)
         if et_model == 'bert':
             pred_file = config['pipeline']['bert_predictions']
         elif et_model == 'gpt':
@@ -103,70 +104,85 @@ def full_fields(gold_df, pred_df):
         cur_count_all = []
         # company comparison
         p_ratio = fuzz.partial_ratio(
-            pred_company[i].lower(), gold_company[i].lower())
-        ts_ratio = fuzz.token_set_ratio(pred_company[i], gold_company[i])
+            str(pred_company[i]).lower(), str(gold_company[i]).lower())
+        ts_ratio = fuzz.token_set_ratio(
+            str(pred_company[i]), str(gold_company[i]))
 
         if p_ratio >= 90 or ts_ratio >= 90:
             cur_pred_all.append(gold_company[i])
-            print(i, pred_company[i], gold_company[i], 'right', file = log_file_diff_company_name, sep=',')
+            print(i, pred_company[i], gold_company[i], 'right',
+                  file=log_file_diff_company_name, sep=',')
         else:
             cur_pred_all.append('WRONG')
-            print(i, pred_company[i], gold_company[i], 'wrong', file = log_file_diff_company_name, sep=',')
+            print(i, pred_company[i], gold_company[i], 'wrong',
+                  file=log_file_diff_company_name, sep=',')
 
         cur_count_all.append(gold_company[i])
 
         # fiscal year comparison
         if pred_fiscal_year[i] == gold_fiscal_year[i]:
             cur_pred_all.append(gold_fiscal_year[i])
-            print(i, pred_fiscal_year[i], gold_fiscal_year[i], 'right', file = log_file_diff_f_y, sep=',')
+            print(i, pred_fiscal_year[i], gold_fiscal_year[i],
+                  'right', file=log_file_diff_f_y, sep=',')
         else:
             cur_pred_all.append(pred_fiscal_year[i])
-            print(i, pred_fiscal_year[i], gold_fiscal_year[i], 'wrong', file = log_file_diff_f_y, sep=',')
+            print(i, pred_fiscal_year[i], gold_fiscal_year[i],
+                  'wrong', file=log_file_diff_f_y, sep=',')
         cur_count_all.append(gold_fiscal_year[i])
 
         # fiscal period comparison
         if pred_fiscal_period[i] == gold_fiscal_period[i]:
             cur_pred_all.append(gold_fiscal_period[i])
-            print(i, pred_fiscal_period[i], gold_fiscal_period[i], 'right', file = log_file_diff_f_p, sep=',')
+            print(i, pred_fiscal_period[i], gold_fiscal_period[i],
+                  'right', file=log_file_diff_f_p, sep=',')
         else:
             cur_pred_all.append(pred_fiscal_period[i])
-            print(i, pred_fiscal_period[i], gold_fiscal_period[i], 'wrong', file = log_file_diff_f_p, sep=',')
+            print(i, pred_fiscal_period[i], gold_fiscal_period[i],
+                  'wrong', file=log_file_diff_f_p, sep=',')
         cur_count_all.append(gold_fiscal_period[i])
 
         # event type comparison
         if pred_event_type[i] == gold_event_type[i]:
             cur_pred_all.append(gold_event_type[i])
-            print(i, pred_event_type[i], gold_event_type[i], 'right', file = log_file_diff_e_t, sep=',')
+            print(i, pred_event_type[i], gold_event_type[i],
+                  'right', file=log_file_diff_e_t, sep=',')
         else:
             cur_pred_all.append(pred_event_type[i])
-            print(i, pred_event_type[i], gold_event_type[i], 'wrong', file = log_file_diff_e_t, sep=',')
+            print(i, pred_event_type[i], gold_event_type[i],
+                  'wrong', file=log_file_diff_e_t, sep=',')
         cur_count_all.append(gold_event_type[i])
 
         # date comparison
         if pred_date[i] == gold_date[i]:
             cur_pred_all.append(gold_date[i])
-            print(i, pred_date[i], gold_date[i], 'right',file = log_file_diff_d, sep=',')
+            print(i, pred_date[i], gold_date[i],
+                  'right', file=log_file_diff_d, sep=',')
         else:
             cur_pred_all.append(pred_date[i])
-            print(i, pred_date[i], gold_date[i], 'wrong',file = log_file_diff_d, sep=',')
+            print(i, pred_date[i], gold_date[i],
+                  'wrong', file=log_file_diff_d, sep=',')
         cur_count_all.append(gold_date[i])
 
         # time comparison
         if pred_time[i] == gold_time[i]:
             cur_pred_all.append(gold_time[i])
-            print(i, pred_time[i], gold_time[i], 'right', file = log_file_diff_t, sep=',')
+            print(i, pred_time[i], gold_time[i],
+                  'right', file=log_file_diff_t, sep=',')
         else:
             cur_pred_all.append(pred_time[i])
-            print(i, pred_time[i], gold_time[i], 'wrong', file = log_file_diff_t, sep=',')
+            print(i, pred_time[i], gold_time[i],
+                  'wrong', file=log_file_diff_t, sep=',')
         cur_count_all.append(gold_time[i])
 
         # timezone comparison
         if pred_timezone[i] == gold_timezone[i]:
             cur_pred_all.append(gold_timezone[i])
-            print(i, pred_timezone[i], gold_timezone[i], 'right', file = log_file_diff_t_z, sep=',')
+            print(i, pred_timezone[i], gold_timezone[i],
+                  'right', file=log_file_diff_t_z, sep=',')
         else:
             cur_pred_all.append(pred_timezone[i])
-            print(i, pred_timezone[i], gold_timezone[i], 'wrong', file = log_file_diff_t_z, sep=',')
+            print(i, pred_timezone[i], gold_timezone[i],
+                  'wrong', file=log_file_diff_t_z, sep=',')
         cur_count_all.append(gold_timezone[i])
 
         count_all.append(str(tuple(cur_count_all)))
@@ -228,14 +244,15 @@ def single_fields(gold_df, pred_df):
     for i in range(len(gold_event_id)):
         if gold_event_id[i] != pred_event_id[i]:
             print('EVENT ID MISMATCH')
-            print('EVENT ID MISMATCH', file = log_file)
+            print('EVENT ID MISMATCH', file=log_file)
             break
 
         # company comparison
         if gold_company[i] != 'NONE' or pred_company[i] != 'NONE':
             p_ratio = fuzz.partial_ratio(
-                pred_company[i].lower(), gold_company[i].lower())
-            ts_ratio = fuzz.token_set_ratio(pred_company[i], gold_company[i])
+                str(pred_company[i]).lower(), str(gold_company[i]).lower())
+            ts_ratio = fuzz.token_set_ratio(
+                str(pred_company[i]), str(gold_company[i]))
 
             if p_ratio >= 90 or ts_ratio >= 90:
                 count_company.append(gold_company[i])
@@ -312,14 +329,14 @@ def print_score(field, gold_count, count):
                 gold_count, count, average='macro'), 3))
         print(f'{field} \t\t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
             gold_count, count), 3), f'\tF1:', round(f1_score(
-                gold_count, count, average='macro'), 3),file = log_file)
+                gold_count, count, average='macro'), 3), file=log_file)
     else:
         print(f'{field} \t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
             gold_count, count), 3), f'\tF1:', round(f1_score(
                 gold_count, count, average='macro'), 3))
         print(f'{field} \t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
             gold_count, count), 3), f'\tF1:', round(f1_score(
-                gold_count, count, average='macro'), 3),file = log_file)
+                gold_count, count, average='macro'), 3), file=log_file)
 
 
 def date_converter(gold_dates, pred_dates):
