@@ -100,7 +100,7 @@ def get_date_time_timezone(raw_event_text, nlp_stanza):
     if len(stanza_timezone) == 0:
         stanza_timezone = get_timezone(raw_event_text)
 
-    return best_date(stanza_date), time_converter(strip_time_zone(stanza_time[0].lower())), stanza_timezone
+    return best_date(stanza_date), strip_time_zone(stanza_time[0].lower()), stanza_timezone
 
 
 def get_fp(raw_event_text, nlp_spacy):
@@ -197,17 +197,3 @@ def get_regex_event_type(sent):
         return 'Guidance'
     else:
         return 'None/Other'
-
-
-def time_converter(str_time):
-    if str(str_time) != 'NONE':
-        if 'PM' in str_time:
-            parse = str_time.split(':')
-            hour = int(parse[0]) + 12
-            new_time = str(hour) + ":" + parse[1]
-            new_time = new_time.replace('PM', '')
-            return new_time
-        else:
-            new_time = str_time.replace('AM', '')
-            return new_time
-    return 'NONE'

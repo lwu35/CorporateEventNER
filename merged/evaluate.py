@@ -88,6 +88,7 @@ def full_fields(gold_df, pred_df):
     pred_date = date_space_checker(pred_date)
 
     # Normalize fields
+
     gold_fiscal_period, pred_fiscal_period = fiscal_period_converter(
         gold_fiscal_period, pred_fiscal_period)
     gold_date, pred_date = date_converter(gold_date, pred_date)
@@ -294,6 +295,7 @@ def single_fields(gold_df, pred_df):
 
         # time comparison
         if gold_time[i] != 'NONE' or pred_time[i] != 'NONE':
+
             if pred_time[i] == gold_time[i]:
                 count_time.append(gold_time[i])
             else:
