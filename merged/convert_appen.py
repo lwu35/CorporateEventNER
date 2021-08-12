@@ -7,8 +7,8 @@ d.strftime("%I:%M %p")
 
 def date_converter(str_date):
 
-    months = {'01': 'Jan', '02': 'Feb', '03': 'Mar', '04': 'Apr', '05': 'May', '06': 'Jun',
-              '07': 'Jul', '08': 'Aug', '09': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dec'}
+    months = {'1': 'Jan', '2': 'Feb', '3': 'Mar', '4': 'Apr', '5': 'May', '6': 'Jun', 
+              '7': 'Jul', '8': 'Aug', '9': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dec'}
     if str(str_date) != 'NONE':
         parse = str_date.split('/')
         return f"{months[parse[0]]} {parse[1]}, {parse[2]}"
@@ -24,7 +24,7 @@ def time_converter(str_time):
     return 'NONE'
 
 
-df = pd.read_csv('agg_86.csv')
+df = pd.read_csv('appen812edits.csv')
 # check appen quality
 df = df.fillna('NONE')
 
@@ -96,4 +96,4 @@ dict = {'id': ids, 'event_text': event_text, 'url': url, 'url_id': url_id, 'comp
         'fiscal_period': select_the_fiscal_period_check_as_many_as_it_applies, 'event_type': please_select_the_event_type, 'date': converted_date, 'time': converted_time, 'timezone': select_timezone}
 df = pd.DataFrame(dict)
 
-df.to_csv('cleaned_appen_86.csv', index=False)
+df.to_csv('cleaned_appen_812.csv', index=False)
