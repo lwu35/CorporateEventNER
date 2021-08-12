@@ -1,6 +1,7 @@
 import csv
 import pandas as pd
 from datetime import datetime
+import numpy as np
 d = datetime.strptime("10:30", "%H:%M")
 d.strftime("%I:%M %p")
 
@@ -96,4 +97,12 @@ dict = {'id': ids, 'event_text': event_text, 'url': url, 'url_id': url_id, 'comp
         'fiscal_period': select_the_fiscal_period_check_as_many_as_it_applies, 'event_type': please_select_the_event_type, 'date': converted_date, 'time': converted_time, 'timezone': select_timezone}
 df = pd.DataFrame(dict)
 
+
+train, validate, test = \
+              np.split(df.sample(frac=1, random_state=42), 
+                       [int(.64*len(df)), int(.82*len(df))])
+
+train.to_csv('cleaned_train.csv', index=False)
+validate.to_csv('cleaned_dev.csv', index=False)
+test.to_csv('cleaned_test.csv', index=False)
 df.to_csv('cleaned_appen_812.csv', index=False)
