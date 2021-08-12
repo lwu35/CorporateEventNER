@@ -4,6 +4,8 @@ import os
 import spacy
 from spacy.pipeline import EntityRuler
 
+from allennlp.predictors.predictor import Predictor
+
 import re
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
@@ -11,6 +13,48 @@ from urllib.request import Request, urlopen
 
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
+
+
+def init_allen_nlp():
+    predictor = Predictor.from_path(
+        "https://storage.googleapis.com/allennlp-public-models/transformer-qa.2021-02-11.tar.gz")
+    return predictor
+
+
+def allen_company(model, event_text):
+    name = model.predict(passage=event_text, question="What is the company?")[
+        'best_span_str']
+
+    if name == '':
+        return 'NONE'
+    return name
+
+
+def allen_date(model, event_text):
+    date = model.predict(passage=event_text, question="What is the date?")[
+        'best_span_str']
+
+    if date == '':
+        return 'NONE'
+    return date
+
+
+def allen_time(model, event_text):
+    time = model.predict(passage=event_text, question="What is the time?")[
+        'best_span_str']
+
+    if time == '':
+        return 'NONE'
+    return strip_time_zone(time.lower())
+
+
+def allen_timezone(model, event_text):
+    timezone = model.predict(passage=event_text, question="What is the time zone?")[
+        'best_span_str']
+
+    if timezone == '':
+        return 'NONE'
+    return timezone
 
 
 def spacy_init(base_model):
@@ -73,8 +117,8 @@ def extract_company(url, nlp_stanza):
             company_name = company_name.replace(",", "")
             return company_name
 
-    except Exception as e:
-        print('Error:', url)
+    except:
+        return 'NONE'
 
 
 def get_date_time_timezone(raw_event_text, nlp_stanza):

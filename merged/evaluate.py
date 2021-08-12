@@ -345,14 +345,18 @@ def date_converter(gold_dates, pred_dates):
     converted_gold = []
     converted_pred = []
     for i in range(len(gold_dates)):
-        cur_pred_date = datetime.date(1000, 2, 2)
-        cur_gold_date = datetime.date(1000, 1, 1)
-        if len(extract_dates(pred_dates[i])) == 1:
-            cur_pred_date = extract_dates(pred_dates[i])[0].date()
-        if len(extract_dates(gold_dates[i])) == 1:
-            cur_gold_date = extract_dates(gold_dates[i])[0].date()
-        converted_gold.append(cur_gold_date.strftime("%b %d, %Y"))
-        converted_pred.append(cur_pred_date.strftime("%b %d, %Y"))
+        if gold_dates[i] == 'NONE' and pred_dates[i] == 'NONE':
+            converted_gold.append('NONE')
+            converted_pred.append('NONE')
+        else:
+            cur_pred_date = datetime.date(1000, 2, 2)
+            cur_gold_date = datetime.date(1000, 1, 1)
+            if len(extract_dates(pred_dates[i])) == 1:
+                cur_pred_date = extract_dates(pred_dates[i])[0].date()
+            if len(extract_dates(gold_dates[i])) == 1:
+                cur_gold_date = extract_dates(gold_dates[i])[0].date()
+            converted_gold.append(cur_gold_date.strftime("%b %d, %Y"))
+            converted_pred.append(cur_pred_date.strftime("%b %d, %Y"))
 
     return converted_gold, converted_pred
 
@@ -361,21 +365,25 @@ def time_converter(gold_times, pred_times):
     converted_gold = []
     converted_pred = []
     for i in range(len(gold_times)):
-        gold_times[i] = gold_times[i].upper().replace('AM', 'A.M')
-        gold_times[i] = gold_times[i].upper().replace('PM', 'P.M')
-        pred_times[i] = pred_times[i].upper().replace('AM', 'A.M')
-        pred_times[i] = pred_times[i].upper().replace('PM', 'P.M')
+        if gold_times[i] == 'NONE' and pred_times[i] == 'NONE':
+            converted_gold.append('NONE')
+            converted_pred.append('NONE')
+        else:
+            gold_times[i] = gold_times[i].upper().replace('AM', 'A.M')
+            gold_times[i] = gold_times[i].upper().replace('PM', 'P.M')
+            pred_times[i] = pred_times[i].upper().replace('AM', 'A.M')
+            pred_times[i] = pred_times[i].upper().replace('PM', 'P.M')
 
-        cur_pred_time = datetime.time(1, 1, 30)
-        cur_gold_time = datetime.time(2, 2, 30)
+            cur_pred_time = datetime.time(1, 1, 30)
+            cur_gold_time = datetime.time(2, 2, 30)
 
-        if search_dates(gold_times[i]) != None:
-            cur_gold_time = search_dates(gold_times[i])[0][1].time()
-        if search_dates(pred_times[i]) != None:
-            cur_pred_time = search_dates(pred_times[i])[0][1].time()
+            if search_dates(gold_times[i]) != None:
+                cur_gold_time = search_dates(gold_times[i])[0][1].time()
+            if search_dates(pred_times[i]) != None:
+                cur_pred_time = search_dates(pred_times[i])[0][1].time()
 
-        converted_gold.append(cur_gold_time.strftime("%H:%M:%S"))
-        converted_pred.append(cur_pred_time.strftime("%H:%M:%S"))
+            converted_gold.append(cur_gold_time.strftime("%H:%M:%S"))
+            converted_pred.append(cur_pred_time.strftime("%H:%M:%S"))
 
     return converted_gold, converted_pred
 

@@ -96,4 +96,4 @@ dict = {'id': ids, 'event_text': event_text, 'url': url, 'url_id': url_id, 'comp
         'fiscal_period': select_the_fiscal_period_check_as_many_as_it_applies, 'event_type': please_select_the_event_type, 'date': converted_date, 'time': converted_time, 'timezone': select_timezone}
 df = pd.DataFrame(dict)
 
-df.to_csv('cleaned_appen_86.csv')
+df.to_csv('cleaned_appen_86.csv', index=False)

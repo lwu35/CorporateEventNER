@@ -2,12 +2,13 @@ import pandas as pd
 import os
 import configparser
 import stanza
+from tqdm import tqdm
 
 from gpt_neo import gpt_predict
 from bert_event_type import bert_predict, bert_init
 from happytransformer import HappyGeneration
 
-from ner_helper import get_date_time_timezone, get_fp, get_fy, extract_company, get_company, spacy_init, get_regex_event_type
+from ner_helper import get_date_time_timezone, get_fp, get_fy, spacy_init, get_regex_event_type, init_allen_nlp, allen_company, allen_date, allen_time, allen_timezone
 
 
 import ssl
@@ -43,6 +44,7 @@ def main():
 
     nlp_spacy = spacy_init('en_core_web_lg')
     nlp_stanza = stanza.Pipeline('en', processors='tokenize,ner')
+    nlp_allen = init_allen_nlp()
 
     # GPT-NEO Model, event type
     happy_gen = HappyGeneration(load_path=GPT_MODEL_PATH_EVENT_TYPE)
@@ -61,17 +63,18 @@ def main():
     all_types_regex = []
     all_timezones = []
 
-    for i in range(len(urls)):
-        used_text = []
-        # print(event_texts[i])
+    for i in tqdm(range(len(urls))):
         try:
-            company_name = extract_company(urls[i], nlp_stanza)
+            company_name = allen_company(nlp_allen, event_texts[i])
         except:
             company_name = 'NONE'
 
         try:
             text_date, text_time, text_timezone = get_date_time_timezone(
                 event_texts[i], nlp_stanza)
+            text_date = allen_date(nlp_allen, event_texts[i])
+            text_time = allen_time(nlp_allen, event_texts[i])
+            # text_timezone = allen_timezone(nlp_allen, event_texts[i])
         except:
             text_date, text_time, text_timezone = 'NONE'
 
@@ -100,15 +103,6 @@ def main():
             text_fy = get_fy(event_texts[i], text_date)
         except:
             text_fy = 'NONE'
-
-        # used_text.append(text_date)
-        # used_text.append(text_time)
-        # used_text.append(text_timezone)
-        # used_text.append(text_fp)
-        # used_text.append(event_type_regex)
-        # used_text.append(text_fy)
-        # company_name = get_company(
-        #     event_texts[i], nlp_spacy, nlp_stanza, used_text)
 
         all_names.append(company_name)
         all_fy.append(text_fy)
