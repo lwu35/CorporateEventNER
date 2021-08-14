@@ -6,6 +6,8 @@ from spacy.pipeline import EntityRuler
 
 from allennlp.predictors.predictor import Predictor
 
+from simpletransformers.question_answering import QuestionAnsweringModel
+
 import re
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
@@ -21,9 +23,38 @@ def init_allen_nlp():
     return predictor
 
 
-def allen_company(model, event_text):
-    name = model.predict(passage=event_text, question="What is the company?")[
-        'best_span_str']
+def roberta_company(model, event_text):
+
+    example = [
+        {
+            "context": event_text,
+            "qas": [
+                {
+                    "question": "What is the company?",
+                    "id": "0",
+                }
+            ],
+        }
+    ]
+
+    answers, probabilities = model.predict(example)
+
+    name = answers[0]['answer'][0]
+
+    if name == '' or name == 'empty':
+        return 'NONE'
+
+    return name
+
+
+def allen_company(model, event_text, event_type='default'):
+
+    if event_type == 'Conference':
+        name = model.predict(passage=event_text, question="What company is hosting the conference?")[
+            'best_span_str']
+    else:
+        name = model.predict(passage=event_text, question="What is the company?")[
+            'best_span_str']
 
     if name == '':
         return 'NONE'
@@ -63,14 +94,14 @@ def spacy_init(base_model):
     # add custom entity to spacy
     ruler = EntityRuler(nlp_spacy, overwrite_ents=True)
 
-    # load companies list
-    file_path = os.path.join('company_names_nasdaq.csv')
-    df = pd.read_csv(file_path, sep=',', engine='python')
-    companies = list(df['name'])
+    # # load companies list
+    # file_path = os.path.join('company_names_nasdaq.csv')
+    # df = pd.read_csv(file_path, sep=',', engine='python')
+    # companies = list(df['name'])
 
-    # tag companies
-    for item in companies:
-        ruler.add_patterns([{"label": "ORG", "pattern": item}])
+    # # tag companies
+    # for item in companies:
+    #     ruler.add_patterns([{"label": "ORG", "pattern": item}])
 
     # tag periods
     periods = ["q1", "q2", "q3", "q4",

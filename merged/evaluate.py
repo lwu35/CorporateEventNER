@@ -2,6 +2,7 @@ import pandas as pd
 import os
 import sys
 from tqdm.auto import tqdm
+import re
 from fuzzywuzzy import fuzz
 
 import datetime
@@ -26,6 +27,14 @@ log_file_diff_e_t = open('analysis\diff_e_t.txt', 'w')
 log_file_diff_d = open('analysis\diff_d.txt', 'w')
 log_file_diff_t = open('analysis\diff_t.txt', 'w')
 log_file_diff_t_z = open('analysis\diff_t_z.txt', 'w')
+
+log_file_cm_company_name = open('analysis\cm_company.txt', 'w')
+log_file_cm_f_y = open('analysis\cm_f_y.txt', 'w')
+log_file_cm_f_p = open('analysis\cm_f_p.txt', 'w')
+log_file_cm_e_t = open('analysis\cm_e_t.txt', 'w')
+log_file_cm_d = open('analysis\cm_d.txt', 'w')
+log_file_cm_t = open('analysis\cm_t.txt', 'w')
+log_file_cm_t_z = open('analysis\cm_t_z.txt', 'w')
 
 
 def main():
@@ -323,6 +332,16 @@ def single_fields(gold_df, pred_df):
     # print(confusion_matrix(gold_count_date, count_date))
     # print(classification_report(gold_count_fiscal_period, count_fiscal_period))
 
+    print(confusion_matrix(gold_count_fiscal_year,
+          count_fiscal_year), file=log_file_cm_f_y)
+    print(confusion_matrix(gold_count_fiscal_period,
+          count_fiscal_period), file=log_file_cm_f_p)
+    print(confusion_matrix(gold_count_event_type,
+          count_event_type), file=log_file_cm_e_t)
+    print(confusion_matrix(gold_count_time, count_time), file=log_file_cm_t)
+    print(confusion_matrix(gold_count_timezone,
+          count_timezone), file=log_file_cm_t_z)
+
     return 0
 
 
@@ -428,11 +447,18 @@ def timezone_converter(gold_timezone, pred_timezone):
         'MDT': 'MST', 'MT': 'MST',
         'CDT': 'CST', 'CT': 'CST',
         'EDT': 'EST', 'ET': 'EST',
-        'none': 'NONE'
+        'none': 'NONE', '': 'NONE',
     }
+    only_alpha = re.compile('[^a-zA-Z\s]')
     for i in range(len(gold_timezone)):
-        cur_gold_timezone = gold_timezone[i].upper().strip()
-        cur_pred_timezone = pred_timezone[i].upper().strip()
+
+        cur_gold_timezone = only_alpha.sub(
+            '', gold_timezone[i]).upper().strip()
+        cur_pred_timezone = only_alpha.sub(
+            '', pred_timezone[i]).upper().strip()
+
+        # cur_gold_timezone = gold_timezone[i].upper().strip()
+        # cur_pred_timezone = pred_timezone[i].upper().strip()
 
         if cur_gold_timezone in timezone_mapping:
             cur_gold_timezone = timezone_mapping[cur_gold_timezone]

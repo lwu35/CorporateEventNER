@@ -8,7 +8,9 @@ from gpt_neo import gpt_predict
 from bert_event_type import bert_predict, bert_init
 from happytransformer import HappyGeneration
 
-from ner_helper import get_date_time_timezone, get_fp, get_fy, spacy_init, get_regex_event_type, init_allen_nlp, allen_company, allen_date, allen_time, allen_timezone
+from simpletransformers.question_answering import QuestionAnsweringModel
+
+from ner_helper import get_date_time_timezone, get_fp, get_fy, spacy_init, get_regex_event_type, init_allen_nlp, allen_company, allen_date, allen_time, allen_timezone, roberta_company
 
 
 import ssl
@@ -43,8 +45,10 @@ def main():
     url_ids = list(df['url_id'])
 
     nlp_spacy = spacy_init('en_core_web_lg')
+    # stanza.download('en')
     nlp_stanza = stanza.Pipeline('en', processors='tokenize,ner')
     nlp_allen = init_allen_nlp()
+    roberta_qa = QuestionAnsweringModel("roberta", "model-roberta")
 
     # GPT-NEO Model, event type
     happy_gen = HappyGeneration(load_path=GPT_MODEL_PATH_EVENT_TYPE)
@@ -64,10 +68,6 @@ def main():
     all_timezones = []
 
     for i in tqdm(range(len(urls))):
-        try:
-            company_name = allen_company(nlp_allen, event_texts[i])
-        except:
-            company_name = 'NONE'
 
         try:
             text_date, text_time, text_timezone = get_date_time_timezone(
@@ -105,6 +105,17 @@ def main():
             text_fy = get_fy(event_texts[i], text_date)
         except:
             text_fy = 'NONE'
+
+        # try:
+        #     company_name = allen_company(
+        #         nlp_allen, event_texts[i], event_type_regex)
+        # except:
+        #     company_name = 'NONE'
+
+        try:
+            company_name = roberta_company(roberta_qa, event_texts[i])
+        except:
+            company_name = 'NONE'
 
         all_names.append(company_name)
         all_fy.append(text_fy)
