@@ -15,7 +15,7 @@ def gpt_predict(text,happy_gen):
     result = happy_gen.generate_text(
         test1 + question, args=top_k_sampling_settings)
 
-    max_ratio = 0
+    max_ratio = 10
     max_tag = "Other"
     for j in tags_vocab:
         ratio = fuzz.ratio(j, result.text.splitlines()[0])
@@ -57,18 +57,33 @@ if __name__ == "__main__":
     args = GENTrainArgs(num_train_epochs=3)
     with open('gpt_train.txt', 'r', encoding='utf-8') as f:
         lines = f.readlines()
-        for i in range(50):
+        for i in range(len(lines)//3):
             with open('gpt_train'+str(i)+'.txt', 'w', encoding='utf-8') as f1:
                 f1.writelines(lines[i*3])
                 f1.writelines(lines[i*3+1])
-    for i in range(50):
+    for i in range(len(lines)//3):
         train_file = 'gpt_train'+str(i)+'.txt'
         happy_gen.train(train_file,args = args)
     happy_gen.save("model/")
 
-    with open('gpt_test.txt', 'r', encoding='utf-8') as f:
+    with open('gpt_dev.txt', 'r', encoding='utf-8') as f:
         raw_event_text = []
         lines = f.readlines()
         for i in lines:
             raw_event_text.append([i.replace('\n', '')])
-    print(gpt_predicts(raw_event_text,happy_gen))
+    pred_types = gpt_predicts(raw_event_text,happy_gen)
+    with open('dev_eval.txt', 'r', encoding='utf-8') as f:
+        true_tpyes = []
+        lines = f.readlines()
+        for i in lines:
+            true_tpyes.append([i])
+    count = 0
+    for i in range(len(pred_types)):
+      if pred_types[i] == true_tpyes[i][0]:
+        count = count + 1
+      # else:
+      #   print(i)
+      #   print(pred_types[i])
+      #   print(true_tpyes[i][0])
+        
+    print("Accuracy:{:.2f}%".format(count/200*100))
