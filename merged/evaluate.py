@@ -249,12 +249,14 @@ def single_fields(gold_df, pred_df):
             break
 
         # company comparison
-        if gold_company[i] != 'NONE' and pred_company[i] != 'NONE':
+        if not (gold_company[i] == 'NONE' and pred_company[i] == 'NONE'):
             p_ratio = fuzz.partial_ratio(
                 str(pred_company[i]).lower(), str(gold_company[i]).lower())
             ts_ratio = fuzz.token_set_ratio(
                 str(pred_company[i]), str(gold_company[i]))
 
+            # print(i, pred_company[i], '|', str(
+            #     gold_company[i]), p_ratio, ts_ratio)
             if p_ratio >= 90 or ts_ratio >= 90:
                 count_company.append(gold_company[i])
             else:
@@ -262,7 +264,7 @@ def single_fields(gold_df, pred_df):
             gold_count_company.append(gold_company[i])
 
         # fiscal year comparison
-        if gold_fiscal_year[i] != 'NONE' and pred_fiscal_year[i] != 'NONE':
+        if not (gold_fiscal_year[i] == 'NONE' and pred_fiscal_year[i] == 'NONE'):
             if pred_fiscal_year[i] == gold_fiscal_year[i]:
                 count_fiscal_year.append(gold_fiscal_year[i])
             else:
@@ -270,7 +272,7 @@ def single_fields(gold_df, pred_df):
             gold_count_fiscal_year.append(gold_fiscal_year[i])
 
         # fiscal period comparison
-        if gold_fiscal_period[i] != 'NONE' and pred_fiscal_period[i] != 'NONE':
+        if not (gold_fiscal_period[i] == 'NONE' and pred_fiscal_period[i] == 'NONE'):
             if pred_fiscal_period[i] == gold_fiscal_period[i]:
                 count_fiscal_period.append(gold_fiscal_period[i])
             else:
@@ -278,7 +280,7 @@ def single_fields(gold_df, pred_df):
             gold_count_fiscal_period.append(gold_fiscal_period[i])
 
         # event type comparison
-        if gold_event_type[i] != 'NONE' and pred_event_type[i] != 'NONE':
+        if not (gold_event_type[i] == 'NONE' and pred_event_type[i] == 'NONE'):
             if pred_event_type[i] == gold_event_type[i]:
                 count_event_type.append(gold_event_type[i])
             else:
@@ -286,7 +288,7 @@ def single_fields(gold_df, pred_df):
             gold_count_event_type.append(gold_event_type[i])
 
         # date comparison
-        if gold_date[i] != 'NONE' and pred_date[i] != 'NONE':
+        if not (gold_date[i] == 'NONE' and pred_date[i] == 'NONE'):
             if pred_date[i] == gold_date[i]:
                 count_date.append(gold_date[i])
             else:
@@ -294,7 +296,7 @@ def single_fields(gold_df, pred_df):
             gold_count_date.append(gold_date[i])
 
         # time comparison
-        if gold_time[i] != 'NONE' and pred_time[i] != 'NONE':
+        if not (gold_time[i] == 'NONE' and pred_time[i] == 'NONE'):
 
             if pred_time[i] == gold_time[i]:
                 count_time.append(gold_time[i])
@@ -303,7 +305,7 @@ def single_fields(gold_df, pred_df):
             gold_count_time.append(gold_time[i])
 
         # timezone comparison
-        if gold_timezone[i] != 'NONE' and pred_timezone[i] != 'NONE':
+        if not (gold_timezone[i] == 'NONE' and pred_timezone[i] == 'NONE'):
             if pred_timezone[i] == gold_timezone[i]:
                 count_timezone.append(gold_timezone[i])
             else:
