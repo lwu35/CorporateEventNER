@@ -127,9 +127,9 @@ Type: Conference
  
  '''
 
-tags_vocab = ['Other', 'Earnings Release', 'Earnings Call', 'Shareholder Meeting', 'Sales Results', 'Guidance', 'Conference', 'Merger/Acquisition']
+tags_vocab = ['None/Other', 'Earnings Release', 'Earnings Call', 'Shareholder Meeting', 'Sales Results', 'Conference']
 
-with open('gpt_test.txt', 'r', encoding='utf-8') as f:
+with open('gpt_dev.txt', 'r', encoding='utf-8') as f:
         raw_event_text = []
         lines = f.readlines()
         for i in lines:
@@ -148,7 +148,7 @@ for i in range(len(raw_event_text)):
         test1 + question, args=top_k_sampling_settings)
         
     max_ratio = 10
-    max_tag = "Other"
+    max_tag = "None/Other"
     for j in tags_vocab:
         ratio = fuzz.ratio(j, result.text.splitlines()[0])
 
