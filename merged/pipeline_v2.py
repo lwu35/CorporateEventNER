@@ -72,11 +72,13 @@ def main():
         try:
             text_date, text_time, text_timezone = get_date_time_timezone(
                 event_texts[i], nlp_stanza)
-            text_date = allen_date(nlp_allen, event_texts[i])
-            text_time = allen_time(nlp_allen, event_texts[i])
-            # text_timezone = allen_timezone(nlp_allen, event_texts[i])
         except:
             text_date, text_time, text_timezone = 'NONE'
+
+        try:
+            text_date = allen_date(nlp_allen, event_texts[i])
+        except:
+            text_date = 'NONE'
 
         try:
             text_fp = get_fp(event_texts[i], nlp_spacy)
