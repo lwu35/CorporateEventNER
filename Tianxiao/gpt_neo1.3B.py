@@ -7,7 +7,7 @@ from fuzzywuzzy import fuzz
 # Input: text content (string)
 # Output: event tag
 def gpt_predict(text,happy_gen):
-    tags_vocab = ['Other', 'Earnings Release', 'Earnings Call', 'Shareholder Meeting', 'Sales Results', 'Guidance', 'Conference', 'Merger/Acquisition']
+    tags_vocab = ['None/Other', 'Earnings Release', 'Earnings Call', 'Shareholder Meeting', 'Sales Results', 'Conference']
     test1 = "Text: " + text + "\n"
     question = 'Type:'
     top_k_sampling_settings = GENSettings(no_repeat_ngram_size=2,
@@ -16,7 +16,7 @@ def gpt_predict(text,happy_gen):
         test1 + question, args=top_k_sampling_settings)
 
     max_ratio = 10
-    max_tag = "Other"
+    max_tag = "None/Other"
     for j in tags_vocab:
         ratio = fuzz.ratio(j, result.text.splitlines()[0])
 
@@ -30,7 +30,7 @@ def gpt_predict(text,happy_gen):
 # Input: a list of text content (string)
 # Output: a list ofevent tag
 def gpt_predicts(raw_event_text,happy_gen):
-    tags_vocab = ['Other', 'Earnings Release', 'Earnings Call', 'Shareholder Meeting', 'Sales Results', 'Guidance', 'Conference', 'Merger/Acquisition']
+    tags_vocab = ['None/Other', 'Earnings Release', 'Earnings Call', 'Shareholder Meeting', 'Sales Results', 'Conference']
     tags = []
     for i in range(len(raw_event_text)):
         test1 = "Text: " + raw_event_text[i][0] + "\n"
@@ -41,7 +41,7 @@ def gpt_predicts(raw_event_text,happy_gen):
             test1 + question, args=top_k_sampling_settings)
 
         max_ratio = 10
-        max_tag = "Other"
+        max_tag = "None/Other"
         for j in tags_vocab:
             ratio = fuzz.ratio(j, result.text.splitlines()[0])
 
