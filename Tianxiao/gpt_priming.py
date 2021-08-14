@@ -156,4 +156,17 @@ for i in range(len(raw_event_text)):
             max_ratio = ratio
             max_tag = j
     tags.append(max_tag + '\n')
-print(tags)
+# print(tags)
+pred_types = tags
+with open('dev_eval.txt', 'r', encoding='utf-8') as f:
+    true_tpyes = []
+    lines = f.readlines()
+    for i in lines:
+        true_tpyes.append([i])
+count = 0
+for i in range(len(pred_types)):
+  if pred_types[i] == true_tpyes[i][0]:
+    count = count + 1
+
+        
+print("Accuracy:{:.2f}%".format(count/200*100))
