@@ -2,134 +2,93 @@ from happytransformer import GENTrainArgs
 from happytransformer import GENSettings
 from happytransformer import HappyGeneration
 from fuzzywuzzy import fuzz
-happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-1.3B")
+happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-125M")
 
-test1 = ''' Text: Astronics 2021 y Shareholder Meeting 05-25-2021 10:00 am EDT 
-Type: Shareholder Meeting
+test1 = ''' Text: 2021 ACOG Annual Meeting April 30 – May 2, 2021
+Type:None/Other
 
-Text: Full house resorts 2021 y Shareholder Meeting 05-19-2021 10:00 am PDT https://events.Q4inc.com/vsm/FLL/2021 
-Type: Shareholder Meeting
+Text: "NO EVENTS FOUND"
+Type:None/Other
 
-Text: Extended Stay America 2020 Q4 Earnings Call 02-26-2021 8:30 am EST https://edge.media-server.com/mmc/p/6h793499 
-Type: Earnings Call
+Text: 03/30/20	 RH Reports Record Fiscal 2019 Results
+Type:None/Othe
 
-Text: Kimberly-Clark 2021 y Shareholder Meeting 04-29-2021 9:00 am CDT https://computershare.lumiagm.com/?fromUrl=277152589 
-Type: Shareholder Meeting
+Text: 09/09/20	 RH Reports Record Second Quarter 2020 Results
+Type:None/Other
 
-Text: Sutro Biopharma Other 05-20-2021 2:40 pm EDT 
-Type: Other
+Text: July 19, 2021	 China Internet– are we there yet? Expert views on data security (US).. New York
+Type:None/Other
 
-Text: Switch 2021 Q1 Earnings Call 05-10-2021 5:00 pm ET https://services.choruscall.com/links/swch210510.html 
-Type: Earnings Call
+Text: 2nd Quarter  2021 Q2 Earnings Release October 27, 2020
+Type:Earnings Release
 
-Text: Infusystem 2021 y Stockholders meetings 05-18-2021 9:00 am ET https://computershare.lumiagm.com/?fromUrl=272940211 
-Type: Shareholder Meeting
+Text: 02/22/18 CVR Partners Q4 2017 Earnings Report
+Type:Earnings Release
 
-Text: Juniper Networks 2021 Q1 Earnings Call 04-27-2021 2:00 pm PT https://event.on24.com/wcc/r/3079918/E0E8DFD021CDFF89394C7A147656AD2E 
-Type: Earnings Call
+Text: Columbia Sportswear 1st Quarter 2021 Earnings Release Conference Call Apr 29, 2021 ? 5:00 pm EDT Earnings ReleasePDFHTML AUDIOEarnings Webcast CFO Commentary and Financial Review
+Type:Earnings Release
 
-Text: CERAGON y Conference 05-19-2021 8:45 am ET https://www.ceragon.com/investors/webcasts 
-Type: Conference
+Text: Adaptive Biotechnologies Second Quarter Financial Results Aug 4, 2021 at 4:30 PM EDT Listen to webcast
+Type:Earnings Release
 
-Text: Tonix Pharmaceuticals y Shareholder Meeting 05-07-2021 11:00 am ET https://viewproxy.com/tonixpharma/2021/VM/ 
-Type: Shareholder Meeting
+Text: Tuesday, July 20, 2021 8:30 AM ET Second Quarter 2021 Results
+Type:Earnings Release
 
-Text: PNC financial services group 2021 y Shareholder Meeting 04-27-2021 11:00 am EDT 
-Type: Shareholder Meeting
+Text: CORPORATE UPDATE CONFERENCE CALL JANUARY 7, 2021 ? 4:15 PM
+Type:Earnings Call
 
-Text: angiodynamics Conference 04-12-2021 8:45 am EDT https://wsw.com/webcast/needham107/ango/2233330 
-Type: Conference 
+Text: May 5, 2021 at 10:30 AM EDT Avista Corporation Q1 2021 Earnings Conference Call Click here for webcast
+Type:Earnings Call
 
-Text: Bimini capital management 2020 Q4 Earnings Call 03-12-2021 10:00 am ET https://event.on24.com/wcc/r/3044623/44A10F5CBA50FE24174070B2D837F793 
-Type: Earnings Call 
+Text: Wednesday, May 5, 2021 at 5:00 PM EDT Q1 2021 Nu Skin Enterprises Earnings Conference Call
+Type:Earnings Call
 
-Text: Continental Resources Q1 2021 Earnings Call 04-29-2021 11:00am CDT https://www.webcaster4.com/Webcast/Page/2083/40546 
-Type: Earnings Call 
+Text: Q4 2020 Collegium Pharmaceutical Inc Earnings Conference Call Feb 25, 2021 at 4:30 PM EST Click Here for Webcast
+Type:Earnings Call
 
-Text: estee lauder companies 2021 Q3 Earnings Call 05-03-2021 9:30 AM ET https://services.choruscall.com/links/el210503xk8KQ58x.html 
-Type: Earnings Call 
+Text: Q4 2020 H.B. FULLER COMPANY EARNINGS CONFERENCE CALL JANUARY 26, 2021 10:30 AM ET
+Type:Earnings Call
 
-Text: arcturus therapeutics 2021 Q1 Earnings Release 05-10-2021 4:30pm EDT http://public.viavid.com/player/index.php?id=144682 
-Type: Earnings Release 
+Text: 2021 Virtual Annual Shareholder Meeting  Thursday, April 29, 2021  10:00am EDT
+Type:Shareholder Meeting
 
-Text: Stephens Conference 05-12-2021 
-Type: Conference 
+Text: The PNC Financial Services Group 2021 Annual Meeting of Shareholders Tuesday, April 27, 2021 11:00 am EDT
+Type:Shareholder Meeting
 
-Text: PDF Solutions Q1 earnings call 05/06/2021 5:00 PM EDT https://edge.media-server.com/mmc/p/ziup3tnz 
-Type: Earnings Call 
+Text: MAY 18, 2021 ? 9:00AM ET 2021 Annual Meeting of Stockholders
+Type:Shareholder Meeting
 
-Text: Transcat 2021 3rd quarter Earnings Release http://public.viavid.com/index.php?id=142934 
-Type: Earnings Release 
+Text: Special Meeting of Stockholders Jun 11, 2021 at 8:30 AM EDT Shareholder control number required to join Listen to Webcast
+Type:Shareholder Meeting
 
-Text: Collegium Pharmaceutical 2021 Q1 earnings call 05/06/2021 4:30 PM EDT 
-Type: Earnings Call 
+Text: 06/02/2021 09:00 AM PT Cerus Corporation's Annual Meeting of Stockholders Webcast (opens in new window)
+Type:Shareholder Meeting
 
-Text: Itron 2021 Q1 Earnings Release 05/03/2021 10:00 AM EDT https://edge.media-server.com/mmc/p/fv39vg3s 
-Type: Earnings Release 
+Text: Chiasma Q4 2020 Financial Results Call Mar 4, 2021 at 5:00 PM EST Listen to webcast
+Type:Sales Results
 
-Text: eplus 2020 Q4 Earnings Release 02/03/2021 4:30 PM Eastern Time https://event.on24.com/wcc/r/2929350/375079A13DB8E9A35EA0D08E7B32AC02 
-Type: Earnings Release 
+Text: MAY 7, 2020 04:30 PM ET First Solar, Inc. First Quarter 2020 Financial Results Webcast(Opens In New Window)
+Type:Sales Results
 
-Text: Berkshire Hills Bancorp shareholder meeting 05/20/2021 
-Type: Shareholder Meeting 
+Text: Wednesday, August 4, 2021 JEFFERIES VIRTUAL INDUSTRIALS CONFERENCE
+Type:Conference
 
-Text: Whitestone Reit 2020 Q4 Earnings Release 02/24/2021 
-Type: Earnings Release 
+Text: Universal Display Corporation's Fourth Quarter and Fiscal Year 2020 Teleconference February 18, 2021 05:00 PM ET
+Type:Conference
 
-Text: BBVA USA Bancshares 2021 Q1 Earnings Release 04/30/2021 8:30 AM CDT 
-Type: Earnings Release 
+Text: March 3, 2021 at 8:40 AM PST Seer, Inc. at Cowen 41st Annual Healthcare Conference
+Type:Conference
 
-Text: BrightView 2021 Q2 earnings call 05/06/2021 10:00 AM EST https://event.on24.com/wcc/r/3080115/0C88CA80C39716461742284AE9B1087F 
-Type: Earnings Call 
+Text: Digitalization in Energy Virtual Conference October 6, 2021 Streaming On-Demand
+Type:Conference
 
-Text: ArcBest 2021 Q1 earnings call 05/04/2021 9:30 AM EDT 800 682-8539 https://event.webcasts.com/starthere.jsp?ei=1447325&tp_key=5e6751b165 
-Type: Earnings Call 
-
-Text: Oasis Midstream 2021 Q1 earnings call may 06 2021 12:00 PM CDT https://www.webcaster4.com/Webcast/Page/1777/41033 
-Type: Earnings Call 
-
-Text: Zynex 2020 Q4 + Y Earnings Release 02/25/2021 2:15 PM MST https://www.webcaster4.com/Webcast/Page/1487/40106 
-Type: Earnings Release 
-
-Text: Hess Corporation 2021 Q1 earnings call 04/28/2021 10:00 AM EDT 
-Type: Earnings Call 
-
-Text: Bernstein Other 05/18/2021 10:00 AM EDT 
-Type: Other 
-
-Text: Electronic Arts Q4 earnings call 05/11/2021 02:00 PM PT 866 324-3683 https://event.on24.com/wcc/r/3082295/44574BD8DABA0634EBAFFF035D3C8A3E 
-Type: Earnings Call 
-
-Text: SB Financial Group 2020 Y Earnings Release 03/11/2021 
-Type: Earnings Release 
-
-Text: The Philadelphia Inquirer 2021 Other 4/12/2021 8:08 AM https://www.businesswire.com/news/home/20210412005289/en/ 
-Type: Other 
-
-Text: Guess 2021 Q4 Earnings Call 03/31/2021 04:45 PM EST https://edge.media-server.com/mmc/p/tg6sh5s5 
-Type: Earnings Call 
-
-Text: Cowen Other 08/09/2021 
-Type: Other 
-
-Text: Aon 2021 Q1 Earnings Call 04/30/2021 07:30AM CST https://event.on24.com/wcc/r/3079953/6F8A69D109C1B6F1C88B816B82F5F2D7 
-Type: Earnings Call 
-
-Text: Varian 2019 Other 11/15/2019 https://event.webcasts.com/starthere.jsp?ei=1272740&tp_key=89d69aebee 
-Type: Other 
-
-Text: fleetcor 2021 Q1 Earnings Release 05-05-2021 
-Type: Earnings Release 
-
-Text: Oppenheimer 2021 Conference 03/17/2021 1:10PM EST https://wsw.com/webcast/oppenheimer9/iova/2720795 
-Type: Conference 
-
- 
+Text: Stifel 2021 Virtual Jaws & Paws Conference June 2, 2021 at 9:00 AM EDT Listen to Webcast
+Type:Conference
  '''
 
 tags_vocab = ['None/Other', 'Earnings Release', 'Earnings Call', 'Shareholder Meeting', 'Sales Results', 'Conference']
 
-with open('gpt_dev.txt', 'r', encoding='utf-8') as f:
+with open('dev.txt', 'r', encoding='utf-8') as f:
         raw_event_text = []
         lines = f.readlines()
         for i in lines:
@@ -158,7 +117,7 @@ for i in range(len(raw_event_text)):
     tags.append(max_tag + '\n')
 # print(tags)
 pred_types = tags
-with open('dev_eval.txt', 'r', encoding='utf-8') as f:
+with open('dev_tags.txt', 'r', encoding='utf-8') as f:
     true_tpyes = []
     lines = f.readlines()
     for i in lines:
