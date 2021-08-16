@@ -7,7 +7,7 @@ from fuzzywuzzy import fuzz
 # Output: fine-tuned model
 def gpt_train(train_file):
     happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-125M")
-    args = GENTrainArgs(num_train_epochs=5)
+    args = GENTrainArgs(num_train_epochs=3)
     happy_gen.train(train_file, args=args)
     return happy_gen
 
@@ -60,15 +60,15 @@ def gpt_predicts(raw_event_text,happy_gen):
     return tags
 
 if __name__ == "__main__":
-    happy_gen = gpt_train('gpt_train.txt')
+    happy_gen = gpt_train('train.txt')
     happy_gen.save("model/")
-    with open('gpt_dev.txt', 'r', encoding='utf-8') as f:
+    with open('dev.txt', 'r', encoding='utf-8') as f:
         raw_event_text = []
         lines = f.readlines()
         for i in lines:
             raw_event_text.append([i.replace('\n', '')])
     pred_types = gpt_predicts(raw_event_text,happy_gen)
-    with open('dev_eval.txt', 'r', encoding='utf-8') as f:
+    with open('dev_tags.txt', 'r', encoding='utf-8') as f:
         true_tpyes = []
         lines = f.readlines()
         for i in lines:
