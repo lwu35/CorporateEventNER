@@ -71,7 +71,7 @@ def allen_date(model, event_text):
 
 
 def allen_time(model, event_text):
-    time = model.predict(passage=event_text, question="What is the time?")[
+    time = model.predict(passage=event_text, question="What is the event time?")[
         'best_span_str']
 
     if time == '':
@@ -107,6 +107,7 @@ def spacy_init(base_model):
     periods = ["q1", "q2", "q3", "q4",
                "1q", "2q", "3q", "4q",
                "quarter 1", "quarter 2", "quarter 3", "quarter 4",
+               "1st quarter", "2nd quarter", "3rd quarter", "4th quarter",
                "first quarter", "second quarter", "third quarter", "fourth quarter",
                "full year", "annual", "first half", "second half"]
     for item in periods:

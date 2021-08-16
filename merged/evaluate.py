@@ -370,14 +370,16 @@ def date_converter(gold_dates, pred_dates):
             converted_gold.append('NONE')
             converted_pred.append('NONE')
         else:
-            cur_pred_date = datetime.date(1000, 2, 2)
-            cur_gold_date = datetime.date(1000, 1, 1)
-            if len(extract_dates(pred_dates[i])) == 1:
+            if len(extract_dates(pred_dates[i])) >= 1:
                 cur_pred_date = extract_dates(pred_dates[i])[0].date()
-            if len(extract_dates(gold_dates[i])) == 1:
+                converted_pred.append(cur_pred_date.strftime("%b %d, %Y"))
+            else:
+                converted_pred.append('NONE')
+            if len(extract_dates(gold_dates[i])) >= 1:
                 cur_gold_date = extract_dates(gold_dates[i])[0].date()
-            converted_gold.append(cur_gold_date.strftime("%b %d, %Y"))
-            converted_pred.append(cur_pred_date.strftime("%b %d, %Y"))
+                converted_gold.append(cur_gold_date.strftime("%b %d, %Y"))
+            else:
+                converted_gold.append('NONE')
 
     return converted_gold, converted_pred
 
@@ -390,21 +392,23 @@ def time_converter(gold_times, pred_times):
             converted_gold.append('NONE')
             converted_pred.append('NONE')
         else:
+            gold_times[i] = gold_times[i].replace(" ", "")
+            pred_times[i] = pred_times[i].replace(" ", "")
             gold_times[i] = gold_times[i].upper().replace('AM', 'A.M')
             gold_times[i] = gold_times[i].upper().replace('PM', 'P.M')
             pred_times[i] = pred_times[i].upper().replace('AM', 'A.M')
             pred_times[i] = pred_times[i].upper().replace('PM', 'P.M')
 
-            cur_pred_time = datetime.time(1, 1, 30)
-            cur_gold_time = datetime.time(2, 2, 30)
-
             if search_dates(gold_times[i]) != None:
                 cur_gold_time = search_dates(gold_times[i])[0][1].time()
+                converted_gold.append(cur_gold_time.strftime("%H:%M:%S"))
+            else:
+                converted_gold.append('NONE')
             if search_dates(pred_times[i]) != None:
                 cur_pred_time = search_dates(pred_times[i])[0][1].time()
-
-            converted_gold.append(cur_gold_time.strftime("%H:%M:%S"))
-            converted_pred.append(cur_pred_time.strftime("%H:%M:%S"))
+                converted_pred.append(cur_pred_time.strftime("%H:%M:%S"))
+            else:
+                converted_pred.append('NONE')
 
     return converted_gold, converted_pred
 
@@ -429,6 +433,7 @@ def fiscal_period_converter(gold_fiscal_period, pred_fiscal_period):
 
         if cur_gold_fiscal_period in fp_mapping:
             cur_gold_fiscal_period = fp_mapping[cur_gold_fiscal_period]
+
         if cur_pred_fiscal_period in fp_mapping:
             cur_pred_fiscal_period = fp_mapping[cur_pred_fiscal_period]
 
@@ -453,9 +458,9 @@ def timezone_converter(gold_timezone, pred_timezone):
     for i in range(len(gold_timezone)):
 
         cur_gold_timezone = only_alpha.sub(
-            '', gold_timezone[i]).upper().strip()
+            '', str(gold_timezone[i])).upper().strip()
         cur_pred_timezone = only_alpha.sub(
-            '', pred_timezone[i]).upper().strip()
+            '', str(pred_timezone[i])).upper().strip()
 
         # cur_gold_timezone = gold_timezone[i].upper().strip()
         # cur_pred_timezone = pred_timezone[i].upper().strip()

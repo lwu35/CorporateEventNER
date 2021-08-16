@@ -11,7 +11,7 @@ from happytransformer import HappyGeneration
 from simpletransformers.question_answering import QuestionAnsweringModel
 
 from ner_helper import get_date_time_timezone, get_fp, get_fy, spacy_init, get_regex_event_type, init_allen_nlp, allen_company, allen_date, allen_time, allen_timezone, roberta_company
-
+from ner_normalize import normalize_date, normalize_time, normalize_fiscal_period, timezone_converter
 
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -81,6 +81,11 @@ def main():
             text_date = 'NONE'
 
         try:
+            text_time = allen_time(nlp_allen, event_texts[i])
+        except:
+            text_time = 'NONE'
+
+        try:
             text_fp = get_fp(event_texts[i], nlp_spacy)
         except:
             text_fp = 'NONE'
@@ -119,10 +124,11 @@ def main():
 
         all_names.append(company_name)
         all_fy.append(text_fy)
-        all_fp.append(text_fp)
-        all_dates.append(text_date)
-        all_times.append(text_time)
-        all_timezones.append(text_timezone)
+        all_fp.append(normalize_fiscal_period(text_fp))
+        all_dates.append(normalize_date(text_date))
+        all_times.append(normalize_time(text_time))
+
+        all_timezones.append(timezone_converter(text_timezone))
         all_types_bert.append(event_type_bert)
         all_types_gpt.append(event_type_gpt)
         all_types_regex.append(event_type_regex)
