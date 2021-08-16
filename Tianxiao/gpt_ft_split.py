@@ -53,9 +53,9 @@ def gpt_predicts(raw_event_text,happy_gen):
     return tags
 
 if __name__ == "__main__":
-    happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-1.3B")
+    happy_gen = HappyGeneration("GPT-NEO", "EleutherAI/gpt-neo-125M")
     args = GENTrainArgs(num_train_epochs=3)
-    with open('gpt_train.txt', 'r', encoding='utf-8') as f:
+    with open('train.txt', 'r', encoding='utf-8') as f:
         lines = f.readlines()
         for i in range(len(lines)//3):
             with open('gpt_train'+str(i)+'.txt', 'w', encoding='utf-8') as f1:
@@ -66,13 +66,13 @@ if __name__ == "__main__":
         happy_gen.train(train_file,args = args)
     happy_gen.save("model/")
 
-    with open('gpt_dev.txt', 'r', encoding='utf-8') as f:
+    with open('dev.txt', 'r', encoding='utf-8') as f:
         raw_event_text = []
         lines = f.readlines()
         for i in lines:
             raw_event_text.append([i.replace('\n', '')])
     pred_types = gpt_predicts(raw_event_text,happy_gen)
-    with open('dev_eval.txt', 'r', encoding='utf-8') as f:
+    with open('dev_tags.txt', 'r', encoding='utf-8') as f:
         true_tpyes = []
         lines = f.readlines()
         for i in lines:
