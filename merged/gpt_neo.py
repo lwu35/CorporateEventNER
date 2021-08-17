@@ -4,9 +4,13 @@ from happytransformer import GENSettings
 from fuzzywuzzy import fuzz
 import configparser
 
+config = configparser.ConfigParser()
+config.read('configg.ini')
 
 # Input: training file name
 # Output: fine-tuned model
+
+
 def gpt_train(train_file):
     gpt_type = config['gpt_model']['model']
     happy_gen = HappyGeneration("GPT-NEO", gpt_type)
@@ -17,8 +21,11 @@ def gpt_train(train_file):
 
 # Input: text content (string)
 # Output: event tag
-def gpt_predict(text,happy_gen):
-    tags_vocab = ['None/Other', 'Earnings Release', 'Earnings Call', 'Shareholder Meeting', 'Sales Results', 'Conference']
+
+
+def gpt_predict(text, happy_gen):
+    tags_vocab = ['None/Other', 'Earnings Release', 'Earnings Call',
+                  'Shareholder Meeting', 'Sales Results', 'Conference']
     test1 = "Text: " + text + "\n"
     question = 'Type:'
     top_k_sampling_settings = GENSettings(no_repeat_ngram_size=int(config['gpt_model']['no_repeat_ngram_size']),
@@ -40,8 +47,11 @@ def gpt_predict(text,happy_gen):
 
 # Input: a list of text content (string)
 # Output: a list ofevent tag
-def gpt_predicts(raw_event_text,happy_gen):
-    tags_vocab = ['None/Other', 'Earnings Release', 'Earnings Call', 'Shareholder Meeting', 'Sales Results', 'Conference']
+
+
+def gpt_predicts(raw_event_text, happy_gen):
+    tags_vocab = ['None/Other', 'Earnings Release', 'Earnings Call',
+                  'Shareholder Meeting', 'Sales Results', 'Conference']
     tags = []
     for i in range(len(raw_event_text)):
         test1 = "Text: " + raw_event_text[i][0] + "\n"
@@ -72,7 +82,7 @@ def fine_tuning_single():
         lines = f.readlines()
         for i in lines:
             raw_event_text.append([i.replace('\n', '')])
-    pred_types = gpt_predicts(raw_event_text,happy_gen)
+    pred_types = gpt_predicts(raw_event_text, happy_gen)
     with open('dev_tags.txt', 'r', encoding='utf-8') as f:
         true_tpyes = []
         lines = f.readlines()
@@ -80,10 +90,11 @@ def fine_tuning_single():
             true_tpyes.append([i])
     count = 0
     for i in range(len(pred_types)):
-      if pred_types[i] == true_tpyes[i][0]:
-        count = count + 1
-        
+        if pred_types[i] == true_tpyes[i][0]:
+            count = count + 1
+
     print("Accuracy:{:.2f}%".format(count/200*100))
+
 
 def fine_tuning_split():
     gpt_type = config['gpt_model']['model']
@@ -99,7 +110,7 @@ def fine_tuning_split():
                 f1.writelines(lines[i*3+1])
     for i in range(len(lines)//3):
         train_file = 'train'+str(i)+'.txt'
-        happy_gen.train(train_file,args = args)
+        happy_gen.train(train_file, args=args)
     happy_gen.save("model/")
 
     with open('dev.txt', 'r', encoding='utf-8') as f:
@@ -107,7 +118,7 @@ def fine_tuning_split():
         lines = f.readlines()
         for i in lines:
             raw_event_text.append([i.replace('\n', '')])
-    pred_types = gpt_predicts(raw_event_text,happy_gen)
+    pred_types = gpt_predicts(raw_event_text, happy_gen)
     with open('dev_tags.txt', 'r', encoding='utf-8') as f:
         true_tpyes = []
         lines = f.readlines()
@@ -115,8 +126,7 @@ def fine_tuning_split():
             true_tpyes.append([i])
     count = 0
     for i in range(len(pred_types)):
-      if pred_types[i] == true_tpyes[i][0]:
-        count = count + 1
-        
+        if pred_types[i] == true_tpyes[i][0]:
+            count = count + 1
+
     print("Accuracy:{:.2f}%".format(count/200*100))
-    
