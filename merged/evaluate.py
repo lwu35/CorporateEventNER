@@ -347,19 +347,27 @@ def single_fields(gold_df, pred_df):
 
 def print_score(field, gold_count, count):
     if field == 'Time' or field == 'Date':
-        print(f'{field} \t\t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
+        print(f'{field} \t\t({len(gold_count)} examples) \t\tAcc:', round(accuracy_score(
             gold_count, count), 3), f'\tF1:', round(f1_score(
-                gold_count, count, average='macro'), 3))
-        print(f'{field} \t\t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
+                gold_count, count, average='macro'), 3), f'\tPrec:', round(precision_score(
+                    gold_count, count, average='macro'), 3), f'\tRecall:', round(recall_score(
+                        gold_count, count, average='macro'), 3))
+        print(f'{field} \t\t({len(gold_count)} examples) \t\tAcc:', round(accuracy_score(
             gold_count, count), 3), f'\tF1:', round(f1_score(
-                gold_count, count, average='macro'), 3), file=log_file)
+                gold_count, count, average='macro'), 3), f'\tPrec:', round(precision_score(
+                    gold_count, count, average='macro'), 3), f'\tRecall:', round(recall_score(
+                        gold_count, count, average='macro'), 3), file=log_file)
     else:
-        print(f'{field} \t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
+        print(f'{field} \t({len(gold_count)} examples) \t\tAcc:', round(accuracy_score(
             gold_count, count), 3), f'\tF1:', round(f1_score(
-                gold_count, count, average='macro'), 3))
-        print(f'{field} \t({len(gold_count)} examples) \t\tAcc::', round(accuracy_score(
+                gold_count, count, average='macro'), 3), f'\tPrec:', round(precision_score(
+                    gold_count, count, average='macro'), 3), f'\tRecall:', round(recall_score(
+                        gold_count, count, average='macro'), 3))
+        print(f'{field} \t({len(gold_count)} examples) \t\tAcc:', round(accuracy_score(
             gold_count, count), 3), f'\tF1:', round(f1_score(
-                gold_count, count, average='macro'), 3), file=log_file)
+                gold_count, count, average='macro'), 3), f'\tPrec:', round(precision_score(
+                    gold_count, count, average='macro'), 3), f'\tRecall:', round(recall_score(
+                        gold_count, count, average='macro'), 3), file=log_file)
 
 
 def date_converter(gold_dates, pred_dates):

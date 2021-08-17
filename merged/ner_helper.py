@@ -189,6 +189,30 @@ def get_fp(raw_event_text, nlp_spacy):
     return spacy_fp.upper()
 
 
+def get_fp_regex(raw_event_text):
+    raw_event_text = raw_event_text.lower()
+    if 'q1' in raw_event_text or 'first quarter' in raw_event_text or '1q' in raw_event_text or '1q21' in raw_event_text or '1q20' in raw_event_text or 'q121' in raw_event_text or 'q120' in raw_event_text or 'first-quarter' in raw_event_text or '1st quarter' in raw_event_text or '2021q1' in raw_event_text or '2020q1' in raw_event_text or '2019q1' in raw_event_text:
+        return 'Q1'
+    elif '3q20' in raw_event_text or '3q21' in raw_event_text:
+        return 'Q3'
+    elif '4q20' in raw_event_text or '4q21' in raw_event_text:
+        return 'Q4'
+    elif 'q2' in raw_event_text or 'second quarter' in raw_event_text or '2q' in raw_event_text or '2q21' in raw_event_text or '2q20' in raw_event_text or 'q221' in raw_event_text or 'q220' in raw_event_text or 'second-quarter' in raw_event_text or '2nd quarter' in raw_event_text or '2021q2' in raw_event_text or '2020q2' in raw_event_text or '2019q2' in raw_event_text:
+        return 'Q2'
+    elif 'q3' in raw_event_text or 'third quarter' in raw_event_text or '3q' in raw_event_text or '3q21' in raw_event_text or '3q20' in raw_event_text or 'q321' in raw_event_text or 'q220' in raw_event_text or 'third-quarter' in raw_event_text or '3rd quarter' in raw_event_text or '2021q3' in raw_event_text or '2020q3' in raw_event_text or '2019q3' in raw_event_text:
+        return 'Q3'
+    elif 'q4' in raw_event_text or 'fourth quarter' in raw_event_text or '4q' in raw_event_text or '4q21' in raw_event_text or '4q20' in raw_event_text or 'q421' in raw_event_text or 'q220' in raw_event_text or 'fourth-quarter' in raw_event_text or '4th quarter' in raw_event_text or '2021q4' in raw_event_text or '2020q4' in raw_event_text or '2019q4' in raw_event_text:
+        return 'Q4'
+    elif 'annual' in raw_event_text or 'yearly' in raw_event_text or 'full year' in raw_event_text or 'annually' in raw_event_text or 'yearly' in raw_event_text:
+        return 'Y'
+    elif 'first half' in raw_event_text:
+        return 'S1'
+    elif 'second half' in raw_event_text:
+        return 'S2'
+    else:
+        return 'NONE'
+
+
 def get_fy(raw_event_text, text_date):
     fy = ['2017', '2018', '2019', '2020', '2021', '2022']
     raw_event_text = raw_event_text.replace(text_date, '')
