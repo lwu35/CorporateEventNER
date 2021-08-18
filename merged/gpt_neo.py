@@ -24,8 +24,6 @@ def gpt_train(train_file):
 
 
 def gpt_predict(text, happy_gen):
-    tags_vocab = ['None/Other', 'Earnings Release', 'Earnings Call',
-                  'Shareholder Meeting', 'Sales Results', 'Conference']
     test1 = "Text: " + text + "\n"
     question = 'Type:'
     top_k_sampling_settings = GENSettings(no_repeat_ngram_size=int(config['gpt_model']['no_repeat_ngram_size']),
@@ -33,44 +31,54 @@ def gpt_predict(text, happy_gen):
     result = happy_gen.generate_text(
         test1 + question, args=top_k_sampling_settings)
 
-    max_ratio = 10
     max_tag = "None/Other"
-    for j in tags_vocab:
-        ratio = fuzz.ratio(j, result.text.splitlines()[0])
+    gen_text = result.text.splitlines()[0].lower()
+    sent = text.lower() + gen_text
 
-        if ratio > max_ratio:
-            max_ratio = ratio
-            max_tag = j
-    # print(max_tag + '\n')
-
+    if  'call' in text and ('earnings' in sent or 'financial' in sent ):
+        max_tag = 'Earnings Call'
+    elif 'earnings' in sent or 'financial' in sent :
+        max_tag = 'Earnings Release'
+    elif 'stockholders' in sent or 'shareholders' in sent or 'investor' in sent or 'shareholder' in sent:
+        max_tag = 'Shareholder Meeting'
+    elif 'conference' in sent:
+        max_tag = 'Conference'
+    elif 'result' in sent:
+        max_tag = 'Sales Results'
+        
     return max_tag
 
 # Input: a list of text content (string)
 # Output: a list ofevent tag
 
 
-def gpt_predicts(raw_event_text, happy_gen):
-    tags_vocab = ['None/Other', 'Earnings Release', 'Earnings Call',
-                  'Shareholder Meeting', 'Sales Results', 'Conference']
+def gpt_predicts(raw_event_text,happy_gen):
     tags = []
     for i in range(len(raw_event_text)):
-        test1 = "Text: " + raw_event_text[i][0] + "\n"
+        test1 = "Text: " + raw_event_text[i] + "\n"
         question = 'Type:'
         top_k_sampling_settings = GENSettings(no_repeat_ngram_size=2,
                                               do_sample=True, early_stopping=False, top_k=5, temperature=0.7)
         result = happy_gen.generate_text(
             test1 + question, args=top_k_sampling_settings)
-
-        max_ratio = 10
+        
         max_tag = "None/Other"
-        for j in tags_vocab:
-            ratio = fuzz.ratio(j, result.text.splitlines()[0])
+        gen_text = result.text.splitlines()[0].lower()
+        sent = raw_event_text[i].lower() + gen_text
 
-            if ratio > max_ratio:
-                max_ratio = ratio
-                max_tag = j
+        if  'call' in sent and ('earnings' in sent or 'financial' in sent ):
+            max_tag = 'Earnings Call'
+        elif 'earnings' in sent or 'financial' in sent :
+            max_tag = 'Earnings Release'
+        elif 'stockholders' in sent or 'shareholders' in sent or 'investor' in sent or 'shareholder' in sent:
+            max_tag = 'Shareholder Meeting'
+        elif 'conference' in sent:
+            max_tag = 'Conference'
+        elif 'result' in sent:
+            max_tag = 'Sales Results'
+        
         tags.append(max_tag + '\n')
-        # print(max_tag + '\n')
+
     return tags
 
 
