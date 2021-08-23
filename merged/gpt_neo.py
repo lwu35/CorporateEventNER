@@ -35,9 +35,9 @@ def gpt_predict(text, happy_gen):
     gen_text = result.text.splitlines()[0].lower()
     sent = text.lower() + gen_text
 
-    if  'call' in text and ('earnings' in sent or 'financial' in sent ):
+    if 'call' in text and ('earnings' in sent or 'financial' in sent):
         max_tag = 'Earnings Call'
-    elif 'earnings' in sent or 'financial' in sent :
+    elif 'earnings' in sent or 'financial' in sent:
         max_tag = 'Earnings Release'
     elif 'stockholders' in sent or 'shareholders' in sent or 'investor' in sent or 'shareholder' in sent:
         max_tag = 'Shareholder Meeting'
@@ -45,14 +45,14 @@ def gpt_predict(text, happy_gen):
         max_tag = 'Conference'
     elif 'result' in sent:
         max_tag = 'Sales Results'
-        
+
     return max_tag
 
 # Input: a list of text content (string)
 # Output: a list ofevent tag
 
 
-def gpt_predicts(raw_event_text,happy_gen):
+def gpt_predicts(raw_event_text, happy_gen):
     tags = []
     for i in range(len(raw_event_text)):
         test1 = "Text: " + raw_event_text[i] + "\n"
@@ -61,14 +61,14 @@ def gpt_predicts(raw_event_text,happy_gen):
                                               do_sample=True, early_stopping=False, top_k=5, temperature=0.7)
         result = happy_gen.generate_text(
             test1 + question, args=top_k_sampling_settings)
-        
+
         max_tag = "None/Other"
         gen_text = result.text.splitlines()[0].lower()
         sent = raw_event_text[i].lower() + gen_text
 
-        if  'call' in sent and ('earnings' in sent or 'financial' in sent ):
+        if 'call' in sent and ('earnings' in sent or 'financial' in sent):
             max_tag = 'Earnings Call'
-        elif 'earnings' in sent or 'financial' in sent :
+        elif 'earnings' in sent or 'financial' in sent:
             max_tag = 'Earnings Release'
         elif 'stockholders' in sent or 'shareholders' in sent or 'investor' in sent or 'shareholder' in sent:
             max_tag = 'Shareholder Meeting'
@@ -76,7 +76,7 @@ def gpt_predicts(raw_event_text,happy_gen):
             max_tag = 'Conference'
         elif 'result' in sent:
             max_tag = 'Sales Results'
-        
+
         tags.append(max_tag + '\n')
 
     return tags

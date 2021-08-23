@@ -234,12 +234,10 @@ def get_timezone(raw_event_text):
     return regex_timezone.upper()
 
 
-def get_company(raw_event_text, nlp_spacy, nlp_stanza, used_tokens):
+def get_company(raw_event_text, nlp_spacy, nlp_stanza):
     stanza_company = 'NONE'
     spacy_company = 'NONE'
-    for span in used_tokens:
-        raw_event_text = raw_event_text.replace(span, '')
-    print(raw_event_text)
+
     doc = nlp_spacy(raw_event_text)
     for ent in doc.ents:
         # print('\t(Spacy) <ENT>:', ent.text, '<Label>:', ent.label_)
@@ -269,7 +267,18 @@ def time_zone_finder(time_text):
     patterns = ['am', 'pm', 'a.m', 'p.m']
     for p in patterns:
         if p in time_text:
-            return time_text.split(p)[1].upper()
+            found_tz = time_text.split(p)[1].upper()
+            if len(found_tz.split()) == 1:
+                return found_tz
+            else:
+                if 'PACIFIC' in found_tz:
+                    return 'PST'
+                elif 'EASTERN' in found_tz:
+                    return 'EST'
+                elif 'CENTRAL' in found_tz:
+                    return 'CST'
+                elif 'MOUNTAIN' in found_tz:
+                    return 'MST'
     return ''
 
 

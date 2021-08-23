@@ -10,7 +10,7 @@ from happytransformer import HappyGeneration
 
 from simpletransformers.question_answering import QuestionAnsweringModel
 
-from ner_helper import get_date_time_timezone, get_fp, get_fp_regex, get_fy, spacy_init, get_regex_event_type, init_allen_nlp, allen_company, allen_date, allen_time, allen_timezone, roberta_company
+from ner_helper import get_date_time_timezone, get_fp, get_fp_regex, get_fy, spacy_init, get_regex_event_type, init_allen_nlp, allen_company, allen_date, allen_time, allen_timezone, roberta_company, get_company
 from ner_normalize import normalize_date, normalize_time, normalize_fiscal_period, timezone_converter
 
 import ssl
@@ -44,7 +44,7 @@ def main():
     urls = list(df['url'])
     url_ids = list(df['url_id'])
 
-    # nlp_spacy = spacy_init('en_core_web_lg')
+    nlp_spacy = spacy_init('en_core_web_lg')
     # stanza.download('en')
     nlp_stanza = stanza.Pipeline('en', processors='tokenize,ner')
     nlp_allen = init_allen_nlp()
@@ -113,8 +113,7 @@ def main():
             text_fy = 'NONE'
 
         # try:
-        #     company_name = allen_company(
-        #         nlp_allen, event_texts[i], event_type_regex)
+        #     company_name = allen_company(nlp_allen, event_texts[i])
         # except:
         #     company_name = 'NONE'
 
@@ -122,7 +121,7 @@ def main():
             company_name = roberta_company(roberta_qa, event_texts[i])
         except:
             company_name = 'NONE'
-        # company_name = 'NONE'
+        # company_name = get_company(event_texts[i], nlp_spacy, nlp_stanza)
 
         all_names.append(company_name)
         all_fy.append(text_fy)
